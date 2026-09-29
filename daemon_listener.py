@@ -120,6 +120,14 @@ def listen_loop():
     print(f"?? Intervalle de v?rification : toutes les {POLL_INTERVAL_SECONDS // 60} minutes", flush=True)
     print(f"===================================================================\n", flush=True)
 
+    # R?cup?rer les identifiants initiaux du catalogue de base
+    initial_backlog_ids = set()
+    if CATALOG_FILE.exists():
+        with open(CATALOG_FILE, "r", encoding="utf-8") as f:
+            cat_data = json.load(f)
+            initial_backlog_ids = {v.get("id") for v in cat_data.get("videos", []) if v.get("id")}
+    print(f"[Listener] {len(initial_backlog_ids)} vid?os r?pertori?es dans le backlog initial.", flush=True)
+
     while running:
         t_now = time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime())
         print(f"[{t_now}] [Listener] V?rification des nouvelles publications...", flush=True)
@@ -129,7 +137,7 @@ def listen_loop():
             state = load_state()
             processed_ids = set(state.get("processed_ids", []))
 
-            # Charger le catalogue local
+            # Charger le catalogue actuel
             catalog_videos = []
             if CATALOG_FILE.exists():
                 with open(CATALOG_FILE, "r", encoding="utf-8") as f:
@@ -143,8 +151,11 @@ def listen_loop():
                 if not vid_id:
                     continue
 
-                if vid_id not in processed_ids:
-                    print(f"\n?? [Listener] NOUVELLE VID?O D?TECT?E SUR LA CHA?NE !", flush=True)
+                # L'?coute ne se d?clenche que pour une NOUVELLE vid?o non pr?sente dans le catalogue initial
+                # ou si le backlog est totalement ?puis? et qu'une vid?o n'a pas ?t? trait?e
+                is_backlog_video = vid_id in initial_backlog_ids
+                if not is_backlog_video and vid_id not in processed_ids:
+                    print(f"\n?? [Listener] NOUVELLE VID?O IN?DITE D?TECT?E SUR LA CHA?NE !", flush=True)
                     print(f"     ID    : {vid_id}", flush=True)
                     print(f"     Titre : {title}", flush=True)
 
@@ -179,7 +190,7 @@ def listen_loop():
                 break
             time.sleep(1)
 
-    print("[Listener] D?mon d'?coute arr?t?.", flush=True)
+    print("[Listener] D?mon d'?coute arr?t? proprement.", flush=True)
 
 if __name__ == "__main__":
     listen_loop()

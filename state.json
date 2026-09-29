@@ -1,8 +1,23 @@
 {
   "processed_ids": [
-    "NnvRMs_0UQ8"
+    "NnvRMs_0UQ8",
+    "MKrLYLh4Otg"
   ],
   "processed_videos": [
+    {
+      "video_id": "MKrLYLh4Otg",
+      "title": "Créer une animation style Arcane avec l'IA 🔥",
+      "raw_title": "Creating Arcane-style animation with AI 🔥",
+      "filename_md": "2026-08-03_YT-MKrLYLh4Otg_Créer une animation style Arcane avec l'IA 🔥_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-08-03_YT-MKrLYLh4Otg_Créer une animation style Arcane avec l'IA 🔥_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-08-03",
+      "duration": 46,
+      "screenshots_count": 1,
+      "filepath_md": "/root/YT_JackVsAI/2026-08-03_YT-MKrLYLh4Otg_Créer une animation style Arcane avec l'IA 🔥_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-08-03_YT-MKrLYLh4Otg_Créer une animation style Arcane avec l'IA 🔥_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-29T21:14:45Z",
+      "status": "completed"
+    },
     {
       "video_id": "NnvRMs_0UQ8",
       "title": "Comment créer une chaîne de dessins animés pour enfants avec l'IA (Workflow complet)",
@@ -18,5 +33,5 @@
       "status": "completed"
     }
   ],
-  "completed_count": 1
+  "completed_count": 2
 }
