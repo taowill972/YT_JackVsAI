@@ -11,28 +11,28 @@ from config import (
 )
 
 def update_readme_index(processed_videos: List[Dict[str, Any]], total_catalog_count: int = 56) -> None:
-    """Met ? jour le sommaire central README.md dans le d?p?t GitHub avec liens MD et HTML."""
+    """Met à jour le sommaire central README.md dans le dépôt GitHub avec liens MD et HTML."""
     readme_path = REPO_DIR / "README.md"
     pct = (len(processed_videos) / total_catalog_count * 100) if total_catalog_count > 0 else 0
 
     lines = [
-        f"# ?? YT_JackVsAI ? Transcriptions & Analyses Multimodales",
+        f"# 🎬 YT_JackVsAI — Transcriptions & Analyses Multimodales",
         "",
-        f"> Base de connaissances et transcriptions int?grales mot pour mot en fran?ais (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'?cran (via `gemini-3.5-flash-lite`) avec captures d'?cran cl?s et fiches HTML interactives de la cha?ne **[{CHANNEL_NAME}]({CHANNEL_URL})** ({CHANNEL_HANDLE}).",
+        f"> Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[{CHANNEL_NAME}]({CHANNEL_URL})** ({CHANNEL_HANDLE}).",
         "",
-        "## ?? Statistiques de l'Automatisation",
-        f"- **Vid?os trait?es** : `{len(processed_videos)} / {total_catalog_count}` (`{pct:.1f}%`)",
-        f"- **Mod?le Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Fran?ais)",
-        f"- **Mod?le Vision d'?cran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'?crans, prompts, outils et workflows vid?o IA)",
+        "## 📊 Statistiques de l'Automatisation",
+        f"- **Vidéos traitées** : `{len(processed_videos)} / {total_catalog_count}` (`{pct:.1f}%`)",
+        f"- **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)",
+        f"- **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)",
         f"- **Signature des fichiers** : `by-{MODEL_SIGNATURE}`",
-        f"- **Cadence de la routine** : Traitement par lot de 5 vid?os toutes les 6 heures (d?croissant : des plus r?centes aux plus anciennes)",
-        f"- **?coute passive** : D?tection instantan?e 0 token (flux Atom XML YouTube) des nouveaux uploads",
+        f"- **Cadence de la routine** : Traitement par lot de 5 vidéos toutes les 6 heures (décroissant : des plus récentes aux plus anciennes)",
+        f"- **Écoute passive** : Détection instantanée 0 token (flux Atom XML YouTube) des nouveaux uploads",
         "",
         "---",
         "",
-        "## ?? Index Chronologique des Transcriptions Disponibles",
+        "## 📑 Index Chronologique des Transcriptions Disponibles",
         "",
-        "| Date | Titre & Fiche Markdown | Fiche Web Interactive | Dur?e | Captures | Lien YouTube | ID Vid?o |",
+        "| Date | Titre & Fiche Markdown | Fiche Web Interactive | Durée | Captures | Lien YouTube | ID Vidéo |",
         "| :---: | :--- | :---: | :---: | :---: | :---: | :---: |"
     ]
 
@@ -50,17 +50,17 @@ def update_readme_index(processed_videos: List[Dict[str, Any]], total_catalog_co
         shots_count = item.get("screenshots_count", 0)
 
         lines.append(
-            f"| {pub} | [{title}]({md_file}) | [?? Consulter en ligne]({html_file}) | {dur_str} | `{shots_count} images` | [Voir sur YouTube]({yt_url}) | `{vid_id}` |"
+            f"| {pub} | [{title}]({md_file}) | [🌐 Consulter en ligne]({html_file}) | {dur_str} | `{shots_count} images` | [Voir sur YouTube]({yt_url}) | `{vid_id}` |"
         )
 
     lines.append("")
     lines.append("---")
-    lines.append("*G?n?r? automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*")
+    lines.append("*Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*")
 
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
 
-    print(f"[GitManager] README.md mis ? jour ({len(processed_videos)} vid?os index?es).", flush=True)
+    print(f"[GitManager] README.md mis à jour ({len(processed_videos)} vidéos indexées).", flush=True)
 
 def commit_and_push_repo(commit_msg: str) -> bool:
     """Stage tous les fichiers du repo, commit et push vers GitHub origin/main."""
@@ -72,20 +72,20 @@ def commit_and_push_repo(commit_msg: str) -> bool:
             cwd=REPO_DIR, capture_output=True, text=True, check=True
         )
         if not status_res.stdout.strip():
-            print("[GitManager] Aucun nouveau changement ? commiter.", flush=True)
+            print("[GitManager] Aucun nouveau changement à commiter.", flush=True)
             return True
 
         subprocess.run(
             ["git", "commit", "-m", commit_msg],
             cwd=REPO_DIR, check=True, capture_output=True
         )
-        print(f"[GitManager] Commit cr?? : '{commit_msg}'", flush=True)
+        print(f"[GitManager] Commit créé : '{commit_msg}'", flush=True)
 
         subprocess.run(
             ["git", "push", "origin", "main"],
             cwd=REPO_DIR, check=True, capture_output=True
         )
-        print(f"[GitManager] ? D?ploiement GitHub r?ussi vers origin/main.", flush=True)
+        print(f"[GitManager] 🚀 Déploiement GitHub réussi vers origin/main.", flush=True)
         return True
     except subprocess.CalledProcessError as e:
         print(f"[GitManager] Erreur Git (code {e.returncode}) : {e.stderr}", flush=True)
@@ -93,4 +93,3 @@ def commit_and_push_repo(commit_msg: str) -> bool:
     except Exception as e:
         print(f"[GitManager] Erreur commit/push : {e}", flush=True)
         return False
-

@@ -15,10 +15,10 @@ def generate_video_html(
     key_points: List[str],
     segments: List[Dict[str, Any]]
 ) -> str:
-    """G?n?re une page HTML moderne, ultra-?l?gante et responsive avec int?gration visuelle en timeline."""
+    """Génère une page HTML moderne, ultra-élégante et responsive avec intégration visuelle en timeline."""
 
     tools_badges = "".join([f'<span class="tool-tag">{html.escape(t)}</span>' for t in tools_list])
-    points_items = "".join([f'<li><span class="point-bullet">?</span><span>{html.escape(p)}</span></li>' for p in key_points])
+    points_items = "".join([f'<li><span class="point-bullet">✦</span><span>{html.escape(p)}</span></li>' for p in key_points])
 
     timeline_items = []
     for s in segments:
@@ -36,33 +36,33 @@ def generate_video_html(
             img_html = f'''
             <div class="segment-screenshot">
                 <img src="{img_rel}" alt="Capture Segment #{idx:02d}" loading="lazy" onclick="openLightbox('{img_rel}')">
-                <span class="screenshot-caption">?? Capture d'?cran cl? @ {start_str}</span>
+                <span class="screenshot-caption">📸 Capture d'écran clé @ {start_str}</span>
             </div>
             '''
 
         card = f'''
         <div class="timeline-block" id="segment-{idx}">
             <div class="timeline-time">
-                <span class="time-badge">?? {start_str} - {end_str}</span>
+                <span class="time-badge">⏱️ {start_str} - {end_str}</span>
                 <span class="segment-idx">Segment #{idx:02d}</span>
             </div>
             <div class="timeline-content">
                 <div class="verbatim-box">
                     <div class="verbatim-header">
-                        <span class="speaker-icon">??</span>
-                        <strong>Audio Verbatim (Mot pour Mot en Fran?ais) :</strong>
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
                     <blockquote class="verbatim-text">{verbatim}</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
-                        <span class="eye-icon">???</span>
-                        <strong>Analyse Visuelle d'?cran (gemini-3.5-flash-lite) :</strong>
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
                         <p><strong>Interface & Outils :</strong> {interface}</p>
                         <p><strong>Contenu textuel & Code :</strong> {contenu}</p>
-                        <p><strong>Action / D?monstration :</strong> {action}</p>
+                        <p><strong>Action / Démonstration :</strong> {action}</p>
                     </div>
                 </div>
                 {img_html}
@@ -78,7 +78,7 @@ def generate_video_html(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>?? {html.escape(title)} ? Transcription & Vision</title>
+    <title>🎬 {html.escape(title)} — Transcription & Vision</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -431,41 +431,41 @@ def generate_video_html(
 <body>
     <div class="container">
         <header class="video-header">
-            <h1 class="video-title">?? {html.escape(title)}</h1>
+            <h1 class="video-title">🎬 {html.escape(title)}</h1>
             <div class="meta-badges">
-                <span class="badge badge-primary">?? {pub_date}</span>
-                <span class="badge">?? {dur_str}</span>
-                <span class="badge">?? <code>{video_id}</code></span>
-                <span class="badge">?? {model_signature}</span>
-                <a href="{channel_url}" target="_blank" class="badge">?? {channel_name}</a>
-                <a href="https://www.youtube.com/watch?v={video_id}" target="_blank" class="badge badge-yt">?? Voir sur YouTube</a>
+                <span class="badge badge-primary">📅 {pub_date}</span>
+                <span class="badge">⏱️ {dur_str}</span>
+                <span class="badge">🆔 <code>{video_id}</code></span>
+                <span class="badge">🤖 {model_signature}</span>
+                <a href="{channel_url}" target="_blank" class="badge">📺 {channel_name}</a>
+                <a href="https://www.youtube.com/watch?v={video_id}" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
             </div>
         </header>
 
         <section class="executive-summary">
-            <h2 class="section-title">?? Synth?se Ex?cutive & Outils</h2>
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
             <div class="summary-card">
                 {summary_html}
             </div>
             <div class="tools-card">
-                <h4>??? Outils, Mod?les & Logiciels Pr?sent?s</h4>
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
                 <div>{tools_badges}</div>
             </div>
             <div class="points-card">
-                <h4>?? Points Cl?s & Enseignements Strat?giques</h4>
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
                 <ul>{points_items}</ul>
             </div>
         </section>
 
         <section class="timeline-section">
-            <h2 class="section-title">?? Chronologie & Transcription Compl?te Audio & Visuelle (Mot pour Mot)</h2>
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
             <div class="timeline-stream">
                 {timeline_html}
             </div>
         </section>
 
         <footer>
-            <p>G?n?r? automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
         </footer>
     </div>
 
@@ -491,4 +491,3 @@ def generate_video_html(
 </html>
 '''
     return html_code
-

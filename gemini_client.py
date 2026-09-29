@@ -26,7 +26,7 @@ def load_keys() -> List[str]:
     if env_key and env_key not in keys:
         keys.append(env_key.strip())
     if not keys:
-        raise ValueError("Aucune cl? API Gemini disponible.")
+        raise ValueError("Aucune clé API Gemini disponible.")
     return keys
 
 _KEYS = load_keys()
@@ -34,7 +34,7 @@ _KI = [0]
 STATS = {"calls": 0, "rotations": 0, "failures": 0}
 
 def call_gemini(parts: List[Dict[str, Any]], model: str = GEMINI_MODEL, retries: int = 8, initial_backoff: int = 10) -> str:
-    """Appel hautement r?silient ? Gemini avec rotation automatique des 10 cl?s et backoff exponentiel."""
+    """Appel hautement résilient à Gemini avec rotation automatique des 10 clés et backoff exponentiel."""
     data = json.dumps({
         "contents": [{"parts": parts}],
         "generationConfig": {
@@ -77,12 +77,12 @@ def call_gemini(parts: List[Dict[str, Any]], model: str = GEMINI_MODEL, retries:
     return ""
 
 def translate_title_fr(title_en: str) -> str:
-    """Traduit le titre anglais en fran?ais percutant et professionnel."""
+    """Traduit le titre anglais en français percutant et professionnel."""
     prompt = (
-        "Tu es un traducteur expert en vid?o IA, infographie et cin?ma num?rique.\n"
-        "Traduis ce titre de vid?o YouTube de l'anglais vers un fran?ais percutant, captivant et naturel.\n"
-        "Garde les noms de logiciels/outils/mod?les intacts (Seedance, Kling, Midjourney, Wan, Nano Banana, Claude, GPT, etc.).\n"
-        "R?ponds STRICTEMENT avec le titre traduit uniquement, sans guillemets ni fioritures.\n\n"
+        "Tu es un traducteur expert en vidéo IA, infographie et cinéma numérique.\n"
+        "Traduis ce titre de vidéo YouTube de l'anglais vers un français percutant, captivant et naturel.\n"
+        "Garde les noms de logiciels/outils/modèles intacts (Seedance, Kling, Midjourney, Wan, Nano Banana, Claude, GPT, etc.).\n"
+        "Réponds STRICTEMENT avec le titre traduit uniquement, sans guillemets ni fioritures.\n\n"
         f"Titre : {title_en}"
     )
     res = call_gemini([{"text": prompt}])
@@ -90,28 +90,28 @@ def translate_title_fr(title_en: str) -> str:
 
 def process_multimodal_block(image_path: Optional[Path], timestamp_str: str, text_en: str) -> Dict[str, str]:
     """
-    Traite un bloc temporel en UNE SEULE requ?te Gemini 3.5 Flash-Lite :
-    1. Analyse visuelle chirurgicale de l'?cran en fran?ais (Interface, Contenu/Code, Action)
-    2. Traduction mot ? mot int?grale (verbatim) du discours anglais en fran?ais sans rien omettre ni r?sumer.
+    Traite un bloc temporel en UNE SEULE requête Gemini 3.5 Flash-Lite :
+    1. Analyse visuelle chirurgicale de l'écran en français (Interface, Contenu/Code, Action)
+    2. Traduction mot à mot intégrale (verbatim) du discours anglais en français sans rien omettre ni résumer.
     """
     default_res = {
         "verbatim_fr": text_en,
-        "interface": "Jack face cam?ra ou transition d'?cran.",
-        "contenu": "Explications orales des concepts et des m?thodes de cr?ation vid?o IA.",
-        "action": "D?monstration p?dagogique et pr?sentation du workflow."
+        "interface": "Jack face caméra ou plan d'illustration.",
+        "contenu": "Explications orales des concepts et des méthodes de création vidéo IA.",
+        "action": "Démonstration pédagogique et présentation du workflow."
     }
 
     prompt = (
-        f"Tu es un analyste expert en intelligence artificielle g?n?rative vid?o et cin?ma num?rique pour la cha?ne {CHANNEL_NAME} (minutage {timestamp_str}).\n"
-        f"Voici le discours audio anglais prononc? dans ce segment :\n"
+        f"Tu es un analyste expert en intelligence artificielle générative vidéo et cinéma numérique pour la chaîne {CHANNEL_NAME} (minutage {timestamp_str}).\n"
+        f"Voici le discours audio anglais prononcé dans ce segment :\n"
         f'"""\n{text_en}\n"""\n\n'
-        "Ta mission en fran?ais :\n"
-        "1. VERBATIM_FR : Traduis le discours audio mot ? mot int?gralement en fran?ais, naturel, fluide, sans RIEN omettre ni abr?ger.\n"
-        "2. INTERFACE : D?cris pr?cis?ment les interfaces, logiciels ou sites affich?s sur l'image (ex: Seedance 2.5, Kling 3.0, Midjourney, ComfyUI, Premiere, Runway, Discord, navigateur web, ou Jack face cam?ra).\n"
-        "3. CONTENU : D?taille tous les textes, prompts de g?n?ration, param?tres techniques visibles (motion, camera pan/tilt, seed, fps, ratio aspect, prompts n?gatifs, etc.).\n"
-        "4. ACTION : D?cris l'action montr?e ou manipul?e (clics, s?lection de param?tres, lecture du r?sultat vid?o, comparaison c?te-?-c?te, etc.).\n\n"
-        "Format STRICT obligatoire de ta r?ponse :\n"
-        "[VERBATIM_FR] <traduction mot ? mot compl?te en fran?ais>\n"
+        "Ta mission en français :\n"
+        "1. VERBATIM_FR : Traduis le discours audio mot à mot intégralement en français, naturel, fluide, sans RIEN omettre ni abréger. Si c'est de la musique sans parole, indique [Musique d'illustration / Thème sonore].\n"
+        "2. INTERFACE : Décris précisément les interfaces, logiciels ou sites affichés sur l'image (ex: Seedance 2.5, Kling 3.0, Midjourney, ComfyUI, Premiere, Runway, Discord, navigateur web, ou Jack face caméra).\n"
+        "3. CONTENU : Détaille tous les textes, prompts de génération, paramètres techniques visibles (motion, camera pan/tilt, seed, fps, ratio aspect, prompts négatifs, etc.).\n"
+        "4. ACTION : Décris l'action montrée ou manipulée (clics, sélection de paramètres, lecture du résultat vidéo, comparaison côte-à-côte, etc.).\n\n"
+        "Format STRICT obligatoire de ta réponse :\n"
+        "[VERBATIM_FR] <traduction mot à mot complète en français>\n"
         "[INTERFACE] <texte>\n"
         "[CONTENU] <texte>\n"
         "[ACTION] <texte>"
@@ -162,40 +162,39 @@ def process_multimodal_block(image_path: Optional[Path], timestamp_str: str, tex
 
 def generate_executive_summary(video_title: str, full_verbatim_fr: str, tools_detected: List[str]) -> str:
     """
-    R?dige la synth?se ex?cutive haut de gamme calqu?e sur l'exemple de r?f?rence :
-    - ### ?? R?sum? (2-3 paragraphes complets et percutants)
-    - ### ??? Outils, Mod?les & Logiciels Pr?sent?s (liste ? puces exhaustive)
-    - ### ?? Points Cl?s & Enseignements Strat?giques (8-12 points concrets)
+    Rédige la synthèse exécutive structurée :
+    - ### 📌 Résumé
+    - ### 🛠️ Outils, Modèles & Logiciels Présentés
+    - ### 🔑 Points Clés & Enseignements Stratégiques
     """
-    tools_str = ", ".join(tools_detected) if tools_detected else "Seedance, Kling AI, Midjourney, Vid?o IA, Motion Design"
+    tools_str = ", ".join(tools_detected) if tools_detected else "Seedance 2.5, Kling 3.0, Midjourney, Vidéo IA, Motion Design"
     prompt = (
-        f"Tu es un r?alisateur et analyste expert en vid?o par intelligence artificielle.\n"
-        f"Vid?o de {CHANNEL_NAME} intitul?e : ? {video_title} ?.\n"
-        f"Outils identifi?s : {tools_str}\n\n"
-        f"Transcription int?grale mot pour mot de la vid?o en fran?ais :\n\"\"\"\n{full_verbatim_fr[:9000]}\n\"\"\"\n\n"
-        "R?dige une synth?se ex?cutive structur?e, dense, fluide et tr?s riche en enseignements concrets en fran?ais :\n"
-        "Respecte STRICTEMENT ce plan en Markdown :\n"
-        "### ?? R?sum?\n"
-        "(2 ? 3 paragraphes denses et immersifs expliquant le sujet central, les techniques innovantes, la m?thode ?tape par ?tape de Jack et les b?n?fices concrets pour les cr?ateurs de vid?o)\n\n"
-        "### ??? Outils, Mod?les & Logiciels Pr?sent?s\n"
-        "(Liste ? puces exhaustive avec nom de l'outil en gras et une phrase expliquant son r?le pr?cis dans le tutoriel)\n\n"
-        "### ?? Points Cl?s & Enseignements Strat?giques\n"
-        "(8 ? 12 points cl?s d?taill?s, percutants et actionnables r?sumant les astuces de prompt, les r?glages de cam?ra, les workflows et les pi?ges ? ?viter)"
+        f"Tu es un réalisateur et analyste expert en vidéo par intelligence artificielle.\n"
+        f"Vidéo de {CHANNEL_NAME} intitulée : « {video_title} ».\n"
+        f"Outils identifiés : {tools_str}\n\n"
+        f"Transcription intégrale de la vidéo en français :\n\"\"\"\n{full_verbatim_fr[:9000]}\n\"\"\"\n\n"
+        "Rédige une synthèse exécutive structurée, dense, fluide et très riche en enseignements concrets en français.\n"
+        "Tu DOIS STRICTEMENT employer ces titres de niveau 3 exacts :\n"
+        "### 📌 Résumé\n"
+        "(2 à 3 paragraphes denses et immersifs expliquant le sujet central, les techniques innovantes, la méthode étape par étape de Jack et les bénéfices concrets pour les créateurs de vidéo)\n\n"
+        "### 🛠️ Outils, Modèles & Logiciels Présentés\n"
+        "(Liste à puces exhaustive avec nom de l'outil en gras et une phrase expliquant son rôle précis dans le tutoriel)\n\n"
+        "### 🔑 Points Clés & Enseignements Stratégiques\n"
+        "(8 à 12 points clés détaillés, percutants et actionnables résumant les astuces de prompt, les réglages de caméra, les workflows et les pièges à éviter)"
     )
 
     parts = [{"text": prompt}]
     res = call_gemini(parts)
     if not res:
         res = (
-            "### ?? R?sum?\n"
-            f"Dans ce tutoriel complet intitul? **{video_title}**, Jack pr?sente les techniques de pointe pour ma?triser la g?n?ration de vid?os et de visuels par intelligence artificielle.\n\n"
-            "### ??? Outils, Mod?les & Logiciels Pr?sent?s\n"
-            "- **Mod?les vid?o IA** : G?n?ration de plans cin?matiques.\n"
-            "- **Outils de prompt** : Structuration avanc?e des descriptions visuelles.\n\n"
-            "### ?? Points Cl?s & Enseignements Strat?giques\n"
-            "- Structurer ses prompts de mouvement avec des termes de cam?ra pr?cis.\n"
-            "- Soigner la coh?rence des personnages entre chaque plan.\n"
-            "- Exploiter les mod?les de derni?re g?n?ration pour un rendu professionnel."
+            "### 📌 Résumé\n"
+            f"Dans ce tutoriel complet intitulé **{video_title}**, Jack présente les techniques de pointe pour maîtriser la génération de vidéos et de visuels par intelligence artificielle.\n\n"
+            "### 🛠️ Outils, Modèles & Logiciels Présentés\n"
+            "- **Modèles vidéo IA** : Génération de plans cinématiques.\n"
+            "- **Outils de prompt** : Structuration avancée des descriptions visuelles.\n\n"
+            "### 🔑 Points Clés & Enseignements Stratégiques\n"
+            "- Structurer ses prompts de mouvement avec des termes de caméra précis.\n"
+            "- Soigner la cohérence des personnages entre chaque plan.\n"
+            "- Exploiter les modèles de dernière génération pour un rendu professionnel."
         )
     return res
-

@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment créer des clips vidéo IA avec Seedance 2.5 (La meilleure méthode) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.2rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        .segment-screenshot {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            position: relative;
+        }
+        .segment-screenshot img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .segment-screenshot img:hover {
+            opacity: 0.92;
+            transform: scale(1.01);
+        }
+        .screenshot-caption {
+            display: block;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment créer des clips vidéo IA avec Seedance 2.5 (La meilleure méthode)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-09-26</span>
+                <span class="badge">⏱️ 23m 09s</span>
+                <span class="badge">🆔 <code>mNESr8Hjq0s</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=mNESr8Hjq0s" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>Dans cette vidéo, Jack explore un workflow de production hybride et novateur pour créer de A à Z un clip musical entièrement généré par IA. En combinant des enregistrements audio de sa propre voix (capturant la mélodie brute et l'intention humaine) avec des outils de pointe comme Suno, Claude, OpenArt et Seedance 2.5, il démontre qu'il est possible d'injecter une véritable substance émotionnelle dans un projet automatisé. L'approche repose sur un subtil équilibre entre l'expression organique et la puissance de calcul des réseaux de neurones, prouvant que l'intervention humaine (comme le chant personnel ou l'itération minutieuse) reste la clé d'un résultat artistique marquant.</p><p>La méthode de Jack se structure en trois grands piliers : la planification textuelle et l'écriture des paroles via Claude, la composition musicale sur mesure avec Suno à partir d'une maquette vocale, et enfin la conception visuelle rigoureuse. Plutôt que de s'en remettre entièrement au hasard des générateurs vidéo, il utilise OpenArt et le modèle GPT Image 2.5 pour concevoir des feuilles de personnages (*character sheets*) cohérentes et des photogrammes clés (*key frames*). Cette étape préparatoire garantit que Seedance 2.5 dispose de toutes les informations visuelles nécessaires pour animer les scènes sans jamais deviner, assurant une continuité stylistique et narrative irréprochable.</p><p>Pour les créateurs de contenu, ce tutoriel offre une feuille de route inestimable qui s'applique à tous les styles visuels, de l'animation stylisée au photoréalisme. En évitant la précipitation dans le prompting et en acceptant d'itérer à plusieurs reprises avec les intelligences artificielles, les créateurs apprennent à dompter l'imperfection inhérente à l'IA. Le résultat final illustre parfaitement le potentiel des flux de travail hybrides : un clip musical professionnel, doté d'une identité forte, capable de rivaliser avec des productions traditionnelles tout en démocratisant des techniques de pointe.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude</span><span class="tool-tag">OpenArt</span><span class="tool-tag">Premiere Pro</span><span class="tool-tag">Seedance</span><span class="tool-tag">Seedance 2.5</span><span class="tool-tag">flux</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>L&#x27;approche hybride audio** : Enregistrer sa propre voix (même de manière imparfaite) et l&#x27;injecter dans Suno comme maquette permet de conserver une âme humaine, une mélodie originale et une charge émotionnelle que l&#x27;IA seule ne peut inventer.</span></li><li><span class="point-bullet">✦</span><span>Le dialogue itératif avec le LLM** : Ne jamais se contenter des premiers résultats de Claude ; multiplier les allers-retours textuels permet d&#x27;affiner les thématiques, d&#x27;isoler les refrains des couplets et d&#x27;obtenir des paroles dotées de véritables subtilités narratives.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;importance du prompt de style musical** : Associer les paroles à un *style prompt* précis (inspiré par exemple de morceaux de référence comme *This Is America* de Childish Gambino) est indispensable pour guider Suno vers l&#x27;ambiance sonore exacte recherchée.</span></li><li><span class="point-bullet">✦</span><span>La conception rigoureuse des feuilles de personnages** : Avant de générer la moindre vidéo, il est impératif de créer des *character sheets* sous tous les angles via OpenArt afin de fournir à Seedance 2.5 un référentiel visuel stable et complet.</span></li><li><span class="point-bullet">✦</span><span>Proscrire le hasard dans la génération vidéo** : Plutôt que de balancer des prompts bruts directement dans les outils d&#x27;animation, il est beaucoup plus efficace de figer les moments clés sous forme d&#x27;images fixes (*key frames*) pour garder le contrôle total de la narration.</span></li><li><span class="point-bullet">✦</span><span>La décomposition modulaire des prompts** : Structurer ses descriptions visuelles en trois blocs distincts (le sujet/personnage, le style pictural global, et le cadre de la feuille de personnage) garantit des résultats constants et précis.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;itération visuelle par étapes** : En cas de résultat décevant sur OpenArt, il ne faut pas hésiter à réinjecter l&#x27;image et le contexte dans Claude pour ajuster la pose, les éléments environnants ou la palette chromatique avant de relancer une génération.</span></li><li><span class="point-bullet">✦</span><span>La dissociation de la narration textuelle et visuelle** : Il est tout à fait possible (et souvent très artistique) d&#x27;avoir un décalage ou une relecture visuelle originale qui s&#x27;éloigne légèrement du sens littéral des paroles, à l&#x27;instar des meilleurs clips musicaux de l&#x27;industrie.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;utilisation de la communauté pour le partage des ressources** : S&#x27;appuyer sur des plateformes communautaires (comme le groupe Skool de Jack) permet de récupérer gratuitement des structures de prompts complexes et d&#x27;accélérer sa courbe d&#x27;apprentissage technique.</span></li><li><span class="point-bullet">✦</span><span>La patience au service de la qualité** : Le succès d&#x27;un clip vidéo par IA réside dans le temps passé en amont sur la planification, le design et le raffinage des assets, transformant une simple suite d&#x27;effets aléatoires en une œuvre cohérente et professionnelle.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:01:36</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;ai fait ce clip musical entier en n&#x27;utilisant rien d&#x27;autre que l&#x27;IA. Tenez, jetez un œil. Bon, j&#x27;ai été sérieusement impressionné par ce résultat. Ce qui est vraiment intéressant, c&#x27;est que j&#x27;ai utilisé un hybride</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Illustration stylisée (type concept art / cell shading) montrant Jack face caméra, représenté torse nu avec des bracelets technologiques lumineux et une casquette à l&#x27;envers, sur un fond texturé aux tons gris et bruns.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou paramètre technique n&#x27;est affiché à l&#x27;écran pour le moment.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack (représenté ici en illustration animée/stylisée) se met la main sur le visage dans un geste de découragement ou d&#x27;exaspération, avant de s&#x27;apprêter à introduire son processus de création par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_001_00-00-00.jpg" alt="Capture Segment #01" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_001_00-00-00.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:00:00</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:36 - 00:01:58</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">approche où je me suis enregistré en train d&#x27;interpréter la mélodie et le refrain, puis j&#x27;ai injecté cela dans Suno pour générer la piste finale. J&#x27;ai utilisé Claude pour le prompting et pour m&#x27;aider avec certaines paroles, et toute l&#x27;animation ainsi que la synchronisation labiale ont été réalisées avec Seedance 2.5. Dans ce tutoriel, je vais vous guider à travers l&#x27;ensemble du flux de travail afin que vous appreniez à créer votre propre clip vidéo par IA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre de l&#x27;assistant textuel Claude affichée au centre de l&#x27;écran, avec une esthétique de design épurée et moderne sur fond bleu-vert.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte des paroles de chanson générées (incluant des sections comme &quot;[Chorus - airy falsetto]&quot; et &quot;[Verse 1 - laid-back rap]&quot;) ainsi qu&#x27;un champ de saisie de prompt affichant la requête &quot;make this song a hit&quot;, avec des options de modèle (&quot;Opus 3.5 Medium&quot;). Le texte &quot;prompting and lyrics&quot; apparaît en bas à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;interface présente le contenu textuel et les paroles de la chanson élaborées via l&#x27;outil d&#x27;intelligence artificielle textuelle pour illustrer la phase de création des paroles et du prompting.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_002_00-01-36.jpg" alt="Capture Segment #02" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_002_00-01-36.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:01:36</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:58 - 00:02:36</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ce qui est génial, c&#x27;est que ce processus fonctionne pour n&#x27;importe quel style, que vous vouliez faire une animation comme moi ou plutôt quelque chose de photoréaliste. Si vous voulez suivre, vous trouverez un lien dans la description vers Open Art où j&#x27;ai construit ce projet, et un grand merci à eux pour avoir parrainé la vidéo d&#x27;aujourd&#x27;hui. Bien, entrons dans le vif du sujet. La première étape consiste à commencer à réfléchir au concept derrière votre chanson. Pour moi, j&#x27;ai en quelque sorte procédé à l&#x27;envers ici parce que j&#x27;ai déposé les paroles du refrain que j&#x27;avais déjà écrites dans Claude et je lui ai demandé de m&#x27;aider à écrire les parties des couplets. Vous remarquerez qu&#x27;il y a eu un peu d&#x27;aller-retour ici où je demande à Claude de ne pas toucher au refrain mais de faire</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Écran de titre animé en infographie 3D sur fond sombre bleu-vert, avec des néons circulaires lumineux et épurés en arrière-plan.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte typographique centralisé et épuré avec un grand chiffre &quot;1&quot; en dégradé bleu clair, suivi des mots &quot;Concept&quot; en blanc et &quot;and lyrics&quot; en plus petit dessous.</p>
+                        <p><strong>Action / Démonstration :</strong> Animation de transition montrant un titre de chapitre s&#x27;affichant à l&#x27;écran, marquant le début de la première grande étape du tutoriel dédiée au concept et aux paroles de la chanson.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_003_00-01-58.jpg" alt="Capture Segment #03" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_003_00-01-58.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:01:58</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:36 - 00:03:08</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les paroles des couplets sont plus abstraites. C’est là que le concept a commencé à entrer en jeu, car j&#x27;avais cette idée que la chanson devait parler d’une relation toxique alimentée par la drogue, et je me rapprochais peu à peu de ce que je cherchais. J’ai donc décidé de balancer beaucoup plus d’informations à Claude sur ce que j’imaginais. Je lui demandais donc ce genre de refrain en falsetto, accompagné d&#x27;un rap plus décontracté pendant les couplets. Je demandais un morceau qu&#x27;on pourrait imaginer entendre à la radio,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Une interface de type assistant conversationnel en mode sombre (probablement Claude) s&#x27;affiche en grand sur l&#x27;écran. En haut à gauche, un titre de discussion (« Frank Ocean-Inspired Suno music prompt ») est visible. En bas de l&#x27;écran, une barre de saisie (« Write a message... ») est présente. Dans le coin inférieur droit, une petite fenêtre incrustée montre le présentateur (Jack) avec un casque et un micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le texte d&#x27;une conversation avec l&#x27;IA est affiché à l&#x27;écran, comprenant notamment un long prompt décrivant le style musical désiré : « With the below style prompt, can we make it even more stripped back... Slow, hazy alt-R&amp;B / bedroom soul, 70-80 BPM... » ainsi que la réponse de l&#x27;IA avec un « Style prompt » affiché plus bas. Le curseur de la souris est visible sur la page.</p>
+                        <p><strong>Action / Démonstration :</strong> La vue montre l&#x27;interface de discussion avec l&#x27;IA défilant lentement pour révéler les différents échanges de prompts et de réponses concernant la création de la musique inspirée par Frank Ocean, pendant que Jack parle en voix off et apparaît en miniature dans le coin inférieur droit.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_004_00-02-36.jpg" alt="Capture Segment #04" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_004_00-02-36.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:02:36</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:08 - 00:03:44</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">mais qui paraissait tout de même un peu sombre et possédait une vraie substance émotionnelle. Et cette information supplémentaire, tous ces éléments réunis, ont donné à Claude une compréhension suffisante de ce que je voulais pour produire les paroles finales qui ont été utilisées dans le morceau. Une fois que vous avez vos paroles, la prochaine chose dont vous avez besoin est votre prompt de style, et celui-ci indique en fait à Suno comment vous voulez que votre chanson sonne. Encore une fois, il y a eu cet élément d&#x27;aller-retour où j&#x27;ai finalement orienté Claude vers le morceau de Childish Gambino, This Is America. C&#x27;est de là que vient ce mélange de gospel et de rap</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, dans son studio personnel, portant des lunettes et une casquette à l&#x27;envers, parlant devant un microphone sur pied. Un éclairage d&#x27;ambiance chaleureux est visible en arrière-plan avec des étagères contenant divers objets.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes graphiques superposés à l&#x27;écran : &quot;2 Key Pillars&quot; en bleu turquoise, suivis de &quot;song lyrics&quot; et &quot;written by myself and Claude&quot; en blanc.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en expliquant son processus de création musicale assistée par IA, avec un montage épuré mettant en avant les points clés à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_005_00-03-08.jpg" alt="Capture Segment #05" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_005_00-03-08.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:03:08</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:44 - 00:04:23</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">venait finalement. Donc avec ça, l&#x27;étape de planification était terminée. J&#x27;avais ces deux éléments clés pour ma chanson, les paroles et le style prompt. La clé ici est de ne pas se précipiter dans cette partie du processus. Ne vous contentez pas des premiers résultats que Claude vous donne, car ils vont probablement cuser. Donc avec ça, j&#x27;étais prêt à passer sur Suno et c&#x27;est là que les choses deviennent vraiment intéressantes, car sur Suno, vous avez maintenant l&#x27;option de télécharger votre propre fichier audio. J&#x27;ai donc téléchargé un enregistrement de moi en train de chanter la chanson. Très mal, je dois l&#x27;ajouter. Je ne suis pas un bon chanteur, mais j&#x27;ai l&#x27;impression</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Écran de transition graphique avec un fond bleu foncé, traversé par des cercles lumineux néon bleu turquoise.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché en relief et typographie moderne au centre de l&#x27;écran : un grand chiffre &quot;2&quot; bleu clair, suivi du mot &quot;Suno&quot; et du mot &quot;generation&quot; écrit plus petit en italique en dessous.</p>
+                        <p><strong>Action / Démonstration :</strong> Animation graphique de transition avec des cercles lumineux et affichage du titre de section lié à l&#x27;utilisation de Suno.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_006_00-03-44.jpg" alt="Capture Segment #06" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_006_00-03-44.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:03:44</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:23 - 00:04:43</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je suis un auteur-compositeur convenable. Je peux trouver des paroles et des mélodies intéressantes. J&#x27;ai donc introduit cela dans l&#x27;IA pour essentiellement affiner. Vous pouvez réellement marquer votre enregistrement comme une maquette de chanson. Et si vous choisissez l&#x27;option de reprise, Suno va effectivement recréer votre chanson de manière aussi professionnelle que possible.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> L&#x27;écran affiche l&#x27;interface sombre du logiciel de génération musicale Suno, organisée en trois grands panneaux verticaux. À gauche, les options d&#x27;importation audio (&quot;Browse&quot;, &quot;Upload&quot;, &quot;Record&quot;). Au centre, l&#x27;onglet &quot;Library&quot; avec une fenêtre modale d&#x27;importation de fichier audio (&quot;I Just Can&#x27;t...&quot;). À droite, les détails de la piste avec la pochette, les tags de style, les paroles de la chanson et, dans l&#x27;angle inférieur droit, l&#x27;incrustation vidéo miniature (&quot;Picture-in-Picture&quot;) du créateur Jack face caméra devant son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans la fenêtre modale centrale, le champ de description textuelle indique : &quot;e.g. Short piano chord progression, slow tempo, recorded on a phone&quot;. Juste en dessous, une grille d&#x27;options de tags audio est proposée : &quot;+ Full Song&quot;, &quot;+ Song Demo&quot;, &quot;+ Voice&quot;, &quot;+ Instrument Stem&quot;, &quot;+ Loop&quot;, &quot;+ Rhythm / Percussion&quot;, &quot;+ Sample&quot;, &quot;+ Spoken Word&quot;, &quot;+ Sound Effect&quot;, &quot;+ Field Recording / Ambience&quot;. En bas de la modale figurent les boutons &quot;Back&quot; et &quot;Continue&quot;. Dans le panneau de droite, sous la pochette et le titre &quot;I Just Can&#x27;t&quot;, le texte descriptif des styles et les paroles structurées (&quot;[Chorus]&quot;, &quot;[Verse 1]&quot;) sont partiellement visibles.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris (représenté par une flèche blanche) survole la zone centrale de la fenêtre modale de Suno au moment où l&#x27;option &quot;+ Song Demo&quot; est mise en avant pour taguer l&#x27;enregistrement audio importé. Simultanément, l&#x27;incrustation vidéo montre Jack s&#x27;exprimant face à sa caméra.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_007_00-04-23.jpg" alt="Capture Segment #07" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_007_00-04-23.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:04:23</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:43 - 00:05:43</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;ai ensuite inséré les paroles ainsi que ce fameux prompt de style si important. Et il y a aussi tout un tas d&#x27;autres paramètres disponibles. En général, je laisse la plupart d&#x27;entre eux par défaut, mais cela peut être pratique de choisir le genre de votre vocaliste et la durée de votre chanson également. Donc, avec cela, j&#x27;ai lancé quelques générations et je suis finalement arrivé à ceci. Et honnêtement, c&#x27;est mon morceau préféré que j&#x27;ai créé avec Suno jusqu&#x27;à présent. Et je pense</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;outil de génération musicale Suno, affichée en mode sombre (dark mode). L&#x27;écran est divisé en deux parties : un panneau de configuration à gauche (« Simple », « Advanced », « Sounds », options « Lyrics » et « Styles ») et la bibliothèque principale de morceaux (« Songs », « Playlists », « Workspaces », etc.) occupant le reste de l&#x27;écran. En bas à droite, une incrustation vidéo (PiP) montre le présentateur (Jack) face caméra, avec un microphone sur pied. Une barre de lecture audio est visible tout en bas de la fenêtre.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres et textes visibles dans l&#x27;interface de Suno : menu « Advanced » actif avec le modèle v6 sélectionné. Dans la zone « Lyrics », le champ textuel est vide avec l&#x27;indication « Start writing lyrics, or leave this empty for instrumental ». Dans la zone « Styles », on peut lire le prompt de style suivant : « odd time signatures, neue deutsche härte, old school hip-hop, oao, virtuoso guitar ». Dans la liste des morceaux générés à droite, on aperçoit plusieurs titres dont « I Just Can&#x27;t » (v5.5, cover) et plusieurs pistes nommées « Not Your Kind » accompagnées de leurs prompts descriptifs (ex: « Downtempo modern soul-funk, -90-100 BPM, minimal, hypnotic, and slightly melancholic... »).</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris (représenté par une flèche blanche) se déplace et clique dans l&#x27;interface de la bibliothèque de morceaux de Suno pour naviguer entre les différentes pistes musicales générées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_008_00-04-43.jpg" alt="Capture Segment #08" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_008_00-04-43.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:04:43</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:43 - 00:06:22</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est en grande partie parce que la mélodie elle-même venait de moi. Comme je le dis, je ne suis pas un bon chanteur et je ne vais pas vous faire subir l&#x27;enregistrement que j&#x27;ai fait de la chanson, mais je pense que d&#x27;avoir cet élément humain présent au sein de la production par IA est vraiment important et c&#x27;est un super exemple et une approche vraiment unique et intéressante. Donc avec la chanson préparée, j&#x27;étais prêt à commencer à construire mes visuels et ce processus commence par le design des personnages. Je voulais faire quelque chose d&#x27;inattendu pour ce clip musical alors j&#x27;ai opté pour ce style d&#x27;animation et j&#x27;avais cette idée d&#x27;un personnage avec des capacités surhumaines</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, plan moyen (medium shot) tourné dans son studio personnel équipé pour le podcasting. Il est assis dans un fauteuil gaming noir, s&#x27;exprimant devant un microphone sur bras articulé placé au premier plan.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte textuel incrusté (pas de sous-titres, pas d&#x27;interface logicielle visible). En arrière-plan : une étagère murale en bois et métal noir éclairée par une petite lampe sphérique orange chaleureuse, agrémentée de plantes vertes (notamment une liane/pothos), d&#x27;une mini-figurine décorative, et d&#x27;un pan de mur en lattes de bois acoustiques verticales à droite. Une lampe sur pied au design industriel éclaire l&#x27;angle arrière droit du studio, près d&#x27;un fauteuil doté d&#x27;un coussin orange vif.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en gesticulant légèrement des mains pour illustrer son propos, tout en parlant de son processus de création musicale et visuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_009_00-05-43.jpg" alt="Capture Segment #09" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_009_00-05-43.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:05:43</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:22 - 00:06:56</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">qui a été capturé par ces scientifiques et qui d&#x27;une manière ou d&#x27;une autre émoussent ses pouvoirs et mènent toutes ces expériences sur lui. Il faut bien l&#x27;admettre, c&#x27;est une histoire assez différente du concept des paroles, mais c&#x27;est le cas de certains des meilleurs clips musicaux. Je me suis donc dirigé vers OpenArt, j&#x27;ai sélectionné l&#x27;onglet image sur le côté gauche, puis j&#x27;ai choisi GPT Image 2.5 comme modèle. Ensuite, j&#x27;ai téléchargé deux images de référence qui englobaient parfaitement ce genre de concept art pictural que je recherchais. Et puis j&#x27;ai déposé</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de la plateforme OpenArt Pro (&quot;Jack Kennedy&#x27;s workspace&quot;) affichée en mode sombre, avec un panneau de navigation latéral à gauche comprenant des sections pour les outils (Video, Image, World, Character, Audio), les agents (Chat Mode, Director Mode) et les actifs (Director Projects, Media). Dans le coin inférieur droit, une petite incrustation vidéo montre Jack face caméra avec son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte principal affiché à l&#x27;écran : &quot;What are we making today?&quot; avec les boutons &quot;Agents&quot; et &quot;Tools&quot;. Dans la barre de saisie : &quot;Film my perfume bottle on a&quot; et un sélecteur &quot;Chat Mode&quot;. Des suggestions rapides en dessous : &quot;Create product ads&quot;, &quot;Design a film poster&quot;, &quot;Music for my film&quot;. En bas, la section &quot;Direct Your Video&quot; avec des vignettes de prévisualisation. Le logo &quot;OpenArt Pro&quot; est visible en haut à gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris (représenté par une main) clique sur l&#x27;onglet &quot;Image&quot; situé dans la section &quot;TOOLS&quot; du panneau latéral gauche de l&#x27;interface OpenArt.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_010_00-06-22.jpg" alt="Capture Segment #10" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_010_00-06-22.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:06:22</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:56 - 00:07:14</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce très long prompt. Maintenant, je ne vais pas lire tout le truc en entier, mais si vous voulez essayer l&#x27;un de mes prompts, vous pouvez y accéder de manière totalement gratuite sur ma communauté Skool. Vous trouverez également un lien pour cela en bas dans la description. Mais essentiellement, nous pouvons diviser le prompt en trois sections principales.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme communautaire Skool (&quot;Jack Vs. AI Workflows&quot;). En bas à droite, une incrustation vidéo (caméra de Jack en direct avec micro).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface Skool affichant plusieurs publications épinglées par &quot;Jack Kennedy&quot; : &quot;How to Turn GPT-6 Astra Into Your Own 3D Studio (Prompts)&quot;, &quot;The Half NOBODY Teaches... (New Course in the Classroom)&quot;, et &quot;My A-Z of AI Video Production Course is LIVE!&quot;. Dans la barre latérale droite, la carte de profil de la communauté &quot;Jack Vs. AI Workflows&quot; avec les statistiques (19k membres, 70 en ligne), ainsi qu&#x27;une section &quot;Suggested communities&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris (flèche) est visible et survole la page principale de la communauté Skool au centre de l&#x27;écran, tandis que Jack parle dans l&#x27;incrustation vidéo en bas à droite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_011_00-06-56.jpg" alt="Capture Segment #11" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_011_00-06-56.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:06:56</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:15 - 00:07:35</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">D&#x27;abord, les sujets, cette version de moi torse nu et plutôt musclée. Ensuite, le style qui renforce cette esthétique brute et picturale. Et enfin, un cadre de feuille de personnage qui va montrer notre sujet sous tous les angles afin que, lorsque nous générerons nos vidéos plus tard, Seedance n&#x27;ait jamais à deviner.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface vidéo éducative sur fond bleu dégradé avec un encart incrusté en bas à droite montrant le présentateur (Jack) face à sa caméra dans son studio, micro-cravate visible.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre principal en haut à gauche : « prompt breakdown ». Texte détaillé affiché à l&#x27;écran divisé en plusieurs sections descriptives : « SUBJECT: a slim caucasian man... », « STYLE: flat gouache... », « CHARACTER SHAPE: balanced medium build... », et les instructions pour la « Character reference sheet — four views on a neutral grey background... » comprenant VIEW 1, VIEW 2, VIEW 3 et VIEW 4.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage fixe et détaillé des différents blocs du prompt à l&#x27;écran, tandis que le présentateur commente les choix esthétiques et techniques pour la génération de la feuille de personnage dans Seedance.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_012_00-07-15.jpg" alt="Capture Segment #12" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_012_00-07-15.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:07:15</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:35 - 00:07:59</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est ce que j&#x27;ai obtenu en retour, exactement ce que je cherchais. Et nous avons même ces menottes métalliques, l&#x27;idée étant que ce sont elles qui l&#x27;empêchent d&#x27;utiliser ses capacités. Maintenant, je savais que j&#x27;avais besoin d&#x27;un autre personnage qui allait libérer le héros. J&#x27;ai donc en fait supprimé ces références initiales et fait glisser celle du personnage principal pour l&#x27;utiliser à la place.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plan rapproché (medium shot) de Jack face caméra dans son studio, assis dans une chaise de bureau noire, portant une casquette à l&#x27;envers et des lunettes cerclées de métal, avec un microphone sur pied noir et blanc placé juste devant lui au premier plan. L&#x27;arrière-plan montre une étagère en métal garnie de plantes et d&#x27;objets décoratifs, un éclairage d&#x27;ambiance chaleureux et un fauteuil avec un coussin orange.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou paramètre technique affiché à l&#x27;écran dans ce segment (séquence de type &quot;talking head&quot; où Jack s&#x27;adresse directement aux spectateurs).</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement à la caméra, gesticulant légèrement de manière naturelle tout en parlant, le micro occupant une position centrale au premier plan.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_013_00-07-35.jpg" alt="Capture Segment #13" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_013_00-07-35.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:07:35</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:59 - 00:08:22</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je suis retourné sur Claude et je lui ai décrit l&#x27;apparence que je voulais pour ce nouveau personnage. Donc cette actrice principale qui est une technicienne de laboratoire qui se sent un peu coupable de retenir ce type captif. J&#x27;ai copié ça de Claude et tout ce que j&#x27;avais à faire était de remplacer la description du sujet dans mon prompt existant, d&#x27;appuyer sur générer, et voilà ce que j&#x27;ai obtenu.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre de l&#x27;assistant conversationnel Claude affichée en plein écran sur fond sombre, avec en bas à droite un encadré vidéo incrusté (picture-in-picture) montrant le créateur Jack face caméra avec son micro. Le coin supérieur droit comporte un bouton de partage « Share », et le coin supérieur gauche affiche le titre de la conversation « Character description for Mediterranean woman ». Le bas de l&#x27;interface contient une zone de saisie de texte « Write a message... ».</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le premier bloc de texte affiché est un prompt utilisateur : « I currently have the below prompt. I&#x27;d like you to use it as inspiration and write me a description for a different character. I&#x27;d like this character to be an attractive Mediterranean-looking woman in her early 30s with dark long hair with blonde balayage in it. She is wearing a long white lab coat. Current prompt below... » suivi d&#x27;une description détaillée d&#x27;un homme caucasien barbu en blouse de laboratoire et menottes métalliques high-tech. Le deuxième bloc est la réponse textuelle générée par l&#x27;IA (Claude) : une description physique complète et soignée de la femme méditerranéenne en blouse blanche, conservant les mêmes détails techniques pour les menottes lumineuses afin de maintenir la cohérence de l&#x27;univers visuel.</p>
+                        <p><strong>Action / Démonstration :</strong> La vue montre l&#x27;écran d&#x27;un ordinateur affichant une conversation en cours avec l&#x27;outil d&#x27;IA textuelle Claude, illustrant le processus itératif de rédaction du prompt de description de personnage avant de le transférer dans l&#x27;outil de génération vidéo. Un curseur de souris en forme de flèche est visible vers le bas de la fenêtre de discussion, au-dessus du champ de saisie de texte.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_014_00-07-59.jpg" alt="Capture Segment #14" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_014_00-07-59.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:07:59</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:22 - 00:08:42</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Encore une fois, exactement ce que je cherchais. Je savais aussi que je devais créer une feuille de personnage pour ces scientifiques tordus. J&#x27;ai donc veillé à générer cela également en utilisant le même processus. La prochaine étape pour moi est de construire des moments clés sous forme d&#x27;images. Et j&#x27;aime penser à cela comme à des photogrammes de films qui découpent chaque scène.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio personnel, équipé d&#x27;un micro de baladodiffusion orienté vers lui. L&#x27;arrière-plan présente une étagère en bois garnie de décorations, une plante verte, une guitare, un fauteuil avec un coussin orange vif et un éclairage d&#x27;ambiance tamisé. Aucune interface logicielle n&#x27;est affichée à l&#x27;écran.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt de génération ni paramètre technique n&#x27;est affiché à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack est filmé en plan moyen serré, face à la caméra, en train de parler et d&#x27;expliquer son processus de création tout en gesticulant légèrement pour appuyer ses propos.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_015_00-08-22.jpg" alt="Capture Segment #15" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_015_00-08-22.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:08:22</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:43 - 00:09:09</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, j&#x27;aurais pu simplement balancer mes feuilles de personnages dans C-Dance avec un prompt et espérer que les résultats correspondent à ce que j&#x27;avais imaginé. Mais j&#x27;préfère largement passer un peu plus de temps lors de l&#x27;étape de génération d&#x27;images pour que chaque scène ait l&#x27;air correcte plutôt que de jouer aux dés avec la génération vidéo. Donc, à nouveau, je suis retourné sur Claude, j&#x27;ai téléchargé ma feuille de personnage et j&#x27;ai décrit cette scène initiale du personnage dans la forêt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Un personnage stylisé en animation 2D/3D (un homme barbu torse nu avec une casquette et des brassards technologiques) affiché au premier plan sur fond gris texturé, avec une incrustation vidéo (PiP) de Jack face caméra parlant dans un microphone en bas à droite de l&#x27;écran.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Illustration détaillée d&#x27;un personnage de type cyberpunk/manga aux traits anguleux, montrant son torse musclé, sa barbe fournie, ses lunettes et sa casquette à l&#x27;envers, ainsi que des gants/brassards futuristes.</p>
+                        <p><strong>Action / Démonstration :</strong> Le personnage animé est affiché à l&#x27;écran tandis que l&#x27;incrustation vidéo montre Jack s&#x27;exprimant et gesticulant légèrement face caméra pour illustrer son processus créatif.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_016_00-08-43.jpg" alt="Capture Segment #16" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_016_00-08-43.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:08:43</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:09 - 00:09:30</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">L&#x27;idée, c&#x27;est qu&#x27;en fait, c&#x27;est la fin de l&#x27;histoire, quand il s&#x27;est échappé du laboratoire et qu&#x27;il a blessé toutes ces gens, et qu&#x27;il est en quelque sorte horrifié par ce qu&#x27;il a fait. J&#x27;ai donc pris ce prompt, je suis retourné sur Open Art et je l&#x27;ai exécuté via GPT Image 2.5. Et bien que le résultat fût bon, ce n&#x27;était pas vraiment ce que j&#x27;avais imaginé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;un grand modèle de langage (type ChatGPT) affichée dans un navigateur web avec une disposition à deux colonnes, incluant une vue PiP (Picture-in-Picture) de Jack face caméra en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché dans le chat contenant des instructions de génération et des descriptions de scènes avec des balises comme « High angle (looking down) » et « Low angle (looking up) ». Un titre de discussion est visible en haut à gauche : « Bearded man in forest clearing after battle ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole un bouton « Copy » (copier) situé dans le coin supérieur droit d&#x27;un bloc de texte contenant un prompt descriptif détaillé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_017_00-09-09.jpg" alt="Capture Segment #17" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_017_00-09-09.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:09:09</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:30 - 00:10:03</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, une fois de plus, nous avons ce processus d&#x27;itération où je suis retourné vers Claude et j&#x27;ai demandé quelques modifications. J&#x27;ai décrit davantage la pose du personnage et j&#x27;ai demandé à voir plus de la zone environnante et à en faire un vert beaucoup plus luxuriant plutôt que ce brun terne que nous avions auparavant. Et l&#x27;exécution de ce prompt m&#x27;a apporté ce que je cherchais, cette fameuse scène d&#x27;ouverture pour le clip vidéo. J&#x27;ai donc répété ce processus plusieurs fois pour constituer une collection d&#x27;images qui montrent ces moments clés.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio, assis devant un microphone sur pied.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou prompt affiché à l&#x27;écran dans cette vue.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en gesticulant légèrement pour expliquer sa méthode d&#x27;itération des prompts.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_018_00-09-30.jpg" alt="Capture Segment #18" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_018_00-09-30.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:09:30</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:03 - 00:10:38</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">de l&#x27;histoire. Nous avons le héros piégé dans cette cellule en verre et les scientifiques qui observent depuis leur poste d&#x27;observation. Ce beau gros plan sur ces mêmes scientifiques, là encore en pensant vraiment à raconter une histoire avec une seule image. On peut voir que la femme scientifique, elle est différente de ces types. Elle ne se sent pas à l&#x27;aise avec tout ce qui se passe. Nous avons quelques images de la scène de la chaise. J&#x27;essaie vraiment de faire en sorte que le spectateur déteste ces scientifiques ici. Et puis nous avons notre héros debout devant la porte blindée sur le point de s&#x27;échapper. Et ces vraiment super</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;une application de génération d&#x27;images par IA avec panneau latéral droit pour le prompt, les images de référence et les paramètres. Une petite fenêtre vidéo de Jack (face caméra avec un micro) est incrustée dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible dans le panneau latéral indique : &quot;SCENE: Using the attached character reference... woman. Close-up shot pushed in on the observation booth, viewed from outside through thick fortified — six scientists in white lab coats gathered close together at the control console, lit from below a...&quot;. Deux images miniatures sont affichées dans &quot;REFERENCES&quot;. Les paramètres indiquent &quot;GPT Image 2.5 Sunburst&quot; avec le format &quot;16:9&quot;. Le menu déroulant contient des options telles que &quot;Check IP Safety&quot;, &quot;Upscale&quot;, &quot;Frame to video&quot;, &quot;Expand image&quot;, &quot;Video Reference&quot;, &quot;Image Reference&quot;, &quot;Create variant&quot; et &quot;Change style&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;écran principal affiche l&#x27;image d&#x27;un groupe de six scientifiques dans un poste d&#x27;observation, tandis que Jack apparaît en bas à droite en train de parler et d&#x27;animer sa vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_019_00-10-03.jpg" alt="Capture Segment #19" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_019_00-10-03.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:10:03</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:38 - 00:11:04</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des plans de lui en train de semer le chaos maintenant qu&#x27;il est enfin libre d&#x27;utiliser ses capacités. Essentiellement, j&#x27;ai généré des images de tous les moments que je ne voulais pas laisser au hasard. Si j&#x27;ai une idée précise de l&#x27;apparence que je veux donner à quelque chose, je m&#x27;en occupe pendant l&#x27;étape de génération d&#x27;images plutôt que de lutter contre C-Dance plus tard. Et sur ce, j&#x27;étais enfin prêt à passer à la génération de vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;une application de génération d&#x27;images et de vidéos par IA (similaire à Midjourney ou une plateforme propriétaire), avec une grande fenêtre modale centrale affichant une image générée. Sur la droite, un panneau de contrôle complet avec l&#x27;onglet &quot;PROMPT&quot;, des vignettes de références (&quot;REFERENCES&quot;), des paramètres techniques (&quot;SETTINGS&quot;), et des options de post-traitement et de conversion (&quot;Check IP Safety&quot;, &quot;Upscale&quot;, &quot;Frame to video&quot;, &quot;Expand image&quot;, &quot;Video Reference&quot;, &quot;Image Reference&quot;, &quot;Create variations&quot;, &quot;Change camera angle&quot;). Un encart incrusté en bas à droite montre le présentateur Jack face caméra dans son studio avec son micro et sa casquette.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans le panneau latéral droit : « SCENE: Using the attached character references — the bearded man from the first reference, the woman from the second. Wide shot with the glass enclosure large and dominant in the foreground: the bearded man in his backwards grey cap, thin gold glasses and glowing white... » [voir la suite avec &quot;See More&quot;]. Dans la section des paramètres (SETTINGS) : modèle &quot;GPT Image 2.5 Sunburst&quot;, format d&#x27;image &quot;16:9&quot;. Trois petites images de référence sont affichées dans la section &quot;REFERENCES&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> La fenêtre modale présente une image détaillée d&#x27;un homme barbu enfermé dans une grande cage en verre dans une pièce sombre, avec des scientifiques qui l&#x27;observent en arrière-plan. L&#x27;interface est fixe, le créateur commente vocalement le processus de génération d&#x27;images et l&#x27;utilisation de références avant de passer à l&#x27;étape vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_020_00-10-38.jpg" alt="Capture Segment #20" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_020_00-10-38.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:10:38</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:04 - 00:11:29</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est là que les choses deviennent vraiment amusantes. Maintenant, il y a une petite quantité de préparation à faire ici. Essentiellement, ce que vous voulez faire, c&#x27;est retourner sur Suno et télécharger les pistes séparées (« stems ») pour votre morceau. Cela signifie que vous aurez les pistes vocales et instrumentales sous forme de fichiers audio séparés. Vous voulez ensuite les importer dans votre logiciel de montage et les découper en sections qui semblent naturelles plutôt que de couper au milieu d&#x27;un couplet, par exemple.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de la plateforme de génération musicale Suno (section Workspaces &gt; My Workspace), avec une fenêtre modale centrale de séparation audio (« Extract Stems and MIDI »). Une incrustation vidéo en bas à droite montre le présentateur Jack dans son studio face à un microphone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fenêtre modale Suno intitulée « Extract Stems and MIDI », affichant le titre de la chanson « I Just Can&#x27;t » avec les options de séparation : « Auto split », « Split from mix », « Advanced split (New) ». Bouton orange « Extract ». Pistes séparées visibles : « Lead Vocal » (en rose) et « Everything but Lead Vocal ». Menu déroulant ouvert montrant les options de téléchargement : « MP3 Audio (Small files, fast download) » et « WAV Audio (Large files, high quality) ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole les options de téléchargement d&#x27;une piste vocale isolée (« Lead Vocal ») dans la fenêtre d&#x27;extraction des stems de Suno, affichant le menu contextuel pour choisir entre les formats MP3 et WAV.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_021_00-11-04.jpg" alt="Capture Segment #21" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_021_00-11-04.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:11:04</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:30 - 00:12:08</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, vous pouvez faire ces sections aussi courtes que vous le souhaitez, mais vous ne voulez pas dépasser 30 secondes parce que c&#x27;est la longueur maximale que Seedance 2.5 peut générer. Vous voulez également écarter la piste instrumentale afin que chacune de ces sections ressemble à ceci. Vous voulez ensuite exporter chacun de ces courts clips non pas comme des fichiers audio mais comme des vidéos vierges.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Le logiciel de montage Adobe Premiere Pro est affiché à l&#x27;écran, divisé en plusieurs panneaux : le panneau de visualisation des sources en haut à gauche, le moniteur de programme au centre, le panneau des propriétés en haut à droite, le chutier (bin) des fichiers audio et vidéo en bas à gauche, et la timeline multipiste (vidéo et audio) en bas au centre, avec une miniature incrustée de Jack dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le panneau du chutier affiche plusieurs clips audio/vidéo nommés &quot;Suno Stems PART 1&quot;, &quot;Suno Stems PART 2&quot;, etc., stockés dans un dossier &quot;2.5 MUSIC VIDEOStems&quot;. La timeline montre des pistes audio vertes superposées et synchronisées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole la timeline du projet Premiere Pro, illustrant la manipulation et l&#x27;organisation des pistes audio de Suno en vue de leur exportation ultérieure au format vidéo vierge.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_022_00-11-30.jpg" alt="Capture Segment #22" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_022_00-11-30.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:11:30</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:08 - 00:12:35</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">à la place, parce que cela fonctionne mieux pour la synchronisation labiale avec C-Dance. Maintenant, de retour sur OpenArt, vous voulez basculer sur l&#x27;onglet vidéo avec Seedance 2.5 sélectionné comme modèle. Vous voulez ensuite importer l&#x27;une de ces vidéos vierges comme référence. J&#x27;utilise aussi la fiche de personnage et l&#x27;image fixe de la scène comme références d&#x27;images. Ainsi, nous fournissons à C-Dance autant de contexte que possible.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de la plateforme OpenArt Pro, affichant le panneau de configuration principal pour la génération vidéo avec l&#x27;outil « Text to Video », une modale centrale « Add visual references » ouverte sur l&#x27;onglet « Video » avec un statut de chargement (« Uploading... »), et en bas à droite, une incrustation vidéo montrant Jack face caméra avec son micro et sa casquette.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Modèle sélectionné : « Seedance 2.5 ». Dans la modale « Add visual references », un avertissement orange : « Character + Image ≤ 30 files • Video ≤ 10 files • Audio ≤ 10 files ». Sous-onglets actifs dans la modale : « Characters &amp; Worlds », « Image », « Video », « Audio », avec les sous-catégories « Creations », « Uploads », « Favorites ». Une vignette vidéo noire en cours de téléversement affiche le texte « Uploading... ». Le bouton rose inférieur indique « Generate • 846 ».</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur est en train de téléverser une vidéo de référence vierge (pour la synchronisation labiale) dans l&#x27;onglet « Video » de la modale des références visuelles sur OpenArt Pro, tout en préparant les autres paramètres de génération avec le modèle Seedance 2.5.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_023_00-12-08.jpg" alt="Capture Segment #23" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_023_00-12-08.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:12:08</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:35 - 00:13:28</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le haut du prompt décrit essentiellement la scène et l&#x27;action que je voulais voir se produire. Et vous voulez toujours vous assurer d&#x27;écrire toutes les paroles à la fin du prompt pour que tout soit vraiment clair pour C-Dance. Il n&#x27;a pas à deviner à aucun moment. Avec cela, j&#x27;ai sélectionné 16 par 9 comme format d&#x27;image, 1080p pour la résolution, et ensuite je me suis assuré que la durée correspondait à la longueur de notre clip vidéo vierge. J&#x27;ai cliqué sur générer, et c&#x27;est ce que j&#x27;ai obtenu en retour. Donc un résultat plutôt cool, mais comme vous pouvez le voir, C-Dance a définitivement pris quelques libertés créatives</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur web de l&#x27;outil de génération vidéo par IA C-Dance, affichant un panneau de configuration des paramètres de sortie (&quot;Output&quot;) et une vue en incrustation (&quot;picture-in-picture&quot;) de Jack s&#x27;exprimant face caméra dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans le panneau de configuration des paramètres de sortie : option de format d&#x27;image (&quot;Aspect ratio&quot;) avec les ratios 9:16, 3:4, 1:1, 4:3, 16:9 (sélectionné) et 21:9 ; option de résolution avec 480p, 720p et 1080p (sélectionné) ; option de durée (&quot;Duration&quot;) réglée sur &quot;16s&quot;. En arrière-plan à gauche, le panneau de saisie du prompt textuel affichant un extrait descriptif et des paroles de chanson. En bas, le bouton violet &quot;Generate ✨ 845&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole les paramètres de sortie de l&#x27;interface C-Dance tandis que le panneau modal des réglages (ratio, résolution, durée) est ouvert.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_024_00-12-35.jpg" alt="Capture Segment #24" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_024_00-12-35.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:12:35</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:28 - 00:14:06</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en ajoutant du piano et même des voix supplémentaires, mais cela n&#x27;a en fait aucune importance. L&#x27;essentiel est que la performance et la synchronisation labiale soient parfaitement calées sur notre chanson. Et nous n&#x27;avons pas vraiment besoin de l&#x27;audio de C-Dance. Nous pouvons simplement le couper et le superposer à notre chanson. Je vais vous expliquer exactement comment monter tout cela dans un instant. Mais d&#x27;abord, laissez-moi vous montrer quelques exemples supplémentaires. Nous avons cette séquence d&#x27;action vraiment cool ici. Évidemment, nous jouons un peu avec la structure narrative. La première scène montrait le personnage honteux de ce qu&#x27;il est</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> L&#x27;image montre une interface logicielle sombre de génération de vidéo par IA, similaire à une plateforme web de type Seedance 2.5 (ou Byte Plus Seedance). Au centre, un lecteur vidéo affiche la frame en cours de lecture. Sur la droite, un panneau de configuration complet présente la zone de prompt, les vignettes de référence, les paramètres techniques, l&#x27;ID d&#x27;actif, et des options d&#x27;édition (Check IP Safety, Upscale, Dub Video, Grab a frame, Recreate, Use in Chat). En bas à droite, une petite incrustation vidéo (PiP) montre Jack face caméra, portant une casquette à l&#x27;envers, des lunettes et une barbe, avec un microphone de studio professionnel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible dans le panneau de droite commence par : « A painterly animated multi-shot sequence shows a bearded man in a backwards grey cap, thin gold glasses and glowing white eyes, shirtless in frayed denim shorts, kneeling alone in a sunlit green forest clearing, singing softly to himself. The sequence opens on a wide high-... ». Les vignettes de référence sous « REFERENCES » incluent une image noire, un portrait du personnage et un paysage forestier. Dans la section « SETTINGS », on lit : « Byte Plus Seedance 2.5 », « 10s », « 16:9 », « 1080p », « Audio On », et la date de création « Creation time: 9/22/2026 16:20:22 ». L&#x27;identifiant « ASSET ID » est « QO1VIHIQSvQfDrg4p6b5 ». Le bouton du bas indique « Recreate » et « Use in Chat ».</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;interface présente la lecture d&#x27;une vidéo animée montrant un gros plan très serré sur l&#x27;œil grand ouvert d&#x27;un personnage de style anime, aux yeux brillants et au trait peint. La vidéo est en pause ou en cours de lecture dans le lecteur central de l&#x27;application de génération, tandis que le panneau latéral détaille les réglages et que Jack apparaît en incrustation vidéo en bas à droite pour commenter les séquences.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_025_00-13-28.jpg" alt="Capture Segment #25" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_025_00-13-28.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:13:28</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:06 - 00:14:38</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est fait et maintenant on voit vraiment ce que c&#x27;était. Vous allez remarquer qu&#x27;il n&#x27;y a pas de synchronisation labiale pendant cette scène malgré le fait que j&#x27;aie demandé à ce qu&#x27;elle soit ajoutée. Et il y a deux raisons pour lesquelles j&#x27;ai quand même fini par utiliser cette génération. Un, j&#x27;ai juste trouvé ça vraiment cool. Seed Arts a vraiment bien intégré tous ces moments clés dans la scène. Mais aussi, j&#x27;ai appris quelque chose de cet exemple que je voulais vous faire remarquer, et c&#x27;est que s&#x27;il y a trop d&#x27;action en même temps, Seedance souvent</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Seedance 2.5 sous forme de visionneuse vidéo modale, avec un panneau latéral droit affichant les détails du prompt, les références visuelles, les paramètres de génération et les boutons d&#x27;action. En bas à droite de l&#x27;écran, un retour caméra en direct de Jack avec son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt de génération : &quot;A painterly animated multi-shot sequence shows a bearded man in a backwards grey cap, thin gold glasses and glowing white eyes, bare-armed and shirtless in frayed denim shorts, barefoot, walking into a long white semi-futuristic hallway in a secret underground lab. Th...&quot;. Paramètres : Byte Plus Seedance 2.5, 18s, 16:9, 1080p, Audio On. Date de création : 9/22/2025 16:51:33. Quatre images de référence visibles dans le panneau.</p>
+                        <p><strong>Action / Démonstration :</strong> Le lecteur vidéo Seedance affiche la lecture d&#x27;une séquence animée dans un style pictural où un homme barbu projette en l&#x27;air un soldat armé par télékinésie dans un couloir aseptisé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_026_00-14-06.jpg" alt="Capture Segment #26" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_026_00-14-06.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:14:06</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:38 - 00:15:12</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">donne la priorité à cela par rapport à la synchronisation labiale. Évidemment, c&#x27;est une scène d&#x27;action très complexe, donc je pense que si vous surchargez le modèle vidéo, vous risquez de ne pas obtenir la synchronisation labiale. Cela contraste joliment avec la scène où notre héros est piégé dans sa cellule. Parce que cette scène est plutôt simpliste, il erre simplement à l&#x27;intérieur de ce cube de verre, la synchronisation labiale devient prioritaire. Même dans cette scène suivante où le héros subit des expériences, parce qu&#x27;il est littéralement attaché à un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;une application de génération de vidéo par IA avec un panneau latéral à droite contenant les paramètres et le prompt, et une incrustation vidéo miniature de Jack dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible est : &quot;A painterly animated multi-shot sequence shows a bearded man in a backwards grey cap, thin gold glasses and glowing white eyes, wearing metallic gauntlets on both forearms, shirtless in frayed denim shirts, barefoot, pacing restlessly inside his sealed glass...&quot;. Les paramètres affichés incluent &quot;Byte Plus Seedance 2.5&quot;, &quot;14s&quot;, &quot;16:9&quot;, &quot;1080p&quot;, &quot;Audio On&quot; et l&#x27;ID d&#x27;actif &quot;UHYJJ32jFNxZnRjl1PM&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> La vidéo du personnage animé s&#x27;affiche dans le lecteur principal à l&#x27;écran tandis que le présentateur (Jack) commente la synchronisation labiale et la complexité des scènes dans l&#x27;encadré vidéo en bas à droite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_027_00-14-38.jpg" alt="Capture Segment #27" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_027_00-14-38.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:14:38</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:12 - 00:15:45</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">chaise, encore une fois la synchronisation labiale fonctionne vraiment bien. J&#x27;ai initialement testé le fait de faire électrocuter le héros à plusieurs reprises. Et bien que ce soit un bon résultat, cela signifiait que chaque fois qu&#x27;il recevait une décharge, il s&#x27;arrêtouit de chanter, ce qui paraissait un peu étrange dans le contexte de la chanson. C&#x27;est donc un exemple très littéral de cette sorte de bataille entre l&#x27;action et la synchronisation labiale. Évidemment, j&#x27;essaie vraiment de repousser les limites ici en termes de narration. Je n&#x27;aime jamais faciliter la tâche à ces outils. Mais un élément clé</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur d&#x27;un outil de génération vidéo par IA (probablement hébergé sur le web). La fenêtre modale principale montre un aperçu vidéo centré. Sur le côté droit, un panneau latéral rassemble les sections &quot;PROMPT&quot;, &quot;REFERENCES&quot;, &quot;SETTINGS&quot;, et &quot;ASSET ID&quot; avec plusieurs options de post-traitement en bas (Check IP Safety, Upscale, Dub Video, Grab a frame). En bas à droite, une incrustation vidéo (PiP) affiche le visage de Jack dans son studio, coiffé d&#x27;une casquette et portant des lunettes, parlant devant un microphone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible dans le panneau de droite indique : &quot;A painterly animated multi-shot sequence shows a bearded man in a backwards grey cap, thin gold glasses and glowing white eyes, shirtless in frayed denim shorts, barefoot, strapped down into a heavy clinical examination chair in a bright, sterile white laboratory,...&quot;. Sous &quot;SETTINGS&quot;, on peut lire : &quot;Byte Plus Seedance 2.5&quot;, le modèle utilisé, ainsi que les paramètres &quot;17s&quot;, &quot;16:9&quot;, &quot;1080p&quot;, &quot;Audio On&quot;, et la date de création &quot;Creation time: 9/23/2026 07:15:15&quot;. L&#x27;Asset ID est également affiché (&quot;N1OfEWz4NlENT2cnQFgvL&quot;). Dans l&#x27;aperçu vidéo, on voit la main d&#x27;un homme attachée par des sangles à un accoudoir, traversée par des arcs électriques.</p>
+                        <p><strong>Action / Démonstration :</strong> La vidéo se lit dans l&#x27;interface montrant les éclairs autour de la main du personnage attaché sur la chaise clinique. Jack apparaît dans l&#x27;encadré en bas à droite, gesticulant et expliquant ses tests de synchronisation labiale face à sa webcam.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_028_00-15-12.jpg" alt="Capture Segment #28" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_028_00-15-12.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:15:12</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:45 - 00:16:07</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">L&#x27;enseignement ici est que si la synchronisation labiale est votre priorité, essayez de garder vos scènes assez simples et vous aurez alors beaucoup plus de chances d&#x27;obtenir le résultat que vous recherchez. Maintenant, jetons un coup d&#x27;œil à la façon dont nous assemblons réellement la séquence. J&#x27;utilise Premiere Pro, mais vous pouvez vraiment utiliser n&#x27;importe quel logiciel de montage que vous souhaitez. Pour commencer, j&#x27;ai superposé chacune de nos pistes audio.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Écran de titre animé affichant une transition de chapitre sur fond sombre.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;6 Editing techniques&quot; (6 techniques de montage), avec le chiffre &quot;6&quot; en gros caractères bleus lumineux, le mot &quot;Editing&quot; en blanc au milieu, et &quot;techniques&quot; en plus petit en dessous.</p>
+                        <p><strong>Action / Démonstration :</strong> Animation graphique de transition avec des cercles lumineux néon bleu s&#x27;entrecroisant sur un fond dégradé sombre, annonçant la section sur les techniques de montage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_029_00-15-45.jpg" alt="Capture Segment #29" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_029_00-15-45.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:15:45</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:07 - 00:16:57</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous avons la voix principale, les chœurs et la piste instrumentale tout en bas. Et ensuite tout ce que vous avez à faire est de déposer votre génération C-Dance par-dessus la piste audio. Nous pouvons ensuite nous débarrasser de tout audio qui accompagnait la génération C-Dance puisque bien sûr nous utilisons uniquement la musique créée par Suno. Et de manière générale c&#x27;est aussi simple que ça parce que C-Dance fait un travail vraiment formidable pour préserver le timing et produire cette synchronisation labiale vraiment efficace. Maintenant laissez-moi vous présenter quelques-uns des autres the tricks de montage que j&#x27;ai utilisés tout au long de ce</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, plan moyen serré, enregistré dans son studio personnel avec des étagères en arrière-plan, une lampe design et un coussin orange sur un fauteuil. Jack porte une casquette à l&#x27;envers, des lunettes et un t-shirt gris, et parle directement devant un microphone de studio blanc et noir monté sur un bras articulé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte textuel ou paramètre technique visible à l&#x27;écran, plans de tournage brut sans interface logicielle.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en face caméra, gesticulant légèrement pour expliquer sa méthodologie de montage et l&#x27;intégration des pistes audio issues de Suno et C-Dance.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_030_00-16-07.jpg" alt="Capture Segment #30" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_030_00-16-07.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:16:07</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:57 - 00:17:28</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">processus pour vraiment élever le résultat final. Pour la première scène, j&#x27;ai ajouté cette piste audio ici, et c&#x27;est une sorte d&#x27;ambiance de forêt. On peut entendre des oiseaux chanter. C&#x27;est très discret dans le mixage, mais ça aide vraiment à ajouter un peu plus d&#x27;atmosphère. Et ensuite, nous avons cette très belle transition à travers l&#x27;œil du héros. Donc ce qui se passe, c&#x27;est que lorsque l&#x27;on obtient cette image entièrement blanche, elle devient une image fixe qui fait lentement un fondu enchaîné vers la scène suivante.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de montage vidéo Adobe Premiere Pro, divisé en plusieurs panneaux : un panneau Source en haut à gauche, un moniteur Programme au centre, un panneau Audio en haut à droite, un panneau Projet/Bibliothèque en bas à gauche, une timeline multipiste en bas au centre, un vu-mètre audio en bas à droite, ainsi qu&#x27;une petite fenêtre incrustée affichant Jack face caméra avec son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans la timeline, on aperçoit plusieurs pistes vidéo (V1) et audio (A1 à A4), une piste de calque d&#x27;effet (Adjustment Layer), ainsi qu&#x27;un fichier audio nommé « ambient-spring-forest-323801.mp3 » placé sur une piste audio. Dans le panneau de projet, des dossiers nommés « 2.5 MUSIC VIDEO », « Video Gen », « Stems », et « Recordings » sont visibles, ainsi que des miniatures de clips. Dans la fenêtre incrustée, Jack porte une casquette et s&#x27;exprime devant un micro de studio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la timeline est positionné autour de 00:00:14:39, illustrant la manipulation des pistes audio et la création de transitions visuelles (fondu enchaîné et image fixe) au sein du montage de la vidéo générée par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_031_00-16-57.jpg" alt="Capture Segment #31" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_031_00-16-57.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:16:57</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:28 - 00:17:52</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;ai décidé d&#x27;ajouter un nœud de correction colorimétrique ici pour ramener cela en noir et blanc, afin de vraiment vendre l&#x27;idée que nous jouons avec la structure narrative et de montrer au spectateur que cela se produisait dans le passé. Et cela signifie que lorsque j&#x27;ajoute le titre qui indique &quot;Il y a deux jours&quot;, ce jaune est vraiment percutant par rapport à la scène en noir et blanc elle-même.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface du logiciel de montage Adobe Premiere Pro, divisée en plusieurs panneaux : le panneau des options d&#x27;effet (à gauche), le moniteur de programme affichant un plan en noir et blanc d&#x27;un homme musclé au centre, le panneau des propriétés de transformation (à droite), le panneau du projet/bina (en bas à gauche) et la timeline complète avec les pistes audio et vidéo (en bas au centre), incluant une incrustation vidéo (PiP) du créateur Jack parlant devant son micro en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau des options d&#x27;effet montrant les paramètres de transformation (Scale à 100.0, Rotation à 0.0, Opacity à 100.0%), le panneau Lumetri Color, ainsi que les pistes audio (Volume, Mute, Level à -5.0 dB). Dans le moniteur de programme, un plan graphique en noir et blanc d&#x27;un personnage principal barbu au centre, entouré d&#x27;ennemis en train de voler ou de chuter, avec l&#x27;heure 00:00:23:34. Sur la timeline, des couches de réglage (Adjustment Layer) et des clips audio/vidéo nommés &quot;openart-cg&quot; sont disposés sur les pistes V1, A1, A2, A3.</p>
+                        <p><strong>Action / Démonstration :</strong> Le logiciel Adobe Premiere Pro est en cours d&#x27;utilisation, affichant la lecture d&#x27;une séquence vidéo dynamique où un clip d&#x27;action en noir et blanc est manipulé et monté sur la timeline, tandis que Jack apparaît dans l&#x27;encart vidéo en bas à droite en train de commenter son processus de montage et de correction colorimétrique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_032_00-17-28.jpg" alt="Capture Segment #32" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_032_00-17-28.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:17:28</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:52 - 00:18:25</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;ai aussi intégré chaque partie du texte avec les voix pour obtenir un timing intéressant. Même la scène suivante tombe exactement sur le beat, et cette idée de synchronisation rythmique est une technique que j&#x27;utilise tout au long de ce clip musical. Ensuite, j&#x27;ai inséré ce plan de coupe qui montre les scientifiques dans une sorte de salle d&#x27;observation. De retour sur Open Art, j&#x27;ai décidé de générer quelques séquences sans aucune synchronisation labiale, qui sont simplement là pour enrichir l&#x27;histoire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio personnel, éclairé par une lampe d&#x27;appoint orange à l&#x27;arrière-plan, un meuble de rangement avec des plantes vertes et des objets décoratifs, un fauteuil confortable avec un coussin orange et un microphone sur pied placé devant lui.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou paramètre technique affiché à l&#x27;écran dans ce plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en face caméra, parlant de ses techniques de montage et de synchronisation rythmique pour son clip musical réalisé par intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_033_00-17-52.jpg" alt="Capture Segment #33" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_033_00-17-52.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:17:52</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:25 - 00:18:59</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Un tout petit peu plus. C&#x27;est un moment vraiment rapide mais important car il nous présente les méchants de l&#x27;histoire, mais il montre aussi au spectateur que la femme scientifique n&#x27;est pas heureuse de ce qui se passe et cela annonce bien ce qui va se passer plus tard. Maintenant, encore une fois, j&#x27;ai un peu joué avec le timing de ce clip pour que lorsque la femme scientifique ferme les yeux, cela tombe exactement sur le temps fort. Laissez-moi vous montrer. Ensuite, nous avons la séquence du héros attaché à la chaise.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio, avec un micro-cravate ou un micro de bureau orienté vers lui, une étagère en arrière-plan avec des plantes et des objets de décoration, ainsi qu&#x27;un fauteuil avec un coussin orange et une lampe sur pied.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte affiché à l&#x27;écran, pas de prompt ni de paramètre technique visible dans ce plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack est assis face caméra, parlant en direct au spectateur avec un ton analytique, gesticulant légèrement pour appuyer ses explications sur le montage et la synchronisation rythmique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_033_00-17-52.jpg" alt="Capture Segment #34" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_033_00-17-52.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:18:25</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:59 - 00:19:19</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et encore une fois, nous avons ici un très beau plan de coupe des scientifiques. Le but étant vraiment de faire détester ces types au spectateur. Plus tard, nous avons une autre séquence sans synchronisation labiale où la femme scientifique en a enfin assez de tolérer cette situation.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de montage vidéo professionnel (Adobe Premiere Pro), divisée en plusieurs panneaux : le panneau des effets et des options d&#x27;effet à gauche, le moniteur de prévisualisation source/programme au centre, les propriétés de transformation à droite, le panneau de gestion des chutiers (Project/Bin) en bas à gauche, la timeline multi-pistes au centre en bas, et une incrustation vidéo miniature (PiP) de Jack face caméra avec son micro en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans le panneau de gauche et de droite, des paramètres de contrôle vidéo et d&#x27;effets visuels sont affichés : échelle (Scale), rotation, point d&#x27;ancrage (Anchor Point), opacité, mode de fusion (Blend Mode), réremappage temporel (Time Remapping) avec une vitesse à 0,00 %, volume audio à -5,0 dB, ainsi que des paramètres de recadrage (Crop Left, Crop Top, Crop Right, Crop Bottom). Dans la timeline, on aperçoit des pistes vidéo (V1, V2, V3) avec notamment un calque d&#x27;ajustement (Adjustment Layer) violet, des pistes audio (A1, A2, A3, A4) en vert avec des formes d&#x27;onde détaillées, et un timecode affichant 00:00:56:04. La fenêtre du chutier liste des éléments tels que « Jack vs. AI_1.prproj », « 2.5 MUSIC VIDEO », « Suno Stems MASTER », « Video Gen », « Stems » et « Recordings ». Dans le moniteur vidéo principal, on aperçoit le plan de coupe d&#x27;un scientifique au style animé/dessin, portant des lunettes et une blouse blanche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le logiciel de montage affiche la timeline en cours de lecture ou de navigation, avec le curseur temporel positionné autour de 00:00:45:00. Les différentes pistes audio et vidéo sont agencées pour le montage du projet, tandis que Jack apparaît en incrustation vidéo dans le coin inférieur droit, s&#x27;exprimant face à sa caméra.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_034_00-18-59.jpg" alt="Capture Segment #35" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_034_00-18-59.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:18:59</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:20 - 00:19:44</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Elle tape le code pour libérer notre héros de ces menottes. Et quand je lis cette séquence, remarquez à quel point l&#x27;action s&#x27;accorde bien avec ce joli petit riff vocal descendant. Je trouve que cela ajoute un peu plus de drame à ce qui se passe. Ensuite, nous avons la séquence où le héros peut enfin utiliser à nouveau ses capacités.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de montage vidéo Adobe Premiere Pro, divisé en quatre panneaux principaux : le moniteur Source en haut à gauche (vide), le moniteur de Programme en haut au centre affichant la vidéo d&#x27;une femme de dos dans une salle de contrôle, le panneau des Propriétés à droite, le panneau Projet (ou Navigateur de médias) en bas à gauche avec le dossier « Bin: 2.5 MUSIC VIDEO », la timeline multipiste (V1-V6, A1-A4) en bas au centre, le vumètre audio à droite, et l&#x27;incrustation vidéo de Jack face caméra avec son micro dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans la timeline, on aperçoit des pistes vidéo avec des clips (« Adjustment Layer », « openart-cgh... ») et plusieurs pistes audio vertes superposées. Dans le panneau de projet, les sous-dossiers affichent « Video Gen », « Stems », « Recordings », avec des clips miniatures (« 2.5 Music Video... », « Suno Stems MASTER »). Aucun prompt textuel ou paramètre de génération n&#x27;est directement lisible sur l&#x27;image.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack manipule le projet de montage sous Adobe Premiere Pro, positionnant la tête de lecture sur la timeline pour lancer la lecture de la séquence vidéo où la femme tape le code, synchronisant l&#x27;image avec la piste audio affichée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_035_00-19-20.jpg" alt="Capture Segment #36" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_035_00-19-20.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:19:20</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:45 - 00:20:21</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il brise simplement la vitre de chaque côté de la cellule, puis sort en homme libre. La synchronisation labiale fonctionne vraiment très bien ici, en particulier ce mouvement de bouche à la fin où il exécute cette petite vocalise. C&#x27;est donc plutôt impressionnant de voir que C-Dance comprend la synchronisation labiale au-delà de simples mots et peut même ajouter une interprétation pour ces phrases musicales. J&#x27;ai également ajouté ce calque d&#x27;effet, qui applique une collection d&#x27;effets à tous les clips vidéo situés en dessous. Nous avons donc cette couleur Lumetri qui introduit</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de montage vidéo Adobe Premiere Pro, divisé en plusieurs panneaux : le panneau Projet/Média en bas à gauche, le panneau Moniteur Source/Programme en haut, le panneau Timeline (Suno Stems MASTER) en bas au centre avec différentes pistes vidéo et audio (V1, V2, A1 à A4) et un calque d&#x27;ajustement mauve, et un encadré vidéo incrusté en bas à droite montrant le présentateur (Jack) face caméra avec un micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans le chutier, on aperçoit des dossiers nommés &quot;Video Gen&quot;, &quot;Stems&quot;, &quot;Recordings&quot;, &quot;2.5 MUSIC VIDEO&quot;, &quot;Jack vs. AI_1.prproj&quot;. Sur la timeline, un clip &quot;Adjustment Layer&quot; est positionné sur la piste V2 au-dessus des clips vidéo &quot;opener...&quot; et &quot;opener-cgi-20240...&quot;. Le moniteur du haut affiche la lecture d&#x27;une séquence vidéo montrant un personnage barbu avec des yeux blancs brillants au milieu de panneaux de verre brisés, avec les timecodes &quot;00:01:19:54&quot; et &quot;00:01:24:29&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de lecture de la timeline se déplace au centre (autour de 00:01:13:00 / 00:01:15:00) pendant que le moniteur de programme affiche la vidéo du personnage chantant ou vocalisant avec une synchronisation labiale précise.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_035_00-19-20.jpg" alt="Capture Segment #37" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_035_00-19-20.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:19:45</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:20:21 - 00:20:55</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Un peu plus de saturation et de contraste sur les visuels, juste pour leur donner un peu plus de punch. Et si je zoomez ici, nous avons ce masque flou qui fait exactement ce à quoi vous vous attendez. Il accentue la netteté de notre image. Avec C-Dance 2.5, on plafonne à une résolution de 1080p, ce qui peut paraître un peu doux. C&#x27;est pourquoi j&#x27;ai ajouté ceci pour rendre les détails un peu plus nets. Et enfin, j&#x27;ai ajouté cette couche de grain de pellicule et j&#x27;utilise cette astuce tout le temps.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio, assis devant un micro de podcast monté sur un bras articulé, portant une casquette et des lunettes rondes. L&#x27;arrière-plan montre une étagère décorée avec une plante verte, un éclairage d&#x27;ambiance et un fauteuil sombre avec un coussin orange.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou paramètre technique visible à l&#x27;écran dans ce plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en parlant des techniques d&#x27;étalonnage et de post-production (saturation, contraste, masque flou et grain de pellicule).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_036_00-20-21.jpg" alt="Capture Segment #38" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_036_00-20-21.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:20:21</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:20:55 - 00:21:30</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça apporte juste un tout petit peu plus de texture aux visuels. C&#x27;est particulièrement utile si vous travaillez sur des vidéos IA photoréalistes. Elles peuvent donner l&#x27;impression d&#x27;être un peu trop brillantes, et le grain de pellicule salit un peu l&#x27;image, la rendant plus naturelle et imparfaite. Ceci étant dit, les gars, nous sommes arrivés à la fin du tutoriel d&#x27;aujourd&#x27;hui. Si vous l&#x27;avez apprécié, n&#x27;hésitez pas à lâcher un pouce bleu pour moi et à vous abonner. Si vous souhaitez creuser davantage, vous pouvez consulter ma communauté School gratuite. Il y aura un post là-bas avec tous les prompts que j&#x27;ai utilisés pendant...</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Vue caméra face (talking head) de Jack dans son studio, équipé d&#x27;un micro sur pied orienté vers lui. En arrière-plan, on aperçoit une étagère avec une plante et des objets de décoration, ainsi qu&#x27;un fauteuil avec un coussin orange.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou paramètre technique n&#x27;est affiché à l&#x27;écran dans ce plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement à la caméra en parlant, gesticulant légèrement des mains pour accentuer ses propos en fin de tutoriel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_036_00-20-21.jpg" alt="Capture Segment #39" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_036_00-20-21.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:20:55</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:21:30 - 00:22:46</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">cette vidéo si vous vouliez les prendre et les utiliser pour vos propres projets créatifs. Terminons en jetant un dernier coup d&#x27;œil à ce segment du clip musical, et vous me direz si vous aimeriez voir l&#x27;intégralité de la vidéo terminée et voir où l&#x27;histoire se poursuit ensuite. Fais grimper une note que je ne peux pas régler ouais je sais à quoi ça ressemble mais je me fais avoir à chaque fois</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Le lecteur vidéo du navigateur ou de la plateforme de visionnage affiche le clip vidéo en plein écran au format 16:9, sans interface logicielle visible.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Une illustration stylisée en noir et blanc de style bande dessinée ou concept art montrant un homme musclé torse nu, portant une casquette et un short déchiré, au centre d&#x27;une explosion ou d&#x27;une onde de choc. Des soldats en tenue tactique et des armes (fusils d&#x27;assaut) sont projetés dans les airs autour de lui, dans une composition dynamique en contre-plongée.
+[CONTENU_TEXTE] Aucun texte ni prompt de génération apparent sur cette image, qui correspond au visionnage final de la séquence animée du clip musical.</p>
+                        <p><strong>Action / Démonstration :</strong> La vidéo du clip musical est jouée en continu pour présenter la conclusion de la séquence, illustrant l&#x27;action chaotique et explosive générée par l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_037_00-21-30.jpg" alt="Capture Segment #40" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_037_00-21-30.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:21:30</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:22:46 - 00:23:03</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mets ton cou dedans Ils te contrôlent Je t&#x27;aime Je t&#x27;aime</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plan fixe de style illustration numérique / animation stylisée, sans interface logicielle visible.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le personnage de Jack, barbu, torse nu, portant une casquette et un jean, avec des yeux blancs brillants (effet surnaturel ou IA), se tient au centre d&#x27;une pièce aux murs gris texturés, avec un lit visible en bas à gauche du cadre.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack fait face à la caméra dans un plan moyen, les bras légèrement écartés et les paumes ouvertes vers le haut, adoptant une posture théâtrale et aliénée en lien avec le propos de la voix off.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-mNESr8Hjq0s/frame_038_00-22-46.jpg" alt="Capture Segment #41" loading="lazy" onclick="openLightbox('screenshots/YT-mNESr8Hjq0s/frame_038_00-22-46.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:22:46</span>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

@@ -17,7 +17,7 @@ CHANNEL_NAME = "Jack Vs. AI"
 CHANNEL_HANDLE = "@JackVsAI"
 CHANNEL_URL = "https://www.youtube.com/@JackVsAI"
 RSS_FEED_URL = f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID}"
-CHANNEL_DOMAIN = "Intelligence Artificielle, Vid?os IA, VFX, Animation 3D, Cin?ma IA, Seedance, Kling, Midjourney, Wan, Nano Banana, Workflows Cr?atifs"
+CHANNEL_DOMAIN = "Intelligence Artificielle, Vidéos IA, VFX, Animation 3D, Cinéma IA, Seedance, Kling, Midjourney, Wan, Nano Banana, Workflows Créatifs"
 
 # Models
 GEMINI_MODEL = "gemini-3.5-flash-lite"
@@ -40,4 +40,3 @@ FRAME_MAX_WIDTH = 1280
 BASE_DIR.mkdir(parents=True, exist_ok=True)
 SCREENSHOTS_DIR.mkdir(parents=True, exist_ok=True)
 WORK_DIR.mkdir(parents=True, exist_ok=True)
-

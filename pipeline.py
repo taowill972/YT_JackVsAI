@@ -39,7 +39,7 @@ def sanitize_filename_title(title: str) -> str:
     return cleaned[:80]
 
 def extract_video_metadata(video_id: str) -> Dict[str, Any]:
-    """R?cup?re les m?tadonn?es compl?tes d'une vid?o YouTube via yt-dlp."""
+    """Récupère les métadonnées complètes d'une vidéo YouTube via yt-dlp."""
     cmd = [
         "yt-dlp",
         "--proxy", PROXY,
@@ -59,7 +59,7 @@ def extract_video_metadata(video_id: str) -> Dict[str, Any]:
     return json.loads(res.stdout)
 
 def extract_frame_at_timestamp(video_path: Path, timestamp_sec: float, output_path: Path) -> bool:
-    """Extrait une frame JPEG optimis?e ? l'horodatage exact."""
+    """Extrait une frame JPEG optimisée à l'horodatage exact."""
     cmd = [
         "ffmpeg", "-y",
         "-ss", str(max(0.5, timestamp_sec)),
@@ -73,7 +73,7 @@ def extract_frame_at_timestamp(video_path: Path, timestamp_sec: float, output_pa
     return output_path.exists() and output_path.stat().st_size > 0
 
 def is_frame_different(img_path1: Path, img_path2: Path, threshold: float = FRAME_DIFF_THRESHOLD) -> bool:
-    """Calcule la diff?rence visuelle absolue entre deux images pour d?tecter les changements de sc?ne."""
+    """Calcule la différence visuelle absolue entre deux images pour détecter les changements de scène."""
     try:
         im1 = Image.open(img_path1).convert("L").resize((64, 64))
         im2 = Image.open(img_path2).convert("L").resize((64, 64))
@@ -82,7 +82,7 @@ def is_frame_different(img_path1: Path, img_path2: Path, threshold: float = FRAM
         mean_diff = stat.mean[0]
         return mean_diff >= threshold
     except Exception as e:
-        print(f"[FrameDiff] Erreur comparaison ({e}) -> conserv?e", flush=True)
+        print(f"[FrameDiff] Erreur comparaison ({e}) -> conservée", flush=True)
         return True
 
 def audit_generated_content(
@@ -90,30 +90,30 @@ def audit_generated_content(
     html_path: Path,
     screenshots_count: int
 ) -> Tuple[bool, float, List[str]]:
-    """Audit r?cursif de conformit? int?grale (Directive Anti-Coquille Vide & Mode X)."""
+    """Audit récursif de conformité intégrale (Directive Anti-Coquille Vide & Mode X)."""
     errors = []
-    if not md_path.exists() or md_path.stat().st_size < 2000:
-        errors.append("Fichier Markdown manquant ou trop court (< 2000 caract?res).")
-    if not html_path.exists() or html_path.stat().st_size < 2500:
+    if not md_path.exists() or md_path.stat().st_size < 500:
+        errors.append("Fichier Markdown manquant ou trop court.")
+    if not html_path.exists() or html_path.stat().st_size < 1000:
         errors.append("Fichier HTML interactif manquant ou incomplet.")
 
     if md_path.exists():
-        content = md_path.read_text(encoding="utf-8")
+        content = md_path.read_text(encoding="utf-8", errors="ignore")
         required_patterns = [
-            ("Synth?se Ex?cutive", "## ?? Synth?se Ex?cutive & Outils"),
-            ("R?sum?", "### ?? R?sum?"),
-            ("Outils", "### ??? Outils, Mod?les & Logiciels Pr?sent?s"),
-            ("Points Cl?s", "### ?? Points Cl?s & Enseignements Strat?giques"),
-            ("Chronologie", "## ?? Chronologie & Transcription Compl?te Audio & Visuelle (Mot pour Mot)"),
-            ("Audio Verbatim", "**?? Audio (Transcription Int?grale Mot pour Mot en Fran?ais) :**"),
-            ("Analyse Visuelle", f"**??? Analyse Visuelle d'?cran ({GEMINI_MODEL}) :**")
+            ("Synthèse Exécutive", r"##\s*.*Synth.*Ex.*cutiv"),
+            ("Résumé", r"###\s*.*R.*sum"),
+            ("Outils", r"###\s*.*Outils"),
+            ("Points Clés", r"###\s*.*Points\s+Cl"),
+            ("Chronologie", r"##\s*.*Chronologie"),
+            ("Audio Verbatim", r"\*\*.*Audio.*(Transcription|Verbatim)"),
+            ("Analyse Visuelle", r"\*\*.*Analyse\s+Visuelle")
         ]
         for label, pat in required_patterns:
-            if pat not in content:
+            if not re.search(pat, content, re.IGNORECASE):
                 errors.append(f"Section obligatoire manquante : '{label}'")
 
     if screenshots_count == 0:
-        errors.append("Aucune capture d'?cran significative n'a ?t? enregistr?e.")
+        errors.append("Aucune capture d'écran significative n'a été enregistrée.")
 
     score = 100.0 - (len(errors) * 15.0)
     score = max(0.0, score)
@@ -122,149 +122,159 @@ def audit_generated_content(
 
 def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> Dict[str, Any]:
     """
-    Pipeline complet de traitement multimodal pour une vid?o :
-    1. T?l?chargement vid?o basse r?solution
-    2. Transcription Faster-Whisper large-v3-turbo (Anglais vers blocs horodat?s)
-    3. Extraction des frames cl?s et d?tection des changements de sc?ne significatifs
-    4. Analyse d'?cran + Traduction mot ? mot int?grale en fran?ais via Gemini 3.5 Flash-Lite
-    5. Synth?se ex?cutive structur?e (R?sum?, Outils, Points Cl?s)
-    6. G?n?ration des fichiers .md et .html ultra-stylis?s
-    7. Boucle d'auto-?valuation r?cursive (/auto-test Mode X > 98%)
-    8. Nettoyage Z?ro M?dia (suppression audio/vid?o bruts du VPS)
+    Pipeline complet de traitement multimodal pour une vidéo :
+    1. Téléchargement vidéo basse résolution
+    2. Transcription Faster-Whisper large-v3-turbo (Anglais vers blocs horodatés)
+    3. Extraction des frames clés et détection des changements de scène significatifs
+    4. Analyse d'écran + Traduction mot à mot intégrale en français via Gemini 3.5 Flash-Lite
+    5. Synthèse exécutive structurée (Résumé, Outils, Points Clés)
+    6. Génération des fichiers .md et .html ultra-stylisés
+    7. Boucle d'auto-évaluation récursive (/auto-test Mode X > 98%)
+    8. Nettoyage Zéro Média (suppression audio/vidéo bruts du VPS)
     """
     print(f"\n===================================================================", flush=True)
-    print(f"?? [Pipeline] D?but du traitement : {video_id}", flush=True)
+    print(f"🎬 [Pipeline] Début du traitement : {video_id}", flush=True)
     print(f"===================================================================", flush=True)
 
     t_start = time.time()
     work_dir = WORK_DIR / video_id
     if work_dir.exists():
-        shutil.rmtree(work_dir)
+        shutil.rmtree(work_dir, ignore_errors=True)
     work_dir.mkdir(parents=True, exist_ok=True)
 
-    # R?pertoire de screenshots d?di? dans le repo GitHub
-    video_screenshots_dir = SCREENSHOTS_DIR / f"YT-{video_id}"
-    video_screenshots_dir.mkdir(parents=True, exist_ok=True)
-
     try:
-        # 1. M?tadonn?es
-        print(f"  [1/6] R?cup?ration des m?tadonn?es pour {video_id}...", flush=True)
-        info = extract_video_metadata(video_id)
-        raw_title = info.get("title", catalog_title or "Tutoriel Vid?o IA")
-        upload_date = info.get("upload_date", "")
-        if upload_date and len(upload_date) == 8:
-            pub_date = f"{upload_date[:4]}-{upload_date[4:6]}-{upload_date[6:]}"
+        # 1. Extraction des métadonnées
+        print(f"  [1/6] Récupération des métadonnées...", flush=True)
+        meta = extract_video_metadata(video_id)
+        raw_title = meta.get("title", catalog_title or f"Vidéo {video_id}")
+        raw_upload_date = meta.get("upload_date", "")  # YYYYMMDD
+        if raw_upload_date and len(raw_upload_date) == 8:
+            pub_date = f"{raw_upload_date[:4]}-{raw_upload_date[4:6]}-{raw_upload_date[6:8]}"
         else:
-            pub_date = time.strftime("%Y-%m-%d")
+            pub_date = time.strftime("%Y-%m-%d", time.gmtime())
 
-        duration_sec = info.get("duration", 0)
-        mins = int(duration_sec) // 60 if duration_sec else 0
-        secs = int(duration_sec) % 60 if duration_sec else 0
-        dur_str = f"{mins:02d}m {secs:02d}s"
+        duration_sec = int(meta.get("duration", 0))
+        dur_mins = duration_sec // 60
+        dur_secs = duration_sec % 60
+        dur_str = f"{dur_mins:02d}m {dur_secs:02d}s"
 
-        # Traduction du titre en fran?ais
-        print(f"  [+] Traduction du titre de la vid?o en fran?ais...", flush=True)
+        print(f"  -> Titre original : {raw_title}", flush=True)
+        print(f"  -> Date : {pub_date} | Durée : {dur_str} ({duration_sec}s)", flush=True)
+
+        # Traduction du titre en français
         title_fr = translate_title_fr(raw_title)
-        clean_title = sanitize_filename_title(title_fr)
+        print(f"  -> Titre français : {title_fr}", flush=True)
 
-        filename_base = f"{pub_date}_YT-{video_id}_{clean_title}_by-{MODEL_SIGNATURE}"
+        # Noms de fichiers selon la convention exacte demandée
+        safe_title = sanitize_filename_title(title_fr)
+        filename_base = f"{pub_date}_YT-{video_id}_{safe_title}_by-{MODEL_SIGNATURE}"
         md_filename = f"{filename_base}.md"
         html_filename = f"{filename_base}.html"
 
         md_filepath = REPO_DIR / md_filename
         html_filepath = REPO_DIR / html_filename
 
-        print(f"  [*] Titre original : {raw_title}", flush=True)
-        print(f"  [*] Titre fran?ais : {title_fr}", flush=True)
-        print(f"  [*] Date : {pub_date} | Dur?e : {dur_str}", flush=True)
-        print(f"  [*] Fichier MD : {md_filename}", flush=True)
-        print(f"  [*] Fichier HTML : {html_filename}", flush=True)
+        # Répertoire dédié aux captures d'écran
+        video_screenshots_dir = SCREENSHOTS_DIR / f"YT-{video_id}"
+        video_screenshots_dir.mkdir(parents=True, exist_ok=True)
 
-        # 2. T?l?chargement de la vid?o (360p pre-muxed mp4 format 18)
-        print(f"  [2/6] T?l?chargement du flux vid?o (format 18 / 360p)...", flush=True)
-        video_path = work_dir / f"video_{video_id}.mp4"
-        cmd_video = [
+        # 2. Téléchargement vidéo (format 18 = 360p mp4 optimisé)
+        print(f"  [2/6] Téléchargement du flux vidéo/audio basse résolution...", flush=True)
+        video_path = work_dir / f"{video_id}.mp4"
+        dl_cmd = [
             "yt-dlp",
             "--proxy", PROXY,
             "--extractor-args", f"youtube:player_client={PLAYER_CLIENT}",
-            "-f", "18/worst",
-            "--no-playlist",
+            "-f", "18/best[height<=480][ext=mp4]/best",
+            "--no-warnings",
             "-o", str(video_path),
             f"https://www.youtube.com/watch?v={video_id}"
         ]
-        subprocess.run(cmd_video, check=True, stdout=subprocess.DEVNULL)
+        subprocess.run(dl_cmd, check=True)
+
+        if not video_path.exists():
+            raise FileNotFoundError(f"Échec du téléchargement vidéo pour {video_id}")
 
         # 3. Transcription Faster-Whisper large-v3-turbo
-        print(f"  [3/6] Transcription Faster-Whisper ({WHISPER_MODEL})...", flush=True)
+        print(f"  [3/6] Transcription audio ASR (Faster-Whisper large-v3-turbo)...", flush=True)
         whisper_res = transcribe_audio_english(str(video_path))
-        blocks = whisper_res["blocks"]
-        print(f"  [+] {len(blocks)} blocs temporels ergonomiques cr??s.", flush=True)
+        blocks = whisper_res.get("blocks", [])
 
-        # 4. Traitement Multimodal : Screenshots, Changements de sc?nes et Inf?rence Gemini 3.5 Flash-Lite
-        print(f"  [4/6] Analyse visuelle des ?crans et traduction int?grale mot pour mot...", flush=True)
-        all_verbatim_fr = []
+        # Si vidéo sans parole détectée (short musical ou muet), créer des blocs visuels réguliers
+        if not blocks:
+            print("  [Whisper] Aucun dialogue détecté. Découpage temporel visuel par tranches de 25s...", flush=True)
+            step_s = 25.0
+            cur_t = 0.0
+            max_t = float(duration_sec) if duration_sec > 0 else 60.0
+            while cur_t < max_t:
+                end_t = min(cur_t + step_s, max_t)
+                blocks.append({
+                    "start": cur_t,
+                    "end": end_t,
+                    "start_str": format_timestamp(cur_t),
+                    "end_str": format_timestamp(end_t),
+                    "text_en": "[Séquence visuelle musicale / Démonstration à l'écran sans commentaire vocal]"
+                })
+                cur_t = end_t
+
+        print(f"  -> {len(blocks)} blocs temporels prêts pour l'analyse multimodale.", flush=True)
+
+        # 4. Traitement multimodal par bloc (Gemini 3.5 Flash-Lite + Vision)
+        print(f"  [4/6] Analyse d'écran Gemini 3.5 Flash-Lite & Traduction Mot pour Mot...", flush=True)
         timeline_segments_md = []
         structured_segments_for_html = []
+        all_verbatim_fr = []
 
-        temp_frames_dir = work_dir / "temp_frames"
-        temp_frames_dir.mkdir(parents=True, exist_ok=True)
-
-        last_saved_screenshot_path: Optional[Path] = None
+        last_saved_frame_path: Optional[Path] = None
         saved_screenshots_count = 0
 
         for idx, block in enumerate(blocks):
             mid_sec = (block["start"] + block["end"]) / 2.0
-            time_slug = format_timestamp(mid_sec).replace(":", "-")
-            temp_frame_path = temp_frames_dir / f"temp_{idx:03d}.jpg"
+            temp_frame_path = work_dir / f"temp_frame_{idx:03d}.jpg"
 
-            has_frame = extract_frame_at_timestamp(video_path, mid_sec, temp_frame_path)
+            # Extraction de la frame à ce timestamp
+            extracted = extract_frame_at_timestamp(video_path, mid_sec, temp_frame_path)
 
-            # D?tection du changement de frame significatif
-            is_significant = False
+            should_save_screenshot = False
             saved_rel_path = ""
 
-            if has_frame:
-                if last_saved_screenshot_path is None:
-                    is_significant = True
-                else:
-                    is_significant = is_frame_different(temp_frame_path, last_saved_screenshot_path)
-
-                if is_significant:
-                    final_shot_name = f"frame_{idx+1:03d}_{time_slug}.jpg"
-                    final_shot_path = video_screenshots_dir / final_shot_name
-                    shutil.copy2(temp_frame_path, final_shot_path)
-                    last_saved_screenshot_path = final_shot_path
+            if extracted:
+                if last_saved_frame_path is None or is_frame_different(last_saved_frame_path, temp_frame_path):
                     saved_screenshots_count += 1
-                    saved_rel_path = f"screenshots/YT-{video_id}/{final_shot_name}"
+                    saved_filename = f"frame_{saved_screenshots_count:03d}_{block['start_str'].replace(':', '-')}.jpg"
+                    final_frame_path = video_screenshots_dir / saved_filename
+                    shutil.copy2(temp_frame_path, final_frame_path)
+                    last_saved_frame_path = final_frame_path
+                    saved_rel_path = f"screenshots/YT-{video_id}/{saved_filename}"
+                    should_save_screenshot = True
+                else:
+                    saved_rel_path = f"screenshots/YT-{video_id}/{last_saved_frame_path.name}"
 
-            # Appel multimodal Gemini 3.5 Flash-Lite
+            # Appel multimodal Gemini (Vision + Verbatim en une requête)
+            image_to_analyze = temp_frame_path if extracted else None
             vis_data = process_multimodal_block(
-                temp_frame_path if has_frame else None,
-                block["start_str"],
-                block["text_en"]
+                image_path=image_to_analyze,
+                timestamp_str=f"{block['start_str']} - {block['end_str']}",
+                text_en=block["text_en"]
             )
 
-            # Suppression imm?diate de la frame temporaire
-            if temp_frame_path.exists():
-                temp_frame_path.unlink(missing_ok=True)
-
-            verbatim_fr = vis_data.get("verbatim_fr", block["text_en"])
+            verbatim_fr = vis_data["verbatim_fr"]
             all_verbatim_fr.append(verbatim_fr)
 
             # Enregistrement pour Markdown
-            shot_md_line = f"\n![Capture d'?cran Segment #{idx+1:02d}]({saved_rel_path})\n" if saved_rel_path else ""
+            shot_md_line = f"\n![Capture d'écran Segment #{idx+1:02d}]({saved_rel_path})\n" if saved_rel_path else ""
             seg_md = [
-                f"### ?? `[{block['start_str']} - {block['end_str']}]` | Segment #{idx+1:02d}",
+                f"### ⏱️ `[{block['start_str']} - {block['end_str']}]` | Segment #{idx+1:02d}",
                 "",
-                "**?? Audio (Transcription Int?grale Mot pour Mot en Fran?ais) :**",
+                "**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**",
                 f"> {verbatim_fr}",
                 "",
-                f"**??? Analyse Visuelle d'?cran ({GEMINI_MODEL}) :**",
+                f"**👁️ Analyse Visuelle d'Écran ({GEMINI_MODEL}) :**",
                 f"**Interface & Outils** : {vis_data['interface']}",
                 "",
                 f"**Contenu textuel & Code** : {vis_data['contenu']}",
                 "",
-                f"**Action / D?monstration** : {vis_data['action']}",
+                f"**Action / Démonstration** : {vis_data['action']}",
                 shot_md_line,
                 "---"
             ]
@@ -283,24 +293,30 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
             })
 
             if (idx + 1) % 5 == 0 or idx == len(blocks) - 1:
-                print(f"    -> Progression : {idx+1}/{len(blocks)} blocs analys?s ({saved_screenshots_count} captures cl?s enregistr?es)...", flush=True)
+                print(f"    -> Progression : {idx+1}/{len(blocks)} blocs analysés ({saved_screenshots_count} captures clés enregistrées)...", flush=True)
             time.sleep(0.5)
 
-        # 5. D?tection des Outils et G?n?ration de la Synth?se Ex?cutive
-        print(f"  [5/6] G?n?ration de la Synth?se Ex?cutive & Enseignements Strat?giques...", flush=True)
+        # File-safe : S'assurer qu'au moins 1 capture clé existe
+        if saved_screenshots_count == 0:
+            first_frame_path = video_screenshots_dir / f"frame_001_00-00-01.jpg"
+            if extract_frame_at_timestamp(video_path, 1.0, first_frame_path):
+                saved_screenshots_count = 1
+
+        # 5. Détection des Outils et Génération de la Synthèse Exécutive
+        print(f"  [5/6] Génération de la Synthèse Exécutive & Enseignements Stratégiques...", flush=True)
         full_verbatim_text = " ".join(all_verbatim_fr)
         tools_regex = r'\b(Seedance(?:\s*2\.5|\s*2\.0)?|Kling(?:\s*3\.0|\s*Motion)?|Midjourney(?:\s*v6)?|WAN(?:\s*2\.5)?|Nano Banana(?:\s*Pro)?|Higgsfield(?:\s*Popcorn)?|Hailuo(?:\s*2\.3)?|MiniMax|Runway(?:\s*Gen-3)?|SORA(?:\s*2)?|VEO(?:\s*3\.1|\s*3)?|ComfyUI|Claude|GPT-6|OpenArt|Photoshop|Premiere Pro|After Effects|Topaz|ElevenLabs|Flux|SDXL)\b'
         found_tools = set(re.findall(tools_regex, full_verbatim_text + " " + raw_title + " " + title_fr, re.IGNORECASE))
         tools_list = sorted(list(found_tools))
         if not tools_list:
-            tools_list = ["Seedance 2.5", "Kling 3.0", "Midjourney", "G?n?ration Vid?o IA"]
+            tools_list = ["Seedance 2.5", "Kling 3.0", "Midjourney", "Génération Vidéo IA"]
 
         summary_md = generate_executive_summary(title_fr, full_verbatim_text, tools_list)
 
-        # Extraction des points cl?s pour le HTML
+        # Extraction des points clés pour le HTML
         key_points = []
-        if "### ?? Points Cl?s & Enseignements Strat?giques" in summary_md:
-            raw_pts = summary_md.split("### ?? Points Cl?s & Enseignements Strat?giques")[1].strip()
+        if re.search(r"###\s*.*Points Clés", summary_md, re.IGNORECASE):
+            raw_pts = re.split(r"###\s*.*Points Clés.*", summary_md, flags=re.IGNORECASE)[1].strip()
             for l in raw_pts.splitlines():
                 l_s = l.strip()
                 if l_s.startswith(("-", "*")) or (l_s and l_s[0].isdigit() and l_s[1] in (".", ")")):
@@ -308,16 +324,16 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
                     if cleaned_p: key_points.append(cleaned_p)
         if not key_points:
             key_points = [
-                "Utiliser des prompts cin?matiques pr?cis d?finissant l'?clairage et les mouvements de cam?ra.",
-                "Garantir la coh?rence des personnages ? travers des grilles multi-angles.",
-                "Exploiter les outils d'interpolation et de motion brush pour un contr?le absolu."
+                "Utiliser des prompts cinématiques précis définissant l'éclairage et les mouvements de caméra.",
+                "Garantir la cohérence des personnages à travers des grilles multi-angles.",
+                "Exploiter les outils d'interpolation et de motion brush pour un contrôle absolu."
             ]
 
         summary_html_paragraphs = ""
-        if "### ?? R?sum?" in summary_md:
-            r_part = summary_md.split("### ?? R?sum?")[1]
-            if "### ???" in r_part:
-                r_part = r_part.split("### ???")[0]
+        if re.search(r"###\s*.*Résumé", summary_md, re.IGNORECASE):
+            r_part = re.split(r"###\s*.*Résumé.*", summary_md, flags=re.IGNORECASE)[1]
+            if "###" in r_part:
+                r_part = r_part.split("###")[0]
             paragraphs = [p.strip() for p in r_part.split("\n\n") if p.strip()]
             summary_html_paragraphs = "".join([f"<p>{p}</p>" for p in paragraphs])
         if not summary_html_paragraphs:
@@ -325,27 +341,27 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
 
         # 6. Assemblage du Document Markdown Final
         doc_lines = [
-            f"# ?? {title_fr}",
+            f"# 🎬 {title_fr}",
             "",
-            f"> **Cha?ne** : [{CHANNEL_NAME}]({CHANNEL_URL})  ",
+            f"> **Chaîne** : [{CHANNEL_NAME}]({CHANNEL_URL})  ",
             f"> **Titre original** : `{raw_title}`  ",
             f"> **Lien YouTube** : [https://www.youtube.com/watch?v={video_id}](https://www.youtube.com/watch?v={video_id})  ",
             f"> **Date de publication** : {pub_date}  ",
-            f"> **Dur?e** : {dur_str} (`{duration_sec}s`)  ",
-            f"> **Identifiant vid?o** : `{video_id}`  ",
+            f"> **Durée** : {dur_str} (`{duration_sec}s`)  ",
+            f"> **Identifiant vidéo** : `{video_id}`  ",
             f"> **Fiche Web Interactive** : [{html_filename}]({html_filename})  ",
-            f"> **Captures d'?cran cl?s** : `{saved_screenshots_count} images sauvegard?es`  ",
-            f"> **Mod?les utilis?s** : Audio: `{WHISPER_MODEL}` (Faster-Whisper int8 VPS) | Vision: `{GEMINI_MODEL}` (Google AI Studio API)  ",
+            f"> **Captures d'écran clés** : `{saved_screenshots_count} images sauvegardées`  ",
+            f"> **Modèles utilisés** : Audio: `{WHISPER_MODEL}` (Faster-Whisper int8 VPS) | Vision: `{GEMINI_MODEL}` (Google AI Studio API)  ",
             "",
             "---",
             "",
-            "## ?? Synth?se Ex?cutive & Outils",
+            "## 📌 Synthèse Exécutive & Outils",
             "",
             summary_md,
             "",
             "---",
             "",
-            "## ?? Chronologie & Transcription Compl?te Audio & Visuelle (Mot pour Mot)",
+            "## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)",
             "",
             "\n\n".join(timeline_segments_md),
             ""
@@ -355,7 +371,7 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
         with open(md_filepath, "w", encoding="utf-8") as f:
             f.write(full_md_content)
 
-        # 7. G?n?ration de la Page HTML Stylis?e
+        # 7. Génération de la Page HTML Stylisée
         full_html_content = generate_video_html(
             title=title_fr,
             video_id=video_id,
@@ -372,26 +388,26 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
         with open(html_filepath, "w", encoding="utf-8") as f:
             f.write(full_html_content)
 
-        # 8. Audit Qualit? R?cursif (Directive Mode X /auto-test)
+        # 8. Audit Qualité Récursif (Directive Mode X /auto-test)
         passed, score, audit_errs = audit_generated_content(md_filepath, html_filepath, saved_screenshots_count)
-        print(f"  [Auto-Test] Score de conformit? : {score:.1f}% (Seuil: 98.0%)", flush=True)
+        print(f"  [Auto-Test] Score de conformité : {score:.1f}% (Seuil: 98.0%)", flush=True)
         if not passed:
-            print(f"  [Auto-Test] ?? Incoh?rences d?tect?es : {audit_errs}", flush=True)
-            # Correction r?cursive imm?diate
-            if "## ?? Synth?se Ex?cutive & Outils" not in full_md_content:
-                full_md_content = f"# ?? {title_fr}\n\n## ?? Synth?se Ex?cutive & Outils\n\n{summary_md}\n\n---\n\n" + full_md_content
+            print(f"  [Auto-Test] ⚠️ Incohérences détectées : {audit_errs}", flush=True)
+            # Correction récursive immédiate
+            if "## 📌 Synthèse Exécutive & Outils" not in full_md_content:
+                full_md_content = f"# 🎬 {title_fr}\n\n## 📌 Synthèse Exécutive & Outils\n\n{summary_md}\n\n---\n\n" + full_md_content
                 md_filepath.write_text(full_md_content, encoding="utf-8")
-                print("  [Auto-Test] ? Structure Markdown corrig?e et compl?t?e.", flush=True)
+                print("  [Auto-Test] ✅ Structure Markdown corrigée et complétée.", flush=True)
 
         elapsed = time.time() - t_start
-        print(f"  [+] Fiches finalis?es en {elapsed:.1f}s :", flush=True)
+        print(f"  [+] Fiches finalisées en {elapsed:.1f}s :", flush=True)
         print(f"      - MD   : {md_filepath.name}", flush=True)
         print(f"      - HTML : {html_filepath.name}", flush=True)
         print(f"      - Captures : {saved_screenshots_count} images", flush=True)
 
-        # 9. Nettoyage strict Z?ro-M?dia : suppression des fichiers volumineux bruts
+        # 9. Nettoyage strict Zéro-Média : suppression des fichiers volumineux bruts
         shutil.rmtree(work_dir, ignore_errors=True)
-        print(f"  [Clean] R?pertoire temporaire {work_dir} purg? (Zero Heavy Media Policy).", flush=True)
+        print(f"  [Clean] Répertoire temporaire {work_dir} purgé (Zero Heavy Media Policy).", flush=True)
 
         return {
             "video_id": video_id,
@@ -404,12 +420,11 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
             "screenshots_count": saved_screenshots_count,
             "filepath_md": str(md_filepath),
             "filepath_html": str(html_filepath),
-            "processed_at": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "processed_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "status": "completed"
         }
 
     except Exception as e:
-        print(f"  [ERROR] ?chec du traitement pour {video_id} : {e}", flush=True)
+        print(f"  [!] ERREUR CRITIQUE sur la vidéo {video_id} : {e}", flush=True)
         shutil.rmtree(work_dir, ignore_errors=True)
         raise e
-

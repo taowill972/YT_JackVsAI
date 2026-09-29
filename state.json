@@ -3,7 +3,8 @@
     "NnvRMs_0UQ8",
     "MKrLYLh4Otg",
     "b18tVvH6Ke0",
-    "D9yiZX7VEmk"
+    "D9yiZX7VEmk",
+    "mNESr8Hjq0s"
   ],
   "processed_videos": [
     {
@@ -61,7 +62,24 @@
       "filepath_html": "/root/YT_JackVsAI/2026-06-28_YT-NnvRMs_0UQ8_Comment créer une chaîne de dessins animés pour enfants avec l'IA (Workflow comp_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-29T21:12:53Z",
       "status": "completed"
+    },
+    {
+      "video_id": "mNESr8Hjq0s",
+      "title": "Comment créer des clips vidéo IA avec Seedance 2.5 (La meilleure méthode)",
+      "raw_title": "How to Make AI Music Videos with Seedance 2.5 (Best Method)",
+      "filename_md": "2026-09-26_YT-mNESr8Hjq0s_Comment créer des clips vidéo IA avec Seedance 2.5 (La meilleure méthode)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-09-26_YT-mNESr8Hjq0s_Comment créer des clips vidéo IA avec Seedance 2.5 (La meilleure méthode)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-09-26",
+      "duration": 1389,
+      "screenshots_count": 38,
+      "filepath_md": "/root/YT_JackVsAI/2026-09-26_YT-mNESr8Hjq0s_Comment créer des clips vidéo IA avec Seedance 2.5 (La meilleure méthode)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-09-26_YT-mNESr8Hjq0s_Comment créer des clips vidéo IA avec Seedance 2.5 (La meilleure méthode)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-29T19:38:22Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 4
+  "completed_count": 5,
+  "total_catalog_count": 59,
+  "status": "running",
+  "last_run_timestamp": "2026-09-29T19:21:39Z"
 }

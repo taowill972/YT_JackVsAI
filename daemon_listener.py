@@ -28,7 +28,7 @@ running = True
 
 def handle_signal(sig, frame):
     global running
-    print(f"\n[Listener] Signal {sig} re?u, arr?t propre du d?mon d'?coute...", flush=True)
+    print(f"\n[Listener] Signal {sig} reçu, arrêt propre du démon d'écoute...", flush=True)
     running = False
 
 signal.signal(signal.SIGINT, handle_signal)
@@ -49,8 +49,8 @@ def save_state(state: Dict[str, Any]) -> None:
 
 def fetch_rss_videos() -> List[Dict[str, str]]:
     """
-    R?cup?re instantan?ment les derni?res vid?os publi?es via le flux Atom XML YouTube officiel.
-    Consommation : 0 TOKEN LLM, 0 QUOTA API, 100% GRATUIT & IMM?DIAT.
+    Récupère instantanément les dernières vidéos publiées via le flux Atom XML YouTube officiel.
+    Consommation : 0 TOKEN LLM, 0 QUOTA API, 100% GRATUIT & IMMÉDIAT.
     """
     req = urllib.request.Request(
         RSS_FEED_URL,
@@ -114,23 +114,23 @@ def fetch_ytdlp_latest() -> List[Dict[str, str]]:
 
 def listen_loop():
     print(f"\n===================================================================", flush=True)
-    print(f"?? [Listener] D?marrage de l'?coute Passive YouTube (0 Token LLM)", flush=True)
-    print(f"?? Cha?ne surveill?e : {CHANNEL_NAME} ({CHANNEL_ID})", flush=True)
-    print(f"?? Flux RSS Atom : {RSS_FEED_URL}", flush=True)
-    print(f"?? Intervalle de v?rification : toutes les {POLL_INTERVAL_SECONDS // 60} minutes", flush=True)
+    print(f"👂 [Listener] Démarrage de l'Écoute Passive YouTube (0 Token LLM)", flush=True)
+    print(f"📺 Chaîne surveillée : {CHANNEL_NAME} ({CHANNEL_ID})", flush=True)
+    print(f"📡 Flux RSS Atom : {RSS_FEED_URL}", flush=True)
+    print(f"⏱️ Intervalle de vérification : toutes les {POLL_INTERVAL_SECONDS // 60} minutes", flush=True)
     print(f"===================================================================\n", flush=True)
 
-    # R?cup?rer les identifiants initiaux du catalogue de base
+    # Récupérer les identifiants initiaux du catalogue de base
     initial_backlog_ids = set()
     if CATALOG_FILE.exists():
         with open(CATALOG_FILE, "r", encoding="utf-8") as f:
             cat_data = json.load(f)
             initial_backlog_ids = {v.get("id") for v in cat_data.get("videos", []) if v.get("id")}
-    print(f"[Listener] {len(initial_backlog_ids)} vid?os r?pertori?es dans le backlog initial.", flush=True)
+    print(f"[Listener] {len(initial_backlog_ids)} vidéos répertoriées dans le backlog initial.", flush=True)
 
     while running:
         t_now = time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime())
-        print(f"[{t_now}] [Listener] V?rification des nouvelles publications...", flush=True)
+        print(f"[{t_now}] [Listener] Vérification des nouvelles publications...", flush=True)
 
         try:
             latest_videos = fetch_rss_videos()
@@ -151,23 +151,23 @@ def listen_loop():
                 if not vid_id:
                     continue
 
-                # L'?coute ne se d?clenche que pour une NOUVELLE vid?o non pr?sente dans le catalogue initial
-                # ou si le backlog est totalement ?puis? et qu'une vid?o n'a pas ?t? trait?e
+                # L'écoute ne se déclenche que pour une NOUVELLE vidéo non présente dans le catalogue initial
+                # ou si le backlog est totalement épuisé et qu'une vidéo n'a pas été traitée
                 is_backlog_video = vid_id in initial_backlog_ids
                 if not is_backlog_video and vid_id not in processed_ids:
-                    print(f"\n?? [Listener] NOUVELLE VID?O IN?DITE D?TECT?E SUR LA CHA?NE !", flush=True)
+                    print(f"\n🚨 [Listener] NOUVELLE VIDÉO INÉDITE DÉTECTÉE SUR LA CHAÎNE !", flush=True)
                     print(f"     ID    : {vid_id}", flush=True)
                     print(f"     Titre : {title}", flush=True)
 
-                    # Ajout au catalogue si non pr?sent
+                    # Ajout au catalogue si non présent
                     if vid_id not in catalog_ids:
                         catalog_videos.insert(0, {"id": vid_id, "title": title, "duration": None})
                         with open(CATALOG_FILE, "w", encoding="utf-8") as f:
                             json.dump({"channel": CHANNEL_NAME, "channel_id": CHANNEL_ID, "videos": catalog_videos}, f, ensure_ascii=False, indent=2)
                         catalog_ids.add(vid_id)
 
-                    # D?clenchement imm?diat du pipeline multimodal
-                    print(f"[Listener] ?? Lancement automatique de la transcription/description...", flush=True)
+                    # Déclenchement immédiat du pipeline multimodal
+                    print(f"[Listener] 🚀 Lancement automatique de la transcription/description...", flush=True)
                     try:
                         record = process_single_video(vid_id, catalog_title=title)
                         state["processed_ids"].append(vid_id)
@@ -176,22 +176,21 @@ def listen_loop():
                         save_state(state)
 
                         update_readme_index(state["processed_videos"], total_catalog_count=len(catalog_videos))
-                        commit_and_push_repo(f"feat(listener): NOUVELLE VID?O YT-{vid_id} - {record.get('title', title)[:60]}")
-                        print(f"[Listener] ? Nouvelle vid?o trait?e et pouss?e vers GitHub avec succ?s !\n", flush=True)
+                        commit_and_push_repo(f"feat(listener): NOUVELLE VIDÉO YT-{vid_id} - {record.get('title', title)[:60]}")
+                        print(f"[Listener] ✅ Nouvelle vidéo traitée et poussée vers GitHub avec succès !\n", flush=True)
                     except Exception as e:
-                        print(f"[Listener] ? Erreur traitement vid?o {vid_id} : {e}", flush=True)
+                        print(f"[Listener] ❌ Erreur traitement vidéo {vid_id} : {e}", flush=True)
 
         except Exception as e:
-            print(f"[Listener] Exception g?n?rale dans la boucle d'?coute : {e}", flush=True)
+            print(f"[Listener] Exception générale dans la boucle d'écoute : {e}", flush=True)
 
-        # Attente r?active
+        # Attente réactive
         for _ in range(POLL_INTERVAL_SECONDS):
             if not running:
                 break
             time.sleep(1)
 
-    print("[Listener] D?mon d'?coute arr?t? proprement.", flush=True)
+    print("[Listener] Démon d'écoute arrêté proprement.", flush=True)
 
 if __name__ == "__main__":
     listen_loop()
-
