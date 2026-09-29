@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `7 / 59` (`11.9%`)
+- **Vidéos traitées** : `8 / 59` (`13.6%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -23,6 +23,7 @@
 | 2026-09-26 | [Comment créer des clips vidéo IA avec Seedance 2.5 (La meilleure méthode)](2026-09-26_YT-mNESr8Hjq0s_Comment créer des clips vidéo IA avec Seedance 2.5 (La meilleure méthode)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-09-26_YT-mNESr8Hjq0s_Comment créer des clips vidéo IA avec Seedance 2.5 (La meilleure méthode)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 23m 09s | `38 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=mNESr8Hjq0s) | `mNESr8Hjq0s` |
 | 2026-09-19 | [Comment transformer n'importe quel produit en une marque incontournable grâce à l'IA](2026-09-19_YT-YzFZLpuUr0g_Comment transformer n'importe quel produit en une marque incontournable grâce à _by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-09-19_YT-YzFZLpuUr0g_Comment transformer n'importe quel produit en une marque incontournable grâce à _by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 16m 05s | `31 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=YzFZLpuUr0g) | `YzFZLpuUr0g` |
 | 2026-09-13 | [Comment transformer GPT-6 Astra en votre propre studio 3D](2026-09-13_YT-4WfAphCZXp0_Comment transformer GPT-6 Astra en votre propre studio 3D_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-09-13_YT-4WfAphCZXp0_Comment transformer GPT-6 Astra en votre propre studio 3D_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 16m 05s | `28 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=4WfAphCZXp0) | `4WfAphCZXp0` |
+| 2026-09-05 | [Pipeline d'animation IA : Comment créer des films en style Claymation 100% avec l'IA](2026-09-05_YT-Rj8BYbZCce0_Pipeline d'animation IA Comment créer des films en style Claymation 100% avec l'_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-09-05_YT-Rj8BYbZCce0_Pipeline d'animation IA Comment créer des films en style Claymation 100% avec l'_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 38m 03s | `71 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=Rj8BYbZCce0) | `Rj8BYbZCce0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
