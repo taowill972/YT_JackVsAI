@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment transformer n&#x27;importe quel produit en une marque incontournable grâce à l&#x27;IA — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.2rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        .segment-screenshot {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            position: relative;
+        }
+        .segment-screenshot img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .segment-screenshot img:hover {
+            opacity: 0.92;
+            transform: scale(1.01);
+        }
+        .screenshot-caption {
+            display: block;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment transformer n&#x27;importe quel produit en une marque incontournable grâce à l&#x27;IA</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-09-19</span>
+                <span class="badge">⏱️ 16m 05s</span>
+                <span class="badge">🆔 <code>YzFZLpuUr0g</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=YzFZLpuUr0g" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>La vidéo de Jack Vs. AI, « Comment transformer n'importe quel produit en une marque incontournable grâce à l'IA », explore une méthode révolutionnaire pour concevoir de toutes pièces une identité de marque haut de gamme sans disposer des budgets publicitaires traditionnels. En s'inspirant de stratégies marketing disruptives comme celle de la marque *Liquid Death*, Jack démontre comment l'intelligence artificielle générative permet de s'affranchir des contraintes techniques et financières habituelles pour créer un univers visuel percutant, inattendu et hautement engageant.</p><p>Le workflow étape par étape s'appuie sur une synergie entre l'analyse textuelle et la génération visuelle de pointe. Jack commence par collecter des inspirations visuelles sur Pinterest avant d'utiliser un LLM (comme Claude) pour décortiquer ces références et générer des prompts de style précis. Ces prompts sont ensuite injectés dans des générateurs d'images sur OpenArt (notamment le modèle C-Dream 5.0 Pro) pour concevoir un personnage mascotte original, le décliner à l'aide de la fonction de recréation d'image, puis le plaquer instantanément sur divers supports (sachets de café, casquettes, t-shirts, devantures de magasins) grâce à la référence visuelle.</p><p>Cette approche offre aux créateurs et aux petites entreprises un contrôle créatif total et leur permet de prototyper un écosystème de marque complet en quelques minutes seulement. En capitalisant sur la curiosité du consommateur et le design subversif, l'IA transforme radicalement le processus de création publicitaire, rendant accessible à tous ce qui nécessitait auparavant des agences internationales et des mois de travail sous Photoshop.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude</span><span class="tool-tag">OpenArt</span><span class="tool-tag">Photoshop</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Adopter une stratégie de marque disruptive** : Pour percer sur un marché saturé (comme le café), il faut subvertir les attentes du consommateur en associant des codes visuels inattendus, à l&#x27;instar de la marque *Liquid Death*.</span></li><li><span class="point-bullet">✦</span><span>Donner de la personnalité avec une mascotte** : L&#x27;intégration d&#x27;un personnage animalier atypique (comme un raton laveur ou un renard au style « vaurien attachant ») renforce l&#x27;empathie et rend la marque immédiatement mémorable.</span></li><li><span class="point-bullet">✦</span><span>Déléguer l&#x27;analyse stylistique aux LLM** : Plutôt que de rédiger des prompts de zéro, téléchargez une image de référence dans Claude, ChatGPT ou Gemini en lui demandant de se concentrer exclusivement sur le style artistique et non sur le sujet.</span></li><li><span class="point-bullet">✦</span><span>Séparer le sujet du style dans le prompting** : Structurez vos invites de manière modulaire (ex: `sujet: un renard` + `style: [prompt généré par l&#x27;IA]`) pour garder un contrôle précis sur chaque variable de la génération.</span></li><li><span class="point-bullet">✦</span><span>Itérer par cycles de comparaison** : Générez systématiquement plusieurs options en parallèle pour tester différents styles d&#x27;illustration et identifier rapidement ce qui ressort le mieux sur un fil d&#x27;actualité de réseau social.</span></li><li><span class="point-bullet">✦</span><span>Utiliser la recréation d&#x27;image pour pivoter** : Une fois un style validé, utilisez la fonction de recréation d&#x27;image d&#x27;OpenArt pour modifier uniquement le sujet (passer d&#x27;un raton laveur à un renard) tout en conservant la même patte graphique.</span></li><li><span class="point-bullet">✦</span><span>Intégrer le nom de la marque dans le processus créatif** : Associer des mots-clés forts et thématiques (comme « vermin ») dès la phase de génération visuelle renforce la cohérence globale de l&#x27;identité de marque.</span></li><li><span class="point-bullet">✦</span><span>Exploiter l&#x27;Image-to-Image pour le mock-up de produits** : Glissez votre illustration finale dans le champ de prompt de l&#x27;IA et demandez-lui de l&#x27;appliquer sur un sachet de café pour obtenir un rendu réaliste en quelques secondes, évitant ainsi de passer par Photoshop.</span></li><li><span class="point-bullet">✦</span><span>Créer un écosystème de marque global** : Ne vous limitez pas au produit principal ; déclinez l&#x27;identité visuelle sur des casquettes, des t-shirts, des packagings de livraison et des devantures de magasins pour prouver la viabilité et le « cool » de la marque.</span></li><li><span class="point-bullet">✦</span><span>Capitaliser sur la curiosité psychologique** : Le rôle de l&#x27;IA publicitaire n&#x27;est pas seulement de faire joli, mais de susciter un léger sentiment de curiosité chez le consommateur pour l&#x27;inciter à essayer un nouveau produit.</span></li><li><span class="point-bullet">✦</span><span>Se repérer grâce aux benchmarks communautaires** : Utilisez des plateformes de comparaison comme l&#x27;Arena d&#x27;OpenArt pour filtrer les meilleurs outils d&#x27;IA selon des catégories spécifiques (publicité, motion design, cinéma) et éviter de vous perdre dans la surabondance de logiciels.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:19</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">À qui tu fais croire ça ? Tu n&#x27;as pas le budget pour bâtir une marque comme celle-ci. Ta petite entreprise ne peut pas se permettre quelque chose d&#x27;aussi haut de gamme. Du moins, c&#x27;est ce que je t&#x27;aurais dit avant l&#x27;IA. Nous sommes au milieu d&#x27;une révolution créative et le pouvoir est vraiment entre tes mains. Tout ce que tu as à savoir, c&#x27;est quels sont les meilleurs outils d&#x27;IA et comment les utiliser.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans un format vidéo horizontal aux coins arrondis, encadré sur un fond bleu dégradé. Des sous-titres dynamiques apparaissent en haut de l&#x27;écran.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte incrusté en haut de l&#x27;image : &quot;we&#x27;re in the middle&quot; (en lettres blanches avec le mot &quot;middle&quot; en surbrillance cyan). Jack porte des lunettes, une casquette verte à l&#x27;envers et tient une tasse blanche devant lui dans un salon.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack est filmé en contre-plongée, tenant une tasse à café, regardant directement la caméra avec une expression sceptique ou interrogative tout en s&#x27;exprimant.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_001_00-00-00.jpg" alt="Capture Segment #01" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_001_00-00-00.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:00:00</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:19 - 00:00:38</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Avec ça, vous pouvez créer toute une marque pour n&#x27;importe quelle entreprise imaginable sans vous ruiner tout en gardant un contrôle créatif total. Et c&#x27;est exactement ce que nous allons voir aujourd&#x27;hui. Je vais vous transmettre toutes mes connaissances pour vous mettre aux commandes. Et nous examinerons les techniques de prompting ainsi que la génération d&#x27;images et de vidéos.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra au premier plan à gauche, avec un micro noir et blanc et un fond d&#x27;étagères. À l&#x27;arrière-plan à droite, une interface de génération vidéo par IA (similaire à Luma Dream Machine ou Runway Gen-3) affichée sur un écran sombre avec un panneau de contrôle latéral et une grille de médias (images et vidéos) sur le côté droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur l&#x27;interface à l&#x27;écran : le menu &quot;Text to Video&quot; est sélectionné. Le modèle utilisé est &quot;Seedance 2.5&quot;. Un champ &quot;Add visual references&quot; (Optionnel) est visible avec une miniature d&#x27;image et le texte &quot;IMG_0029.png&quot;. Des options &quot;Camera&quot; et &quot;Auto Polish&quot; (activé) sont présentes. En bas, les options &quot;Audio&quot; (On) et un format 1:1 / 1080p sont configurés. La grille à droite montre diverses créations visuelles autour d&#x27;une marque de café fictive avec une mascotte de renard jaune sur fond bleu (&quot;Vanguard Roast&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement au spectateur tout en parlant, face caméra, avec un mouvement de tête légèrement expressif pour illustrer ses propos sur la transmission de connaissances. L&#x27;interface d&#x27;IA en arrière-plan reste statique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_002_00-00-19.jpg" alt="Capture Segment #02" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_002_00-00-19.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:00:19</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:39 - 00:00:58</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous avez apprécié le contenu d&#x27;aujourd&#x27;hui, assurez-vous de lâcher un pouce bleu pour moi et pensez à vous abonner. Bon, passons aux choses sérieuses. Pour ceux qui pourraient être nouveaux, je suis Jack et j&#x27;ai un parcours dans la publicité. Je suis artiste d&#x27;effets visuels depuis plus de 10 ans maintenant, ayant travaillé pour des marques mondiales comme BMW, Adidas et Google.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra (plan rapproché poitrine, assis dans son studio). Un microphone de studio à large diaphragme est positionné au premier plan, légèrement flou. En arrière-plan, on aperçoit une étagère en bois garnie de plantes et d&#x27;objets décoratifs, une lampe d&#x27;appoint chaude, un canapé sombre avec un coussin orange et un mur texturé à lattes de bois vertical.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte incrusté à l&#x27;écran, aucun prompt ni interface logicielle visible dans ce plan de présentation.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement au spectateur face caméra, gesticulant avec ses mains pour appuyer ses propos tout en expliquant son parcours professionnel dans les effets visuels et la publicité.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_003_00-00-39.jpg" alt="Capture Segment #03" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_003_00-00-39.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:00:39</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:58 - 00:01:20</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La vidéo d&#x27;aujourd&#x27;hui marque la combinaison de mes connaissances issues de l&#x27;industrie publicitaire avec cette nouvelle approche incroyable propulsée par l&#x27;IA. Je mettrai un lien plus bas dans la description vers OpenArt, qui a eu la gentillesse de parrainer la vidéo d&#x27;aujourd&#x27;hui, et j&#x27;utiliserai leur plateforme pour accéder à ces outils d&#x27;IA. Pour ce projet, je vais créer une marque pour ma propre spécialité, les grains de café.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de la plateforme OpenArt affichée à l&#x27;écran, avec un arrière-plan sombre légèrement flouté présentant une grille de créations artistiques. En incrustation (picture-in-picture) dans le coin inférieur droit, une petite fenêtre montre Jack face caméra, coiffé d&#x27;une casquette et portant des lunettes, parlant devant un micro de studio.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Au centre de l&#x27;écran, le logo officiel de la plateforme « OpenArt » s&#x27;affiche en blanc, accompagné de la mention en rose « link in the description » juste en dessous. Aucun paramètre technique, prompt ou menu détaillé n&#x27;est visible sur cette vue d&#x27;écran d&#x27;introduction de sponsor.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;écran présente un titre d&#x27;introduction fixe mettant en avant le sponsor de la vidéo (« OpenArt ») tout en superposant la vue webcam de Jack dans le coin inférieur droit, qui s&#x27;exprime et gesticule légèrement en parlant à son audience.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_004_00-00-58.jpg" alt="Capture Segment #04" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_004_00-00-58.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:00:58</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:20 - 00:01:57</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le problème, c&#x27;est que c&#x27;est un marché incroyablement saturé, alors comment allons-nous nous démarquer ? Eh bien, j&#x27;ai décidé de m&#x27;inspirer d&#x27;une autre marque qui a marqué les esprits dans un domaine extrêmement concurrentiel, il s&#x27;agit de l&#x27;eau en bouteille, ou dans ce cas-ci, en canette. Liquid Death est une véritable leçon magistrale sur la façon de subvertir les attentes du consommateur. Le branding est délibérément perturbateur parce qu&#x27;il regroupe toutes les choses qu&#x27;on n&#x27;associe pas à l&#x27;eau en un seul produit. Et je vais appliquer cette même logique à ma marque de café. La première étape pour moi consiste toujours à chercher l&#x27;inspiration et je</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plan rapproché (medium close-up) de Jack face caméra, assis dans son studio personnel devant un micro de type podcast blanc et noir, portant une casquette verte à l&#x27;envers, des lunettes et un t-shirt blanc. En arrière-plan, on aperçoit une étagère en bois garnie d&#x27;objets de décoration, une plante verte, un fauteuil sombre avec un coussin orange et un éclairage d&#x27;ambiance chaleureux. Aucune interface logicielle n&#x27;est affichée à l&#x27;écran.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte à l&#x27;écran, aucun prompt ni paramètre technique visible dans ce segment, car il s&#x27;agit d&#x27;une séquence de type &quot;talking head&quot; où le présentateur s&#x27;adresse directement aux spectateurs.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack est filmé en plan fixe face caméra, parlant tout en gesticulant des mains pour illustrer ses propos, exprimant sa réflexion sur la stratégie marketing de sa marque de café.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_005_00-01-20.jpg" alt="Capture Segment #05" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_005_00-01-20.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:01:20</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:57 - 00:02:33</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">je vous recommande d&#x27;aller jeter un œil à une plateforme comme Pinterest pour cela. Je savais dès le début que je voulais un personnage représentant mes grains de café parce que je pense que c&#x27;est un excellent moyen de donner plus de personnalité à votre produit. Je veux que le personnage soit inattendu et ait ce genre de qualité de vaurien attachant parce que cela englobe joliment toute cette approche disruptive. Donc nous pouvons chercher quelque chose comme des animaux de marque, par exemple, et tout ce qui me plaît ici, je vais aller le télécharger. Après un certain temps, j&#x27;ai assemblé tout ce dossier, qui contient une tonne de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Écran de présentation aux tons bleus dégradés comportant une incrustation vidéo (PiP) en bas à droite montrant Jack face caméra, avec un microphone et un casque audio.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran sous le titre &quot;Character Brief&quot; : &quot;Unexpected can&#x27;t feel like something obvious or boring&quot; et &quot;&#x27;Loveable rogue&#x27; fits with disruptive marketing approach&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de diapositives de brief créatif sur fond bleu, tandis que Jack s&#x27;exprime en incrustation vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_006_00-01-57.jpg" alt="Capture Segment #06" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_006_00-01-57.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:01:57</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:33 - 00:02:52</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">différents exemples qui correspondent à l&#x27;ambiance que je souhaite obtenir, mais qui sont tout aussi uniques dans leurs propres styles. Sur ce, je vais passer sur Claude et démarrer une nouvelle conversation. Vous n&#x27;êtes pas obligé d&#x27;utiliser Claude. Vous pouvez utiliser ChatGPT, Grok ou Gemini si vous préférez. Le processus va être le même.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> L&#x27;écran affiche l&#x27;interface web de l&#x27;assistant IA Claude sur fond sombre, avec dans le coin inférieur droit une incrustation vidéo (PiP) montrant Jack dans son studio face caméra, portant une casquette à l&#x27;envers et un t-shirt blanc, penché et s&#x27;exprimant devant son microphone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Au centre de l&#x27;écran principal, on peut lire un message d&#x27;accueil : « Good evening, Jack » (Bonsoir, Jack), accompagné d&#x27;une icône en forme d&#x27;étoile stylisée. Au-dessous se trouve une boîte de saisie de texte avec le texte indicatif « How can I help you today? » (Comment puis-je vous aider aujourd&#x27;hui ?), intégrant divers boutons de contrôle dont un bouton « + », les modes « Chat » et « Cowork », l&#x27;indication de modèle « Opus 4.8 Medium », ainsi qu&#x27;une icône de microphone.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack navigue vers l&#x27;interface de l&#x27;assistant Claude pour y démarrer une nouvelle conversation interactive, préparant l&#x27;étape suivante de son processus de création assistée par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_007_00-02-33.jpg" alt="Capture Segment #07" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_007_00-02-33.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:02:33</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:52 - 00:03:13</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais télécharger l&#x27;une de mes images de référence et je vais dire à Claude, j&#x27;aimerais que tu m&#x27;aides à écrire un prompt de style pour obtenir ce style d&#x27;illustration. Concentre-toi sur le style global de l&#x27;illustration plutôt que sur le personnage lui-même. Et Claude va analyser l&#x27;image et m&#x27;écrire un prompt de style.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude par Anthropic affichée en plein écran avec un thème sombre, et une fenêtre incrustée en bas à droite montrant Jack face caméra face à son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte d&#x27;accueil « Good evening, Jack » au centre supérieur. Dans la boîte de dialogue centrale, une image de référence représentant un personnage animalier stylisé (un corbeau/oiseau en uniforme) est importée. Le texte partiel tapé dans le prompt indique : « I&#x27;d like you to help me write a style prompt to achieve this style of il ». Les boutons de sélection affichent « Chat », « Cowork », « Opus 4.8 Medium » et une icône de flèche de validation orange.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack est en train de rédiger et de soumettre son prompt textuel dans l&#x27;interface de Claude, après y avoir joint une image de référence pour obtenir une analyse de style artistique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_007_00-02-33.jpg" alt="Capture Segment #08" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_007_00-02-33.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:02:52</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:13 - 00:03:33</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, je vais aller sur OpenArt et, sur la page d&#x27;accueil, sélectionner l&#x27;onglet image. Dans le sélecteur de modèle, vous verrez que nous avons accès à tous les meilleurs générateurs d&#x27;images par IA du marché. Pour commencer, je vais choisir C-Dream 5.0 Pro car, au moment de l&#x27;enregistrement, c&#x27;est mon modèle d&#x27;image par IA préféré.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme web OpenArt Pro sombre divisée en plusieurs panneaux verticaux : à gauche le menu de navigation principal (Brand Building, Home, Chat Mode, Director Mode, Video, Image, World, Character, Audio, MCP / CLI, Director Projects, Character &amp; World, Brand kit, Media, Templates, Arena, Tutorials, Blog), au centre le panneau de configuration de création d&#x27;image (Create Image, modèle actif GPT Image 2.5, section &quot;Describe your image&quot;, &quot;Add visual references&quot;, &quot;Auto Polish&quot;, sélecteur de mode &quot;Sunburst&quot;, format &quot;16:9 - 2k&quot;, qualité &quot;Medium&quot;, bouton rose &quot;Generate ⚡ 45&quot;), à droite la fenêtre modale de sélection des modèles (&quot;Models&quot;) affichant des suggestions recommandées (&quot;Which model performs best&quot;, &quot;GPT Image 2.5&quot;, &quot;GPT Image 2&quot;) et une liste complète de modèles (&quot;All models&quot; : Drok Imagine, Seedream 5.0 Lite, Seedream 4.5, Kling 3.0 Omni, Nano Banana, Seedream 4.0, Qwen Image 3.0, Qwen Image 2, Kling O1). En bas à droite, incrustation vidéo montrant le présentateur Jack avec une casquette et un micro de studio.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte des modèles et des options visibles dans la liste : &quot;Select Multiple (Up to 4)&quot;, &quot;Recommended&quot;, &quot;All models&quot;, &quot;All providers&quot;, &quot;All features&quot;, &quot;Search&quot;, &quot;Drok Imagine - JAX&#x27;s AURA-powered image model&quot;, &quot;Seedream 5.0 Lite - Bytedance&#x27;s lightweight 5.0 image model (2K/4K)&quot;, &quot;Seedream 4.5 - Bytedance&#x27;s advanced image model&quot;, &quot;Kling 3.0 Omni - Kling&#x27;s advanced image model&quot;, &quot;Nano Banana - Google&#x27;s standard image model&quot;, &quot;Seedream 4.0 - Bytedance&#x27;s standard image model&quot;, &quot;Qwen Image 3.0 - Alibaba image generation with Standard and Pro scales&quot;, &quot;Qwen Image 2 - Enhanced realism and improved text rendering&quot;, &quot;Kling O1 - Multi reference &amp; visual input mode&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris (représenté par une flèche blanche) survole et parcourt la liste des différents modèles d&#x27;IA disponibles dans le menu modale de sélection &quot;Models&quot; sur la plateforme OpenArt.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_008_00-03-13.jpg" alt="Capture Segment #09" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_008_00-03-13.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:03:13</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:33 - 00:03:53</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et pour mon prompt, je vais faire vraiment simple. Je vais taper sujet et dire un raton laveur. Et ensuite je vais taper style. Je retourne sur Claude, je copie mon prompt de style et je le colle dans OpenArt. Je vais générer deux images pour avoir un point de comparaison.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Capture d&#x27;écran de l&#x27;interface du chatbot Claude (Anthropic) sur un navigateur web en mode sombre, avec une incrustation vidéo en bas à droite montrant Jack face caméra avec son micro et sa casquette.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On peut lire en haut le prompt utilisateur : « I&#x27;d like you to help me write a style prompt to achieve this style of illustration, focus on the overall illustration style, rather than the character itself ». Le corps du texte généré par Claude détaille le module de style portable avec un bloc de texte en anglais décrivant les caractéristiques graphiques (Hand-inked editorial illustration, bold, energetic linework...) avec un bouton « Copy » visible au survol.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack consulte le texte généré par Claude dans le navigateur web et s&#x27;apprête à copier le prompt de style dans son presse-papiers pour l&#x27;utiliser ensuite sur une autre plateforme de génération d&#x27;images.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_009_00-03-33.jpg" alt="Capture Segment #10" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_009_00-03-33.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:03:33</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:54 - 00:04:19</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et je peux lancer la génération. Ok, celles-ci sont plutôt cool. J&#x27;adore le style style fait à la main, mais je ne suis pas sûr qu&#x27;elles soient assez disruptives. Je ne sais pas si ça va ressortir autant que je le veux sur un fil d&#x27;actualité de réseau social, par exemple. Donc ce que je vais faire, c&#x27;est retourner sur Claude, charger une de mes autres références et lui demander de créer un prompt de style pour celle-ci également.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plan rapproché de Jack (face caméra) dans son studio, assis devant un micro, avec un décor intérieur flou en arrière-plan comprenant des étagères et un éclairage d&#x27;ambiance.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou paramètre technique affiché à l&#x27;écran, plans parlés de Jack illustrant sa démarche créative.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en gesticulant légèrement pour expliquer sa réflexion critique sur le style généré et sa décision de modifier son approche via l&#x27;assistant Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_010_00-03-54.jpg" alt="Capture Segment #11" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_010_00-03-54.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:03:54</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:19 - 00:04:38</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pouvons copier ceci et le coller dans OpenArt et cliquer à nouveau sur générer. Et essentiellement, je vais répéter cette méthode en boucle jusqu&#x27;à ce que je tombe sur quelque chose que j&#x27;aime vraiment. Comme vous pouvez le voir, j&#x27;ai accumulé une tonne d&#x27;options différentes, dont certaines me plaisent et d&#x27;autres qui sont un peu fades et basiques.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, dans son studio personnel. Il porte un t-shirt blanc, une casquette portée à l&#x27;envers et des lunettes de vue. Un microphone de studio à large membrane est positionné au premier plan, devant lui.</p>
+                        <p><strong>Contenu textuel & Code :</strong> L&#x27;arrière-plan montre une étagère garnie d&#x27;objets de décoration, de plantes et de lumières d&#x27;ambiance tamisées, ainsi qu&#x27;un canapé sombre avec un coussin orange vif et un panneau mural acoustique cannelé à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en face caméra, tout en parlant et en gesticulant légèrement pour expliquer sa méthode itérative de génération d&#x27;images sur OpenArt.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_010_00-03-54.jpg" alt="Capture Segment #12" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_010_00-03-54.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:04:19</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:38 - 00:05:11</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Pour moi, pourtant, ce genre de raton laveur vorace attire vraiment mon attention. Mais disons que nous voulons un personnage différent dans le même style. Ce que je peux faire, c&#x27;est ouvrir cette génération et cliquer sur l&#x27;icône de recréation d&#x27;image. Cela va importer notre prompt et je vais juste y apporter une légère modification en changeant l&#x27;animal du raton laveur au renard. Nous avons beaucoup de renards ici au Royaume-Uni et ils se situent définitivement à la frontière entre de sales nuisibles et quelque chose de bizarrement mignon d&#x27;une certaine</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio, assis devant un micro de podcast monté sur un bras articulé, avec une étagère garnie de plantes et d&#x27;objets décoratifs en arrière-plan, ainsi qu&#x27;un canapé avec un coussin orange.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou paramètre technique textuel n&#x27;est affiché à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en parlant de sa sélection d&#x27;images et de la modification du prompt pour remplacer le raton laveur par un renard, tout en bougeant légèrement les mains et en regardant en direction de l&#x27;objectif.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_010_00-03-54.jpg" alt="Capture Segment #13" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_010_00-03-54.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:04:38</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:11 - 00:05:34</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et c&#x27;est pourquoi je veux voir à quoi l&#x27;un d&#x27;eux ressemblerait dans ce style d&#x27;illustration. D&#x27;accord, je pense que le résultat est plutôt superbe. J&#x27;ai également utilisé ce prompt légèrement modifié pour ajouter le nom de ma marque, j&#x27;ai mentionné ce mot « vermin » plus tôt et ça me paraît tout simplement parfait. Voir cette œuvre d&#x27;art sur un sac de grains de café va être très différent de ce à quoi vous pourriez vous attendre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un générateur d&#x27;images/vidéos par IA (type Seedance / plateforme propriétaire) avec une fenêtre modale affichant l&#x27;image générée en grand format à gauche, et le panneau latéral de configuration et de prompt à droite. En bas à droite, incrustation vidéo miniature de Jack face caméra.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché dans le prompt : &quot;SUBJECT: A logo that reads &quot;VERMIN COFFEE&quot; the word &quot;VERMIN&quot; is at the top &quot;COFFEE&quot; is underneath. STYLE: Bold, high-energy lowbrow cartoon illustration in a graffiti / skate-art style. Thick, confident black outlines with a slight kinetic roughness and punchy line-weight...&quot; Paramètres techniques visibles sous &quot;SETTINGS&quot; : &quot;Byte Plus Seedream 5.0 Pro&quot;, ratio &quot;1:1&quot;, résolution &quot;2K&quot;. Options disponibles : &quot;Check IP Safety&quot;, &quot;Upscale&quot;, &quot;Frame to video&quot;, &quot;Expand image&quot;, &quot;Video Reference&quot;, &quot;Image Reference&quot;, &quot;Create variations&quot;, &quot;Change camera angle&quot;. Boutons d&#x27;action : &quot;Recreate&quot; et &quot;Use in Chat&quot;. Image principale : illustration style cartoon &quot;lowbrow&quot; / skate-art d&#x27;un animal agressif et hystérique avec des éclaboussures roses sur fond bleu cyan, avec le texte &quot;VERMIN COFFEE&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;image finale générée est affichée en plein écran dans la visionneuse avec ses paramètres et son prompt associés visibles sur le panneau latéral droit, tandis que le créateur (Jack) commente le résultat visuel en incrustation vidéo en bas à droite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_011_00-05-11.jpg" alt="Capture Segment #14" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_011_00-05-11.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:05:11</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:34 - 00:05:54</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est exactement ce que nous cherchons à faire. Le truc avec l&#x27;IA, c&#x27;est qu&#x27;on n&#x27;a pas besoin d&#x27;imaginer, on peut construire ça pour de vrai. Je vais donc glisser cette image et la déposer dans le champ du prompt. Et cela signifie que nous allons l&#x27;utiliser comme référence. Et ensuite, je vais utiliser ce prompt très simple pour placer l&#x27;illustration artistique sur un sachet de café.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de la plateforme OpenArt Pro (« Jack Kennedy&#x27;s workspace », panneau de création d&#x27;image « Create Image » avec sélection du modèle « Seedream 5.0 Pro », champ de prompt avec zone « Add visual references » permettant d&#x27;ajouter des références visuelles, sélecteur de format de sortie « 1:1 | 2K », bouton « Generate » à 60 crédits, menu latéral gauche avec « Brand Building », « Chat Mode », « Director Mode », outils « Video », « Image », « World », « Character », « Audio », « MCP / CLI », et dans le coin inférieur droit, la webcam incrustée montrant Jack face caméra avec son micro).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Modèle affiché : Seedream 5.0 Pro. Zone de glisser-déposer de référence visuelle « Add visual references (Optional) » (indiquant les formats pris en charge : JPEG/PNG/WEBP, 30 MB max, 38MP max, etc.). Texte indicatif dans le champ de prompt : « What do you want to see? Example: &quot;A cat sitting on a table, warm morning light...&quot; ». Bouton d&#x27;optimisation automatique « Auto Polish » (désactivé). Paramètres de sortie : « 1:1 | 2K ». Bouton violet « Generate 60 ». Grille principale affichant de nombreuses illustrations colorées de style pop art et cartoon (renards, ratons laveurs, personnages stylisés aux couleurs vives rose, bleu, jaune).</p>
+                        <p><strong>Action / Démonstration :</strong> Jack fait glisser une image (représentant un raton laveur stylisé sur fond jaune) depuis la galerie située à droite et la dépose dans le champ de référence visuelle (« Add visual references ») de l&#x27;interface OpenArt Pro.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_012_00-05-34.jpg" alt="Capture Segment #15" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_012_00-05-34.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:05:34</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:55 - 00:06:16</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et regardez simplement le travail formidable que C-Dream a accompli en appliquant notre illustration. Avant l&#x27;IA, il aurait fallu passer par Photoshop pour obtenir quelque chose d&#x27;approchant. Nous avons obtenu ce résultat en quelques minutes, rien qu&#x27;en rédigeant un prompt. Et même si vous détestez ce style, vous ne pouvez pas me dire que vous ne seriez pas un tout petit peu curieux à propos du produit, n&#x27;est-ce pas ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;une application ou d&#x27;un site web de génération d&#x27;images par IA, affichant une grande image centrale dans une fenêtre modale, un panneau de configuration des paramètres à droite, et un encart vidéo incrusté en bas à droite montrant Jack face caméra avec son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt : « Place this artwork onto a photo real coffee bean bag in a semi-profile orientation. Ensure the coffee bean pack colour matches the background colour of the reference image. Ensure the product is against a simple grey seamless background. » Dans la section &quot;REFERENCES&quot;, une vignette carrée montre le dessin original d&#x27;un monstre canin jaune et rose. Paramètres visibles : modèle « BytePlus Seedream 5.0 Pro », format « 1:1 », résolution « 2K », date de création « 9/14/2026 14:19:29 ». Options : « Check IP Safety », « Upscale », « Frame to video », « Expand image », « Video Reference », « Image Reference », « Create variations », « Change camera angle ». Boutons en bas : « Recreate » et « Use in Chat ».</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;écran présente le résultat généré montrant un sachet de café bleu turquoise floqué avec l&#x27;illustration du monstre, tandis que dans l&#x27;encart en bas à droite, Jack parle devant sa caméra.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_013_00-05-55.jpg" alt="Capture Segment #16" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_013_00-05-55.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:05:55</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:16 - 00:06:39</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cette curiosité est exactement ce qui incite les consommateurs à essayer un nouveau produit. Et j&#x27;ai parlé un peu plus tôt de créer bien plus que le simple produit et de bâtir en fait tout un écosystème. Et nous pouvons commencer à nous en faire une idée maintenant. Je vais juste apporter une légère modification à notre invite ici en remplaçant sachet de grains de café par casquette de baseball.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio, avec un microphone monté sur bras articulé au premier plan.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou paramètre technique visible à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en gesticulant des mains pour illustrer son propos.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_014_00-06-16.jpg" alt="Capture Segment #17" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_014_00-06-16.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:06:16</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:39 - 00:06:58</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tout simplement, nous pouvons cliquer sur générer. Et maintenant, C-Dream a appliqué notre image de marque à un produit différent et les possibilités sont vraiment infinies avec cette approche. J&#x27;ai passé un peu plus de temps et j&#x27;ai créé tout un tas d&#x27;autres ressources en utilisant notre image de marque comme référence visuelle.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, dans son studio personnel, enregistré à hauteur de buste avec un micro de podcast professionnel disposé au premier plan.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Décor de studio avec étagères en bois, plantes vertes, éclairages d&#x27;ambiance chaleureux et un canapé avec des coussins orange en arrière-plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en gesticulant des mains pour illustrer ses propos, dans un plan moyen fixe.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_014_00-06-16.jpg" alt="Capture Segment #18" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_014_00-06-16.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:06:39</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:58 - 00:07:31</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avons ce beau plan d&#x27;un café si je devais ouvrir une chaîne. Une variété de produits que la marque pourrait proposer à ses consommateurs. et j&#x27;ai inventé cette image ici pour montrer ce que ce serait si nous proposions un service de livraison à domicile. Et bien sûr, un peu plus de produits dérivés. Pour moi, si une marque a l&#x27;air cool sur un t-shirt, c&#x27;est que vous faites probablement quelque chose de bien. Maintenant, vous pourriez vous arrêter là parce que nous avons déjà une tonne d&#x27;actifs d&#x27;images fixes qui pourraient être utilisés pour des panneaux d&#x27;affichage, de l&#x27;impression et des médias sociaux. Mais nous pourrions</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Une interface logicielle de génération d&#x27;images par IA s&#x27;affiche au premier plan, avec un panneau latéral à droite comprenant des champs de prompt, des paramètres (Byte Plus Seedream 5.0 Pro, 16:9, 2K) et divers outils d&#x27;édition (Upscale, Frame to video, Expand image, etc.). En bas à droite, une incrustation vidéo montre Jack face caméra avec son micro et sa casquette.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible dans l&#x27;interface indique : &quot;Product photography of an oversized white t-shirt shown from the back, worn by a male model cropped to show the torso and the shirt (head partially visible, waist and jeans at the bottom), standing against a solid bold cyan process-blue background, even soft studio...&quot; L&#x27;image générée montre un mannequin de dos portant un t-shirt blanc surdimensionné imprimé avec un monstre/animal jaune féroce et le texte &quot;VERMIN COFFEE&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris (représenté par une flèche blanche) se déplace dans le panneau de droite de l&#x27;interface, planant au-dessus des options, tandis que l&#x27;image principale présente le t-shirt généré par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_015_00-06-58.jpg" alt="Capture Segment #19" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_015_00-06-58.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:06:58</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:31 - 00:08:09</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">d&#x27;aller aussi un peu plus loin en animant ces images pour leur donner vie. Avant de nous pencher sur notre génération de vidéos, je peux tout à fait comprendre que ces outils d&#x27;IA puissent paraître un peu déroutants, car il y a tellement de choix disponibles. Mais OpenArt a en fait conçu cette toute nouvelle plateforme appelée Arena, où vous obtenez une comparaison directe entre les outils proposés. En gros, des experts de premier plan ont comparé une tonne de résultats différents provenant d&#x27;outils d&#x27;IA, puis ont voté pour ceux qu&#x27;ils préféraient, et toutes ces données ont été regroupées pour construire la plateforme. Les résultats sont divisés</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme &quot;OpenArt Arena&quot; avec un design épuré sur fond blanc. En bas à droite, incrustation vidéo (PiP) de Jack face caméra, portant une casquette et un t-shirt blanc, avec un micro professionnel visible.</p>
+                        <p><strong>Contenu textuel & Code :</strong> En haut à gauche, le logo et le nom &quot;OpenArt Arena&quot;, suivis des onglets de navigation &quot;Home&quot;, &quot;Vision&quot;, et &quot;Leaderboards&quot;. Au centre de l&#x27;écran, le titre principal s&#x27;affiche en gros caractères : &quot;The global leaderboard&quot;. Un curseur de souris est visible au milieu de la page.</p>
+                        <p><strong>Action / Démonstration :</strong> Le navigateur présente la page d&#x27;accueil de la plateforme OpenArt Arena mettant en avant le classement mondial (&quot;The global leaderboard&quot;), tandis que Jack commente et explique le fonctionnement de l&#x27;outil depuis l&#x27;encadré vidéo en bas à droite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_016_00-07-31.jpg" alt="Capture Segment #20" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_016_00-07-31.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:07:31</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:09 - 00:08:47</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">dans différentes catégories. Donc nous avons la publicité, le cinéma, l&#x27;animation, le motion design, et la liste continue. Je pense que cela va être incroyablement utile pour les créateurs d&#x27;IA, surtout si vous débutez un peu avec ces outils. Maintenant, passons à la création de quelques ressources animées pour notre marque. Sur Claude, j&#x27;ai téléchargé une compétence personnalisée ainsi que l&#x27;image de notre produit et une feuille de référence de personnage pour notre renard illustré. J&#x27;ai rédigé cette description d&#x27;une idée que j&#x27;ai pour un contenu social que nous pouvons utiliser sur une plateforme comme TikTok ou Instagram. Je veux que le renard saute</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, filmé de près dans son studio, assis dans un fauteuil noir avec un t-shirt blanc, une casquette verte portée à l&#x27;envers et des lunettes rondes, s&#x27;exprimant directement devant un microphone noir et blanc monté sur un bras articulé. En arrière-plan, on aperçoit une étagère en bois garnie d&#x27;objets décoratifs, d&#x27;une plante verte retombante, d&#x27;une lampe ronde allumée, ainsi qu&#x27;un canapé sombre agrémenté d&#x27;un coussin orange. L&#x27;éclairage général est chaleureux et tamisé, avec une lampe sur pied inclinée sur la droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt de génération ni paramètre technique visible à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement au spectateur en parlant face caméra, effectuant de légers mouvements de la tête et des mains pour appuyer ses explications.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_017_00-08-09.jpg" alt="Capture Segment #21" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_017_00-08-09.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:08:09</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:47 - 00:09:23</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">hors du sac de grains de café, donne un coup de balayage sur l&#x27;écran et provoque sa fissure. L&#x27;idée étant que si quelqu&#x27;un fait défiler les réseaux sociaux et qu&#x27;il semble y avoir une fissure sur l&#x27;écran de son téléphone, cela va le forcer à s&#x27;arrêter et à prêter attention. Encore une fois, nous nous appuyons sur cette idée de marketing perturbateur. Claude va se mettre au travail et nous élaborer un prompt en utilisant la compétence personnalisée que j&#x27;ai téléchargée comme cadre, et cette compétence sera disponible entièrement gratuitement sur ma communauté School également. De retour sur OpenArt, je vais basculer sur l&#x27;onglet vidéo et vous verrez que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, dans son studio, avec un micro professionnel visible au premier plan, une étagère éclairée en arrière-plan et une lampe de bureau.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou paramètre technique affiché à l&#x27;écran dans ce plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement à son audience, gesticulant légèrement de la main gauche pour illustrer son propos sur le concept de marketing perturbateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_017_00-08-09.jpg" alt="Capture Segment #22" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_017_00-08-09.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:08:47</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:23 - 00:09:49</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pour le modèle, j&#x27;ai sélectionné C-Dance 2.5. Maintenant, je vais faire glisser mon image de produit et notre feuille de référence de personnage pour donner plus de contexte à l&#x27;IA. Je peux ensuite retourner sur Claude, copier le prompt et le déposer dans OpenArt. Je vais passer à un ratio d&#x27;aspect 1 par 1, une résolution de 1080p, et nous voulons une durée de 15 secondes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Capture d&#x27;écran montrant principalement l&#x27;interface de l&#x27;assistant IA Claude (affichant un prompt textuel structuré par séquences temporelles pour la création d&#x27;une vidéo avec un renard), avec un encart vidéo incrusté en bas à droite montrant Jack face caméra, portant une casquette et un t-shirt clair, devant son microphone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le texte principal visible dans l&#x27;interface Claude est un prompt vidéo chronologique divisé en segments de 00:00 à 00:15 détaillant les plans de caméra (Medium shot, close-up), les optiques (50mm, 35mm), les mouvements (slow push-in, tilting low), et l&#x27;action d&#x27;un paquet de café Vermin Coffee et d&#x27;un personnage de renard dans un style pop-art. En haut à gauche, le titre du projet est &quot;Fox character video prompt creation&quot;. En bas, la boîte de saisie affiche &quot;Write a message...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;écran affiche le prompt détaillé rédigé sur l&#x27;interface de Claude, tandis que le spectateur entend Jack expliquer les prochaines étapes de son workflow (sélection du modèle C-Dance 2.5, ajout d&#x27;images de référence, et configuration des paramètres dans OpenArt).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_018_00-09-23.jpg" alt="Capture Segment #23" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_018_00-09-23.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:09:23</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:49 - 00:10:08</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Sur ce, allons-y, lançons la génération et jetons un coup d&#x27;œil aux résultats. Super, je peux tout à fait voir ce genre de contenu bien fonctionner sur les réseaux sociaux. Et le point clé à retenir, c&#x27;est que vous pouvez construire quelque chose comme ça entièrement par vous-même.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plan rapproché (medium close-up) de Jack face caméra dans son studio de création, assis sur un fauteuil de bureau ergonomique noir. L&#x27;arrière-plan montre une étagère en métal garnie d&#x27;objets décoratifs, de plantes vertes et d&#x27;une source lumineuse ronde chaleureuse, ainsi qu&#x27;un canapé sombre agrémenté d&#x27;un coussin orange vif et d&#x27;un lampadaire sur pied orientable. Un micro professionnel à bras articulé est positionné au premier plan, devant lui.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte textuel ou paramètre d&#x27;interface numérique affiché à l&#x27;écran dans ce plan, uniquement le décor du studio et le présentateur.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack est filmé de face en train de s&#x27;adresser directement aux spectateurs, parlant de manière animée avec des expressions faciales dynamiques pour conclure sa démonstration sur la création de vidéos par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_019_00-09-49.jpg" alt="Capture Segment #24" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_019_00-09-49.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:09:49</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:08 - 00:10:37</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous possédez une petite entreprise ou si vous y travaillez, vous n&#x27;avez plus besoin d&#x27;externaliser votre processus créatif. Tout ce que vous avez à faire, c&#x27;est de vous familiariser avec ces outils et vous pouvez vraiment donner vie à n&#x27;importe quelle idée. Passons maintenant à quelque chose d&#x27;un peu plus complexe, cependant. J&#x27;ai commencé une nouvelle discussion sur Claude et j&#x27;y ai téléchargé cette même compétence personnalisée, puis quelques images générées qui véhiculent ce genre de moments clés que je veux voir se dérouler dans ma vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plan moyen (medium shot) de Jack face caméra dans son studio, assis devant un micro, portant une casquette, des lunettes et un t-shirt blanc. L&#x27;arrière-plan montre une étagère décorée et un canapé avec un coussin orange.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou paramètre technique visible à l&#x27;écran dans ce plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement au spectateur en parlant de manière animée, gesticulant des mains pour appuyer ses explications concernant l&#x27;utilisation des outils d&#x27;IA et de l&#x27;assistant Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_019_00-09-49.jpg" alt="Capture Segment #25" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_019_00-09-49.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:10:08</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:37 - 00:11:11</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ces deux images ont été construites en combinant des références pertinentes, notamment ces photos que j&#x27;ai de moi-même avec un prompt également rédigé par Claude. Je vais envoyer ceci pour que Claude se mette au travail et l&#x27;idée est que je suis assis, ayant l&#x27;air un peu ennuyé dans mon salon en train de boire une tasse de café assez fade, quand soudain, un énorme torrent de grains de café traverse les fenêtres. Je suis submergé, je ressors et je tiens le paquet de café Vermin. Donc, de retour sur Open Art, je vais</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;assistant IA Claude dans un navigateur web avec un thème sombre, comportant un espace de discussion (chat), un champ de saisie de message en bas (&quot;Write a message...&quot;), un bouton de partage en haut à droite (&quot;Share&quot;), un titre en haut à gauche (&quot;Coffee beans flood commercial video prompt&quot;), un aperçu des fichiers joints sous forme de miniatures d&#x27;images avec un fichier Markdown, et dans le coin inférieur droit, un encadré vidéo (caméra de Jack en direct avec micro).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans la bulle de chat de Claude : &quot;Use the attached MD file to write a 15 second video prompt for this scene... A bearded man sits on his sofa in an average-looking living room. He is holding a plain white, cheap-looking mug and takes a swig from the mug, he kind of winces as if it&#x27;s cheap tasting coffee. The scene looks grey, and he looks bored and drab. Suddenly, the room starts to shake. A close-up on the bearded man as he reacts. A low rumbling sound. The shake gets more and more erratic until suddenly a sea of coffee beans smashes through the windows, surging into the room. Before he knows it, he is in a sea of coffee beans, with only his head sticking up and out. He tenses, using all of his energy, and forces one arm up and out of the thick sea of coffee beans, and in his hand is a bag of Vermin Coffee. He looks at the bag and says, &#x27;What the [flouté] in a neutral British accent.&#x27;&quot; Texte sous le fichier attaché : &quot;Seedance_2... Skill_NEW.md&quot; et &quot;Reading a file 5s &gt;&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack est en train d&#x27;utiliser l&#x27;interface de l&#x27;assistant Claude pour lui soumettre un fichier Markdown et un prompt détaillé décrivant la scène publicitaire du café, afin que l&#x27;IA génère ou affine le scénario textuel et le prompt vidéo pour son projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_020_00-10-37.jpg" alt="Capture Segment #26" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_020_00-10-37.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:10:37</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:11 - 00:11:37</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">faites glisser ces moments clés pour servir de référence aux côtés de cette feuille de référence de personnage de moi-même afin que l&#x27;IA sache à quoi je ressemble sous tous les angles. Nous allons retourner sur Claude, copier notre invite et la coller dans OpenArk. Ce que vous pouvez également faire, c&#x27;est étiqueter vos références. Ici, je vais étiqueter la feuille de personnage de moi-même pour que l&#x27;IA comprenne exactement comment je veux qu&#x27;elle utilise la référence.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;une application web (semblable à Claude ou une interface de LLM), avec un panneau textuel central affichant un prompt détaillé découpé par séquences temporelles. En bas à droite, une petite incrustation vidéo montre Jack face caméra portant une casquette et des lunettes. En haut à droite, un bouton &quot;Share&quot;. En bas, une barre de saisie de texte &quot;Write a message...&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran comprenant un prompt de génération de vidéo publicitaire divisé par timecodes : [00:00 - 00:03] Medium shot, 50mm... ; [00:03 - 00:05] Close-up... ; [00:05 - 00:08] Wide... ; [00:08 - 00:10] Medium wide... ; [00:10 - 00:13] Medium close-up... ; [00:13 - 00:15] Close-up... ; ainsi que des sections descriptives &quot;Location&quot;, &quot;Style&quot;, &quot;Character lock&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le document textuel contenant le prompt détaillé est affiché à l&#x27;écran, tandis que l&#x27;intervenant (Jack) parle à l&#x27;écran dans l&#x27;encadré en bas à droite, expliquant le processus d&#x27;utilisation des feuilles de référence et de l&#x27;intégration des prompts dans l&#x27;outil d&#x27;IA vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_020_00-10-37.jpg" alt="Capture Segment #27" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_020_00-10-37.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:11:11</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:37 - 00:12:10</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Sur ce, nous allons changer le format d&#x27;image pour du 16 par 9 parce que je veux un rendu panoramique plus cinématographique ici. Et maintenant, nous pouvons cliquer sur générer et jeter un œil à ce que nous obtenons. C&#x27;est donc un très beau résultat ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> La vidéo montre le résultat d&#x27;une génération vidéo par IA au format 16:9 dans une fenêtre encadrée, mettant en scène un personnage masculin (Jack).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le plan affiche Jack de face, portant des lunettes et une casquette à l&#x27;envers, tenant une tasse blanche près de son visage dans un intérieur domestique flou (salon avec des cadres aux murs).</p>
+                        <p><strong>Action / Démonstration :</strong> La vidéo se lance et montre le résultat animé généré par l&#x27;IA, où le personnage lève légèrement les yeux en tenant sa tasse.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_021_00-11-37.jpg" alt="Capture Segment #28" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_021_00-11-37.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:11:37</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:10 - 00:12:43</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous remarquerez que j&#x27;ai également ajouté un écran de fin avec le produit à la fin de notre génération initiale. J&#x27;ai même généré un Londonien assez effrayant qui lit à haute voix le nom de la marque et le slogan comme une vidéo séparée et j&#x27;ai pris la voix off à partir de cela. Donc, comme vous pouvez le voir, il est possible de combiner plusieurs générations pour obtenir le résultat final que vous recherchez. Et tout comme la constitution de notre bibliothèque d&#x27;images de marque, vous pouvez vraiment vous lâcher avec la génération de vidéo pour créer une collection d&#x27;actifs animés également.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> La vidéo principale occupe la majeure partie de l&#x27;écran, avec une incrustation (picture-in-picture) en bas à droite montrant Jack face caméra dans son studio, équipé d&#x27;un micro et portant une casquette à l&#x27;envers. Le tout est présenté sur un fond dégradé bleu-vert.</p>
+                        <p><strong>Contenu textuel & Code :</strong> L&#x27;image principale montre une scène surréaliste générée par IA : Jack émergeant d&#x27;une mer de grains de café à l&#x27;intérieur d&#x27;une pièce, tenant dans sa main un sachet de café bleu vif arborant une illustration de chien au design effrayant et le texte &quot;VERMIN COFFEE&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack présente à l&#x27;écran le résultat final d&#x27;une vidéo composée de plusieurs éléments générés par IA assemblés, montrant le plan final avec le produit et le personnage au milieu des grains de café.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_022_00-12-10.jpg" alt="Capture Segment #29" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_022_00-12-10.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:12:10</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:43 - 00:13:07</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tout ici a été construit en utilisant exactement le même processus consistant à utiliser Claude pour rédiger nos prompts et à combiner cela avec des références d&#x27;images pertinentes pour générer nos vidéos. Nous avons quelques angles de l&#x27;extérieur de notre chaîne de cafés. Quelques scènes se déroulant à la maison pour que le consommateur puisse réellement imaginer notre produit s&#x27;intégrer dans sa journée.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;une application de génération de vidéo par IA avec un panneau latéral de contrôle à droite. En bas à droite, incrustation vidéo (picture-in-picture) de Jack face caméra, coiffé d&#x27;une casquette et portant un micro professionnel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le lecteur vidéo affiche un plan extérieur d&#x27;un café auvergnat stylisé avec une devanture bleue vif et une enseigne représentant un monstre canin jaune agressif avec le texte &quot;VERMIN COFFEE&quot;. Des clients font la queue devant l&#x27;entrée ouverte. Dans le panneau latéral : Prompt visible (« Filmed handheld on a phone by a person standing in the café... »), section &quot;REFERENCES&quot; avec une miniature d&#x27;image, section &quot;SETTINGS&quot; (« Byte Plus Seedance 2.0, 5s, 16:9, 1080p, Audio On »), Asset ID (« FJZRWxQiOe3EmGoWn7Ua »), et des options comme &quot;Check IP Safety&quot;, &quot;Upscale&quot;, &quot;Dub Video&quot;, &quot;Grab a frame&quot;, ainsi que les boutons &quot;Recreate&quot; et &quot;Use in Chat&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> La vidéo se lit dans le lecteur (barre de progression à 0:00 / 0:05), montrant l&#x27;animation fluide de la scène extérieure du café tandis que le panneau latéral détaille les paramètres de génération de l&#x27;outil d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_023_00-12-43.jpg" alt="Capture Segment #30" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_023_00-12-43.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:12:43</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:07 - 00:13:27</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce plan de latte art vraiment satisfaisant. SeaDarts a fait un super travail en concevant ça. Et ce plan de moi présentant le produit à la caméra dans la réserve de Vermin Coffee. Il y a tellement d&#x27;options différentes ici. Certaines sont assez stylisées et d&#x27;autres sont beaucoup plus réalistes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de génération vidéo par IA (interface sombre avec panneau latéral de configuration). On y voit une grande fenêtre de prévisualisation vidéo principale affichant le plan généré, et en bas à droite une petite incrustation vidéo (picture-in-picture) montrant Jack en train de parler face caméra avec un micro et un décor de bureau.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau latéral (PROMPT) : &quot;Slow, gentle dolly push-in toward the man holding the Vermin Coffee pack. The primary camera move: a smooth, restrained forward glide, the bearded man in the backwards cap and glasses growing slowly in frame as the shelves of blue Vermin packs behind him fall...&quot; [SETTINGS] : BytePlus Seedance 2.0, 5s, 16:9, 1080p, Audio On. Creation time : 9/17/2026 13:08:50. [ASSET ID] : WR8ai4pKrqPKqWV6H4. Boutons d&#x27;action visibles : Check IP Safety, Upscale, Dub Video, Grab a frame, Recreate, Use in Chat.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;interface affiche le résultat d&#x27;une vidéo générée par l&#x27;IA représentant un homme barbu tenant un sachet de café &quot;Vermin Coffee&quot; bleu dans une réserve. Le panneau de droite détaille les paramètres et le prompt textuel utilisés pour créer cette génération vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_024_00-13-07.jpg" alt="Capture Segment #31" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_024_00-13-07.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:13:07</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:28 - 00:13:48</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et cela signifie simplement qu&#x27;ils vont s&#x27;adapter à une variété de cas d&#x27;utilisation pour le marketing de votre marque. Maintenant, avant de terminer, il y a autre chose que je veux vous montrer, et ce sont toutes les générations qui n&#x27;ont pas été retenues. Et vous ne pouvez probablement pas vous empêcher de penser à tous les crédits que j&#x27;ai dépensés pour des ressources que nous n&#x27;allons même pas utiliser.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio, assis dans un fauteuil noir avec un microphone professionnel positionné au premier plan. L&#x27;arrière-plan présente une étagère en bois garnie d&#x27;objets décoratifs, une plante verte et une lampe de bureau allumée. Aucune interface logicielle n&#x27;est visible sur cette image.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt de génération ou paramètre technique n&#x27;est affiché à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack est filmé en plan moyen, s&#x27;adressant directement au public avec des expressions faciales et des gestes naturels pour introduire la section suivante de sa vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_025_00-13-28.jpg" alt="Capture Segment #32" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_025_00-13-28.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:13:28</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:48 - 00:14:08</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il y a deux raisons pour lesquelles je vous montre ceci, et toutes deux proviennent d&#x27;un souci d&#x27;honnêteté. L&#x27;IA n&#x27;est pas bon marché, mais elle est nettement moins coûteuse que d&#x27;embaucher une équipe créative ou une agence de publicité pour concevoir ces éléments à votre place. Et je peux l&#x27;affirmer en toute confiance en tant qu&#x27;initié de l&#x27;industrie.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle sombre de génération de vidéo par IA (probablement BytePlus Seedance 2.0). La fenêtre principale affiche le lecteur vidéo avec la génération en cours. Le panneau latéral droit contient les sections Prompt, References, Settings et Asset ID. En bas à droite de l&#x27;écran, une incrustation vidéo (PiP) montre Jack face caméra dans son studio.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible dans le panneau latéral est : &quot;Slow, gentle dolly push-in toward the cup as the barista finishes the latte art. The primary action: the barista pours the last of the steamed milk from the stainless steel jug in one smooth continuous stream into the Vermin Coffee cup, drawing out a clean rosetta - the...&quot;. La section &quot;REFERENCES&quot; affiche une miniature de l&#x27;image de référence. Les paramètres (&quot;SETTINGS&quot;) indiquent : &quot;BytePlus Seedance 2.0&quot;, &quot;5s&quot;, &quot;16:9&quot;, &quot;1080p&quot;, &quot;Audio On&quot;, avec la date et l&#x27;heure de création &quot;Creation time: 9/17/2026 10:43:18&quot;. L&#x27;identifiant d&#x27;actif est &quot;sw0TI9HRuZ5JcJYRIP1a&quot;. Des boutons d&#x27;action sont également visibles : &quot;Check IP Safety&quot;, &quot;Upscale&quot;, &quot;Dub Video&quot;, &quot;Grab a frame&quot;, &quot;Recreate&quot; et &quot;Use in Chat&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> La vidéo générée est lue dans la visionneuse principale : un gros plan montre une main tenant un gobelet en papier bleu et jaune arborant le logo &quot;Vermin Coffee&quot;, contenant un café latte avec un motif de latte art en forme de cœur ou de rosette parfaitement exécuté. Le curseur de la souris survole l&#x27;interface près des options de recréation et de gestion des assets.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_026_00-13-48.jpg" alt="Capture Segment #33" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_026_00-13-48.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:13:48</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:08 - 00:14:46</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous vous entraînez simplement, envisagez de passer à un modèle vidéo plus ancien comme C-Dance 2 ou même de baisser votre résolution à 480 ou 720p. Cela va vraiment vous aider à réduire votre consommation de crédits. Je tiens également à souligner que l&#x27;IA ne se résume pas à cliquer sur quelques boutons pour obtenir instantanément le résultat souhaité. C&#x27;est un processus d&#x27;essais et d&#x27;erreurs où vous sélectionnez les meilleures générations plutôt que d&#x27;utiliser tout ce que vous avez obtenu. Beaucoup de créateurs d&#x27;IA tombent dans le piège de sentir qu&#x27;ils doivent utiliser tout ce pour quoi ils ont dépensé des crédits. Et en fin de compte, c&#x27;est ce qui conduit</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;une application de génération vidéo par IA en mode relecture/inspection de projet, avec un volet latéral de paramètres à droite, un lecteur vidéo central affichant l&#x27;aperçu du plan généré, et une pastille vidéo incrustée en bas à droite montrant Jack face caméra.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans le panneau de droite, le prompt visible indique : &quot;[00:00 - 00:03] Medium shot, 50mm, eye-level, slow push in – @Image3 sits slumped on a beige sofa in an ordinary living room, full auburn beard, gold thin wire-frame round glasses, dark charcoal cap worn backwards, white crew-neck tee. He lifts a plain cheap...&quot;. La section &quot;REFERENCES&quot; montre 3 vignettes d&#x27;images sources. Les paramètres techniques affichés sont : &quot;Byte Plus Seedance 2.5&quot;, durée &quot;15s&quot;, ratio &quot;16:9&quot;, résolution &quot;1080p&quot;, &quot;Audio On&quot;, date de création &quot;9/16/2026 12:47:02&quot;, et l&#x27;Asset ID &quot;xOwAP0i6vIpSwm5WQ5f&quot;. Des options de post-traitement sont également visibles (&quot;Check IP Safety&quot;, &quot;Upscale&quot;, &quot;Dub Video&quot;, &quot;Grab a frame&quot;) ainsi que les boutons &quot;Recreate&quot; et &quot;Use in Chat&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le lecteur vidéo central affiche l&#x27;animation générée montrant Jack émergeant d&#x27;un océan de grains de café avec un sachet coloré à côté de lui, tandis que le volet de droite détaille les métadonnées et que Jack commente ses choix de production et la gestion des crédits dans la petite pastille vidéo en bas à droite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_027_00-14-08.jpg" alt="Capture Segment #34" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_027_00-14-08.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:14:08</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:46 - 00:15:06</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">...à la bouillie numérique (&quot;AI slop&quot;), car cela réduit vraiment la qualité globale de votre production. Le point clé à retenir ici, cependant, est qu&#x27;une seule personne est désormais capable de construire toute une marque en n&#x27;utilisant rien d&#x27;autre que son ordinateur portable. Et ce que je trouve le plus puissant avec l&#x27;IA, c&#x27;est que vous êtes fermement aux commandes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;une application Web de génération de vidéo par IA, affichant un panneau de prévisualisation central et un panneau de configuration latéral droit comportant les champs PROMPT, REFERENCES, SETTINGS et ASSET ID, avec en bas à droite une incrustation vidéo (PiP) de Jack face caméra parlant dans un microphone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans le champ PROMPT : &quot;Slow dolly camera move in&quot;. Section REFERENCES avec une miniature d&#x27;image. Section SETTINGS : &quot;Byte Plus Seedance 2.0&quot;, &quot;5s&quot;, &quot;16:9&quot;, &quot;1080p&quot;, &quot;Audio On&quot;. &quot;Creation time: 9/17/2026 13:08:35&quot;. Section ASSET ID : &quot;3UDv52eZfcOKWBUVDixy&quot;. Boutons d&#x27;action sous les paramètres : &quot;Check IP Safety&quot;, &quot;Upscale&quot;, &quot;Dub Video&quot;, &quot;Grab a frame&quot;, &quot;Recreate&quot;, &quot;Use in Chat&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation de l&#x27;interface d&#x27;un outil de génération vidéo par IA affichant un plan vidéo montrant une main tenant un sachet de café bleu marqué &quot;Vermin Coffee&quot; au-dessus d&#x27;une boîte ouverte, tandis que Jack s&#x27;exprime en incrustation vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_028_00-14-46.jpg" alt="Capture Segment #35" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_028_00-14-46.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:14:46</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:06 - 00:15:24</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous êtes chef d&#x27;entreprise et que vous en avez assez de devoir communiquer vos idées à une équipe créative externe, avec tous les allers-retours et les maux de tête que cela entraîne, l&#x27;intelligence artificielle vous permet désormais de réaliser l&#x27;ensemble du processus vous-même et, ce faisant, de gagner à la fois du temps et de l&#x27;argent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Une interface web de génération de vidéo par IA, avec un panneau de prévisualisation vidéo au centre gauche, un panneau latéral droit détaillant les paramètres, un lecteur vidéo en bas avec barre de progression (0:05 / 0:05), et un encart vidéo en bas à droite montrant Jack face caméra avec son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible dans le panneau latéral est : « Slow, gentle dolly push-in toward the man holding the Vermin Coffee pack. The primary camera move: a smooth, restrained forward glide, the bearded man in the backwards cap and glasses growing slowly in frame as the shelves of blue Vermin packs behind him fall... ». Dans les paramètres (SETTINGS), on lit : « Byte Plus Seedance 2.0 », « 5s », « 16:9 », « 1080p », « Audio On », et « Creation time: 9/17/2026 13:08:50 ». L&#x27;Asset ID est « WR8ai4px/qKpWVG6H4 ». Des options d&#x27;action sont affichées : « Check IP Safety », « Upscale », « Dub Video », « Grab a frame », ainsi que les boutons « Recreate », « Use in Chat ». La vidéo montre un homme barbu portant une casquette à l&#x27;envers et des lunettes, tenant un sachet de café bleu étiqueté « VERMIN COFFEE » avec l&#x27;illustration d&#x27;un renard jaune aux crocs acérés.</p>
+                        <p><strong>Action / Démonstration :</strong> La vidéo se lit en boucle dans l&#x27;interface de prévisualisation (la barre indique 0:05 sur 0:05), tandis que le panneau latéral affiche les métadonnées de génération et les paramètres techniques du plan vidéo généré.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_029_00-15-06.jpg" alt="Capture Segment #36" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_029_00-15-06.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:15:06</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:24 - 00:15:45</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela étant dit, les gars, nous sommes arrivés à la fin du tutoriel d&#x27;aujourd&#x27;hui. Si vous l&#x27;avez apprécié, n&#x27;hésitez pas à lâcher un pouce bleu pour moi et pensez à vous abonner. Si vous souhaitez aller plus loin, vous pouvez consulter ma communauté School gratuite. Il y aura un post là-bas qui contient absolument tous les prompts que j&#x27;utilisés tout au long de cette vidéo afin que vous puissiez les utiliser pour vos propres projets créatifs.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme communautaire « School » (Skool) nommée « Jack Vs. AI Workflows », avec un bandeau supérieur de navigation (Community, Classroom, Calendar, Members, Map, Leaderboards, About), un fil d&#x27;actualité central avec des publications épinglées, une barre latérale droite affichant les informations du groupe (« Jack Vs. AI - skool.com/jack-vs-ai-workflows-8360 »), les statistiques (19k membres, 70 en ligne), ainsi qu&#x27;une petite fenêtre vidéo en incrustation (PiP) dans le coin inférieur droit montrant Jack face caméra avec son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publications visibles dans le fil : 1) « How to Turn GPT-6 Astra Into Your Own 3D Studio (Prompts) » par Jack Kennedy avec la mention « 🔴 NEW VIDEO IS LIVE! 🤖 GPT-6 Astra can now take control of Blender - so you can describe a camera move, a product animation or a full character rig in plain English and... » ; 2) « The Half NOBODY Teaches... (New Course in the Classroom) » ; 3) « My A-Z of AI Video Production Course is LIVE! ». Dans le panneau latéral droit, la description indique : « Whether you&#x27;re cutting ads, building short films, or pushing AI video to its limits, this is where you sharpen the skills that actually transfer. ». Section « Suggested communities » visible en bas à droite avec des miniatures (Origins Ecommerce, God Tier Ecom, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Capture d&#x27;écran fixe de l&#x27;interface de la plateforme communautaire Skool, avec le curseur de la souris (pointeur) positionné au centre du premier post de Jack Kennedy, illustrant la navigation sur la page de la communauté pour présenter l&#x27;emplacement des ressources partagées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_030_00-15-24.jpg" alt="Capture Segment #37" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_030_00-15-24.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:15:24</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:45 - 00:15:54</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais partager une partie de mon contenu récent si vous souhaitez continuer à explorer tout ce qui est possible avec les derniers outils d&#x27;IA, et je vous retrouve dans la prochaine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Écran de transition uni ou fond flou monochrome aux tons bleu-vert, sans interface logicielle active visible.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte affiché, ni prompt, ni paramètre technique visible à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Transition visuelle épurée, affichant un fond abstrait et uni alors que la vidéo arrive sur ses derniers mots de conclusion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-YzFZLpuUr0g/frame_031_00-15-45.jpg" alt="Capture Segment #38" loading="lazy" onclick="openLightbox('screenshots/YT-YzFZLpuUr0g/frame_031_00-15-45.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:15:45</span>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
