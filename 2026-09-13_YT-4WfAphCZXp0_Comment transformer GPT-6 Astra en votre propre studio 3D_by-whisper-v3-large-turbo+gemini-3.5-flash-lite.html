@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment transformer GPT-6 Astra en votre propre studio 3D — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.2rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        .segment-screenshot {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            position: relative;
+        }
+        .segment-screenshot img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .segment-screenshot img:hover {
+            opacity: 0.92;
+            transform: scale(1.01);
+        }
+        .screenshot-caption {
+            display: block;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment transformer GPT-6 Astra en votre propre studio 3D</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-09-13</span>
+                <span class="badge">⏱️ 16m 05s</span>
+                <span class="badge">🆔 <code>4WfAphCZXp0</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=4WfAphCZXp0" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>La vidéo de Jack présente une avancée majeure dans le domaine de la création vidéo par intelligence artificielle en combinant un assistant conversationnel de nouvelle génération, **GPT-6 Astra**, directement avec un logiciel de modélisation 3D de référence, **Blender**, via un plugin développé par **Higgsfield**. Alors que la 3D a traditionnellement la réputation d'être un domaine technique et intimidant pour les non-initiés, ce flux de travail novateur permet à n'importe quel créateur de contourner la courbe d'apprentissage abrupte de Blender. En dialoguant simplement en langage naturel avec Astra, l'utilisateur peut importer des images de référence, générer des modèles 3D low-poly ou texturés, appliquer un squelettage (*rigging*), concevoir des mouvements de caméra sur mesure et animer des personnages ou des objets complexes sans aucune compétence technique préalable.</p><p>Cette méthode s'articule autour de la création d'une « prévis » (pré-visualisation) basique mais rigoureuse, exportée ensuite sous forme de fichier vidéo MP4 HD à 24 images par seconde. Ce fichier sert de guide cinématique et structurel indispensable pour les modèles de génération vidéo par IA de pointe, tels que **Seedance 2.5**. En injectant à la fois l'image du personnage et la séquence animée de Blender dans Seedance 2.5, le modèle text-to-video et image-to-video se voit imposer des contraintes strictes. Cela garantit une cohérence visuelle absolue, un contrôle précis des mouvements de caméra et des performances d'animation fluides, tout en éliminant les aléas des générations purement aléatoires.</p><p>Pour les créateurs de contenu, les artistes VFX et les agences publicitaires, ce pont entre la 3D programmatique par IA et les générateurs vidéo résout l'un des plus grands défis de l'industrie : l'imprévisibilité et le coût en crédits des générations IA répétitives. En validant et en peaufinant l'animation en amont dans un environnement 3D contrôlé, les créateurs économisent un temps et un budget précieux. De plus, ce flux de travail ouvre la voie à des applications commerciales haut de gamme, telles que la présentation de produits technologiques complexes (à l'instar d'un iPhone Fold pliable), où la modification d'un design de personnage ou de produit peut être opérée instantanément tout en conservant exactement la même chorégraphie de caméra et la même dynamique d'animation.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">GPT-6</span><span class="tool-tag">Higgsfield</span><span class="tool-tag">Seedance</span><span class="tool-tag">Seedance 2.5</span><span class="tool-tag">flux</span><span class="tool-tag">higgsfield</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Démocratisation de la 3D** : Ce flux de travail prouve qu&#x27;il n&#x27;est plus nécessaire de maîtriser des années de formation technique sur Blender pour concevoir des scènes 3D complexes, le langage naturel suffisant désormais à piloter l&#x27;outil.</span></li><li><span class="point-bullet">✦</span><span>Installation simplifiée** : L&#x27;intégration d&#x27;Astra dans Blender se résume à télécharger Blender, récupérer le plugin sur le site de Higgsfield, glisser-déposer le fichier ZIP dans l&#x27;application et se connecter.</span></li><li><span class="point-bullet">✦</span><span>Fenêtre de chat contextuelle** : Une fois le plugin actif, une interface conversationnelle apparaît en bas de l&#x27;écran de Blender, permettant de sélectionner le modèle IA (GPT-6 Astra) et de lui dicter les actions à réaliser.</span></li><li><span class="point-bullet">✦</span><span>Génération de modèles à partir d&#x27;images** : En glissant-déposant une image de personnage (comme un dinosaure), Astra est capable de l&#x27;analyser, d&#x27;identifier ses caractéristiques et de construire un modèle 3D modifiable correspondant.</span></li><li><span class="point-bullet">✦</span><span>Automatisation du *Rigging* (Squelettage)** : Astra prend en charge la création de structures squelettiques simplifiées indispensables pour animer des personnages, tout en nettoyant la scène des éléments inutiles (comme le cube par défaut).</span></li><li><span class="point-bullet">✦</span><span>Création de pré-visualisations (Prévis)** : L&#x27;objectif de la 3D par IA n&#x27;est pas de produire un rendu final photoréaliste, mais d&#x27;établir une base d&#x27;animation et de timing irréprochable avant de la passer à l&#x27;IA générative vidéo.</span></li><li><span class="point-bullet">✦</span><span>Maîtrise des mouvements de caméra** : Il est possible de dicter à Astra des chorégraphies de caméra complexes (plan large au démarrage, suivi d&#x27;un zoom rapide en contre-plongée lors d&#x27;un saut) avec un timing parfaitement synchronisé.</span></li><li><span class="point-bullet">✦</span><span>Alignement des spécifications techniques** : L&#x27;exportation de la séquence Blender doit impérativement correspondre aux standards du modèle vidéo cible, comme un format MP4 HD à 24 images par seconde.</span></li><li><span class="point-bullet">✦</span><span>Contrainte de modèle pour l&#x27;IA vidéo** : Fournir une référence de mouvement issue de Blender à Seedance 2.5 permet d&#x27;imposer des contraintes strictes au modèle, évitant ainsi les dérives visuelles et le gaspillage de crédits de génération.</span></li><li><span class="point-bullet">✦</span><span>Optimisation des coûts et des itérations** : Valider l&#x27;animation et le timing dans Blender avant la génération finale réduit drastiquement le gaspillage de ressources sur des essais infructueux.</span></li><li><span class="point-bullet">✦</span><span>Flexibilité de modification produit/personnage** : Ce workflow permet de modifier le design d&#x27;un personnage tout en conservant exactement la même animation de base en remplaçant simplement l&#x27;actif dans la scène 3D.</span></li><li><span class="point-bullet">✦</span><span>Applications publicitaires haut de gamme** : L&#x27;outil s&#x27;avère redoutable pour le design industriel et la publicité (comme la modélisation et le dépliage d&#x27;un smartphone futuriste à partir de plans schématiques), répondant parfaitement aux exigences professionnelles des clients.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:35</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">GPT-6 Astra vient de donner aux créateurs de vidéos par IA un avantage injuste, car vous pouvez désormais le relier à un programme 3D comme Blender. Décrivez simplement votre idée et regardez Astra lui donner vie. Et c&#x27;est dingue, car vous pouvez maintenant créer des mouvements de caméra personnalisés, des présentations de produits et même des animations de personnages sans aucune expérience de Blender. Dans la vidéo d&#x27;aujourd&#x27;hui, je vais vous montrer exactement comment configurer cela pour que vous puissiez pré-visualiser des scènes 3D et les utiliser pour contrôler vos vidéos par IA. Si vous aimez le contenu d&#x27;aujourd&#x27;hui, n&#x27;hésitez pas à lâcher un pouce bleu pour moi et à vous abonner. Allez, c&#x27;est parti...</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Fond graphique abstrait en dégradé bleu foncé et turquoise. En haut, du texte apparaît au centre. Au centre et en bas, deux fenêtres vidéo rectangulaires placées côte à côte sont reliées par une ligne turquoise horizontale avec un point lumineux en son milieu. La fenêtre de gauche affiche une modélisation 3D rudimentaire (low-poly) de cockpit de véhicule piloté par un personnage rose géométrique. La fenêtre de droite, encadrée d&#x27;une lueur turquoise, présente un rendu vidéo photoréaliste similaire mais détaillé, montrant un homme barbu pilotant le même type d&#x27;engin.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le texte incrusté à l&#x27;écran en haut se lit en blanc et passe au turquoise sur les mots &quot;character animation&quot; : &quot;and even character animation&quot;. Aucune interface logicielle complexe n&#x27;est visible directement, hormis les deux écrans de comparaison (prévisualisation 3D technique à gauche versus résultat vidéo IA finalisé à droite).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle comparative montrant l&#x27;évolution d&#x27;une scène 3D basique (type Blender low-poly) vers une vidéo ultra-réaliste générée par intelligence artificielle grâce au pont logiciel avec GPT-6 Astra.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_001_00-00-00.jpg" alt="Capture Segment #01" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_001_00-00-00.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:00:00</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:35 - 00:01:08</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">dedans. Pour ceux d&#x27;entre vous qui découvrent la chaîne, je m&#x27;appelle Jack et j&#x27;ai une formation en publicité. Je suis artiste d&#x27;effets visuels depuis plus de 10 ans maintenant, ayant travaillé avec des marques comme BMW, Adidas et Google. Malgré cette formation technique, le monde de la 3D m&#x27;a toujours semblé complètement intimidant. Et cela fait de moi le candidat idéal pour tester ce flux de travail, car je n&#x27;ai littéralement jamais utilisé Blender auparavant, comme vous pourrez le constater au cours de cette vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, plan moyen serré, enregistré depuis son studio personnel. Il porte une casquette à l&#x27;envers, des lunettes et un t-shirt blanc, assis devant un micro de studio professionnel noir et blanc. En arrière-plan, on aperçoit une étagère en bois garnie de plantes et d&#x27;objets décoratifs, ainsi qu&#x27;un mur habillé de panneaux acoustiques lamellés verticaux.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte incrusté à l&#x27;écran, aucun prompt ni paramètre technique affiché.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en face caméra, s&#x27;exprimant avec assurance tout en bougeant légèrement les mains de manière expressive près du micro pour illustrer son propos.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_002_00-00-35.jpg" alt="Capture Segment #02" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_002_00-00-35.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:00:35</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:08 - 00:01:42</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je mettrai un lien en bas dans la description vers Higgsfield, qui a eu la gentillesse de parrainer la vidéo d&#x27;aujourd&#x27;hui, et nous utiliserons leur plugin pour intégrer GPT-6 dans Blender. Jetons donc un œil à la configuration, heureusement c&#x27;est vraiment très simple. Tout d&#x27;abord, vous devez télécharger et installer Blender sur votre machine. La super nouvelle, c&#x27;est que c&#x27;est entièrement gratuit à télécharger et à utiliser. Ensuite, vous devez vous rendre sur higgsfieldai plugins slash blender et télécharger ce fichier également. Enfin, nous allons ouvrir Blender et glisser-déposer le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Le bureau d&#x27;un ordinateur macOS est affiché avec le navigateur web de Blender en arrière-plan, le dossier des téléchargements ouvert montrant un fichier DMG (`blender-5.2.1-macos-arm64.dmg`), une fenêtre d&#x27;installation macOS au premier plan montrant le glisser-déposer de l&#x27;application Blender vers le dossier Applications, et une incrustation vidéo (PiP) en bas à droite montrant Jack face caméra avec son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur le site web de Blender, on peut lire : &quot;Features&quot;, &quot;Download&quot;, &quot;Support&quot;, &quot;Get Involved&quot;, &quot;About&quot;, &quot;Jobs&quot;, &quot;Store&quot;, et le bouton &quot;Donate&quot;. Dans le dossier des téléchargements, une longue liste de fichiers d&#x27;images JPEG, WebP, MP4 et PNG est visible, incluant notamment &quot;blender-5.2.1-macos-arm64.dmg&quot; (taille : 346.3 Mo, type : Disk Image, date d&#x27;ajout : Today at 14:10). Sur la fenêtre d&#x27;installation macOS, le logo de Blender apparaît au centre avec l&#x27;icône de l&#x27;application Blender et une flèche pointant vers le dossier Applications.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris effectue un glisser-déposer de l&#x27;icône de l&#x27;application Blender vers le dossier Applications dans la fenêtre d&#x27;installation macOS ouverte par-dessus le dossier Téléchargements.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_003_00-01-08.jpg" alt="Capture Segment #03" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_003_00-01-08.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:01:08</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:42 - 00:02:02</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">fichier zip higgsfield depuis nos téléchargements dans l&#x27;application et il vous sera demandé de vous connecter à votre compte. Une fois connecté avec succès, vous verrez maintenant cette fenêtre de discussion en bas de votre Blender. Ici, vous pouvez choisir parmi une liste de chatbots IA à utiliser. Bien sûr, nous allons continuer et choisir GPT-6 Astra.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> L&#x27;interface affichée est celle du logiciel 3D Blender, complétée par une fenêtre de chat contextuelle et flottante de l&#x27;extension/application d&#x27;IA Higgsfield. En bas à droite de l&#x27;écran, on aperçoit une incrustation vidéo montrant le présentateur Jack (Jack Vs. AI) face caméra avec un micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans la fenêtre de l&#x27;application Higgsfield intégrée à Blender, on peut lire les éléments suivants : une barre de navigation supérieure avec les onglets &quot;Scene builder&quot;, &quot;3D Model&quot;, &quot;Character animation&quot;, &quot;Image&quot; et &quot;Video&quot;. Au centre, un champ de saisie de texte affiche le texte par défaut &quot;Describe the scene you imagine...&quot;. On aperçoit également un menu déroulant pour le choix du modèle (affichant &quot;Claude Opus 5&quot;), une zone de sélection d&#x27;espace de travail (&quot;Workspace&quot; avec les options &quot;Personal&quot; et &quot;My Team 5&quot;), un titre &quot;New chat&quot;, ainsi qu&#x27;un gros bouton vert &quot;GENERATE&quot;. La timeline classique de Blender est visible tout en bas.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole et clique sur le menu déroulant du nom d&#x27;équipe (&quot;My Team 5&quot;), faisant apparaître une petite fenêtre contextuelle listant les espaces de travail (&quot;Workspace&quot;) disponibles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_004_00-01-42.jpg" alt="Capture Segment #04" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_004_00-01-42.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:01:42</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:02 - 00:02:23</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce plugin permet à Astra de prendre le contrôle de Blender. Donc tout ce que vous avez à faire, c&#x27;est de taper votre prompt dans la fenêtre de chat et de regarder l&#x27;IA se mettre au travail. L&#x27;installation est donc vraiment aussi simple que ça. Commençons à créer. Je veux commencer par examiner un peu d&#x27;animation de personnages. Je vais aller glisser-déposer cette image que j&#x27;ai générée d&#x27;un personnage de dinosaure.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, vu en plan moyen serré, installé dans son studio personnel ou professionnel, équipé d&#x27;un micro de type podcast placé devant lui.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou paramètre technique visible à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en face caméra, en gesticulant légèrement des mains pour illustrer son propos.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_005_00-02-02.jpg" alt="Capture Segment #05" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_005_00-02-02.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:02:02</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:23 - 00:02:42</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et maintenant, je peux simplement demander à Astra de créer un modèle low-poly du dinosaure dans l&#x27;image et cliquer sur générer. Donc Astra va procéder à l&#x27;analyse de l&#x27;image. Il reconnaît notre personnage comme un dinosaure sarcelle et indique qu&#x27;il va construire un modèle modifiable correspondant à ses caractéristiques.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plan rapproché (medium shot) de Jack face caméra, portant une casquette à l&#x27;envers, des lunettes et un t-shirt blanc, s&#x27;exprimant devant son micro dans son studio de création.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou interface logicielle visible à l&#x27;écran dans ce plan, l&#x27;attention étant portée entièrement sur Jack qui s&#x27;adresse à son audience.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en gesticulant légèrement pour appuyer ses explications sur la fonctionnalité d&#x27;Astra qu&#x27;il vient de décrire.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_005_00-02-02.jpg" alt="Capture Segment #06" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_005_00-02-02.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:02:23</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:42 - 00:03:05</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Astra ajoute maintenant plus de détails au personnage. Bon, nous avons maintenant notre modèle. Donc, ensuite, je vais demander à Astra de squeletter le dinosaur, de le centrer dans la scène et de supprimer le cube parce que nous n&#x27;avez pas besoin de cette forme. Et si vous vous demandez ce qu&#x27;est le squelettage, c&#x27;est essentiellement la construction d&#x27;un squelette simplifié pour notre personnage afin de nous permettre de l&#x27;animer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface du logiciel Blender combinée avec une surcouche d&#x27;intelligence artificielle (Astra / GPT 4 Astra). On observe la vue 3D principale au centre, le panneau &quot;Scene Collection&quot; et les propriétés de transformation (Transform) sur le côté droit, la timeline de lecture en bas, et une bulle de dialogue/prompt superposée avec des onglets de génération (&quot;Scene builder&quot;, &quot;3D Model&quot;, &quot;Character animation&quot;, etc.). Une incrustation vidéo en bas à droite montre le présentateur (Jack) face caméra avec un micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans le panneau de prompt inférieur, on peut lire : &quot;@HERO_Dinosaur_Root Now rig the dinosaur, center him in the 3D scene&quot;. Au-dessus, une liste à puces décrivant le modèle 3D : &quot;Low-poly dinosaur with 1,550 mesh faces&quot;, &quot;Teal body, cream belly, coral plates, eyes, and claws&quot;, &quot;Editable parts in HERO_Dinosaur, parented under your existing Empty&quot;, &quot;Original reference and scene objects preserved&quot;, &quot;The model&#x27;s root is selected. The project remains unsaved.&quot;, &quot;Low-poly dinosaur preview&quot;. Un bouton vert &quot;GENERATE&quot; est visible à droite de la zone de texte. Le modèle 3D d&#x27;un dinosaure stylisé et d&#x27;un cube gris est affiché dans l&#x27;espace 3D.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole la zone de texte du prompt où l&#x27;instruction textuelle est en train d&#x27;être saisie ou vient d&#x27;être écrite pour demander à l&#x27;IA de poser l&#x27;armature (rig) sur le dinosaure et de le repositionner.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_006_00-02-42.jpg" alt="Capture Segment #07" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_006_00-02-42.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:02:42</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:05 - 00:03:23</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Quelques minutes plus tard, nous avons maintenant notre structure de rigging. Passons donc au travail sur la description de l&#x27;animation. Et je veux commencer par quelque chose de vraiment simple. Je vais juste demander à Astra d&#x27;animer notre dinosaure en train de courir sur place. Et juste comme ça, nous avons notre personnage doté d&#x27;une structure et animé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Le logiciel de modélisation 3D Blender, avec une interface de dialogue superposée (type chatbot d&#x27;IA, &quot;Astra&quot;) et une incrustation vidéo (PiP) de Jack face caméra dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Au centre, une fenêtre de dialogue d&#x27;IA avec des lignes de texte décrivant les modifications du modèle 3D et le prompt : &quot;@RIG_Dinosaur - Nice, now let&#x27;s animate a walk cycle, actually let&#x27;s have the dinosaur running on the spot, I want the animation style to have lots of character and feel fluid, like a premium Pixar animation style&quot;. Un gros bouton jaune &quot;GENERATE&quot; est visible. À droite, le panneau de configuration Blender (Scene Collection, Transform, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Le modèle 3D du dinosaure cyan et rouge est affiché dans Blender avec ses os de rigging apparents (les axes colorés). Le curseur de la souris survole ou s&#x27;apprête à cliquer sur le bouton de génération du prompt de l&#x27;assistant IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_006_00-02-42.jpg" alt="Capture Segment #08" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_006_00-02-42.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:03:05</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:24 - 00:03:45</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous sommes essentiellement en train de construire ce que l&#x27;on appelle dans l&#x27;industrie une prévis. Ce n&#x27;est pas notre rendu final, ne vous inquiétez pas. Le plan est de prendre cette animation et de l&#x27;appliquer à notre image du personnage de dinosaure dans une petite minute. Maintenant, comme nous avons intégré Astra dans Blender, nous sommes capables d&#x27;avoir cette conversation aller-retour.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Un affichage en plein écran montrant une image fixe en 3D d&#x27;un petit dinosaure bleu potelé aux plaques dorsales orange, avec un insert vidéo miniature en bas à droite (picture-in-picture) montrant Jack face caméra en train de parler devant un micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> L&#x27;image principale affiche un personnage de dinosaure mignon au style de dessin animé 3D texturé, posé sur un sol réfléchissant avec un fond bleu dégradé. L&#x27;insert vidéo montre Jack de profil-trois quarts, portant une casquette et des lunettes, parlant dans un microphone de studio.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;écran présente une image fixe du personnage 3D pendant que la voix off de Jack commente le processus de prévisualisation et d&#x27;intégration d&#x27;Astra dans Blender.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_007_00-03-24.jpg" alt="Capture Segment #09" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_007_00-03-24.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:03:24</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:45 - 00:04:04</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, allons-y pour rendre l&#x27;animation légèrement plus complexe. Je veux demander à ce que le dinosaure court plus vite. Ensuite, il s&#x27;arrête et saute, puis s&#x27;immobilise complètement. OK, maintenant nous avons notre animation légèrement plus complexe. Jetons donc un œil à l&#x27;animation de notre caméra.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de création 3D (semblable à Blender) intégrant des panneaux d&#x27;IA générative et de rigging de personnages, avec en incrustation vidéo (PiP) Jack face caméra dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Au centre, la vue 3D d&#x27;un dinosaure low-poly. Sous la scène 3D, une boîte de dialogue contextuelle affiche des instructions de prompt textuel (« Let&#x27;s have him running faster, then he stops and jumps, and comes to a standstill ») et des consignes détaillées (« Springy compression, push-offs, and airborne strides », « Exaggerated arm swings and shoulder counter-rotation », etc.). Sur la droite, l&#x27;arborescence de la scène et le panneau des transformations. En bas, une timeline d&#x27;animation.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole la zone de texte du prompt d&#x27;animation sous le modèle 3D du dinosaure.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_008_00-03-45.jpg" alt="Capture Segment #10" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_008_00-03-45.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:03:45</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:04 - 00:04:27</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je veux commencer par un plan large lorsque notre dinosaure court, puis effectuer un zoom rapide en contre-plongée pour le moment où il saute. Ainsi, nous sommes sous lui lorsqu&#x27;il atterrit. Et c&#x27;est ce qui est génial avec Blender. Nous sommes capables d&#x27;animer nos personnages et nos mouvements de caméra. Donc, juste comme ça, nous avons notre caméra animée et cela fonctionne parfaitement en termes de timing.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio personnel, équipé d&#x27;un micro de podcast et portant une casquette et des lunettes. L&#x27;arrière-plan montre une étagère décorée et un fauteuil avec un coussin orange.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou paramètre technique affiché à l&#x27;écran dans ce plan, l&#x27;intervention étant purement verbale et explicative.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack parle face caméra en gesticulant légèrement pour expliquer sa démarche artistique et technique concernant l&#x27;animation sous Blender.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_009_00-04-04.jpg" alt="Capture Segment #11" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_009_00-04-04.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:04:04</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:27 - 00:04:50</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je suis content, donc je vais maintenant demander à Astra d&#x27;exporter cette séquence en MP4 HD à 24 images par seconde. Et c&#x27;est utile parce que la fréquence d&#x27;images de notre export Blender va correspondre au modèle de vidéo par IA que nous utiliserons dans une minute. Maintenant, sur la page d&#x27;accueil de Higgsfield AI, vous allez survoler l&#x27;onglet vidéo et sélectionner C-Dance 2.5.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, assis dans une pièce au décor chaleureux avec une étagère éclairée en arrière-plan et un coussin orange sur un fauteuil, parlant directement dans un microphone blanc monté sur un bras articulé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou paramètre technique affiché à l&#x27;écran dans ce plan, Jack porte une casquette à l&#x27;envers et des lunettes rondes.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement au spectateur face caméra en bougeant légèrement les mains et en parlant.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_009_00-04-04.jpg" alt="Capture Segment #12" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_009_00-04-04.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:04:27</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:50 - 00:05:23</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je peux maintenant ajouter nos références. Il y a donc l&#x27;image de notre personnage de dinosaure et notre exportation animée low poly de Blender. Et pour le prompt, je vais simplement dire d&#x27;appliquer la performance et les mouvements de caméra de @Video 1. Nous étiquetons donc notre référence Blender ici sur le personnage dans @Image 1. J&#x27;ai également ajouté une brève description de la scène, incluant le mouvement de caméra. Et si vous voulez essayer mes prompts par vous-mêmes, vous les trouverez tous disponibles pour</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;une application de génération vidéo par IA, affichant des zones de sélection de fichiers de référence, une boîte de saisie de prompt, des paramètres de modèle et de format, ainsi que des vignettes multimédias. En bas à droite, une incrustation vidéo montre le présentateur (Jack) filmé face caméra avec un micro et une casquette. Sur le côté droit de l&#x27;interface principale, un extrait vidéo en stop-motion montre un personnage en argile habillé en costume-cravate tenant une mallette.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans la zone supérieure de l&#x27;interface, trois emplacements de référence : un vide avec une icône de plus, le deuxième contenant l&#x27;image d&#x27;un dinosaure bleu (@Image 1), et le troisième contenant une animation low-poly 3D (@Video 1). Dans la boîte de texte du prompt : &quot;Apply the performance and camera moves from @Video 1 to the character in @Image 1. The scene starts with a wide shot as the monster walks in place, then a crash zoom toward his feet, as the monster jumps into the air and crashes back down. The scene ends with that same&quot;. Sous le prompt, deux boutons d&#x27;options : &quot;@ Elements&quot; et un contrôle audio réglé sur &quot;On&quot;. Plus bas, le sélecteur de modèle indique &quot;Seedance 2.5&quot;. Enfin, dans la barre de paramètres inférieure : durée &quot;6s&quot;, format d&#x27;image &quot;16:9&quot;, et résolution &quot;1080p&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre comment ajouter les références visuelles (l&#x27;image fixe du dinosaure et l&#x27;export 3D animé de Blender) dans l&#x27;interface de l&#x27;outil d&#x27;IA, tout en rédigeant le prompt textuel combinant ces éléments pour piloter la génération finale.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_010_00-04-50.jpg" alt="Capture Segment #13" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_010_00-04-50.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:04:50</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:23 - 00:06:00</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Entièrement gratuit sur ma communauté School, le lien est juste en dessous dans la description également. Bon, je suis satisfait des paramètres, on peut donc lancer la génération et jeter un œil au résultat. C&#x27;est parti, Seedance 2.5 a pris notre animation Blender et l&#x27;a appliquée à l&#x27;image de notre personnage. Ce qui est génial, c&#x27;est que cela m&#x27;a permis de vraiment peaufiner l&#x27;animation lors de l&#x27;étape précédente avant de la passer dans Seedance 2.5. Ce qui signifie que l&#x27;on peut réduire nos coûts en évitant de gaspiller des</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio, assis dans un fauteuil noir avec un t-shirt blanc, une casquette et des lunettes. Un microphone est placé devant lui. En arrière-plan, on aperçoit une étagère avec des objets décoratifs, une plante verte et une lampe allumée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou paramètre technique affiché à l&#x27;écran dans ce segment (plan de coupe sur le présentateur).</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en parlant de l&#x27;outil Seedance 2.5 et de l&#x27;optimisation des coûts d&#x27;animation, tout en bougeant légèrement la tête et les mains pour appuyer ses propos.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_011_00-05-23.jpg" alt="Capture Segment #14" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_011_00-05-23.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:05:23</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:00 - 00:06:37</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">plein de crédits sur des générations Seedance qui pourraient ne pas nous donner ce que nous cherchons. Ce qui est également très utile, c&#x27;est que nous pouvons apporter des modifications à notre design de personnage tout en utilisant notre prévisualisation Blender pour garantir que l&#x27;animation reste la même. Tout ce que nous avons à faire est de remplacer par cette nouvelle version de notre personnage et de cliquer sur générer, et nous obtenons un résultat comme celui-ci. Si vous n&#x27;utilisez pas de référence de mouvement comme notre exportation Blender, toutes vos générations C-dance risquent d&#x27;être légèrement différentes. Mais</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre de l&#x27;outil de génération vidéo par IA &quot;Seedance 2.5&quot;, affichant un panneau de configuration à gauche avec des onglets de paramètres (&quot;References&quot;, &quot;Extend Video&quot;), une zone de texte pour le prompt, des options de sélection de modèle, des réglages de durée et de résolution, ainsi qu&#x27;une fenêtre contextuelle centrale de sélection d&#x27;images générées (&quot;Image Generations&quot;, &quot;Video Generations&quot;, &quot;Audio Generations&quot;, &quot;Liked&quot;) et une vue miniature en bas à droite montrant le présentateur Jack face caméra avec son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans la zone dédiée : &quot;Apply the performance and camera moves from @Video 1 to the character in @Image 1. The scene starts with a wide shot as the monster walks in place, then a crash zoom toward his feet, as the monster jumps into the air and crashes back down. The scene ends with that same view at the low angle.&quot; Paramètres du modèle : &quot;Seedance 2.5 LV4&quot;, durée de &quot;6s&quot;, format d&#x27;image &quot;16:9&quot;, résolution &quot;1080p&quot;, réglage Bitrate sur &quot;High&quot;, et bouton jaune de génération affichant un coût de &quot;54&quot; crédits.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface de Seedance pour remplacer l&#x27;ancienne version du personnage par un nouveau design (un petit monstre jaune semblable à un dinosaure) tout en conservant la référence de mouvement de la prévisualisation Blender, puis s&#x27;apprête à lancer la génération avec le bouton &quot;Generate&quot; pour maintenir une animation cohérente.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_012_00-06-00.jpg" alt="Capture Segment #15" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_012_00-06-00.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:06:00</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:37 - 00:06:58</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce flux de travail impose une contrainte au modèle, vous donnant plus de contrôle en tant qu&#x27;utilisateur. Et je vois cela comme étant vraiment utile pour le travail avec des clients également. Disons que votre client adore l&#x27;animation d&#x27;un plan particulier mais souhaite apporter un changement au personnage. Ce flux de travail pourrait accomplir cela.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, installé dans son studio de création habituel avec éclairage d&#x27;ambiance chaleureux et étagère en arrière-plan.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ni prompt technique affiché à l&#x27;écran dans ce plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en face caméra, parlant devant son micro principal et gesticulant légèrement pour appuyer ses explications.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_013_00-06-37.jpg" alt="Capture Segment #16" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_013_00-06-37.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:06:37</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:58 - 00:07:34</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ensuite, je veux examiner un cas d&#x27;usage orienté vers la publicité. J&#x27;ai donc une nouvelle scène Blender vide et cette fois, je vais glisser-déposer cette image, qui est essentiellement un plan schématique de l&#x27;iPhone Fold, ou du moins ce à quoi il est censé ressembler selon les rumeurs. Au moment où j&#x27;enregistre ceci, Apple n&#x27;a pas encore révélé le téléphone, mais ils sont sur le point de le faire. Vous pourrez donc me dire dans les commentaires à quel point les fuites étaient réellement exactes. Je vais demander à Astra d&#x27;utiliser le plan pour construire un modèle précis de l&#x27;iPhone Fold et de lui donner également la possibilité d&#x27;effectuer des recherches supplémentaires.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio, assis devant un micro de type podcast, avec une étagère en arrière-plan éclairée par une lumière d&#x27;ambiance et une plante verte.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou paramètre technique visible à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en gesticulant légèrement des mains pour illustrer ses propos, tout en parlant de son projet de modélisation 3D sur Blender.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_013_00-06-37.jpg" alt="Capture Segment #17" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_013_00-06-37.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:06:58</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:34 - 00:08:05</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ressent le besoin de le faire. Voyons donc si elle peut prendre ces dessins et mesures et construire un modèle réaliste de l&#x27;appareil. D&#x27;accord, on avance un peu là. C&#x27;est un peu basique, mais ça a l&#x27;air plutôt bien. Et maintenant, Astra pousse cela plus loin car elle a réellement ajouté des textures à l&#x27;appareil. Nous avons donc de la lumière qui frappe les bords et des reflets qui se comportent de manière réaliste sur les deux écrans. Et Astra a également ajouté les boutons latéraux, les haut-parleurs et le port de charge.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de modélisation 3D (Blender), avec une interface de génération par IA intégrée (&quot;Scene builder&quot; avec invite de commande Astra) et une incrustation vidéo montrant Jack face caméra en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de l&#x27;interface du générateur : &quot;I&#x27;d like you to use...&quot;, consignes textuelles avec puces (&quot;Folding animation; frame 1 open, 48 halfway, 68 closed.&quot;, &quot;Original blueprint and existing scene objects preserved.&quot;), avertissement textuel sur le concept CAO, et champ de saisie avec le modèle &quot;GPT-4 Astra&quot;. Panneau latéral de Blender affichant l&#x27;arborescence de la scène (&quot;iPhone Fold&quot;) et les paramètres de transformation (Location, Rotation, Scale).</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage à l&#x27;écran du modèle 3D texturé d&#x27;un smartphone pliable en cours de modélisation, tandis que Jack apparaît en bas à droite, observant attentivement le résultat s&#x27;afficher.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_014_00-07-34.jpg" alt="Capture Segment #18" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_014_00-07-34.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:07:34</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:05 - 00:08:29</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">À part le logo Apple lui-même, il a vraiment fait du très bon travail. Donc maintenant, je vais demander à Astra de gréer l&#x27;appareil pour que nous puissions réellement le faire plier et déplier de manière réaliste afin que nous puissions l&#x27;animer. OK, tout cela a donc été gréé selon Astra. Je vais donc maintenant envoyer ce brief pour que nous puissions réellement construire notre présentation de produit.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;un logiciel de création 3D et d&#x27;animation, comprenant un panneau supérieur d&#x27;outils avec les onglets &quot;Scene builder&quot;, &quot;3D Model&quot;, &quot;Character animation&quot;, &quot;Image&quot;, &quot;Video&quot;, &quot;Camera&quot;, et &quot;Assets&quot;. Une grande fenêtre contextuelle de dialogue est ouverte au centre, avec une barre de prompt en bas comportant une sélection du modèle &quot;GPT 6 Astra&quot;, un bouton &quot;+&quot; à gauche et un gros bouton rectangulaire &quot;STOP&quot; à droite. Une timeline d&#x27;animation avec des images clés est visible tout en bas de l&#x27;écran, et une vignette vidéo incrustée en bas à droite montre le présentateur Jack en train de parler.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans la fenêtre contextuelle de discussion, le texte affiché indique : &quot;The project remains unsaved as &#x27;Untitled&#x27; ; a recovery checkpoint was created. View the model preview&quot;. Le message utilisateur est : &quot;This looks great, can you rig it so that we can make it fold up and behave how the device is supposed to during folding and opening?&quot;. Des indications de statut affichent &quot;Custom mcp.&quot; et un témoin jaune &quot;Working for 7s • Custom mcp&quot;. Dans la zone de saisie du prompt, on lit &quot;@RIG_IPhoneFold&quot; suivi du texte indicatif &quot;Describe the scene you imagine...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris (représenté par une flèche) se trouve au milieu de l&#x27;écran par-dessus l&#x27;interface du générateur d&#x27;IA. Le système est en train de traiter une requête de rigging 3D avec Astra, comme l&#x27;indique le compteur de temps (Working for 7s) et le bouton de génération transformé en &quot;STOP&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_015_00-08-05.jpg" alt="Capture Segment #19" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_015_00-08-05.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:08:05</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:29 - 00:08:56</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, les téléphones pliables peuvent être un domaine avec lequel les modèles vidéo par IA ont réellement du mal, car la conception des appareils est en réalité assez complexe. Bien sûr, ils possèdent un écran extérieur et un écran intérieur, et le mécanisme de pliage doit réellement avoir du sens. Même certains des meilleurs modèles vidéo par IA sur le marché peuvent s&#x27;embrouiller quant à ce qui devrait se trouver où sur le téléphone, surtout si nous leur demandons de le faire plier et déplier.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de modélisation 3D (Blender) avec une vue de modélisation 3D au centre, un panneau &quot;Transform&quot; et &quot;Scene Collection&quot; sur la droite, une barre d&#x27;outils à gauche, et une timeline en bas. Une fenêtre incrustée (type assistant ou IA intégrée &quot;Scene builder&quot; avec le modèle GPT 4 Astra) est visible en bas à gauche de la zone de travail. Une petite fenêtre vidéo avec Jack face caméra et son micro apparaît en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans la fenêtre de dialogue &quot;Scene builder&quot; : un prompt utilisateur rédigé en anglais demandant de créer un &quot;clean simple animatic, in the style of a premium Apple style product showcase...&quot;. Le modèle d&#x27;IA affiche les statuts &quot;Reading&quot;, &quot;Working for 10s&quot;, &quot;Thinking&quot;. Des balises contextuelles telles que &quot;@RIG_iPhoneFold&quot; sont intégrées. Sur le panneau latéral droit, des paramètres de transformation 3D (Location, Rotation, Scale en XYZ Euler) et l&#x27;arborescence de la scène (&quot;Collection&quot;, &quot;Camera&quot;, &quot;Empty&quot;, &quot;Light&quot;, &quot;iPhone Fold&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le logiciel 3D affiche un modèle de smartphone pliable semi-ouvert au centre de la grille de visualisation. Le curseur de la souris se trouve sur le plan de travail 3D tandis que le panneau de l&#x27;assistant IA en bas à gauche traite une requête de génération d&#x27;animation textuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_016_00-08-29.jpg" alt="Capture Segment #20" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_016_00-08-29.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:08:29</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:56 - 00:09:22</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc la théorie est qu&#x27;en construisant une prévis, nous pouvons donner à l&#x27;IA une compréhension claire du design et de la fonction de l&#x27;appareil afin d&#x27;éviter tout problème. C&#x27;est donc ce qu&#x27;on a obtenu en retour et ça a l&#x27;air plutôt bien, mais poussons le processus un peu plus loin. Je vais demander à Astra de conserver notre animation existante, mais d&#x27;en rajouter un bout à la fin où l&#x27;appareil se replie à nouveau et se rapproche de l&#x27;objectif.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de modélisation 3D (Blender) affiché en arrière-plan avec une hiérarchie de scène et des panneaux de transformation à droite. Au premier plan, une fenêtre de lecteur multimédia (QuickTime Player) affiche un fichier vidéo nommé « IPhoneFold_Showcase_Animatic.mp4 ». En bas à droite, une petite incrustation vidéo montre le présentateur (Jack) avec un casque et un micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le fichier vidéo ouvert se nomme « IPhoneFold_Showcase_Animatic.mp4 ». L&#x27;objet 3D affiché à l&#x27;écran est un concept d&#x27;iPhone pliable (iPhone Fold) de couleur grise avec le logo Apple à l&#x27;arrière.</p>
+                        <p><strong>Action / Démonstration :</strong> Le lecteur multimédia joue une animation 3D montrant l&#x27;arrière d&#x27;un iPhone pliable gris. L&#x27;interface Blender est visible en arrière-plan, tandis que Jack est incrusté en bas à droite, regardant attentivement l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_017_00-08-56.jpg" alt="Capture Segment #21" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_017_00-08-56.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:08:56</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:22 - 00:09:49</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">D&#x27;accord, je pense que c&#x27;est ce qui manquait. Donc, ça a l&#x27;air plutôt bien maintenant. Retournons sur Higgsfield, nous pouvons maintenant générer notre vidéo finale. Sélectionnons donc notre export de fusion et cette maquette de produit comme références. Et nous pouvons utiliser un prompt très similaire à notre première génération ici. Disons donc : applique l&#x27;animation du produit et les mouvements de caméra de @video 1 au produit sur @image 1.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> L&#x27;interface affichée est celle de la plateforme web de génération vidéo &quot;Higgsfield AI&quot;, avec un panneau latéral de configuration à gauche et une grande fenêtre contextuelle (pop-up) ouverte au centre montrant des onglets de médias (&quot;Image Generations&quot;, &quot;Video Generations&quot;, &quot;Audio Generations&quot;, &quot;Liked&quot;). En bas à droite, une petite vignette vidéo montre le présentateur Jack en train de parler devant son microphone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur le panneau latéral gauche, on peut lire le modèle sélectionné (&quot;Seedance 2.5&quot;), les paramètres techniques réglés sur 5s, 16:9, 1080p, ainsi qu&#x27;un bouton jaune de génération affichant un coût de 270 crédits. La fenêtre pop-up centrale présente plusieurs vignettes d&#x27;images et de modèles 3D. Le fil d&#x27;actualité ou de droite montre le modèle Seedance 2.5 avec le prompt textuel suivant : &quot;Apply the performance and camera moves from @video 1 to the character in @image 1. The scene starts with a wide shot as the monster walks in place, then a crash zoom toward his feet...&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur navigue dans la fenêtre contextuelle au centre de l&#x27;écran pour sélectionner des images de référence (des maquettes de tablettes électroniques et des personnages 3D) en vue de les appliquer dans le générateur de vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_018_00-09-22.jpg" alt="Capture Segment #22" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_018_00-09-22.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:09:22</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:49 - 00:10:23</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Encore une fois, je vais simplement décrire un peu plus la scène pour que C-Dance ait un peu plus de contexte. Nous devons augmenter la durée car cette scène est plus longue que la première. Nous pouvons cliquer sur générer et examiner le résultat. Super. Donc, une fois de plus, C-Dance a appliqué notre référence de pellicule photo à l&#x27;animation Blender.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Capture d&#x27;écran ou aperçu vidéo sur fond bleu dégradé avec un encadrement lumineux turquoise, présentant au centre l&#x27;image d&#x27;un smartphone gris plié doté d&#x27;un double capteur photo horizontal et du logo Apple. Un médaillon secondaire en haut à gauche reprend la même vue du téléphone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> L&#x27;image montre un smartphone gris au design pliable fermé, arborant la pomme Apple au dos ainsi qu&#x27;un bloc optique horizontal à double objectif et flash, sur un fond sombre.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;écran présente un plan fixe du smartphone replié, tandis que le narrateur décrit l&#x27;ajustement de la durée de génération et l&#x27;application d&#x27;une référence visuelle sur une animation Blender via l&#x27;outil C-Dance.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_019_00-09-49.jpg" alt="Capture Segment #23" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_019_00-09-49.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:09:49</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:23 - 00:10:56</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Dans l&#x27;industrie des effets visuels, nous pourrions décrire cela comme une passe de beauté, et c&#x27;est un peu ce qui se passe ici. C&#x27;est pourquoi le logo Apple, par exemple, a été corrigé, et nous avons maintenant un fond d&#x27;écran sur l&#x27;écran de l&#x27;appareil. Je vois ce flux de travail comme vraiment utile si vous utilisez l&#x27;IA pour créer une présentation de produit pour vous-même ou votre client, et que vous avez besoin que la génération vidéo corresponde vraiment avec précision à ce à quoi ressemble le produit dans la vraie vie. Si nous n&#x27;avions pas notre exportation Blender, l&#x27;IA pourrait</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, plan moyen serré, dans son studio de création habituel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ni prompt visible à l&#x27;écran. Décor en arrière-plan avec étagères, plantes et éclairage d&#x27;ambiance tamisé.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en parlant dans un microphone de studio, en gesticulant légèrement pour appuyer ses explications sur le flux de travail de production.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_020_00-10-23.jpg" alt="Capture Segment #24" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_020_00-10-23.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:10:23</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:56 - 00:11:29</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">commence à halluciner et à ajouter des boutons supplémentaires qui ne sont pas censés être là. Donc ouais, je vois pas mal d&#x27;applications utiles pour ça. Ensuite, je veux me concentrer un peu plus sur les mouvements de caméra. On va donc retourner dans Blender et cette fois, je veux déposer cette image de moi pilotant un vaisseau et je vais demander à Astra de créer un rendu low poly du vaisseau spatial, de la vitre du cockpit et du pilote. On a donc ce modèle très basique pour commencer. Maintenant, Blender est entré et a ajouté quelques</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Le logiciel de modélisation 3D Blender est affiché en arrière-plan, occupant la plus grande partie de l&#x27;écran. Une fenêtre de gestionnaire de fichiers du système d&#x27;exploitation (Finder macOS) est ouverte par-dessus Blender, affichant un dossier nommé &quot;Image Gen&quot;. En bas à droite, une incrustation vidéo (PiP) montre Jack face caméra devant son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans la fenêtre de fichiers, on peut lire les dossiers de navigation (Recents, Shared, Applications, Desktop, Documents, Downloads, Jack Vs AI, 25.0, In Product..., How to Cr..., [flouté], GPT 6 AS...) et un fichier image listé sous le nom &quot;hf_20260910_062559_d47e8a...&quot;. Dans l&#x27;espace de travail Blender, une image de prévisualisation représentant Jack pilotant un vaisseau futuriste est affichée, ainsi qu&#x27;une barre de saisie de prompt contextuelle en bas contenant le texte &quot;Describe the scene you imagine...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris déplace et glisse une image depuis la fenêtre du Finder vers l&#x27;espace de travail 3D de Blender pour l&#x27;importer en tant qu&#x27;élément vide (&quot;Add Empty Image/Drop Image&quot;).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_021_00-10-56.jpg" alt="Capture Segment #25" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_021_00-10-56.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:10:56</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:29 - 00:11:50</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des couleurs et des détails supplémentaires également. Super. Pour le mouvement de caméra, je veux une orbite qui fait le tour du vaisseau pendant qu&#x27;il vole, puis qui traverse la vitre du cockpit et se termine sur un gros plan de mon visage. Envoyons donc cela. Super. Nous avons donc l&#x27;orbite de la caméra.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface du logiciel de modélisation 3D Blender, avec l&#x27;outillage de scène et l&#x27;arborescence des calques sur le panneau de droite. Au centre, superposition d&#x27;une interface de génération cloud / LLM (style Scene builder) dotée d&#x27;une zone de texte et d&#x27;un bouton de génération vert. En bas à droite, incrustation vidéo montrant Jack face caméra avec son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans la fenêtre de dialogue &quot;Scene builder&quot; : instructions textuelles décrivant le pilote (&quot;Pilot: pink.&quot;), l&#x27;apparence du verre (&quot;Glass: original colour and transparency unchanged.&quot;), et les détails de conception (&quot;Details: angular cockpit front armour, framed footwell window, bumper, vents, sensor pods, bolts, engine bands, and rear roll cage.&quot;). Le modèle sélectionné en bas à gauche est &quot;GPT 4 Astra&quot;. Le bouton à droite indique &quot;GENERATE&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Manipulation de l&#x27;interface 3D et des paramètres de la scène pour configurer le rendu visuel et préparer le mouvement de caméra orbital avant le lancement de la génération vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_022_00-11-29.jpg" alt="Capture Segment #26" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_022_00-11-29.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:11:29</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:50 - 00:12:22</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le vaisseau subit en quelque sorte des poches de turbulences et nous passons à travers la vitre pour terminer sur ce plan bien cadré de mon visage. Alors, sur Higgs field, ajoutons notre exportation Blender comme référence, une planche de personnages de moi-même et l&#x27;image de moi dans le vaisseau. Et la planche de personnages est importante ici, car sans elle, l&#x27;IA ne sait à quoi je ressemble que sous l&#x27;angle de moi pilotant le vaisseau. Cela va donner à C-Dance les informations dont il a besoin pour me recréer avec précision.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> L&#x27;interface affichée est celle de la plateforme web de génération vidéo « Higgsfield » (ou « Seance » / « Seedance 2.5 »). L&#x27;écran est divisé en plusieurs panneaux : un panneau latéral gauche pour les paramètres de génération vidéo et les références, une grande fenêtre contextuelle (pop-up) centrale affichant une galerie d&#x27;images et de vidéos générées avec des onglets (« Image Generations », « Video Generations », « Audio Generations », « Liked »), et un panneau latéral droit affichant les détails d&#x27;un projet. En bas à droite, on aperçoit une incrustation vidéo (webcam) montrant Jack en train de parler devant son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le panneau de gauche affiche les sections « References », « Extend Video », un champ de prompt « Describe the visual change you want... » avec les options « @Elements » et « 🔊 On ». Les paramètres du modèle « Seedance 2.5 » incluent : une durée de 15s, un format d&#x27;image de 16:9, une résolution de 1080p, et un mode Bitrate réglé sur « High ». Le bouton de génération jaune indique « Generate ✨ 240 135 ». Dans le panneau contextuel central, plusieurs vignettes de médias sont visibles, notamment un personnage en armure futuriste, un couloir éclairé en rouge, et un personnage de dos.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris (flèche blanche) se déplace au sein de la fenêtre contextuelle centrale et survole la grille des médias générés pour sélectionner des images de référence à importer dans le projet Seedance 2.5.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_023_00-11-50.jpg" alt="Capture Segment #27" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_023_00-11-50.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:11:50</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:22 - 00:12:55</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En tant que personnage sous n&#x27;importe quel angle. Pour le prompt, c&#x27;est très similaire à ce que nous avons utilisé tout au long du projet mais j&#x27;ai juste ajouté un peu plus de détails ici et là. Nous disons à C-Dance de faire correspondre le personnage à ma feuille de référence. Nous décrivons le mouvement de caméra, un peu de ma performance, et davantage de détails sur la façon dont je veux que le vaisseau bouge, simplement parce que j&#x27;ai une vision vraiment claire en tête. Avec ça, tout est configuré, alors cliquons sur générer, et nous pourrons jeter un œil aux résultats.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface sombre d&#x27;une application de génération vidéo par IA (Seedance 2.5), affichée en plein écran avec une vignette incrustée montrant Jack face caméra dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On aperçoit des vignettes d&#x27;images de référence en haut, un champ de prompt textuel contenant la description du mouvement du vaisseau (&quot;The spacecraft bobs up and down...&quot;), des boutons de configuration tels que &quot;@ Elements&quot;, un paramètre audio sur &quot;On&quot;, un menu déroulant du modèle &quot;Seedance 2.5&quot;, ainsi que des paramètres de durée (15s), de format (16:9) et de résolution (1080p).</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris (représenté par une icône de main/pointeur) survole la zone de texte du prompt pour effectuer des ajustements ou préparer le lancement de la génération vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_024_00-12-22.jpg" alt="Capture Segment #28" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_024_00-12-22.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:12:22</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:10 - 00:13:48</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">D&#x27;accord, c&#x27;est plutôt une belle génération. J&#x27;ai l&#x27;impression que ces secousses de turbulences ne se comportent pas tout à fait comme je l&#x27;imaginais, mais cette dernière secousse est en fait vraiment sympa. Et le déplacement effectif à travers la couche de verre fonctionne très bien. Et comme je l&#x27;espérais, nous avons un très bon niveau de détail textuel sur ma peau. Nous avons ces cheveux rebelles, les perles de sueur, et ce sont toutes ces imperfections qui aident à ancrer la vidéo, à la faire paraître un peu plus réaliste. Maintenant, pour finir, parlons de mes impressions honnêtes après avoir utilisé ce flux de travail pour la première fois. Le premier point</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Capture vidéo principale montrant une scène générée par IA encadrée de bleu. Dans le coin supérieur gauche, un petit insert circulaire montre une maquette ou un storyboard 3D rose d&#x27;un cockpit. Dans le coin inférieur droit, une petite fenêtre incrustée montre Jack en gros plan face caméra avec un micro professionnel et une casquette.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Génération vidéo cinématographique montrant un homme barbu avec des lunettes (Jack) aux prises avec de fortes secousses dans le cockpit d&#x27;un avion ou d&#x27;un vaisseau spatial, l&#x27;air tendu et concentré, avec des détails texturaux prononcés sur sa peau et ses vêtements.</p>
+                        <p><strong>Action / Démonstration :</strong> Lecture en cours d&#x27;une vidéo générée par IA montrant un plan subjectif ou en caméra embarquée dynamique à l&#x27;intérieur d&#x27;un cockpit, illustrant les turbulences et le passage à travers une vitre, tandis que le créateur commente la qualité du résultat.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_025_00-13-10.jpg" alt="Capture Segment #29" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_025_00-13-10.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:13:10</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:48 - 00:14:23</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce que je veux dire, c&#x27;est que vos exportations low poly depuis Blender vont avoir une influence profonde sur vos générations C-Dance. C&#x27;est évidemment ce à quoi vous vous attendriez, sinon quel serait l&#x27;intérêt même de faire ces générations en premier lieu, n&#x27;est-ce pas ? Mais en pratique, je pense que c&#x27;est à la fois bon et mauvais. Vous remarquerez avec mes exemples que l&#x27;animation est généralement assez basique et n&#x27;a parfois pas ce genre de fluidité ou de glissement haut de gamme auquel vous pourriez vous attendre. J&#x27;imagine que si vous passiez un peu plus de temps à avoir cette longue conversation de va-et-vient avec Astra,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plan rapproché de Jack face caméra, assis dans une pièce à l&#x27;ambiance chaleureuse et feutrée. Il est positionné devant son micro de studio sur pied et s&#x27;adresse directement aux spectateurs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte incrusté, prompt ou paramètre technique affiché à l&#x27;écran dans ce segment. L&#x27;arrière-plan montre une étagère en bois garnie d&#x27;objets décoratifs, une plante verte, un fauteuil avec un coussin orange et une source d&#x27;éclairage tamisée.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack parle en face caméra tout en s&#x27;exprimant avec les mains et en articulant pour appuyer ses propos sur la modélisation 3D et les animations générées par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_026_00-13-48.jpg" alt="Capture Segment #30" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_026_00-13-48.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:13:48</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:23 - 00:15:01</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pourriez tout de même progresser vers un résultat plus haut de gamme. On observe parfois des imperfections issues des exportations Blender qui se répercutent sur vos générations Seedance. Ce genre de vilaine réflexion low poly sur le pli de l&#x27;iPhone en est un bon exemple. L&#x27;avantage de ce flux de travail, cependant, c&#x27;est que vous construisez effectivement une prévisualisation de votre scène avant de vous lancer dans Seedance. Faites attention toutefois à ne pas tomber dans le piège d&#x27;oublier que chaque fois que vous assignez des tâches à Astra, vous dépensez toujours des crédits. Je pense que c&#x27;est potentiellement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jack face caméra, assis dans son studio personnel, parlant dans un microphone de type podcast. En arrière-plan, on aperçoit une étagère avec des objets de décoration, des plantes vertes, un éclairage d&#x27;ambiance tamisé et un coussin orange.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt de génération ni paramètre technique n&#x27;est affiché à l&#x27;écran sur cette portion de vidéo.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en gesticulant des mains pour illustrer ses propos, expliquant les flux de travail entre Blender et les outils de génération vidéo par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_026_00-13-48.jpg" alt="Capture Segment #31" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_026_00-13-48.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:14:23</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:01 - 00:15:37</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est assez facile de se laisser prendre au jeu de ce genre de flux de travail, de s&#x27;enthousiasmer un peu trop et de se laisser emporter. Avant qu&#x27;on s&#x27;en rende compte, on a dépensé beaucoup plus de crédits qu&#x27;on ne le pensait. Cependant, cette méthode reste assez impressionnante techniquement. On a ces moments de temps en temps avec l&#x27;IA et la tech en général, où on se pose tranquillement dans son fauteuil en se disant, wow, les choses évoluent vraiment très vite. Et voir Astra prendre le contrôle de ma machine, créer des modèles, les configurer (rigguer), puis les animer a définitivement été l&#x27;un de ces moments. Sur ce,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Le logiciel de modélisation 3D Blender est ouvert, affichant le viewport 3D principal avec l&#x27;objet 3D d&#x27;un téléphone pliable. L&#x27;arborescence (Scene Collection) apparaît en haut à droite avec les collections et objets (Camera, Empty, Light, iPhone Fold, RIG_IPhoneFold). Le panneau des propriétés de transformation (Transform : Location, Rotation, Scale) est visible dans le volet latéral droit. En bas, la timeline de Blender est affichée. Une interface contextuelle (fenêtre flottante) d&#x27;assistant IA (semblable à un plugin ou intégration de Blender) surmonte le viewport avec des onglets (« Scene builder », « 3D Model », etc.) et un champ de saisie de prompt (« Describe the scene you imagine... »). Enfin, un encadré vidéo incrusté (picture-in-picture) en bas à droite montre Jack face caméra avec son micro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans la boîte de dialogue de l&#x27;assistant IA, on peut lire un texte descriptif généré par l&#x27;IA ou saisi par l&#x27;utilisateur : « I&#x27;d like you to use... » suivi de listes à puces techniques comme « Folding animation: frame 1 open, 48 halfway, 68 closed. », « Original blueprint and existing scene objects preserved. », et un avertissement : « This is a blueprint-matched concept, not manufacturing CAD. Undimensioned details and the hinge mechanism are approximations. The project remains unsaved as &quot;Untitled&quot;; a recovery checkpoint was created. View the model preview ». Dans le champ de texte, le tag « @RIG_IPhoneFold » précède « Describe the scene you imagine... », avec un sélecteur de modèle « GPT-4 Astra » et un bouton vert « GENERATE ». Dans Blender, le panneau de transformation indique des valeurs de position et de rotation.</p>
+                        <p><strong>Action / Démonstration :</strong> La caméra 3D dans Blender zoome et tourne autour du modèle 3D du téléphone pliable texturé et positionné dans l&#x27;espace virtuel. Le curseur de la souris (représenté par une flèche blanche) se déplace dans le viewport au-dessus du modèle, tandis que l&#x27;interface de l&#x27;assistant IA reste active en surimpression au premier plan. Dans l&#x27;encadré en bas à droite, Jack s&#x27;exprime et gesticule face à sa caméra.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_027_00-15-01.jpg" alt="Capture Segment #32" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_027_00-15-01.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:15:01</span>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:37 - 00:15:54</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">a dit les gars, nous sommes arrivés à la fin du tutoriel d&#x27;aujourd&#x27;hui. Si vous l&#x27;avez apprécié, assurez-vous de lâcher un pouce bleu pour moi et pensez à vous abonner. Je vais aller de l&#x27;avant et partager quelques-unes de mes autres vidéos si vous souhaitez continuer à explorer tout ce qui est possible avec les derniers outils d&#x27;IA, et je vous retrouve les gars dans la prochaine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Fond uni abstrait aux nuances de bleu et de sarcelle (teal), sans interface logicielle ni élément de navigation visible.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt de génération ni paramètre technique affiché à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Plan fixe ou fondu enchaîné sur un arrière-plan purement esthétique marquant la conclusion de la vidéo, sans manipulation visible.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshot">
+                <img src="screenshots/YT-4WfAphCZXp0/frame_028_00-15-37.jpg" alt="Capture Segment #33" loading="lazy" onclick="openLightbox('screenshots/YT-4WfAphCZXp0/frame_028_00-15-37.jpg')">
+                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:15:37</span>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

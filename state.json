@@ -5,7 +5,8 @@
     "b18tVvH6Ke0",
     "D9yiZX7VEmk",
     "mNESr8Hjq0s",
-    "YzFZLpuUr0g"
+    "YzFZLpuUr0g",
+    "4WfAphCZXp0"
   ],
   "processed_videos": [
     {
@@ -91,9 +92,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-09-19_YT-YzFZLpuUr0g_Comment transformer n'importe quel produit en une marque incontournable grâce à _by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-29T19:50:47Z",
       "status": "completed"
+    },
+    {
+      "video_id": "4WfAphCZXp0",
+      "title": "Comment transformer GPT-6 Astra en votre propre studio 3D",
+      "raw_title": "How to Turn GPT-6 Astra Into Your Own 3D Studio",
+      "filename_md": "2026-09-13_YT-4WfAphCZXp0_Comment transformer GPT-6 Astra en votre propre studio 3D_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-09-13_YT-4WfAphCZXp0_Comment transformer GPT-6 Astra en votre propre studio 3D_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-09-13",
+      "duration": 965,
+      "screenshots_count": 28,
+      "filepath_md": "/root/YT_JackVsAI/2026-09-13_YT-4WfAphCZXp0_Comment transformer GPT-6 Astra en votre propre studio 3D_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-09-13_YT-4WfAphCZXp0_Comment transformer GPT-6 Astra en votre propre studio 3D_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-29T20:03:33Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 6,
+  "completed_count": 7,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-29T19:21:39Z"
