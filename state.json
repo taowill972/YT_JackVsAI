@@ -11,7 +11,8 @@
     "CBDaJb04FgU",
     "IVIlSwd0_pU",
     "YM_2PYIy0FA",
-    "M8ERoEGyAWw"
+    "M8ERoEGyAWw",
+    "BiXWH3QUX1Q"
   ],
   "processed_videos": [
     {
@@ -181,9 +182,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-08-01_YT-M8ERoEGyAWw_Créer une animation style bande dessinée avec l'IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-29T22:44:14Z",
       "status": "completed"
+    },
+    {
+      "video_id": "BiXWH3QUX1Q",
+      "title": "Comment un pro des VFX mélange images réelles et IA (Prompts & Matériaux GRATUITS)",
+      "raw_title": "How a Pro VFX Artist Mixes Real Footage with AI (FREE Prompts & Materials)",
+      "filename_md": "2026-07-26_YT-BiXWH3QUX1Q_Comment un pro des VFX mélange images réelles et IA (Prompts & Matériaux GRATUIT_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-07-26_YT-BiXWH3QUX1Q_Comment un pro des VFX mélange images réelles et IA (Prompts & Matériaux GRATUIT_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-07-26",
+      "duration": 1359,
+      "screenshots_count": 86,
+      "filepath_md": "/root/YT_JackVsAI/2026-07-26_YT-BiXWH3QUX1Q_Comment un pro des VFX mélange images réelles et IA (Prompts & Matériaux GRATUIT_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-07-26_YT-BiXWH3QUX1Q_Comment un pro des VFX mélange images réelles et IA (Prompts & Matériaux GRATUIT_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-29T23:08:12Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 12,
+  "completed_count": 13,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-29T22:00:02Z"
