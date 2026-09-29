@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `8 / 59` (`13.6%`)
+- **Vidéos traitées** : `9 / 59` (`15.3%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -16,6 +16,7 @@
 
 | Date | Titre & Fiche Markdown | Fiche Web Interactive | Durée | Captures | Lien YouTube | ID Vidéo |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: |
+| 2026-08-25 | [Créer un studio de motion design solo avec l'IA](2026-08-25_YT-CBDaJb04FgU_Créer un studio de motion design solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-08-25_YT-CBDaJb04FgU_Créer un studio de motion design solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 9m 41s | `16 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=CBDaJb04FgU) | `CBDaJb04FgU` |
 | 2026-08-03 | [Le spot idéal pour un bon doom scrolling ⏩](2026-08-03_YT-D9yiZX7VEmk_Le spot idéal pour un bon doom scrolling ⏩_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-08-03_YT-D9yiZX7VEmk_Le spot idéal pour un bon doom scrolling ⏩_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 0m 20s | `0 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=D9yiZX7VEmk) | `D9yiZX7VEmk` |
 | 2026-08-03 | [Le sorcier disgracié 🔮](2026-08-03_YT-b18tVvH6Ke0_Le sorcier disgracié 🔮_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-08-03_YT-b18tVvH6Ke0_Le sorcier disgracié 🔮_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 0m 20s | `0 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=b18tVvH6Ke0) | `b18tVvH6Ke0` |
 | 2026-08-03 | [Créer une animation style Arcane avec l'IA 🔥](2026-08-03_YT-MKrLYLh4Otg_Créer une animation style Arcane avec l'IA 🔥_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-08-03_YT-MKrLYLh4Otg_Créer une animation style Arcane avec l'IA 🔥_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 0m 46s | `1 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=MKrLYLh4Otg) | `MKrLYLh4Otg` |

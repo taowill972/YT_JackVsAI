@@ -7,9 +7,24 @@
     "mNESr8Hjq0s",
     "YzFZLpuUr0g",
     "4WfAphCZXp0",
-    "Rj8BYbZCce0"
+    "Rj8BYbZCce0",
+    "CBDaJb04FgU"
   ],
   "processed_videos": [
+    {
+      "video_id": "CBDaJb04FgU",
+      "title": "Créer un studio de motion design solo avec l'IA",
+      "raw_title": "How to Build a Solo Motion Graphics Studio with AI",
+      "filename_md": "2026-08-25_YT-CBDaJb04FgU_Créer un studio de motion design solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-08-25_YT-CBDaJb04FgU_Créer un studio de motion design solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-08-25",
+      "duration": 581,
+      "screenshots_count": 16,
+      "filepath_md": "/root/YT_JackVsAI/2026-08-25_YT-CBDaJb04FgU_Créer un studio de motion design solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-08-25_YT-CBDaJb04FgU_Créer un studio de motion design solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-29T20:46:42Z",
+      "status": "completed"
+    },
     {
       "video_id": "D9yiZX7VEmk",
       "title": "Le spot idéal pour un bon doom scrolling ⏩",
@@ -123,8 +138,8 @@
       "status": "completed"
     }
   ],
-  "completed_count": 8,
+  "completed_count": 9,
   "total_catalog_count": 59,
-  "status": "running",
-  "last_run_timestamp": "2026-09-29T19:21:39Z"
+  "status": "waiting_next_cron",
+  "last_run_timestamp": "2026-09-29T20:46:42Z"
 }
