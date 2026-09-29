@@ -8,7 +8,8 @@
     "YzFZLpuUr0g",
     "4WfAphCZXp0",
     "Rj8BYbZCce0",
-    "CBDaJb04FgU"
+    "CBDaJb04FgU",
+    "IVIlSwd0_pU"
   ],
   "processed_videos": [
     {
@@ -19,10 +20,10 @@
       "filename_html": "2026-08-25_YT-CBDaJb04FgU_Créer un studio de motion design solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "pub_date": "2026-08-25",
       "duration": 581,
-      "screenshots_count": 42,
+      "screenshots_count": 16,
       "filepath_md": "/root/YT_JackVsAI/2026-08-25_YT-CBDaJb04FgU_Créer un studio de motion design solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
       "filepath_html": "/root/YT_JackVsAI/2026-08-25_YT-CBDaJb04FgU_Créer un studio de motion design solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
-      "processed_at": "2026-09-29T22:09:54Z",
+      "processed_at": "2026-09-29T20:46:42Z",
       "status": "completed"
     },
     {
@@ -136,9 +137,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-09-05_YT-Rj8BYbZCce0_Pipeline d'animation IA Comment créer des films en style Claymation 100% avec l'_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-29T20:28:44Z",
       "status": "completed"
+    },
+    {
+      "video_id": "IVIlSwd0_pU",
+      "title": "Comment transformer n'importe quelle idée en vidéo IA complète en quelques minutes",
+      "raw_title": "How to Turn ANY Idea into a Full AI Video in Minutes",
+      "filename_md": "2026-08-19_YT-IVIlSwd0_pU_Comment transformer n'importe quelle idée en vidéo IA complète en quelques minut_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-08-19_YT-IVIlSwd0_pU_Comment transformer n'importe quelle idée en vidéo IA complète en quelques minut_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-08-19",
+      "duration": 1036,
+      "screenshots_count": 0,
+      "filepath_md": "/root/YT_JackVsAI/2026-08-19_YT-IVIlSwd0_pU_Comment transformer n'importe quelle idée en vidéo IA complète en quelques minut_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-08-19_YT-IVIlSwd0_pU_Comment transformer n'importe quelle idée en vidéo IA complète en quelques minut_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-29T22:14:37Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 9,
+  "completed_count": 10,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-29T22:00:02Z"

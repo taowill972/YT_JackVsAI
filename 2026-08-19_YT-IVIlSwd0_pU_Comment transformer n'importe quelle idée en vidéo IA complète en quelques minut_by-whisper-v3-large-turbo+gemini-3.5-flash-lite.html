@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment transformer n&#x27;importe quelle idée en vidéo IA complète en quelques minutes — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment transformer n&#x27;importe quelle idée en vidéo IA complète en quelques minutes</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-08-19</span>
+                <span class="badge">⏱️ 17m 16s</span>
+                <span class="badge">🆔 <code>IVIlSwd0_pU</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=IVIlSwd0_pU" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>Le paysage de la production vidéo est en train d'être radicalement transformé par l'intelligence artificielle générative, permettant de passer d'une idée brute à un film achevé en quelques minutes seulement. L'expert en effets visuels Jack démontre dans cette vidéo qu'il n'est plus nécessaire de maîtriser la programmation de prompts complexes, l'éclairage ou la cinématographie traditionnelle pour obtenir des résultats de niveau professionnel. Grâce à un workflow fluide combinant des LLMs et des plateformes tout-en-un spécialisées, les créateurs peuvent désormais s'affranchir des barrières techniques majeures de la réalisation.</p><p>La méthode repose sur une structuration rigoureuse en deux temps : la conception préalable de personnages cohérents et l'utilisation de fichiers de compétences (MD) pour guider une intelligence artificielle textuelle dans l'écriture de plans cinématographiques détaillés. En injectant ces éléments dans des générateurs de vidéo de pointe dotés de fonctionnalités de référence d'image, le système traduit des concepts narratifs complexes en séquences fluides, cohérentes et dotées d'une identité visuelle marquée. Qu'il s'agisse de photoréalisme, d'animation type Pixar ou de stop-motion à la Aardman, ce processus démocratise la création de courts métrages, de clips publicitaires et de contenus narratifs.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude</span><span class="tool-tag">OpenArt</span><span class="tool-tag">flux</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Démystification technique** : La réalisation par IA ne requiert plus de compétences techniques avancées en écriture de prompts ou en direction artistique ; la description textuelle naturelle suffit à amorcer le processus.</span></li><li><span class="point-bullet">✦</span><span>Création préalable de personnages** : Définir des personnages en amont à l&#x27;aide d&#x27;images de référence garantit une cohérence visuelle et un contrôle accrus sur le rendu final de la vidéo.</span></li><li><span class="point-bullet">✦</span><span>Sélection des références visuelles** : Fournir plusieurs angles et des gros plans du visage permet à l&#x27;IA d&#x27;assimiler les textures de peau et le niveau de réalisme souhaité.</span></li><li><span class="point-bullet">✦</span><span>Simplification du prompt d&#x27;image** : Il suffit de modifier uniquement la toute dernière section d&#x27;un prompt long pour basculer d&#x27;une ambiance à une autre (style Pixar, argile Aardman, low poly, etc.) sans toucher au reste de la structure.</span></li><li><span class="point-bullet">✦</span><span>Optimisation des coûts de génération** : Régler la qualité des images sur &quot;moyen&quot; plutôt que sur &quot;élevé&quot; permet de préserver les crédits de la plateforme tout en obtenant un résultat visuel amplement satisfaisant.</span></li><li><span class="point-bullet">✦</span><span>Utilisation de fichiers de compétences (MD)** : Intégrer un fichier MD dans un LLM (comme Claude) automatise la transformation d&#x27;une idée simple en un plan de tournage professionnel découpé par paragraphes et horodatages.</span></li><li><span class="point-bullet">✦</span><span>Planification cinématographique automatisée** : Le recours à l&#x27;assistant textuel évite le cauchemar de la rédaction manuelle en générant automatiquement les angles de caméra, les types d&#x27;objectifs et les actions détaillées.</span></li><li><span class="point-bullet">✦</span><span>Activation de la référence textuelle et visuelle** : Sur l&#x27;outil vidéo, l&#x27;activation conjointe du mode &quot;texte avec référence&quot; et du téléversement du personnage assure le respect de l&#x27;identité visuelle créée à l&#x27;étape précédente.</span></li><li><span class="point-bullet">✦</span><span>Gestion des paramètres de génération vidéo** : Il est recommandé de désactiver l&#x27;option d&#x27;auto-polissage (*auto polish*) pour éviter que le système ne modifie intempestivement le prompt textuel validé.</span></li><li><span class="point-bullet">✦</span><span>Intégration audio native** : S&#x27;assurer que l&#x27;audio est activé dans les options du modèle vidéo permet d&#x27;anticiper la dimension sonore dès la phase de génération.</span></li><li><span class="point-bullet">✦</span><span>Flexibilité des formats de diffusion** : Le choix du format d&#x27;image (16:9 pour le format horizontal ou 9:16 pour les réseaux sociaux verticaux) s&#x27;effectue en un clic selon la plateforme de destination visée.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:35</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le jeu de la création vient de changer pour toujours parce que vous pouvez maintenant transformer n&#x27;importe quelle idée en une vidéo IA cinématographique incroyablement vite. Vous n&#x27;avez pas besoin de savoir écrire des prompts complexes ni de passer des heures à comprendre l&#x27;éclairage ou la cinématographie. Vous décrivez simplement ce que vous voulez et l&#x27;IA transformera cette idée en une séquence à part entière, ce qui signifie que vous pouvez passer d&#x27;une idée brute dans votre tête à quelque chose qui a l&#x27;apparence et le ressenti d&#x27;un film achevé, incroyablement vite. Je suis Jack. J&#x27;ai passé plus d&#x27;une décennie à créer des effets visuels pour certaines des plus grandes marques de la planète. Et maintenant j&#x27;utilise</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, Jack s&#x27;adresse directement au spectateur dans un studio au design épuré, sans aucun écran partagé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Introduction à une révolution dans la création vidéo par IA, permettant de générer des séquences cinématographiques de haute qualité sans compétences techniques avancées en prompt ou en réalisation.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du parcours professionnel de l&#x27;expert en VFX et introduction au nouveau workflow de génération vidéo par intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:35 - 00:01:10</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">L&#x27;IA va réinventer les flux de travail créatifs. Lorsque vous combinez cette méthode avec les bons outils, les possibilités sont infinies. Vous pouvez construire n&#x27;importe quoi, des films cinématographiques aux publicités de produits ou même des courts métrages animés. Dans cette vidéo, je vais vous montrer le flux de travail exact que j&#x27;utilise pour donner vie à mes concepts plus rapidement que jamais. Si vous appréciez le contenu d&#x27;aujourd&#x27;hui, assurez-vous de lâcher un pouce bleu pour moi et pensez à vous abonner. Très bien, entrons dans le vif du sujet. Se lancer dans l&#x27;IA peut sembler écrasant, mais aujourd&#x27;hui je veux vous donner une longueur d&#x27;avance et dissiper un tas de mythes. Principalement cette idée que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, plan dynamique du créateur s&#x27;adressant directement au public pour introduire le sujet sans écran partagé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales sur la réinvention des processus créatifs grâce à l&#x27;IA, l&#x27;élimination des obstacles initiaux et la démystification des fausses idées sur la création assistée par intelligence artificielle.</p>
+                        <p><strong>Action / Démonstration :</strong> Annonce de la démonstration pratique du flux de travail personnel du créateur pour transformer rapidement des concepts en projets concrets.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:10 - 00:01:44</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Les vidéos par IA représentent un énorme défi technique parce que ce n&#x27;est tout simplement plus le cas. À la fin de cette vidéo, vous connaîtreអ្នក... pardon, vous connaîtrez chaque étape de ce processus de réalisation simple pour pouvoir commencer immédiatement. Si vous voulez suivre, je laisserai un lien vers OpenArt dans la description. Ils ont eu la gentillesse de sponsoriser la vidéo d&#x27;aujourd&#x27;hui et ils ont accès aux meilleurs modèles d&#x27;image et de vidéo par IA. J&#x27;ai toutes mes générations ici. Comme vous pouvez le voir, j&#x27;ai testé ce flux de travail sur une variété de résultats différents. Nous avons de tout, allant du photoréalisme jusqu&#x27;à ceci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, Jack s&#x27;adresse directement au spectateur dans son studio pour introduire le tutoriel et placer le placement de produit du sponsor (OpenArt).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Annonce de la promesse de la vidéo (maîtriser le processus de création de vidéo par IA de manière simple) et remerciement au sponsor OpenArt qui regroupe les meilleurs modèles du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack montre brièvement l&#x27;interface de ses créations à l&#x27;écran pour prouver l&#x27;efficacité et la polyvalence de son workflow sur différents types de styles visuels.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:44 - 00:02:20</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">animation hyper stylisée. Mais revenons un peu en arrière car il y a une étape que beaucoup de créateurs finissent par sauter. Si vous voulez les meilleurs résultats de ce flux de travail, je vous suggère de créer d&#x27;abord des personnages. Maintenant, vous pouvez sauter cette étape si vous le voulez, mais cela vous donnera plus de contrôle sur votre résultat final. Heureusement, c&#x27;est assez simple à faire, vous pouvez donc voir ici que j&#x27;ai téléchargé des images de référence de moi-même combinées avec ce prompt que, bien sûr, je vais partager avec vous les gars. Maintenant, le prompt lui-même peut sembler un peu long et compliqué, mais il n&#x27;y a que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra par le créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explication de l&#x27;importance de créer des personnages en amont pour garder le contrôle sur le résultat final du workflow.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;utilisation d&#x27;images de référence personnelles combinées à un prompt détaillé.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:20 - 00:02:54</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">une partie dont vous devez vous soucier et c&#x27;est cette section juste à la fin. C&#x27;est ici que nous allons dire au modèle d&#x27;image quel genre d&#x27;ambiance nous recherchons, vous pouvez donc échanger n&#x27;importe quel style auquel vous pourriez penser et vous n&#x27;avez pas besoin de toucher à autre chose dans le prompt, donc c&#x27;est bien et simple. Mais plutôt que de simplement vous parler de cela, je vais aller de l&#x27;avant et construire un exemple avec vous les gars dès maintenant. Donc d&#x27;abord sur OpenArt, vous voulez vous assurer que vous avez l&#x27;onglet image sélectionné et pour le modèle, je suggérerais GPT Image 2 qui, de manière générale, est le meilleur outil d&#x27;image IA</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explication de la dernière partie du prompt permettant de définir l&#x27;ambiance et le style artistique sans modifier le reste, suivie d&#x27;une démonstration pratique en direct.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur la plateforme OpenArt, sélection de l&#x27;onglet image et choix du modèle recommandé (GPT Image 2).</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:54 - 00:03:12</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">sur le marché en ce moment. Si je clique sur l&#x27;une de ces images que j&#x27;ai déjà générées, il y a un outil pratique ici et c&#x27;est l&#x27;icône de recréation d&#x27;image. Si je clique dessus, vous verrez qu&#x27;OpenArt importe ces mêmes références d&#x27;image ainsi que le prompt exact également.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Écran partagé montrant l&#x27;interface de la plateforme OpenArt et la navigation dans la galerie d&#x27;images générées.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explication de la fonctionnalité de réutilisation des paramètres d&#x27;une image existante pour en générer une nouvelle.</p>
+                        <p><strong>Action / Démonstration :</strong> Clic sur l&#x27;icône de recréation d&#x27;image pour démontrer le transfert automatique du prompt et des références.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:12 - 00:03:35</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Pour les références elles-mêmes, je suggérerais plusieurs angles différents avec des gros plans de votre visage afin que l&#x27;IA puisse s&#x27;inspirer de ce beau niveau de texture de peau et de réalisme. Passons maintenant au prompt, comme je l&#x27;ai dit plus tôt, la seule partie dont je dois me soucier est la fin ici. Je vais donc continuer et supprimer ceci et je vais simplement taper Style d&#x27;Animation Pixar.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra avec un plan rapproché.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Conseils sur le choix des images de référence et modification du prompt textuel pour orienter le style de l&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;ajustement des paramètres et de la suppression d&#x27;une partie du prompt avant d&#x27;ajouter le nouveau style.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:35 - 00:03:53</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Pour les paramètres, nous voulons que 16x9 soit sélectionné et je opte généralement pour une résolution 2K. Vous avez également une option pour la qualité ici. Vous verrez que l&#x27;augmenter à élevé augmente pas mal le coût en crédits. Donc, je la laisse généralement sur moyen, juste pour aider à maintenir les coûts bas.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra ou transition sans écran partagé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales du sujet.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du workflow.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:53 - 00:04:29</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et en regardant notre résultat, celui-ci est vraiment très bien réussi. C&#x27;est exactement le genre de chose que je cherchais. Les images ont cet style d&#x27;animation Pixar unmistakable [inconfondable], mais le plus important, c&#x27;est que le personnage me ressemble vraiment. Et nous allons pouvoir utiliser ceci pour animer nos vidéos par IA dans une minute. Bien sûr, vous n&#x27;êtes pas obligé d&#x27;utiliser des références si vous préférez. Si je lance le même prompt sans aucune image de référence, nous obtenons un résultat comme celui-ci. Il est toujours bien, mais il n&#x27;a tout simplement pas vraiment cette touche personnelle. Il y a tellement de voies différentes que nous pouvons emprunter ici. Nous avons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra par le créateur de la chaîne Jack Vs. AI, montrant sa satisfaction face aux résultats générés.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Analyse comparative entre l&#x27;utilisation d&#x27;une image de référence (style Pixar personnalisé) et une génération sans référence, soulignant l&#x27;importance de la touche personnelle.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration du workflow de génération d&#x27;images par IA et préparation de l&#x27;étape suivante pour l&#x27;animation vidéo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:29 - 00:04:48</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cette version animée de moi. Nous avons aussi une sorte de style d&#x27;animation en argile style Aardman ici également. Nous avons cette version low poly sympa que l&#x27;on pourrait voir dans un jeu vidéo, et j&#x27;adore vraiment ce genre de style artistique vectoriel découpé ici aussi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, alternant avec des plans serrés sur les différentes variations visuelles générées par l&#x27;IA à l&#x27;écran.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Analyse et comparaison de plusieurs styles visuels générés par intelligence artificielle pour un même avatar, incluant l&#x27;animation 2D type anime, la stop-motion en pâte à modeler, le style rétro &quot;low poly&quot; de jeux vidéo et le design vectoriel en papier découpé.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration à l&#x27;écran du processus de transformation d&#x27;une image source à travers différents modèles de style artistiques via une interface de génération par IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:48 - 00:05:09</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pouvons également utiliser une version légèrement modifiée du même prompt pour inventer des références de produits. J&#x27;ai donc un exemple ici d&#x27;un smartphone. Et j&#x27;ai aussi celui-ci où j&#x27;ai réellement pris l&#x27;avance et généré un nouveau style de baskets The North Face. Le travail préparatoire étant terminé, nous sommes maintenant prêts à commencer à générer nos vidéos.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, tenant des objets de référence (smartphone et visuels de chaussures).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Démonstration de la flexibilité du prompt pour créer des produits fictifs ou personnalisés.</p>
+                        <p><strong>Action / Démonstration :</strong> Transition vers le lancement effectif de la génération des vidéos dans l&#x27;outil d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:10 - 00:05:31</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je veux passer directement à l&#x27;onglet vidéo sur le côté gauche. Encore une fois, vous allez voir qu&#x27;il y a tout un tas d&#x27;outils vidéo IA différents proposés. Le modèle vidéo IA le plus à la pointe en ce moment est C-Dance 2.5, car il vous permet de générer des séquences entières pouvant aller jusqu&#x27;à 30 secondes de longueur à partir d&#x27;une seule génération.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Transition avec passage sur l&#x27;affichage de l&#x27;écran de l&#x27;interface utilisateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Présentation de la diversité des outils vidéo par IA disponibles et mise en avant des performances du modèle C-Dance 2.5.</p>
+                        <p><strong>Action / Démonstration :</strong> Clic sur l&#x27;onglet vidéo dans le panneau latéral gauche pour explorer les options de génération.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:31 - 00:05:49</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, avec ceci sélectionné, vous voulez aussi vous assurer que vous avez activé le texte avec référence. Ensuite, nous pouvons aller glisser sur notre personnage pour agir en tant qu&#x27;référence d&#x27;image. Maintenant, pour dire réellement à CDANCE 2.5 ce que nous voulons générer, nous allons avoir besoin d&#x27;une invite de texte hautement détaillée.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra ou transition sans écran partagé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales du sujet.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du workflow.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:49 - 00:06:08</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais heureusement, tout ce que nous avons à faire est assez simple. Et tout cela grâce à un fichier MD que je vais partager avec vous les gars. Et le truc génial avec ça, c&#x27;est que vous pouvez l&#x27;utiliser avec ChatGPT, Gemini et Grok, ou dans mon cas, Claude. Donc ce qu&#x27;on veut faire, c&#x27;est cliquer sur ce bouton de téléchargement ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales du sujet</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du workflow</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:08 - 00:06:27</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pouvons sélectionner &quot;ajouter des fichiers ou des photos&quot;, et ensuite nous pouvons réellement sélectionner la compétence et aller de l&#x27;avant et le faire téléverser. Vous voulez aussi aller de l&#x27;avant et téléverser l&#x27;image de notre personnage Pixar que nous venons juste de générer. Donc je vais aller de l&#x27;avant et la déposer également. Et j&#x27;ai aussi cette image ici que j&#x27;ai générée d&#x27;un personnage de robot.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Écran partagé montrant l&#x27;interface utilisateur de l&#x27;outil d&#x27;IA en train d&#x27;importer des fichiers et des images.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explication de la méthode pour importer les fichiers, les compétences (skills) et les différentes images générées (le personnage Pixar et le robot) dans l&#x27;interface.</p>
+                        <p><strong>Action / Démonstration :</strong> Manipulation de l&#x27;interface pour glisser-déposer et téléverser les images du personnage Pixar et du robot.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:28 - 00:06:47</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais aller de l&#x27;avant et télécharger ça aussi. Comme je l&#x27;ai dit au début de la vidéo, l&#x27;étape de la conception des personnages était facultative. Donc si vous ne les avez pas créés, vous pouvez simplement les omettre. Et tout ce que nous devons faire maintenant, c&#x27;est décrire le type de scène que nous recherchons. Je vais donc dire : l&#x27;homme barbu est assis dans sa chambre en train de travailler sur son ordinateur portable.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra ou transition sans écran partagé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales du sujet.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du workflow.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:48 - 00:07:14</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Derrière lui, le robot peint le mur en jaune. Le robot a presque plus de batterie et tombe par terre, renversant des pots de peinture et couvrant la pièce de peinture jaune. L&#x27;homme se retourne pour faire face au robot qui lève la main pour faire un pouce levé. Et si nous envoyons tout ça, vous verrez que tout de suite Claude commence à faire référence à ce fichier MD.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, Jack s&#x27;adresse directement au public pour commenter la séquence vidéo générée par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Analyse et description de la scène générée où un robot maladroit rate sa tâche de peinture avant d&#x27;interagir avec l&#x27;humain.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration technique montrant comment l&#x27;intelligence artificielle (Claude) exploite directement un fichier Markdown (MD) suite au prompt.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:14 - 00:07:41</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est ce que nous obtenons en retour où chaque plan est découpé en son propre paragraphe et nous avons un horodatage, une référence à l&#x27;angle de caméra, le type d&#x27;objectif, ainsi qu&#x27;une description de toute action qui doit avoir lieu. Essayer d&#x27;écrire cela vous-même serait un cauchemar, mais le fichier MD nous a permis de transformer notre idée en une sorte de plan directeur pour l&#x27;IA à utiliser.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra par le créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explication de la structure détaillée obtenue (horodatages, angles de caméra, types d&#x27;objectifs, descriptions des actions) et de la complexité évitée grâce à l&#x27;automatisation.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration du workflow de conversion d&#x27;une idée en un blueprint exploitable par l&#x27;IA via un fichier Markdown.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:41 - 00:08:02</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je peux copier ce prompt et ensuite le déposer directement dans cette fenêtre sur Open Art. Et si je vais de l&#x27;avant et fais défiler vers le bas tout en bas, vous verrez que nous avons d&#x27;autres options ici. Je suggérerais de désactiver l&#x27;auto-polissage (auto polish). Nous ne voulons pas vraiment apporter de modifications au prompt lui-même. Vous voulez absolument vous assurer que l&#x27;audio est activé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Écran partagé montrant l&#x27;interface d&#x27;Open Art pendant la manipulation du prompt.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Conseils sur les paramètres d&#x27;Open Art, notamment la désactivation de l&#x27;auto-polissage et l&#x27;activation de l&#x27;audio.</p>
+                        <p><strong>Action / Démonstration :</strong> Copier-coller du prompt dans l&#x27;outil et ajustement des options de configuration en bas de page.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:02 - 00:09:08</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et puis si nous cliquons sur cette icône ici, nous avons un format d&#x27;image 16 par 9. 9 par 16 super pour faire du contenu pour les réseaux sociaux. Pour la résolution, je vais sélectionner 720p et ensuite nous voulons pousser cela au maximum jusqu&#x27;à une génération de 30 secondes de long. Vous pouvez générer quelque chose de plus court, cela va vous coûter moins de crédits, mais c&#x27;est un peu plus difficile de raconter une histoire plus complexe. Donc avec tout configuré, je peux y aller et cliquer sur générer et jeter un œil aux résultats. Ouais, je pense que c&#x27;est vraiment très réussi, l&#x27;animation a l&#x27;air vraiment propre et professionnelle.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Écran partagé / Tutoriel logiciel</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sélection des paramètres de format (16:9 ou 9:16), de résolution (720p) et de durée (30 secondes) pour la génération vidéo par IA, suivi de la démonstration du résultat final.</p>
+                        <p><strong>Action / Démonstration :</strong> Clic sur les icônes de format, réglage de la résolution et de la durée, puis lancement de la génération (&quot;generate&quot;) et analyse du rendu animé.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:08 - 00:09:36</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;avantage de cdance 2.5 est vraiment d&#x27;avoir cette durée complète de 30 secondes pour pouvoir raconter votre histoire vous pouvez imaginer que si nous avions essayé de condenser toute cette scène en 10 ou 15 secondes cela aurait pu sembler un peu précipité et la blague n&#x27;aurait peut-être pas aussi bien fonctionné et ce que je veux faire maintenant c&#x27;est vous montrer d&#x27;autres exemples que j&#x27;ai créés en utilisant exactement le même flux de travail Alors d&#x27;abord nous avons cette scène de style anime de moi en train de préparer un burger.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra par le créateur de la chaîne, s&#x27;exprimant directement auprès de son audience sans écran partagé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explication des avantages de la durée de 30 secondes offerte par l&#x27;outil &quot;cdance 2.5&quot; pour le rythme narratif, le développement d&#x27;une scène et l&#x27;efficacité d&#x27;une blague, en évitant l&#x27;effet précipité d&#x27;un format plus court.</p>
+                        <p><strong>Action / Démonstration :</strong> Annonce et introduction de la présentation d&#x27;exemples pratiques créés avec le même flux de travail, en commençant par une scène de préparation de burger dans un style anime.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:36 - 00:09:59</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je voulais opter pour un peu de juxtaposition ici en utilisant un style que vous n&#x27;associeriez probablement pas à la cuisine. Et aussi essayer de pencher vers certains tropes d&#x27;anime ici pour que cela donne une impression très différente de ce à quoi vous pourriez vous attendre. Le style artistique et l&#x27;animation restent agréables et cohérents du début à la fin. Et les effets sonores que C-Dance 2.5 a ajoutés fonctionnent également très bien.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, plan moyen du narrateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Analyse du choix stylistique audacieux de la vidéo, mélangeant l&#x27;univers de la cuisine avec des codes visuels d&#x27;anime, tout en soulignant la cohérence artistique et l&#x27;efficacité des effets sonores générés par l&#x27;IA C-Dance 2.5.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage à l&#x27;écran de captures d&#x27;écran comparatives de la vidéo analysée illustrant le style anime appliqué à la cuisine, avec une mise en avant des outils du workflow de génération.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:59 - 00:10:18</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ensuite, je voulais essayer quelque chose de photoréaliste avec une touche de surréalisme. Et c&#x27;est cette scène où je pilote un avion en papier au dessus d&#x27;une ville. Et c&#x27;est un très bon exemple de la façon dont Sea Dance 2.5 gère les performances. Au début de la scène, j&#x27;ai l&#x27;air plutôt terrifié.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, plan moyen du créateur sur fond sombre de studio high-tech.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Analyse d&#x27;un plan complexe généré par IA mêlant photoréalisme et surréalisme (vol en avion en papier), en mettant l&#x27;accent sur la gestion des expressions faciales et de la performance par le modèle Sea Dance 2.5.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit un nouvel exemple de génération vidéo et commente les choix artistiques et techniques du plan à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:18 - 00:11:03</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je m&#x27;imprègne lentement de ce qui se passe et je finis par être complètement émerveillé par la situation dans laquelle je me suis retrouvé. On dirait une sorte de séquence de rêve, mais le style photoréaliste et ce niveau de texture de peau aident vraiment à ancrer le concept. Nous avons également cette scène en stop-motion style Aardman, donc je vais simplement laisser celle-ci se dérouler. Vous savez, c&#x27;est en fait assez impoli.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra ou transition sans écran partagé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales du sujet.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du workflow.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:06 - 00:11:39</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je suis désolé. Encore une fois, ce gag fonctionne vraiment très bien et on dirait une scène tout droit sortie d&#x27;un film de style Wallace et Gromit, et je dois souligner le niveau de détail textural sur l&#x27;argile où on dirait qu&#x27;elle a été façonnée et animée à la main, et d&#x27;un style d&#x27;animation à un autre qui paraît complètement différent, nous avons cette scène où je me bats contre un serpent géant au milieu du désert, j&#x27;adore la simplicité de ce style artistique et de cette animation.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, plan moyen du visage de Jack avec un léger zoom dynamique sur ses expressions pour ponctuer son enthousiasme face aux différents styles d&#x27;animation abordés.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Analyse comparée de deux styles d&#x27;animation distincts : l&#x27;esthétique stop-motion texturée façon pâte à modeler et le minimalisme épuré de la scène du serpent dans le désert, en soulignant l&#x27;importance de la richesse des détails tactiles et de la direction artistique.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage à l&#x27;écran d&#x27;une comparaison côte à côte (split-screen) des extraits vidéo analysés, avec des zooms de caméra sur les textures d&#x27;argile et les éléments visuels de la scène du désert pour illustrer les propos de l&#x27;analyste.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:39 - 00:12:14</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en particulier l&#x27;utilisation de l&#x27;éclairage et de la couleur nous avons ce moment où ça passe au ralenti et je finis par devenir une silhouette et un point sur lequel je veux vraiment insister c&#x27;est que chaque génération de vidéo que je vous montre a été construite en utilisant exactement le même processus que je vous confie rappelez-vous que chacun de ces styles est totalement interchangeable et parfois ça fonctionne vraiment très bien de subvertir les attentes des spectateurs donc nous pourrions utiliser un style artistique comme celui-ci pour une publicité de produit par exemple quelque chose que le spectateur ne s&#x27;attendrait tout simplement pas à voir et cela pourrait avoir beaucoup plus</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plan moyen de Jack face caméra dans son studio, s&#x27;adressant directement au spectateur avec un ton passionné et persuasif.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Jack souligne l&#x27;importance de l&#x27;éclairage et de la couleur à travers un effet de ralenti et de silhouette, tout en insistant sur le fait que la même méthode s&#x27;applique à tous les styles visuels, qui peuvent être interchangés pour surprendre le public, par exemple dans le cadre d&#x27;une publicité.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack fait un geste affirmatif de la main pour insister sur l&#x27;unicité du processus de création et sa flexibilité d&#x27;utilisation.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:14 - 00:12:56</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">impact. En parlant de ça, j&#x27;ai aussi généré cette séquence CGI premium pour un smartphone. Alors allons jeter un œil à ça. Et ce qui est génial avec cet exemple, c&#x27;est que vous pouvez voir que C-Dance 2.5 est capable</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra par le créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Annonce et introduction d&#x27;une séquence vidéo CGI de smartphone générée par IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur s&#x27;apprête à diffuser et commenter un exemple vidéo généré par le modèle C-Dance 2.5.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:56 - 00:13:15</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">de maintenir les produits cohérents ainsi que les personnages. Je dois également souligner l&#x27;utilisation du design sonore ici, ce qui aide à donner beaucoup plus d&#x27;impact au produit fini global. Et nous avons aussi cette publicité de produit pour cette basket de style The North Face que j&#x27;ai générée un peu plus tôt. Allons-y et regardons cela en entier.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explication de l&#x27;importance de la cohérence des personnages/produits et du sound design, suivie d&#x27;une transition vers la diffusion d&#x27;une publicité générée par IA pour une basket.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du workflow de génération vidéo et publicitaire par IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:15 - 00:13:50</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">D&#x27;une certaine manière, je pense en fait que c&#x27;est la génération la plus impressionnante que j&#x27;ai réalisée pour l&#x27;ensemble de ce projet.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plan moyen, le créateur face caméra dans son studio, expression enthousiaste, pas d&#x27;écran partagé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Analyse comparative des performances du modèle d&#x27;intelligence artificielle vidéo, mettant en valeur un rendu visuel particulièrement bluffant et supérieur aux précédents tests du projet.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage rapide d&#x27;un schéma simplifié du workflow (prompt textuel, paramètres de rendu, et résultat brut) en incrustation dynamique (overlay).</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:50 - 00:14:23</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">L&#x27;idée que j&#x27;ai eue était que ce sont en fait différents environnements qui fonctionnent pour former chaque partie distincte du produit. Encore une fois, c&#x27;est quelque chose que je viens de décrire à Claude et il a été capable de me donner ce prompt richement détaillé pour communiquer mon idée avec l&#x27;IA beaucoup plus efficacement que je n&#x27;aurais pu le faire moi-même. Encore une fois, le design sonore est super, les effets de particules sont impeccables et la façon dont chaque environnement est utilisé a réellement du sens. Claude a vraiment analysé l&#x27;image de près.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, Jack s&#x27;adresse directement au public pour partager son enthousiasme face aux résultats obtenus grâce à l&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explication de la méthode itérative avec l&#x27;assistant textuel Claude pour générer des prompts complexes et optimiser la cohérence visuelle d&#x27;un produit.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration du workflow de co-création entre l&#x27;humain (qui fournit l&#x27;idée de base) et l&#x27;IA textuelle/visuelle pour un rendu final de haute qualité.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:23 - 00:14:47</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">référence que je lui ai donnée et a en fait trouvé comment chaque environnement pouvait composer les différentes parties de l&#x27;entraîneur. Maintenant, ce que je veux aborder brièvement, c&#x27;est certaines des réalités de l&#x27;utilisation de ce flux de travail et spécifiquement l&#x27;utilisation de C-Dance 2.5 pour générer vos vidéos. Le nouveau modèle de vidéo par IA de ByteDance n&#x27;est pas bon marché, surtout si vous visez ces générations de 30 secondes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra par le créateur de la chaîne Jack Vs. AI, sans écran partagé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explication des contraintes budgétaires et des réalités pratiques liées à l&#x27;utilisation du modèle vidéo de ByteDance pour des générations longues.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit les aspects techniques et financiers du workflow d&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:47 - 00:15:24</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le coût va s&#x27;accumuler rapidement. C&#x27;est également limité à une résolution de 720p pour l&#x27;instant, bien qu&#x27;OpenArt ait déclaré qu&#x27;ils prévoyaient d&#x27;ajouter le 1080p à la plateforme bientôt. Avec C-Dance 2.0, vous pouvez générer jusqu&#x27;à une résolution 4K, ce qui est beaucoup plus utile pour les flux de travail professionnels. On a aussi beaucoup fait état du fait que vous pouvez désormais ajouter jusqu&#x27;à 50 références d&#x27;images, de vidéos et d&#x27;audio à utiliser dans vos générations. Bien que ce ne soit pas vraiment une fonctionnalité que nous avons approfondie dans cette vidéo, je ne vois pas vraiment de cas d&#x27;utilisation où vous auriez réellement besoin de tout cela.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, Jack s&#x27;exprime directement auprès de son audience sans affichage d&#x27;écran partagé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Analyse comparative des limites de résolution (720p contre 4K) et discussion sur l&#x27;utilité réelle de la fonctionnalité d&#x27;ajout de 50 références multiples (images, vidéos, audio).</p>
+                        <p><strong>Action / Démonstration :</strong> Évaluation critique des fonctionnalités avancées et mise en perspective de leur pertinence dans un cadre professionnel.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:24 - 00:15:59</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">de nombreuses références. Fightdance a également signalé une augmentation de 20 % du respect des instructions, c&#x27;est-à-dire la capacité de l&#x27;IA à bien comprendre et appliquer votre instruction. Maintenant, j&#x27;ai beaucoup utilisé C-Dance 2 et 2.5, et honnêtement, je ne vois pas vraiment de différence dans le respect des instructions entre les deux modèles. Et sur une note connexe, la version 2.5 semble adorer ajouter de la musique à vos générations, et parfois vous ne voulez pas vraiment que cela soit intégré d&#x27;office. Il peut être beaucoup plus simple de n&#x27;avoir aucune musique du tout et d&#x27;avoir ainsi plus de flexibilité.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, Jack s&#x27;adresse directement au spectateur pour partager son avis critique sur les dernières mises à jour des modèles C-Dance.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Analyse des performances de C-Dance 2 et 2.5, en se concentrant sur le taux de respect des prompts (prompt adherence) et les critiques concernant l&#x27;ajout automatique et forcé de musique dans les générations.</p>
+                        <p><strong>Action / Démonstration :</strong> Partage d&#x27;expérience utilisateur (témoignage pratique) pour guider la communauté sur la flexibilité des outils et l&#x27;optimisation des flux de travail en génération vidéo par IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:59 - 00:16:32</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">de l&#x27;ajouter dans votre montage. Avec la version 2.0, si vous utilisez le bon prompt, vous forcez en quelque sorte une contrainte sur le modèle et l&#x27;empêchez d&#x27;ajouter de la musique, mais cette même méthode ne semble tout simplement pas fonctionner avec la version 2.5, ce qui est un peu frustrant, mais bien sûr, vous avez la possibilité avec la version 2.5 de générer des vidéos d&#x27;une durée de 30 secondes et, comme vous l&#x27;avez vu tout au long de ce tutoriel, cela rend beaucoup plus facile de raconter une histoire plus complexe ou de se concentrer sur des détails plus fins lorsqu&#x27;il s&#x27;agit d&#x27;une publicité pour un produit, par exemple, tout cela</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra par le créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Comparaison entre les versions 2.0 et 2.5 d&#x27;un modèle vidéo IA concernant la gestion de la musique et l&#x27;avantage des clips de 30 secondes pour les publicités.</p>
+                        <p><strong>Action / Démonstration :</strong> Explication technique des prompts et démonstration des capacités de génération longue.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:32 - 00:17:06</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est pour dire que c-dance a définitivement les meilleurs modèles de vidéo par ia sur le marché en ce moment ne pensez surtout pas que vous devez utiliser la version 2.5 pour tout il est tout à fait viable pour certains cas d&#x27;utilisation d&#x27;utiliser la version 2.0 et de réduire vos coûts en crédits cela étant dit les gars j&#x27;espère vraiment que vous avez apprécié le contenu d&#x27;aujourd&#x27;hui si vous avez appris quelque chose assurez-vous de lâcher un pouce bleu sur la vidéo pour moi et pensez à vous abonner je vais afficher une partie de mon contenu sur l&#x27;écran dès maintenant si vous voulez continuer à explorer tout ce qui est possible avec les derniers outils d&#x27;ia et je vous retrouve dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra, plan moyen sur Jack, ton chaleureux et amical de fin de vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Bilan sur les modèles de c-dance (2.5 vs 2.0) pour optimiser les coûts en crédits, remerciements à l&#x27;audience et appel à l&#x27;action (likes et abonnements).</p>
+                        <p><strong>Action / Démonstration :</strong> Invitation à regarder les vidéos recommandées affichées à l&#x27;écran et salutation finale avant la fin de la vidéo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
