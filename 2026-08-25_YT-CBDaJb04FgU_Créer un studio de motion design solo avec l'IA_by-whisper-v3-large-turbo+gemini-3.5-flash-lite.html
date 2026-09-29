@@ -43,7 +43,7 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1180px;
             margin: 0 auto;
         }
 
@@ -202,7 +202,7 @@
 
         .timeline-block {
             position: relative;
-            margin-bottom: 2.2rem;
+            margin-bottom: 2.5rem;
         }
 
         .timeline-block::before {
@@ -263,7 +263,7 @@
             padding: 1.1rem;
             border-left: 3px solid #10b981;
         }
-        .verbatim-header, .visual-header {
+        .verbatim-header, .visual-header, .screenshots-header {
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -296,33 +296,90 @@
             color: #93c5fd;
         }
 
-        .segment-screenshot {
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
             border-radius: 0.75rem;
             overflow: hidden;
             border: 1px solid var(--border-color);
             background: #000;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
-        .segment-screenshot img {
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
             width: 100%;
             height: auto;
             max-height: 480px;
             object-fit: contain;
             display: block;
-            cursor: pointer;
+            cursor: zoom-in;
             transition: opacity 0.2s ease, transform 0.2s ease;
         }
-        .segment-screenshot img:hover {
-            opacity: 0.92;
-            transform: scale(1.01);
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
         }
         .screenshot-caption {
-            display: block;
-            padding: 0.5rem 0.8rem;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
             border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
         }
 
         /* Lightbox modal */
@@ -370,15 +427,15 @@
         <section class="executive-summary">
             <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
             <div class="summary-card">
-                <p>La vidéo de Jack Vs. AI démontre comment l'intelligence artificielle générative redéfinit le marché du motion design, permettant à un créateur solo de rivaliser avec des agences traditionnelles et de produire du contenu commercial haut de gamme sans budget pharaonique. En exploitant la puissance conjuguée des modèles de pointe, il est désormais possible de transformer instantanément des idées abstraites ou des briefs clients en animations soignées, qu'il s'agisse de publicités institutionnelles ou de contenus artistiques de marque.</p><p>La méthode repose sur un workflow hybride et structuré : l'utilisation d'une compétence personnalisée sur Claude pour concevoir des prompts ultra-détaillés, combinée à l'importation d'images de référence visuelles (personnages, produits, logos) dans la plateforme Higgsfield propulsée par le modèle Seedance 2.5. Cette approche par image de référence permet de s'affranchir du simple texte aléatoire et de garantir une cohérence parfaite des personnages et des produits du début à la fin de la vidéo.</p><p>À travers l'exploration de trois styles distincts — l'art vectoriel épuré pour des publicités dynamiques, le papier découpé artisanal pour se démarquer avec originalité, et l'esthétique rétro VHS pour capter l'attention par l'imperfection texturée —, Jack prouve que l'IA gère non seulement la génération visuelle mais aussi la création sonore synchronisée. Cette démocratisation technique offre une opportunité financière monumentale aux créateurs capables de maîtriser ces outils pour répondre aux exigences des entreprises.</p>
+                <p>L'intelligence artificielle générative redéfinit les frontières du motion design, permettant à un créateur solo de rivaliser avec des agences traditionnelles pour facturer des prestations de haute valeur ajoutée. Dans cette vidéo, Jack démontre comment concevoir de A à Z des animations graphiques de qualité professionnelle — allant des publicités d'entreprise épurées aux esthétiques rétro et narratives — en s'affranchissant des lourds budgets et des années d'apprentissage technique habituels. Grâce à l'association d'assistants textuels avancés et de moteurs vidéo de pointe, il devient possible de transformer de simples concepts en séquences fluides, cohérentes et prêtes pour le marché.</p><p>La méthode repose sur un pipeline de production hybride et structuré : l'utilisation d'une compétence sur mesure pour concevoir des prompts riches et détaillés, combinée à l'injection d'images de référence visuelles (personnages, produits, logos) dans des générateurs vidéo dopés à l'IA. Jack explore ainsi trois directions artistiques distinctes — l'art vectoriel minimaliste (VectorArt), le papier découpé artisanal (Paper Cut-out) et l'esthétique VHS nostalgique — tout en exploitant des fonctionnalités natives telles que la résolution 1080p et la génération sonore synchronisée pour automatiser la post-production.</p><p>Pour les créateurs de contenu et les freelances, cette approche représente une opportunité économique majeure. En maîtrisant ces nouveaux workflows, il est possible de multiplier par dix sa productivité, de proposer des contenus de marque sur-mesure ultra-rapidement et de répondre précisément aux briefs exigeants des clients. L'IA ne se contente plus d'assister la création ; elle offre les clés opérationnelles d'un studio complet géré par une seule personne.</p>
             </div>
             <div class="tools-card">
                 <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
-                <div><span class="tool-tag">Claude</span><span class="tool-tag">Higgsfield</span><span class="tool-tag">Seedance</span><span class="tool-tag">Seedance 2.5</span><span class="tool-tag">flux</span></div>
+                <div><span class="tool-tag">Claude</span><span class="tool-tag">Higgsfield</span><span class="tool-tag">Seedance 2.5</span></div>
             </div>
             <div class="points-card">
                 <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
-                <ul><li><span class="point-bullet">✦</span><span>Maîtrise de la cohérence par image de référence** : L&#x27;utilisation d&#x27;une image de référence visuelle (personnage, produit ou logo) aux côtés du prompt textuel est indispensable pour garder un contrôle absolu sur les résultats et éviter les dérives stylistiques.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;importance des prompts riches en directions** : Un bon prompt pour le motion design doit regorger de descriptions précises, notamment dans la section dédiée au style artistique, afin de donner un maximum de matière à exploiter pour le modèle Seedance.</span></li><li><span class="point-bullet">✦</span><span>Externalisation de la réflexion sur les prompts** : Utiliser un agent IA spécialisé (comme la compétence Claude fournie par Jack) permet d&#x27;automatiser la rédaction de prompts professionnels hautement techniques sans effort de rédaction complexe.</span></li><li><span class="point-bullet">✦</span><span>Diversification des styles visuels** : Savoir basculer entre des styles opposés — comme l&#x27;art vectoriel propre et corporate, le papier découpé brut et organique, ou le rétro VHS texturé — permet de répondre à des briefs clients radicalement différents.</span></li><li><span class="point-bullet">✦</span><span>Le minimalisme au service de l&#x27;efficacité** : En motion design IA, *&quot;less is more&quot;* ; les concepts épurés et les animations fluides fonctionnent généralement mieux et semblent plus professionnels que les scènes surchargées.</span></li><li><span class="point-bullet">✦</span><span>Exploitation des imperfections créatives** : Pour des styles spécifiques comme le VHS, il est crucial d&#x27;utiliser dès le départ des images de référence qui intègrent déjà cette esthétique (imperfections, textures) pour un résultat authentique.</span></li><li><span class="point-bullet">✦</span><span>Post-traitement pour parfaire l&#x27;esthétique** : Il est possible de pousser le réalisme d&#x27;un style rétro en important la vidéo générée dans un logiciel de montage pour y réduire la fréquence d&#x27;images (effet saccadé), accentuer les lueurs et ajouter du grain de pellicule.</span></li><li><span class="point-bullet">✦</span><span>Transitions fluides multi-images** : Pour raconter une histoire ou montrer un processus (comme la fabrication d&#x27;un expresso), l&#x27;utilisation séquentielle de plusieurs images de référence permet de guider Seedance 2.5 vers une transition fluide du début à la fin.</span></li><li><span class="point-bullet">✦</span><span>Gestion automatisée de l&#x27;ambiance sonore** : Seedance 2.5 intègre une capacité de génération de musique personnalisée qui évite la corvée fastidieuse de la recherche de morceaux libres de droits et de leur synchronisation manuelle.</span></li><li><span class="point-bullet">✦</span><span>Opportunité commerciale majeure** : Les entreprises recherchant des animations et des vidéos explicatives de marque à fort impact, l&#x27;adoption rapide de ces workflows permet à un créateur solo de monétiser très cher des compétences autrefois réservées aux agences.</span></li></ul>
+                <ul><li><span class="point-bullet">✦</span><span>Démocratisation du motion design** : L&#x27;IA permet à un créateur isolé de produire des animations publicitaires et institutionnelles haut de gamme, ouvrant la voie à la création d&#x27;un studio solo ultra-rentable.</span></li><li><span class="point-bullet">✦</span><span>Supériorité de l&#x27;approche multimodale** : Ne vous limitez pas à un simple prompt textuel ; associer une image de référence (personnage, produit ou logo) au texte garantit un contrôle précis et une excellente cohérence visuelle.</span></li><li><span class="point-bullet">✦</span><span>Ingénierie de prompt automatisée** : L&#x27;utilisation d&#x27;une &quot;compétence Claude&quot; dédiée permet d&#x27;injecter instantanément la structure stylistique idéale dans vos descriptions pour obtenir des résultats professionnels sans tâtonner.</span></li><li><span class="point-bullet">✦</span><span>Exploration du style VectorArt** : Idéal pour les publicités d&#x27;entreprise épurées, ce style mise sur la simplicité et le professionnalisme pour séduire des clients B2B à la recherche de contenus de marque soignés.</span></li><li><span class="point-bullet">✦</span><span>Impact visuel du Paper Cut-out** : Ce style texturé et artisanal insuffle une forte personnalité et un côté décalé, permettant aux marques de se démarquer immédiatement de leurs concurrents dans un paysage saturé.</span></li><li><span class="point-bullet">✦</span><span>Intégration de la narration (Storytelling)** : Le motion design par IA ne sert pas uniquement à promouvoir des produits ; il peut traduire des concepts abstraits et exprimer des récits profonds avec une cohérence narrative irréprochable.</span></li><li><span class="point-bullet">✦</span><span>Esthétique rétro VHS** : Inspirée par la culture pop (comme *Stranger Things*), cette direction artistique mise sur l&#x27;imperfection, le grain et le minimalisme pour captiver l&#x27;attention du spectateur.</span></li><li><span class="point-bullet">✦</span><span>Cohérence multi-images** : Pour des séquences complexes (comme un processus de fabrication), l&#x27;utilisation de plusieurs images de référence successives permet de guider l&#x27;IA à travers une transition fluide d&#x27;un point A à un point B.</span></li><li><span class="point-bullet">✦</span><span>Maîtrise du minimalisme** : En motion design, &quot;moins c&#x27;est plus&quot; ; les compositions épurées combinées à des mouvements maîtrisés donnent toujours un résultat plus élégant et professionnel.</span></li><li><span class="point-bullet">✦</span><span>Gestion audio automatisée** : L&#x27;utilisation de fonctionnalités natives comme celles de Seedance 2.5 permet de générer des pistes musicales personnalisées et synchronisées, éliminant la corvée de la recherche en banque de sons.</span></li><li><span class="point-bullet">✦</span><span>Personnalisation en post-production** : N&#x27;hésitez pas à importer vos clips générés par l&#x27;IA dans un logiciel de montage classique pour y appliquer des filtres, réduire la cadence d&#x27;images ou ajouter du grain afin de signer votre propre patte artistique.</span></li><li><span class="point-bullet">✦</span><span>Monétisation directe des compétences** : Les entreprises dépensent des milliers de dollars en animations ; maîtriser ces outils vous positionne immédiatement sur un marché ultra-lucratif de prestations freelance.</span></li></ul>
             </div>
         </section>
 
@@ -397,7 +454,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">L&#x27;IA vient de vous confier les clés de votre propre studio de motion design. Les entreprises sont prêtes à dépenser des milliers de dollars en animations, vidéos explicatives et contenus de marque. Mais l&#x27;IA a fait basculer l&#x27;équilibre. Vous pouvez désormais passer d&#x27;une idée à un motion design soigné sans nécessiter un budget énorme ni des années d&#x27;expérience.</blockquote>
+                    <blockquote class="verbatim-text">L&#x27;intelligence artificielle vient de vous donner les clés de votre propre studio de motion design. Les entreprises sont prêtes à dépenser des milliers de dollars en animations, vidéos explicatives et contenus de marque. Mais l&#x27;IA a fait basculer la balance. Vous pouvez désormais passer d&#x27;une idée à des motion graphics soignés sans avoir besoin d&#x27;un énorme budget ni d&#x27;années d&#x27;expérience.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -405,15 +462,42 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Une vidéo d&#x27;animation insérée dans un cadre rectangulaire aux bords arrondis sur fond dégradé bleu foncé.</p>
-                        <p><strong>Contenu textuel & Code :</strong> En haut de l&#x27;écran, un sous-titre incrusté en blanc et turquoise : &quot;explainers and branded content&quot;. Au centre, une illustration vectorielle au style épuré montrant un jeune homme barbu avec des lunettes et une casquette verte, tapant sur un ordinateur portable d&#x27;où s&#x27;échappe un avion en papier rouge, entouré d&#x27;éléments graphiques géométriques et sphériques flottants.</p>
-                        <p><strong>Action / Démonstration :</strong> L&#x27;illustration animée montre le personnage tapant activement sur son clavier tandis que des avions en papier et des formes abstraites flottent et se déplacent dynamiquement autour de lui.</p>
+                        <p><strong>Interface & Outils :</strong> Animations et illustrations graphiques intégrées dans la vidéo (motion design) avec sous-titrage du texte en haut de l&#x27;écran.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché en haut de l&#x27;écran : &quot;explainers and branded content&quot; (Image 2) et &quot;without needing a huge budget&quot; (Image 3). Illustrations animées en style 2D et collage vidéo.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;animations visuelles illustrant le propos sur la création de contenu par l&#x27;IA et la réduction des coûts.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_001_00-00-00.jpg" alt="Capture Segment #01" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_001_00-00-00.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:00:00</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_001_00-00-10.jpg" alt="Animation illustrative style dessin animé d&#x27;un créateur barbu avec une casquette tapant sur un ordinateur portable, entouré d&#x27;éléments graphiques colorés." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_001_00-00-10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:10</span>
+                        <span class="caption-text">Animation illustrative style dessin animé d&#x27;un créateur barbu avec une casquette tapant sur un ordinateur portable, entouré d&#x27;éléments graphiques colorés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_002_00-00-17.jpg" alt="Animation style collage où une grande main en noir et blanc tient une ficelle tirée par le personnage de Jack sur un fond texturé jaune et des montagnes en noir et blanc." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_002_00-00-17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:17</span>
+                        <span class="caption-text">Animation style collage où une grande main en noir et blanc tient une ficelle tirée par le personnage de Jack sur un fond texturé jaune et des montagnes en noir et blanc.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -431,7 +515,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">Dans cette vidéo, je vais vous apprendre à créer des motion graphics de qualité supérieure avec les meilleurs outils d&#x27;IA. Pour que vous puissiez réaliser un produit pour lequel les clients paieront réellement. Grâce à l&#x27;IA, un seul créateur peut faire le travail d&#x27;un studio entier. Et si vous apprenez à en profiter dès maintenant, il y a beaucoup d&#x27;argent à se faire. Si vous aimez le contenu d&#x27;aujourd&#x27;hui, n&#x27;oubliez pas de mettre un gros pouce bleu et de vous abonner.</blockquote>
+                    <blockquote class="verbatim-text">Dans cette vidéo, je vais vous apprendre à créer des graphiques animés de qualité supérieure avec les meilleurs outils d&#x27;IA. Pour que vous puissiez réaliser un produit pour lequel les clients paieront vraiment. Grâce à l&#x27;IA, un créateur unique peut faire le travail d&#x27;un studio entier. Et si vous apprenez à en profiter dès maintenant, il y a beaucoup d&#x27;argent à se faire. Si vous aimez le contenu d&#x27;aujourd&#x27;hui, n&#x27;oubliez pas de lâcher un pouce bleu pour moi et pensez à vous abonner.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -439,15 +523,31 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Une fenêtre vidéo centrale aux coins arrondis affichant un avatar stylisé, encadrée par un fond bleu dégradé. Un curseur de souris blanc en forme de flèche est visible dans le coin inférieur gauche de l&#x27;image.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Un sous-titre textuel blanc et bleu affiché en haut de l&#x27;écran avec les mots « can do the work ». Visuel d&#x27;un personnage de type cartoon 3D barbu avec des lunettes et une casquette, détouré par une sélection en pointillés.</p>
-                        <p><strong>Action / Démonstration :</strong> Le personnage de synthèse subit une sélection ou une manipulation de détourage à l&#x27;aide d&#x27;un curseur de souris, illustrant l&#x27;idée du travail de studio automatisé.</p>
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustation d&#x27;un rendu 3D animé et affichage d&#x27;un bouton d&#x27;appel à l&#x27;action &quot;SUBSCRIBE&quot; en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Rendu visuel d&#x27;éléments technologiques en 3D (console portable blanche, cartes électroniques, circuits) en lévitation sur fond sombre avec un contour lumineux bleu, et un encart &quot;SUBSCRIBE&quot; avec icône de pouce bleu et cloche de notification.</p>
+                        <p><strong>Action / Démonstration :</strong> Animation fluide de composants et d&#x27;appareils électroniques flottant et tournant sur eux-mêmes, illustrant les motion graphics créés par IA.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_002_00-00-20.jpg" alt="Capture Segment #02" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_002_00-00-20.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:00:20</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_003_00-00-40.jpg" alt="Affichage d&#x27;une animation 3D générée par IA montrant des composants électroniques et des consoles portables rétro en lévitation dans l&#x27;espace." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_003_00-00-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:40</span>
+                        <span class="caption-text">Affichage d&#x27;une animation 3D générée par IA montrant des composants électroniques et des consoles portables rétro en lévitation dans l&#x27;espace.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -465,7 +565,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">Très bien, entrons dans le vif du sujet. Dans la vidéo d&#x27;aujourd&#x27;hui, nous allons explorer trois types uniques de motion design que vous pouvez créer grâce à l&#x27;IA. Et ils sont parfaits, que vous souhaitiez concevoir quelque chose pour vos propres projets créatifs ou que vous cherchiez à créer des éléments visuels que vous pourrez réellement vendre à un client ou à une marque. Le premier style que je veux examiner est l&#x27;art vectoriel (VectorArt).</blockquote>
+                    <blockquote class="verbatim-text">Bon, entrons dans le vif du sujet. Dans la vidéo d&#x27;aujourd&#x27;hui, nous allons explorer trois types uniques d&#x27;animations graphiques que vous pouvez créer en utilisant l&#x27;IA. Et ils sont parfaits, que vous souhaitiez créer quelque chose pour vos propres projets créatifs ou que vous cherchiez à fabriquer des ressources que vous pourrez réellement vendre à un client ou à une marque. Le premier style que je veux examiner est le VectorArt.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -473,15 +573,42 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Écran de montage vidéo ou interface de présentation affichant un fond bleu uni avec trois fenêtres rectangulaires miniatures horizontales (générations de motion design pixélisées/floutées ou extraits vidéo numérotés 1, 2 et 3), et en bas à droite, une vignette incrustée montrant Jack face caméra dans son studio devant son micro.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Trois grands chiffres bleus superposés sur les miniatures (&quot;1&quot;, &quot;2&quot;, &quot;3&quot;).</p>
-                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs face caméra tandis que des aperçus de styles de motion design numérotés de 1 à 3 apparaissent à l&#x27;écran sous forme de miniatures pour introduire la structure de la vidéo.</p>
+                        <p><strong>Interface & Outils :</strong> Écran de présentation vidéo avec incrustation caméra (PiP) du présentateur en bas à droite et affichage de texte animé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : numéros &quot;1&quot;, &quot;2&quot;, &quot;3&quot; sur les vignettes, puis le texte &quot;style one\nvector art&quot; sur l&#x27;image 3.</p>
+                        <p><strong>Action / Démonstration :</strong> Transition visuelle introduisant le premier style abordé dans la vidéo (Vector Art), illustré par des aperçus graphiques et du texte à l&#x27;écran.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_003_00-00-42.jpg" alt="Capture Segment #03" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_003_00-00-42.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:00:42</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_004_00-00-52.jpg" alt="Affichage de trois vignettes numérotées représentant les trois styles de motion design présentés dans la vidéo, avec le présentateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_004_00-00-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:52</span>
+                        <span class="caption-text">Affichage de trois vignettes numérotées représentant les trois styles de motion design présentés dans la vidéo, avec le présentateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_005_00-01-01.jpg" alt="Écran de transition affichant le texte &quot;style one vector art&quot; sur fond bleu dégradé." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_005_00-01-01.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:01</span>
+                        <span class="caption-text">Écran de transition affichant le texte &quot;style one vector art&quot; sur fond bleu dégradé.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -499,7 +626,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">C&#x27;est un type de motion design que vous avez beaucoup vu ces dernières années. C&#x27;est définitivement très tendance, et pour de bonnes raisons. Pour générer nos motion graphics par IA, je suis sur Higgsfield. Et si vous voulez suivre en même temps, vous trouverez un lien en bas dans la description. Sur la page d&#x27;accueil, je vais me rendre dans le coin supérieur gauche et sélectionner &quot;Créer une vidéo&quot;.</blockquote>
+                    <blockquote class="verbatim-text">C&#x27;est un type de graphisme en mouvement que vous avez beaucoup vu ces dernières années. C&#x27;est définitivement très tendance et pour une bonne raison. Pour générer nos graphismes en mouvement par IA, je suis sur Higgsfield. Et si vous voulez suivre en même temps, vous trouverez un lien en bas dans la description. Sur la page d&#x27;accueil, je vais me rendre dans le coin supérieur gauche et sélectionner créer une vidéo.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -507,15 +634,53 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la page d&#x27;accueil de la plateforme Higgsfield, avec un menu supérieur comprenant les onglets Explore, Image, Video, Audio, Edit, Layers, Cinema Studio, Marketing Studio, Viral Presets, MCP &amp; CLI, Supercomputer, Academy, Community, Enterprise, Assets, ainsi que le flux vidéo de Jack dans un encadré incrusté en bas à droite.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Éléments de l&#x27;interface de Higgsfield : la bannière supérieure avec divers onglets de navigation, le bloc &quot;SUPERCOMPUTER&quot; alimenté par GPT 5.6 Sol avec le bouton &quot;Try now&quot;, divers modules de génération comme Seedance 2.5 (New), Nano Banana Pro, Higgsfield Academy, MCP &amp; CLI, Cinema Studio 4.0 (New), Seedance 2.0, et une bannière promotionnelle en bas pour le &quot;Higgsfield Global Film Festival&quot; doté d&#x27;un prix de 1 000 000 $.</p>
-                        <p><strong>Action / Démonstration :</strong> La page d&#x27;accueil de Higgsfield est affichée à l&#x27;écran tandis que Jack parle face caméra dans l&#x27;encadré, avant d&#x27;orienter l&#x27;attention vers le coin supérieur gauche pour indiquer la sélection de l&#x27;option de création vidéo.</p>
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme web Higgsfield (avec miniatures de vidéos, rubriques Explore, Image, Video, Cinema Studio, et encadré vidéo PiP du présentateur dans le coin inférieur droit).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes visibles : &quot;Explore&quot;, &quot;Image&quot;, &quot;Video&quot;, &quot;Audio&quot;, &quot;Edit&quot;, &quot;Cinema Studio&quot;, &quot;Marketing Studio&quot;, &quot;Supercomputer&quot;, &quot;Seedance 2.5&quot;, &quot;Nano Banana Pro&quot;, &quot;Higgsfield Global Film Festival $1,000,000&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole et clique sur l&#x27;option &quot;Video&quot; dans le menu supérieur gauche de l&#x27;interface Higgsfield.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_004_00-01-03.jpg" alt="Capture Segment #04" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_004_00-01-03.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:01:03</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_006_00-01-05.jpg" alt="Exemple d&#x27;animation graphique en mouvement montrant un personnage sur un crayon géant." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_006_00-01-05.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:05</span>
+                        <span class="caption-text">Exemple d&#x27;animation graphique en mouvement montrant un personnage sur un crayon géant.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_007_00-01-14.jpg" alt="Page d&#x27;accueil de la plateforme Higgsfield affichant différents outils et options." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_007_00-01-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:14</span>
+                        <span class="caption-text">Page d&#x27;accueil de la plateforme Higgsfield affichant différents outils et options.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_008_00-01-23.jpg" alt="Gros plan sur le menu supérieur gauche de l&#x27;interface de Higgsfield montrant les options de création." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_008_00-01-23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:23</span>
+                        <span class="caption-text">Gros plan sur le menu supérieur gauche de l&#x27;interface de Higgsfield montrant les options de création.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -533,7 +698,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">Nous voulons d&#x27;abord sélectionner le modèle et pour la vidéo d&#x27;aujourd&#x27;hui, nous allons utiliser Seedance 2.5, qui est maintenant disponible en résolution 1080p. Ce flux de travail donnera également d&#x27;excellents résultats avec Seedance 2 si vous cherchez un moyen de réduire légèrement vos coûts. Maintenant, vous pouvez générer une vidéo par IA en utilisant seulement une invite textuelle, mais l&#x27;ajout d&#x27;une image de référence vous donne beaucoup plus de contrôle sur vos résultats. Je vais donc télécharger cette version de style art vectoriel de moi-même que j&#x27;ai générée plus tôt. En ce qui concerne l&#x27;invite elle-même, nous demandons une publicité de 15 secondes pour un Airbnb.</blockquote>
+                    <blockquote class="verbatim-text">Nous voulons d&#x27;abord sélectionner le modèle et pour la vidéo d&#x27;aujourd&#x27;hui, nous allons utiliser CDANCE 2.5, qui est maintenant disponible en résolution 1080p. Ce workflow donnera également d&#x27;excellents résultats avec CDANCE 2 si vous cherchez un moyen de réduire légèrement vos coûts. Maintenant, vous pouvez générer une vidéo par IA en utilisant uniquement un prompt textuel, mais l&#x27;ajout d&#x27;une image de référence vous donne beaucoup plus de contrôle sur vos résultats. Je vais donc télécharger cette version de moi-même au style art vectoriel que j&#x27;ai générée un peu plus tôt. En ce qui concerne le prompt lui-même, nous demandons une publicité de 15 secondes pour un Airbnb.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -541,15 +706,42 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de génération vidéo par IA à gauche et un lecteur vidéo ou aperçu à droite. En bas à droite, on aperçoit Jack face caméra dans son studio avec un micro.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Dans la zone &quot;Add references&quot;, on trouve des icônes pour ajouter une image, une vidéo ou de l&#x27;audio. Dans le bloc &quot;Prompt&quot;, le texte visible est le suivant : &quot;[00:00 - 00:04] Wide full-frame layout on a soft warm off-white field, slow 2D parallax push in — the bearded man sits calmly in a simple flat vector chair, olive cap, gold glasses, mid-brown beard, white tee, a mug in hand; around him a clean flat-vector treehouse forms in the generous negative space, a round window...&quot;. En bas, des boutons indiquent &quot;@ Elements&quot; et un contrôle audio &quot;On&quot;. Dans le bloc &quot;Model&quot;, on lit &quot;Seedance 2.5&quot; avec une icône de performance.</p>
-                        <p><strong>Action / Démonstration :</strong> La souris navigue et survole le bloc de texte du prompt dans l&#x27;interface de génération vidéo, tandis que Jack apparaît en médaillon en bas à droite en train de parler et d&#x27;expliquer le processus.</p>
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de génération vidéo par IA (type Seedance) avec panneau d&#x27;édition d&#x27;image et affichage de prompts textuels détaillés.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible sur l&#x27;image 3 détaillant les plans, le style d&#x27;animation vectorielle 2D plate, la palette de couleurs, et les instructions de morphing pour une publicité de 15 secondes d&#x27;Airbnb. Sur l&#x27;image 2, aperçu d&#x27;un personnage vectoriel (homme barbu avec casquette et lunettes) sous différents angles.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;importation de l&#x27;image de référence de son avatar vectoriel puis présente le prompt textuel détaillé utilisé pour générer la publicité de 15 secondes pour Airbnb.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_005_00-01-25.jpg" alt="Capture Segment #05" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_005_00-01-25.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:01:25</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_009_00-01-50.jpg" alt="Interface de l&#x27;outil de génération montrant une image de référence d&#x27;un personnage dans un style art vectoriel (plusieurs vues), avec des options d&#x27;édition d&#x27;image sur le panneau latéral droit." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_009_00-01-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:50</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération montrant une image de référence d&#x27;un personnage dans un style art vectoriel (plusieurs vues), avec des options d&#x27;édition d&#x27;image sur le panneau latéral droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_010_00-02-00.jpg" alt="Affichage d&#x27;un prompt textuel détaillé et structuré pour la génération de la publicité Airbnb, divisé en séquences temporelles ([00:00 - 00:04], etc.) avec des instructions de style et de palette." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_010_00-02-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:00</span>
+                        <span class="caption-text">Affichage d&#x27;un prompt textuel détaillé et structuré pour la génération de la publicité Airbnb, divisé en séquences temporelles ([00:00 - 00:04], etc.) avec des instructions de style et de palette.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -567,7 +759,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">style business. Et c&#x27;est un excellent exemple parce qu&#x27;on est en train de créer un contenu de marque qu&#x27;un client paierait réellement. Je vais vous expliquer exactement comment j&#x27;ai construit ce prompt dans un instant. Pour l&#x27;instant, je suis satisfait des paramètres, donc on peut cliquer sur générer et jeter un œil au résultat. Ouais, c&#x27;est sorti exactement comme je l&#x27;avais imaginé et c&#x27;est assez dingue de se dire que nous</blockquote>
+                    <blockquote class="verbatim-text">style business. Et c&#x27;est un excellent exemple parce qu&#x27;on est en train de créer un contenu de marque qu&#x27;un client paierait réellement. Je vais vous expliquer exactement comment j&#x27;ai construit ce prompt dans une minute. Pour l&#x27;instant, je suis satisfait des paramètres, donc on peut y aller, cliquer sur générer et jeter un œil au résultat. Ouais, c&#x27;est sorti exactement comme je l&#x27;imaginais et c&#x27;est plutôt fou de penser qu&#x27;on</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -575,15 +767,42 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Une interface vidéo de style lecteur ou fenêtre graphique, montrant une animation 2D de Jack assis dans une chaise pliante, tenant une tasse, sur fond clair minimaliste avec un dégradé bleu en arrière-plan global.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Animation vectorielle épurée représentant un personnage barbu avec une casquette et un t-shirt blanc, assis avec une tasse de café dans les mains, sur fond blanc épuré encadré.</p>
-                        <p><strong>Action / Démonstration :</strong> Jack présente un exemple d&#x27;animation 2D générée par IA, tandis que l&#x27;écran affiche l&#x27;illustration animée du personnage tenant une tasse dans un style graphique et publicitaire.</p>
+                        <p><strong>Interface & Outils :</strong> Interface de Seedance (outil de génération de vidéo par IA) avec menu latéral, zone de prévisualisation, boîte de prompt et boutons de réglage (durée, format, résolution).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : « [00:00 - 00:04] Wide full-frame layout on a soft warm off-white field, slow 2D parallax push in... ». Modèle sélectionné : Seedance 2.5. Paramètres : 15s, 16:9, 1080p, Bitrate High. Bouton jaune de génération « Generate ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Seedance avec les paramètres saisis et lance la génération de la vidéo, puis le résultat animé est affiché.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_006_00-02-02.jpg" alt="Capture Segment #06" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_006_00-02-02.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:02:02</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_011_00-02-16.jpg" alt="Interface de Seedance montrant le panneau de configuration d&#x27;un prompt vidéo avec des options de génération et un retour visuel sur le moniteur." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_011_00-02-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:16</span>
+                        <span class="caption-text">Interface de Seedance montrant le panneau de configuration d&#x27;un prompt vidéo avec des options de génération et un retour visuel sur le moniteur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_012_00-02-29.jpg" alt="Résultat de l&#x27;animation générée montrant un personnage de style vectoriel assis près d&#x27;une tente dans un paysage désertique avec des cactus." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_012_00-02-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:29</span>
+                        <span class="caption-text">Résultat de l&#x27;animation générée montrant un personnage de style vectoriel assis près d&#x27;une tente dans un paysage désertique avec des cactus.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -601,7 +820,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">j&#x27;ai construit cette publicité entière en combinant simplement une feuille de référence de personnage avec le bon prompt. En parlant de ça, pourquoi ce prompt fonctionne-t-il si bien ? C&#x27;est parce qu&#x27;il regorge de directions que C-Dance peut exploiter, et cette section en particulier qui décrit le style fait un travail considérable. Tous mes prompts sont construits en utilisant une compétence Claude que je vais partager avec vous tous tout à fait gratuitement. Il y a un lien en bas dans la description vers ma communauté school où vous pourrez télécharger ceci et c&#x27;est vraiment aussi simple que de télécharger la compétence en même temps que vos références.</blockquote>
+                    <blockquote class="verbatim-text">J&#x27;ai construit cette publicité entière simplement en combinant une fiche de référence de personnage avec le bon prompt. En parlant de ça, pourquoi ce prompt fonctionne-t-il si bien ? C&#x27;est parce qu&#x27;il regorge d&#x27;indications à utiliser pour C-Dance et cette section en particulier décrivant le style fait un travail considérable. Tous mes prompts sont construits en utilisant une compétence Claude que je vais partager avec vous entièrement gratuitement. Il y a un lien dans la description vers ma communauté School où vous pourrez télécharger ceci et c&#x27;est vraiment aussi simple que de télécharger la compétence en même temps que vos références.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -609,15 +828,53 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Capture d&#x27;écran principale affichant un bloc de texte noir structuré avec des lignes de code/prompts détaillés (séparé en plusieurs blocs temporels et catégories techniques), avec en bas à droite un encadré montrant Jack dans sa configuration de studio (face caméra, micro, portant une casquette).</p>
-                        <p><strong>Contenu textuel & Code :</strong> Affichage d&#x27;un prompt textuel complexe et structuré comprenant des séquences temporelles ([00:00 - 00:04], [00:04 - 00:07], etc.), des instructions de style (&quot;Flat vector art animation&quot;, &quot;bold flat colour fills&quot;, &quot;crisp clean vector edges&quot;), une palette de couleurs (&quot;Soft warm off-white ground&quot;, &quot;forest-green treehouse&quot;), des verrous de style et de personnage (&quot;Character lock - the bearded man&quot;), ainsi que des consignes audio et des prompts négatifs détaillés en bas.</p>
-                        <p><strong>Action / Démonstration :</strong> Présentation à l&#x27;écran du prompt détaillé et structuré servant à la génération de la publicité, tandis que Jack commente et explique sa méthode d&#x27;ingénierie de prompt en direct.</p>
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur de l&#x27;assistant IA Claude avec une invite textuelle et des pièces jointes de fichiers, ainsi que l&#x27;application de bureau affichant des instructions de prompts structurées.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes visibles incluant : &quot;Good afternoon, Jack&quot;, les blocs de prompts temporels (&quot;[00:00 - 00:04] Wide full-frame layout...&quot;), et le prompt de style vectoriel pour la marque &quot;ROAM&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre des exemples d&#x27;animation générée, détaille la structure des prompts textuels, puis présente l&#x27;interface de l&#x27;outil Claude où les fichiers de compétence et de référence sont téléchargés.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_007_00-02-42.jpg" alt="Capture Segment #07" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_007_00-02-42.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:02:42</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_013_00-02-44.jpg" alt="Rendu visuel d&#x27;une animation 2D montrant un personnage barbu assis devant une cabane dans les arbres." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_013_00-02-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:44</span>
+                        <span class="caption-text">Rendu visuel d&#x27;une animation 2D montrant un personnage barbu assis devant une cabane dans les arbres.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_014_00-02-55.jpg" alt="Affichage de code ou de prompt détaillé avec des instructions temporelles et des indications de style." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_014_00-02-55.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:55</span>
+                        <span class="caption-text">Affichage de code ou de prompt détaillé avec des instructions temporelles et des indications de style.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_015_00-03-16.jpg" alt="Interface de l&#x27;outil Claude montrant une boîte de discussion avec le fichier de compétence et une image attachée." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_015_00-03-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:16</span>
+                        <span class="caption-text">Interface de l&#x27;outil Claude montrant une boîte de discussion avec le fichier de compétence et une image attachée.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -635,7 +892,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">et ensuite de décrire votre idée. Vous obtiendrez un prompt extrêmement détaillé comme celui-ci, il suffit de le copier et de le coller directement dans Higgs field et vous êtes prêts à commencer. Maintenant, j&#x27;ai conçu cette compétence Claude pour fonctionner avec une variété de styles de motion design, ce qui nous amène naturellement au deuxième style que je souhaite explorer, qui présente ce design en papier découpé. Alors que certaines marques et créateurs aiment que leur contenu soit épuré et sans effort, d&#x27;autres préfèrent quelque chose qui semble plus brut et imparfait. Donc, pour cet exemple, nous allons utiliser plusieurs références d&#x27;images. J&#x27;ai ces deux</blockquote>
+                    <blockquote class="verbatim-text">et ensuite de décrire votre idée. Vous obtiendrez en retour un prompt riche et détaillé comme celui-ci, il vous suffit de le copier-coller directement dans Higgsfield et vous êtes prêt. Maintenant, j&#x27;ai conçu cette compétence Claude pour fonctionner pour une variété de styles de motion design, ce qui nous amène gentiment au deuxième style que je veux explorer, qui présente ce design en papier découpé. Alors que certaines marques et créateurs aiment que leur contenu semble propre et sans effort, d&#x27;autres préfèrent quelque chose qui semble plus brut et imparfait. Donc pour cet exemple, nous allons utiliser plusieurs références d&#x27;images. J&#x27;ai ces deux-là</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -643,15 +900,42 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio, assis devant un micro de type podcast, portant des lunettes et une casquette retournée. L&#x27;arrière-plan montre une étagère avec des objets de décoration et une lumière d&#x27;ambiance chaleureuse.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou paramètre technique visible à l&#x27;écran.</p>
-                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement au spectateur en parlant de manière animée et en gesticulant légèrement avec les mains pour illustrer son propos.</p>
+                        <p><strong>Interface & Outils :</strong> Interface sombre avec affichage de texte (prompt de génération) et incrustation vidéo PiP (Picture-in-Picture) de Jack dans son studio.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible à l&#x27;écran : « A satisfying vector art style ad for an Airbnb style brand, that shows the bearded man moving between different properties and environments and shows how a change of place effects him in a positive way, the brand is called &#x27;ROAM&#x27; » avec une icône de chargement « Untangling ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre un exemple de prompt textuel généré, puis bascule sur une vidéo de démonstration au style de papier découpé animée.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_008_00-03-18.jpg" alt="Capture Segment #08" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_008_00-03-18.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:03:18</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_016_00-03-20.jpg" alt="Interface textuelle affichant un prompt détaillé pour une publicité dans un style d&#x27;art vectoriel inspiré d&#x27;Airbnb, avec un encadré PiP montrant Jack dans son studio." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_016_00-03-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:20</span>
+                        <span class="caption-text">Interface textuelle affichant un prompt détaillé pour une publicité dans un style d&#x27;art vectoriel inspiré d&#x27;Airbnb, avec un encadré PiP montrant Jack dans son studio.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_017_00-03-43.jpg" alt="Vidéo de démonstration au style de papier découpé montrant Jack effectuant un coup de poing face caméra avec un effet de découpage papier et des animations graphiques, avec un encadré PiP de Jack." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_017_00-03-43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:43</span>
+                        <span class="caption-text">Vidéo de démonstration au style de papier découpé montrant Jack effectuant un coup de poing face caméra avec un effet de découpage papier et des animations graphiques, avec un encadré PiP de Jack.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -669,7 +953,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">des photos de moi-même aux côtés de cette bouteille de sauce piquante que j&#x27;ai générée un peu plus tôt avec cette illustration personnalisée vraiment sympa. Pour le prompt, je veux vraiment que cela ait un côté décalé et unique, pour pencher franchement vers ce style de découpage en papier. Je ne veux pas trop en révéler, allons-y, cliquons sur générer et voyons ce que nous obtenons. C&#x27;est ce que j&#x27;adore avec les graphismes animés. Chaque style est tellement unique.</blockquote>
+                    <blockquote class="verbatim-text">photos de moi-même aux côtés de cette bouteille de sauce piquante que j&#x27;ai générée plus tôt avec cette très jolie illustration personnalisée. Pour le prompt, je veux vraiment que cela donne une impression décalée et unique, pour vraiment pencher vers ce style de découpage en papier. Je ne veux pas trop en révéler, laissez-moi aller de l&#x27;avant et cliquer sur générer pour que nous puissions jeter un œil à ce que l&#x27;on obtient. C&#x27;est ce que j&#x27;adore dans le motion design. Chaque style est tellement unique.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -677,15 +961,53 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Interface web de Seedance 2.5 (logiciel/plateforme de génération vidéo par IA) sur grand écran. En bas à droite, incrustation vidéo (picture-in-picture) de Jack face caméra devant son micro.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Modèle affiché : Seedance 2.5. Paramètres techniques visibles : Durée 15s, Format 16:9, Résolution 1080p, Bitrate réglé sur High, Coût de génération estimé à 135 crédits. Le prompt visible dans la zone de texte commence par : &quot;[00:00 - 00:03] Wide collage layout on a bright cream paper ground with graph-paper hints and torn-red-paper confetti edges, static with playful stop-motion jitter — the bearded man&#x27;s photographic cut-out sits centred looking curious and game, olive cap backwards, gold glasses, holding up a little cut-out taco in one hand and...&quot;. Dans la section &quot;References&quot;, trois miniatures d&#x27;images sont affichées (une bouteille de sauce piquante, et deux portraits de Jack). Sur l&#x27;écran principal, un aperçu vidéo montre le personnage généré dans un style papier découpé.</p>
-                        <p><strong>Action / Démonstration :</strong> Jack est assis à son bureau et pointe du doigt l&#x27;écran de son ordinateur principal tout en commentant le prompt et le style de l&#x27;animation en motion graphics.</p>
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de génération d&#x27;images/vidéos par IA avec panneau de configuration et options d&#x27;édition.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt détaillé décrivant les plans, les styles (analog mixed-media collage animation), la palette de couleurs, le verrouillage du style et des personnages, ainsi que les consignes audio et négatives.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre le flux de travail de génération d&#x27;IA, en passant de l&#x27;image source aux instructions textuelles détaillées jusqu&#x27;au résultat animé final.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_009_00-03-54.jpg" alt="Capture Segment #09" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_009_00-03-54.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:03:54</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_018_00-03-56.jpg" alt="Interface de l&#x27;outil d&#x27;IA montrant une image source de Jack avec des options d&#x27;édition sur le panneau latéral droit." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_018_00-03-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:56</span>
+                        <span class="caption-text">Interface de l&#x27;outil d&#x27;IA montrant une image source de Jack avec des options d&#x27;édition sur le panneau latéral droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_019_00-04-09.jpg" alt="Interface affichant un prompt textuel détaillé et structuré pour la génération vidéo en style papier découpé." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_019_00-04-09.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:09</span>
+                        <span class="caption-text">Interface affichant un prompt textuel détaillé et structuré pour la génération vidéo en style papier découpé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_020_00-04-22.jpg" alt="Résultat visuel généré montrant Jack portant un masque de catcheur rouge et jaune dans un style papier découpé." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_020_00-04-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:22</span>
+                        <span class="caption-text">Résultat visuel généré montrant Jack portant un masque de catcheur rouge et jaune dans un style papier découpé.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -703,7 +1025,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">Cela va avoir un effet tellement différent sur le spectateur par rapport au style d&#x27;art vectoriel que nous avons réalisé un peu plus tôt. Celui-là consistait à être simple et calme, mais celui-ci consiste à vouloir se démarquer. Ce qui est formidable si une marque ou un créateur cherche un moyen de se distinguer de la concurrence. Le produit reste également bien cohérent du début à la fin, tout comme moi en tant que personnage. Rien ne se dégrade vraiment ici et vous pourriez vraiment intégrer n&#x27;importe quel produit ou personnage que vous pouvez imaginer. J&#x27;ai également cet exemple ici qui met davantage l&#x27;accent sur la narration.</blockquote>
+                    <blockquote class="verbatim-text">Cela va avoir un effet tellement différent sur le spectateur par rapport au style d&#x27;art vectoriel que nous avons fait plus tôt. C&#x27;était axé sur la simplicité et le calme, mais ici tout est question de vouloir se démarquer. Ce qui est formidable si une marque ou un créateur cherche un moyen de se séparer de la concurrence. Le produit reste également bien cohérent du début à la fin aux côtés de moi-même en tant que personnage. Rien ne se brise vraiment ici et on pourrait vraiment y brancher n&#x27;importe quel produit ou personnage qu&#x27;on peut imaginer. J&#x27;ai aussi cet exemple ici qui met davantage l&#x27;accent sur la narration.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -711,15 +1033,54 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Jack face caméra, dans son studio d&#x27;enregistrement personnel équipé d&#x27;un micro sur pied et d&#x27;un éclairage chaleureux d&#x27;arrière-plan.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou paramètre technique textuel n&#x27;est affiché à l&#x27;écran dans ce plan, qui se concentre uniquement sur la présentation face caméra de Jack.</p>
-                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement au spectateur en parlant de manière expressive, en bougeant légèrement la tête et les mains pour souligner son argumentation sur les styles visuels d&#x27;IA générative.</p>
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustation du créateur (PiP) en bas à droite et affichage d&#x27;animations graphiques générées par IA au centre.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Inscription &quot;JACK&#x27;S&quot; visible sur la ceinture de catch dorée de l&#x27;illustration.
+[DESC_IMAGE_4] Animation de narration visuelle montrant une marionnette humaine manipulée par des fils.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration visuelle d&#x27;un style artistique alternatif plus percutant avec des animations de personnages et des éléments narratifs.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_010_00-04-36.jpg" alt="Capture Segment #10" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_010_00-04-36.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:04:36</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_021_00-04-48.jpg" alt="Animation dynamique colorée avec des flammes de style dessin animé entourant le personnage de Jack." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_021_00-04-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:48</span>
+                        <span class="caption-text">Animation dynamique colorée avec des flammes de style dessin animé entourant le personnage de Jack.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_022_00-05-00.jpg" alt="Illustration stylisée d&#x27;un catcheur masqué musclé portant une ceinture de champion avec l&#x27;inscription &quot;JACK&#x27;S&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_022_00-05-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:00</span>
+                        <span class="caption-text">Illustration stylisée d&#x27;un catcheur masqué musclé portant une ceinture de champion avec l&#x27;inscription &quot;JACK&#x27;S&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_023_00-05-10.jpg" alt="Animation montrant le personnage de Jack suspendu par des fils de marionnette manipulés par une main géante en arrière-plan." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_023_00-05-10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:10</span>
+                        <span class="caption-text">Animation montrant le personnage de Jack suspendu par des fils de marionnette manipulés par une main géante en arrière-plan.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -737,7 +1098,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">plutôt que de promouvoir un produit. Ici, je m&#x27;affranchis en quelque sorte des chaînes d&#x27;être manipulé ou contrôlé par quelqu&#x27;un d&#x27;autre. Un concept un peu plus abstrait ici qui semble plus sérieux sur le plan du ton, mais qui fonctionne quand même très bien avec ce style de papier découpé. Maintenant, nous avons déjà exploré deux types de motion design qui semblent vraiment distinctifs, mais je veux maintenant m&#x27;intéresser à quelque chose d&#x27;un peu plus rétro. Nous allons donc nous pencher sur ce style de motion design VHS.</blockquote>
+                    <blockquote class="verbatim-text">plutôt que de promouvoir un produit. Ici, je m&#x27;affranchis en quelque sorte des chaînes d&#x27;être manipulé ou contrôlé par quelqu&#x27;un d&#x27;autre. Un concept un peu plus abstrait ici, qui donne un ton plus sérieux mais qui fonctionne toujours très bien avec ce style de découpage en papier. Maintenant, nous avons déjà exploré deux types de motion design qui ont vraiment beaucoup de personnalité, mais je veux maintenant m&#x27;intéresser à quelque chose d&#x27;un peu plus rétro. Nous allons donc nous pencher sur ce style de motion design VHS.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -745,15 +1106,42 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio, assis dans une chaise de bureau noire avec un micro podcast blanc et noir disposé au premier plan. En arrière-plan, une étagère en bois garnie de plantes et d&#x27;objets décoratifs, un mur à lamelles verticales en bois et une lampe murale allumée diffusant une lumière chaude, ainsi qu&#x27;un fauteuil avec un coussin orange.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Aucun texte textuel, prompt ou paramètre technique visible à l&#x27;écran dans ce plan.</p>
-                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en gesticulant des mains pour illustrer ses propos sur les concepts abstraits et les styles de motion design.</p>
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustation PiP (Picture-in-Picture) et écrans graphiques animés.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran : &quot;style three&quot; et &quot;vhs / retro&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre visuellement le concept abstrait avec une animation de style papier découpé (marionnette), puis présente le troisième style visuel (VHS/rétro) avec un titre textuel à l&#x27;écran.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_010_00-04-36.jpg" alt="Capture Segment #11" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_010_00-04-36.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:05:12</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_024_00-05-14.jpg" alt="Animation au style de découpage en papier montrant Jack sous forme de marionnette avec des fils et des croix jaunes sur les yeux, avec un encadré PiP de Jack en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_024_00-05-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:14</span>
+                        <span class="caption-text">Animation au style de découpage en papier montrant Jack sous forme de marionnette avec des fils et des croix jaunes sur les yeux, avec un encadré PiP de Jack en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_025_00-05-40.jpg" alt="Écran de transition ou de titre bleu dégradé affichant le texte &quot;style three&quot; et &quot;vhs / retro&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_025_00-05-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:40</span>
+                        <span class="caption-text">Écran de transition ou de titre bleu dégradé affichant le texte &quot;style three&quot; et &quot;vhs / retro&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -771,7 +1159,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">Il y a d&#x27;excellents exemples sur Instagram où des créateurs ont pris des logos modernes pour les transformer en style VHS. Et cela m&#x27;a vraiment inspiré à explorer ce type particulier d&#x27;animations graphiques. Encore une fois, c&#x27;est un excellent moyen pour un créateur ou une marque de se démarquer du lot.</blockquote>
+                    <blockquote class="verbatim-text">Il y a d&#x27;excellents exemples sur Instagram où des créateurs ont pris des logos modernes et les ont en quelque sorte transformés dans ce style VHS. Et cela m&#x27;a vraiment inspiré pour explorer ce type particulier d&#x27;animation graphique. Encore une fois, c&#x27;est un excellent moyen pour un créateur ou une marque de se démarquer du lot.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -779,15 +1167,42 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Instagram affichée dans un navigateur sur fond sombre, avec le panneau latéral gauche de navigation et la vue détaillée d&#x27;une publication vidéo au centre. En bas à droite, incrustation vidéo (picture-in-picture) montrant Jack face caméra avec son micro.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Texte incrusté dans la vidéo Instagram : « 1. Create a design in Adobe Illustrator ». Texte de la publication par le compte @kxdgraphics : « Quick video on how I made this retro Netflix logo. I start in Adobe Illustrator to create a vector design, then import it into Adobe After Effects, that&#x27;s where the magic happens. Once I&#x27;m happy with the animation, I put it on a CRT screen to get that cool, nostalgic effect. » Suivi de hashtags (#logo #retro #1980s #design #graphicdesign #branding #logodesigner #art #logodesigns #graphicdesigner #designer #logodesign #logos #brand #logotype #illustration #marketing #logomaker #illustrator #creative #graphic #photoshop #brandidentity #logoinspirations #design #logoinspiration #vector #graphics #typography #artwork). Dans le dock en bas de l&#x27;écran de la vidéo, les icônes des logiciels Adobe After Effects (Ae), Illustrator (Ai) et Photoshop (Ps) sont visibles.</p>
-                        <p><strong>Action / Démonstration :</strong> La vidéo Instagram est lue, montrant des extraits du processus de création d&#x27;un logo Netflix rétro avec les interfaces d&#x27;Adobe Illustrator et After Effects, tandis que Jack regarde et commente la vidéo depuis l&#x27;encadré en bas à droite.</p>
+                        <p><strong>Interface & Outils :</strong> Interface d&#x27;Instagram affichant une vidéo Reels de @kxdgraphics sur le design d&#x27;un logo Netflix rétro, avec le créateur visible en incrustation PiP (Picture-in-Picture) dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran : « How I made this Retro Netflix Logo: » et « 1. Create a design in Adobe Illustrator », ainsi que les hashtags de la publication et les commentaires Instagram sur le panneau latéral droit.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre un exemple de vidéo Instagram illustrant la création et l&#x27;animation rétro de logos modernes (style VHS/tube cathodique) pour inspirer le spectateur.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_011_00-05-42.jpg" alt="Capture Segment #12" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_011_00-05-42.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:05:42</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_026_00-05-44.jpg" alt="Capture d&#x27;écran montrant une publication Instagram de @kxdgraphics affichant un logo rétro Netflix avec effet style VHS et tube cathodique, avec le créateur en incrustation PiP dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_026_00-05-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:44</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une publication Instagram de @kxdgraphics affichant un logo rétro Netflix avec effet style VHS et tube cathodique, avec le créateur en incrustation PiP dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_027_00-05-53.jpg" alt="Capture d&#x27;écran montrant le tutoriel de @kxdgraphics sur Instagram avec l&#x27;étape 1 de création sous Adobe Illustrator, et le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_027_00-05-53.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:53</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le tutoriel de @kxdgraphics sur Instagram avec l&#x27;étape 1 de création sous Adobe Illustrator, et le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -805,7 +1220,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">Et j&#x27;ai l&#x27;impression que cette tendance a vraiment été initiée par Stranger Things. Donc je veux en fait inventer deux exemples pour ce style. Donc on va commencer par quelque chose d&#x27;un peu plus simple, où j&#x27;ai pris les devants et j&#x27;ai inventé ce logo rétro pour moi-même. Maintenant, il est vraiment important de s&#x27;assurer d&#x27;avoir cette esthétique présente avec toutes les images de référence que vous allez utiliser.</blockquote>
+                    <blockquote class="verbatim-text">Et j&#x27;ai l&#x27;impression que cette tendance a vraiment été lancée par Stranger Things. Je veux donc en fait inventer deux exemples pour ce style. Nous allons donc commencer par quelque chose d&#x27;un peu plus simple, où j&#x27;ai pris les devants et créé ce logo rétro pour moi-même. Maintenant, il est vraiment important de s&#x27;assurer que vous avez cette esthétique présente avec toutes les images de référence que vous allez utiliser.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -813,15 +1228,42 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Le logiciel Seedance 2.5 (interface de génération vidéo par IA) est affiché en plein écran avec un panneau de configuration latéral gauche (Prompt, Model, paramètres de durée, résolution, bitrate, bouton Generate) et une zone d&#x27;affichage principale montrant les résultats vidéo générés. En bas à droite, une incrustation vidéo (Picture-in-Picture) montre Jack face caméra dans son studio, parlant dans un micro.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible dans l&#x27;interface est : « [00:00 - 00:02] On deep black, the green striped sunburst shape from pops in first with a snappy elastic bounce and a slight overshoot, then the orange rounded-rectangle badge bounces in over it with a confident squash-and-settle, landing centred. » Les paramètres sélectionnés sont : Modèle « Seedance 2.5 », durée 5s, format 16:9, résolution 1080p, Bitrate « High ». Le modèle de génération affiche un coût de 45 crédits.</p>
-                        <p><strong>Action / Démonstration :</strong> L&#x27;interface présente la prévisualisation d&#x27;une génération vidéo en cours, avec le menu déroulant « Use as » ouvert au-dessus de la vignette de référence (montrant les options Reference, Start Frame, End Frame). En bas à droite, Jack parle face caméra dans sa propre configuration d&#x27;enregistrement.</p>
+                        <p><strong>Interface & Outils :</strong> Seedance 2.5 / Seedream 5.0 Pro (interface de génération et d&#x27;édition d&#x27;image/vidéo par IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur l&#x27;image #2 : un prompt vidéo détaillé (&quot;On deep black, the green striped sunburst shape from pops in first with a snappy elastic bounce...&quot;), modèle Seedance 2.5 v4, paramètres 5s, 16:9, 1080p. Sur l&#x27;image #3 : logo rétro « JACK VS. AI » encadré de néons colorés, options de menu à droite (Layer Decomposition, Upscale, Color Grading, Enhancer, Relight, Inpaint, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de génération vidéo et l&#x27;image d&#x27;un logo rétro créé pour illustrer sa démonstration.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_012_00-06-04.jpg" alt="Capture Segment #13" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_012_00-06-04.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:06:04</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_028_00-06-15.jpg" alt="Interface de Seedance 2.5 montrant une vidéo générée par IA avec un panneau de prompt détaillé et un aperçu vidéo, avec Jack en incrustation (PiP) en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_028_00-06-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:15</span>
+                        <span class="caption-text">Interface de Seedance 2.5 montrant une vidéo générée par IA avec un panneau de prompt détaillé et un aperçu vidéo, avec Jack en incrustation (PiP) en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_029_00-06-24.jpg" alt="Interface de Seedream 5.0 Pro affichant un logo rétro lumineux « JACK VS. AI » sur fond noir avec un panneau d&#x27;outils d&#x27;édition à droite." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_029_00-06-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:24</span>
+                        <span class="caption-text">Interface de Seedream 5.0 Pro affichant un logo rétro lumineux « JACK VS. AI » sur fond noir avec un panneau d&#x27;outils d&#x27;édition à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -839,7 +1281,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">Tu ne veux pas vraiment d&#x27;un beau logo bien propre pour ça. Tu veux quelque chose qui intègre déjà ce style VHS. Pour le prompt, je vais faire assez simple également. Je veux juste que chaque élément qui compose le logo s&#x27;assemble d&#x27;une manière satisfaisante. Générons cela et regardons. Ouais, j&#x27;adore vraiment ce style. Il a beaucoup de caractère et cela vient en grande partie de ce sentiment d&#x27;imperfection. Tu peux aussi pousser cela un peu</blockquote>
+                    <blockquote class="verbatim-text">Tu ne veux pas vraiment d&#x27;un logo beau et propre pour ça. Tu veux quelque chose qui intègre déjà ce style VHS. Pour le prompt, je vais faire assez simple également. Je veux juste que chaque élément qui compose le logo s&#x27;assemble d&#x27;une manière satisfaisante. Générons cela et regardons. Ouais, j&#x27;adore vraiment ce style. Il a beaucoup de caractère et cela vient en grande partie de ce sentiment d&#x27;imperfection. Tu peux aussi pousser cela un peu</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -847,15 +1289,42 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Plan moyen fixe de Jack face caméra dans son studio, assis à son bureau devant un microphone monté sur bras articulé. Le décor d&#x27;arrière-plan comprend une étagère métallique avec des objets de décoration, une plante verte en hauteur, et un mur en relief acoustique éclairé par une lampe d&#x27;ambiance.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou paramètre technique n&#x27;est affiché à l&#x27;écran dans ce plan.</p>
-                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime en regardant l&#x27;objectif de la caméra et accompagne ses explications en gesticulant légèrement des mains, dans un format de type vlog ou tutoriel vidéo.</p>
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec affichage d&#x27;éléments textuels (prompt) et de rendus visuels de logo, avec incrustation PiP du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt décrivant l&#x27;animation du logo sur fond noir et les spécifications de style rétro CRT (scanlines, aberration chromatique RVB, bruit vidéo analogique, grain pixel lo-fi).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre le prompt utilisé pour générer le logo, puis présente le résultat animé final à l&#x27;écran.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_013_00-06-26.jpg" alt="Capture Segment #14" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_013_00-06-26.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:06:26</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_030_00-06-37.jpg" alt="Affichage à l&#x27;écran du prompt détaillé avec les instructions d&#x27;animation et de style rétro CRT du logo, avec Jack dans un petit encadré en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_030_00-06-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:37</span>
+                        <span class="caption-text">Affichage à l&#x27;écran du prompt détaillé avec les instructions d&#x27;animation et de style rétro CRT du logo, avec Jack dans un petit encadré en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_031_00-06-48.jpg" alt="Affichage du rendu final du logo rétro « JACK VS. AI » dans un style cathodique avec des effets de lueur et d&#x27;aberration chromatique." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_031_00-06-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:48</span>
+                        <span class="caption-text">Affichage du rendu final du logo rétro « JACK VS. AI » dans un style cathodique avec des effets de lueur et d&#x27;aberration chromatique.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -873,7 +1342,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">aller plus loin si vous le souhaitez en important la génération par IA dans un logiciel de montage. Ici, j&#x27;ai réduit la fréquence d&#x27;images pour obtenir un style d&#x27;animation plus saccadé. J&#x27;ai amplifié la lueur en ajoutant quelques filtres supplémentaires ainsi qu&#x27;un grain de pellicule pour un peu plus de texture. Maintenant, je veux examiner un exemple plus complexe. Ce que j&#x27;ai fait, c&#x27;est que j&#x27;ai généré cinq images séparées qui ont toutes ce style VHS et se rapportent au processus de fabrication d&#x27;un expresso. L&#x27;image finale est vraiment magnifique</blockquote>
+                    <blockquote class="verbatim-text">De plus, si vous le souhaitez, en amenant la génération d&#x27;IA dans un logiciel de montage. Ici, j&#x27;ai réduit la fréquence d&#x27;images pour avoir un style d&#x27;animation plus haché. J&#x27;ai amplifié la lueur en ajoutant quelques filtres supplémentaires ainsi qu&#x27;un grain de pellicule pour un peu plus de texture. Maintenant, je veux examiner un exemple plus complexe. Donc ce que j&#x27;ai fait, c&#x27;est que j&#x27;ai généré cinq images séparées qui ont toutes ce style VHS et se rapportent au processus de fabrication d&#x27;un expresso. L&#x27;image finale est vraiment très belle</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -881,15 +1350,64 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> L&#x27;interface affichée est celle d&#x27;un logiciel de montage vidéo (semblable à Adobe Premiere Pro) avec le panneau des effets et des propriétés de calque visible à l&#x27;écran, comprenant divers filtres et réglages. Dans le coin inférieur droit, on aperçoit une incrustation vidéo (PiP) de Jack face caméra, portant une casquette et s&#x27;exprimant devant un micro.</p>
-                        <p><strong>Contenu textuel & Code :</strong> On distingue les paramètres d&#x27;effets appliqués dans le panneau de contrôle : Speed (100.00%), Posterize Time, Frame Rate (10.0), Bokeh Blur, Wonder Glow, Brightness &amp; Contrast, Noise (avec les sous-contrôles : Intensity à 50.0 %, Shadows à 75.0 %, Midtones à 75.0 %, Highlights à 75.0 %, Saturation à 50.0 %, Blend Mode réglé sur SoftLight, Master à 100.0 %, et l&#x27;option Preserve Alpha cochée). Des boutons d&#x27;action sont également visibles comme &quot;Surprise Me!&quot; et &quot;Start Fresh&quot;. Plus bas, la section Audio avec le paramètre &quot;Volume&quot; est apparente.</p>
-                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris (représenté par une flèche blanche) survole l&#x27;interface du logiciel de montage au niveau de l&#x27;option &quot;Preserve Alpha&quot;, tandis que la vidéo montre l&#x27;application de modifications et de filtres pour ajuster le rendu visuel de la séquence générée par IA.</p>
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro et Seedance 2.5 / 5.0 Pro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans Premiere Pro : panneau des effets (Time Remapping, Posterize Time à 10.0 fps, Wonder Glow avec intensité 30.0%). Dans Seedance : prompt &quot;[00:00 - 00:03] On deep black, the glowing coffee bean @image 1 drifts in and rotates slowly on its axis...&quot;, modèle Seedance 2.5 Full, durée 15s, résolution 1080p. Image finale avec le texte &quot;ROAST&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son écran de montage vidéo dans Premiere Pro pour ajuster la fréquence d&#x27;images et ajouter des effets visuels, puis présente une interface de génération vidéo par IA pour créer une séquence complexe en plusieurs étapes autour du café.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_014_00-06-59.jpg" alt="Capture Segment #15" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_014_00-06-59.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:06:59</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_032_00-07-01.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline de montage et les effets appliqués sur les clips vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_032_00-07-01.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:01</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline de montage et les effets appliqués sur les clips vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_033_00-07-11.jpg" alt="Gros plan sur le panneau des effets d&#x27;Adobe Premiere Pro montrant les paramètres de Time Remapping et Wonder Glow." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_033_00-07-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:11</span>
+                        <span class="caption-text">Gros plan sur le panneau des effets d&#x27;Adobe Premiere Pro montrant les paramètres de Time Remapping et Wonder Glow.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_034_00-07-22.jpg" alt="Interface de l&#x27;outil de génération Seedance 2.5 affichant un prompt textuel lié à la fabrication d&#x27;un expresso et des références d&#x27;images." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_034_00-07-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:22</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération Seedance 2.5 affichant un prompt textuel lié à la fabrication d&#x27;un expresso et des références d&#x27;images.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_035_00-07-31.jpg" alt="Interface de Seedance 5.0 Pro montrant l&#x27;image générée avec le texte lumineux « ROAST » sur fond noir et les options d&#x27;édition." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_035_00-07-31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:31</span>
+                        <span class="caption-text">Interface de Seedance 5.0 Pro montrant l&#x27;image générée avec le texte lumineux « ROAST » sur fond noir et les options d&#x27;édition.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -907,7 +1425,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">logo minimaliste pour notre marque de café fictive nommée Roast. Pour le prompt, je demande à Seedance 2.5 de faire une transition fluide entre chaque image individuelle pour montrer le processus de fabrication de l&#x27;expresso et de terminer sur le nom de notre marque. Allons-y, cliquons sur générer et voyons ce que nous obtenons. Ce résultat est exactement ce</blockquote>
+                    <blockquote class="verbatim-text">logo minimaliste pour notre marque de café fictive nommée Roast. Pour le prompt, je demande à Seedance 2.5 d&#x27;effectuer une transition fluide entre chaque image individuelle pour montrer le processus de fabrication de l&#x27;expresso et de se terminer sur notre nom de marque. Allons-y, lançons la génération et voyons ce que nous obtenons. Ce résultat est exactement ce</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -915,15 +1433,42 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio, assis devant un micro de type podcast, portant une casquette à l&#x27;envers et des lunettes. En arrière-plan, on aperçoit une étagère avec des objets décoratifs, une plante verte et un luminaire au design chaleureux.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ni interface logicielle n&#x27;est visible sur cette image fixe, l&#x27;écran montrant uniquement le présentateur de la chaîne Jack Vs. AI en train de s&#x27;exprimer.</p>
-                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en gesticulant légèrement pour appuyer ses explications sur l&#x27;utilisation de l&#x27;intelligence artificielle pour générer et animer le logo de la marque Roast.</p>
+                        <p><strong>Interface & Outils :</strong> Interface de démonstration vidéo / éditeur de prompts avec affichage de rendus visuels générés par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt en anglais décrivant les séquences temporelles (00:00 à 00:15) pour les éléments @bean, @portafilter, @pour, @cup et @roast, avec le style &quot;Retro CRT-screen motion graphics&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente le prompt textuel complexe utilisé pour générer l&#x27;animation de la marque de café, puis montre le résultat visuel du porte-filtre généré par Seedance 2.5.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_015_00-07-33.jpg" alt="Capture Segment #16" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_015_00-07-33.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:07:33</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_036_00-07-45.jpg" alt="Affichage du prompt textuel détaillé sur fond noir décrivant les étapes d&#x27;animation, le style CRT rétro et les consignes de mouvement." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_036_00-07-45.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:45</span>
+                        <span class="caption-text">Affichage du prompt textuel détaillé sur fond noir décrivant les étapes d&#x27;animation, le style CRT rétro et les consignes de mouvement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_037_00-07-57.jpg" alt="Aperçu de la vidéo générée montrant un porte-filtre d&#x27;espresso brillant avec de la mouture de café dans un style graphique effet tube cathodique." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_037_00-07-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:57</span>
+                        <span class="caption-text">Aperçu de la vidéo générée montrant un porte-filtre d&#x27;espresso brillant avec de la mouture de café dans un style graphique effet tube cathodique.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -941,7 +1486,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">J&#x27;espérais. D&#x27;une certaine manière, cela semble à la fois imparfait et satisfaisant. Vous remarquerez un thème un peu récurrent en matière d&#x27;animation graphique, c&#x27;est cette idée de minimalisme. La plupart du temps, less is more, et c&#x27;est un excellent exemple. J&#x27;adore aussi la musique personnalisée que C-Dance a générée pour ce contenu. Il peut être assez délicat de trouver le bon morceau de musique dans des bibliothèques de stock, par exemple, et de le faire correspondre à votre vidéo. Obtenir une synchronisation correcte et faire correspondre...</blockquote>
+                    <blockquote class="verbatim-text">J&#x27;étais après. Cela semble à la fois imparfait et satisfaisant. Vous remarquerez un thème un peu récurrent en matière de motion design, et c&#x27;est cette idée de minimalisme. La plupart du temps, moins c&#x27;est plus, et c&#x27;est un excellent exemple. J&#x27;adore aussi la musique personnalisée que C-Dance a générée pour ce contenu. Il peut être assez délicat de trouver le bon morceau de musique dans des bibliothèques de stock, par exemple, et de le faire correspondre à votre vidéo. Obtenir une bonne synchronisation et faire correspondre</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -949,15 +1494,53 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Jack face caméra dans son studio personnel, équipé d&#x27;un micro podcast professionnel monté sur bras articulé, avec en arrière-plan une étagère décorée, une plante verte et un éclairage d&#x27;ambiance chaleureux.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Aucun texte textuel incrusté ou prompt visible à l&#x27;écran, le plan se concentre sur l&#x27;intervenant s&#x27;exprimant directement aux spectateurs.</p>
-                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en gesticulant légèrement pour appuyer ses propos tout en expliquant les aspects techniques et artistiques des animations graphiques et des bandes sonores générées par IA.</p>
+                        <p><strong>Interface & Outils :</strong> Incrustation vidéo (Picture-in-Picture) avec Jack dans le coin inférieur droit, affichant des animations de motion design minimalistes centrées sur fond noir avec une bordure bleue.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Animations graphiques minimalistes liées au café : une tasse fumante, un grain de café, et le texte &quot;ROAST&quot; en lettres lumineuses.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente des exemples de motion graphics minimalistes générés par IA, illustrant ses propos sur la simplicité visuelle et la musique personnalisée.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_015_00-07-33.jpg" alt="Capture Segment #17" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_015_00-07-33.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:08:08</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_038_00-08-21.jpg" alt="Animation vidéo au centre montrant une tasse de café fumante entourée d&#x27;un halo lumineux, avec Jack en incrustation PiP dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_038_00-08-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:21</span>
+                        <span class="caption-text">Animation vidéo au centre montrant une tasse de café fumante entourée d&#x27;un halo lumineux, avec Jack en incrustation PiP dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_039_00-08-33.jpg" alt="Animation vidéo au centre montrant un grain de café détaillé entouré d&#x27;un halo lumineux, avec Jack en incrustation PiP dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_039_00-08-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:33</span>
+                        <span class="caption-text">Animation vidéo au centre montrant un grain de café détaillé entouré d&#x27;un halo lumineux, avec Jack en incrustation PiP dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_040_00-08-43.jpg" alt="Animation vidéo au centre affichant le mot &quot;ROAST&quot; en lettres lumineuses de style néon/doré, avec Jack en incrustation PiP dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_040_00-08-43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:43</span>
+                        <span class="caption-text">Animation vidéo au centre affichant le mot &quot;ROAST&quot; en lettres lumineuses de style néon/doré, avec Jack en incrustation PiP dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -975,7 +1558,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">l&#x27;ambiance de ce que vous recherchez peut être un véritable défi, mais C-Dance 2.5 a pour ainsi dire fait tout le travail difficile pour nous ici. Voilà donc. Trois styles de motion design très distincts, que vous pouvez tous personnaliser pour les adapter à n&#x27;importe quel projet créatif ou brief client. Juste un petit rappel, si vous souhaitez essayer mon générateur de prompts personnalisé, vous trouverez un lien dans la description vers ma communauté School. Vous pourrez y télécharger la compétence ainsi que tous mes prompts entièrement gratuitement. Si vous avez apprécié le contenu d&#x27;aujourd&#x27;hui, assurez-vous de lâcher un pouce bleu pour moi et envisagez</blockquote>
+                    <blockquote class="verbatim-text">l&#x27;ambiance de ce que vous recherchez peut s&#x27;avérer un vrai défi mais C-Dance 2.5 a en quelque sorte fait tout le travail difficile pour nous ici. Voilà. Trois styles de motion design très distincts, que vous pouvez tous personnaliser pour correspondre à n&#x27;importe quel projet créatif ou brief client. Juste un petit rappel que si vous souhaitez essayer mon générateur de prompts personnalisé, vous trouverez un lien dans la description vers ma communauté School. Là-bas, vous pourrez télécharger la compétence ainsi que tous mes prompts de manière entièrement gratuite. Si vous avez apprécié le contenu d&#x27;aujourd&#x27;hui, assurez-vous de lâcher un pouce bleu pour moi et envisagez</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -983,15 +1566,42 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Jack face caméra, dans son studio personnel équipé d&#x27;un micro de baladodiffusion blanc et noir, avec une étagère en arrière-plan contenant des plantes, des lumières d&#x27;ambiance et un coussin orange visible.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou paramètre technique affiché à l&#x27;écran dans cette vue.</p>
-                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs en parlant face à la caméra dans son studio, en bougeant légèrement les mains ou la tête pour accompagner son discours de conclusion.</p>
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme Skool et aperçu de rendu vidéo d&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : « skool link in description » et publications de communauté sur Skool concernant des prompts et fichiers markdown.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre des exemples de styles de motion design générés par IA puis présente sa communauté Skool en partageant son écran.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_015_00-07-33.jpg" alt="Capture Segment #18" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_015_00-07-33.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:08:45</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_041_00-08-47.jpg" alt="Rendu vidéo d&#x27;un grain de café brillant généré par IA avec le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_041_00-08-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:47</span>
+                        <span class="caption-text">Rendu vidéo d&#x27;un grain de café brillant généré par IA avec le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-CBDaJb04FgU/frame_042_00-09-09.jpg" alt="Capture d&#x27;écran de la plateforme Skool montrant des discussions et des communautés de prompts IA." loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_042_00-09-09.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:09</span>
+                        <span class="caption-text">Capture d&#x27;écran de la plateforme Skool montrant des discussions et des communautés de prompts IA.</span>
+                    </div>
+                </div>
+                
+                </div>
             </div>
             
             </div>
@@ -1009,7 +1619,7 @@
                         <span class="speaker-icon">🔊</span>
                         <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
                     </div>
-                    <blockquote class="verbatim-text">de vous abonner. Je vais continuer à proposer d&#x27;autres contenus si vous souhaitez continuer à explorer tout ce qu&#x27;il est possible de faire avec les derniers outils d&#x27;intelligence artificielle. Et sur ce, je vous retrouve dans la prochaine vidéo.</blockquote>
+                    <blockquote class="verbatim-text">de vous abonner. Je vais continuer à proposer d&#x27;autres contenus si vous souhaitez continuer à explorer tout ce qui est possible avec les derniers outils d&#x27;IA. Et cela étant dit, je vous retrouve dans la prochaine vidéo.</blockquote>
                 </div>
                 <div class="visual-box">
                     <div class="visual-header">
@@ -1017,17 +1627,12 @@
                         <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
                     </div>
                     <div class="visual-details">
-                        <p><strong>Interface & Outils :</strong> Fond uni abstrait aux teintes dégradées de bleu sombre, propre aux écrans de fin de vidéo YouTube ou d&#x27;intermède.</p>
-                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt, paramètre technique ou élément graphique particulier n&#x27;est affiché à l&#x27;écran.</p>
-                        <p><strong>Action / Démonstration :</strong> Écran vide statique ou transition visuelle de fin de séquence sur fond bleu uni, marquant la conclusion de la vidéo de la chaîne Jack Vs. AI.</p>
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu logiciel ou technique affiché à l&#x27;écran, uniquement un arrière-plan flou ou uni aux tons bleus.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur conclut sa vidéo et s&#x27;adresse directement au public.</p>
                     </div>
                 </div>
                 
-            <div class="segment-screenshot">
-                <img src="screenshots/YT-CBDaJb04FgU/frame_016_00-09-20.jpg" alt="Capture Segment #19" loading="lazy" onclick="openLightbox('screenshots/YT-CBDaJb04FgU/frame_016_00-09-20.jpg')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ 00:09:20</span>
-            </div>
-            
             </div>
         </div>
         

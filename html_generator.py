@@ -15,7 +15,11 @@ def generate_video_html(
     key_points: List[str],
     segments: List[Dict[str, Any]]
 ) -> str:
-    """Génère une page HTML moderne, ultra-élégante et responsive avec intégration visuelle en timeline."""
+    """
+    Génère une page HTML moderne, responsive et ultra-élégante.
+    Supporte de multiples captures d'écran par bloc temporel en grille adaptative,
+    avec filtrage strict des plans face-caméra et mise en valeur des démonstrations d'écrans.
+    """
 
     tools_badges = "".join([f'<span class="tool-tag">{html.escape(t)}</span>' for t in tools_list])
     points_items = "".join([f'<li><span class="point-bullet">✦</span><span>{html.escape(p)}</span></li>' for p in key_points])
@@ -29,14 +33,46 @@ def generate_video_html(
         interface = html.escape(s.get("interface", ""))
         contenu = html.escape(s.get("contenu", ""))
         action = html.escape(s.get("action", ""))
-        img_rel = s.get("screenshot_rel", "")
+
+        # Support de multiples captures d'écran par bloc
+        screenshots_list = s.get("screenshots", [])
+        if not screenshots_list and s.get("screenshot_rel"):
+            screenshots_list = [{
+                "path": s.get("screenshot_rel"),
+                "caption": f"Démonstration à l'écran @ {start_str}",
+                "timestamp": start_str
+            }]
 
         img_html = ""
-        if img_rel:
+        if screenshots_list:
+            cards = []
+            for sc in screenshots_list:
+                img_path = html.escape(sc.get("path", ""))
+                cap = html.escape(sc.get("caption", f"Démonstration @ {sc.get('timestamp', start_str)}"))
+                t_str = html.escape(sc.get("timestamp", start_str))
+                cards.append(f'''
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="{img_path}" alt="{cap}" loading="lazy" onclick="openLightbox('{img_path}')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ {t_str}</span>
+                        <span class="caption-text">{cap}</span>
+                    </div>
+                </div>
+                ''')
+
+            count_class = f"count-{min(len(screenshots_list), 4)}"
             img_html = f'''
-            <div class="segment-screenshot">
-                <img src="{img_rel}" alt="Capture Segment #{idx:02d}" loading="lazy" onclick="openLightbox('{img_rel}')">
-                <span class="screenshot-caption">📸 Capture d'écran clé @ {start_str}</span>
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran ({len(screenshots_list)}) :</strong>
+                </div>
+                <div class="segment-screenshots-grid {count_class}">
+                    {"".join(cards)}
+                </div>
             </div>
             '''
 
@@ -118,7 +154,7 @@ def generate_video_html(
         }}
 
         .container {{
-            max-width: 1100px;
+            max-width: 1180px;
             margin: 0 auto;
         }}
 
@@ -277,7 +313,7 @@ def generate_video_html(
 
         .timeline-block {{
             position: relative;
-            margin-bottom: 2.2rem;
+            margin-bottom: 2.5rem;
         }}
 
         .timeline-block::before {{
@@ -338,7 +374,7 @@ def generate_video_html(
             padding: 1.1rem;
             border-left: 3px solid #10b981;
         }}
-        .verbatim-header, .visual-header {{
+        .verbatim-header, .visual-header, .screenshots-header {{
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -371,33 +407,90 @@ def generate_video_html(
             color: #93c5fd;
         }}
 
-        .segment-screenshot {{
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {{
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }}
+        .segment-screenshots-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }}
+        .segment-screenshots-grid.count-1 {{
+            grid-template-columns: 1fr;
+        }}
+        .segment-screenshots-grid.count-2 {{
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }}
+
+        .screenshot-card {{
             border-radius: 0.75rem;
             overflow: hidden;
             border: 1px solid var(--border-color);
             background: #000;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }}
-        .segment-screenshot img {{
+        .screenshot-card:hover {{
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }}
+        .img-wrapper {{
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }}
+        .img-wrapper img {{
             width: 100%;
             height: auto;
             max-height: 480px;
             object-fit: contain;
             display: block;
-            cursor: pointer;
+            cursor: zoom-in;
             transition: opacity 0.2s ease, transform 0.2s ease;
         }}
-        .segment-screenshot img:hover {{
-            opacity: 0.92;
-            transform: scale(1.01);
+        .img-wrapper img:hover {{
+            opacity: 0.95;
+            transform: scale(1.015);
+        }}
+        .zoom-badge {{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
         }}
         .screenshot-caption {{
-            display: block;
-            padding: 0.5rem 0.8rem;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
             border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }}
+        .caption-time {{
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }}
+        .caption-text {{
+            color: #e2e8f0;
         }}
 
         /* Lightbox modal */

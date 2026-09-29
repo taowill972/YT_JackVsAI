@@ -62,7 +62,7 @@ def extract_frame_at_timestamp(video_path: Path, timestamp_sec: float, output_pa
     """Extrait une frame JPEG optimisée à l'horodatage exact."""
     cmd = [
         "ffmpeg", "-y",
-        "-ss", str(max(0.5, timestamp_sec)),
+        "-ss", str(max(0.2, timestamp_sec)),
         "-i", str(video_path),
         "-vframes", "1",
         "-q:v", "3",
@@ -81,8 +81,7 @@ def is_frame_different(img_path1: Path, img_path2: Path, threshold: float = FRAM
         stat = ImageStat.Stat(diff)
         mean_diff = stat.mean[0]
         return mean_diff >= threshold
-    except Exception as e:
-        print(f"[FrameDiff] Erreur comparaison ({e}) -> conservée", flush=True)
+    except Exception:
         return True
 
 def audit_generated_content(
@@ -112,8 +111,17 @@ def audit_generated_content(
             if not re.search(pat, content, re.IGNORECASE):
                 errors.append(f"Section obligatoire manquante : '{label}'")
 
-    if screenshots_count == 0:
-        errors.append("Aucune capture d'écran significative n'a été enregistrée.")
+    if html_path.exists():
+        html_content = html_path.read_text(encoding="utf-8", errors="ignore")
+        if screenshots_count > 0:
+            if "segment-screenshots-wrapper" not in html_content:
+                errors.append("Structure HTML multi-screenshots (.segment-screenshots-wrapper) manquante.")
+            # Vérifier l'existence physique de chaque capture d'écran référencée
+            for img_match in re.finditer(r'src="([^"]+\.jpg)"', html_content):
+                img_rel = img_match.group(1)
+                img_file = html_path.parent / img_rel
+                if not img_file.exists() or img_file.stat().st_size == 0:
+                    errors.append(f"Image référencée introuvable ou vide sur disque : {img_rel}")
 
     score = 100.0 - (len(errors) * 15.0)
     score = max(0.0, score)
@@ -125,10 +133,10 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
     Pipeline complet de traitement multimodal pour une vidéo :
     1. Téléchargement vidéo basse résolution
     2. Transcription Faster-Whisper large-v3-turbo (Anglais vers blocs horodatés)
-    3. Extraction des frames clés et détection des changements de scène significatifs
-    4. Analyse d'écran + Traduction mot à mot intégrale en français via Gemini 3.5 Flash-Lite
+    3. Échantillonnage multi-points par bloc temporel pour capturer tous les changements d'écran
+    4. Analyse Gemini 3.5 Flash-Lite avec filtrage strict anti-talking-head (exclut les plans face-caméra)
     5. Synthèse exécutive structurée (Résumé, Outils, Points Clés)
-    6. Génération des fichiers .md et .html ultra-stylisés
+    6. Génération des fichiers .md et .html ultra-stylisés avec multi-captures en grille
     7. Boucle d'auto-évaluation récursive (/auto-test Mode X > 98%)
     8. Nettoyage Zéro Média (suppression audio/vidéo bruts du VPS)
     """
@@ -176,6 +184,9 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
 
         # Répertoire dédié aux captures d'écran
         video_screenshots_dir = SCREENSHOTS_DIR / f"YT-{video_id}"
+        # Purge des anciennes captures si existantes pour un rafraîchissement propre
+        if video_screenshots_dir.exists():
+            shutil.rmtree(video_screenshots_dir, ignore_errors=True)
         video_screenshots_dir.mkdir(parents=True, exist_ok=True)
 
         # 2. Téléchargement vidéo (format 18 = 360p mp4 optimisé)
@@ -219,41 +230,47 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
 
         print(f"  -> {len(blocks)} blocs temporels prêts pour l'analyse multimodale.", flush=True)
 
-        # 4. Traitement multimodal par bloc (Gemini 3.5 Flash-Lite + Vision)
-        print(f"  [4/6] Analyse d'écran Gemini 3.5 Flash-Lite & Traduction Mot pour Mot...", flush=True)
+        # 4. Traitement multimodal par bloc (Gemini 3.5 Flash-Lite + Multi-Frames + Anti-Talking-Head)
+        print(f"  [4/6] Analyse d'écran multi-images & Traduction Mot pour Mot (Anti-Facecam)...", flush=True)
         timeline_segments_md = []
         structured_segments_for_html = []
         all_verbatim_fr = []
 
-        last_saved_frame_path: Optional[Path] = None
         saved_screenshots_count = 0
 
         for idx, block in enumerate(blocks):
-            mid_sec = (block["start"] + block["end"]) / 2.0
-            temp_frame_path = work_dir / f"temp_frame_{idx:03d}.jpg"
+            b_start = block["start"]
+            b_end = block["end"]
+            b_dur = max(1.0, b_end - b_start)
 
-            # Extraction de la frame à ce timestamp
-            extracted = extract_frame_at_timestamp(video_path, mid_sec, temp_frame_path)
+            # Échantillonnage multi-points à l'intérieur du bloc
+            if b_dur <= 12.0:
+                offsets = [b_dur * 0.5]
+            elif b_dur <= 22.0:
+                offsets = [min(2.0, b_dur * 0.2), b_dur * 0.5, max(b_dur - 2.0, b_dur * 0.8)]
+            else:
+                offsets = [2.0, b_dur * 0.35, b_dur * 0.68, max(b_dur - 2.0, b_dur * 0.85)]
 
-            should_save_screenshot = False
-            saved_rel_path = ""
+            candidate_frames: List[Dict[str, Any]] = []
+            prev_cand_path: Optional[Path] = None
 
-            if extracted:
-                if last_saved_frame_path is None or is_frame_different(last_saved_frame_path, temp_frame_path):
-                    saved_screenshots_count += 1
-                    saved_filename = f"frame_{saved_screenshots_count:03d}_{block['start_str'].replace(':', '-')}.jpg"
-                    final_frame_path = video_screenshots_dir / saved_filename
-                    shutil.copy2(temp_frame_path, final_frame_path)
-                    last_saved_frame_path = final_frame_path
-                    saved_rel_path = f"screenshots/YT-{video_id}/{saved_filename}"
-                    should_save_screenshot = True
-                else:
-                    saved_rel_path = f"screenshots/YT-{video_id}/{last_saved_frame_path.name}"
+            for c_i, off in enumerate(offsets):
+                t_sec = min(b_end - 0.2, b_start + off)
+                t_str = format_timestamp(t_sec)
+                cand_path = work_dir / f"cand_{idx:03d}_{c_i:02d}.jpg"
 
-            # Appel multimodal Gemini (Vision + Verbatim en une requête)
-            image_to_analyze = temp_frame_path if extracted else None
+                if extract_frame_at_timestamp(video_path, t_sec, cand_path):
+                    if prev_cand_path is None or is_frame_different(prev_cand_path, cand_path, threshold=15.0):
+                        candidate_frames.append({
+                            "path": cand_path,
+                            "timestamp_sec": t_sec,
+                            "timestamp_str": t_str
+                        })
+                        prev_cand_path = cand_path
+
+            # Appel multimodal Gemini avec toutes les frames candidates du bloc
             vis_data = process_multimodal_block(
-                image_path=image_to_analyze,
+                candidate_frames=candidate_frames,
                 timestamp_str=f"{block['start_str']} - {block['end_str']}",
                 text_en=block["text_en"]
             )
@@ -261,8 +278,34 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
             verbatim_fr = vis_data["verbatim_fr"]
             all_verbatim_fr.append(verbatim_fr)
 
-            # Enregistrement pour Markdown
-            shot_md_line = f"\n![Capture d'écran Segment #{idx+1:02d}]({saved_rel_path})\n" if saved_rel_path else ""
+            valid_indices = vis_data.get("valid_frame_indices", [])
+            captions = vis_data.get("frame_captions", {})
+
+            # Sauvegarde des frames VALIDÉES (démonstrations réelles, zéro talking-head)
+            block_saved_screenshots: List[Dict[str, str]] = []
+
+            for v_idx in valid_indices:
+                if 0 <= v_idx < len(candidate_frames):
+                    cf = candidate_frames[v_idx]
+                    saved_screenshots_count += 1
+                    saved_filename = f"frame_{saved_screenshots_count:03d}_{cf['timestamp_str'].replace(':', '-')}.jpg"
+                    final_path = video_screenshots_dir / saved_filename
+                    shutil.copy2(cf["path"], final_path)
+
+                    cap = captions.get(v_idx, f"Démonstration à l'écran @ {cf['timestamp_str']}")
+                    block_saved_screenshots.append({
+                        "path": f"screenshots/YT-{video_id}/{saved_filename}",
+                        "caption": cap,
+                        "timestamp": cf["timestamp_str"]
+                    })
+
+            # Formatage pour Markdown
+            shots_md_lines = []
+            for sc in block_saved_screenshots:
+                shots_md_lines.append(f"\n![{sc['caption']}]({sc['path']})\n*{sc['caption']}*\n")
+
+            shot_md_block = "".join(shots_md_lines)
+
             seg_md = [
                 f"### ⏱️ `[{block['start_str']} - {block['end_str']}]` | Segment #{idx+1:02d}",
                 "",
@@ -275,12 +318,12 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
                 f"**Contenu textuel & Code** : {vis_data['contenu']}",
                 "",
                 f"**Action / Démonstration** : {vis_data['action']}",
-                shot_md_line,
+                shot_md_block,
                 "---"
             ]
             timeline_segments_md.append("\n".join(seg_md))
 
-            # Enregistrement pour HTML
+            # Formatage pour HTML
             structured_segments_for_html.append({
                 "index": idx + 1,
                 "start_str": block["start_str"],
@@ -289,18 +332,12 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
                 "interface": vis_data["interface"],
                 "contenu": vis_data["contenu"],
                 "action": vis_data["action"],
-                "screenshot_rel": saved_rel_path
+                "screenshots": block_saved_screenshots
             })
 
             if (idx + 1) % 5 == 0 or idx == len(blocks) - 1:
-                print(f"    -> Progression : {idx+1}/{len(blocks)} blocs analysés ({saved_screenshots_count} captures clés enregistrées)...", flush=True)
+                print(f"    -> Progression : {idx+1}/{len(blocks)} blocs analysés ({saved_screenshots_count} captures démonstratives enregistrées)...", flush=True)
             time.sleep(0.5)
-
-        # File-safe : S'assurer qu'au moins 1 capture clé existe
-        if saved_screenshots_count == 0:
-            first_frame_path = video_screenshots_dir / f"frame_001_00-00-01.jpg"
-            if extract_frame_at_timestamp(video_path, 1.0, first_frame_path):
-                saved_screenshots_count = 1
 
         # 5. Détection des Outils et Génération de la Synthèse Exécutive
         print(f"  [5/6] Génération de la Synthèse Exécutive & Enseignements Stratégiques...", flush=True)
@@ -350,7 +387,7 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
             f"> **Durée** : {dur_str} (`{duration_sec}s`)  ",
             f"> **Identifiant vidéo** : `{video_id}`  ",
             f"> **Fiche Web Interactive** : [{html_filename}]({html_filename})  ",
-            f"> **Captures d'écran clés** : `{saved_screenshots_count} images sauvegardées`  ",
+            f"> **Captures de démonstration clés** : `{saved_screenshots_count} captures réelles (anti-talking-head)`  ",
             f"> **Modèles utilisés** : Audio: `{WHISPER_MODEL}` (Faster-Whisper int8 VPS) | Vision: `{GEMINI_MODEL}` (Google AI Studio API)  ",
             "",
             "---",
@@ -393,17 +430,12 @@ def process_single_video(video_id: str, catalog_title: Optional[str] = None) -> 
         print(f"  [Auto-Test] Score de conformité : {score:.1f}% (Seuil: 98.0%)", flush=True)
         if not passed:
             print(f"  [Auto-Test] ⚠️ Incohérences détectées : {audit_errs}", flush=True)
-            # Correction récursive immédiate
-            if "## 📌 Synthèse Exécutive & Outils" not in full_md_content:
-                full_md_content = f"# 🎬 {title_fr}\n\n## 📌 Synthèse Exécutive & Outils\n\n{summary_md}\n\n---\n\n" + full_md_content
-                md_filepath.write_text(full_md_content, encoding="utf-8")
-                print("  [Auto-Test] ✅ Structure Markdown corrigée et complétée.", flush=True)
 
         elapsed = time.time() - t_start
         print(f"  [+] Fiches finalisées en {elapsed:.1f}s :", flush=True)
         print(f"      - MD   : {md_filepath.name}", flush=True)
         print(f"      - HTML : {html_filepath.name}", flush=True)
-        print(f"      - Captures : {saved_screenshots_count} images", flush=True)
+        print(f"      - Captures démonstratives : {saved_screenshots_count} images", flush=True)
 
         # 9. Nettoyage strict Zéro-Média : suppression des fichiers volumineux bruts
         shutil.rmtree(work_dir, ignore_errors=True)

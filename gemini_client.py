@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 import json
 import base64
 import time
@@ -34,7 +35,7 @@ _KI = [0]
 STATS = {"calls": 0, "rotations": 0, "failures": 0}
 
 def call_gemini(parts: List[Dict[str, Any]], model: str = GEMINI_MODEL, retries: int = 8, initial_backoff: int = 10) -> str:
-    """Appel hautement résilient à Gemini avec rotation automatique des 10 clés et backoff exponentiel."""
+    """Appel hautement résilient à Gemini avec rotation automatique des clés et backoff exponentiel."""
     data = json.dumps({
         "contents": [{"parts": parts}],
         "generationConfig": {
@@ -88,49 +89,97 @@ def translate_title_fr(title_en: str) -> str:
     res = call_gemini([{"text": prompt}])
     return res.strip().replace('"', '') if res else title_en
 
-def process_multimodal_block(image_path: Optional[Path], timestamp_str: str, text_en: str) -> Dict[str, str]:
+def process_multimodal_block(
+    candidate_frames: List[Dict[str, Any]],
+    timestamp_str: str,
+    text_en: str
+) -> Dict[str, Any]:
     """
-    Traite un bloc temporel en UNE SEULE requête Gemini 3.5 Flash-Lite :
-    1. Analyse visuelle chirurgicale de l'écran en français (Interface, Contenu/Code, Action)
-    2. Traduction mot à mot intégrale (verbatim) du discours anglais en français sans rien omettre ni résumer.
+    Analyse multimodale chirurgicale d'un bloc temporel :
+    1. Traduction mot à mot intégrale (verbatim) en français sans coupure.
+    2. Filtrage strict anti-talking-head : Détecte et élimine les images montrant uniquement le youtubeur qui parle face caméra sans écran partagé.
+    3. Retient TOUTES les images de vraies démonstrations (interfaces, prompts, workflows, rendus IA, etc.) avec légendes précises.
+    4. Analyse technique des outils, paramètres et actions.
     """
     default_res = {
         "verbatim_fr": text_en,
-        "interface": "Jack face caméra ou plan d'illustration.",
+        "valid_frame_indices": [],
+        "frame_captions": {},
+        "interface": "Jack face caméra ou transition sans partage d'écran.",
         "contenu": "Explications orales des concepts et des méthodes de création vidéo IA.",
         "action": "Démonstration pédagogique et présentation du workflow."
     }
 
+    n_imgs = len(candidate_frames)
+    img_list_txt = ""
+    if n_imgs > 0:
+        lines = []
+        for i, cf in enumerate(candidate_frames):
+            lines.append(f"- Image #{i+1} : horodatage @ {cf.get('timestamp_str', '')}")
+        img_list_txt = "\n".join(lines)
+
     prompt = (
-        f"Tu es un analyste expert en intelligence artificielle générative vidéo et cinéma numérique pour la chaîne {CHANNEL_NAME} (minutage {timestamp_str}).\n"
+        f"Tu es un analyste expert en vidéo par intelligence artificielle pour la chaîne {CHANNEL_NAME} (segment {timestamp_str}).\n"
         f"Voici le discours audio anglais prononcé dans ce segment :\n"
         f'"""\n{text_en}\n"""\n\n'
-        "Ta mission en français :\n"
-        "1. VERBATIM_FR : Traduis le discours audio mot à mot intégralement en français, naturel, fluide, sans RIEN omettre ni abréger. Si c'est de la musique sans parole, indique [Musique d'illustration / Thème sonore].\n"
-        "2. INTERFACE : Décris précisément les interfaces, logiciels ou sites affichés sur l'image (ex: Seedance 2.5, Kling 3.0, Midjourney, ComfyUI, Premiere, Runway, Discord, navigateur web, ou Jack face caméra).\n"
-        "3. CONTENU : Détaille tous les textes, prompts de génération, paramètres techniques visibles (motion, camera pan/tilt, seed, fps, ratio aspect, prompts négatifs, etc.).\n"
-        "4. ACTION : Décris l'action montrée ou manipulée (clics, sélection de paramètres, lecture du résultat vidéo, comparaison côte-à-côte, etc.).\n\n"
-        "Format STRICT obligatoire de ta réponse :\n"
-        "[VERBATIM_FR] <traduction mot à mot complète en français>\n"
-        "[INTERFACE] <texte>\n"
-        "[CONTENU] <texte>\n"
-        "[ACTION] <texte>"
     )
 
-    parts = [{"text": prompt}]
+    if n_imgs > 0:
+        prompt += (
+            f"Tu as reçu {n_imgs} capture(s) d'écran candidate(s) pour ce segment :\n"
+            f"{img_list_txt}\n\n"
+            "DIRECTIVE ABSOLUE CONCERNANT LES IMAGES :\n"
+            "L'utilisateur veut UNIQUEMENT voir ce que le créateur présente ou démontre à l'écran :\n"
+            "- IMAGES VALIDES (DEMO) : Tout ce qui montre l'écran du créateur : interfaces de logiciels/outils (Seedance, Kling, Claude, Suno, Higgsfield, ComfyUI, Premiere, Photoshop, navigateurs web, etc.), prompts textuels, code, rendus de vidéos ou d'images IA générées, diapositives, animations. (Si le créateur apparaît dans un petit encadré PiP dans un coin de l'écran, l'image est VALIDE car l'écran de travail est visible).\n"
+            "- IMAGES STRICTEMENT INTERDITES (SPEAKER_ONLY) : Les images montrant UNIQUEMENT Jack face caméra en train de parler dans son studio (visage ou buste devant son micro avec étagère/néons en arrière-plan) SANS écran de logiciel ni démonstration. L'utilisateur NE VEUT PAS de ces images d'illustration face caméra.\n\n"
+            "Ta mission en français :\n"
+            "1. VERBATIM_FR : Traduis le discours audio mot à mot intégralement en français, naturel et fluide, sans RIEN omettre ni abréger. Si c'est musical/sans parole, indique [Séquence musicale / Démonstration sonore].\n"
+            "2. VALID_IMAGES : Indique les numéros (1-indexés) des images STRICTEMENT VALIDES (DEMO), séparés par des virgules (ex: '1', '1, 2', '2, 3', ou 'AUCUNE' si toutes ne montrent que Jack face caméra).\n"
+            "3. Pour chaque image valide retenue, fournis une légende précise et concise [DESC_IMAGE_X] décrivant exactement ce qui est démontré à l'écran (ex: 'Interface de Seedance 2.5 montrant le réglage de la caméra cinématique').\n"
+            "4. INTERFACE : Décris précisément les interfaces, logiciels ou sites affichés sur les images valides (ex: Seedance 2.5, Kling 3.0, Midjourney, Claude, Suno, etc. ou 'Présentation face caméra sans partage d'écran' si aucune).\n"
+            "5. CONTENU : Détaille tous les textes, prompts de génération, paramètres techniques visibles sur les écrans.\n"
+            "6. ACTION : Décris l'action montrée ou manipulée.\n\n"
+            "Format STRICT obligatoire de ta réponse :\n"
+            "[VERBATIM_FR] <traduction mot à mot complète en français>\n"
+            "[VALID_IMAGES] <numéros séparés par virgule, ou AUCUNE>\n"
+        )
+        for i in range(n_imgs):
+            prompt += f"[DESC_IMAGE_{i+1}] <légende si l'image #{i+1} est valide>\n"
+        prompt += (
+            "[INTERFACE] <texte>\n"
+            "[CONTENU] <texte>\n"
+            "[ACTION] <texte>"
+        )
+    else:
+        prompt += (
+            "Ta mission en français :\n"
+            "1. VERBATIM_FR : Traduis le discours audio mot à mot intégralement en français, sans rien omettre.\n"
+            "2. INTERFACE : Présentation face caméra ou transition sans écran partagé.\n"
+            "3. CONTENU : Explications orales du sujet.\n"
+            "4. ACTION : Présentation du workflow.\n\n"
+            "Format STRICT obligatoire de ta réponse :\n"
+            "[VERBATIM_FR] <texte>\n"
+            "[INTERFACE] <texte>\n"
+            "[CONTENU] <texte>\n"
+            "[ACTION] <texte>"
+        )
 
-    if image_path and image_path.exists() and image_path.stat().st_size > 0:
-        try:
-            with open(image_path, "rb") as f:
-                b64_img = base64.b64encode(f.read()).decode("utf-8")
-            parts.append({
-                "inline_data": {
-                    "mime_type": "image/jpeg",
-                    "data": b64_img
-                }
-            })
-        except Exception as e:
-            print(f"[Gemini Vision] Erreur lecture image {image_path}: {e}", flush=True)
+    parts: List[Dict[str, Any]] = [{"text": prompt}]
+
+    for cf in candidate_frames:
+        img_path = cf.get("path")
+        if img_path and isinstance(img_path, Path) and img_path.exists() and img_path.stat().st_size > 0:
+            try:
+                with open(img_path, "rb") as f:
+                    b64_img = base64.b64encode(f.read()).decode("utf-8")
+                parts.append({
+                    "inline_data": {
+                        "mime_type": "image/jpeg",
+                        "data": b64_img
+                    }
+                })
+            except Exception as e:
+                print(f"[Gemini Vision] Erreur lecture image {img_path}: {e}", flush=True)
 
     raw = call_gemini(parts)
     if not raw:
@@ -138,23 +187,69 @@ def process_multimodal_block(image_path: Optional[Path], timestamp_str: str, tex
 
     res = dict(default_res)
     try:
-        if "[VERBATIM_FR]" in raw and "[INTERFACE]" in raw:
-            p_v = raw.split("[INTERFACE]")[0].replace("[VERBATIM_FR]", "").strip()
-            rest = raw.split("[INTERFACE]")[1]
-            p_i = rest.split("[CONTENU]")[0].strip() if "[CONTENU]" in rest else ""
-            rest2 = rest.split("[CONTENU]")[1] if "[CONTENU]" in rest else ""
-            p_c = rest2.split("[ACTION]")[0].strip() if "[ACTION]" in rest2 else ""
-            p_a = rest2.split("[ACTION]")[1].strip() if "[ACTION]" in rest2 else ""
+        # 1. Extraction VERBATIM_FR
+        if "[VERBATIM_FR]" in raw:
+            rest_v = raw.split("[VERBATIM_FR]")[1]
+            end_markers = ["[VALID_IMAGES]", "[INTERFACE]", "[CONTENU]", "[ACTION]"]
+            for m in end_markers:
+                if m in rest_v:
+                    rest_v = rest_v.split(m)[0]
+            res["verbatim_fr"] = rest_v.strip()
 
-            if p_v: res["verbatim_fr"] = p_v
-            if p_i: res["interface"] = p_i
-            if p_c: res["contenu"] = p_c
-            if p_a: res["action"] = p_a
-        elif "[VERBATIM]" in raw and "[DESCRIPTION]" in raw:
-            res["verbatim_fr"] = raw.split("[VERBATIM]")[1].strip()
-            res["action"] = raw.split("[VERBATIM]")[0].replace("[DESCRIPTION]", "").strip()
-        else:
-            res["verbatim_fr"] = raw.strip()
+        # 2. Extraction VALID_IMAGES & DESC_IMAGE_X
+        valid_indices = []
+        frame_captions = {}
+        if "[VALID_IMAGES]" in raw:
+            raw_val = raw.split("[VALID_IMAGES]")[1]
+            for m in ["[DESC_IMAGE_", "[INTERFACE]", "[CONTENU]", "[ACTION]"]:
+                if m in raw_val:
+                    raw_val = raw_val.split(m)[0]
+            raw_val = raw_val.strip().upper()
+
+            if "AUCUNE" not in raw_val and "NONE" not in raw_val and "ZERO" not in raw_val:
+                if "TOUTES" in raw_val or "TOUT" in raw_val or "ALL" in raw_val:
+                    valid_indices = list(range(n_imgs))
+                else:
+                    for token in re.findall(r'\b\d+\b', raw_val):
+                        num = int(token)
+                        if 1 <= num <= n_imgs:
+                            valid_indices.append(num - 1)
+
+        # Captions
+        for i in range(n_imgs):
+            tag = f"[DESC_IMAGE_{i+1}]"
+            if tag in raw:
+                part_desc = raw.split(tag)[1]
+                for next_tag in [f"[DESC_IMAGE_{j+1}]" for j in range(i+1, n_imgs)] + ["[INTERFACE]", "[CONTENU]", "[ACTION]"]:
+                    if next_tag in part_desc:
+                        part_desc = part_desc.split(next_tag)[0]
+                desc_text = part_desc.strip().lstrip(": -").strip()
+                if desc_text and not desc_text.startswith("<"):
+                    frame_captions[i] = desc_text
+
+        res["valid_frame_indices"] = sorted(list(set(valid_indices)))
+        res["frame_captions"] = frame_captions
+
+        # 3. Extraction INTERFACE, CONTENU, ACTION
+        if "[INTERFACE]" in raw:
+            p_i = raw.split("[INTERFACE]")[1]
+            if "[CONTENU]" in p_i:
+                res["interface"] = p_i.split("[CONTENU]")[0].strip()
+            elif "[ACTION]" in p_i:
+                res["interface"] = p_i.split("[ACTION]")[0].strip()
+            else:
+                res["interface"] = p_i.strip()
+
+        if "[CONTENU]" in raw:
+            p_c = raw.split("[CONTENU]")[1]
+            if "[ACTION]" in p_c:
+                res["contenu"] = p_c.split("[ACTION]")[0].strip()
+            else:
+                res["contenu"] = p_c.strip()
+
+        if "[ACTION]" in raw:
+            res["action"] = raw.split("[ACTION]")[1].strip()
+
     except Exception as e:
         print(f"[Gemini] Erreur parsing bloc multimodal : {e}", flush=True)
 
