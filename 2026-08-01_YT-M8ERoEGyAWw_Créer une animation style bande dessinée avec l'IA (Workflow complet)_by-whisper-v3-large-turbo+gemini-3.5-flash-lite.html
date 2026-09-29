@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Créer une animation style bande dessinée avec l&#x27;IA (Workflow complet) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Créer une animation style bande dessinée avec l&#x27;IA (Workflow complet)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-08-01</span>
+                <span class="badge">⏱️ 14m 22s</span>
+                <span class="badge">🆔 <code>M8ERoEGyAWw</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=M8ERoEGyAWw" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>La vidéo de Jack Vs. AI propose une révolution méthodologique pour la création indépendante d'animations de style bande dessinée (dans la veine visuelle d'œuvres comme *Into the Spider-Verse* ou *Arcane*). Autrefois réservée à des studios dotés de budgets colossaux et de mois de production, cette esthétique haut de gamme est désormais accessible à tout créateur équipé d'un simple ordinateur et d'une suite d'outils d'IA interconnectés. Jack dévoile un workflow complet et structuré qui s'affranchit des limites créatives traditionnelles en combinant l'intelligence textuelle de LLMs et la puissance de génération multimodale d'assistants vidéo spécialisés.</p><p>Le processus créatif s'articule autour d'une rigueur méthodologique en deux grands volets : la conception et la fidélité des assets. Grâce à l'utilisation de compétences personnalisées (« custom skills ») injectées dans des chatbots comme Claude, Jack automatise la transformation d'idées narratives simples en prompts hautement techniques. Cette étape garantit le verrouillage stylistique avant de passer à la génération d'images et de fiches de référence de personnages. Ces fiches s'avèrent indispensables pour guider les modèles vidéo et maintenir une cohérence visuelle parfaite d'un plan à l'autre.</p><p>Enfin, le workflow aborde la délicate transition vers la génération vidéo animée via des plateformes comme Higgsfield. En injectant simultanément les fiches de personnages, les décors fixes et les prompts contextuels enrichis par l'IA, le réalisateur parvient à générer des séquences dynamiques et complexes (échelles monumentales, courses de vitesse urbaines) tout en optimisant l'utilisation des crédits. Cette masterclass démontre comment l'IA générative, couplée à une direction artistique méthodique, démocratise la réalisation de mini-médias narratifs de qualité professionnelle.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude</span><span class="tool-tag">Higgsfield</span><span class="tool-tag">Premiere Pro</span><span class="tool-tag">Seedance</span><span class="tool-tag">flux</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Démocratisation esthétrique** : Il est désormais possible de reproduire des styles d&#x27;animation complexes de type blockbusters (style comic book moderne) sans équipe technique ni budgets massifs.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;importance des compétences personnalisées (« custom skills »)** : L&#x27;utilisation de prompts système pré-programmés dans Claude permet de standardiser et d&#x27;automatiser l&#x27;écriture de requêtes expertes verrouillant un style artistique précis.</span></li><li><span class="point-bullet">✦</span><span>Dualité de génération d&#x27;images** : Utiliser Seedream 5.0 Pro pour un flux unifié et rapide sur Higgsfield, ou basculer sur Mid Journey pour exploiter une supériorité artistique incontestée sur le design de personnages.</span></li><li><span class="point-bullet">✦</span><span>Le rôle critique des fiches de référence** : Générer des planches de personnages sous tous les angles avant l&#x27;animation permet au modèle vidéo de ne pas « deviner », réduisant drastiquement les artefacts visuels.</span></li><li><span class="point-bullet">✦</span><span>Optimisation des crédits par la résolution de test** : Il est stratégiquement recommandé d&#x27;utiliser des résolutions basses (comme le 480p) pour valider le comportement d&#x27;un prompt vidéo avant de lancer le rendu final en haute définition (1080p ou 4K).</span></li><li><span class="point-bullet">✦</span><span>Contextualisation cumulative** : Lors de la rédaction des prompts vidéo, alimenter l&#x27;IA textuelle avec l&#x27;ensemble des ressources créées (fiches personnages + décors fixes) garantit une continuité narrative et visuelle parfaite.</span></li><li><span class="point-bullet">✦</span><span>Gestion de l&#x27;échelle et du dynamisme** : Les prompts textuels riches en détails spatiaux permettent de simuler avec succès des rapports de taille spectaculaires (ex: un humain face à un Titan gigantesque).</span></li><li><span class="point-bullet">✦</span><span>Cohérence des personnages en mouvement** : L&#x27;association d&#x27;une image fixe de lieu, d&#x27;une fiche de référence de personnage et d&#x27;un prompt contextuel au sein de Seedance 2 garantit l&#x27;intégrité du protagoniste à travers des scènes d&#x27;action rythmées.</span></li><li><span class="point-bullet">✦</span><span>Modularité et assemblage** : Le workflow favorise la création de séquences courtes et distinctes (générations autonomes) destinées à être assemblées ultérieurement pour raconter une histoire complète.</span></li><li><span class="point-bullet">✦</span><span>Vérification pré-génération** : Relire systématiquement les prompts générés par Claude avant de valider le rendu sur la plateforme vidéo permet d&#x27;éviter le gaspillage inutile de crédits de calcul.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:35</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez désormais créer votre propre animation de style bande dessinée en n&#x27;utilisant que des outils d&#x27;IA. Cela coûtait auparavant des milliers de dollars et prenait des mois de travail. Mais maintenant, tout ce dont vous avez besoin, c&#x27;est d&#x27;une idée et de votre ordinateur portable. Je m&#x27;appelle Jack. J&#x27;ai passé plus d&#x27;une décennie à créer des effets visuels pour de nombreuses grandes marques de la planète. Et maintenant, j&#x27;utilise l&#x27;IA pour réinventer les flux de travail créatifs. Ce style d&#x27;animation a explosé en popularité grâce à des projets comme Into the Spider-Verse et Arcane. Mais personne ne vous dit comment obtenir des résultats de cette qualité avec l&#x27;IA, et cela change aujourd&#x27;hui. Je vais partager</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra / extraits d&#x27;animations générées par IA sans affichage d&#x27;interface logicielle de travail.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Affichage de sous-titres en anglais soulignés en jaune (&quot;comic book style animation&quot;, &quot;and your laptop.&quot;, &quot;in popularity&quot;, &quot;and that changes today.&quot;) par-dessus des visuels animés de style bande dessinée (cour d&#x27;université gothique, personnage stylisé, personnage face à une statue géante).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre son propos par des clips vidéo d&#x27;animations générées par IA illustrant le style &quot;comic book / animation&quot;.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:35 - 00:01:00</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">mon flux de travail complet, vous saurez ainsi comment développer vos propres personnages, décors et scènes tout en préservant ce style inimitable. Croyez-moi, vous ne voulez pas rater celui-ci. Si vous aimez le contenu d&#x27;aujourd&#x27;hui, assurez-vous de lâcher un pouce bleu pour moi et pensez à vous abonner. Il y aura des horodatages ci-dessous si vous voulez passer facilement d&#x27;un chapitre à l&#x27;autre. Cela étant dit, commençons. La première étape est la conception des personnages.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de montage vidéo avec habillage graphique incluant des icônes de chapitres et une incrustation vidéo du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes à l&#x27;écran : « characters », « this unmistakable style », « Chapter 1 », « Chapter 2 », « Chapter 3 ».</p>
+                        <p><strong>Action / Démonstration :</strong> Transition graphique et affichage de chapitres vidéo pendant que le présentateur explique la structure de sa vidéo et annonce le premier sujet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_001_00-00-37.jpg" alt="Animation graphique illustrant la section « characters » (personnages) avec une icône de profil et un point d&#x27;interrogation." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_001_00-00-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:37</span>
+                        <span class="caption-text">Animation graphique illustrant la section « characters » (personnages) avec une icône de profil et un point d&#x27;interrogation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_002_00-00-44.jpg" alt="Extrait vidéo d&#x27;animation montrant un personnage sur un toit avec une traînée lumineuse bleue, illustrant le style visuel unique mentionné (« this unmistakable style »)." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_002_00-00-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:44</span>
+                        <span class="caption-text">Extrait vidéo d&#x27;animation montrant un personnage sur un toit avec une traînée lumineuse bleue, illustrant le style visuel unique mentionné (« this unmistakable style »).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_003_00-00-52.jpg" alt="Vue incrustée (PiP) du présentateur Jack parlant dans son studio, avec des boutons de chapitres affichés en bas de l&#x27;écran (« Chapter 1 », « Chapter 2 », « Chapter 3 »)." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_003_00-00-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:52</span>
+                        <span class="caption-text">Vue incrustée (PiP) du présentateur Jack parlant dans son studio, avec des boutons de chapitres affichés en bas de l&#x27;écran (« Chapter 1 », « Chapter 2 », « Chapter 3 »).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:00 - 00:01:34</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Personne ne va regarder votre animation si vos personnages ont l&#x27;air ennuyeux et génériques, donc je veux que vous approfondissiez ce point. Allez-vous construire un héros ou un vilain ? Quelle est leur ethnie ? De quels vêtements et équipements ont-ils besoin ? Et quel est leur rôle dans l&#x27;histoire ? Je veux que vous jotiez quelques idées pour chaque personnage, puis nous allons utiliser un outil d&#x27;IA comme ChatGPT, Gemini ou dans mon cas Claude pour nous aider à rédiger nos prompts. Et rappelez-vous que tous ces outils ont des versions gratuites auxquelles vous pouvez accéder. J&#x27;ai développé cette compétence personnalisée qui fonctionnera avec n&#x27;importe quelle IA</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;assistant IA Claude avec une boîte de dialogue et un fichier markdown attaché &quot;CharacterArt.md&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran : &quot;What can we tackle together?&quot;, le fichier &quot;Painterly Cinematic CharacterArt.md (119 lines)&quot;, et le champ de saisie &quot;How can I help you today?&quot; avec le modèle &quot;Opus 4.8 Medium&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre visuellement les concepts de personnages, les logos des IA, puis l&#x27;interface de Claude pour illustrer comment structurer les prompts de génération.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_004_00-01-12.jpg" alt="Affichage de concepts visuels de personnages stylisés (héros et antagonistes) sur fond sombre." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_004_00-01-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:12</span>
+                        <span class="caption-text">Affichage de concepts visuels de personnages stylisés (héros et antagonistes) sur fond sombre.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_005_00-01-23.jpg" alt="Présentation des icônes des trois outils d&#x27;IA mentionnés : ChatGPT, Google Gemini et Claude." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_005_00-01-23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:23</span>
+                        <span class="caption-text">Présentation des icônes des trois outils d&#x27;IA mentionnés : ChatGPT, Google Gemini et Claude.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_006_00-01-32.jpg" alt="Interface de l&#x27;outil Claude avec la question &quot;What can we tackle together?&quot; et le fichier &quot;CharacterArt.md&quot; importé." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_006_00-01-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:32</span>
+                        <span class="caption-text">Interface de l&#x27;outil Claude avec la question &quot;What can we tackle together?&quot; et le fichier &quot;CharacterArt.md&quot; importé.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:34 - 00:02:09</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">chatbot pour vous aider à convertir vos idées simples en prompts détaillés qui verrouillent ce style artistique de comic book. Et cela sera également disponible entièrement gratuitement sur ma communauté school. Avec la compétence téléchargée, je peux taper quelque chose d&#x27;aussi simple que « écris-moi un prompt pour une héroïne qui a la capacité de manipuler l&#x27;or comme matériau ». Vous allez voir que Claude commence à lire à partir de ma compétence personnalisée. Et en quelques instants, il a pris notre entrée vraiment simple et nous a construit un prompt richement détaillé. Et c&#x27;est la clé pour débloquer les meilleurs résultats</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil de discussion Claude avec un encadré de type Picture-in-Picture (PiP) affichant le créateur dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : « What can we tackle together? », « Painterly Cinematic Character Art.md », « How can I help you today? » et le modèle « Opus 4.8 Medium ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Claude avec une compétence personnalisée chargée pour générer des prompts artistiques de type comic book, tout en apparaissant en incrustation vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_007_00-01-36.jpg" alt="Interface de l&#x27;assistant Claude montrant une compétence personnalisée pour le style artistique de comic book, avec Jack visible en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_007_00-01-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:36</span>
+                        <span class="caption-text">Interface de l&#x27;assistant Claude montrant une compétence personnalisée pour le style artistique de comic book, avec Jack visible en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:09 - 00:02:43</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">avec ces outils. Pour construire notre projet, je suis sur Higgs Field AI. Et si vous voulez suivre en même temps, je mettrai un lien en bas dans la description. Pour commencer, vous voulez aller tout en haut à l&#x27;gauche, survoler l&#x27;onglet image puis sélectionner créer une image. Pour le modèle, je suggère d&#x27;utiliser Seedream 5.0 Pro avec ces paramètres. Vous pouvez coller le prompt venant de Claude, cliquer sur générer et on obtient un résultat qui ressemble à ça. Maintenant, je veux vous donner une astuce bonus rapide. Si vous voulez garder votre flux de travail simple et agréable, vous pouvez générer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Higgsfield AI (plateforme de génération d&#x27;images et vidéos par IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans l&#x27;image 3 : &quot;A striking woman with a proud upturned chin, fair skin, sculpted high cheekbones, dark auburn hair slicked back into tight cornrows feeding into a low bun...&quot; Paramètres visibles : modèle GPT Image 2, résolution 2K, format 16:9, compteur de crédits (Generate +3). Menu déroulant des modèles de Higgsfield AI incluant Seedream 5.0 Pro, Higgsfield Soul 2.0, etc.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre la navigation dans les menus de Higgsfield AI pour sélectionner l&#x27;onglet &quot;Image&quot; et choisir le modèle, puis présente la zone de saisie du prompt avec les paramètres de génération.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_008_00-02-21.jpg" alt="Interface de Higgsfield AI montrant le menu des fonctionnalités et des modèles (Seedream 5.0 Pro)" loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_008_00-02-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:21</span>
+                        <span class="caption-text">Interface de Higgsfield AI montrant le menu des fonctionnalités et des modèles (Seedream 5.0 Pro)</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_009_00-02-32.jpg" alt="Fenêtre de prompt textuel sur Higgsfield AI avec les options de génération (GPT Image 2, format 16:9, bouton Generate)" loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_009_00-02-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:32</span>
+                        <span class="caption-text">Fenêtre de prompt textuel sur Higgsfield AI avec les options de génération (GPT Image 2, format 16:9, bouton Generate)</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:43 - 00:03:15</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">tout ce qui vient de Higgsfield mais si vous êtes prêts à ajouter une étape supplémentaire au processus Mid Journey est la plateforme vers laquelle je vous orienterais. Je serai honnête, Mid Journey est plutôt mauvais dans certaines parties du processus de génération d&#x27;images, mais il possède un sens incroyable du design de personnages et du style. Ma préférence personnelle est donc d&#x27;exécuter notre prompt Claude via Mid Journey en utilisant ces paramètres. Ici, j&#x27;ai généré un groupe de personnages et de lieux vraiment uniques. Donc je vais</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustation PiP (Picture-in-Picture) du créateur face caméra dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Image générée représentant une cour intérieure de style médiéval/gothique avec des bâtiments en pierre, de grandes fenêtres arquées, un jardin central et une pelouse verdoyante sous un ciel bleu clair.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;une image générée par IA illustrant les décors uniques mentionnés dans le discours.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_010_00-03-13.jpg" alt="Rendu visuel d&#x27;une cour de château gothique ou d&#x27;une université ancienne généré par intelligence artificielle, avec le créateur en incrustation PiP dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_010_00-03-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:13</span>
+                        <span class="caption-text">Rendu visuel d&#x27;une cour de château gothique ou d&#x27;une université ancienne généré par intelligence artificielle, avec le créateur en incrustation PiP dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:15 - 00:03:49</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">téléchargez tout cela et amenez-les sur Higgsfield car maintenant nous devons créer nos fiches de référence de personnages. D&#x27;abord, vous voulez utiliser votre design de personnage comme image de référence, puis vous voulez copier et coller ce cadre de prompt ici dans cette fenêtre. Vous n&#x27;avez rien à changer. Vous remarquerez que je suis passé à GPT image 2 et c&#x27;est parce que ce modèle d&#x27;image particulier est vraiment doué pour créer des fiches de référence de personnages. Donc si je clique sur générer, nous obtenons un résultat comme celui-ci. Et ces fiches de personnages sont cruciales quand il</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Higgsfield (avec sélection du modèle GPT Image 2)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres visibles : modèle &quot;GPT Image 2&quot;, qualité &quot;High&quot;, résolution &quot;2K&quot;, format &quot;16:9&quot;, et curseur de proportion d&#x27;image.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Higgsfield et explique le choix du modèle GPT Image 2 pour générer les fiches de référence de personnages.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_011_00-03-27.jpg" alt="Interface de Higgsfield montrant les paramètres de génération avec le modèle GPT Image 2 et le mode Picture-in-Picture de Jack en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_011_00-03-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:27</span>
+                        <span class="caption-text">Interface de Higgsfield montrant les paramètres de génération avec le modèle GPT Image 2 et le mode Picture-in-Picture de Jack en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:49 - 00:04:22</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">s&#x27;agit d&#x27;animer chacune de nos scènes car elles indiqueront au modèle vidéo IA à quoi ressemblent nos personnages sous tous les angles. Et cela signifie que l&#x27;IA n&#x27;a pas à deviner, ce qui réduit le risque de mauvaises générations et permettra par conséquent d&#x27;économiser vos crédits. Nous pouvons également combiner un nouveau prompt Claude avec ce framework de fiche de référence de personnage pour effectuer des modifications ou des variations de nos personnages. Rappelez-vous, chaque fois que vous voulez un nouveau prompt de Claude, retournez au chatbot, décrivez le type de changement que vous recherchez, et il va vous construire un nouveau prompt tandis que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de génération d&#x27;images/vidéos par IA (avec panneau de prompt, détails du modèle GPT Image 2, taille 2688x1520) et interface de chatbot (Claude).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;Show the same striking woman, same face, sculpted cheekbones and proud features... Character reference sheet — four views on a neutral grey background&quot; et plus bas les instructions pour une version alternative &quot;Show an alternate version of the same character... A few deliberate moves... No gold anywhere...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre des exemples concrets de fiches de référence de personnages générées par IA et explique comment utiliser Claude pour obtenir de nouveaux prompts avec des variations.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_012_00-04-11.jpg" alt="Interface montrant une feuille de référence de personnage sous plusieurs angles (vue de face, de dos et gros plans) avec le prompt textuel correspondant dans le panneau latéral droit, et le créateur visible en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_012_00-04-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:11</span>
+                        <span class="caption-text">Interface montrant une feuille de référence de personnage sous plusieurs angles (vue de face, de dos et gros plans) avec le prompt textuel correspondant dans le panneau latéral droit, et le créateur visible en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_013_00-04-20.jpg" alt="Interface affichant un prompt textuel détaillé sur fond sombre pour créer une version alternative du personnage, avec des instructions spécifiques sur le style et les détails." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_013_00-04-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:20</span>
+                        <span class="caption-text">Interface affichant un prompt textuel détaillé sur fond sombre pour créer une version alternative du personnage, avec des instructions spécifiques sur le style et les détails.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:22 - 00:04:59</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en faisant référence à ma compétence personnalisée. Par exemple, ici j&#x27;ai construit l&#x27;alter ego de notre héroïne, donc quand elle est déguisée et prétend mener une vie normale. Donc pour résumer, nous terminons cette première section avec une collection de photos de lieux et de feuilles de référence de personnages. Et maintenant nous sommes prêts à aller de l&#x27;avant et à commencer à donner vie à nos scènes. J&#x27;ai mentionné plus tôt à quel point il est crucial d&#x27;avoir des invites de haute qualité lorsqu&#x27;il s&#x27;agit de génération d&#x27;images. Eh bien, c&#x27;est en fait encore plus important avec la génération de vidéo. Et c&#x27;est pourquoi j&#x27;ai développé une deuxième compétence gratuite pour cet objectif précis. J&#x27;ai déposé</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération d&#x27;images/vidéos (type application personnalisée ou interface de type GPT/outil IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible sur le panneau latéral : &quot;Show the same striking woman, same face, same hair colour, same skin colour, sculpted cheekbones and proud features...&quot;. Paramètres : Modèle &quot;GPT Image 2&quot;, Qualité &quot;High&quot;, Résolution &quot;2688x1520&quot;, Date &quot;July 28, 2026&quot;, et bouton &quot;Turn to video&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;une feuille de référence de personnage (character reference sheet) générée par IA montrant plusieurs vues d&#x27;un personnage féminin, puis transition vers une image de décor de lieu.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_014_00-04-24.jpg" alt="Interface d&#x27;une application affichant une feuille de référence de personnage féminin avec différents angles de vue et un panneau de prompt détaillé sur le côté." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_014_00-04-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:24</span>
+                        <span class="caption-text">Interface d&#x27;une application affichant une feuille de référence de personnage féminin avec différents angles de vue et un panneau de prompt détaillé sur le côté.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_015_00-04-35.jpg" alt="Affichage d&#x27;une image fixe d&#x27;un décor de cour extérieure de bâtiment ancien dans un encadré sur fond abstrait flouté." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_015_00-04-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:35</span>
+                        <span class="caption-text">Affichage d&#x27;une image fixe d&#x27;un décor de cour extérieure de bâtiment ancien dans un encadré sur fond abstrait flouté.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:59 - 00:05:33</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ceci dans Claude avec toutes les feuilles de référence de personnages et les images fixes de lieux pertinentes pour fournir à l&#x27;IA un contexte supplémentaire. Maintenant, je dois aller décrire ce que je veux qu&#x27;il se passe dans la scène. Nous allons donc commencer simplement avec des générations autonomes, puis progresser vers un exemple plus complexe où nous assemblerons réellement des générations séparées pour construire une histoire entière. J&#x27;ai donc d&#x27;abord rédigé la description de cette scène particulière, et je n&#x27;ai pas vraiment eu à me soucier qu&#x27;elle soit bien écrite. Je l&#x27;ai juste remplie d&#x27;autant de détails que possible.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;assistant IA Claude avec une zone de texte, des options de sélection de modèle (Opus 4.8 Medium), et un encadré PiP montrant le créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : « What can we tackle together? », vignettes de projet nommées « Multishot Arcane Animation Prompt... », et un long prompt descriptif pour la scène du titan de pierre : « Slow dolly camera move in to the landscape with the giant stone titan who is lifeless... ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;outil de discussion textuelle et le prompt détaillé qu&#x27;il a rédigé pour décrire la séquence narrative aux plans multiples.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_016_00-05-01.jpg" alt="Interface de l&#x27;outil IA (Claude) montrant le titre « What can we tackle together? » et des vignettes de projets et références de personnages." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_016_00-05-01.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:01</span>
+                        <span class="caption-text">Interface de l&#x27;outil IA (Claude) montrant le titre « What can we tackle together? » et des vignettes de projets et références de personnages.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_017_00-05-22.jpg" alt="Grille de cinq images miniatures ou vignettes pixélisées représentant diverses scènes de films ou d&#x27;animations dans un style artistique." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_017_00-05-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:22</span>
+                        <span class="caption-text">Grille de cinq images miniatures ou vignettes pixélisées représentant diverses scènes de films ou d&#x27;animations dans un style artistique.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_018_00-05-31.jpg" alt="Interface de l&#x27;outil IA (Claude) affichant un prompt textuel détaillé décrivant une scène de cinéma avec un titan de pierre et un sorcier." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_018_00-05-31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:31</span>
+                        <span class="caption-text">Interface de l&#x27;outil IA (Claude) affichant un prompt textuel détaillé décrivant une scène de cinéma avec un titan de pierre et un sorcier.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:33 - 00:06:11</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">autant que je peux. Et ici, j&#x27;ai vraiment insisté sur un sentiment immense d&#x27;échelle. Je veux que le Titan soit absolument gigantesque et que notre humain ait l&#x27;air d&#x27;une minuscule particule en comparaison. Si nous allons de l&#x27;avant et envoyons ceci, Claude fera référence à ma compétence et nous renverra un prompt comme ceci. Cette compétence particulière aura par défaut une longueur de génération de 15 secondes. Si vous voulez une génération plus courte, faites-le simplement savoir à Claude et il adaptera le cadre en conséquence. De retour sur Higgsfield, vous voulez vous diriger vers le coin supérieur gauche, survoler l&#x27;onglet vidéo et ensuite sélectionner Seedance 2 à l&#x27;intérieur de ce premier</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme Higgsfield affichant des menus de sélection de modèles vidéo (Seedance, Kling, Sora, Google Veo) et interface textuelle de prompts.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affichant des timecodes et des descriptions de plans détaillés ([00:00 - 00:04] Extreme wide, 18mm, low angle... / [00:04 - 00:06] Wide, 35mm, high angle...) et menus de modèles de génération vidéo incluant Seedance 2.0 4K, Gemini Omni Flash, Kling 3.0, Sora 2, Google Veo 3.1.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre des exemples de prompts structurés pour le découpage de plans cinématiques, puis navigue dans l&#x27;interface de Higgsfield en survolant les onglets pour sélectionner le modèle Seedance.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_019_00-05-46.jpg" alt="Interface textuelle affichant des instructions de découpage temporel et des descriptions de plans de caméra (prompts de génération vidéo)." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_019_00-05-46.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:46</span>
+                        <span class="caption-text">Interface textuelle affichant des instructions de découpage temporel et des descriptions de plans de caméra (prompts de génération vidéo).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_020_00-06-09.jpg" alt="Interface de la plateforme Higgsfield montrant le menu déroulant des fonctionnalités et des modèles vidéo (Seedance 2.0 4K, Kling 3.0, Sora 2, etc.) avec Jack dans un encadré PiP." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_020_00-06-09.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:09</span>
+                        <span class="caption-text">Interface de la plateforme Higgsfield montrant le menu déroulant des fonctionnalités et des modèles vidéo (Seedance 2.0 4K, Kling 3.0, Sora 2, etc.) avec Jack dans un encadré PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:11 - 00:06:46</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ici vous voulez importer toutes les ressources pertinentes donc encore une fois ce sont nos fiches de référence de personnages et nos plans fixes de décors et maintenant nous pouvons aller copier notre prompt depuis Claude et le déposer dans ce champ ici sur Higgsfield maintenant je suggère de le relire rapidement Claude est généralement très bon pour rédiger des prompts mais vérifiez simplement qu&#x27;il décrit la scène exactement comme vous l&#x27;avez imaginé avant de cliquer sur générer juste pour vous assurer de ne pas gaspiller vos crédits. Assurez-vous de régler votre durée pour qu&#x27;elle corresponde à la longueur de scène que vous recherchez et sélectionnez également votre</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil de génération vidéo par IA Higgsfield avec vignettes de référence, champ de texte pour le prompt, sélection du modèle (Seedance 2.0) et paramètres de durée (15s), format (16:9) et résolution (1080p).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt : &quot;[00:00 - 00:04] Extreme wide, 18mm, low angle, slow dolly in — a dark dingy wasteland at dusk: cracked red-brown ground, drifting dust and curling mist, purple-lilac sky. A colossal lifeless stone titan hunches over the plain, cracked blue-grey rock wound with dead roots, dormant. Dust billows across the scene as the camera creeps&quot;. Paramètres : Durée &quot;15s&quot;, format &quot;16:9&quot;, résolution &quot;1080p&quot;, Bitrate &quot;High&quot;, bouton &quot;Generate&quot; avec coût de 135 crédits.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre comment importer des assets de référence, coller le prompt généré par Claude dans l&#x27;interface de Higgsfield, et configurer les paramètres de durée et de génération vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_021_00-06-13.jpg" alt="Interface de l&#x27;outil montrant le chargement de fiches de référence de personnages et de décors, avec le champ de prompt et les réglages de modèle." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_021_00-06-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:13</span>
+                        <span class="caption-text">Interface de l&#x27;outil montrant le chargement de fiches de référence de personnages et de décors, avec le champ de prompt et les réglages de modèle.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_022_00-06-44.jpg" alt="Interface de l&#x27;outil affichant un prompt détaillé généré par Claude, le sélecteur de durée réglé sur 15 secondes et le bouton de génération." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_022_00-06-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:44</span>
+                        <span class="caption-text">Interface de l&#x27;outil affichant un prompt détaillé généré par Claude, le sélecteur de durée réglé sur 15 secondes et le bouton de génération.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:46 - 00:07:28</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">format d&#x27;image. En termes de résolution, le 1080p conviendra pour la plupart des cas d&#x27;utilisation. Descendre jusqu&#x27;en 480p est un excellent moyen de tester des prompts tout en réduisant le coût en crédits. Et sélectionner la 4K, bien que plutôt coûteux, vous donnera un résultat incroyablement premium. Allons-y et cliquons sur générer pour voir ce que l&#x27;on obtient. C&#x27;est exactement sorti comme je l&#x27;avais imaginé. Le sentiment de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Lecteur vidéo / rendu de génération d&#x27;IA (ou interface d&#x27;outil de génération vidéo).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Rendu visuel d&#x27;une scène animée montrant un personnage masculin de dos, vêtu d&#x27;un manteau bleu, posant sa main sur une grande structure rocheuse ou métallique aux formes anguleuses.</p>
+                        <p><strong>Action / Démonstration :</strong> Le rendu vidéo généré par l&#x27;IA s&#x27;affiche à l&#x27;écran pour illustrer le résultat final de la génération.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_023_00-07-15.jpg" alt="Affichage du résultat de la vidéo générée montrant un personnage de dos en manteau bleu touchant une structure rocheuse ou géométrique." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_023_00-07-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:15</span>
+                        <span class="caption-text">Affichage du résultat de la vidéo générée montrant un personnage de dos en manteau bleu touchant une structure rocheuse ou géométrique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:28 - 00:07:57</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;échelle, le style d&#x27;animation et la palette de couleurs, tout semble vraiment de haute qualité. Passons à quelque chose d&#x27;un peu plus dynamique maintenant. J&#x27;ai donc ce personnage qui est un coureur de vitesse. Il a la capacité de courir si vite qu&#x27;il peut courir le long des bâtiments et traverser une immense ville en quelques minutes. Encore une fois, je combine ma feuille de référence de personnage avec une image fixe de lieu et mon prompt de Claude. Allons-y, cliquons sur générer et voyons ce que nous obtenons.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil de génération vidéo et artistique Seedance.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt décrivant un jeune garçon athlétique et agile (&quot;A wiry teenage boy standing tall...&quot;), paramètres du modèle Seedance 2.0 (15s, 16:9, 1080p, High).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre la transition vers une scène plus dynamique en combinant les références de personnages et de décors dans l&#x27;interface de génération.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_024_00-07-30.jpg" alt="Rendu visuel d&#x27;un personnage massif rocheux dans un paysage montagneux." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_024_00-07-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:30</span>
+                        <span class="caption-text">Rendu visuel d&#x27;un personnage massif rocheux dans un paysage montagneux.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_025_00-07-38.jpg" alt="Interface affichant le prompt textuel détaillé du personnage adolescent et la feuille de référence du personnage." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_025_00-07-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:38</span>
+                        <span class="caption-text">Interface affichant le prompt textuel détaillé du personnage adolescent et la feuille de référence du personnage.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_026_00-07-48.jpg" alt="Interface de Seedance montrant les images de référence combinées et le champ de prompt pour la génération de vidéo dynamique." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_026_00-07-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:48</span>
+                        <span class="caption-text">Interface de Seedance montrant les images de référence combinées et le champ de prompt pour la génération de vidéo dynamique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:12 - 00:08:48</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Une autre super génération ici. Notre personnage est resté vraiment sympa et cohérent et la scène est très énergique. J&#x27;adore aussi la façon dont cela se termine avec notre personnage tout en haut d&#x27;un gratte-ciel en train de faire défiler son fil d&#x27;actualité. Bon, passons à la vitesse supérieure maintenant. Je veux assembler trois générations distinctes pour raconter une histoire complète. Pour ce faire, je veux revenir sur cette héroïne nommée Goldie. Vous vous souvenez peut-être que j&#x27;ai également construit une feuille de personnage alternative qui montre sa double vie secrète. J&#x27;ai aussi construit cette image fixe de décor parce que je voulais situer la scène dans le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de génération d&#x27;images par IA avec panneau de prompt textuel, boutons de configuration et zone de prévisualisation de l&#x27;image.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;A serene enclosed Oxford college quadrangle on a calm summer&#x27;s day, framed on all sides by honey-coloured Cotswold stone cloisters with pointed Gothic arches, mullioned windows and weathered spires rising beyond the rooflines. A immaculate green lawn at the centre with neat flowerbeds and climbing roses, a lone stone...&quot; Bouton vert &quot;Generate +3&quot; et sélecteurs de format (16:9).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente différentes générations de vidéos et d&#x27;images fixes pour illustrer la continuité des personnages et les décors utilisés dans son workflow de narration par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_027_00-08-24.jpg" alt="Affichage à l&#x27;écran d&#x27;une génération vidéo montrant un personnage assis au sommet d&#x27;un gratte-ciel surplombant une ville au coucher du soleil, avec un aperçu vidéo du créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_027_00-08-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:24</span>
+                        <span class="caption-text">Affichage à l&#x27;écran d&#x27;une génération vidéo montrant un personnage assis au sommet d&#x27;un gratte-ciel surplombant une ville au coucher du soleil, avec un aperçu vidéo du créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_028_00-08-46.jpg" alt="Interface de génération d&#x27;images montrant un prompt textuel décrivant une cour de collège d&#x27;Oxford et l&#x27;image générée correspondante sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_028_00-08-46.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:46</span>
+                        <span class="caption-text">Interface de génération d&#x27;images montrant un prompt textuel décrivant une cour de collège d&#x27;Oxford et l&#x27;image générée correspondante sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:48 - 00:09:22</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des terrains de l&#x27;université d&#x27;Oxford et j&#x27;ai aussi dû aller de l&#x27;avant et générer ce méchant que Goldie doit combattre. Encore une fois, je vais retourner sur Claude. Je vais télécharger ce même skill ainsi que toutes les feuilles de référence de personnages pertinentes en même temps que notre décor fixe. Je pense qu&#x27;il est utile à ce stade d&#x27;écrire toute l&#x27;histoire puis de la diviser en générations distinctes lorsqu&#x27;il semble y avoir une coupure naturelle dans la scène. Par exemple, dans la première génération, nous allons voir Goldie plongée dans ses études, mais profitant d&#x27;une belle journée d&#x27;été lorsque notre méchant apparaît soudainement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de génération d&#x27;images/vidéo (Image 1), interface de l&#x27;assistant Claude (Image 2), affichage textuel de scénario (Image 3) et visionneuse de médias (Image 4).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt &quot;A colossal towering...&quot; (Image 1), interface de Claude avec sélecteur de modèle &quot;Opus 4.8 Medium&quot; et fichiers attachés (Image 2), script détaillé divisé en &quot;GENERATION 1&quot;, &quot;GENERATION 2&quot;, &quot;GENERATION 3&quot; (Image 3), et rendu visuel du monstre en armure blanche craquelée (Image 4).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre le processus de création de l&#x27;histoire et du méchant en utilisant Claude pour rédiger le scénario et structurer les générations successives de la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_029_00-08-50.jpg" alt="Interface de génération montrant un prompt et un rendu du personnage monstrueux." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_029_00-08-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:50</span>
+                        <span class="caption-text">Interface de génération montrant un prompt et un rendu du personnage monstrueux.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_030_00-09-00.jpg" alt="Interface de l&#x27;assistant Claude montrant les fichiers téléchargés (prompt, images de personnages et décor)." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_030_00-09-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:00</span>
+                        <span class="caption-text">Interface de l&#x27;assistant Claude montrant les fichiers téléchargés (prompt, images de personnages et décor).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_031_00-09-11.jpg" alt="Texte complet du scénario divisé en trois générations de scènes." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_031_00-09-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:11</span>
+                        <span class="caption-text">Texte complet du scénario divisé en trois générations de scènes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_032_00-09-20.jpg" alt="Illustration générée montrant le monstre géant atterrissant dans la cour d&#x27;Oxford." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_032_00-09-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:20</span>
+                        <span class="caption-text">Illustration générée montrant le monstre géant atterrissant dans la cour d&#x27;Oxford.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:22 - 00:09:45</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">à travers un portail et Goldie se transforme en sa forme de héroïne, prête à se battre. Pour la deuxième génération, je veux que ce soit le cœur de la scène de combat, quand Goldie déploie ses capacités, mais qu&#x27;elle ne parvient pas vraiment à causer de dégâts au méchant car il a cette armure en céramique spéciale. Et pour la dernière génération, le méchant attrape Goldie dans son énorme poing.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec affichage d&#x27;illustrations conceptuelles générées par IA au centre et vignette du créateur (Jack) en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Concept art d&#x27;une super-héroïne nommée Goldie aux mains dorées et d&#x27;un antagoniste massif à l&#x27;armure de céramique craquelée.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur commente visuellement l&#x27;enchaînement des générations vidéo décrivant le combat entre Goldie et le méchant.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_033_00-09-24.jpg" alt="Image générée montrant Goldie dans sa forme de héroïne devant un bâtiment universitaire ancien." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_033_00-09-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:24</span>
+                        <span class="caption-text">Image générée montrant Goldie dans sa forme de héroïne devant un bâtiment universitaire ancien.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_034_00-09-30.jpg" alt="Image générée montrant le combat entre Goldie et le méchant doté d&#x27;une armure en céramique." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_034_00-09-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:30</span>
+                        <span class="caption-text">Image générée montrant le combat entre Goldie et le méchant doté d&#x27;une armure en céramique.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_035_00-09-37.jpg" alt="Grille de quatre images illustrant différentes phases de l&#x27;affrontement entre Goldie et le super-vilain." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_035_00-09-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:37</span>
+                        <span class="caption-text">Grille de quatre images illustrant différentes phases de l&#x27;affrontement entre Goldie et le super-vilain.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_036_00-09-43.jpg" alt="Gros plan du méchant souriant tenant Goldie prisonnière dans son immense poing." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_036_00-09-43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:43</span>
+                        <span class="caption-text">Gros plan du méchant souriant tenant Goldie prisonnière dans son immense poing.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:45 - 00:10:11</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le public pense que tout espoir est perdu jusqu&#x27;à ce que Goldie tende la main et touche la seule partie exposée du méchant, son œil. Il se fige soudainement en une statue faite d&#x27;or, puis notre héroïne redescend sur le sol et se plaint ensuite que son café est devenu froid. Je peux donc simplement copier ma description de la première génération, la coller dans Claude et envoyer le tout.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran (Jack dans son studio avec un micro, un néon « Jack Vs. AI » et des panneaux acoustiques en arrière-plan).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou interface logicielle n&#x27;est visible sur cette image.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack est filmé de face en plan rapproché, parlant devant son micro en gesticulant légèrement pour illustrer son propos.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:11 - 00:10:50</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et nous allons récupérer ce prompt très détaillé dont nous avons besoin. Et nous pouvons simplement répéter l&#x27;opération pour chaque scène. J&#x27;ai pris les devants et assemblé chaque génération séparée avec un montage très basique. Et voici le résultat que j&#x27;ai obtenu. Tu aimes ma nouvelle armure, Goldie ? Je l&#x27;ai forgée rien que pour toi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de type assistant IA / outil de génération de prompts textuels avec affichage des résultats visuels.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte complet du prompt en anglais décrivant Goldie (« An unsuspecting woman named Goldie lays on her front... ») et plusieurs illustrations de scènes générées par IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du processus de génération de prompts textuels détaillés scène par scène, suivie du montage des séquences vidéo assemblées illustrant l&#x27;histoire de Goldie et de la créature.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_037_00-10-13.jpg" alt="Interface logicielle affichant le texte détaillé d&#x27;un prompt narratif avec un encadré de prévisualisation vidéo du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_037_00-10-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:13</span>
+                        <span class="caption-text">Interface logicielle affichant le texte détaillé d&#x27;un prompt narratif avec un encadré de prévisualisation vidéo du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_038_00-10-25.jpg" alt="Image générée par IA montrant le personnage de Goldie allongée sur l&#x27;herbe en train de lire un livre dans la cour d&#x27;un collège à Oxford." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_038_00-10-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:25</span>
+                        <span class="caption-text">Image générée par IA montrant le personnage de Goldie allongée sur l&#x27;herbe en train de lire un livre dans la cour d&#x27;un collège à Oxford.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_039_00-10-37.jpg" alt="Image générée par IA montrant le personnage de Goldie portant une nouvelle armure dorée et noire dans la cour d&#x27;Oxford." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_039_00-10-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:37</span>
+                        <span class="caption-text">Image générée par IA montrant le personnage de Goldie portant une nouvelle armure dorée et noire dans la cour d&#x27;Oxford.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_040_00-10-48.jpg" alt="Image générée par IA montrant Goldie face à une gigantesque créature humanoïde en pierre fissurée de veines dorées dans la cour d&#x27;Oxford." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_040_00-10-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:48</span>
+                        <span class="caption-text">Image générée par IA montrant Goldie face à une gigantesque créature humanoïde en pierre fissurée de veines dorées dans la cour d&#x27;Oxford.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:53 - 00:11:31</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Beurk, maintenant mon café est froid. Bientôt, j&#x27;entrerai plus en détail sur la façon exacte dont j&#x27;ai assemblé tout cela au montage, mais parlons d&#x27;abord du résultat final. Maintenant, comme il s&#x27;agissait d&#x27;une scène plus ambitieuse, j&#x27;ai dû effectuer plusieurs régénérations pour arriver à ce niveau de qualité. J&#x27;y reviendrai plus tard. Mais on dirait une vraie scène animée. L&#x27;action est crédible et les personnages ont une vraie personnalité. Surtout</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec extraits de scènes animées générées par IA et incrustation PiP du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Visuels de scènes d&#x27;animation de haute qualité créées par intelligence artificielle.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre son propos en diffusant des exemples de scènes animées obtenues après plusieurs régénérations.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_041_00-10-55.jpg" alt="Scène animée générée par IA montrant une femme aux tresses et sweat jaune faisant face à une créature imposante." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_041_00-10-55.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:55</span>
+                        <span class="caption-text">Scène animée générée par IA montrant une femme aux tresses et sweat jaune faisant face à une créature imposante.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_042_00-11-19.jpg" alt="Scène animée montrant une cour de château gothique sous un ciel menaçant avec des feuilles ou papiers flottants, avec Jack en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_042_00-11-19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:19</span>
+                        <span class="caption-text">Scène animée montrant une cour de château gothique sous un ciel menaçant avec des feuilles ou papiers flottants, avec Jack en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:31 - 00:12:01</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les générations ne semblent pas déconnectées les unes des autres. Il y a une fluidité dans la scène. On ne peut pas dire qu&#x27;on passe d&#x27;une génération à la suivante. On dirait juste une seule histoire continue. Le ciel est vraiment la limite avec ce processus. Vous pouvez développer une grande variété de personnages, de lieux et de scènes différents et les ramener tous à la vie d&#x27;une manière qui semble professionnelle. S&#x27;entraîner pour devenir un artiste ou un animateur prend des années mais nous avons accompli tout cela en quelques minutes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustation (PiP) du créateur Jack dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Rendu visuel d&#x27;une séquence animée générée par IA présentant une continuité entre différents personnages et scènes.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration visuelle à l&#x27;écran de la fluidité et de la variété des générations de scènes et personnages par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_043_00-11-33.jpg" alt="Scène d&#x27;action animée par IA montrant un personnage en veste jaune faisant face à une énorme créature de pierre." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_043_00-11-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:33</span>
+                        <span class="caption-text">Scène d&#x27;action animée par IA montrant un personnage en veste jaune faisant face à une énorme créature de pierre.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_044_00-11-41.jpg" alt="Gros plan d&#x27;un personnage humanoïde menaçant au sourire carnassier devant un bâtiment gothique." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_044_00-11-41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:41</span>
+                        <span class="caption-text">Gros plan d&#x27;un personnage humanoïde menaçant au sourire carnassier devant un bâtiment gothique.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_045_00-11-51.jpg" alt="Personnage féminin aux mains enflammées se tenant dans la cour d&#x27;une université gothique." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_045_00-11-51.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:51</span>
+                        <span class="caption-text">Personnage féminin aux mains enflammées se tenant dans la cour d&#x27;une université gothique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:01 - 00:12:36</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais c&#x27;est au montage qu&#x27;on peut vraiment amener le produit fini à un niveau supérieur. Pour commencer, vous pouvez voir que j&#x27;ai utilisé une superposition sur la timeline ici, de sorte que chaque génération empiète légèrement sur celle qui la précède et celle qui la suit. Et c&#x27;est une astuce de montage astucieuse parce que vous commencez à introduire le son du plan à venir avant que le spectateur ne le voie réellement. Cela le prépare en quelque sorte à ce qui l&#x27;attend pour que le montage semble vraiment fluide et en aucun cas discordant. C&#x27;est souvent appelé une coupe en J ou en L. Vous remarquerez également qu&#x27;il n&#x27;y a pas de musique intégrée dans mes générations et ce</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro</p>
+                        <p><strong>Contenu textuel & Code :</strong> Timeline de montage avec pistes vidéo et audio, calque d&#x27;ajustement (&#x27;Adjustment Layer&#x27;), clips nommés &#x27;hf_20260728...&#x27;, curseur de lecture bleu.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre la superposition de clips sur la timeline de Premiere Pro pour illustrer le montage en J/L.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_046_00-12-03.jpg" alt="Écran titre affichant &#x27;step three editing tricks&#x27; sur un fond coloré dégradé." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_046_00-12-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:03</span>
+                        <span class="caption-text">Écran titre affichant &#x27;step three editing tricks&#x27; sur un fond coloré dégradé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_047_00-12-13.jpg" alt="Interface du logiciel de montage Adobe Premiere Pro montrant la timeline avec des pistes vidéo superposées et le créateur incrusté en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_047_00-12-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:13</span>
+                        <span class="caption-text">Interface du logiciel de montage Adobe Premiere Pro montrant la timeline avec des pistes vidéo superposées et le créateur incrusté en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:36 - 00:12:55</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est délibéré. Cela dépend de la façon dont ma compétence personnalisée produit les prompts. L&#x27;absence de musique signifie que l&#x27;assemblage de générations séparées est beaucoup plus facile. Vous pouvez imaginer que si vous avez une musique différente intégrée dans chaque génération, les superposer va sembler très chaotique et vous n&#x27;aurez pas ce sentiment de cohérence.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de montage ou présentation de flux de travail montrant du texte de prompt et des extraits vidéo avec formes d&#x27;ondes audio.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affichant les prompts de génération de vidéo (&quot;Wide, 50mm, high angle, slow push in...&quot;, &quot;Constraints: no text, logos...&quot;, &quot;Audio: Diegetic only&quot;). Deux visuels générés par IA et leurs formes d&#x27;ondes audio associées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre visuellement le processus d&#x27;assemblage de différentes générations vidéo sans musique superposée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_048_00-12-38.jpg" alt="Affichage du prompt textuel détaillé utilisé pour générer la vidéo, incluant les paramètres de caméra et les contraintes." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_048_00-12-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:38</span>
+                        <span class="caption-text">Affichage du prompt textuel détaillé utilisé pour générer la vidéo, incluant les paramètres de caméra et les contraintes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_049_00-12-53.jpg" alt="Présentation de deux clips vidéo générés par IA côte à côte, chacun accompagné de sa piste audio verte sous forme de waveform." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_049_00-12-53.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:53</span>
+                        <span class="caption-text">Présentation de deux clips vidéo générés par IA côte à côte, chacun accompagné de sa piste audio verte sous forme de waveform.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:55 - 00:13:14</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous voulez vraiment ajouter de la musique, je suggère de le faire lors du montage plutôt que de la faire générer dans vos scènes. Maintenant, un effet vraiment simple mais astucieux ici dans Premiere Pro est cet effet de postérisation temporelle (posterize time). Et vous aurez une variante de celui-ci dans à peu près n&#x27;importe quel logiciel de montage.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (panneau des options d&#x27;effets et moniteur de prévisualisation vidéo).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres visibles dans le panneau d&#x27;effets : Anti-flicker Filter, Crop, Opacity, Time Remapping, Posterize Time avec une fréquence d&#x27;images (Frame Rate) réglée sur 12.0 ips. Le moniteur affiche une vidéo avec un personnage humanoïde doré dans un décor de château.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;application de l&#x27;effet &quot;Posterize Time&quot; sur le panneau de configuration d&#x27;Adobe Premiere Pro pour modifier le rendu du mouvement de la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_050_00-13-05.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant les effets de contrôle, notamment le paramètre &quot;Posterize Time&quot; réglé sur 12 images par seconde." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_050_00-13-05.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:05</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant les effets de contrôle, notamment le paramètre &quot;Posterize Time&quot; réglé sur 12 images par seconde.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:14 - 00:13:50</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Seedance 2 génère nativement à 24 images par seconde, mais nous pouvons utiliser la postérize temporelle pour diviser la fréquence d&#x27;images par deux, la ramenant à 12 FPS. En éliminant ces images supplémentaires, notre résultat paraît moins fluide, ce qui lui donne cette ambiance animée à la main que vous avez pu remarquer dans des projets comme Into the Spider-Verse et Arcane. J&#x27;aime aussi ajouter cette couche de réglage qui accentue la netteté de la séquence et y ajoute également cette couche de grain de film. Ainsi, bien que le montage en lui-même ait été vraiment très simple, j&#x27;espère que vous pouvez voir comment nous pouvons prendre nos générations par IA et ajouter cette étape supplémentaire pour les élever.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau d&#x27;effets et de contrôle avec l&#x27;effet &quot;Posterize Time&quot; réglé sur un &quot;Frame Rate&quot; de 12.0 images par seconde, et une piste de calque d&#x27;ajustement (&quot;Adjustment Layer&quot;) sur la timeline.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur démontre comment modifier le taux de rafraîchissement des images d&#x27;une vidéo générée par IA pour imiter une animation traditionnelle, puis montre l&#x27;ajout d&#x27;un calque d&#x27;ajustement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_051_00-13-16.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant les paramètres de l&#x27;effet Posterize Time avec la fréquence d&#x27;images réglée à 12.0 FPS sur une vidéo générée par IA." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_051_00-13-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:16</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant les paramètres de l&#x27;effet Posterize Time avec la fréquence d&#x27;images réglée à 12.0 FPS sur une vidéo générée par IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_052_00-13-38.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline avec une piste nommée &quot;Adjustment Layer&quot; (calque d&#x27;effet) au-dessus de la vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_052_00-13-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:38</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline avec une piste nommée &quot;Adjustment Layer&quot; (calque d&#x27;effet) au-dessus de la vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:50 - 00:14:03</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">davantage. Cela étant dit, nous sommes arrivés à la fin du tutoriel d&#x27;aujourd&#x27;hui. Merci beaucoup d&#x27;être restés et de l&#x27;avoir regardé jusqu&#x27;au bout. Si vous avez appris quelque chose aujourd&#x27;hui, assurez-vous de mettre un pouce bleu sur la vidéo et pensez à vous abonner. Je vous retrouve dans la prochaine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Affichage vidéo d&#x27;un contenu généré par intelligence artificielle avec incrustation PiP du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Génération vidéo cinématique d&#x27;un combat entre un personnage féminin et un monstre gigantesque de pierre.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle d&#x27;un extrait de vidéo générée par IA pendant la conclusion du tutoriel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_053_00-13-52.jpg" alt="Rendu visuel d&#x27;une scène d&#x27;action générée par IA avec une femme en manteau jaune faisant face à une énorme créature de pierre, avec Jack visible en incrustation (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_053_00-13-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:52</span>
+                        <span class="caption-text">Rendu visuel d&#x27;une scène d&#x27;action générée par IA avec une femme en manteau jaune faisant face à une énorme créature de pierre, avec Jack visible en incrustation (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-M8ERoEGyAWw/frame_054_00-13-57.jpg" alt="Rendu visuel élargi montrant la confrontation entre la femme et la créature géante devant un grand bâtiment en pierre de type collégial, avec Jack en incrustation (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-M8ERoEGyAWw/frame_054_00-13-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:57</span>
+                        <span class="caption-text">Rendu visuel élargi montrant la confrontation entre la femme et la créature géante devant un grand bâtiment en pierre de type collégial, avec Jack en incrustation (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
