@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `10 / 59` (`16.9%`)
+- **Vidéos traitées** : `11 / 59` (`18.6%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -26,6 +26,7 @@
 | 2026-09-13 | [Comment transformer GPT-6 Astra en votre propre studio 3D](2026-09-13_YT-4WfAphCZXp0_Comment transformer GPT-6 Astra en votre propre studio 3D_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-09-13_YT-4WfAphCZXp0_Comment transformer GPT-6 Astra en votre propre studio 3D_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 16m 05s | `28 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=4WfAphCZXp0) | `4WfAphCZXp0` |
 | 2026-09-05 | [Pipeline d'animation IA : Comment créer des films en style Claymation 100% avec l'IA](2026-09-05_YT-Rj8BYbZCce0_Pipeline d'animation IA Comment créer des films en style Claymation 100% avec l'_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-09-05_YT-Rj8BYbZCce0_Pipeline d'animation IA Comment créer des films en style Claymation 100% avec l'_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 38m 03s | `71 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=Rj8BYbZCce0) | `Rj8BYbZCce0` |
 | 2026-08-19 | [Comment transformer n'importe quelle idée en vidéo IA complète en quelques minutes](2026-08-19_YT-IVIlSwd0_pU_Comment transformer n'importe quelle idée en vidéo IA complète en quelques minut_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-08-19_YT-IVIlSwd0_pU_Comment transformer n'importe quelle idée en vidéo IA complète en quelques minut_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 16s | `0 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=IVIlSwd0_pU) | `IVIlSwd0_pU` |
+| 2026-08-07 | [Comment utiliser Seedance 2.5 pour le cinéma IA (Workflow complet)](2026-08-07_YT-YM_2PYIy0FA_Comment utiliser Seedance 2.5 pour le cinéma IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-08-07_YT-YM_2PYIy0FA_Comment utiliser Seedance 2.5 pour le cinéma IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 40s | `58 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=YM_2PYIy0FA) | `YM_2PYIy0FA` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
