@@ -14,7 +14,8 @@
     "M8ERoEGyAWw",
     "BiXWH3QUX1Q",
     "CjCDpNCqEuY",
-    "7HhlSu3pPvU"
+    "7HhlSu3pPvU",
+    "vwL_c5U0F3Y"
   ],
   "processed_videos": [
     {
@@ -226,9 +227,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-07-05_YT-7HhlSu3pPvU_Google vient de libérer le Nano Banana de la vidéo IA (Plongée profonde dans Gem_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T04:27:14Z",
       "status": "completed"
+    },
+    {
+      "video_id": "vwL_c5U0F3Y",
+      "title": "Comment créer votre propre série animée avec l'IA",
+      "raw_title": "How to Create Your Own Cartoon Show with AI",
+      "filename_md": "2026-06-13_YT-vwL_c5U0F3Y_Comment créer votre propre série animée avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-06-13_YT-vwL_c5U0F3Y_Comment créer votre propre série animée avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-06-13",
+      "duration": 1796,
+      "screenshots_count": 111,
+      "filepath_md": "/root/YT_JackVsAI/2026-06-13_YT-vwL_c5U0F3Y_Comment créer votre propre série animée avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-06-13_YT-vwL_c5U0F3Y_Comment créer votre propre série animée avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-30T05:00:41Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 15,
+  "completed_count": 16,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-30T04:00:03Z"
