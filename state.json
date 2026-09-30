@@ -28,7 +28,8 @@
     "suIwxbO-_ZE",
     "9_1tIRHfomQ",
     "xS6WVR82nQE",
-    "ncD-OSWBWi0"
+    "ncD-OSWBWi0",
+    "L7ufHNtj5Rg"
   ],
   "processed_videos": [
     {
@@ -436,9 +437,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-04-03_YT-ncD-OSWBWi0_Comment utiliser Kling Motion pour le cinéma IA (ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T22:13:48Z",
       "status": "completed"
+    },
+    {
+      "video_id": "L7ufHNtj5Rg",
+      "title": "Cet outil rend la création de films par IA ultra facile",
+      "raw_title": "This Tool Makes AI Filmmaking EASY",
+      "filename_md": "2026-03-23_YT-L7ufHNtj5Rg_Cet outil rend la création de films par IA ultra facile_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-03-23_YT-L7ufHNtj5Rg_Cet outil rend la création de films par IA ultra facile_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-03-23",
+      "duration": 750,
+      "screenshots_count": 37,
+      "filepath_md": "/root/YT_JackVsAI/2026-03-23_YT-L7ufHNtj5Rg_Cet outil rend la création de films par IA ultra facile_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-03-23_YT-L7ufHNtj5Rg_Cet outil rend la création de films par IA ultra facile_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-30T22:28:56Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 29,
+  "completed_count": 30,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-30T22:00:06Z"

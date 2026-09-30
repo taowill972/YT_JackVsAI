@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Cet outil rend la création de films par IA ultra facile — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Cet outil rend la création de films par IA ultra facile</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-03-23</span>
+                <span class="badge">⏱️ 12m 30s</span>
+                <span class="badge">🆔 <code>L7ufHNtj5Rg</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=L7ufHNtj5Rg" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>La création de vidéos par intelligence artificielle souffre traditionnellement d'un manque de contrôle créatif, s'apparentant souvent à un jeu de hasard où la génération de multiples clips aléatoires ne garantit aucune cohérence narrative ou visuelle. Dans cette vidéo, Jack démontre qu'il est désormais possible de s'affranchir de cette limite grâce à l'outil **Cinema Studio 2.5** de Higgsfield. En s'appuyant sur un système unifié, il devient possible de maintenir le même personnage, un éclairage contrôlé et des plans cohérents tout en dirigeant précisément la caméra sans recourir à des prompts complexes. Pour illustrer cette avancée, Jack entreprend la réalisation d'un court-métrage de science-fiction dystopique centré sur une crise d'infertilité, incarné par un personnage de charognard mélancolique.</p><p>La méthode pas à pas présentée repose sur une phase préparatoire rigoureuse : conceptualisation de l'histoire, rédaction d'un script hybride faisant office de liste de plans, et génération d'actifs visuels initiaux. Grâce à des modèles d'image avancés, Jack crée une feuille de personnage (character sheet) et des décors caractérisés par une palette chromatique orange marquée, évoquant l'idée d'une prison psychologique et environnementale. L'utilisation conjointe de **Nano Banana 2**, de **Nano Banana Pro** et du modèle propriétaire *Soul Cinema* de Higgsfield permet de verrouiller l'identité visuelle du protagoniste avant même d'entrer dans l'étape de génération vidéo proprement dite.</p><p>Enfin, le cœur du tutoriel décortique l'utilisation pratique de Cinema Studio 2.5 à travers des plans uniques et multi-plans (*multi-shot*). Jack montre comment importer des images de référence, assigner des personnages et des environnements via un panneau de direction intuitive, et paramétrer des aspects techniques précis tels que les mouvements de caméra à main levée, les rampes de vitesse (*speed ramps*) et la durée des plans. Cette approche hybride entre direction artistique humaine et automatisation par l'IA offre aux créateurs un contrôle inédit, transformant l'outil technologique en un véritable prolongement de leur vision artistique.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Higgsfield</span><span class="tool-tag">Nano Banana</span><span class="tool-tag">Nano Banana Pro</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Priorité à la vision humaine** : L&#x27;IA ne remplace pas le processus créatif ; elle sert d&#x27;accélérateur pour donner vie à une idée originale et personnelle que l&#x27;outil ne peut pas inventer à la place du créateur.</span></li><li><span class="point-bullet">✦</span><span>Le piège du hasard** : La production vidéo par IA ne doit plus reposer sur la génération aveugle de dizaines de clips aléatoires, mais sur un pipeline de construction unifié garantissant la continuité narrative.</span></li><li><span class="point-bullet">✦</span><span>Conception d&#x27;une feuille de personnage** : L&#x27;utilisation d&#x27;images de référence combinée à Nano Banana 2 permet de figer l&#x27;apparence d&#x27;un protagoniste pour assurer sa recognoscibilité à travers différentes scènes.</span></li><li><span class="point-bullet">✦</span><span>Symbolisme chromatique fort** : L&#x27;intégration d&#x27;une couleur dominante récurrente (comme l&#x27;orange vif) renvoie visuellement à un thème narratif précis, tel que l&#x27;enfermement psychologique ou carcéral des personnages.</span></li><li><span class="point-bullet">✦</span><span>Le script orienté réalisation** : Rédiger un script hybride qui intègre dès le départ les types de plans et les mouvements de caméra facilite grandement la traduction visuelle ultérieure dans l&#x27;IA.</span></li><li><span class="point-bullet">✦</span><span>Gestion des prompts allégés** : Lorsque l&#x27;image de départ est suffisamment descriptive et explicite, il est stratégiquement pertinent de réduire ou d&#x27;omettre le texte textuel dans le prompt pour laisser l&#x27;image faire le travail principal.</span></li><li><span class="point-bullet">✦</span><span>Utilisation du panneau du directeur** : L&#x27;interface de Higgsfield permet de taguer directement le personnage et l&#x27;emplacement à partir d&#x27;images importées, évitant ainsi d&#x27;avoir recours à de longs prompts textuels complexes.</span></li><li><span class="point-bullet">✦</span><span>Stylisation par la caméra à main levée** : Sélectionner manuellement un mouvement de caméra &quot;à main levée&quot; insuffle un style granuleux et brut, parfaitement adapté pour retranscrire une ambiance sombre ou dystopique.</span></li><li><span class="point-bullet">✦</span><span>Contrôle de la durée des plans** : Ajuster finement la longueur des séquences (généralement entre 3 et 5 secondes) permet de rythmer le montage final et d&#x27;éviter des actions trop longues ou décousues.</span></li><li><span class="point-bullet">✦</span><span>Optimisation pour le montage audio** : Intégrer des mentions textuelles spécifiques dans les invites, telles que &quot;pas de musique&quot; et &quot;pas de dialogue&quot;, simplifie considérablement la phase ultérieure de post-production sonore.</span></li><li><span class="point-bullet">✦</span><span>Maîtrise des rampes de vitesse (*speed ramps*)** : L&#x27;outil offre la possibilité d&#x27;ajuster ou de laisser en mode automatique les variations de vitesse, bien qu&#x27;un style plus brut nécessite parfois de désactiver ces effets pour conserver la sobriété de la scène.</span></li><li><span class="point-bullet">✦</span><span>Cohérence multi-plans** : Le mode *multi-shot* manuel permet de segmenter une scène complexe en plusieurs sous-plans tout en conservant le même ancrage visuel et narratif pour les personnages impliqués.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:18</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Jusqu&#x27;à présent, la vidéo par intelligence artificielle n&#x27;était pas une question de réalisation, c&#x27;était un jeu de hasard. Vous générez 50 clips et espérez qu&#x27;au final quelque chose fonctionne. Mais ce que vous regardez en ce moment n&#x27;a pas été généré aléatoirement, cela a été construit à l&#x27;intérieur d&#x27;un seul et même système. Même personnage, éclairage contrôlé et plans cohérents.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun affichage d&#x27;interface logicielle, uniquement des extraits de clips vidéo générés par IA illustrant le propos (un personnage allongé dans une pièce exigüe, deux détenus à table dans une cantine, un homme regardant un petit médaillon).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente des exemples visuels de clips vidéo générés par IA pour illustrer son discours sur la cohérence des personnages et l&#x27;absence de hasard.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:18 - 00:00:51</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Chaque scène, mouvement de caméra et plan est dirigé. Jusqu&#x27;à récemment, obtenir ce niveau de cohérence avec l&#x27;IA demandait beaucoup d&#x27;étapes compliquées, mais ce nouvel outil change la donne. Vous pouvez engager des acteurs, construire votre scène et diriger la caméra sans prompts complexes. C&#x27;est Cinema Studio 2.5 de Hicksfield. Et dans la vidéo d&#x27;aujourd&#x27;hui, nous allons tester l&#x27;outil en profondeur en construisant un film cinématographique complet. Je vais vous montrer comment contrôler vos plans, vos personnages et votre univers pour que vos films générés par IA aient un véritable style et un impact fort. Et</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran (les images 2, 3 et 4 sont des plans de coupe cinématographiques générés par IA illustrant le sujet, et non une démonstration d&#x27;interface ou de logiciel).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte textuel ou d&#x27;interface visible (sous-titres automatiques en anglais incrustés sur les plans de coupe).</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra dans son studio, puis la vidéo présente des séquences cinématographiques illustratives générées par IA où il apparaît dans le rôle d&#x27;un pilote de vaisseau spatial.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:51 - 00:01:26</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les gars si vous appréciez la vidéo d&#x27;aujourd&#x27;hui assurez-vous de mettre un pouce bleu pour moi, pensez à vous abonner et bien sûr à cliquer sur l&#x27;icône de notification de la cloche. Très bien, entrons dans le vif du sujet. Tout d&#x27;abord, nous avons besoin de notre idée et bien que l&#x27;IA puisse vous aider à combler certains blancs, toutes les meilleures idées viennent de vous, le créateur. L&#x27;IA ne peut pas penser comme nous, c&#x27;est juste un outil pour donner vie à vos idées plus rapidement, et non un remplacement du processus créatif. Pour mon court-métrage, je voulais faire un saut en avant vers un futur dystopique. Il fallait une sorte de conflit, quelque chose que nous puissions introduire mais aussi</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec extraits de courts-métrages générés par IA et incrustations du créateur (PiP)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;The conflict.&quot; sur l&#x27;image 4</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre son propos sur le processus de création d&#x27;une idée de court-métrage dystopique en montrant des visuels générés par IA illustrant le futur et le conflit.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_001_00-01-03.jpg" alt="Gros plan ultra-détaillé d&#x27;un œil derrière des lunettes avec incrustation vidéo du créateur dans le coin inférieur gauche" loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_001_00-01-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:03</span>
+                        <span class="caption-text">Gros plan ultra-détaillé d&#x27;un œil derrière des lunettes avec incrustation vidéo du créateur dans le coin inférieur gauche</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_002_00-01-24.jpg" alt="Écran de moniteur futuriste affichant une présentatrice de journal télévisé avec le texte &#x27;The conflict.&#x27; à l&#x27;écran et incrustation du créateur" loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_002_00-01-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:24</span>
+                        <span class="caption-text">Écran de moniteur futuriste affichant une présentatrice de journal télévisé avec le texte &#x27;The conflict.&#x27; à l&#x27;écran et incrustation du créateur</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:26 - 00:01:45</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">résolu en peu de temps. Pour cela, j&#x27;ai choisi une crise d&#x27;infertilité. Dans cet avenir brutal, les humains n&#x27;ont plus le don d&#x27;avoir des enfants. Ainsi, de la même manière, notre monde doit être stérile et les personnages qui l&#x27;occupent doivent sembler dénués d&#x27;espoir. Voici donc notre personnage principal.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Incrustation vidéo (Picture-in-Picture) du créateur Jack dans son studio en bas à gauche, affichant à l&#x27;écran principal des séquences vidéo cinématiques générées par intelligence artificielle illustrant le monde futuriste.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Rendu visuel d&#x27;une production cinématographique de science-fiction générée par IA : un écran de contrôle rustique, puis des portraits expressifs de personnages aux visages marqués par des tatouages dans un univers dystopique.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur commente et présente des extraits visuels de sa création de film de science-fiction par IA, illustrant l&#x27;univers stérile et le design des personnages.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_003_00-01-28.jpg" alt="Séquence vidéo générée par IA montrant un écran de télévision intégré dans un décor futuriste austère, diffusant un journal télévisé avec une présentatrice, avec le créateur en incrustation PiP en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_003_00-01-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:28</span>
+                        <span class="caption-text">Séquence vidéo générée par IA montrant un écran de télévision intégré dans un décor futuriste austère, diffusant un journal télévisé avec une présentatrice, avec le créateur en incrustation PiP en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_004_00-01-35.jpg" alt="Gros plan d&#x27;un personnage masculin généré par IA au visage tatoué, l&#x27;air triste et désolé, avec le créateur en incrustation PiP en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_004_00-01-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:35</span>
+                        <span class="caption-text">Gros plan d&#x27;un personnage masculin généré par IA au visage tatoué, l&#x27;air triste et désolé, avec le créateur en incrustation PiP en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_005_00-01-43.jpg" alt="Gros plan du personnage principal barbu, portant des lunettes rondes et des tatouages faciaux, regardant fixement la caméra avec stupéfaction, avec le créateur en incrustation PiP en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_005_00-01-43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:43</span>
+                        <span class="caption-text">Gros plan du personnage principal barbu, portant des lunettes rondes et des tatouages faciaux, regardant fixement la caméra avec stupéfaction, avec le créateur en incrustation PiP en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:45 - 00:02:03</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est une version alternative de moi, un pilote devenu charognard. À l&#x27;intérieur de Higgsfield, j&#x27;ai téléchargé des images de référence de moi-même et j&#x27;ai utilisé Nano Banana 2 pour créer une feuille de personnage avec un prompt que vous pouvez voir à l&#x27;écran maintenant. Tous mes prompts seront en bas dans la description de la vidéo, d&#x27;ailleurs.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Higgsfield (plateforme de génération d&#x27;images et vidéos par IA) avec le modèle Nano Banana Pro sélectionné.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On peut voir une grille de résultats présentant différentes feuilles de personnages (character sheets) du personnage (homme barbu avec des tatouages faciaux et une capuche orange), ainsi qu&#x27;une barre de prompt (&quot;Describe the scene you imagine&quot;), le sélecteur de modèle &quot;Nano Banana Pro&quot;, des icônes de format (16:9), de résolution (4K) et un bouton &quot;Generate&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Higgsfield où sont affichées plusieurs variations de feuilles de personnages créées à partir de ses images de référence.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_006_00-01-54.jpg" alt="Interface de la plateforme Higgsfield montrant une grille de feuilles de personnages générées par IA avec le modèle Nano Banana Pro." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_006_00-01-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:54</span>
+                        <span class="caption-text">Interface de la plateforme Higgsfield montrant une grille de feuilles de personnages générées par IA avec le modèle Nano Banana Pro.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:03 - 00:02:24</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cette feuille va s&#x27;avérer vraiment très utile plus tard lorsqu&#x27;il s&#x27;agira de verrouiller la cohérence de notre personnage. Notre charognard est misérable. Il n&#x27;a absolument aucun espoir. Et pour rendre les choses encore plus brutales pour lui, nous allons laisser entendre qu&#x27;il est sans sa femme et son enfant. Peut-être sont-ils quelque part hors de la planète ou peut-être que quelque chose de vraiment terrible leur est arrivé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération/gestion d&#x27;images IA avec un panneau de détails textuels à droite, des outils d&#x27;édition en bas (Overview, Upscale, Enhancer, Relight, Inpaint, Angles), et une incrustation vidéo (PiP) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans le panneau latéral : &quot;Photo real character sheet against a simple white background of the bearded man as a rugged near future pilot turned scavenger...&quot;. Boutons d&#x27;action visibles en bas du panneau : &quot;Animate&quot;, &quot;Open in&quot;, &quot;Reference&quot;, &quot;Download&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre une planche de référence de personnage générée par IA (&quot;character sheet&quot;) tout en parlant de la cohérence du personnage et de son background narratif.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_007_00-02-05.jpg" alt="Interface d&#x27;une application de génération d&#x27;images affichant une planche de référence (character sheet) d&#x27;un personnage de charognard avec des vues multiples, accompagnée d&#x27;un panneau latéral contenant le prompt détaillé." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_007_00-02-05.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:05</span>
+                        <span class="caption-text">Interface d&#x27;une application de génération d&#x27;images affichant une planche de référence (character sheet) d&#x27;un personnage de charognard avec des vues multiples, accompagnée d&#x27;un panneau latéral contenant le prompt détaillé.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:24 - 00:02:46</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La vie de ce type est brutale. Il a donc besoin de quelque chose qui se présente pour l&#x27;aider à croire en un avenir meilleur. Et si vous voulez découvrir ce qu&#x27;il découvre, vous devrez attendre la fin de la vidéo pour regarder le film terminé. Maintenant que nous avons notre personnage principal et une idée de notre histoire, il est temps d&#x27;écrire le script. La façon dont j&#x27;aborde cela se situe quelque part entre un script et une liste de plans.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération/gestion d&#x27;images (avec panneau de détails et options Animate, Upscale, Relight, etc.) et traitement de texte pour le scénario.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible sur l&#x27;image 3 : &quot;Photo real character sheet against a simple white background of the bearded man as a rugged near future pilot turned scavenger...&quot; ; texte du script sur l&#x27;image 4 décrivant la scène d&#x27;ouverture avec le réveil, la pièce de vie désordonnée et le reportage d&#x27;information.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre la conception graphique du personnage principal puis présente le script écrit de la première scène de son film.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_008_00-02-39.jpg" alt="Interface de génération d&#x27;images affichant une feuille de personnages (character sheet) du protagoniste sous différents angles, avec le prompt détaillé sur le panneau latéral droit." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_008_00-02-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:39</span>
+                        <span class="caption-text">Interface de génération d&#x27;images affichant une feuille de personnages (character sheet) du protagoniste sous différents angles, avec le prompt détaillé sur le panneau latéral droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_009_00-02-44.jpg" alt="Écran affichant le texte du script de la première scène (&quot;SCENE ONE&quot;), décrivant les plans (EXTREME CLOSE UP, MEDIUM SHOT, CLOSE UP) et les actions du personnage." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_009_00-02-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:44</span>
+                        <span class="caption-text">Écran affichant le texte du script de la première scène (&quot;SCENE ONE&quot;), décrivant les plans (EXTREME CLOSE UP, MEDIUM SHOT, CLOSE UP) et les actions du personnage.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:46 - 00:03:06</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Plutôt que de simplement écrire l&#x27;histoire, je détaille en fait des éléments comme le type de plan. Et je réfléchis même à la façon dont je veux que la caméra bouge. Et la plupart du temps, je peux réellement les reprendre directement et les utiliser comme prompts pour créer mes images de départ. Et c&#x27;est la prochaine étape pour créer les images qui serviront ensuite à animer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de génération d&#x27;images par IA et document de script textuel (avec incrustation vidéo PiP du créateur).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du scénario de la scène 1 détaillant les plans (&quot;EXTREME CLOSE UP&quot;, &quot;MEDIUM SCHOT, MESSY LIVING QUARTERS&quot;, &quot;CLOSE UP, MOUNTED TV SCREEN&quot;) et grille de résultats de génération d&#x27;images avec le bouton &quot;Generate&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son processus de conception, passant de l&#x27;écriture détaillée des plans de caméra à leur utilisation directe comme prompts pour générer les images de départ.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_010_00-02-48.jpg" alt="Texte de scénario structuré montrant les détails de plans (&quot;SCENE ONE&quot;, &quot;EXTREME CLOSE UP&quot;, &quot;MEDIUM SCHOT&quot;) avec un aperçu flouté en arrière-plan et le créateur incrusté en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_010_00-02-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:48</span>
+                        <span class="caption-text">Texte de scénario structuré montrant les détails de plans (&quot;SCENE ONE&quot;, &quot;EXTREME CLOSE UP&quot;, &quot;MEDIUM SCHOT&quot;) avec un aperçu flouté en arrière-plan et le créateur incrusté en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_011_00-03-04.jpg" alt="Interface de génération d&#x27;images affichant une grille de rendus générés par IA représentant un homme barbu dans une pièce, avec la caméra du créateur en incrustation PiP en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_011_00-03-04.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:04</span>
+                        <span class="caption-text">Interface de génération d&#x27;images affichant une grille de rendus générés par IA représentant un homme barbu dans une pièce, avec la caméra du créateur en incrustation PiP en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:06 - 00:03:29</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ici encore une fois, j&#x27;ai utilisé un mélange de Nano Banana Pro et 2, et je voulais me concentrer vraiment sur l&#x27;utilisation de la couleur. Vous remarquerez encore et encore cet orange très vif, et cela me fait instantanément penser à un uniforme de prison, et c&#x27;est bien l&#x27;idée. Tous ces personnages sont en quelque sorte piégés dans leur propre type de prison à cause de la morosité de leur réalité.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération d&#x27;images (style application de type Leonardo.ai ou Midjourney web) avec une barre de prompt en bas, des réglages de format 16:9, l&#x27;option Nano Banana Pro sélectionnée, et un bouton jaune &quot;Generate&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de la barre de prompt : &quot;Describe the scene you imagine&quot;. Paramètres visibles : &quot;Nano Banana Pro&quot;, format &quot;16:9&quot;, résolution &quot;4K&quot;, mode de génération &quot;2/4 +&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue à travers une grille de concepts artistiques générés par IA illustrant des prisonniers dans un univers carcéral et dystopique, tout en s&#x27;exprimant face à sa webcam.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_012_00-03-08.jpg" alt="Interface d&#x27;un générateur d&#x27;images affichant une grille de 6 visuels de prisonniers avec des uniformes orange vif et des décors métalliques, avec la webcam du créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_012_00-03-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:08</span>
+                        <span class="caption-text">Interface d&#x27;un générateur d&#x27;images affichant une grille de 6 visuels de prisonniers avec des uniformes orange vif et des décors métalliques, avec la webcam du créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_013_00-03-14.jpg" alt="Interface du générateur affichant une grille de scènes de réfectoire de prison avec des personnages en sweat à capuche orange, avec la webcam du créateur en PiP en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_013_00-03-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:14</span>
+                        <span class="caption-text">Interface du générateur affichant une grille de scènes de réfectoire de prison avec des personnages en sweat à capuche orange, avec la webcam du créateur en PiP en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:29 - 00:04:06</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La couleur ressort beaucoup au fil de notre film. Le réveil, l&#x27;énorme machine à récolter et même le vaisseau de notre charognard. C&#x27;est une façon d&#x27;essayer de rendre chaque plan un tout petit peu plus unique et mémorable. Avant de commencer à générer nos clips vidéo, je tiens à saluer Higgsfield Original Series et leur premier film Arena Zero. C&#x27;est un travail vraiment impressionnant et chaque plan a été généré à l&#x27;aide de Soul Cinema, qui est en fait le modèle d&#x27;image propre à Higgsfield. Honnêtement, c&#x27;est fou ce qu&#x27;une petite équipe a réussi à réaliser, alors bravo à eux.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Lecteur vidéo / Montage affichant des extraits du film en cours de discussion avec une incrustation (PiP) de Jack dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On peut apercevoir le logo incrusté dans le coin supérieur droit indiquant « HIGGSFIELD AI ORIGINAL SERIES » lors de la diffusion des extraits d&#x27;Arena Zero.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur commente visuellement ses propres choix artistiques de plans (grotte lumineuse) puis diffuse des extraits de la série « Arena Zero » de Higgsfield en incrustant sa webcam en bas à gauche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_014_00-03-31.jpg" alt="Extrait du film montrant un personnage explorant une grande grotte rocheuse éclairée par un faisceau lumineux zénithal, avec une incrustation de Jack en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_014_00-03-31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:31</span>
+                        <span class="caption-text">Extrait du film montrant un personnage explorant une grande grotte rocheuse éclairée par un faisceau lumineux zénithal, avec une incrustation de Jack en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_015_00-03-54.jpg" alt="Extrait du film d&#x27;animation « Arena Zero » (Higgsfield AI Original Series) montrant un personnage en train de chuter au sol aux côtés d&#x27;une créature ailée mauve, avec un bandeau « HIGGSFIELD AI ORIGINAL SERIES » en haut à droite." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_015_00-03-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:54</span>
+                        <span class="caption-text">Extrait du film d&#x27;animation « Arena Zero » (Higgsfield AI Original Series) montrant un personnage en train de chuter au sol aux côtés d&#x27;une créature ailée mauve, avec un bandeau « HIGGSFIELD AI ORIGINAL SERIES » en haut à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_016_00-04-04.jpg" alt="Extrait d&#x27;« Arena Zero » montrant des pieds chaussés de bottes lumineuses vertes foulant le sol d&#x27;une arène poussiéreuse, avec le même logo Higgsfield en haut à droite." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_016_00-04-04.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:04</span>
+                        <span class="caption-text">Extrait d&#x27;« Arena Zero » montrant des pieds chaussés de bottes lumineuses vertes foulant le sol d&#x27;une arène poussiéreuse, avec le même logo Higgsfield en haut à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:06 - 00:04:43</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela étant dit, allons-y et cliquons sur Cinema Studio 2.5. Maintenant, il y a beaucoup de contrôles différents ici, mais ils sont tous vraiment importants. Et ce qui est génial, c&#x27;est qu&#x27;ils nous permettent d&#x27;entrer des invites assez simples, tout en contrôlant les aspects plus techniques de notre génération en choisissant, par exemple, notre type de mouvement de caméra. Nous pouvons expérimenter avec différents types de rampes de vitesse et même choisir le genre de film que nous cherchons à créer pour influencer notre style de génération. Nous allons commencer par des générations de plans uniques. Maintenant, dans le premier plan, nous avons notre</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de Cinema Studio 2.5 avec encadré vidéo (PiP) du présentateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte central : &quot;What would you shoot with infinite budget?&quot;. Panneau de contrôle inférieur (Director Panel) avec options de mouvement, rampe de vitesse, durée, format 16:9, 1080p, et bouton &quot;Generate&quot;. Sur l&#x27;image 3, rendu visuel d&#x27;un homme barbu tenant une bouteille dans une pièce au décor industriel de science-fiction, avec un réveil affichant 06:00 AM.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface logicielle de Cinema Studio 2.5 puis dévoile un premier plan généré de type &quot;single shot&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_017_00-04-19.jpg" alt="Interface de Cinema Studio 2.5 montrant le panneau du directeur et la zone de saisie du prompt." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_017_00-04-19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:19</span>
+                        <span class="caption-text">Interface de Cinema Studio 2.5 montrant le panneau du directeur et la zone de saisie du prompt.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_018_00-04-41.jpg" alt="Aperçu d&#x27;un plan généré montrant un homme barbu et tatoué allongé sur un lit dans un espace exigu et futuriste." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_018_00-04-41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:41</span>
+                        <span class="caption-text">Aperçu d&#x27;un plan généré montrant un homme barbu et tatoué allongé sur un lit dans un espace exigu et futuriste.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:43 - 00:05:20</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">charognard dans ses quartiers d&#x27;habitation donc nous voulons aller de l&#x27;avant et télécharger notre image de départ. 6 heures du matin et il est en train de boire et on dirait presque qu&#x27;il y est depuis un moment. Son environnement nous en dit aussi long sur son état d&#x27;esprit. Parce que l&#x27;image fait déjà beaucoup par elle-même, je ne vais même pas entrer de texte de prompt. Je vais simplement utiliser le panneau du réalisateur pour ajouter notre personnage. Vous verrez que cela va descendre dans la section des prompts. Et je vais également ajouter notre emplacement. Donc c&#x27;est notre fiche personnage que nous avons faite un peu plus tôt et une image des quartiers d&#x27;habitation que j&#x27;ai faite avec</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application de génération vidéo Cinema Studio 2.5, avec incrustation vidéo (PiP) du présentateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte central &quot;What would you shoot with infinite budget?&quot;, panneau du réalisateur (Director Panel) en bas avec le tag personnage &quot;Jack_SCAV&quot;, options de mouvement &quot;Auto&quot;, rampe de vitesse &quot;Slow mo&quot;, et bouton &quot;Generate&quot; (10 free gen).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;image générée du personnage dans son quartier, puis montre l&#x27;interface de l&#x27;outil avec l&#x27;ajout du personnage et de l&#x27;emplacement via le panneau du réalisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_019_00-04-45.jpg" alt="Rendu visuel d&#x27;un personnage de charognard tatoué et barbu dans ses quartiers exigus, avec incrustation du présentateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_019_00-04-45.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:45</span>
+                        <span class="caption-text">Rendu visuel d&#x27;un personnage de charognard tatoué et barbu dans ses quartiers exigus, avec incrustation du présentateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_020_00-05-08.jpg" alt="Interface du logiciel Cinema Studio 2.5 montrant le panneau du réalisateur (Director Panel) et la zone de prompt avec le personnage ajouté." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_020_00-05-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:08</span>
+                        <span class="caption-text">Interface du logiciel Cinema Studio 2.5 montrant le panneau du réalisateur (Director Panel) et la zone de prompt avec le personnage ajouté.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:20 - 00:05:53</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nano Banana 2. Je vais sélectionner le mouvement de caméra à la main pour donner un style granuleux qui corresponde aux visuels et je vais opter pour une durée de génération d&#x27;environ cinq secondes. Je ne vais même rien toucher d&#x27;autre. Allons-y et cliquons sur générer. Ça fait exactement ce qu&#x27;on recherche. La génération d&#x27;images fait en quelque sorte le plus gros du travail ici, mais Cinema 2.5 rend la génération de vidéo vraiment rapide et simple. On va juste rincer et répéter et on obtiendra le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Cinema Studio 2.5 (outil de génération vidéo par IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Options de mouvements de caméra (« Camera movement » : Static, Handheld, Zoom Out, Zoom in, Camera follows, Pan left), panneau du directeur (« Director Panel »), bouton « Generate » jaune/vert, et affichage de 4 variations ou plans générés incluant un réveil à 06:00 AM et un personnage tatoué.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur sélectionne un mouvement de caméra à la main (« Handheld ») dans l&#x27;interface, règle la durée à 5 secondes et lance la génération vidéo en cliquant sur le bouton « Generate ».</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_021_00-05-22.jpg" alt="Interface de Cinema Studio 2.5 montrant le panneau de configuration des mouvements de caméra (« Camera movement ») avec différentes options de plans (Static, Handheld, Zoom Out, etc.)." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_021_00-05-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:22</span>
+                        <span class="caption-text">Interface de Cinema Studio 2.5 montrant le panneau de configuration des mouvements de caméra (« Camera movement ») avec différentes options de plans (Static, Handheld, Zoom Out, etc.).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_022_00-05-31.jpg" alt="Interface principale de Cinema Studio 2.5 avec le panneau du directeur (« Director Panel ») affichant la durée de 5 secondes et le bouton vert « Generate »." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_022_00-05-31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:31</span>
+                        <span class="caption-text">Interface principale de Cinema Studio 2.5 avec le panneau du directeur (« Director Panel ») affichant la durée de 5 secondes et le bouton vert « Generate ».</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_023_00-05-51.jpg" alt="Affichage en grille de 4 séquences vidéo générées montrant un réveil affichant 06:00 AM, un homme tatoué dans une pièce industrielle, un écran de télévision montrant une présentatrice d&#x27;information, et un gros plan du visage de l&#x27;homme tatoué." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_023_00-05-51.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:51</span>
+                        <span class="caption-text">Affichage en grille de 4 séquences vidéo générées montrant un réveil affichant 06:00 AM, un homme tatoué dans une pièce industrielle, un écran de télévision montrant une présentatrice d&#x27;information, et un gros plan du visage de l&#x27;homme tatoué.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:53 - 00:06:27</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">trois plans supplémentaires dont nous avons besoin pour terminer notre première séquence. Ensuite, je veux avoir un aperçu de la routine de notre personnage. Je veux le montrer en train de prendre probablement le petit-déjeuner le plus misérable de tous les temps. Pour ce faire, nous allons sélectionner multi-shot manuel, puis nous pourrons importer notre image de départ de notre personnage à l&#x27;intérieur de cette cantine assez horrible. Vous pouvez donc voir que ceci est déjà découpé en plusieurs plans que nous pouvons contrôler individuellement, donc nous allons sélectionner la première scène. Pour notre prompt, je vais simplement dire : l&#x27;homme barbu mange la nourriture avec une expression vide.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération vidéo par IA avec un panneau de contrôle pour le mode &quot;Multi-shot Manual&quot;, des options de sélection de scènes (Scene 1, Scene 2) et un champ de prompt textuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt mentionné à l&#x27;oral (&quot;the bearded man eats the food with a vacant expression&quot;), options de paramètres de caméra et de mouvement (Static, Auto), et un bouton vert &quot;Generate&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;outil de génération vidéo et navigue à travers les différents panneaux pour configurer les plans multiples de la séquence.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_024_00-05-55.jpg" alt="Montage vidéo à quatre panneaux montrant différentes scènes générées du personnage et une incrustation de Jack dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_024_00-05-55.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:55</span>
+                        <span class="caption-text">Montage vidéo à quatre panneaux montrant différentes scènes générées du personnage et une incrustation de Jack dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_025_00-06-16.jpg" alt="Interface logicielle de génération vidéo avec un panneau de contrôle à plusieurs plans, des options de mouvement et un bouton &quot;Generate&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_025_00-06-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:16</span>
+                        <span class="caption-text">Interface logicielle de génération vidéo avec un panneau de contrôle à plusieurs plans, des options de mouvement et un bouton &quot;Generate&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:28 - 00:07:03</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pouvons continuer dans le panneau du réalisateur et étiqueter notre personnage également, et à la fin je vais simplement taper pas de musique et pas de dialogue juste pour rendre les choses un peu plus faciles lors du montage. Donc la durée de ce plan est déjà de trois secondes, c&#x27;est parfait pour ce que nous voulons, mais nous voulons sélectionner le mouvement de caméra à la main car comme je le dis, je veux que ce film ait un style vraiment brut et ce type de mouvement de caméra se prête vraiment à ce genre d&#x27;ambiance. Maintenant allons-y et passons à la scène 2 le plan suivant. Pour ce texte d&#x27;invite nous allons dire passer à l&#x27;homme sur</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil de génération vidéo IA (Seedance) avec panneau du réalisateur et incrustation vidéo PiP du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Éléments visibles : &quot;Create new&quot;, &quot;Living_Quarters&quot;, &quot;Jack_SCAV&quot;, &quot;JackNoHat&quot;, &quot;KlingREF&quot;, &quot;Jack-1&quot;. Paramètres de durée réglés sur &quot;3s&quot;. Prompt textuel visible : &quot;The bearded man eats the food with a vacant expression @Jack_SCAV no music, no dialogue.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur sélectionne un personnage dans le panneau des éléments pour l&#x27;assigner à la scène, puis configure la durée et le type de mouvement de caméra dans le panneau du réalisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_026_00-06-30.jpg" alt="Fenêtre contextuelle &quot;Elements&quot; affichant les différents personnages et décors disponibles pour le projet." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_026_00-06-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:30</span>
+                        <span class="caption-text">Fenêtre contextuelle &quot;Elements&quot; affichant les différents personnages et décors disponibles pour le projet.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_027_00-06-40.jpg" alt="Panneau du réalisateur avec les paramètres de durée et les options de mouvement de caméra." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_027_00-06-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:40</span>
+                        <span class="caption-text">Panneau du réalisateur avec les paramètres de durée et les options de mouvement de caméra.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:03 - 00:07:32</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La gauche parle à l&#x27;homme sur sa droite. C&#x27;est juste une punition mec, je te le dis. Tout ça arrive pour une raison. L&#x27;homme sur la droite hoche la tête. Et maintenant, dans le panneau du réalisateur, je veux aller de l&#x27;avant et importer une image. Nous allons utiliser celle-ci et quand nous cliquons sur importer, elle va être étiquetée dans notre prompt. Encore une fois, je vais ajouter &quot;pas de musique&quot; à la fin du prompt et une fois de plus, sélectionnons le mouvement de caméra à main levée pour garder la cohérence pendant toute cette scène.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application de génération vidéo (type Luma Dream Machine / Runway ou similaire) avec une fenêtre de retour vidéo en haut à gauche et le panneau du réalisateur (Director Panel) en bas. Le créateur apparaît en incrustation (PiP) dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible dans la zone de prompt : &quot;CUT TO: The man on the left is speaking to the man on his right: &quot;This is all a punishment man, I&#x27;m telling you. This is all happening for a reason...&quot; the man on the right nods.&quot; Bouton &quot;Generate&quot; vert et options de configuration de la caméra (Handheld, Static).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface de génération vidéo, montre le panneau du réalisateur et explique la configuration des mouvements de caméra et du prompt textuel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_028_00-07-05.jpg" alt="Interface du logiciel de génération vidéo par IA montrant le panneau du réalisateur avec le prompt textuel et un retour vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_028_00-07-05.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:05</span>
+                        <span class="caption-text">Interface du logiciel de génération vidéo par IA montrant le panneau du réalisateur avec le prompt textuel et un retour vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:32 - 00:08:09</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Speed ramp, je le laisse toujours sur auto pour cette scène particulière. C&#x27;est un peu plus stylisé, on ne veut pas vraiment ça ici, mais je veux m&#x27;assurer que la longueur du plan est d&#x27;environ quatre secondes. Je pense que cinq pourrait être un tout petit peu trop long. Maintenant, je veux ajouter une dernière scène ici. Je vais la faire durer quatre secondes à nouveau, je pense. Et pour le prompt, nous allons dire l&#x27;homme barbu lève les yeux de sa nourriture avec une expression vide. Pas de musique, pas de dialogue encore une fois. Et puis, si on appuie sur alt sur notre clavier, on peut taguer notre personnage à nouveau et c&#x27;est vraiment important parce que dans la frame de départ, je regarde en fait loin de la caméra.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération vidéo par IA (style storyboard multi-plans avec Director Panel).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans le champ de description : « CUT TO: The man on the left is speaking to the man on his right: &quot;This is all a punishment man, I&#x27;m telling you. This is all happening for a reason...&quot; the man on the right nods. 🎬 Image 1 🔀 No music. » ; paramètres affichés : Speed ramp : Auto, Durée : 5s, mode Multi-shot Manual, 1080p.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue et démontre l&#x27;interface de l&#x27;outil, ajustant les paramètres de scène, de durée et de speed ramp, tout en expliquant la configuration des prompts et du cadrage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_029_00-07-34.jpg" alt="Interface de l&#x27;outil de génération vidéo montrant le panneau du réalisateur (Director Panel) avec les scènes, les réglages de mouvement, la vitesse (Speed ramp réglée sur Auto), la durée et le champ de prompt textuel, avec le créateur visible en incrustation (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_029_00-07-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:34</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo montrant le panneau du réalisateur (Director Panel) avec les scènes, les réglages de mouvement, la vitesse (Speed ramp réglée sur Auto), la durée et le champ de prompt textuel, avec le créateur visible en incrustation (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:09 - 00:08:43</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et dans le prompt nous demandons à notre personnage de lever les yeux sans faire référence à la fiche de personnage, le modèle vidéo IA ne sait pas à quoi je ressemble sous cet angle. Cela aide donc à verrouiller cette cohérence de personnage. Allons-y et ajoutons notre mouvement de caméra à la main une fois de plus, et nous pouvons aller cliquer sur générer. C&#x27;est tout une punition, mec. Je te le dis, tout cela arrive pour une raison. Juste comme ça, nous avons une scène entière avec plusieurs</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil de génération vidéo par IA (Seedance) avec panneau de contrôle, paramètres de mouvements de caméra et boîte de prompt textuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans l&#x27;interface : &quot;The bearded man looks up from his food with a vacant expression No music, no dialogue.&quot; Paramètres visibles : modes de caméra, durée (4s), résolution 1080p, bouton &quot;Generate&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de génération vidéo et un exemple de plan généré par IA où le personnage mange puis lève les yeux.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_030_00-08-11.jpg" alt="Interface de l&#x27;application de génération vidéo montrant le panneau du réalisateur et un aperçu vidéo en haut à gauche, avec une incrustation vidéo (PiP) du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_030_00-08-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:11</span>
+                        <span class="caption-text">Interface de l&#x27;application de génération vidéo montrant le panneau du réalisateur et un aperçu vidéo en haut à gauche, avec une incrustation vidéo (PiP) du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_031_00-08-32.jpg" alt="Gros plan montrant le rendu généré d&#x27;un homme barbu en sweat à capuche orange en train de manger à une table dans une pièce de type industriel." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_031_00-08-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:32</span>
+                        <span class="caption-text">Gros plan montrant le rendu généré d&#x27;un homme barbu en sweat à capuche orange en train de manger à une table dans une pièce de type industriel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:43 - 00:09:15</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">plans de coupe, cohérence des personnages et des lieux. Plus important encore, nous faisons un peu plus de construction de monde ici. Les membres de l&#x27;équipage suggèrent que la crise de l&#x27;infertilité est une sorte de punition divine et notre personnage principal qui a choisi de s&#x27;asseoir tout seul lève simplement les yeux vers les membres de l&#x27;équipage. Il n&#x27;a même pas besoin de parler mais nous pouvons simplement deviner que cette idée de la crise comme punition divine lui pèse. Il en a assez de ce genre de conversation. Cette</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustation PiP (Picture-in-Picture) de Jack dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ni interface logicielle visible, uniquement des extraits vidéo générés par intelligence artificielle illustrant la narration.</p>
+                        <p><strong>Action / Démonstration :</strong> Diffusion d&#x27;un plan de coupe illustrant la scène de discussion entre les membres d&#x27;équipage dans la cantine, suivi du gros plan sur le regard du personnage principal.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_032_00-08-54.jpg" alt="Extrait vidéo généré par IA montrant deux membres d&#x27;équipage en tenue orange attablés dans une cantine de vaisseau spatial délabrée." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_032_00-08-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:54</span>
+                        <span class="caption-text">Extrait vidéo généré par IA montrant deux membres d&#x27;équipage en tenue orange attablés dans une cantine de vaisseau spatial délabrée.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_033_00-09-13.jpg" alt="Gros plan sur le visage tatoué du personnage principal levant les yeux avec lassitude, avec Jack visible en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_033_00-09-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:13</span>
+                        <span class="caption-text">Gros plan sur le visage tatoué du personnage principal levant les yeux avec lassitude, avec Jack visible en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:15 - 00:09:53</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce n&#x27;est pas dieu qui punit l&#x27;humanité, c&#x27;est simplement la réalité brutale du monde ou de l&#x27;univers dans lequel vivent ces personnages. Maintenant, nous pouvons utiliser une combinaison de prompts à plan unique et à plans multiples pour développer le reste de notre histoire. Nous montrons davantage la routine du charognard, ce qui manque à sa vie et le paysage stérile qui l&#x27;entoure. Et puis nous montrons quelque chose de différent, de nouveau, une rupture dans sa routine. Il est parti à la recherche de fournitures dans son vaisseau et soudain, quelque chose apparaît sur son radar, et cela n&#x27;arrive jamais. Il plonge, atterrit et se dirige vers un réseau de grottes pour</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ni interface logicielle visible (le créateur présente des exemples visuels générés par IA en plein écran avec une incrustation vidéo &quot;Picture-in-Picture&quot; de lui-même en bas à gauche).
+[DESC_IMAGE_1] Le créateur commente une image générée montrant un personnage barbu avec des tatouages faciaux dans un intérieur.
+[DESC_IMAGE_2] Le créateur parle face caméra dans son studio avec son microphone et une étagère en arrière-plan.
+[DESC_IMAGE_3] Le créateur montre une autre illustration générée par IA en gros plan d&#x27;un personnage portant des lunettes et des tatouages.
+[DESC_IMAGE_4] Le créateur présente une image de synthèse montrant un véhicule sphérique orange futuriste sur un sol désertique et un personnage marchant vers une entrée de grotte.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration pédagogique et présentation du workflow.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:53 - 00:10:28</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">enquêter et là il trouve cette chose qu&#x27;il cherchait, l&#x27;espoir dont il a besoin. Une fois que tous nos plans sont générés, il s&#x27;agit de les importer dans le montage et là nous pouvons jouer avec le timing, les plans de coupe et ajouter des effets sonores supplémentaires et de la musique. Ce sont ces touches finales supplémentaires qui élèvent vraiment tout le projet. Maintenant rappelez-vous qu&#x27;il va y avoir beaucoup de mauvaises générations qui n&#x27;entreront jamais dans le montage, c&#x27;est juste la nature de l&#x27;IA. C&#x27;est vraiment similaire à être sur un plateau de tournage et que cela prenne une éternité juste pour obtenir cette prise parfaite. Croyez-moi, j&#x27;ai</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (logiciel de montage vidéo) avec panneau de projet, timeline multi-pistes, moniteurs source et programme, et fenêtres d&#x27;effets.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des fichiers multimédias dans le chutier (&quot;HF_20260319_211537&quot;, &quot;Cinema Studio 2.5&quot;), nom du projet &quot;H.O.P.E Short Film&quot;, calques d&#x27;effet (&quot;Adjustment Layer&quot;), pistes vidéo (V1 à V5) et audio (A1 à A6).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son processus de montage vidéo sous Adobe Premiere Pro, assemblant les différents plans générés par IA, ajustant le timing et superposant les pistes audio et vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_034_00-10-06.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline de montage du court-métrage H.O.P.E. avec le panneau de prévisualisation et les pistes audio/vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_034_00-10-06.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:06</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline de montage du court-métrage H.O.P.E. avec le panneau de prévisualisation et les pistes audio/vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_035_00-10-17.jpg" alt="Séquence vidéo générée montrant un personnage barbu dans une grotte éclairée par la lumière du jour, avec Jack en incrustation (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_035_00-10-17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:17</span>
+                        <span class="caption-text">Séquence vidéo générée montrant un personnage barbu dans une grotte éclairée par la lumière du jour, avec Jack en incrustation (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_036_00-10-26.jpg" alt="Séquence vidéo générée montrant un personnage barbu pilotant un vaisseau spatial avec les mains sur les joysticks, avec Jack en incrustation (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_036_00-10-26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:26</span>
+                        <span class="caption-text">Séquence vidéo générée montrant un personnage barbu pilotant un vaisseau spatial avec les mains sur les joysticks, avec Jack en incrustation (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:28 - 00:11:05</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">là et cela peut prendre beaucoup plus de temps que l&#x27;IA la plupart du temps. Même les générations qui fonctionnent ont des parties où il se passe des choses bizarres. Le montage est l&#x27;endroit où nous pouvons être sélectifs et simplement choisir ces moments qui fonctionnent et aident à raconter notre histoire. Cela étant dit les gars, si vous avez la moindre question, assurez-vous de la laisser en bas dans la section commentaires. J&#x27;essaie toujours de répondre à autant d&#x27;entre eux que possible. Si vous avez apprécié le contenu d&#x27;aujourd&#x27;hui, assurez-vous de me lâcher un gros pouce bleu. Pensez à vous abonner si vous êtes nouveau et bien sûr activez la cloche de notification pour ne jamais manquer de futures publications. Maintenant, allons visionner le film terminé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (logiciel de montage vidéo)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Timeline de montage avec calques vidéo (V1-V4), pistes audio (A1-A4), panneau d&#x27;effets/contrôles de trajectoire, chutier avec vignettes de clips et petit retour caméra de Jack (PiP).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du logiciel de montage Adobe Premiere Pro avec la timeline du film en cours de finalisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-L7ufHNtj5Rg/frame_037_00-10-41.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline du montage vidéo, le panneau de prévisualisation avec une sphère au-dessus des nuages, et un encadré PiP de Jack dans le panneau de projet en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-L7ufHNtj5Rg/frame_037_00-10-41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:41</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline du montage vidéo, le panneau de prévisualisation avec une sphère au-dessus des nuages, et un encadré PiP de Jack dans le panneau de projet en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:05 - 00:11:21</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;espère que ça te plaît. Depuis plus de trois cycles, pas une seule nouvelle naissance n&#x27;a été enregistrée, la cause restant inconnue et aucun remède en vue. C&#x27;est un châtiment, mec, je te le dis, tout cela arrive pour une raison.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucune interface logicielle ou de génération d&#x27;IA affichée à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente une séquence vidéo narrative générée par IA illustrant l&#x27;histoire, sans montrer d&#x27;outil de travail.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
