@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `23 / 59` (`39.0%`)
+- **Vidéos traitées** : `24 / 59` (`40.7%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -39,6 +39,7 @@
 | 2026-05-12 | [Créer des scènes de combat cinématographiques avec l'IA (Workflow complet)](2026-05-12_YT-Dh221nmMeQ8_Créer des scènes de combat cinématographiques avec l'IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-05-12_YT-Dh221nmMeQ8_Créer des scènes de combat cinématographiques avec l'IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 23m 55s | `99 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=Dh221nmMeQ8) | `Dh221nmMeQ8` |
 | 2026-05-08 | [ARRÊTEZ d'écrire des prompts pour vos films IA — Cet agent le fait pour vous](2026-05-08_YT-_LXTbKfqeHA_ARRÊTEZ d'écrire des prompts pour vos films IA — Cet agent le fait pour vous_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-05-08_YT-_LXTbKfqeHA_ARRÊTEZ d'écrire des prompts pour vos films IA — Cet agent le fait pour vous_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 16m 23s | `68 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=_LXTbKfqeHA) | `_LXTbKfqeHA` |
 | 2026-05-05 | [Claude + Seedance 2.0 = UNE ANIMATION IA INCROYABLE](2026-05-05_YT-FSfjVOG3tAE_Claude + Seedance 2.0 = UNE ANIMATION IA INCROYABLE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-05-05_YT-FSfjVOG3tAE_Claude + Seedance 2.0 = UNE ANIMATION IA INCROYABLE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 26m 43s | `99 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=FSfjVOG3tAE) | `FSfjVOG3tAE` |
+| 2026-04-30 | [Comment utiliser Seedance 2.0 pour la publicité par IA (Workflow complet)](2026-04-30_YT-ClIaRcvwnTQ_Comment utiliser Seedance 2.0 pour la publicité par IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-04-30_YT-ClIaRcvwnTQ_Comment utiliser Seedance 2.0 pour la publicité par IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 49s | `85 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=ClIaRcvwnTQ) | `ClIaRcvwnTQ` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
