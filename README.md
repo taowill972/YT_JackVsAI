@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `19 / 59` (`32.2%`)
+- **Vidéos traitées** : `20 / 59` (`33.9%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -35,6 +35,7 @@
 | 2026-06-08 | [Comment diriger des vidéos IA avec des tracés dessinés à la main](2026-06-08_YT-NNO7KMqZEFM_Comment diriger des vidéos IA avec des tracés dessinés à la main_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-06-08_YT-NNO7KMqZEFM_Comment diriger des vidéos IA avec des tracés dessinés à la main_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 16m 37s | `63 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=NNO7KMqZEFM) | `NNO7KMqZEFM` |
 | 2026-05-31 | [Comment traduire votre vidéo IA dans n'importe quelle langue (Workflow complet)](2026-05-31_YT-wM0zOwH4d2s_Comment traduire votre vidéo IA dans n'importe quelle langue (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-05-31_YT-wM0zOwH4d2s_Comment traduire votre vidéo IA dans n'importe quelle langue (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 18m 58s | `69 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=wM0zOwH4d2s) | `wM0zOwH4d2s` |
 | 2026-05-24 | [Comment transformer un storyboard en vidéo IA complète en quelques minutes](2026-05-24_YT-Is4wgEpPMJQ_Comment transformer un storyboard en vidéo IA complète en quelques minutes_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-05-24_YT-Is4wgEpPMJQ_Comment transformer un storyboard en vidéo IA complète en quelques minutes_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 18m 47s | `89 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=Is4wgEpPMJQ) | `Is4wgEpPMJQ` |
+| 2026-05-17 | [Comment créer des clips vidéo IA avec un lip sync parfait (Workflow complet)](2026-05-17_YT-CghKYofqzfI_Comment créer des clips vidéo IA avec un lip sync parfait (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-05-17_YT-CghKYofqzfI_Comment créer des clips vidéo IA avec un lip sync parfait (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 22m 21s | `92 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=CghKYofqzfI) | `CghKYofqzfI` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
