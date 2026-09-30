@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `14 / 59` (`23.7%`)
+- **Vidéos traitées** : `15 / 59` (`25.4%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -30,6 +30,7 @@
 | 2026-08-01 | [Créer une animation style bande dessinée avec l'IA (Workflow complet)](2026-08-01_YT-M8ERoEGyAWw_Créer une animation style bande dessinée avec l'IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-08-01_YT-M8ERoEGyAWw_Créer une animation style bande dessinée avec l'IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 14m 22s | `54 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=M8ERoEGyAWw) | `M8ERoEGyAWw` |
 | 2026-07-26 | [Comment un pro des VFX mélange images réelles et IA (Prompts & Matériaux GRATUITS)](2026-07-26_YT-BiXWH3QUX1Q_Comment un pro des VFX mélange images réelles et IA (Prompts & Matériaux GRATUIT_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-07-26_YT-BiXWH3QUX1Q_Comment un pro des VFX mélange images réelles et IA (Prompts & Matériaux GRATUIT_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 22m 39s | `86 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=BiXWH3QUX1Q) | `BiXWH3QUX1Q` |
 | 2026-07-16 | [Comment UTILISER VRAIMENT Midjourney pour la réalisation vidéo par IA en 2026](2026-07-16_YT-CjCDpNCqEuY_Comment UTILISER VRAIMENT Midjourney pour la réalisation vidéo par IA en 2026_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-07-16_YT-CjCDpNCqEuY_Comment UTILISER VRAIMENT Midjourney pour la réalisation vidéo par IA en 2026_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 25m 41s | `104 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=CjCDpNCqEuY) | `CjCDpNCqEuY` |
+| 2026-07-05 | [Google vient de libérer le Nano Banana de la vidéo IA (Plongée profonde dans Gemini Omni)](2026-07-05_YT-7HhlSu3pPvU_Google vient de libérer le Nano Banana de la vidéo IA (Plongée profonde dans Gem_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-07-05_YT-7HhlSu3pPvU_Google vient de libérer le Nano Banana de la vidéo IA (Plongée profonde dans Gem_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 23m 45s | `97 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=7HhlSu3pPvU) | `7HhlSu3pPvU` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
