@@ -1,0 +1,2565 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 ARRÊTEZ d&#x27;écrire des prompts pour vos films IA — Cet agent le fait pour vous — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 ARRÊTEZ d&#x27;écrire des prompts pour vos films IA — Cet agent le fait pour vous</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-05-08</span>
+                <span class="badge">⏱️ 16m 23s</span>
+                <span class="badge">🆔 <code>_LXTbKfqeHA</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=_LXTbKfqeHA" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>La vidéo de Jack Vs. AI met en lumière une transition paradigmatique cruciale dans la réalisation de films par intelligence artificielle : le passage d'une micro-gestion technique fastidieuse (l'écriture manuelle et répétitive de prompts) à une posture de véritable direction artistique. L'auteur y démontre comment s'affranchir du "baby-sitting" d'outils fragmentés en déléguant la complexité textuelle et technique à un agent conversationnel central. Au lieu de jongler manuellement avec des paramètres ardus ou de concevoir des invites complexes sur des interfaces tierces, le créateur importe simplement son scénario brut et discute de ses intentions avec l'IA.</p><p>La méthode pas à pas s'articule autour d'un dialogue itératif et intelligent : l'agent analyse d'abord le script, pose des questions de cadrage (comme la résolution ou le format 16:9), puis génère automatiquement les briques fondamentales du film (feuilles de personnages, de décors et d'accessoires). Tout au long de la production, l'agent orchestre la génération d'images et de vidéos en combinant des outils spécialisés, tout en effectuant un contrôle qualité autonome (approuvant ou rejetant les visuels non conformes). Lorsque le résultat s'éloigne de la vision du réalisateur — comme un personnage trop statique —, la correction se fait par simple instruction conversationnelle, garantissant une fluidité de workflow et une cohérence visuelle absolue d'un plan à l'autre.</p><p>Pour les créateurs de contenu et les cinéastes indépendants, cette approche redéfinit l'ergonomie de la production virtuelle. Elle permet de se concentrer exclusivement sur la narration, le rythme, le choix des plans et l'évolution de l'intrigue, tandis que l'agent gère la traduction technique en arrière-plan. Le résultat est un gain de temps massif, une réduction de la charge cognitive et une constance stylistique remarquable, ouvrant la voie à des productions cinématiques de 60 secondes (et plus) d'une grande fluidité narrative.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude</span><span class="tool-tag">Nano Banana Pro</span><span class="tool-tag">Seedance</span><span class="tool-tag">flux</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Délégation de la complexité technique** : Transférer la corvée de l&#x27;écriture de prompts à un agent conversationnel permet au créateur de retrouver un rôle de direction pure, centré sur la vision artistique plutôt que sur la syntaxe des outils.</span></li><li><span class="point-bullet">✦</span><span>Initialisation par l&#x27;import de scénario** : L&#x27;utilisation d&#x27;un script brut comme point d&#x27;entrée unique permet à l&#x27;IA d&#x27;extraire automatiquement le contexte, les personnages et les ambiances sans nécessiter de cahier des charges technique initial.</span></li><li><span class="point-bullet">✦</span><span>Établissement rigoureux des briques de référence** : Laisser l&#x27;agent générer des feuilles de personnages, de lieux et d&#x27;accessoires (look dev) en amont est indispensable pour garantir une stricte cohérence visuelle tout au long du film.</span></li><li><span class="point-bullet">✦</span><span>Dialogue itératif en temps réel** : Travailler sous forme de va-et-vient conversationnel offre une flexibilité totale pour modifier des scènes, ajuster des décors ou réorienter l&#x27;histoire à la volée sans bloquer le processus créatif.</span></li><li><span class="point-bullet">✦</span><span>Contrôle qualité autonome par l&#x27;IA** : Un bon agent ne se contente pas d&#x27;exécuter ; il analyse et filtre les générations, validant ou rejetant les images pour ne retenir que celles qui respectent les critères du projet.</span></li><li><span class="point-bullet">✦</span><span>Intégration native des paramètres de tournage** : Verrouiller dès le départ les spécifications techniques (comme le format 16:9 et la résolution 1080p native) évite les incohérences de format entre les différentes scènes.</span></li><li><span class="point-bullet">✦</span><span>Gestion des limitations dynamiques par correction ciblée** : Face à un plan statique ou peu expressif, l&#x27;utilisation de retours correctifs précis (&quot;fais-en sorte qu&#x27;elle marche et fasse coucou&quot;) permet à l&#x27;agent de régénérer instantanément une action plus dynamique.</span></li><li><span class="point-bullet">✦</span><span>Maintien de la tension narrative** : Conserver des choix de mise en scène progressifs (comme révéler lentement le personnage pour préserver la surprise et la curiosité) s&#x27;avère aussi crucial avec l&#x27;IA qu&#x27;en prise de vues réelle.</span></li><li><span class="point-bullet">✦</span><span>Évolution organique du projet** : Ne pas hésiter à abandonner des scènes ou des décors générés initialement si le développement narratif mène le film vers une direction artistique plus pertinente.</span></li><li><span class="point-bullet">✦</span><span>Anticipation des erreurs de génération** : Garder à l&#x27;esprit que l&#x27;IA produira inévitablement des résultats inattendus, transformant le processus de montage en une phase de curation et d&#x27;ajustement conversationnel permanent.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:34</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tous les outils de réalisation de films par IA ont le même problème. Vous passez plus de temps à gérer l&#x27;IA qu&#x27;à réaliser réellement votre film. Vous écrivez des prompts, choisissez des modèles et ré-expliquez vos personnages pour chaque plan. Vous ne dirigez pas, vous faites plutôt du baby-sitting. Mais et s&#x27;il existait une IA qui comprenait réellement votre projet ? Vos personnages, votre univers, votre langage visuel, et qui maintenait la cohérence dans chaque scène. Vous téléchargez simplement votre scénario et l&#x27;IA s&#x27;occupe du reste. Ça a l&#x27;air génial, n&#x27;est-ce pas ? Eh bien, c&#x27;est exactement le type d&#x27;outil que je teste. Et je vais vous montrer comment je</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucune interface logicielle n&#x27;est affichée. Les images montrent des illustrations cinématiques générées par IA (personnage boutonnant sa veste, puis portant un casque de scaphandre) et le créateur (Jack) face caméra dans son studio avec un micro et un néon en arrière-plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur s&#x27;adresse directement aux spectateurs en studio, illustré par des plans visuels générés par IA en lien avec son discours.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:34 - 00:01:09</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;a utilisé pour construire ce court métrage cinématique. Et si vous aimez la vidéo d&#x27;aujourd&#x27;hui, les gars, assurez-vous de lâcher un pouce bleu pour moi, pensez à vous abonner et, bien sûr, à cliquer sur cette cloche de notification. Très bien, entrons dans le vif du sujet. Donc pour la vidéo d&#x27;aujourd&#x27;hui, nous sommes sur NVIDIA, et si vous voulez aller de l&#x27;avant et suivre, vous trouverez un lien, comme toujours, en bas dans la description. Nous sommes donc simplement sur la page d&#x27;accueil ici, et vous pouvez voir juste en face de nous, nous avons Agent 1. C&#x27;est l&#x27;outil d&#x27;IA qui va nous aider à donner vie à notre film. Il y a donc évidemment toute une série de façons différentes d&#x27;utiliser cet outil, mais ce que j&#x27;ai fait, c&#x27;est que j&#x27;ai cliqué sur cette icône plus ici et je suis allé de l&#x27;avant et</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;outil d&#x27;IA InVideo (mentionné par erreur comme NVIDIA par le créateur) avec un panneau de saisie de prompt et un explorateur de fichiers intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : « Introducing Agent One » avec les sous-options « Agent mode » et « Autopilot », un champ de saisie « Plan a script, storyboard or video », ainsi que des boutons de suggestions rapides (Product Ads, Create AI shorts, Use my script, Make explainer video). Dans l&#x27;explorateur de fichiers : un fichier PDF nommé « THE BUBBLE.pdf » et des dossiers « Video Gen », « Recordings », « Image Gen », « Audio ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface de l&#x27;outil Agent One, montre un court métrage réalisé avec l&#x27;IA, puis navigue dans l&#x27;arborescence des fichiers du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_001_00-00-36.jpg" alt="Court métrage cinématique généré par IA montrant un mannequin sur le pas d&#x27;une porte devant une tarte." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_001_00-00-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:36</span>
+                        <span class="caption-text">Court métrage cinématique généré par IA montrant un mannequin sur le pas d&#x27;une porte devant une tarte.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_002_00-00-46.jpg" alt="Page d&#x27;accueil de l&#x27;interface de l&#x27;outil avec le titre « Introducing Agent One » et une zone de texte centrale." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_002_00-00-46.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:46</span>
+                        <span class="caption-text">Page d&#x27;accueil de l&#x27;interface de l&#x27;outil avec le titre « Introducing Agent One » et une zone de texte centrale.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_003_00-01-07.jpg" alt="Explorateur de fichiers de l&#x27;application montrant le dossier « Invideo Agent One » avec différents sous-dossiers." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_003_00-01-07.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:07</span>
+                        <span class="caption-text">Explorateur de fichiers de l&#x27;application montrant le dossier « Invideo Agent One » avec différents sous-dossiers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:09 - 00:01:38</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">j&#x27;ai téléchargé le scénario de mon court-métrage et j&#x27;ai ensuite ajouté cette consigne très simple pour l&#x27;agent. Voici mon scénario pour un court-métrage que je veux faire durer environ 60 secondes. Je veux que tu utilises par défaut Nano Banana Pro pour la génération d&#x27;images et C-Dance 2 pour la génération de vidéos, et je veux immédiatement faire ici une distinction très claire entre le type d&#x27;utilisation normale des prompts, qui peut être assez lourd et technique, et pour lequel vous pourriez avoir besoin d&#x27;utiliser un outil séparé comme Claude.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un agent IA (&#x27;Agent One&#x27;) avec un mode agent et un mode autopilote, un champ de saisie central pour planifier un script, un storyboard ou une vidéo, et une incrustation vidéo (PiP) du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran : &quot;Introducing Agent One&quot;, &quot;Plan a script, storyboard or video&quot;, ainsi que des boutons de raccourcis : &quot;Product Ads&quot;, &quot;Create AI shorts&quot;, &quot;Use my script&quot;, &quot;Make explainer video&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;écran affiche l&#x27;interface principale de l&#x27;agent de création avec une incrustation vidéo du créateur dans le coin inférieur droit s&#x27;adressant aux spectateurs.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_004_00-01-11.jpg" alt="Interface de l&#x27;outil Agent One montrant la zone de saisie de texte avec le texte indicatif &#x27;Plan a script, storyboard or video&#x27; et les options en bas." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_004_00-01-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:11</span>
+                        <span class="caption-text">Interface de l&#x27;outil Agent One montrant la zone de saisie de texte avec le texte indicatif &#x27;Plan a script, storyboard or video&#x27; et les options en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:39 - 00:02:12</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors qu&#x27;avec l&#x27;agent numéro un, nous avons en quelque sorte cette conversation de va-et-vient. En tant qu&#x27;utilisateur, vous vous concentrez plutôt sur le côté créatif des choses tandis que votre agent prend le contrôle du côté plus technique. Une fois que nous aurons envoyé ceci, nous serons invités à créer un nouveau projet. Je vais donc simplement appeler celui-ci &quot;the bubble&quot;, et cliquer sur créer un projet. Et maintenant, il nous sera demandé de nommer notre agent. Je vais donc simplement appeler celui-ci &quot;director&quot; et l&#x27;envoyer. Vous pouvez donc voir que la première chose que notre agent a faite a été d&#x27;inspecter le script.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de création vidéo par IA (type InVideo / Agent One).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt dans l&#x27;image 2 : &quot;This is my script for a short film, that I want to last around 60 seconds. I want you to default to using Nano Banana Pro for image generation and Seedance 2.0 for video generation.&quot; Texte de l&#x27;image 3 : &quot;About this project&quot;, &quot;THE BUBBLE - 60s short film&quot;, analyses de l&#x27;agent &quot;Attachments analyzed: THE_BUBBLE.pdf&quot;, &quot;Read it. This is a strong piece of writing, Jack.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;agent conversationnel, puis l&#x27;écran de création du projet et l&#x27;inspection du script par l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_005_00-01-51.jpg" alt="Interface de l&#x27;outil d&#x27;IA montrant &quot;Introducing Agent One&quot; avec une zone de texte pour interagir." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_005_00-01-51.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:51</span>
+                        <span class="caption-text">Interface de l&#x27;outil d&#x27;IA montrant &quot;Introducing Agent One&quot; avec une zone de texte pour interagir.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_006_00-02-10.jpg" alt="Interface de l&#x27;application montrant l&#x27;analyse du projet &quot;The Bubble&quot; et les retours textuels de l&#x27;agent." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_006_00-02-10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:10</span>
+                        <span class="caption-text">Interface de l&#x27;application montrant l&#x27;analyse du projet &quot;The Bubble&quot; et les retours textuels de l&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:12 - 00:02:45</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">essentiellement. Et ça a construit tout ce contexte autour de notre court-métrage. Donc ça voulait revérifier le format d&#x27;image ainsi que la résolution de sortie et je suis retourné vers lui et je lui ai juste dit que je voulais du 16 par 9 et juste du 1080p natif avec l&#x27;intention de potentiellement rééchantillonner après si j&#x27;en avais besoin et ensuite vous pouvez voir notre agent a répondu verrouillé en 16 par 9 1080p natif son diégétique intégré dans chaque prompt vidéo sans musique et maintenant il poursuit en exposant ce genre de plan de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil de création vidéo IA Invideo (mode Director), avec panneau de chat de l&#x27;agent à gauche et gestionnaire de projet/contexte au centre, et la webcam du créateur en incrustation (PiP) dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du projet &quot;The Bubble&quot;, paramètres de rapport de format (16:9, 1080p natif Seedance 2.0), instructions sur l&#x27;audio diégétique sans musique, et plan de production détaillé (Phase 1 : Production Bible, Character master sheet, Look-dev boards).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son écran avec l&#x27;interface d&#x27;Invideo où l&#x27;agent discute des paramètres techniques et valide le format d&#x27;image, tandis qu&#x27;il parle face caméra dans l&#x27;encadré PiP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_007_00-02-14.jpg" alt="Interface d&#x27;Invideo montrant les détails du projet de court-métrage &quot;The Bubble&quot; et les options de contexte." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_007_00-02-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:14</span>
+                        <span class="caption-text">Interface d&#x27;Invideo montrant les détails du projet de court-métrage &quot;The Bubble&quot; et les options de contexte.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_008_00-02-24.jpg" alt="Interface d&#x27;Invideo affichant la réponse textuelle de l&#x27;agent sur l&#x27;audio diégétique et la configuration des plans." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_008_00-02-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:24</span>
+                        <span class="caption-text">Interface d&#x27;Invideo affichant la réponse textuelle de l&#x27;agent sur l&#x27;audio diégétique et la configuration des plans.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_009_00-02-35.jpg" alt="Interface d&#x27;Invideo détaillant la validation du format 16:9 1080p et la phase 1 du plan de production." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_009_00-02-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:35</span>
+                        <span class="caption-text">Interface d&#x27;Invideo détaillant la validation du format 16:9 1080p et la phase 1 du plan de production.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:45 - 00:03:18</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">attaque et une grande partie de cela vous semblera très familier à vous qui vous intéressez à la réalisation de films par IA, donc ça suggère de construire des feuilles de personnages, des feuilles de lieux et des planches de look dev également, et même des références d&#x27;accessoires. Ça a continué et tout découpé en plusieurs scènes, et les plus observateurs d&#x27;entre vous verront que j&#x27;ai en fait un peu changé d&#x27;idée au fur et à mesure que le projet se développait, et c&#x27;était vraiment très cool aussi parce qu&#x27;on a ce genre de conversation de va-et-vient avec l&#x27;agent. Si vous voulez modifier des choses à la volée, c&#x27;est tout à fait possible, c&#x27;est</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de création de films par IA avec interface de chat agent et panneaux de gestion de projet (Director / World Building).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte détaillé de découpage de scènes (Phase 1 - Production Bible, Character master sheet, Prop references, Phase 2 - Scene Generation, Scene 1 à 4) et options de l&#x27;agent (Agent One Pro).</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole le texte de l&#x27;interface décrivant les références d&#x27;accessoires et le découpage en scènes du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_010_00-02-57.jpg" alt="Interface d&#x27;un outil de script IA montrant les phases de production, les feuilles de personnages et les références d&#x27;accessoires." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_010_00-02-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:57</span>
+                        <span class="caption-text">Interface d&#x27;un outil de script IA montrant les phases de production, les feuilles de personnages et les références d&#x27;accessoires.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_011_00-03-07.jpg" alt="Interface complète de l&#x27;agent de direction avec le découpage des scènes et le panneau World Building." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_011_00-03-07.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:07</span>
+                        <span class="caption-text">Interface complète de l&#x27;agent de direction avec le découpage des scènes et le panneau World Building.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:18 - 00:03:47</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Eh bien. Vous n&#x27;êtes en quelque sorte bloqué dans aucune direction et vous pouvez voir qu&#x27;à ce stade, il a commencé à élaborer ces feuilles de référence de personnages et de lieux. Donc si nous allons de l&#x27;avant et ouvrons celle-ci ici, c&#x27;est exactement le type de style que je recherchais. C&#x27;est le personnage que j&#x27;ai décrit dans mon script, sauf que je n&#x27;ai pas eu à concevoir des invites pour cela. J&#x27;ai simplement collé mon script là-haut et l&#x27;agent vidéo a créé tout ce prompt vraiment détaillé à partir des informations contenues dans mon script.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de génération vidéo et d&#x27;images par IA avec panneau latéral de prompts textuels et affichage de grille de personnages.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le panneau de droite affiche un prompt très détaillé : [STYLE]: Cinematic realism, shot on warm expired Kodak Ektachrome film stock... [LAYOUT]: single unified MASTER CHARACTER REFERENCE SHEET, 12-panel grid layout... [CHARACTER]:- Name: THE WOMAN... Young suburban mother... coral 1950s button-up dress with white trim... bright orange space helmet with clear bubble visor... La grille principale montre 12 panneaux avec différentes vues d&#x27;une femme des années 1950 portant une robe corail et un casque de cosmonaute.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente à l&#x27;écran la feuille de référence du personnage générée automatiquement à partir de son script par l&#x27;agent vidéo, tout en commentant le résultat dans la fenêtre PiP en bas à droite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_012_00-03-28.jpg" alt="Affichage d&#x27;une feuille de référence de personnage (character reference sheet) de style rétro avec un panneau latéral montrant le prompt textuel détaillé et la vue en incrustation (PiP) du créateur." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_012_00-03-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:28</span>
+                        <span class="caption-text">Affichage d&#x27;une feuille de référence de personnage (character reference sheet) de style rétro avec un panneau latéral montrant le prompt textuel détaillé et la vue en incrustation (PiP) du créateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:48 - 00:04:10</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ça a fait exactement la même chose ici pour deux versions alternatives de références de lieux. Vous remarquerez que cette scène ne finit pas par apparaître dans le film final. Comme je l&#x27;ai dit, j&#x27;ai fini par aller dans une direction légèrement différente à mesure que le projet se développait. Mais ce qui est intéressant aussi, c&#x27;est que l&#x27;Agent 1 va en fait approuver certaines de ses générations et en désapprouver d&#x27;autres.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de gestion de projet IA (&quot;The Bubble&quot; / &quot;Director&quot;) avec panneau de chat à gauche, historique des tâches au centre et incrustation vidéo (PiP) du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;Surface: 8-panel combined location reference sheet, arranged as a 2x4 grid (2 rows, 4 columns)... Shot on warm expired Kodak Ektachrome film stock...&quot;. Statut du projet : &quot;Insufficient credits to continue...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique le fonctionnement de l&#x27;approbation et de la désapprobation des générations d&#x27;images par l&#x27;Agent 1 pour des versions alternatives de lieux, tout en affichant l&#x27;interface et les détails des grilles de panneaux.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_013_00-03-50.jpg" alt="Interface principale du projet montrant les différentes versions de feuilles de référence de lieux avec les panneaux d&#x27;approbation et de journalisation des agents." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_013_00-03-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:50</span>
+                        <span class="caption-text">Interface principale du projet montrant les différentes versions de feuilles de référence de lieux avec les panneaux d&#x27;approbation et de journalisation des agents.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_014_00-03-55.jpg" alt="Vue détaillée d&#x27;une grille de référence de lieux à 8 panneaux (cuisine et diner des années 50) avec le panneau de prompt textuel complet sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_014_00-03-55.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:55</span>
+                        <span class="caption-text">Vue détaillée d&#x27;une grille de référence de lieux à 8 panneaux (cuisine et diner des années 50) avec le panneau de prompt textuel complet sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_015_00-04-03.jpg" alt="Retour à l&#x27;interface principale montrant les différentes versions de feuilles de référence de lieux et le panneau de discussion des agents IA." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_015_00-04-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:03</span>
+                        <span class="caption-text">Retour à l&#x27;interface principale montrant les différentes versions de feuilles de référence de lieux et le panneau de discussion des agents IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:10 - 00:04:36</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc celui-ci, qui a fini par être utilisé pour le film lui-même, a été approuvé. Donc l&#x27;Agent 1 ne fait pas juste en quelque sorte générer des choses à la volée. Ce n&#x27;est pas comme un processus aléatoire. Il analyse réellement les images qu&#x27;il reçoit et décide si elles doivent être approuvées ou non. Nous avons donc fini par obtenir toutes ces superbes générations d&#x27;images de haute qualité pour en quelque sorte figer le personnage, exactement ce dont nous avions besoin.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de type assistant de production par IA (Agent One / The Bubble) avec panneau de chat, interface de prompt détaillée et affichage de grilles d&#x27;images de référence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;Surface: 8-panel combined location reference sheet, arranged as a strict 2x4 grid... Style: Shot on warm expired Kodak Ektachrome film stock...&quot;. Panneau de gauche avec le statut de production (&quot;Production bible&#x27;s locked. Six reference sheets...&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et analyse par le créateur des fiches de référence de décors générées et approuvées par l&#x27;agent IA pour le film.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_016_00-04-12.jpg" alt="Interface d&#x27;un outil de génération d&#x27;images par IA montrant une grille de 8 plans de référence (cuisine et diner rétro) avec un panneau de prompt détaillé sur le côté droit et le créateur visible en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_016_00-04-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:12</span>
+                        <span class="caption-text">Interface d&#x27;un outil de génération d&#x27;images par IA montrant une grille de 8 plans de référence (cuisine et diner rétro) avec un panneau de prompt détaillé sur le côté droit et le créateur visible en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_017_00-04-28.jpg" alt="Interface de gestion de projet IA (&quot;The Bubble&quot;) avec un panneau de chat textuel à gauche (&quot;Director&quot;) détaillant l&#x27;état de production et un espace de travail à droite montrant des fiches de référence de décors." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_017_00-04-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:28</span>
+                        <span class="caption-text">Interface de gestion de projet IA (&quot;The Bubble&quot;) avec un panneau de chat textuel à gauche (&quot;Director&quot;) détaillant l&#x27;état de production et un espace de travail à droite montrant des fiches de référence de décors.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:36 - 00:04:54</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et ce que j&#x27;aurais fait si j&#x27;avais travaillé sur ce projet moi-même, fondamentalement. Et puis notre agent dit, prêt à commencer le tournage de la scène un quand vous l&#x27;êtes. Il s&#x27;agit juste de vérifier ici que nous sommes complètement satisfaits de toutes les références qu&#x27;il a accumulées parce que, bien sûr, tout ce qui suit est influencé par elles.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou interface logicielle n&#x27;est affiché à l&#x27;écran. L&#x27;image montre uniquement le créateur dans son studio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur s&#x27;adresse directement à la caméra en parlant de son projet et de l&#x27;interaction avec l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:55 - 00:05:16</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et maintenant vous pouvez voir que j&#x27;ai commencé à récupérer ma génération de vidéo. Donc, par exemple, nous avons le premier plan ici. Bien sûr, cela a été construit dans Seedance 2, juste comme je l&#x27;ai dit à l&#x27;Agent 1 que je voulais qu&#x27;il l&#x27;utilise dans le genre de configuration initiale de notre projet. Donc j&#x27; vraiment aimé celui-ci ici en particulier.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;InVideo (mode Director / Agent One Pro) avec panneau de gestion de projet, timeline de plans et panneau de prompts textuels détaillés.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;PREAMBLE: The attached images are multi-panel reference sheets... MODE: MRC SHOT STRUCTURE: 4s / 1 shot / 16:9 STYLE OPENER: Warm expired Kodak Ektachrome film stock...&quot; ainsi que l&#x27;historique de génération de l&#x27;Agent 1 (&quot;Reading context&quot;, &quot;Generated with Seedance 2.0&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue à travers l&#x27;interface de montage et de génération par IA d&#x27;InVideo, sélectionnant et inspectant des plans vidéo générés par Seedance 2.0.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_018_00-04-57.jpg" alt="Interface d&#x27;InVideo (Agent One Pro) affichant une grille de plans générés avec Seedance 2.0 pour le projet &quot;The Bubble&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_018_00-04-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:57</span>
+                        <span class="caption-text">Interface d&#x27;InVideo (Agent One Pro) affichant une grille de plans générés avec Seedance 2.0 pour le projet &quot;The Bubble&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_019_00-05-05.jpg" alt="Visualisation d&#x27;un plan vidéo sélectionné montrant une main tournant le bouton d&#x27;une radio rétro, avec le prompt textuel détaillé sur le panneau de droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_019_00-05-05.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:05</span>
+                        <span class="caption-text">Visualisation d&#x27;un plan vidéo sélectionné montrant une main tournant le bouton d&#x27;une radio rétro, avec le prompt textuel détaillé sur le panneau de droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_020_00-05-14.jpg" alt="Visualisation d&#x27;un autre plan vidéo montrant une personne ajustant un casque de scaphandre rétro près d&#x27;une fenêtre de cuisine, avec les paramètres du prompt visibles à droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_020_00-05-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:14</span>
+                        <span class="caption-text">Visualisation d&#x27;un autre plan vidéo montrant une personne ajustant un casque de scaphandre rétro près d&#x27;une fenêtre de cuisine, avec les paramètres du prompt visibles à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:16 - 00:05:34</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je pensais que cela fonctionnait très bien. Et bien sûr, cela a été utilisé dans le film final. Et à mesure que je reçois beaucoup plus de générations, c&#x27;est là que le genre de flux de travail conversationnel commence vraiment. Donc vous pouvez voir que j&#x27;ai dit 7.12 approuvé, 7.11 a encore besoin de travail. Nous devons être derrière le casque.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de travail et de chat avec un assistant IA (Invideo / Agent One Pro).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt détaillé visible dans l&#x27;image 1 (&#x27;PREAMBLE: The attached reference images are character, prop, location...&#x27;). Dans l&#x27;image 3, un message de l&#x27;utilisateur indique : &#x27;7.12 approved, 7.11 still needs work, we need to be behind the helmet, maybe the woman is stood wearing it, looking out the window of the kitchen, ECU, tightly framed.&#x27;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son interface de travail en train de réviser et de valider des générations de plans vidéo IA via un flux de discussion textuel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_021_00-05-18.jpg" alt="Interface de montage vidéo avec une chronologie de plans numérotés et un panneau de prompt textuel détaillé sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_021_00-05-18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:18</span>
+                        <span class="caption-text">Interface de montage vidéo avec une chronologie de plans numérotés et un panneau de prompt textuel détaillé sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_022_00-05-32.jpg" alt="Interface de chat conversationnel montrant des échanges de messages avec un agent IA et des aperçus de plans vidéo sur le côté." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_022_00-05-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:32</span>
+                        <span class="caption-text">Interface de chat conversationnel montrant des échanges de messages avec un agent IA et des aperçus de plans vidéo sur le côté.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:34 - 00:05:54</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Peut-être que la femme se tient debout en le portant, en regardant par la fenêtre de la cuisine. Et avec cela, nous commençons à récupérer ces générations d&#x27;images de Nano Banana Pro. Et j&#x27;ai vraiment, vraiment aimé celle-ci ici. Gardez à l&#x27;esprit que notre personnage, bien sûr, et le lieu restent bien cohérents grâce à ces feuilles de personnages et de lieux qui ont été construites pour nous un peu plus tôt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de chat et de génération d&#x27;images par IA avec panneau de réglages (Nano Banana Pro).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible sur l&#x27;image 2 décrivant le plan cinématographique : &quot;Motion-safe cinematic film still. Extreme close-up from directly behind the woman...&quot;, avec des paramètres de résolution (2K) et le modèle Nano Banana Pro.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface pour montrer les images générées et commente la cohérence des personnages et des décors.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_023_00-05-36.jpg" alt="Interface de discussion textuelle montrant l&#x27;approbation d&#x27;un plan et le prompt associé." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_023_00-05-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:36</span>
+                        <span class="caption-text">Interface de discussion textuelle montrant l&#x27;approbation d&#x27;un plan et le prompt associé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_024_00-05-44.jpg" alt="Interface de génération d&#x27;image Nano Banana Pro affichant un plan détaillé de la femme de dos avec son casque de scaphandre orange regardant par la fenêtre." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_024_00-05-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:44</span>
+                        <span class="caption-text">Interface de génération d&#x27;image Nano Banana Pro affichant un plan détaillé de la femme de dos avec son casque de scaphandre orange regardant par la fenêtre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:54 - 00:06:14</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela a été animé avec Sea Dance 2 et on obtient ce très joli résultat de la femme qui soupire en quelque sorte. C&#x27;est sympa mais ça préserve aussi la surprise. On ne l&#x27;a pas encore vue complètement. Ça construit en quelque sorte cette tension et cette curiosité pour le spectateur. Et pour la scène suivante, l&#x27;agent utilise à nouveau cette méthode éprouvée.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de SeaDance 2.0 et panneau de gestion de projet par agent IA (The Bubble).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau de prompt visible à l&#x27;écran avec des paramètres techniques (Mode: 12V SHOT STRUCTURE: 5s / 1 shot / 16:9 STYLE OPENER: Warm expired Kodak Ektachrome film stock...), ainsi que des vignettes de séquences numérotées (8.4, 8.5, 8.6, 8.2, 8.1).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de SeaDance 2.0 avec le résultat animé de la femme de dos, puis bascule sur l&#x27;interface de l&#x27;agent listant les différentes scènes générées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_025_00-05-56.jpg" alt="Interface de SeaDance 2.0 montrant le rendu vidéo d&#x27;une femme de dos portant un casque spatial orange, avec un panneau de prompt détaillé sur le côté droit et une timeline en bas." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_025_00-05-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:56</span>
+                        <span class="caption-text">Interface de SeaDance 2.0 montrant le rendu vidéo d&#x27;une femme de dos portant un casque spatial orange, avec un panneau de prompt détaillé sur le côté droit et une timeline en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_026_00-06-12.jpg" alt="Interface de gestion de projet montrant plusieurs vignettes de séquences vidéo générées (&quot;The Bubble&quot;) avec le panneau de l&#x27;agent sur la gauche et le créateur visible en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_026_00-06-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:12</span>
+                        <span class="caption-text">Interface de gestion de projet montrant plusieurs vignettes de séquences vidéo générées (&quot;The Bubble&quot;) avec le panneau de l&#x27;agent sur la gauche et le créateur visible en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:14 - 00:06:34</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez donc voir qu&#x27;il génère un certain type de visuels clés avec Nano Banana Pro qui seront utilisés tout au long de la scène. Et on continue pour construire nos générations avec Sea Dance 2. Donc ce plan particulier ici où l&#x27;on commence à introduire les mannequins comme une sorte d&#x27;accessoire. Ainsi le spectateur comprend que quelque chose ne tourne décidément pas rond ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de génération d&#x27;images et de vidéos (Nano Banana Pro et Seedance 2.0), avec incrustation vidéo du créateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt descriptif pour l&#x27;image (ex: &quot;16:9 motion-safe still, close-up hero portrait...&quot;) et pour la vidéo (ex: &quot;MODE: MRC SHOT STRUCTURE: 4s / 1 shot / 16:9 STYLE OPENER...&quot;). Paramètres visibles : Seedance 2.0, Durée 4s, Résolution 1080p, Ratio 16:9.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;utilisation de Nano Banana Pro pour créer les visuels clés, puis passe à Seedance 2.0 pour générer le plan avec les mannequins sur le porche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_027_00-06-16.jpg" alt="Interface montrant la génération d&#x27;un portrait de femme en combinaison d&#x27;astronaute avec l&#x27;outil Nano Banana Pro et le prompt détaillé." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_027_00-06-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:16</span>
+                        <span class="caption-text">Interface montrant la génération d&#x27;un portrait de femme en combinaison d&#x27;astronaute avec l&#x27;outil Nano Banana Pro et le prompt détaillé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_028_00-06-24.jpg" alt="Interface de Seedance 2.0 affichant la lecture vidéo d&#x27;un mannequin assis sur un porche avec le prompt de génération vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_028_00-06-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:24</span>
+                        <span class="caption-text">Interface de Seedance 2.0 affichant la lecture vidéo d&#x27;un mannequin assis sur un porche avec le prompt de génération vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:34 - 00:06:55</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Les choses deviennent un peu flippantes. Et puis, bien sûr, nous avons ce premier plan ici où nous faisons pleinement la connaissance de notre personnage, un plan en pied complet pour la première fois. Nous commençons vraiment à avoir une idée de l&#x27;ambiance du film maintenant. Maintenant, comme c&#x27;est toujours le cas avec l&#x27;IA, vous allez obtenir des générations qui ne font pas exactement ce que vous voulez.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil de génération vidéo Seedance avec panneau de prompt latéral, paramètres de durée/résolution et ligne temporelle de vignettes en bas.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible à droite : &quot;MODE: I2V SHOT STRUCTURE: 5s / 1 shot / 16:9 STYLE OPENER: Warm expired Kodak Ektachrome film stock...&quot; et les réglages : Seedance 2.0, Duration: 5s, Resolution: 1080p, Aspect Ratio: Landscape (16:9).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation d&#x27;un plan vidéo généré par IA montrant un personnage en pied dans un environnement rétro, avec la mini-caméra de Jack en incrustation (PiP) dans le coin inférieur droit.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_029_00-06-36.jpg" alt="Interface de Seedance montrant une vidéo générée d&#x27;une femme en combinaison spatiale et robe corail poussant un landau dans une rue de banlieue américaine rétro, avec le panneau de prompt détaillé sur la droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_029_00-06-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:36</span>
+                        <span class="caption-text">Interface de Seedance montrant une vidéo générée d&#x27;une femme en combinaison spatiale et robe corail poussant un landau dans une rue de banlieue américaine rétro, avec le panneau de prompt détaillé sur la droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:55 - 00:07:19</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est là que le type de différence commence à se faire sentir, car nous pouvons dire à l&#x27;Agent 1 : pouvons-nous faire en sorte qu&#x27;elle marche et fasse coucou dans ce plan d&#x27;origine ? Elle est juste là à peu près immobile et sourit. Ça n&#x27;a pas vraiment beaucoup de sens. Ce n&#x27;est pas particulièrement dynamique. Et l&#x27;Agent 1 comprend parfaitement. Il procède à la régénération du même plan en utilisant ce visuel clé avec Seedance 2.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil de direction par IA (The Bubble / Agent One Pro) combinant un panneau de chat textuel et une grille de prévisualisation vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau de chat affichant les instructions (ex. &quot;10.14 can we make it look like she&#x27;s walking and waving?&quot;) et panneau latéral avec les prompts détaillés (&quot;MODE: I2V SHOT STRUCTURE: 4s / 1 shot...&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;agent conversationnel IA où il demande de modifier un plan vidéo (femme en combinaison spatiale) pour qu&#x27;elle marche et fasse un signe de la main.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_030_00-06-57.jpg" alt="Interface de lecture vidéo avec le panneau de prompt détaillé et le créateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_030_00-06-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:57</span>
+                        <span class="caption-text">Interface de lecture vidéo avec le panneau de prompt détaillé et le créateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_031_00-07-03.jpg" alt="Interface de l&#x27;Agent 1 (&quot;The Bubble&quot;) avec la grille de plans vidéo générés et le panneau de chat interactif." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_031_00-07-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:03</span>
+                        <span class="caption-text">Interface de l&#x27;Agent 1 (&quot;The Bubble&quot;) avec la grille de plans vidéo générés et le panneau de chat interactif.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:19 - 00:07:39</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et puis c&#x27;est ce qu&#x27;on a obtenu en retour, que vous auriez vu et qui s&#x27;est retrouvé dans le film final. Et c&#x27;est là que le projet commence à devenir vraiment intéressant parce qu&#x27;au fur et à mesure qu&#x27;il se développait, qu&#x27;il s&#x27;assemblait en quelque sorte, j&#x27;ai décidé de prendre une autre voie pour le genre de révélation afin de tout lier. Donc tout d&#x27;abord, j&#x27;ai dit à Agent One, j&#x27;aime bien 10.15.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de Seedance 2.0 et application de gestion de projet / agent IA &#x27;The Bubble&#x27; avec panneau de chat et prévisualisations vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur l&#x27;image 1 : Prompt complet décrivant le plan (&quot;MODE: I2V SHOT STRUCTURE...&quot;, &quot;The woman in the orange space helmet...&quot;). Paramètres : Seedance 2.0, Durée: 4s, Résolution: 1080p, Aspect Ratio: 16:9, Generate Audio: On. Sur l&#x27;image 3 : Liste des plans de la scène 2 (&quot;1. 10.6 - Heels ECU&quot;, &quot;2. 10.12 - Wide establishing&quot;, etc.), message envoyé à l&#x27;agent (&quot;I like 10.15, but I think we need a new dummy reaction shot...&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Jack présente l&#x27;interface de Seedance montrant un plan généré avec ses paramètres, puis montre l&#x27;interface de l&#x27;agent conversationnel où il discute des modifications à apporter à la séquence.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_032_00-07-21.jpg" alt="Interface de l&#x27;outil de génération vidéo Seedance 2.0 affichant un gros plan d&#x27;une femme souriante dans un casque d&#x27;astronaute, avec le panneau des prompts et des paramètres à droite et une frise de vignettes en bas." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_032_00-07-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:21</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo Seedance 2.0 affichant un gros plan d&#x27;une femme souriante dans un casque d&#x27;astronaute, avec le panneau des prompts et des paramètres à droite et une frise de vignettes en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_033_00-07-37.jpg" alt="Interface de l&#x27;application &#x27;The Bubble&#x27; montrant un chat avec &#x27;Agent One Pro&#x27; et une grille de plans vidéo de la scène 2 sur la droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_033_00-07-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:37</span>
+                        <span class="caption-text">Interface de l&#x27;application &#x27;The Bubble&#x27; montrant un chat avec &#x27;Agent One Pro&#x27; et une grille de plans vidéo de la scène 2 sur la droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:40 - 00:08:16</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc voici cette génération particulière de Sea Dance 2 ici. Mais j&#x27;avais l&#x27;impression que ça ne ressemblait pas au même porche que l&#x27;un des visuels clés précédents. C&#x27;était donc ce plan ici. C&#x27;est là qu&#x27;on voulait que la sorte de mannequin féminin reçoive la tarte. Le genre de contexte se perdait un peu ici. Donc tout d&#x27;abord, j&#x27;ai simplement demandé à l&#x27;agent un d&#x27;aller corriger ça, et c&#x27;est le plan qu&#x27;on a obtenu en retour, que j&#x27;ai vraiment, vraiment aimé, surtout ce genre de feuille qui entre dans le cadre et voltige juste pour ajouter un peu de mouvement là-dedans, j&#x27;adore vraiment ça, et c&#x27;est ici que je commence à décrire la nouvelle façon dont je</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application de création vidéo &quot;The Bubble&quot; (Agent One Pro) avec panneau de chat à gauche et galerie de plans/keyframe à droite, incluant la mini-caméra PiP de l&#x27;animateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans le panneau latéral droit (Image 2) : &quot;MODE: I2V SHOT STRUCTURE: 4s / 1 shot / 16:9 STYLE OPENER: Warm expired Kodak Ektachrome, vintage anamorphic softness, slight halation on highlights...&quot;. Dans le panneau de chat (Image 3) : &quot;I also want you to generate me a long, slow dance 2 generation: a bird&#x27;s-eye view shot of the woman pushing the pram down the street that slowly zooms out...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface de son outil de direction artistique par IA, montrant les différentes itérations de plans, passant d&#x27;une vue de révision des plans à un plan spécifique généré par Seedance 2.0, puis montrant le texte du prompt en cours de modification.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_034_00-07-42.jpg" alt="Interface du logiciel montrant le panneau de révision de la Scène 2 et les différentes vignettes vidéo générées." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_034_00-07-42.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:42</span>
+                        <span class="caption-text">Interface du logiciel montrant le panneau de révision de la Scène 2 et les différentes vignettes vidéo générées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_035_00-08-04.jpg" alt="Interface de prévisualisation vidéo montrant le plan du mannequin sur le porche avec une tarte au premier plan et une feuille qui entre dans le cadre." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_035_00-08-04.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:04</span>
+                        <span class="caption-text">Interface de prévisualisation vidéo montrant le plan du mannequin sur le porche avec une tarte au premier plan et une feuille qui entre dans le cadre.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_036_00-08-14.jpg" alt="Interface de gestion de projet avec le panneau de chat et de sélection des keyframes, incluant le texte surligné du prompt." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_036_00-08-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:14</span>
+                        <span class="caption-text">Interface de gestion de projet avec le panneau de chat et de sélection des keyframes, incluant le texte surligné du prompt.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:16 - 00:08:49</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je veux que le film se termine, je dis à notre agent que je veux avoir ce plan séquence vraiment très long où la femme pousse le landau sur la route et la caméra effectue un zoom arrière continu, un peu comme un plan à la grue révélant davantage le lieu, et ensuite nous voyons en quelque sorte la réalité de ce qui s&#x27;est passé. Et suite à cette nouvelle idée que j&#x27;ai eue, nous avons reçu ce visuel clé Nano Banana Pro ici. J&#x27;adore le fait que toutes les sortes de maisons, de pelouses et de rues aient l&#x27;air tout simplement trop parfaites.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de génération par IA (type assistant Agent One Pro / Nano Banana Pro) avec panneau de chat et visionneuse d&#x27;images.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt visible : &quot;a bird&#x27;s-eye view shot of the woman pushing the pram down the street that slowly zooms out to reveal that she is within a perfect-looking town.&quot; Paramètres : Nano Banana Pro, Résolution 2K (2048x2048), Format horizontal (16:9).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;agent textuel où il formule sa demande de plan-séquence, puis zoome sur le résultat visuel clé généré par Nano Banana Pro représentant le quartier suburbain.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_037_00-08-18.jpg" alt="Interface de chat (Agent One Pro) montrant les instructions textuelles pour générer un plan en vue plongeante d&#x27;une femme poussant un landau dans une rue." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_037_00-08-18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:18</span>
+                        <span class="caption-text">Interface de chat (Agent One Pro) montrant les instructions textuelles pour générer un plan en vue plongeante d&#x27;une femme poussant un landau dans une rue.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_038_00-08-38.jpg" alt="Interface de visualisation d&#x27;image avec panneau de configuration latéral (Nano Banana Pro) affichant le prompt descriptif d&#x27;un quartier résidentiel des années 1950 en vue aérienne." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_038_00-08-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:38</span>
+                        <span class="caption-text">Interface de visualisation d&#x27;image avec panneau de configuration latéral (Nano Banana Pro) affichant le prompt descriptif d&#x27;un quartier résidentiel des années 1950 en vue aérienne.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_039_00-08-47.jpg" alt="Gros plan plein écran sur le rendu généré montrant la vue aérienne du quartier résidentiel parfaitement symétrique avec les maisons blanches et la voiture teal." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_039_00-08-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:47</span>
+                        <span class="caption-text">Gros plan plein écran sur le rendu généré montrant la vue aérienne du quartier résidentiel parfaitement symétrique avec les maisons blanches et la voiture teal.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:49 - 00:09:27</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ils sont trop réguliers. Ce n&#x27;est pas vraiment à quoi ressemble une ville en réalité, n&#x27;est-ce pas ? Et c&#x27;est parce que cette femme vit dans une situation assez étrange. Donc vous pouvez voir ici, nous avons dit que la caméra zoome lentement arrière pour révéler qu&#x27;elle se trouve au sein d&#x27;une ville à l&#x27;apparence parfaite, juste à l&#x27;extérieur de la ville et tout autour, il y a un énorme rayon d&#x27;explosion provenant d&#x27;une bombe nucléaire qui a dû exploser. Donc maintenant nous comprenons pourquoi la femme porte ce casque. Ce doit être pour la protéger d&#x27;une sorte de retombée nucléaire et nous comprenons également pourquoi il n&#x27;y a pas d&#x27;autres personnes dans la ville. C&#x27;est comme si elle était posée</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de type agent IA (invideo / assistant de production vidéo) avec panneau de chat textuel et grille de prévisualisation des plans générés, ainsi qu&#x27;un encadré PiP montrant le créateur face caméra.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes visibles dans les prompts et le chat décrivant la scène : vue aérienne de la femme poussant une poussette dans une ville parfaite entourée d&#x27;un rayon d&#x27;explosion nucléaire, paramètres techniques (Nano Banana Pro, 2K, format 16:9).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface de l&#x27;outil de production vidéo, montrant le prompt textuel détaillé décrivant la caméra qui zoome arrière pour révéler la ville entourée des dégâts d&#x27;une bombe nucléaire.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_040_00-08-51.jpg" alt="Interface d&#x27;un outil de génération vidéo par IA affichant un plan aérien d&#x27;un quartier résidentiel parfait avec une femme en robe rouge et un petit chariot, avec le panneau de prompt détaillé sur la droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_040_00-08-51.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:51</span>
+                        <span class="caption-text">Interface d&#x27;un outil de génération vidéo par IA affichant un plan aérien d&#x27;un quartier résidentiel parfait avec une femme en robe rouge et un petit chariot, avec le panneau de prompt détaillé sur la droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_041_00-09-02.jpg" alt="Interface de gestion de projet IA montrant un chat avec des instructions textuelles sur la gauche et une grille de vignettes de scènes générées sur la droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_041_00-09-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:02</span>
+                        <span class="caption-text">Interface de gestion de projet IA montrant un chat avec des instructions textuelles sur la gauche et une grille de vignettes de scènes générées sur la droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_042_00-09-25.jpg" alt="Interface de gestion de projet similaire à l&#x27;image 2 avec le panneau de chat et les vignettes de génération, incluant un encadré vidéo de Jack en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_042_00-09-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:25</span>
+                        <span class="caption-text">Interface de gestion de projet similaire à l&#x27;image 2 avec le panneau de chat et les vignettes de génération, incluant un encadré vidéo de Jack en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:27 - 00:10:10</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">tous ces mannequins comme une sorte de mécanisme d&#x27;adaptation psychologique. Et donc bien sûr ce plan final est vraiment crucial, il lie le tout ensemble et j&#x27;ai récupéré toute une charge d&#x27;options différentes ici c&#x27;était un processus de va-et-vient avec l&#x27;agent parce que je savais que je voulais vraiment réussir cela c&#x27;est l&#x27;une des versions que j&#x27;ai fini par ne pas utiliser mais c&#x27;était un peu comme un second choix par rapport à celui qui est apparu dans le film final donc je veux vraiment vous montrer ceci Vraiment juste cette puissante combinaison de Nano Banana Pro et Sea Dance 2 faisant travailler leurs muscles de l&#x27;IA, si vous voulez formuler ça comme ça, parce que le plan final de ceci est juste assez incroyable.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> InVideo (Agent One Pro) et Seedance (avec incrustation vidéo PiP du créateur dans le coin inférieur droit).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt dans InVideo : &quot;I like 10.15, but I think we need a new dummy reaction shot to go after it that feels like it&#x27;s taking place on the same porch...&quot; Texte du panneau latéral dans Seedance : &quot;MODE: I2V SHOT STRUCTURE: 10s / 1 shot / 16:9 STYLE OPENER: Warm expired Kodak Ektachrome film stock...&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface d&#x27;InVideo pour examiner différentes options de séquences et de plans générés par IA, puis consulte les paramètres et prompts détaillés dans Seedance.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_043_00-09-29.jpg" alt="Interface d&#x27;InVideo (Agent One Pro) montrant une liste de tâches, un panneau de chat avec des instructions textuelles et une grille de vidéos générées représentant un quartier résidentiel et des cratères de bombes." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_043_00-09-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:29</span>
+                        <span class="caption-text">Interface d&#x27;InVideo (Agent One Pro) montrant une liste de tâches, un panneau de chat avec des instructions textuelles et une grille de vidéos générées représentant un quartier résidentiel et des cratères de bombes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_044_00-10-08.jpg" alt="Visualiseur vidéo dans Seedance montrant un plan aérien d&#x27;un lotissement pavillonnaire intact entouré d&#x27;un paysage volcanique en feu, avec un panneau de prompts détaillés sur la droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_044_00-10-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:08</span>
+                        <span class="caption-text">Visualiseur vidéo dans Seedance montrant un plan aérien d&#x27;un lotissement pavillonnaire intact entouré d&#x27;un paysage volcanique en feu, avec un panneau de prompts détaillés sur la droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:10 - 00:10:45</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;adore vraiment, vraiment ça. Mon genre de problème, c&#x27;est à quel point le périmètre de la ville était carré. J&#x27;adore la sensation d&#x27;échelle, cependant, et le fait qu&#x27;on comprenne vraiment que quelque chose d&#x27;affreux s&#x27;est produit. ça n&#x27;avait juste pas tellement de sens qu&#x27;il y ait juste ce genre de périmètre en grille rectangulaire, exactement comme une clôture normale qui protégeait la ville de cette explosion nucléaire. Donc après un peu plus d&#x27;allers-retours avec l&#x27;agent, j&#x27;ai finalement obtenu le plan de révélation que je cherchais et maintenant je pense que je vais vous montrer le film terminé. Donc comme je le dis, l&#x27;idée et le scénario viennent de moi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de type Seedance avec une visionneuse vidéo centrale, une timeline de vignettes en bas et un panneau latéral droit affichant les détails du prompt, les paramètres et une vignette incrustée (PiP) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau latéral affichant le texte complet du prompt : &quot;MODE: I2V SHOT STRUCTURE: 10s / 1 shot / 16:9 STYLE OPENER: Warm expired Kodak Ektachrome film stock inside the town, transitioning to harsh high-contrast documentary reality with active orange fires outside. REFERENCES: Image 1 = first frame (starting composition and town architecture)...&quot; et paramètres &quot;Settings / Seedance 2...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue à travers la chronologie des plans vidéo générés et examine les détails visuels du plan de révélation dans l&#x27;interface logicielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_045_00-10-12.jpg" alt="Interface d&#x27;un outil vidéo affichant un plan large d&#x27;un paysage post-apocalyptique avec des cratères en feu et une ville intacte au centre, et le panneau latéral avec le prompt détaillé." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_045_00-10-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:12</span>
+                        <span class="caption-text">Interface d&#x27;un outil vidéo affichant un plan large d&#x27;un paysage post-apocalyptique avec des cratères en feu et une ville intacte au centre, et le panneau latéral avec le prompt détaillé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_046_00-10-22.jpg" alt="Gros plan sur la ville intacte entourée d&#x27;un périmètre carré net dans un paysage de désolation volcanique, avec le panneau latéral affichant les paramètres de prompt." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_046_00-10-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:22</span>
+                        <span class="caption-text">Gros plan sur la ville intacte entourée d&#x27;un périmètre carré net dans un paysage de désolation volcanique, avec le panneau latéral affichant les paramètres de prompt.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_047_00-10-43.jpg" alt="Retour au plan large du paysage post-apocalyptique avec des cratères incandescents et des colonnes de fumée noire autour de la ville carrée." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_047_00-10-43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:43</span>
+                        <span class="caption-text">Retour au plan large du paysage post-apocalyptique avec des cratères incandescents et des colonnes de fumée noire autour de la ville carrée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:45 - 00:11:40</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et puis mon genre de directeur adjoint, on peut dire agent one, a pris les devants et s&#x27;est occupé de tout le travail technique fastidieux, à partir de quelques simples entrées conversationnelles de ma part. Voici le résultat que j&#x27;ai obtenu après un montage basique. Donc, en jetant un coup d&#x27;œil à ma timeline ici, vous pouvez voir que je n&#x27;ai pas vraiment fait grand-chose,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface d&#x27;un outil de génération de vidéo IA (avec panneau de prompt à droite et timeline de clips en bas) et logiciel de montage Adobe Premiere Pro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible sur l&#x27;image 1 (« MODE: I2V SHOT STRUCTURE: 10s / 1 shot / 16:9... »), paramètres de réglage, et organisation des clips médias dans le chutier et la timeline de Premiere Pro sur l&#x27;image 4.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface de génération vidéo avec les prompts textuels utilisés par l&#x27;agent IA, puis affichage de la timeline de montage vidéo basique sur Adobe Premiere Pro.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_048_00-10-47.jpg" alt="Interface d&#x27;un logiciel de génération vidéo affichant une vue aérienne d&#x27;un quartier pavillonnaire et le prompt textuel détaillé sur le panneau latéral droit." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_048_00-10-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:47</span>
+                        <span class="caption-text">Interface d&#x27;un logiciel de génération vidéo affichant une vue aérienne d&#x27;un quartier pavillonnaire et le prompt textuel détaillé sur le panneau latéral droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_049_00-11-38.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline de montage avec plusieurs pistes vidéo, audio et calques d&#x27;ajustement." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_049_00-11-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:38</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline de montage avec plusieurs pistes vidéo, audio et calques d&#x27;ajustement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:40 - 00:12:13</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pour être honnête avec vous. La musique joue un rôle vraiment important, le morceau lui-même, pour donner en quelque sorte cette sensation d&#x27;ironie. Comme toujours, j&#x27;ai pris les devants et j&#x27;ai ajouté mon calque d&#x27;effet tout en haut ici, qui intègre énormément de grain de pellicule. J&#x27;aime vraiment le rendu que ça donne pour ce projet particulier, même sur ce genre de plan final. Si on zoome vraiment de près, il y a ces bâtiments détruits, je trouve vraiment que ça apporte ce joli effet de texture, une chose simple qu&#x27;on peut ajouter directement dans son logiciel de montage, et j&#x27;ai aussi fini par générer ce genre de truc vraiment kitsch.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (logiciel de montage vidéo avec panneaux de timeline, moniteur de prévisualisation, chutier et panneau audio).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des pistes sur la timeline (Adjustment Layer, Nested Sequence), tags audio (Dialogue, Music, SFX), et texte graphique à l&#x27;écran &#x27;Wish you were Here!&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la timeline se déplace et l&#x27;écran de prévisualisation zoome sur les plans finaux de la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_050_00-11-42.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline multipiste avec la piste audio principale en vert et le calque d&#x27;effet violet." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_050_00-11-42.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:42</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline multipiste avec la piste audio principale en vert et le calque d&#x27;effet violet.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_051_00-11-51.jpg" alt="Vue de l&#x27;interface de montage d&#x27;Adobe Premiere Pro avec le moniteur source affichant un plan intérieur texturé par du grain de film." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_051_00-11-51.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:51</span>
+                        <span class="caption-text">Vue de l&#x27;interface de montage d&#x27;Adobe Premiere Pro avec le moniteur source affichant un plan intérieur texturé par du grain de film.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_052_00-12-02.jpg" alt="Gros plan sur le moniteur de prévisualisation montrant des bâtiments détruits et en feu dans une scène post-apocalyptique." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_052_00-12-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:02</span>
+                        <span class="caption-text">Gros plan sur le moniteur de prévisualisation montrant des bâtiments détruits et en feu dans une scène post-apocalyptique.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_053_00-12-11.jpg" alt="Écran de montage d&#x27;Adobe Premiere Pro affichant le plan final avec un texte superposé &#x27;Wish you were Here!&#x27; au-dessus d&#x27;un paysage urbain détruit." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_053_00-12-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:11</span>
+                        <span class="caption-text">Écran de montage d&#x27;Adobe Premiere Pro affichant le plan final avec un texte superposé &#x27;Wish you were Here!&#x27; au-dessus d&#x27;un paysage urbain détruit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:13 - 00:12:31</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">graphique du genre &quot;wish you were here&quot; que l&#x27;on pourrait voir sur une vieille carte postale ou quelque chose comme ça. Et si je vais simplement masquer cet élément, vous pouvez voir que le plan de révélation final a un peu plus de sens physique. Il n&#x27;a pas ce genre de périmètre vraiment parfait que nous avions avec cette autre génération.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte graphique stylisé &quot;Wish You Were Here!&quot; sur une vue aérienne d&#x27;un quartier de banlieue touché par un cratère/catastrophe.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre le plan avec le texte graphique de carte postale, puis masque l&#x27;élément pour comparer avec le rendu final plus naturel et sans le périmètre parfait de la génération précédente.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_054_00-12-15.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant un montage vidéo avec le texte &quot;Wish You Were Here!&quot; incrusté sur une image aérienne d&#x27;un quartier détruit, et Jack visible en incrustation (PiP) en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_054_00-12-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:15</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant un montage vidéo avec le texte &quot;Wish You Were Here!&quot; incrusté sur une image aérienne d&#x27;un quartier détruit, et Jack visible en incrustation (PiP) en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_055_00-12-29.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la même séquence après le masquage du texte graphique &quot;Wish You Were Here!&quot;, révélant uniquement la vue aérienne du paysage détruit." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_055_00-12-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:29</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la même séquence après le masquage du texte graphique &quot;Wish You Were Here!&quot;, révélant uniquement la vue aérienne du paysage détruit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:31 - 00:12:55</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça a en quelque sorte un rayon d&#x27;explosion autour. Donc c&#x27;est sur ça que j&#x27;ai fini par atterrir pour le film terminé. Et puis, ouais, ce genre d&#x27;élément graphique ajoute juste un petit plus, je pense. Une autre chose vraiment basique que j&#x27;ai faite pour le premier plan ici, c&#x27;est que j&#x27;ai juste pris la première image et je l&#x27;ai transformée en fixe parce que je voulais en quelque sorte m&#x27;attarder sur cette image de la radio pendant un moment.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (logiciel de montage vidéo) avec incrustation PiP du présentateur dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Timeline de montage, fenêtres de prévisualisation affichant des plans générés par IA (quartier détruit, intérieur de cuisine avec une radio vintage), chutier avec des clips vidéo nommés (&quot;7.2-invideo-seedance...&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur démontre son interface de montage sur Premiere Pro, navigue entre la timeline et les différents plans de sa vidéo pour illustrer le processus de post-production et l&#x27;utilisation d&#x27;images fixes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_056_00-12-33.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant un plan large d&#x27;un quartier détruit avec un rayon d&#x27;explosion et Jack en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_056_00-12-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:33</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant un plan large d&#x27;un quartier détruit avec un rayon d&#x27;explosion et Jack en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_057_00-12-47.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant le montage vidéo avec le chutier, la timeline et le plan fixe d&#x27;une radio vintage dans une cuisine." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_057_00-12-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:47</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant le montage vidéo avec le chutier, la timeline et le plan fixe d&#x27;une radio vintage dans une cuisine.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:55 - 00:13:17</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et puis j&#x27;ai juste ajouté ce mouvement de caméra vraiment assez délicat avant que la main de notre personnage n&#x27;entre dans le cadre et allume la radio. En bas ici, c&#x27;est juste moi qui ai ajouté quelques effets sonores de talons qui claquent dans la cuisine, qui se rapprochent en quelque sorte. Et en fait, c&#x27;est le seul effet sonore que j&#x27;ai ajouté à l&#x27;ensemble du projet. Tout le reste a été généré nativement à l&#x27;intérieur de Sea Dance 2.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (avec un encadré PiP de Jack en bas à droite).</p>
+                        <p><strong>Contenu textuel & Code :</strong> On peut voir le chutier (Bin: Video Gen) avec miniatures de clips vidéo (générés par Sea Dance 2), la timeline de montage multi-pistes avec des calques vidéo et audio, et le moniteur affichant un plan de cuisine rétro avec une radio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son projet de montage vidéo dans Premiere Pro, en illustrant la mise en place des pistes audio et des clips générés par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_058_00-12-57.jpg" alt="Interface d&#x27;un logiciel de montage vidéo (Adobe Premiere Pro) montrant la timeline avec les pistes audio et vidéo, ainsi que le moniteur affichant la scène de la cuisine avec la radio vintage." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_058_00-12-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:57</span>
+                        <span class="caption-text">Interface d&#x27;un logiciel de montage vidéo (Adobe Premiere Pro) montrant la timeline avec les pistes audio et vidéo, ainsi que le moniteur affichant la scène de la cuisine avec la radio vintage.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:17 - 00:13:37</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous remarquerez également que le film terminé a fini par être beaucoup plus court que prévu initialement. J&#x27;ai simplement estimé qu&#x27;il n&#x27;avait pas besoin de durer 60 secondes au final. J&#x27;étais vraiment satisfait du type de rythme que j&#x27;obtenais pendant que je montais. C&#x27;est un peu de cela dont je parlais. Quand vous utilisez Agent 1, vous pouvez en quelque sorte vous adapter au vol. Vous n&#x27;êtes pas toujours obligé de vous en tenir à votre plan initial.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (logiciel de montage vidéo)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Timeline de montage avec pistes vidéo et audio (V1, A1, etc.), moniteur de prévisualisation affichant un plan de cuisine vintage, chutier à gauche avec des vignettes vidéo (ex: &quot;7,2-invideo-seedance...&quot;, &quot;7,5-invideo-seedance...&quot;), panneau audio &quot;Essential Sound&quot; à droite, et incrustation vidéo (PiP) du créateur en bas à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente son projet de montage vidéo sur Adobe Premiere Pro, illustrant la structure de sa timeline et l&#x27;agencement des clips générés par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_059_00-13-19.jpg" alt="Interface du logiciel de montage Adobe Premiere Pro montrant la timeline du projet &quot;THE BUBBLE&quot; et les chutiers de clips vidéo générés par IA." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_059_00-13-19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:19</span>
+                        <span class="caption-text">Interface du logiciel de montage Adobe Premiere Pro montrant la timeline du projet &quot;THE BUBBLE&quot; et les chutiers de clips vidéo générés par IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_060_00-13-35.jpg" alt="Vue identique de l&#x27;interface d&#x27;Adobe Premiere Pro avec la timeline de montage et le retour vidéo montrant une cuisine vintage avec une radio." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_060_00-13-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:35</span>
+                        <span class="caption-text">Vue identique de l&#x27;interface d&#x27;Adobe Premiere Pro avec la timeline de montage et le retour vidéo montrant une cuisine vintage avec une radio.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:37 - 00:14:02</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si vous avez une nouvelle idée ou que vous voulez que votre film soit un peu plus court ou se termine d&#x27;une manière différente, c&#x27;est tout à fait bien. Vous n&#x27;êtes bloqué dans aucune méthode de travail particulière. J&#x27;étais donc vraiment très heureux du résultat final que j&#x27;ai obtenu pour ce projet. Je trouvais qu&#x27;il était vraiment visuellement intéressant. Il avait un ton vraiment marquant et créait ce sentiment de mystère et d&#x27;intrigue, ce qui correspondait exactement à ce que je recherchais.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (logiciel de montage vidéo)</p>
+                        <p><strong>Contenu textuel & Code :</strong> On aperçoit dans le panneau de gauche un chutier (&quot;jack vs. AI_1.prproj&quot;) contenant plusieurs vignettes de clips vidéo générés (&quot;7.2-invideo-seedance...&quot;, &quot;7.4-invideo-seedance...&quot;, &quot;7.5-invideo-seedance...&quot;). Au centre, le moniteur de prévisualisation montre une scène de cuisine avec une radio rétro. En bas, la timeline du projet &quot;THE BUBBLE&quot; regroupe plusieurs pistes vidéo et audio. En bas à droite, Jack apparaît dans un encadré PiP (Picture-in-Picture) devant son micro.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son espace de montage dans Adobe Premiere Pro avec la timeline du film en cours de construction et les assets vidéo générés par IA dans le chutier.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_061_00-13-39.jpg" alt="Interface d&#x27;Adobe Premiere Pro avec un chutier affichant des clips générés par IA et la timeline du projet &quot;THE BUBBLE&quot;, avec un encadré PiP montrant Jack en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_061_00-13-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:39</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro avec un chutier affichant des clips générés par IA et la timeline du projet &quot;THE BUBBLE&quot;, avec un encadré PiP montrant Jack en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:02 - 00:14:25</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais comme tout outil, Agent One n&#x27;est pas sans défauts. Et je vous manquerais de respect, à vous et à NVIDIA, si je n&#x27;en parlais pas également. Le premier problème est qu&#x27;il peut falloir beaucoup de temps pour récupérer vos générations. Et bien que cela soit logique puisque Agent One exécute de nombreux processus différents en même temps, ce n&#x27;est toujours pas idéal.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro et l&#x27;application Agent One (interface de génération et de direction de projet IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans l&#x27;image #3, le panneau de prompt affiche : &quot;MODE: I2V SHOT STRUCTURE: 10s / 1 shot / 16:9 STYLE OPENER: Warm expired Kodak Ektachrome film stock inside the town...&quot;. Dans l&#x27;image #4, le panneau &quot;Director&quot; affiche du texte de suivi de séquences (&quot;Inspecting sequences 10.6, 10.7, 10.8...&quot;, &quot;Scene 2 keyframes and videos — all accepted: 1. 10.6 - Heels ECU video...&quot;, etc.) et un message d&#x27;avertissement en bas : &quot;Insufficient credits to continue. Current credit balance: ~0.0. Please upgrade your plan or purchase credits.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface de montage de son projet, puis montre les prompts détaillés utilisés pour générer les plans cinématiques et l&#x27;interface de suivi du projet Agent One avec l&#x27;historique des générations.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_062_00-14-04.jpg" alt="Interface de montage vidéo (Adobe Premiere Pro) avec le panneau des chutiers et la timeline du projet &quot;The Bubble&quot;, et le créateur visible en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_062_00-14-04.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:04</span>
+                        <span class="caption-text">Interface de montage vidéo (Adobe Premiere Pro) avec le panneau des chutiers et la timeline du projet &quot;The Bubble&quot;, et le créateur visible en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_063_00-14-18.jpg" alt="Interface de l&#x27;outil Agent One affichant un plan large aérien d&#x27;une zone résidentielle détruite par un cataclysme avec des cratères volcaniques, un panneau de prompt textuel détaillé sur le côté droit, et le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_063_00-14-18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:18</span>
+                        <span class="caption-text">Interface de l&#x27;outil Agent One affichant un plan large aérien d&#x27;une zone résidentielle détruite par un cataclysme avec des cratères volcaniques, un panneau de prompt textuel détaillé sur le côté droit, et le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_064_00-14-23.jpg" alt="Interface de l&#x27;application Agent One avec le panneau Director (chat avec l&#x27;IA) à gauche montrant l&#x27;historique des séquences et une grille de vignettes vidéo/images du projet &quot;The Bubble&quot; à droite, avec le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_064_00-14-23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:23</span>
+                        <span class="caption-text">Interface de l&#x27;application Agent One avec le panneau Director (chat avec l&#x27;IA) à gauche montrant l&#x27;historique des séquences et une grille de vignettes vidéo/images du projet &quot;The Bubble&quot; à droite, avec le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:25 - 00:14:54</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si NVIDIA trouve un moyen d&#x27;accélérer les générations, je pense que cela va beaucoup aider. Et le prochain domaine qu&#x27;ils devraient examiner, selon moi, c&#x27;est la consommation de crédits. C&#x27;est vraiment difficile de savoir combien de crédits vous dépensez à un moment donné. Ce serait vraiment super d&#x27;avoir une sorte de compteur de crédits quelque part dans l&#x27;interface utilisateur, que l&#x27;on puisse simplement garder à l&#x27;œil. On pourrait ainsi le voir sous forme de barre qui se vide au fil du temps à mesure que l&#x27;on dépense ses crédits.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle floutée avec affichage incrusté (PiP) du créateur dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran : &quot;note two credit spend&quot;. L&#x27;interface principale montre une grille de quatre aperçus d&#x27;images floutées et des zones de texte floutées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur parle tout en présentant l&#x27;interface de l&#x27;application avec sa webcam en incrustation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_065_00-14-35.jpg" alt="Capture d&#x27;écran d&#x27;une application ou d&#x27;un logiciel flouté avec un encadré PiP de Jack dans le coin inférieur droit, affichant le texte superposé &quot;note two credit spend&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_065_00-14-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:35</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;une application ou d&#x27;un logiciel flouté avec un encadré PiP de Jack dans le coin inférieur droit, affichant le texte superposé &quot;note two credit spend&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:54 - 00:15:15</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais j&#x27;irais même un peu plus loin en montrant réellement combien de crédits cela va coûter pour mener à bien un certain processus. Donc, par exemple, ici, nos générations Seedance 2 pourraient être accompagnées d&#x27;un compteur de crédits. Et ensuite, l&#x27;Agent 1 va en fait de l&#x27;avant et vous demande, voulez-vous réellement tout générer ce que je suggère ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> InVideo (Agent One Pro / The Bubble) avec affichage PiP du créateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface de l&#x27;outil InVideo affichant un chat textuel avec l&#x27;Agent One Pro, un avertissement sur les crédits insuffisants (&quot;Insufficient credits to generate. Need -27.3 credits, current credit balance: -0.0&quot;), ainsi qu&#x27;une grille de vignettes vidéo.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface d&#x27;InVideo tout en parlant, avec sa webcam intégrée en incrustation (PiP) dans le coin inférieur droit.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_066_00-14-56.jpg" alt="Interface d&#x27;InVideo montrant le panneau de chat avec l&#x27;Agent 1, un compteur de crédits insuffisants et une grille de vidéos générées." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_066_00-14-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:56</span>
+                        <span class="caption-text">Interface d&#x27;InVideo montrant le panneau de chat avec l&#x27;Agent 1, un compteur de crédits insuffisants et une grille de vidéos générées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:15 - 00:15:52</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Avez-vous vraiment besoin de chacun de ces visuels clés Nano Banana Pro ? Ou est-ce qu&#x27;on peut simplement faire les plus basiques, et ensuite C-Dance 2 peut s&#x27;occuper de combler les lacunes ? Parce qu&#x27;on sait que C-Dance 2, en tant que modèle vidéo, peut souvent nous donner d&#x27;excellents résultats à partir d&#x27;une simple feuille de personnage pour certaines scènes. Et évidemment, si l&#x27;Agent 1 a même suggéré ce flux de travail, cela pourrait potentiellement réduire votre consommation de crédits d&#x27;une bonne tranche. Cela étant dit, je pense vraiment que l&#x27;Agent 1 a sa place dans ce genre d&#x27;écosystème créatif. Gardons bien à l&#x27;esprit aussi que ce n&#x27;est même pas encore en version bêta.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de type assistant IA (&quot;The Bubble&quot; / Agent One Pro) avec grille de prévisualisation vidéo et panneau de chat textuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Vignettes vidéo montrant des scènes de type film (personnages dans une cuisine avec une tarte, casque de scaphandre), messages d&#x27;erreur de crédit (&quot;Insufficient credits to continue&quot;), et panneaux de génération de keyframes (Seedance 2.0).</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole une vignette vidéo dans l&#x27;interface pendant que l&#x27;application gère les tâches de génération et le suivi du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_067_00-15-17.jpg" alt="Interface logicielle de gestion de projet avec grille de vignettes vidéo et panneau de contrôle Agent One Pro, avec le présentateur visible en incrustation (PiP) en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_067_00-15-17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:17</span>
+                        <span class="caption-text">Interface logicielle de gestion de projet avec grille de vignettes vidéo et panneau de contrôle Agent One Pro, avec le présentateur visible en incrustation (PiP) en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:52 - 00:16:22</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est encore une version alpha. Je pense donc que c&#x27;est un très bon début pour NVIDIA. C&#x27;est un outil vraiment intéressant à utiliser. Comme je le dis, si vous voulez aller jeter un œil à l&#x27;Agent 1 de NVIDIA, vous trouverez un lien en bas dans la description. Et si vous avez la moindre question, n&#x27;hésitez pas à la poser en bas. J&#x27;essaie toujours de répondre à autant d&#x27;entre elles que possible. Si vous avez envie de découvrir un peu plus de mon contenu, vous trouverez une autre de mes vidéos sur l&#x27;écran en ce moment même. Cela étant dit, les gars, passez une excellente journée et je vous retrouve dans la prochaine !</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application Seedance 2.0 avec panneau de prompt latéral, paramètres techniques et encadré vidéo PiP du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible à l&#x27;écran : &quot;MODE: 12V SHOT STRUCTURE: 4s / 1 shot / 16:9 STYLE OPENER: WARM expired Kodak Ektachrome film stock, soft grain, golden hazy light, anamorphic softness... SETTING: The woman in the orange space helmet in a suburban street...&quot;. Paramètres : Seedance 2.0, Duration 4s, Resolution 1080p, Aspect Ratio Landscape (16:9), Generate Audio: On.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface d&#x27;un outil de génération vidéo par IA tout en parlant à la caméra, visible en incrustation (PiP) dans l&#x27;angle inférieur droit.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-_LXTbKfqeHA/frame_068_00-16-03.jpg" alt="Interface de Seedance 2.0 affichant une vidéo générée d&#x27;une femme avec un casque d&#x27;astronaute orange, avec un panneau de prompt détaillé sur le côté droit et le présentateur en incrustation PiP dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-_LXTbKfqeHA/frame_068_00-16-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:03</span>
+                        <span class="caption-text">Interface de Seedance 2.0 affichant une vidéo générée d&#x27;une femme avec un casque d&#x27;astronaute orange, avec un panneau de prompt détaillé sur le côté droit et le présentateur en incrustation PiP dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

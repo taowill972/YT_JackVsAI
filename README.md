@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `21 / 59` (`35.6%`)
+- **Vidéos traitées** : `22 / 59` (`37.3%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -37,6 +37,7 @@
 | 2026-05-24 | [Comment transformer un storyboard en vidéo IA complète en quelques minutes](2026-05-24_YT-Is4wgEpPMJQ_Comment transformer un storyboard en vidéo IA complète en quelques minutes_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-05-24_YT-Is4wgEpPMJQ_Comment transformer un storyboard en vidéo IA complète en quelques minutes_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 18m 47s | `89 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=Is4wgEpPMJQ) | `Is4wgEpPMJQ` |
 | 2026-05-17 | [Comment créer des clips vidéo IA avec un lip sync parfait (Workflow complet)](2026-05-17_YT-CghKYofqzfI_Comment créer des clips vidéo IA avec un lip sync parfait (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-05-17_YT-CghKYofqzfI_Comment créer des clips vidéo IA avec un lip sync parfait (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 22m 21s | `92 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=CghKYofqzfI) | `CghKYofqzfI` |
 | 2026-05-12 | [Créer des scènes de combat cinématographiques avec l'IA (Workflow complet)](2026-05-12_YT-Dh221nmMeQ8_Créer des scènes de combat cinématographiques avec l'IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-05-12_YT-Dh221nmMeQ8_Créer des scènes de combat cinématographiques avec l'IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 23m 55s | `99 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=Dh221nmMeQ8) | `Dh221nmMeQ8` |
+| 2026-05-08 | [ARRÊTEZ d'écrire des prompts pour vos films IA — Cet agent le fait pour vous](2026-05-08_YT-_LXTbKfqeHA_ARRÊTEZ d'écrire des prompts pour vos films IA — Cet agent le fait pour vous_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-05-08_YT-_LXTbKfqeHA_ARRÊTEZ d'écrire des prompts pour vos films IA — Cet agent le fait pour vous_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 16m 23s | `68 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=_LXTbKfqeHA) | `_LXTbKfqeHA` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
