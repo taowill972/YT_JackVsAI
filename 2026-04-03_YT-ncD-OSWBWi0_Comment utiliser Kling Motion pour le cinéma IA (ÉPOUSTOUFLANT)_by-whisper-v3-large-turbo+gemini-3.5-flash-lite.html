@@ -1,0 +1,2190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment utiliser Kling Motion pour le cinéma IA (ÉPOUSTOUFLANT) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment utiliser Kling Motion pour le cinéma IA (ÉPOUSTOUFLANT)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-03</span>
+                <span class="badge">⏱️ 14m 23s</span>
+                <span class="badge">🆔 <code>ncD-OSWBWi0</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=ncD-OSWBWi0" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>La vidéo de Jack Vs. AI met en lumière le potentiel révolutionnaire de **Kling Motion Control** (Kling 3 Motion Control) pour l'industrie du cinéma indépendant et publicitaire, en démocratisant le transfert de mouvement par intelligence artificielle. Cette technologie permet de s'affranchir des contraintes et des coûts exorbitants de la capture de mouvement traditionnelle (mocap) ou de la synthèse d'images 3D complexe (CG). En se passant de consignes textuelles complexes, le créateur fournit directement une vidéo de référence (performance pilote) couplée à une image de départ (générée par IA), offrant ainsi un contrôle total sur le timing, les expressions faciales et le jeu d'acteur, tout en minimisant le gaspillage de crédits de calcul.</p><p>Au fil des cas pratiques démontrés — qu'il s'agisse d'animer une créature poilue pour une publicité, de transformer une performance humaine en un chat photoréaliste habillé, ou d'animer un personnage d'elfe dans un décor fantastique —, Jack détaille un flux de travail fluide et rigoureux. Il intègre des plateformes comme Artlist, des générateurs d'images de pointe et des logiciels de retouche pour optimiser chaque étape de production. L'analyse démontre non seulement la puissance de Kling pour mapper avec précision les mouvements complexes (yeux, nez, bouche, vêtements), mais aussi ses limites actuelles, notamment la gestion des arrière-plans immobiles ou les mouvements en plan large, ouvrant la voie à des solutions de contournement créatives par composition d'éléments.</p><p>Cette approche avant-gardiste redéfinit les standards de la production vidéo assistée par IA, permettant aux créateurs de générer des séquences hautement personnalisées et crédibles en quelques minutes. En combinant des sources visuelles de qualité et des techniques de retouche ciblées, les cinéastes peuvent désormais insuffler une vie organique et émotionnelle à des personnages fantastiques ou animaliers, ouvrant des perspectives immenses pour le storytelling visuel et la création de contenus publicitaires à moindre coût.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Kling</span><span class="tool-tag">Kling Motion</span><span class="tool-tag">Kling motion</span><span class="tool-tag">Nano Banana</span><span class="tool-tag">Photoshop</span><span class="tool-tag">Premiere Pro</span><span class="tool-tag">Topaz</span><span class="tool-tag">flux</span><span class="tool-tag">nano banana</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Suppression des prompts textuels complexes** : Le succès du transfert de mouvement repose sur l&#x27;image et la vidéo pilote, rendant les instructions textuelles superflues pour la génération du mouvement lui-même.</span></li><li><span class="point-bullet">✦</span><span>Règle du acteur unique** : Ne présenter qu&#x27;un seul acteur par plan source pour éviter les interférences et garantir un mapping facial et corporel propre.</span></li><li><span class="point-bullet">✦</span><span>Gestion des obstructions** : S&#x27;assurer qu&#x27;aucun accessoire ou autre acteur ne bloque le visage ou les membres de l&#x27;acteur dans la vidéo de référence.</span></li><li><span class="point-bullet">✦</span><span>Cohérence du cadrage** : Faire correspondre le cadrage et l&#x27;orientation de la vidéo pilote avec l&#x27;image cible pour optimiser la crédibilité du résultat final.</span></li><li><span class="point-bullet">✦</span><span>Maîtrise de l&#x27;éclairage** : Opter pour un éclairage uniforme et de bonne qualité sur les sources, en évitant les ombres dures qui perturbent l&#x27;interprétation par l&#x27;IA.</span></li><li><span class="point-bullet">✦</span><span>Simplification des décors et costumes** : Privilégier des arrière-plans neutres et des vêtements simples pour focaliser l&#x27;algorithme sur le sujet principal.</span></li><li><span class="point-bullet">✦</span><span>Vitesse de mouvement modérée** : Préférer une vitesse de mouvement mesurée à des actions ultra-rapides pour éviter les artefacts de flou cinétique.</span></li><li><span class="point-bullet">✦</span><span>Impact du cadrage sur les dialogues** : Pour les plans parlés, privilégier des plans serrés (moyens ou gros plans) afin que les mouvements de la bouche soient suffisamment définis pour un rendu réaliste.</span></li><li><span class="point-bullet">✦</span><span>Gestion des objets au premier plan** : Kling gère efficacement les objets solides (comme une épée), comprenant qu&#x27;ils ne doivent pas subir de déformations fluides.</span></li><li><span class="point-bullet">✦</span><span>Résolution et durée** : Le système permet de générer jusqu&#x27;à 30 secondes de vidéo avec une résolution atteignant 1080p.</span></li><li><span class="point-bullet">✦</span><span>Contournisation des arrière-plans statiques** : Pour pallier le manque de dynamisme des arrière-plans générés par Kling Motion, une astuce consiste à dissocier le personnage du décor, à animer l&#x27;arrière-plan séparément avec Kling 3 standard, puis à recomposer le tout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:35</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je m&#x27;amuse avec Kling Motion depuis un moment maintenant et vous pouvez vraiment créer des trucs de fou. C&#x27;est là qu&#x27;on importe une vidéo de référence et qu&#x27;on demande à Kling d&#x27;appliquer cette performance sur quelque chose de complètement différent. On utilise essentiellement l&#x27;intelligence artificielle pour remplacer la capture de mouvement traditionnelle qui est bien sûr incroyablement coûteuse. Ce qui est génial avec ce flux de travail, c&#x27;est qu&#x27;on laisse très peu de place au hasard. On ne donne pas de consignes textuelles à l&#x27;IA, on lui montre exactement ce qu&#x27;on veut générer. Cela signifie un meilleur contrôle en termes de timing et de performance et par conséquent, moins de crédits gaspillés et qui n&#x27;en veut pas</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de démonstration vidéo Kling Motion montrant un comparatif visuel (vidéo source et résultat généré).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran : &quot;We are not prompting the AI...&quot; et superposition d&#x27;une petite vignette vidéo en haut à gauche montrant le visage d&#x27;une femme pleurant, mappée sur un personnage de science-fiction à la peau violette.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation du résultat de la génération par IA montrant le transfert de la performance faciale de la vidéo de référence vers le personnage généré.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_001_00-00-24.jpg" alt="Démonstration du transfert de mouvement Kling Motion avec une vidéo de référence incrustée en haut à gauche et le personnage généré en violet à l&#x27;écran." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_001_00-00-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:24</span>
+                        <span class="caption-text">Démonstration du transfert de mouvement Kling Motion avec une vidéo de référence incrustée en haut à gauche et le personnage généré en violet à l&#x27;écran.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:35 - 00:00:54</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;adore ça. Aujourd&#x27;hui, je vais vous enseigner le flux de travail et tout ce que j&#x27;ai appris en chemin, et nous ferons quelques tests pour voir jusqu&#x27;où nous pouvons pousser ces outils. Si vous aimez cette vidéo, assurez-vous de laisser un pouce bleu pour moi, pensez à vous abonner et, bien sûr, à activer cette cloche de notification. Très bien, entrons dans le vif du sujet. La première chose que nous devons faire est de penser à notre séquence d&#x27;images source.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur d&#x27;une plateforme de génération de vidéo par IA présentant un catalogue de modèles (Veo 3.1, Kling 3.0, Kling O3, Grok Imagine, Sora 2 Pro) sous forme de grille avec des étiquettes de tags techniques.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;WORK FLOW&quot;, noms des modèles d&#x27;IA (Veo 3.1, Kling 3.0, Grok Imagine, Sora 2 Pro), descriptions et tags de fonctionnalités (Start/End Frame, Audio, 4K, 8 sec, 1080p, 15 sec, Video Input, 30 sec). Un encadré à gauche montre une illustration style anime d&#x27;un personnage touchant son ventre.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation d&#x27;une interface de sélection de modèles d&#x27;IA pour le flux de travail vidéo, avec un curseur de souris pointant sur l&#x27;option &quot;Kling 3.0 Motion Control&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_002_00-00-37.jpg" alt="Interface d&#x27;une application ou plateforme de génération vidéo par IA montrant divers modèles disponibles (Veo 3.1, Kling 3.0, Grok Imagine, Sora 2 Pro) avec des options de configuration, un aperçu d&#x27;animation style Ghibli à gauche et le texte &quot;WORK FLOW&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_002_00-00-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:37</span>
+                        <span class="caption-text">Interface d&#x27;une application ou plateforme de génération vidéo par IA montrant divers modèles disponibles (Veo 3.1, Kling 3.0, Grok Imagine, Sora 2 Pro) avec des options de configuration, un aperçu d&#x27;animation style Ghibli à gauche et le texte &quot;WORK FLOW&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:54 - 00:01:15</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si nos performances de pilotage sont mauvaises, alors notre génération va être nulle. C&#x27;est simple. Il y a six règles d&#x27;or que vous devez appliquer lors de la recherche de vos images sources. Cela semble beaucoup, mais la plupart relèvent du bon sens. Premièrement, ne présentez qu&#x27;un seul acteur par plan. Ne laissez pas des accessoires ou d&#x27;autres acteurs bloquer le visage ou les membres de l&#x27;acteur.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustations graphiques explicatives et illustrations pédagogiques.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;FIRST JOB: THINK ABOUT INPUT FOOTAGE&quot;, &quot;POOR DRIVER FOOTAGE&quot;, &quot;DO NOT BLOCK THE PERFORMER&quot;, ainsi qu&#x27;une coche verte et une croix rouge sur les exemples de mannequins.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente visuellement des exemples de bonnes et mauvaises pratiques pour les images sources à travers des schémas et des illustrations.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_003_00-00-56.jpg" alt="Graphique explicatif montrant Jack au centre avec des exemples de mauvaises images de référence (&quot;poor driver footage&quot;) de chaque côté." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_003_00-00-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:56</span>
+                        <span class="caption-text">Graphique explicatif montrant Jack au centre avec des exemples de mauvaises images de référence (&quot;poor driver footage&quot;) de chaque côté.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_004_00-01-13.jpg" alt="Illustration schématique avec Jack à gauche et deux exemples de mannequins montrant les bonnes (coche verte) et mauvaises (croix rouge) pratiques pour ne pas bloquer l&#x27;acteur." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_004_00-01-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:13</span>
+                        <span class="caption-text">Illustration schématique avec Jack à gauche et deux exemples de mannequins montrant les bonnes (coche verte) et mauvaises (croix rouge) pratiques pour ne pas bloquer l&#x27;acteur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:15 - 00:01:49</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Assurez-vous de faire correspondre le cadrage et l&#x27;orientation de l&#x27;image cible du mieux que vous pouvez. Optez pour un bon éclairage uniforme sans ombres dures. Ayez des arrière-plans et des vêtements simples et enfin préférez une vitesse modérée à un mouvement ultra rapide. J&#x27;ai déjà préparé une belle sélection de séquences d&#x27;entrée et toute une charge de cadres de départ intéressants faits avec nano banana 2 alors regardons comment générer nos vidéos pour faire cela nous sommes sur artlist qui vient juste d&#x27;ajouter des flux de travail vidéo à vidéo sur la plateforme ce qui inclut bien sûr</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Artlist (AI Toolkit) avec incrustation vidéo du créateur (Picture-in-Picture).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;MATCH THE FRAMING AND ORIENTATION&quot; (Image 1), &quot;USE MODERATE&quot; (Image 2), et sur l&#x27;interface Artlist (Image 4) : &quot;Start creating with the AI Toolkit&quot;, &quot;AI Image&quot;, &quot;AI Video&quot;, &quot;AI Music&quot;, &quot;AI Voiceover&quot;, &quot;Lyria 3 Pro&quot;, &quot;Nano Banana 2&quot;, &quot;Kling 3.0 Motion Control&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente visuellement des conseils de cadrage et de vitesse de mouvement via des exemples animés, puis bascule sur la navigation de la plateforme Artlist pour montrer les flux de travail vidéo à vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_005_00-01-17.jpg" alt="L&#x27;écran montre deux exemples de mannequins 3D pour illustrer le cadrage et l&#x27;orientation corrects (avec une coche verte) et incorrects (avec une croix rouge)." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_005_00-01-17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:17</span>
+                        <span class="caption-text">L&#x27;écran montre deux exemples de mannequins 3D pour illustrer le cadrage et l&#x27;orientation corrects (avec une coche verte) et incorrects (avec une croix rouge).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_006_00-01-27.jpg" alt="L&#x27;écran montre deux exemples de mouvements de danse de mannequins 3D pour illustrer une vitesse de mouvement modérée (coche verte) par rapport à un mouvement trop rapide ou chaotique (croix rouge)." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_006_00-01-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:27</span>
+                        <span class="caption-text">L&#x27;écran montre deux exemples de mouvements de danse de mannequins 3D pour illustrer une vitesse de mouvement modérée (coche verte) par rapport à un mouvement trop rapide ou chaotique (croix rouge).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_007_00-01-38.jpg" alt="L&#x27;écran montre une sélection d&#x27;extraits vidéo d&#x27;entrée et de cadres de départ générés, incluant un monstre gris au téléphone et un chat humanoïde en costume." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_007_00-01-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:38</span>
+                        <span class="caption-text">L&#x27;écran montre une sélection d&#x27;extraits vidéo d&#x27;entrée et de cadres de départ générés, incluant un monstre gris au téléphone et un chat humanoïde en costume.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_008_00-01-47.jpg" alt="L&#x27;interface web de la plateforme Artlist affichant les différents outils d&#x27;intelligence artificielle disponibles (AI Image, AI Video, AI Music, AI Voiceover) et des modèles comme Lyria 3 Pro, Nano Banana 2 et Kling 3.0 Motion Control." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_008_00-01-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:47</span>
+                        <span class="caption-text">L&#x27;interface web de la plateforme Artlist affichant les différents outils d&#x27;intelligence artificielle disponibles (AI Image, AI Video, AI Music, AI Voiceover) et des modèles comme Lyria 3 Pro, Nano Banana 2 et Kling 3.0 Motion Control.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:49 - 00:02:26</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">mouvement de pince. Donc pour commencer, nous allons vouloir aller sur leur boîte à outils d&#x27;IA, et ensuite nous pouvons créer une nouvelle session pour garder tous nos éléments bien organisés. Une fois ici, nous voulons nous assurer que l&#x27;onglet vidéo est sélectionné et pour le modèle, nous voulons sélectionner Kling 3 motion control. Vous pouvez voir que nous avons cette zone pour télécharger notre image, donc c&#x27;est ici que nous pouvons déposer l&#x27;une des images de départ que nous avons faites avec Nano Banana 2. Et sur le côté droit, nous pouvons télécharger notre source vidéo et nous pouvons générer jusqu&#x27;à 30 secondes de vidéo avec une résolution allant jusqu&#x27;à 1080p. Pour commencer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Artlist (AI Toolkit) avec la boîte à outils de génération et l&#x27;onglet vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;Start creating with the AI Toolkit&quot;, &quot;Featured AI models&quot;, &quot;Lyria 3 Pro&quot;, &quot;Nano Banana 2&quot;, &quot;Kling 3.0 Motion Control&quot;, &quot;UPLOAD IMAGE: DROP IN STARTING FRAME MADE IN NANO BANANA 2&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface de la boîte à outils d&#x27;IA, sélectionne l&#x27;onglet vidéo et le modèle Kling 3.0 Motion Control pour importer une image de départ.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_009_00-01-51.jpg" alt="Interface de la boîte à outils d&#x27;IA d&#x27;Artlist montrant les différentes options de création et les modèles vedettes." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_009_00-01-51.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:51</span>
+                        <span class="caption-text">Interface de la boîte à outils d&#x27;IA d&#x27;Artlist montrant les différentes options de création et les modèles vedettes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_010_00-02-02.jpg" alt="Interface de génération vidéo avec le panneau de sélection des options et le modèle Kling 3.0 sélectionné." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_010_00-02-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:02</span>
+                        <span class="caption-text">Interface de génération vidéo avec le panneau de sélection des options et le modèle Kling 3.0 sélectionné.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_011_00-02-14.jpg" alt="Interface de téléchargement d&#x27;image avec superposition graphique explicative pour déposer l&#x27;image de départ." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_011_00-02-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:14</span>
+                        <span class="caption-text">Interface de téléchargement d&#x27;image avec superposition graphique explicative pour déposer l&#x27;image de départ.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:26 - 00:03:07</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je veux jeter un œil à l&#x27;application de notre performance sur un personnage animé. Nous avons créé cette créature poilue qui marche dans le parc et parle au téléphone. Vous pourriez imaginer que le cas d&#x27;usage ici pourrait être une publicité pour iPhone par exemple. Nous devons entrer une sorte de texte indicatif donc je vais juste insérer quelque chose de très générique ici mais pour autant que je sache, cela n&#x27;influence en réalité pas du tout la génération. Et avec notre image de départ et notre vidéo pilote téléchargées, nous pouvons passer à l&#x27;action et cliquer sur générer. Hé, j&#x27;appelais juste pour prendre des nouvelles. Oh d&#x27;accord, je suppose que je vais euh je vais te parler bientôt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil de génération vidéo Kling 3.0 Motion Control, avec options de prompt textuel et importation d&#x27;image/vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;FIRST STEP: APPLY OUR PERFORMANCE TO ANIMATED CHARACTERS&quot;, &quot;What will you create today?&quot;, et dans le champ de prompt : &quot;Animated movie.&quot;. Boutons visibles : &quot;Kling 3.0 Motion Control&quot;, &quot;Audio&quot;, &quot;Pro&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Kling 3.0, saisit un prompt textuel générique, importe une image de départ et une vidéo de référence, puis lance la génération pour animer la créature.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_012_00-02-28.jpg" alt="Interface de Kling 3.0 Motion Control avec les étapes pour appliquer la performance à un personnage animé." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_012_00-02-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:28</span>
+                        <span class="caption-text">Interface de Kling 3.0 Motion Control avec les étapes pour appliquer la performance à un personnage animé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_013_00-02-54.jpg" alt="Interface de Kling 3.0 montrant le prompt textuel générique &#x27;Animated movie&#x27; et les fichiers importés." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_013_00-02-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:54</span>
+                        <span class="caption-text">Interface de Kling 3.0 montrant le prompt textuel générique &#x27;Animated movie&#x27; et les fichiers importés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_014_00-03-05.jpg" alt="Rendu vidéo de la créature poilue aux petites cornes marchant dans le parc en téléphonant, avec Jack en incrustation vidéo (PiP) dans le coin supérieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_014_00-03-05.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:05</span>
+                        <span class="caption-text">Rendu vidéo de la créature poilue aux petites cornes marchant dans le parc en téléphonant, avec Jack en incrustation vidéo (PiP) dans le coin supérieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:07 - 00:03:40</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je pense que ce résultat est vraiment impressionnant. L&#x27;expression faciale et l&#x27;émotion transparaissent vraiment malgré mon jeu d&#x27;acteur plutôt terrible. Ce que vous remarquerez cependant, c&#x27;est que le mouvement des personnages en arrière-plan est un peu étrange. Une option ici serait de supprimer ces personnages en utilisant Photoshop ou nous pourrions tout simplement aller modifier notre prompt dans Nano Banana 2 pour qu&#x27;il soit plus clair que nous voulons seulement notre personnage principal dans le plan. Si nous régénérons avec notre image nettoyée, nous obtenons un résultat comme</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu logiciel ou interface affiché, uniquement Jack dans son studio avec une étagère en arrière-plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en plan rapproché buste dans son studio.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:40 - 00:04:14</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce. Maintenant je veux voir quels résultats nous pouvons obtenir en prenant notre performance humaine et en l&#x27;appliquant à une image photoréaliste d&#x27;un animal. Nous nous intéressons donc vraiment à la façon dont Plink peut mapper le mouvement des yeux, du nez et de la bouche sur le chat. Les animaux photoréalistes qui jouent ou qui parlent sont très présents dans les publicités télévisées. Et faire cela traditionnellement coûte très cher car cela nécessite de la synthèse d&#x27;images (CG). Il faut souvent filmer le nouvel animal pour de vrai puis faire ce qu&#x27;on appelle un remplacement de museau (muzzle replacement). Et parfois le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Kling 3.0 Motion Control et interface de montage vidéo avec incrustation PiP (Picture-in-Picture) du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;SECOND STEP:&quot;, &quot;What will you create today?&quot;, &quot;Kling 3.0 Motion Control&quot;, &quot;Audio&quot;, &quot;Pro&quot;, ainsi que &quot;OFTEN REQUIRES FILMING THE ANIMAL&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les étapes de contrôle de mouvement sur une image de chat tout en montrant l&#x27;interface de Kling 3.0, puis illustre le processus de modélisation 3D d&#x27;un animal avec un maillage (wireframe).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_015_00-03-42.jpg" alt="Interface de l&#x27;outil Kling 3.0 Motion Control avec incrustation PiP du créateur." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_015_00-03-42.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:42</span>
+                        <span class="caption-text">Interface de l&#x27;outil Kling 3.0 Motion Control avec incrustation PiP du créateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_016_00-04-12.jpg" alt="Animation montrant un chien en image de synthèse avec un maillage 3D (wireframe) et incrustation PiP du créateur." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_016_00-04-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:12</span>
+                        <span class="caption-text">Animation montrant un chien en image de synthèse avec un maillage 3D (wireframe) et incrustation PiP du créateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:14 - 00:04:50</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;animal entier doit être un atout 3D. Mais allons-y et déposons cette image ici de notre chat portant un très beau costume. Et nous avons notre vidéo de pilotage de moi en train de parler. Allons-y et cliquons sur générer et voyons comment Kling aborde cela. Voyons à quel point ce transfert de mouvement fonctionne bien sur un personnage animal. Est-ce que cela a l&#x27;air et se sent convaincant ? Un autre résultat impressionnant ici. Il y a une belle quantité d&#x27;expression qui passe. Le mouvement de la bouche semble plutôt bien synchronisé. Tout a l&#x27;air plutôt soigné. Même ce mouvement du haut du corps est bien appliqué aux bras du chat,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil de génération vidéo Kling avec panneau de contrôle des mouvements (Motion Control) et champ de prompt textuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt &quot;Animated movie.&quot;, options &quot;Kling 3.0 Motion Control&quot;, &quot;Audio&quot;, &quot;Pro&quot;, et vignettes d&#x27;importation d&#x27;images/vidéos.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur importe l&#x27;image du chat en costume et sa propre vidéo de référence pour tester le transfert de mouvement et lance la génération.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_017_00-04-16.jpg" alt="Modèle 3D filaire d&#x27;un tigre montrant l&#x27;animal entier converti en asset 3D." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_017_00-04-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:16</span>
+                        <span class="caption-text">Modèle 3D filaire d&#x27;un tigre montrant l&#x27;animal entier converti en asset 3D.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_018_00-04-27.jpg" alt="Interface de Kling 3.0 Motion Control montrant les options de génération avec l&#x27;image du chat en costume et la vidéo de référence." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_018_00-04-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:27</span>
+                        <span class="caption-text">Interface de Kling 3.0 Motion Control montrant les options de génération avec l&#x27;image du chat en costume et la vidéo de référence.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_019_00-04-48.jpg" alt="Résultat généré montrant un chat blanc bipède vêtu d&#x27;un élégant costume rose avec un nœud papillon dans un salon." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_019_00-04-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:48</span>
+                        <span class="caption-text">Résultat généré montrant un chat blanc bipède vêtu d&#x27;un élégant costume rose avec un nœud papillon dans un salon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:50 - 00:05:28</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">torse et les jambes. Maintenant, j&#x27;ai aussi essayé un plan en pied qui a été filmé sur mon iPhone. L&#x27;idée étant que le cadrage serait plus proche de la génération Nano Banana 2. Et bien que le mouvement des bras ait été très bien transféré, comme ma bouche était évidemment assez petite dans le cadre, le rendu de la parole n&#x27;est tout simplement pas très beau. Donc, si vous pouvez l&#x27;éviter, essayez de prioriser la parole en cadrant plus serré avec votre vidéo de référence ou le mouvement en filmant un plan moyen ou large. Jetons également un coup d&#x27;œil à ce personnage d&#x27;elfe debout dans une forêt. Vous pouvez imaginer cela faisant partie d&#x27;un film fantastique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo intégrée avec comparatif visuel (split-screen / incrustation PiP) montrant le sujet réel à gauche et le résultat généré à droite, ainsi que le créateur en bas au centre.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Vidéo comparative illustrant un plan en pied d&#x27;un homme et son rendu de chat anthropomorphe en costume élégant rose et nœud papillon.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente visuellement un exemple de plan large comparant la source filmée à l&#x27;iPhone et le résultat généré par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_020_00-05-03.jpg" alt="Démonstration à l&#x27;écran montrant à gauche la vidéo de référence filmée à l&#x27;iPhone en plan large, et à droite le résultat généré sous forme de chat humanoïde en costume rose." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_020_00-05-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:03</span>
+                        <span class="caption-text">Démonstration à l&#x27;écran montrant à gauche la vidéo de référence filmée à l&#x27;iPhone en plan large, et à droite le résultat généré sous forme de chat humanoïde en costume rose.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:28 - 00:06:03</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Avec l&#x27;enregistrement, je tenais ce morceau de petite lumière et je faisais un peu semblant que c&#x27;était le bâton, mais je veux vraiment me concentrer sur les mouvements subtils du visage et voir à quel point ça se retranscrit bien. Alors allons-y et cliquons sur générer. Quelque chose arrive. Nous devons y aller. Encore un assez super résultat pour être honnête. J&#x27;adore la façon dont mes mouvements de tête font bouger les cheveux de l&#x27;elfe, le collier et la cape d&#x27;une manière très spécifique. Ce que j&#x27;aime aussi, c&#x27;est</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu textuel ou interface logicielle visible à l&#x27;écran, uniquement Jack dans son studio avec un micro et un décor d&#x27;étagères et de plantes.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement à la caméra en expliquant son processus de test sur les mouvements faciaux et la génération vidéo par IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:03 - 00:06:30</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">que Kling comprend que l&#x27;épée est un élément de premier plan solide. Donc il n&#x27;essaie pas par erreur d&#x27;appliquer un quelconque mouvement de fluide à cet objet. Je ne suis pas très sûr pourquoi notre bâton fume en quelque sorte. Il y a une sorte de truc de vapeur qui en sort pour une raison quelconque. Mais c&#x27;est quand même un autre exemple vraiment impressionnant de transfert de mouvement par IA. Ensuite, je veux prendre notre personnage animé ici dans ce plan en pied.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Artlist (galerie de créations et sélection d&#x27;images générées par IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte « Choose from Your Creations » dans la fenêtre modale avec plusieurs vignettes de personnages générés par IA (un samouraï, un homme dans un paysage volcanique, un personnage animé dans la neige, une créature pelucheuse).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre un exemple de vidéo générée par Kling avec un personnage elfe, puis navigue dans l&#x27;interface d&#x27;Artlist pour sélectionner un personnage animé en pied en vue de la prochaine étape de démonstration du transfert de mouvement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_021_00-06-05.jpg" alt="Rendu vidéo d&#x27;un personnage elfe à la peau bleue tenant un bâton magique dans une forêt, avec le présentateur en médaillon PiP en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_021_00-06-05.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:05</span>
+                        <span class="caption-text">Rendu vidéo d&#x27;un personnage elfe à la peau bleue tenant un bâton magique dans une forêt, avec le présentateur en médaillon PiP en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_022_00-06-28.jpg" alt="Interface de la plateforme Artlist affichant une galerie de créations avec une fenêtre modale « Choose from Your Creations » et le présentateur en médaillon PiP." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_022_00-06-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:28</span>
+                        <span class="caption-text">Interface de la plateforme Artlist affichant une galerie de créations avec une fenêtre modale « Choose from Your Creations » et le présentateur en médaillon PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:30 - 00:07:14</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et pour la vidéo de référence, nous partons sur cette rotation complète du corps. Ce qui va être intéressant ici, c&#x27;est que Kling va devoir inventer à quoi ressemble le dos de notre personnage, car il n&#x27;a aucune référence ou contexte pour cette vue arrière de notre personnage. Tout ce qu&#x27;il a, c&#x27;est la frame de départ. Est-ce qu&#x27;il va réussir son coup ou est-ce que tout va s&#x27;effondrer ? Je veux aussi ajouter un prompt textuel très simple. Nous allons juste dire une douce chute de neige pour voir si cela influence notre génération. Allons-y et envoyons ceci également. Bien que ce résultat soit vraiment impressionnant une fois de plus,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil Kling (v3.0 Motion Control) avec zone de saisie de prompt, boutons d&#x27;options (Audio, Pro) et vignettes de prévisualisation multimédia.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : « Animated movie. » (Image 1) puis « Gentle falling snow. » (Image 3). Options sélectionnées : « Kling 3.0 Motion Control », « Audio », « Pro ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;outil de génération IA en incrustation, puis tape et modifie le prompt textuel pour ajouter l&#x27;effet de neige.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_023_00-06-32.jpg" alt="Interface de l&#x27;outil de génération vidéo avec une fenêtre PiP montrant le créateur et un aperçu vidéo de rotation corporelle." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_023_00-06-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:32</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo avec une fenêtre PiP montrant le créateur et un aperçu vidéo de rotation corporelle.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_024_00-07-00.jpg" alt="Interface de l&#x27;outil montrant le prompt textuel « Gentle falling snow. » avec les vignettes de référence et le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_024_00-07-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:00</span>
+                        <span class="caption-text">Interface de l&#x27;outil montrant le prompt textuel « Gentle falling snow. » avec les vignettes de référence et le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:14 - 00:07:50</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous allez commencer à remarquer l&#x27;un des pièges de Kling motion, c&#x27;est que l&#x27;arrière-plan a l&#x27;air vraiment sans vie. La neige n&#x27;est pas animée malgré nos invites textuelles, mais je veux expérimenter ici avec une solution de contournement pour une idée que j&#x27;ai eue afin de résoudre ce problème. J&#x27;ai donc créé cette nouvelle image ici. Et ce que nous allons faire, c&#x27;est cliquer sur l&#x27;onglet d&#x27;édition pour que je puisse utiliser Nano Banana 2 afin d&#x27;apporter un changement ici. Pour l&#x27;invite textuelle, nous allons dire de retirer l&#x27;homme de l&#x27;image, mais de préserver tous les autres détails. Nous voulons nous assurer que nous générons également en résolution 4K.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de génération d&#x27;image/vidéo IA incluant le modèle Nano Banana 2 et un affichage en incrustation (PiP) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans la boîte de dialogue : &quot;Remove the man from the image. Preserve all other details.&quot; Paramètres visibles : &quot;Nano Banana 2&quot;, rapport d&#x27;aspect &quot;16:9&quot;, résolution &quot;2K&quot;, &quot;1 Image&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;outil d&#x27;IA et le prompt textuel saisi pour modifier l&#x27;image en retirant le personnage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_025_00-07-39.jpg" alt="Interface de l&#x27;outil d&#x27;IA avec affichage de vignettes d&#x27;images générées, d&#x27;une petite fenêtre PiP de Jack et d&#x27;une boîte de dialogue de prompt avec le modèle Nano Banana 2." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_025_00-07-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:39</span>
+                        <span class="caption-text">Interface de l&#x27;outil d&#x27;IA avec affichage de vignettes d&#x27;images générées, d&#x27;une petite fenêtre PiP de Jack et d&#x27;une boîte de dialogue de prompt avec le modèle Nano Banana 2.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:50 - 00:08:25</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Bien sûr. Nous avons donc notre génération Nano Banana 2 ici. Nous voulons maintenant cliquer sur l&#x27;onglet de génération de vidéo. Et je vais aller insérer ce prompt ici. Caméra fixe, rivières de lave qui coulent, vapeur et fumée s&#x27;élevant dans le ciel et tisons flottants. Faux lieu, paysage fictif, pas de musique, pas de dialogue. Et ici nous allons utiliser Kling 3, juste la version standard pour générer notre vidéo d&#x27;arrière-plan. J&#x27;ai donc cette génération de mouvement Kling de moi en train de parler, mais comme vous pouvez le voir, elle a toujours cet arrière-plan sans vie.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Artlist, panneau de génération de prompt, menu de sélection des modèles d&#x27;IA (Kling 3.0, Veo 3.1, etc.) et lecteur vidéo QuickTime.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt texte : &quot;Static camera, lava rivers flowing, steam and smoke billowing into the sky and embers floating. Fake location, fictional landscape, no music, no dialogue.&quot; Paramètres : Nano Banana 2, modèle Kling 3.0, format 16:9, qualité 4K.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface d&#x27;Artlist, sélectionne l&#x27;onglet de génération vidéo, saisit le prompt pour le décor volcanique, choisit le modèle Kling 3.0 et présente le résultat final de l&#x27;animation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_026_00-07-52.jpg" alt="Interface d&#x27;Artlist montrant l&#x27;image générée d&#x27;un volcan avec des rivières de lave et les options de génération vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_026_00-07-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:52</span>
+                        <span class="caption-text">Interface d&#x27;Artlist montrant l&#x27;image générée d&#x27;un volcan avec des rivières de lave et les options de génération vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_027_00-08-03.jpg" alt="Interface de prompt textuel affichant le texte descriptif du paysage volcanique et la sélection du modèle Kling 3.0." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_027_00-08-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:03</span>
+                        <span class="caption-text">Interface de prompt textuel affichant le texte descriptif du paysage volcanique et la sélection du modèle Kling 3.0.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_028_00-08-14.jpg" alt="Fenêtre de sélection des modèles d&#x27;IA avec les détails du modèle Kling 3.0 et d&#x27;autres alternatives." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_028_00-08-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:14</span>
+                        <span class="caption-text">Fenêtre de sélection des modèles d&#x27;IA avec les détails du modèle Kling 3.0 et d&#x27;autres alternatives.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_029_00-08-23.jpg" alt="Aperçu de la vidéo finale générée par Kling montrant le personnage animé sur fond de volcan en éruption." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_029_00-08-23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:23</span>
+                        <span class="caption-text">Aperçu de la vidéo finale générée par Kling montrant le personnage animé sur fond de volcan en éruption.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:25 - 00:08:46</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez donc importer ceci dans Premiere Pro ou votre logiciel de montage de choix. Ce que nous avons donc, c&#x27;est la couche supérieure, qui est la sortie de mouvement Kling de moi parlant à la caméra. Ensuite, en dessous, nous avons notre génération Kling 3 où les rivières de lave coulent, les braises se déplacent, la fumée s&#x27;élève, tout ce genre de bonnes choses.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (logiciel de montage vidéo)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Timeline de montage comportant plusieurs pistes vidéo (V1 à V5) et audio (A1 à A4). Dans la fenêtre de projet, des fichiers multimédias nommés &quot;Dramatic_scene_from_a_fantasy_Kling_30_Motion_Control_72824.mp4&quot; et des clips vidéo montrant Jack et un paysage volcanique. Une fenêtre de dossiers de téléchargements macOS est également ouverte en surimpression sur l&#x27;image 1.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son écran de montage vidéo sous Premiere Pro, illustrant la superposition de ses calques vidéo entre la séquence tournée face caméra et la génération Kling 3 d&#x27;un paysage volcanique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_030_00-08-27.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline de montage et un encadré vidéo incrusté du créateur dans le coin supérieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_030_00-08-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:27</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline de montage et un encadré vidéo incrusté du créateur dans le coin supérieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_031_00-08-44.jpg" alt="Interface d&#x27;Adobe Premiere Pro avec le panneau de montage détaillé montrant deux pistes superposées et le rendu vidéo d&#x27;un volcan en éruption dans le moniteur de prévisualisation." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_031_00-08-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:44</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro avec le panneau de montage détaillé montrant deux pistes superposées et le rendu vidéo d&#x27;un volcan en éruption dans le moniteur de prévisualisation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:46 - 00:09:24</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ce que nous pouvons faire, c&#x27;est sélectionner l&#x27;outil de masque d&#x27;objet, puis sélectionner notre personnage. Voyez, j&#x27;ai besoin d&#x27;ajouter les yeux ici et même cette partie de mon chat pour une raison quelconque. Et avec tout cela sélectionné, nous pouvons aller de l&#x27;avant et cliquer sur le suivi du masque sélectionné vers l&#x27;avant et vers l&#x27;arrière, et maintenant nous pouvons faire glisser ce masque d&#x27;objet sur l&#x27;opacité et vous verrez que cela va me découper de l&#x27;arrière-plan et me placer au-dessus de ce nouvel arrière-plan en mouvement provenant de Kling 3, et comme vous pouvez le voir, nous avons combiné avec succès notre génération de mouvement Kling avec Kling 3.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de montage vidéo (similaire à Adobe Premiere Pro) avec panneaux de timeline, moniteur de programme, chutier et panneau des propriétés.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms de clips visibles dans le chutier et la timeline tels que &quot;Artlist VIDEO TO VIDEO&quot;, &quot;Dramatic_scene_from_a_fantasy__Kling_30_Motion_Control_72624.mp4&quot;, et paramètres de transformation (échelle à 135%, opacité 100%).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur démontre le masquage et le détourage d&#x27;un personnage pour l&#x27;incruster sur un nouvel arrière-plan vidéo généré par IA dans un logiciel de montage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_032_00-08-48.jpg" alt="Interface d&#x27;un logiciel de montage vidéo montrant la timeline avec plusieurs pistes vidéo et audio et les fichiers sources importés." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_032_00-08-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:48</span>
+                        <span class="caption-text">Interface d&#x27;un logiciel de montage vidéo montrant la timeline avec plusieurs pistes vidéo et audio et les fichiers sources importés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_033_00-08-59.jpg" alt="Aperçu du moniteur dans le logiciel de montage affichant le personnage détouré avec un contour pointillé rouge sur un arrière-plan volcanique en mouvement." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_033_00-08-59.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:59</span>
+                        <span class="caption-text">Aperçu du moniteur dans le logiciel de montage affichant le personnage détouré avec un contour pointillé rouge sur un arrière-plan volcanique en mouvement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_034_00-09-12.jpg" alt="Vue globale de l&#x27;interface de montage montrant la chronologie et les fenêtres de prévisualisation combinant les calques vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_034_00-09-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:12</span>
+                        <span class="caption-text">Vue globale de l&#x27;interface de montage montrant la chronologie et les fenêtres de prévisualisation combinant les calques vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_035_00-09-22.jpg" alt="Fenêtre de prévisualisation montrant le personnage superposé au paysage volcanique animé, avec le panneau des propriétés sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_035_00-09-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:22</span>
+                        <span class="caption-text">Fenêtre de prévisualisation montrant le personnage superposé au paysage volcanique animé, avec le panneau des propriétés sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:24 - 00:10:02</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">arrière-plan. Instantanément, cela prend beaucoup plus vie. Ça a l&#x27;air beaucoup plus haut de gamme. Nous tirons parti de ce transfert de mouvement par IA ainsi que des générations standard d&#x27;image à vidéo par IA. Et le résultat final s&#x27;est assemblé de manière vraiment agréable. C&#x27;est donc une bonne petite astuce de contournement pour vous et vos projets. L&#x27;inconvénient ici est que pour que ce flux de travail fonctionne, nous devons utiliser un plan fixe, mais nous pouvons toujours ajouter un mouvement de caméra au montage, donc juste un léger zoom avant ou nous pourrions même appliquer un mouvement de caméra à l&#x27;épaule qui insufflerait vraiment un peu plus de vie à cette fin.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de montage vidéo de type Adobe Premiere Pro avec panneau de propriétés et timeline, affichant un plan vidéo généré par IA intégrant un personnage 3D sur fond volcanique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans Premiere : nom du fichier &quot;Dramatic_scene_from_a_fantasy_Kling&quot;, réglages de transformation (Position 1280X, Échelle 135%, Opacité 100%), timeline avec pistes vidéo et audio. Le contenu principal affiché est une vidéo générée par IA montrant un avatar 3D parlant devant une coulée de lave volcanique.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre un plan vidéo fixe généré par IA intégré dans son logiciel de montage, illustrant le résultat d&#x27;un flux de travail combinant transfert de mouvement et génération image-à-vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_036_00-09-26.jpg" alt="Interface d&#x27;un logiciel de montage vidéo (type Adobe Premiere) montrant le rendu d&#x27;un personnage 3D animé devant un volcan en éruption, avec le créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_036_00-09-26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:26</span>
+                        <span class="caption-text">Interface d&#x27;un logiciel de montage vidéo (type Adobe Premiere) montrant le rendu d&#x27;un personnage 3D animé devant un volcan en éruption, avec le créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_037_00-09-50.jpg" alt="Gros plan sur le rendu vidéo cinématique du personnage 3D animé sur fond de volcan, avec le créateur en incrustation PiP dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_037_00-09-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:50</span>
+                        <span class="caption-text">Gros plan sur le rendu vidéo cinématique du personnage 3D animé sur fond de volcan, avec le créateur en incrustation PiP dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_038_00-10-00.jpg" alt="Suite du rendu vidéo cinématique du personnage 3D en plan fixe, avec le créateur en incrustation PiP dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_038_00-10-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:00</span>
+                        <span class="caption-text">Suite du rendu vidéo cinématique du personnage 3D en plan fixe, avec le créateur en incrustation PiP dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:02 - 00:10:31</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">résultat. Maintenant, si vous ne voulez pas utiliser de séquences de vous-même, vous avez l&#x27;option d&#x27;utiliser des images de stock à la place, et Artlist possède une très bonne bibliothèque pour cela directement au sein de la plateforme. Vous voulez simplement aller dans le catalogue de stock en haut, puis aller vers la section des séquences. Un bon flux de travail ici est de télécharger un actif que vous aimez, de l&#x27;importer dans Premiere ou votre logiciel de montage de choix, et d&#x27;aller exporter la première image de la séquence.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme web Artlist (Image 2) et logiciel de montage Adobe Premiere Pro (Image 4).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur Artlist : menus &quot;Royalty-Free Music&quot;, &quot;Sound Effects&quot;, &quot;Footage&quot;, &quot;Video Templates&quot;, &quot;AI Toolkit&quot;, &quot;Stock Catalog&quot;. Sur Premiere Pro : fenêtre &quot;Export Frame&quot; avec les champs &quot;Name&quot; (Artlist VIDEO TO VIDEO.00_00_00_00), &quot;Format&quot; (JPEG), &quot;Path&quot; (/Users/jack/Desktop), ainsi que les boutons &quot;Cancel&quot; et &quot;OK&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface d&#x27;Artlist pour trouver des vidéos de stock, puis montre la fenêtre d&#x27;exportation d&#x27;une image fixe (&quot;Export Frame&quot;) dans Adobe Premiere Pro.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_039_00-10-12.jpg" alt="Interface de la plateforme Artlist montrant le menu du catalogue de stock et les options de recherche de séquences." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_039_00-10-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:12</span>
+                        <span class="caption-text">Interface de la plateforme Artlist montrant le menu du catalogue de stock et les options de recherche de séquences.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_040_00-10-29.jpg" alt="Interface d&#x27;Adobe Premiere Pro affichant la fenêtre de dialogue &quot;Export Frame&quot; par-dessus la timeline du projet." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_040_00-10-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:29</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro affichant la fenêtre de dialogue &quot;Export Frame&quot; par-dessus la timeline du projet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:31 - 00:10:51</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pouvons ensuite utiliser Nano Banana pour transformer le personnage et le décor tout en préservant le cadrage et la composition. Nous suivons ensuite le même processus en téléversant notre image Nano Banana 2, puis en téléversant également nos séquences vidéo. Et regardez simplement avec quelle efficacité cette performance émotionnelle est retranscrite.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Artlist (AI Tools) avec panneau de configuration latéral pour Nano Banana 2, gestion des prompts, réglages de modèle et d&#x27;aspect ratio.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;Match the framing and composition of the original shot, as well as the scale and pose of the original character. Change the character to be a purple humanoid alien with realistic skin texture and visible pores. Give the alien facial tattoos, change the background to be the white plastic walls of a space ship interior.&quot; Paramètres : Model: Nano Banana 2, Aspect ratio: 16:9, Quality: 4K.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de génération d&#x27;image avec Nano Banana 2 et compare ensuite le rendu final transformé avec la performance émotionnelle d&#x27;origine.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_041_00-10-33.jpg" alt="Interface de la plateforme Artlist montrant les paramètres de Nano Banana 2 avec le prompt textuel de transformation du personnage en alien violet." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_041_00-10-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:33</span>
+                        <span class="caption-text">Interface de la plateforme Artlist montrant les paramètres de Nano Banana 2 avec le prompt textuel de transformation du personnage en alien violet.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_042_00-10-49.jpg" alt="Comparaison visuelle côte à côte entre la vidéo source originale et le résultat transformé en alien violet, avec le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_042_00-10-49.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:49</span>
+                        <span class="caption-text">Comparaison visuelle côte à côte entre la vidéo source originale et le résultat transformé en alien violet, avec le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:51 - 00:11:10</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le seul problème ici, c&#x27;est que la larme est en quelque sorte figée. Et le plan semble perdre et reprendre légèrement la mise au point. C&#x27;est quelque chose que j&#x27;ai remarqué à travers plusieurs générations de mouvements de Kling. Mais la façon dont la peau et les cheveux bougent est vraiment précise quand on compare aux images sources.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de montage vidéo avec affichage d&#x27;extraits générés par IA et incrustation PiP du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Affichage d&#x27;une vidéo principale générée par IA montrant un personnage féminin au visage maquillé de violet et de motifs lumineux, avec un encadré montrant la source originale et le créateur dans le coin inférieur gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre son analyse comparative entre les mouvements générés par l&#x27;IA (peau, cheveux, larmes) et les images sources tout en parlant face à sa caméra.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_043_00-10-53.jpg" alt="Extrait vidéo comparatif affichant un gros plan sur le visage d&#x27;un personnage féminin aux teintes violettes avec des motifs lumineux, et un encadré montrant l&#x27;image source, avec Jack en incrustation (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_043_00-10-53.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:53</span>
+                        <span class="caption-text">Extrait vidéo comparatif affichant un gros plan sur le visage d&#x27;un personnage féminin aux teintes violettes avec des motifs lumineux, et un encadré montrant l&#x27;image source, avec Jack en incrustation (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_044_00-11-08.jpg" alt="Extrait vidéo similaire montrant le visage du personnage féminin avec une larme figée, comparé à l&#x27;image source dans un petit encadré, avec Jack visible en incrustation (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_044_00-11-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:08</span>
+                        <span class="caption-text">Extrait vidéo similaire montrant le visage du personnage féminin avec une larme figée, comparé à l&#x27;image source dans un petit encadré, avec Jack visible en incrustation (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:10 - 00:11:31</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et juste pour vous montrer un plan dynamique en pied, nous avons pris des images d&#x27;archive de la bibliothèque Artlist et les avons appliquées à notre samouraï pour le faire danser. Ce qui est impressionnant pour moi, c&#x27;est l&#x27;interaction avec le sol ainsi que ces ombres réalistes. Cela semble très crédible et, plus important encore, cela a du sens physiquement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Lecteur vidéo / Montage vidéo avec incrustations (Picture-in-Picture) de séquences d&#x27;archives et de référence sur fond vert.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Images d&#x27;archive de la bibliothèque Artlist représentant un paysage enneigé avec un samouraï doré animé, et une vidéo de référence sur fond vert en haut à gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le samouraï doré danse dans un décor enneigé en interagissant de manière réaliste avec le sol et les ombres, tandis que le mouvement original d&#x27;une danseuse sur fond vert est visible en insert.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_045_00-11-20.jpg" alt="Vidéo d&#x27;un samouraï doré dansant dans un paysage enneigé, avec un insert vidéo sur fond vert en haut à gauche montrant le mouvement de référence original et le créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_045_00-11-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:20</span>
+                        <span class="caption-text">Vidéo d&#x27;un samouraï doré dansant dans un paysage enneigé, avec un insert vidéo sur fond vert en haut à gauche montrant le mouvement de référence original et le créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_046_00-11-29.jpg" alt="Suite de la séquence montrant le samouraï doré en train de danser dans la neige, avec les mêmes inserts incrustés à l&#x27;écran." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_046_00-11-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:29</span>
+                        <span class="caption-text">Suite de la séquence montrant le samouraï doré en train de danser dans la neige, avec les mêmes inserts incrustés à l&#x27;écran.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:31 - 00:12:04</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parfois, l&#x27;IA a du mal avec ça. La façon dont l&#x27;armure bouge a aussi l&#x27;air exactement telle que vous l&#x27;imagineriez. Et même le mouvement de caméra a été appliqué de manière vraiment convaincante. Maintenant, je veux aborder brièvement certains des inconvénients de Kling motion. Le premier est que souvent la synchronisation labiale n&#x27;est pas tout à fait parfaite. On a parfois l&#x27;impression que la bouche ne bouge pas assez ou qu&#x27;elle est un peu en décalage par rapport à la parole. Nous avons également le problème que nous ne pouvons montrer qu&#x27;un seul personnage par plan et évidemment c&#x27;est un peu restrictif du point de vue de la narration.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de montage vidéo avec affichage de vignettes, incrustations vidéo (PiP) et texte synthétique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;LIP SYNC ISN&#x27;T QUITE PERFECT&quot;, &quot;MOVEMENT FEELS INCOMPLETE&quot;, &quot;LAGGING BEHIND&quot;, &quot;CAN ONLY SHOW ONE CHARACTER PER SHOT&quot;, &quot;RESTRICTIVE FOR STORYTELLING&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les défauts de Kling Motion en affichant des exemples visuels de synchronisation labiale imparfaite et de limitation à un seul personnage par plan.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_047_00-11-33.jpg" alt="Démonstration d&#x27;une génération de samouraï doré en armure dans un paysage enneigé avec incrustation d&#x27;une danseuse sur fond vert." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_047_00-11-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:33</span>
+                        <span class="caption-text">Démonstration d&#x27;une génération de samouraï doré en armure dans un paysage enneigé avec incrustation d&#x27;une danseuse sur fond vert.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_048_00-11-53.jpg" alt="Présentation des inconvénients de Kling Motion avec du texte à l&#x27;écran et des exemples de vidéos comparatives." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_048_00-11-53.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:53</span>
+                        <span class="caption-text">Présentation des inconvénients de Kling Motion avec du texte à l&#x27;écran et des exemples de vidéos comparatives.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_049_00-12-02.jpg" alt="Illustration de la limitation à un seul personnage par plan avec une comparaison visuelle d&#x27;un personnage au téléphone." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_049_00-12-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:02</span>
+                        <span class="caption-text">Illustration de la limitation à un seul personnage par plan avec une comparaison visuelle d&#x27;un personnage au téléphone.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:04 - 00:12:26</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela est pourtant logique. C&#x27;est déjà assez impressionnant que Kling puisse détecter un seul personnage et reproduire de manière convaincante ses mouvements. Mais appliquer le même processus à plusieurs personnages, tout devient incroyablement complexe. C&#x27;est peut-être un jour possible, mais pas tout de suite. Et enfin, nous devons parler de la fidélité de vos générations.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Incrustation vidéo (PiP) avec le présentateur en bas à gauche et un grand écran de démonstration montrant un rendu vidéo généré par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Rendu vidéo d&#x27;un personnage en armure traditionnelle japonaise dorée sur un sol enneigé avec des montagnes en arrière-plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Le samouraï en armure effectue des mouvements de combat ou des gestes dans la neige, illustrant les capacités de génération de mouvements d&#x27;un outil d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_050_00-12-24.jpg" alt="Vidéo générée par IA montrant un samouraï en armure dorée effectuant des mouvements dans un paysage enneigé, avec le présentateur incrusté en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_050_00-12-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:24</span>
+                        <span class="caption-text">Vidéo générée par IA montrant un samouraï en armure dorée effectuant des mouvements dans un paysage enneigé, avec le présentateur incrusté en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:26 - 00:13:01</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et il y a ici deux problèmes distincts. Le premier est que s&#x27;il y a trop de mouvements de pilotage dans votre vidéo de référence, vous allez commencer à obtenir une sorte de déchirement vraiment désagréable. et c&#x27;est tout à fait typique, même d&#x27;un simple Kling 3 normal avec un flux de travail texte-vers-vidéo ou image-vers-vidéo. Chaque fois que le mouvement est vraiment intense et que l&#x27;on s&#x27;attendrait à voir un flou de mouvement si cela avait été tourné pour de vrai, on a tendance à obtenir ce genre d&#x27;artefacts tranchants et c&#x27;est juste un problème quand il s&#x27;agit de Kling 3. Et le problème suivant est en quelque sorte l&#x27;opposé. Vos générations peuvent paraître assez douces.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Capture d&#x27;écran vidéo avec superposition de texte et incrustation (PiP) du créateur face caméra dans son studio.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;TOO MUCH DRIVING MOVEMENT IN THE VIDEO REFERENCE LEADS TO &#x27;TEARING&#x27; IN GENERATED VIDEO&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente un exemple visuel illustrant les défauts de génération vidéo (artefacts de déchirement sur le personnage de samouraï en armure dorée dans la neige).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_051_00-12-28.jpg" alt="Démonstration vidéo d&#x27;un personnage en armure dorée dans un paysage enneigé, avec le créateur en incrustation (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_051_00-12-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:28</span>
+                        <span class="caption-text">Démonstration vidéo d&#x27;un personnage en armure dorée dans un paysage enneigé, avec le créateur en incrustation (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_052_00-12-38.jpg" alt="Gros plan sur le personnage en armure dorée illustrant les artefacts de déchirement (&quot;tearing&quot;), avec du texte explicatif à gauche et le créateur en PiP." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_052_00-12-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:38</span>
+                        <span class="caption-text">Gros plan sur le personnage en armure dorée illustrant les artefacts de déchirement (&quot;tearing&quot;), avec du texte explicatif à gauche et le créateur en PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:01 - 00:13:32</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Les détails texturaux fins finissent souvent par se perdre, et même en utilisant un outil de mise à l&#x27;échelle comme Topaz, cela ne résout pas nécessairement ce problème. Une fois que ces détails sont perdus, il est vraiment difficile de les ramener ou de les imiter de manière convaincante. La meilleure solution que j&#x27;ai trouvée est d&#x27;ajouter une couche de grain de pellicule par-dessus vos générations dans le logiciel de montage de votre choix. Cela ajoute juste un tout petit peu plus de texture et, espérons-le, empêche le spectateur de se poser trop de questions.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de montage vidéo avec affichage de rendu (génération vidéo par IA d&#x27;un chat habillé) et incrustation vidéo (PiP) du présentateur Jack en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;FINE TEXTURAL DETAILS OFTEN GET LOST&quot; (Image 1), &quot;DIFFICULT TO GET THESE DETAILS BACK ONCE THEY&#x27;RE LOST&quot; (Image 2), &quot;ADDING A LAYER OF FILM GRAIN ON TOP OF YOUR GENERATIONS&quot; (Image 3). Vidéo d&#x27;un chat anthropomorphe blanc portant un costume rose et un nœud papillon dans un salon.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente une vidéo générée par IA pour illustrer la perte de détails texturaux et démontre visuellement l&#x27;effet avec des annotations textuelles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_053_00-13-03.jpg" alt="Vidéo générée montrant un chat anthropomorphe en costume rose, avec un encadré PiP de Jack en bas à gauche et du texte explicatif à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_053_00-13-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:03</span>
+                        <span class="caption-text">Vidéo générée montrant un chat anthropomorphe en costume rose, avec un encadré PiP de Jack en bas à gauche et du texte explicatif à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_054_00-13-11.jpg" alt="Gros plan sur le chat anthropomorphe en costume rose, avec un encadré PiP de Jack et du texte explicatif sur la perte des détails." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_054_00-13-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:11</span>
+                        <span class="caption-text">Gros plan sur le chat anthropomorphe en costume rose, avec un encadré PiP de Jack et du texte explicatif sur la perte des détails.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_055_00-13-22.jpg" alt="Vidéo générée du chat anthropomorphe avec du texte explicatif à gauche concernant l&#x27;ajout d&#x27;une couche de grain de film, et Jack en encadré PiP." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_055_00-13-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:22</span>
+                        <span class="caption-text">Vidéo générée du chat anthropomorphe avec du texte explicatif à gauche concernant l&#x27;ajout d&#x27;une couche de grain de film, et Jack en encadré PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:32 - 00:13:54</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Avec tout cela en tête, je pense que l&#x27;application la plus impressionnante ici est le mappage des mouvements humains sur des personnages animés. Je pense que c&#x27;est beaucoup plus indulgent et que cela met vraiment en valeur les points forts du modèle. Je pense vraiment que c&#x27;est un outil incroyable et qu&#x27;il y a tout un tas de cas d&#x27;utilisation réels ici en matière de réalisation de films et de publicité.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustations graphiques et multiples fenêtres de comparaison visuelle (PiP).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Pas de texte ou de code visible, affichage d&#x27;une comparaison visuelle entre un personnage animé et les mouvements de référence.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre son propos en montrant le résultat du mappage des mouvements sur des personnages animés et réalistes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_056_00-13-34.jpg" alt="Comparaison vidéo montrant un personnage IA réaliste reproduisant les mouvements humains de Jack." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_056_00-13-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:34</span>
+                        <span class="caption-text">Comparaison vidéo montrant un personnage IA réaliste reproduisant les mouvements humains de Jack.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-ncD-OSWBWi0/frame_057_00-13-40.jpg" alt="Animation style Ghibli reproduisant les mouvements de Jack dans le cadre de la démonstration du modèle." loading="lazy" onclick="openLightbox('screenshots/YT-ncD-OSWBWi0/frame_057_00-13-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:40</span>
+                        <span class="caption-text">Animation style Ghibli reproduisant les mouvements de Jack dans le cadre de la démonstration du modèle.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:54 - 00:14:13</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Assurez-vous simplement d&#x27;appliquer ces six règles d&#x27;or que nous avons abordées au début de la vidéo. Chaque fois que vous recherchez vos séquences de conduite. Si vous avez la moindre question, n&#x27;hésitez pas à la laisser ci-dessous dans la section des commentaires. J&#x27;essaie toujours de répondre à un maximum d&#x27;entre elles. Si vous avez apprécié le contenu d&#x27;aujourd&#x27;hui, n&#x27;hésitez pas à lâcher un pouce bleu pour moi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le créateur Jack s&#x27;adresse directement aux spectateurs depuis son studio avec des étagères et des plantes en arrière-plan. Un texte animé &quot;6 GOLDEN&quot; apparaît brièvement sur l&#x27;image 1, et un bouton &quot;SUBSCRIBE&quot; apparaît sur l&#x27;image 3.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur parle face caméra pour conclure la vidéo et inciter à s&#x27;abonner et commenter.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:13 - 00:14:23</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Pensez à vous abonner et bien sûr, activez cette cloche de notification pour ne jamais manquer aucun contenu futur. J&#x27;apprécie vraiment que vous ayez regardé la vidéo d&#x27;aujourd&#x27;hui. Je vous retrouve dans la prochaine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu textuel, prompt ou interface logicielle visible à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement à son audience depuis son studio, invitant les spectateurs à s&#x27;abonner et à activer les notifications en conclusion de la vidéo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

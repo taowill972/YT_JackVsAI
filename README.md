@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `28 / 59` (`47.5%`)
+- **Vidéos traitées** : `29 / 59` (`49.2%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -44,6 +44,7 @@
 | 2026-04-12 | [Comment utiliser Seedance 2.0 pour le cinéma IA (Workflow complet)](2026-04-12_YT-suIwxbO-_ZE_Comment utiliser Seedance 2.0 pour le cinéma IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-04-12_YT-suIwxbO-_ZE_Comment utiliser Seedance 2.0 pour le cinéma IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 19m 39s | `78 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=suIwxbO-_ZE) | `suIwxbO-_ZE` |
 | 2026-04-09 | [Comment se cloner avec l'IA et ne plus JAMAIS filmer](2026-04-09_YT-9_1tIRHfomQ_Comment se cloner avec l'IA et ne plus JAMAIS filmer_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-04-09_YT-9_1tIRHfomQ_Comment se cloner avec l'IA et ne plus JAMAIS filmer_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 06s | `60 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=9_1tIRHfomQ) | `9_1tIRHfomQ` |
 | 2026-04-04 | [Seedance 2.0 est ENFIN là… Est-il meilleur que Kling 3.0 ?](2026-04-04_YT-xS6WVR82nQE_Seedance 2.0 est ENFIN là… Est-il meilleur que Kling 3.0_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-04-04_YT-xS6WVR82nQE_Seedance 2.0 est ENFIN là… Est-il meilleur que Kling 3.0_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 21m 43s | `101 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=xS6WVR82nQE) | `xS6WVR82nQE` |
+| 2026-04-03 | [Comment utiliser Kling Motion pour le cinéma IA (ÉPOUSTOUFLANT)](2026-04-03_YT-ncD-OSWBWi0_Comment utiliser Kling Motion pour le cinéma IA (ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-04-03_YT-ncD-OSWBWi0_Comment utiliser Kling Motion pour le cinéma IA (ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 14m 23s | `57 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=ncD-OSWBWi0) | `ncD-OSWBWi0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
