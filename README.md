@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `31 / 59` (`52.5%`)
+- **Vidéos traitées** : `32 / 59` (`54.2%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -47,6 +47,7 @@
 | 2026-04-03 | [Comment utiliser Kling Motion pour le cinéma IA (ÉPOUSTOUFLANT)](2026-04-03_YT-ncD-OSWBWi0_Comment utiliser Kling Motion pour le cinéma IA (ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-04-03_YT-ncD-OSWBWi0_Comment utiliser Kling Motion pour le cinéma IA (ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 14m 23s | `57 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=ncD-OSWBWi0) | `ncD-OSWBWi0` |
 | 2026-03-23 | [Cet outil rend la création de films par IA ultra facile](2026-03-23_YT-L7ufHNtj5Rg_Cet outil rend la création de films par IA ultra facile_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-03-23_YT-L7ufHNtj5Rg_Cet outil rend la création de films par IA ultra facile_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 12m 30s | `37 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=L7ufHNtj5Rg) | `L7ufHNtj5Rg` |
 | 2026-03-19 | [Créer son studio d'animation solo avec l'IA](2026-03-19_YT-s4b8iU3ecTs_Créer son studio d'animation solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-03-19_YT-s4b8iU3ecTs_Créer son studio d'animation solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 25m 25s | `99 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=s4b8iU3ecTs) | `s4b8iU3ecTs` |
+| 2026-02-28 | [Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILLIMITÉS !)](2026-02-28_YT-DJsprWiw130_Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILL_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-02-28_YT-DJsprWiw130_Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILL_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 01s | `85 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=DJsprWiw130) | `DJsprWiw130` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*

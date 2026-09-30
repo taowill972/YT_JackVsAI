@@ -30,7 +30,8 @@
     "xS6WVR82nQE",
     "ncD-OSWBWi0",
     "L7ufHNtj5Rg",
-    "s4b8iU3ecTs"
+    "s4b8iU3ecTs",
+    "DJsprWiw130"
   ],
   "processed_videos": [
     {
@@ -466,9 +467,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-03-19_YT-s4b8iU3ecTs_Créer son studio d'animation solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T22:50:26Z",
       "status": "completed"
+    },
+    {
+      "video_id": "DJsprWiw130",
+      "title": "Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILLIMITÉS !)",
+      "raw_title": "How to Create Consistent Characters in Your AI Videos (UNLIMITED CAMERA ANGLES!)",
+      "filename_md": "2026-02-28_YT-DJsprWiw130_Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILL_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-02-28_YT-DJsprWiw130_Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILL_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-02-28",
+      "duration": 1021,
+      "screenshots_count": 85,
+      "filepath_md": "/root/YT_JackVsAI/2026-02-28_YT-DJsprWiw130_Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILL_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-02-28_YT-DJsprWiw130_Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILL_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-30T23:06:52Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 31,
+  "completed_count": 32,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-30T22:00:06Z"
