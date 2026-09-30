@@ -1,0 +1,2799 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment traduire votre vidéo IA dans n&#x27;importe quelle langue (Workflow complet) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment traduire votre vidéo IA dans n&#x27;importe quelle langue (Workflow complet)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-05-31</span>
+                <span class="badge">⏱️ 18m 58s</span>
+                <span class="badge">🆔 <code>wM0zOwH4d2s</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=wM0zOwH4d2s" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>La réalisation de films et de contenus par intelligence artificielle entre dans une ère véritablement mondiale grâce à l'émergence de workflows de traduction et de synchronisation de pointe. Comme l'explique l'expert Jack dans ce tutoriel, les créateurs peuvent désormais transcender la barrière de la langue en adaptant une unique vidéo à n'importe quel marché international, tout en préservant l'intégrité du personnage, de sa performance émotionnelle et des éléments visuels. Cette approche révolutionnaire élimine le besoin fastidieux de reconstruire des scènes à partir de zéro, de réenregistrer des dialogues en studio ou de multiplier les tournages, offrant ainsi aux créateurs indépendants et aux publicitaires la capacité de rivaliser sur une scène globale avec un minimum de friction.</p><p>Le flux de travail méthodique présenté par Jack s'articule autour de trois étapes clés ne nécessitant aucun prompt complexe. Tout d'abord, l'extraction de la piste audio originale s'effectue via un logiciel de montage classique tel qu'Adobe Premiere Pro. Ensuite, cette piste est injectée dans l'outil de doublage d'ElevenLabs (en version v2) afin de générer une traduction vocale multilingue qui conserve l'intonation, le timbre et l'émotion originaux à travers plus de 90 langues. Enfin, la réinjection de cet audio doublé s'accompagne d'une étape cruciale de synchronisation labiale vidéo, exploitant des modèles spécialisés intégrés pour marier parfaitement les mouvements des lèvres du personnage à la nouvelle langue cible.</p><p>Au-delà de la simple traduction littérale, ce workflow débloque des opportunités créatives inédites, comme l'alternance stylistique et dramatique des langues au sein d'une même scène (par exemple, le passage de l'anglais à l'italien dans un contexte de film de mafia). En évitant l'écueil des voix off robotiques et en sélectionnant rigoureusement les technologies de synchronisation vidéo les plus performantes, les créateurs maximisent l'engagement de leur audience internationale. Ce processus rationalisé transforme radicalement la production vidéo moderne, permettant à un seul individu de produire du contenu de qualité cinématographique et publicitaire (UGC) taillé sur mesure pour des marchés diversifiés.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">ElevenLabs</span><span class="tool-tag">Premiere Pro</span><span class="tool-tag">flux</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Suppression de la barrière linguistique** : Le workflow permet d&#x27;adapter des contenus vidéo à n&#x27;importe quel marché mondial sans altérer l&#x27;identité visuelle du personnage ni sa performance d&#x27;origine.</span></li><li><span class="point-bullet">✦</span><span>Conservation de l&#x27;émotion et de l&#x27;intonation** : Grâce au doublage v2 d&#x27;ElevenLabs, les voix traduites évitent l&#x27;effet &quot;robotique&quot; habituel en restituant fidèlement les nuances émotionnelles du locuteur.</span></li><li><span class="point-bullet">✦</span><span>Processus sans prompt** : La mise en œuvre repose sur une manipulation technique et ergonomique directe (sélection de fichiers et de langues) plutôt que sur la rédaction de consignes textuelles complexes.</span></li><li><span class="point-bullet">✦</span><span>Extraction audio préliminaire** : L&#x27;étape initiale consiste simplement à extraire la piste audio des séquences (qu&#x27;elles soient issues de tournages réels, de pubs UGC ou de générations IA) via un logiciel de montage comme Premiere Pro.</span></li><li><span class="point-bullet">✦</span><span>Rapidité de génération** : Les outils de doublage modernes permettent d&#x27;obtenir des pistes audio traduites de haute qualité en seulement quelques secondes, accélérant drastiquement la post-production.</span></li><li><span class="point-bullet">✦</span><span>Gestion multilingue avancée** : Il est possible de sélectionner plusieurs langues au cours d&#x27;un même flux pour décliner rapidement un contenu destiné à des plateformes ou des régions multiples.</span></li><li><span class="point-bullet">✦</span><span>Usage narratif et dramatique créatif** : La traduction ciblée de fins de dialogues (comme l&#x27;insertion d&#x27;italien dans une scène de mafia des années 1930) renforce l&#x27;immersion et l&#x27;authenticité culturelle d&#x27;un court-métrage.</span></li><li><span class="point-bullet">✦</span><span>Diffrenciation des outils de Lip Sync** : Il est crucial de distinguer les outils de synchronisation labiale conçus pour les images fixes de ceux optimisés pour la vidéo.</span></li><li><span class="point-bullet">✦</span><span>Piège de la dérive visuelle (Veed Lip Sync)** : Bien que les options économiques comme Veed Lip Sync soient tentantes, elles génèrent souvent des décalages et une dérive labiale préjudiciables à la crédibilité du film.</span></li><li><span class="point-bullet">✦</span><span>Investissement dans la qualité (Sync 3)** : L&#x27;utilisation de modèles avancés comme Sync 3, bien que plus coûteuse en crédits, s&#x27;avère indispensable pour garantir une synchronisation labiale irréprochable et un rendu de niveau professionnel.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La réalisation de films par IA vient de devenir mondiale. Parce que maintenant, vous pouvez prendre une seule vidéo et la transformer pour n&#x27;importe quel marché de votre choix. Tout cela sans altérer le personnage, la performance ou le produit. C&#x27;est un changement absolu. Wow, les gars. C&#x27;est un changement absolu.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu textuel ou interface logicielle visible à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur parle face caméra dans son studio, tenant un micro, puis montre différentes versions de sa vidéo avec des drapeaux de pays.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:20 - 00:00:57</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ouah, mina. Kore, Majide Kakumei teki da, jo. Donc au lieu de reconstruire des scènes à partir de zéro, de réenregistrer les dialogues ou de générer des versions séparées de la même vidéo, l&#x27;intelligence artificielle peut désormais transformer votre vision pour qu&#x27;elle fonctionne partout dans le monde. Je suis Jack, j&#x27;ai passé plus d&#x27;une décennie à créer des effets visuels pour de nombreuses grandes marques de la planète, et j&#x27;utilise maintenant l&#x27;IA pour réinventer les flux de travail créatifs. Le potentiel ici est massif, car soudainement un seul créateur peut fabriquer des courts-métrages, des publicités de produits et du contenu de style UGC pour un public mondial. Dans ce tutoriel, je vais vous montrer le flux de travail complet, afin que vous puissiez rejoindre les créateurs.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucune interface logicielle affichée, le créateur parle face caméra dans son studio avec des illustrations graphiques incrustées (drapeaux, comparaisons vidéo avant/après, texte du script).</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement au spectateur en studio, tout en illustrant ses propos avec des exemples de traduction vidéo et de localisation multilingue.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:57 - 00:01:30</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">qui suppriment complètement la barrière de la langue de leur production. Et si vous aimez la vidéo d&#x27;aujourd&#x27;hui, n&#x27;hésitez pas à lâcher un gros pouce bleu pour moi et à envisager de vous abonner. Très bien, entrons dans le vif du sujet. Donc je suis sûr que beaucoup d&#x27;entre vous ont essayé de réadapter le contenu de vos vidéos, permettant de l&#x27;adapter à un public différent. Le problème, c&#x27;est que lorsque vous changez votre vidéo dans une autre langue, toute l&#x27;émotion finit par se perdre et cela donne l&#x27;impression d&#x27;être très robotique. On a l&#x27;impression que c&#x27;est de l&#x27;IA, ce que bien sûr nous essayons d&#x27;éviter. Ou alors vous en avez assez parce que le processus est tout simplement tellement long</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de montage vidéo ou interface web avec affichage en picture-in-picture (PiP) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte &#x27;the language barrier&#x27;, drapeaux britannique et italien, vidéo de démonstration en extérieur dans une rue animée avec un serveur, et gros plan sur Jack présentant un smartphone orange.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre visuellement le problème de la barrière de la langue et le doublage multilingue à travers des exemples de vidéos comparatives et des démonstrations face caméra.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_001_00-00-59.jpg" alt="Comparaison vidéo avant/après avec l&#x27;affichage du texte &#x27;the language barrier&#x27; et deux versions de la vidéo (Anglais à gauche, Italien à droite avec contour vert)." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_001_00-00-59.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:59</span>
+                        <span class="caption-text">Comparaison vidéo avant/après avec l&#x27;affichage du texte &#x27;the language barrier&#x27; et deux versions de la vidéo (Anglais à gauche, Italien à droite avec contour vert).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_002_00-01-09.jpg" alt="Capture d&#x27;écran de l&#x27;interface de montage montrant une vidéo de démonstration avec un serveur tenant un carnet de notes dans une rue de Paris." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_002_00-01-09.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:09</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface de montage montrant une vidéo de démonstration avec un serveur tenant un carnet de notes dans une rue de Paris.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_003_00-01-20.jpg" alt="Capture d&#x27;écran montrant Jack tenant un smartphone orange avec un logo Apple à l&#x27;arrière dans son studio." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_003_00-01-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:20</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant Jack tenant un smartphone orange avec un logo Apple à l&#x27;arrière dans son studio.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:30 - 00:02:05</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et si déroutant que vous finissez par abandonner. Mais le processus que je vais partager avec vous aujourd&#x27;hui ne nécessite que trois étapes très simples et aucun prompt. Comme toujours, je partagerai l&#x27;intégralité du processus ainsi que toutes les astuces et conseils que les autres créateurs ne vous disent pas afin que vous puissiez obtenir les meilleurs résultats possibles. Et je partagerai même une astuce bonus à la fin de la vidéo pour obtenir la traduction la plus fiable. La première chose dont nous aurons besoin, bien sûr, c&#x27;est de nos séquences vidéo. Je suis donc ici dans Premiere Pro et j&#x27;ai une très belle variété de différents</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro et interface logicielle de montage/vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des chutiers et des séquences visibles dans Premiere Pro : &quot;Facecam - predub&quot;, &quot;Anime Scene - predub&quot;, &quot;Keynote Scene - predub&quot;, &quot;Mafia Scene - predub&quot;, &quot;Insurance Scene - predub&quot;. Timeline active avec pistes vidéo et audio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre des exemples de séquences vidéo dans l&#x27;interface de montage Adobe Premiere Pro, illustrant la variété des clips à disposition.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_004_00-01-54.jpg" alt="Interface logicielle sombre avec un encadré vidéo central montrant Jack en costume sur scène face à un robot, et une vignette PiP du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_004_00-01-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:54</span>
+                        <span class="caption-text">Interface logicielle sombre avec un encadré vidéo central montrant Jack en costume sur scène face à un robot, et une vignette PiP du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_005_00-02-03.jpg" alt="Interface complète d&#x27;Adobe Premiere Pro avec un panneau de montage chronologique en bas, un moniteur de prévisualisation affichant un personnage de style animé en haut, et une vue PiP du créateur en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_005_00-02-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:03</span>
+                        <span class="caption-text">Interface complète d&#x27;Adobe Premiere Pro avec un panneau de montage chronologique en bas, un moniteur de prévisualisation affichant un personnage de style animé en haut, et une vue PiP du créateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:05 - 00:02:40</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des exemples à la fois de vidéos générées par IA ici et un exemple tourné en caméra également de moi en train de parler naturellement. Nous avons une scène d&#x27;anime ici pour un exemple plus stylisé. Nous avons moi en train de présenter une keynote pour la révélation d&#x27;un robot arrivant sur le marché. Nous avons aussi moi apparaissant dans une scène pour un film de mafia par exemple et puis un exemple un peu plus discret ici. C&#x27;est moi qui parle d&#x27;assurance en gros. Donc nous avons une variété d&#x27;exemples de réalisation cinématographique et publicitaire que nous allons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (logiciel de montage vidéo)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des clips dans le chutier et sur la timeline : &#x27;Facecam - predub&#x27;, &#x27;Anime Scene - predub&#x27;, &#x27;Keynote Scene - predub&#x27;, &#x27;Mafia Scene - predub&#x27;, &#x27;Insurance Scene - predub&#x27;. Nom du fichier sur la piste vidéo : &#x27;ElevenLabs_video_seedance-1-0_00-...&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre des exemples de vidéos générées par IA et des exemples tournés en caméra intégrés dans son logiciel de montage vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_006_00-02-07.jpg" alt="Interface d&#x27;Adobe Premiere Pro affichant une scène de style anime générée par IA et la timeline du projet avec différents clips vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_006_00-02-07.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:07</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro affichant une scène de style anime générée par IA et la timeline du projet avec différents clips vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_007_00-02-17.jpg" alt="Aperçu dans Adobe Premiere Pro d&#x27;une scène de keynote montrant un robot humanoïde blanc et le créateur sur scène." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_007_00-02-17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:17</span>
+                        <span class="caption-text">Aperçu dans Adobe Premiere Pro d&#x27;une scène de keynote montrant un robot humanoïde blanc et le créateur sur scène.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_008_00-02-28.jpg" alt="Aperçu dans Adobe Premiere Pro d&#x27;une scène de film de mafia sombre se déroulant sur un quai portuaire avec le créateur en costume et lunettes." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_008_00-02-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:28</span>
+                        <span class="caption-text">Aperçu dans Adobe Premiere Pro d&#x27;une scène de film de mafia sombre se déroulant sur un quai portuaire avec le créateur en costume et lunettes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:40 - 00:03:16</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en passant par cet outil et tout ce que vous avez à faire pour cette étape initiale, c&#x27;est d&#x27;aller de l&#x27;avant et d&#x27;exporter, mais nous voulons seulement envoyer l&#x27;audio de notre fichier. Maintenant, bien sûr, vous n&#x27;avez pas besoin d&#x27;utiliser Premiere pour cela, vous pouvez utiliser n&#x27;importe quel logiciel de montage de votre choix, c&#x27;est un processus très simple, je pense qu&#x27;il y a même des options pour le faire en ligne également, mais pour la première étape, c&#x27;est aussi simple que cela, nous voulons juste extraire l&#x27;audio de nos vidéos générées par IA ou vidéos enregistrées et ensuite les exporter comme ça. Maintenant que nous avons notre piste audio, nous devons accéder à l&#x27;outil qui va</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro / Écran graphique de présentation de transition</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible : &#x27;Keynote Scene - predub.mp3&#x27;, format &#x27;MP3&#x27;, et le titre graphique &#x27;step two breaking the language barrier&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;exportation de la piste audio seule au format MP3 depuis Premiere Pro, puis introduit la deuxième étape du tutoriel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_009_00-02-42.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant le montage d&#x27;une vidéo avec le panneau de prévisualisation et la timeline." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_009_00-02-42.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:42</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant le montage d&#x27;une vidéo avec le panneau de prévisualisation et la timeline.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_010_00-03-04.jpg" alt="Fenêtre d&#x27;exportation d&#x27;Adobe Premiere Pro montrant les paramètres de fichier média (nom, emplacement, format MP3)." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_010_00-03-04.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:04</span>
+                        <span class="caption-text">Fenêtre d&#x27;exportation d&#x27;Adobe Premiere Pro montrant les paramètres de fichier média (nom, emplacement, format MP3).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_011_00-03-14.jpg" alt="Écran graphique affichant le titre de l&#x27;étape 2 sur un fond coloré flou : &#x27;step two breaking the language barrier&#x27;." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_011_00-03-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:14</span>
+                        <span class="caption-text">Écran graphique affichant le titre de l&#x27;étape 2 sur un fond coloré flou : &#x27;step two breaking the language barrier&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:16 - 00:03:51</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pour nous permettre de transformer notre contenu afin qu&#x27;il fonctionne pour un public mondial. Pour faire cela, nous sommes sur ElevenLabs et ce que je veux que vous fassiez, c&#x27;est d&#x27;aller sur l&#x27;outil de doublage et vous pouvez voir qu&#x27;ils viennent juste de sortir la v2 de celui-ci et c&#x27;est décrit comme préservant l&#x27;émotion et l&#x27;intonation à travers 92 langues avec le clonage vocal automatique et la synchronisation. C&#x27;est exactement ce que nous voulons. Donc nous voulons aller de l&#x27;avant et cliquer sur sélectionner des fichiers et nous pouvons télécharger notre fichier audio de choix. Et si nous nous dirigeons vers choisir</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;ElevenLabs (outil de doublage - Dubbing)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible : &quot;Dubbing New&quot;, &quot;Upload&quot;, &quot;Paste URL&quot;, &quot;Select files or drag and drop them here&quot;, &quot;Choose languages&quot;, &quot;Advanced&quot;, &quot;Powered by the new Dubbing v2 alpha model&quot;, &quot;Our latest dubbing model, preserving emotion and delivery across 92 languages with automatic voice cloning and sync.&quot;, &quot;30m of free dubbing remaining&quot;, &quot;Recent Dubs&quot;, &quot;French Scene - predub.mp3&quot;, &quot;ElevenLabs_video_seedance...mp4&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue sur l&#x27;interface d&#x27;ElevenLabs, présente le nouvel outil de doublage V2 et importe un fichier audio pour le doubler.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_012_00-03-28.jpg" alt="Interface globale de l&#x27;outil de doublage ElevenLabs montrant le panneau V2 avec les options d&#x27;importation de fichiers et l&#x27;historique des doublages récents." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_012_00-03-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:28</span>
+                        <span class="caption-text">Interface globale de l&#x27;outil de doublage ElevenLabs montrant le panneau V2 avec les options d&#x27;importation de fichiers et l&#x27;historique des doublages récents.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_013_00-03-40.jpg" alt="Gros plan sur le modèle Dubbing v2 alpha d&#x27;ElevenLabs détaillant la préservation des émotions à travers 92 langues." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_013_00-03-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:40</span>
+                        <span class="caption-text">Gros plan sur le modèle Dubbing v2 alpha d&#x27;ElevenLabs détaillant la préservation des émotions à travers 92 langues.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_014_00-03-49.jpg" alt="Interface de l&#x27;outil de doublage montrant le fichier audio importé (&quot;Keynote Scann - p...&quot;) prêt pour le traitement." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_014_00-03-49.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:49</span>
+                        <span class="caption-text">Interface de l&#x27;outil de doublage montrant le fichier audio importé (&quot;Keynote Scann - p...&quot;) prêt pour le traitement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:51 - 00:04:25</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">langue, vous pouvez voir que nous avons une très grande variété de langues différentes vers lesquelles nous pouvons prendre notre contenu original et le transformer. Donc pour cet exemple particulier, j&#x27;ai envie de transformer la keynote en néerlandais, ça me semble juste, vous savez, donc je veux tester ça et ensuite c&#x27;est vraiment aussi simple que d&#x27;envoyer cette génération. Ce que j&#x27;aime vraiment aussi dans tout ça, c&#x27;est que vous récupérez vos générations vraiment très rapidement, je dirais que ça a pris environ cinq secondes à générer, ce qui est plutôt impressionnant, alors allons-y et ouvrons ceci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> ElevenLabs (outil de doublage Dubbing v2 alpha).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu &quot;Choose languages&quot; avec recherche de langues, modèle de doublage v2 alpha (&quot;Powered by the new Dubbing v2 alpha model&quot;), fichier &quot;Keynote Scene - p...&quot;, paramètre de langue réglé sur &quot;Dutch&quot;, et la section &quot;Recent Dubs&quot; avec un fichier &quot;French Scene - predub.mp3&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans le menu des langues pour sélectionner le néerlandais (Dutch), puis présente l&#x27;interface de génération et le résultat obtenu rapidement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_015_00-03-53.jpg" alt="Interface d&#x27;ElevenLabs Dubbing montrant le menu déroulant de sélection des langues (choix parmi Bosnian, Bulgarian, Burmese, Catalan, Cebuano, Chinese, Croatian, Czech, Danish)." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_015_00-03-53.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:53</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs Dubbing montrant le menu déroulant de sélection des langues (choix parmi Bosnian, Bulgarian, Burmese, Catalan, Cebuano, Chinese, Croatian, Czech, Danish).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_016_00-04-03.jpg" alt="Interface d&#x27;ElevenLabs Dubbing affichant un aperçu vidéo en cours de doublage avec un intervenant et un robot." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_016_00-04-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:03</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs Dubbing affichant un aperçu vidéo en cours de doublage avec un intervenant et un robot.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_017_00-04-14.jpg" alt="Interface principale d&#x27;ElevenLabs Dubbing montrant le panneau de téléchargement de fichier et le modèle de doublage v2 alpha sélectionné avec la langue néerlandaise (Dutch)." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_017_00-04-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:14</span>
+                        <span class="caption-text">Interface principale d&#x27;ElevenLabs Dubbing montrant le panneau de téléchargement de fichier et le modèle de doublage v2 alpha sélectionné avec la langue néerlandaise (Dutch).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:25 - 00:04:46</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et nous pouvons écouter, voici Arlo et il coûte moins cher que vos dernières vacances Il a mis votre plancher, a fait la lessive, et a mis la maison et a mis l&#x27;extérieur. Donc ça fonctionne vraiment très bien. Et ce sur quoi je veux vraiment attirer l&#x27;attention, c&#x27;est le fait que le type de rendu émotionnel a été conservé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Lecteur audio intégré avec boutons de lecture, options linguistiques (&#x27;Original&#x27; et &#x27;Dutch&#x27;), et bouton &#x27;Download&#x27;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier audio nommé &#x27;Keynote Scene - predub.mp3&#x27;, date du 29 mai 2026, 10:09, boutons de sélection de langue &#x27;Original&#x27; et &#x27;Dutch&#x27;, bouton &#x27;Download&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le lecteur audio est affiché à l&#x27;écran pour faire écouter un extrait audio généré ou traduit, tandis que le présentateur commente l&#x27;écoute dans l&#x27;encadré PiP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_018_00-04-27.jpg" alt="Interface de lecteur audio avec options de langue (Original / Dutch) et fichier audio &#x27;Keynote Scene - predub.mp3&#x27;, avec incrustation PiP du présentateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_018_00-04-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:27</span>
+                        <span class="caption-text">Interface de lecteur audio avec options de langue (Original / Dutch) et fichier audio &#x27;Keynote Scene - predub.mp3&#x27;, avec incrustation PiP du présentateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:46 - 00:05:18</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça ne fait pas du tout robotique. Tout le but de ce processus est de pouvoir prendre une génération de vidéo par IA ou un enregistrement et de pouvoir les transformer de manière significative pour les adapter à un public différent. Et si votre voix sort en sonnant faux ou bizarre, alors ça ne va tout simplement pas marcher, tout le processus tombe à plat, mais heureusement avec le doublage v2, ça marche vraiment très bien et comme vous pouvez le voir, vous pouvez aussi cliquer sur cet onglet ici pour revenir rapidement à l&#x27;original.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de doublage vidéo/audio avec lecteur multimédia intégré et options de bascule de langue (Original / Dutch).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier audio nommé « Keynote Scene - predub.mp3 », horodaté du 29 mai 2026 à 10:09, boutons « Original » et « Dutch », et un bouton « Download ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole l&#x27;interface pour montrer la possibilité de basculer entre la piste audio originale et la version doublée en néerlandais.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_019_00-05-16.jpg" alt="Interface montrant le lecteur audio avec les boutons « Original » et « Dutch » ainsi que le fichier « Keynote Scene - predub.mp3 »." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_019_00-05-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:16</span>
+                        <span class="caption-text">Interface montrant le lecteur audio avec les boutons « Original » et « Dutch » ainsi que le fichier « Keynote Scene - predub.mp3 ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:18 - 00:05:39</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;enregistrement pour que vous puissiez comparer et contraster, et une fois que vous êtes satisfait, vous pouvez aller de l&#x27;avant et cliquer sur télécharger. Ce que j&#x27;aime aussi avec cet outil, c&#x27;est que vous pouvez vraiment devenir assez créatif avec. Je veux donc l&#x27;utiliser pour notre scène de mafia que vous pouvez voir à l&#x27;écran maintenant. Ce que je veux qu&#x27;il se passe, c&#x27;est que ces sortes de morceaux de dialogue finaux, je veux qu&#x27;ils soient en italien.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de prévisualisation audio et logiciel de montage Adobe Premiere Pro (avec incrustation caméra PiP du créateur).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur l&#x27;image 1 : un lecteur audio avec les boutons &#x27;Original&#x27; et &#x27;Dutch&#x27;, un fichier nommé &#x27;Keynote Scene - predub.mp3&#x27; et un bouton &#x27;Download&#x27;. Sur l&#x27;image 2 : le logiciel Adobe Premiere Pro montrant une scène de mafia cinématique avec des personnages dans un décor portuaire nocturne, le chutier, la timeline et le moniteur de contrôle.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de comparaison audio avec les options de langue, puis bascule sur son logiciel de montage pour présenter la scène de mafia sur laquelle il souhaite appliquer le doublage en italien.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_020_00-05-20.jpg" alt="Interface de prévisualisation et de téléchargement audio montrant les pistes &#x27;Original&#x27; et &#x27;Dutch&#x27; ainsi qu&#x27;un bouton &#x27;Download&#x27;, avec incrustation vidéo du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_020_00-05-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:20</span>
+                        <span class="caption-text">Interface de prévisualisation et de téléchargement audio montrant les pistes &#x27;Original&#x27; et &#x27;Dutch&#x27; ainsi qu&#x27;un bouton &#x27;Download&#x27;, avec incrustation vidéo du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_021_00-05-29.jpg" alt="Interface de montage vidéo Adobe Premiere Pro affichant une scène de mafia sombre et enfumée avec des personnages en costume, et le panneau de montage en bas." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_021_00-05-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:29</span>
+                        <span class="caption-text">Interface de montage vidéo Adobe Premiere Pro affichant une scène de mafia sombre et enfumée avec des personnages en costume, et le panneau de montage en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:39 - 00:06:01</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et cela fait tout à fait sens avec le décor de gangster des années 1930 de la scène pour notre court-métrage. Parce qu&#x27;évidemment, les membres de la mafia basculaient souvent entre l&#x27;anglais américain, où ils parlent avec cet accent new-yorkais très prononcé, et l&#x27;italien. Et nous utilisons effectivement cela pour cette scène particulière comme procédé dramatique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro</p>
+                        <p><strong>Contenu textuel & Code :</strong> On peut voir le panneau de prévisualisation affichant un personnage avec des lunettes dans une ambiance sombre et enfumée, la timeline avec le dossier « Mafia Scene - predub » et les pistes audio/vidéo synchronisées, ainsi qu&#x27;une vignette de caméra (PiP) montrant le créateur en bas à gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le logiciel de montage vidéo est affiché à l&#x27;écran, illustrant le processus d&#x27;édition et de montage du court-métrage sur le thème de la mafia.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_022_00-05-50.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline d&#x27;un projet de court-métrage, avec une incrustation vidéo (PiP) du créateur en bas à gauche et la lecture d&#x27;une scène de gangster au centre." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_022_00-05-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:50</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline d&#x27;un projet de court-métrage, avec une incrustation vidéo (PiP) du créateur en bas à gauche et la lecture d&#x27;une scène de gangster au centre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:01 - 00:06:24</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et je trouve simplement que c&#x27;est une utilisation vraiment créative de cet outil. Je vais donc aller de l&#x27;avant et importer également la scène de la mafia. Et je vais parcourir et importer tous les différents exemples également. Et si nous faisons simplement défiler vers le bas ici pour trouver l&#x27;italien, ce qui est vraiment bien, c&#x27;est qu&#x27;on peut réellement sélectionner plusieurs langues si on souhaite effectuer une génération dans plus d&#x27;une langue au cours du même flux.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;ElevenLabs (section Dubbing) avec une fenêtre de sélection de fichiers système par-dessus.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms de dossiers visibles dans l&#x27;explorateur : &quot;DUB&quot;, &quot;PRE-DUB&quot;, fichiers &quot;ElevenLabs_video_seedance...&quot;. Dans le menu déroulant des langues : Hindi, Hungarian, Icelandic, Indonesian, Italian (avec coche), Japanese (survolé), Javanese, Kannada, Kazakh.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans ses dossiers locaux pour importer des fichiers audio, puis sélectionne ou survole les options de langues dans le menu déroulant d&#x27;ElevenLabs.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_023_00-06-03.jpg" alt="Interface d&#x27;ElevenLabs Dubbing montrant une fenêtre de système de fichiers avec les dossiers audio DUB et PRE-DUB, avec le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_023_00-06-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:03</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs Dubbing montrant une fenêtre de système de fichiers avec les dossiers audio DUB et PRE-DUB, avec le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_024_00-06-17.jpg" alt="Menu déroulant de sélection des langues dans ElevenLabs Dubbing, montrant le survol de l&#x27;option Japanese et l&#x27;option Italian cochée." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_024_00-06-17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:17</span>
+                        <span class="caption-text">Menu déroulant de sélection des langues dans ElevenLabs Dubbing, montrant le survol de l&#x27;option Japanese et l&#x27;option Italian cochée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:24 - 00:06:52</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Dans ce cas, nous allons simplement garder l&#x27;italien et lancer cette génération. Maintenant que nous avons notre audio doublé, nous voulons bien sûr l&#x27;appliquer à nos séquences originales. Pour ce faire, sur ElevenLabs, nous devons nous rendre dans l&#x27;onglet image et vidéo. Et c&#x27;est ici que j&#x27;ai généré tous les visuels pour ce projet, parce qu&#x27;ils ont bien sûr intégré tous les meilleurs outils d&#x27;image et de vidéo par IA du marché.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;ElevenLabs (section Dubbing et section Image &amp; Video / History) avec une vue PiP (Picture-in-Picture) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menus d&#x27;ElevenLabs (&quot;Dubbing&quot;, &quot;Image &amp; Video&quot;, &quot;Voice Isolator&quot;, &quot;Voice Changer&quot;), options de génération vidéo, paramètres de format, et texte de transition &quot;step three going global&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de doublage audio d&#x27;ElevenLabs, passe par un écran de transition titré, puis navigue dans l&#x27;historique de l&#x27;onglet image et vidéo pour expliquer la génération des visuels.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_025_00-06-26.jpg" alt="Interface d&#x27;ElevenLabs montrant l&#x27;outil Dubbing pour le doublage audio en italien avec le modèle v2 alpha." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_025_00-06-26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:26</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs montrant l&#x27;outil Dubbing pour le doublage audio en italien avec le modèle v2 alpha.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_026_00-06-34.jpg" alt="Écran de transition avec un fond flou aux tons bleus et bruns affichant le texte &quot;step three going global&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_026_00-06-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:34</span>
+                        <span class="caption-text">Écran de transition avec un fond flou aux tons bleus et bruns affichant le texte &quot;step three going global&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_027_00-06-43.jpg" alt="Onglet &quot;Image &amp; Video&quot; (History) d&#x27;ElevenLabs affichant une grille de vidéos générées avec des options de paramétrage." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_027_00-06-43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:43</span>
+                        <span class="caption-text">Onglet &quot;Image &amp; Video&quot; (History) d&#x27;ElevenLabs affichant une grille de vidéos générées avec des options de paramétrage.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_028_00-06-50.jpg" alt="Suite de l&#x27;historique &quot;Image &amp; Video&quot; sur ElevenLabs montrant d&#x27;autres générations de vidéos par IA et leurs réglages." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_028_00-06-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:50</span>
+                        <span class="caption-text">Suite de l&#x27;historique &quot;Image &amp; Video&quot; sur ElevenLabs montrant d&#x27;autres générations de vidéos par IA et leurs réglages.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:52 - 00:07:13</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce que nous voulons faire, c&#x27;est passer sur l&#x27;onglet vidéo ici dans le coin inférieur gauche. Si vous cliquez dessus, vous pouvez sélectionner votre modèle. Et ce qui est pratique, c&#x27;est qu&#x27;ils ont ces filtres tout en haut car, bien sûr, nous nous intéressons à la synchronisation labiale. Donc si nous cliquons dessus, nous allons voir apparaître la catégorie de synchronisation labiale.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération vidéo par IA avec panneau de sélection de modèles et filtres par catégories.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte des filtres : Realistic, Lip Sync, Upscaling, Editing, Audio, Fast, Low Cost. Liste des modèles : Seedance 2.0, Sync 3, Veed Lipsync, Seedance 2.0 Fast, Veo 3.1 Lite, HeyGen Avatar 4, Creatify Aurora, Veed Fabric, Sync Lipsync 2 Pro, OmniHuman 1.5. Paramètres : 16:9, 720p, 4s, 7,751 left.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur clique sur l&#x27;onglet vidéo puis sur le filtre « Lip Sync » pour afficher la liste des modèles de synchronisation labiale.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_029_00-06-54.jpg" alt="Interface montrant le menu contextuel avec les onglets Image et Vidéo au coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_029_00-06-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:54</span>
+                        <span class="caption-text">Interface montrant le menu contextuel avec les onglets Image et Vidéo au coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_030_00-07-02.jpg" alt="Fenêtre de sélection des modèles avec les filtres de catégories en haut et les modèles Seedance 2.0, Sync 3 et Veed Lipsync." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_030_00-07-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:02</span>
+                        <span class="caption-text">Fenêtre de sélection des modèles avec les filtres de catégories en haut et les modèles Seedance 2.0, Sync 3 et Veed Lipsync.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_031_00-07-11.jpg" alt="Menu de sélection des modèles avec le filtre « Lip Sync » activé en haut et les modèles HeyGen Avatar 4, Sync 3, Creatify Aurora et Veed Fabric affichés." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_031_00-07-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:11</span>
+                        <span class="caption-text">Menu de sélection des modèles avec le filtre « Lip Sync » activé en haut et les modèles HeyGen Avatar 4, Sync 3, Creatify Aurora et Veed Fabric affichés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:13 - 00:07:35</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, ce que vous allez constater avec les outils de synchronisation labiale par IA, c&#x27;est que la plupart d&#x27;entre eux sont conçus pour synchroniser les lèvres sur des images plutôt que sur des vidéos. C&#x27;est donc un point dont vous devez absolument être conscient. Cela étant dit, nous n&#x27;avons vraiment que deux options ici. Nous avons Veed Lip Sync, qui est une synchronisation labiale vidéo rapide et abordable.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de sélection de modèles d&#x27;IA avec un menu déroulant centré affichant les catégories (Realistic, Lip Sync, Upscaling, etc.) et une liste de modèles de synchronisation labiale (HeyGen Avatar 4, Sync 3, Creatify Aurora, Veed Fabric, Sync Lipsync 2 Pro, OmniHuman 1.5, Veed Lipsync). Le créateur apparaît en bas à gauche dans une incrustation vidéo PiP.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de l&#x27;interface incluant la barre de recherche &#x27;Search all models...&#x27;, les filtres actifs (&#x27;Lip Sync&#x27;, &#x27;Video&#x27;), et les descriptions des différents modèles de synchronisation labiale, notamment &#x27;Veed Lipsync - Fast and affordable video lip syncing.&#x27;</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole et sélectionne le modèle &#x27;Veed Lipsync&#x27; dans la liste déroulante des outils de synchronisation labiale.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_032_00-07-33.jpg" alt="Interface d&#x27;un outil de sélection de modèles d&#x27;IA montrant la liste des options de synchronisation labiale (&#x27;Lip Sync&#x27;), avec Veed Lipsync en surbrillance." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_032_00-07-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:33</span>
+                        <span class="caption-text">Interface d&#x27;un outil de sélection de modèles d&#x27;IA montrant la liste des options de synchronisation labiale (&#x27;Lip Sync&#x27;), avec Veed Lipsync en surbrillance.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:35 - 00:07:54</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite nous avons Sync 3. Maintenant, bien sûr, c&#x27;est plus cher. Vous allez dépenser plus de crédits, mais la différence dans les résultats ici est énorme. Et juste pour mettre cela en contexte, laissez-moi d&#x27;abord vous montrer un an exemple lors de mes tests quand j&#x27;essayais Veed Lip Sync.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de génération vidéo par IA avec un menu contextuel de sélection de modèles (Realistic, Lip Sync, Upscaling, Editing, Audio, Fast, Low Cost).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des modèles de synchronisation labiale visibles : HeyGen Avatar 4 (1,454/s), Sync 3 (1,264/s), Creatify Aurora (1,018/s), Veed Fabric (1,454/s), Sync Lipsync 2 Pro (792/s), OmniHuman 1.5 (1,520/s), Veed Lipsync (49/s). Le curseur de la souris survole l&#x27;option &quot;Sync 3&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur survole et sélectionne le modèle &quot;Sync 3&quot; dans la liste des options de synchronisation labiale, tandis que sa webcam apparaît en incrustation (PiP) dans le coin inférieur gauche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_033_00-07-37.jpg" alt="Interface logicielle affichant un menu déroulant de sélection de modèles d&#x27;IA pour le Lip Sync, avec le curseur pointant sur Sync 3." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_033_00-07-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:37</span>
+                        <span class="caption-text">Interface logicielle affichant un menu déroulant de sélection de modèles d&#x27;IA pour le Lip Sync, avec le curseur pointant sur Sync 3.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:02 - 00:08:26</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, comme vous pouvez le voir, il y a beaucoup de dérive qui se produit ici. Même si c&#x27;est bon marché, ça ne vaut toujours pas la peine de dépenser ces crédits à mon avis. Mais laissez-moi vous montrer les résultats que vous pouvez obtenir en utilisant Sync 3. Je suis sûr que vous serez d&#x27;accord pour dire que le résultat de cet outil est plutôt impressionnant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Démonstration de l&#x27;outil Sync 3 affichant une vidéo générée avec un filigrane &quot;sync 3&quot; en haut à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Filigrane &quot;sync 3&quot; visible dans le coin supérieur droit de la vidéo générée.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage à l&#x27;écran du résultat vidéo haute qualité généré par l&#x27;outil Sync 3.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_034_00-08-18.jpg" alt="Résultat vidéo généré avec l&#x27;outil Sync 3 montrant un homme en train de courir ou de marcher en extérieur dans un parc." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_034_00-08-18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:18</span>
+                        <span class="caption-text">Résultat vidéo généré avec l&#x27;outil Sync 3 montrant un homme en train de courir ou de marcher en extérieur dans un parc.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:26 - 00:09:02</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous allons procéder à la sélection de Sync 3 comme notre modèle vidéo de prédilection. Ensuite, nous souhaitons procéder au téléchargement de notre fichier vidéo de choix. Je veux donc y déposer cette vidéo de keynote. Allons-y pour le téléchargement. Et ensuite, nous devons télécharger notre discours doublé. Et une fois que nous cliquons sur cette option, vous verrez que vous pouvez utiliser les générations de voix que vous avez créées ici même dans Eleven Labs, mais vous pouvez également télécharger vos propres fichiers. C&#x27;est donc ce que nous voulons faire dans ce cas. Nous avons donc ici notre scène de keynote que nous avons bien sûr doublée en néerlandais.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Eleven Labs (section Image &amp; Video) avec une fenêtre de sélection de fichiers système et un panneau contextuel de choix de modèle/voix.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms de fichiers visibles : &quot;ElevenLabs_video_seedan...47.mp4&quot;, &quot;Keynote Scene - predub_nl_dubbed.mp3&quot;, &quot;Mafia Scene&quot;, &quot;Insurance Scene&quot;. Modèle sélectionné : Sync 3. Historique vocal daté du 30 avril 2026 avec des voix comme &quot;Ralf Eisend - Deep and Gravely&quot; et &quot;Max - Witty Commercial Actor&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur sélectionne le modèle Sync 3, ouvre le dossier pour importer le fichier vidéo du keynote, montre la liste des voix générées, puis sélectionne le fichier audio doublé en néerlandais (&quot;Keynote Scene - predub_nl_dubbed.mp3&quot;).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_035_00-08-28.jpg" alt="Interface d&#x27;Eleven Labs montrant la sélection du modèle Sync 3 et la bibliothèque de vidéos." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_035_00-08-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:28</span>
+                        <span class="caption-text">Interface d&#x27;Eleven Labs montrant la sélection du modèle Sync 3 et la bibliothèque de vidéos.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_036_00-08-39.jpg" alt="Fenêtre de sélection de fichiers système pour importer le fichier vidéo du keynote." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_036_00-08-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:39</span>
+                        <span class="caption-text">Fenêtre de sélection de fichiers système pour importer le fichier vidéo du keynote.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_037_00-08-50.jpg" alt="Fenêtre contextuelle d&#x27;Eleven Labs affichant l&#x27;historique des générations vocales textuelles." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_037_00-08-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:50</span>
+                        <span class="caption-text">Fenêtre contextuelle d&#x27;Eleven Labs affichant l&#x27;historique des générations vocales textuelles.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_038_00-09-00.jpg" alt="Fenêtre de sélection de fichiers affichant le fichier audio doublé du keynote en néerlandais." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_038_00-09-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:00</span>
+                        <span class="caption-text">Fenêtre de sélection de fichiers affichant le fichier audio doublé du keynote en néerlandais.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:02 - 00:09:22</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous allons procéder au téléchargement de ceci. Et maintenant, c&#x27;est aussi simple que d&#x27;envoyer notre génération et d&#x27;attendre de voir le résultat que nous obtenons en retour. Jetons un coup d&#x27;œil. Voici Arlo, et il coûte moins cher que vos dernières vacances. Il nettoiera vos sols, mettra les machines à laver, rangera votre jardin, et sortira même les poubelles un mardi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;ElevenLabs (outil Image &amp; Video) avec panneau d&#x27;historique et zone de chargement de média en bas.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de générations vidéo sur ElevenLabs affichant des aperçus de vidéos avec des prompts textuels (ex: &quot;a bearded man in backwards cap and white tee rides a cream vintage...&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface d&#x27;ElevenLabs pendant le chargement d&#x27;un fichier, puis illustre son discours avec des images générées du robot Arlo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_039_00-09-04.jpg" alt="Interface d&#x27;ElevenLabs (section Image &amp; Video History) avec la webcam du créateur en incrustation." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_039_00-09-04.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:04</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs (section Image &amp; Video History) avec la webcam du créateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_040_00-09-20.jpg" alt="Présentation de deux images générées par IA montrant un homme en costume-col roulé aux côtés d&#x27;un robot humanoïde blanc (Arlo)." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_040_00-09-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:20</span>
+                        <span class="caption-text">Présentation de deux images générées par IA montrant un homme en costume-col roulé aux côtés d&#x27;un robot humanoïde blanc (Arlo).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:23 - 00:09:42</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avons construit Arlo afin que n&#x27;importe qui dans n&#x27;importe quel foyer puisse avoir un coup de main. Voici Arlo, et il coûte moins cher que vos dernières vacances. Il nettoie vos sols, nettoie votre linge, nettoie votre maison et nettoie le week-end, même à l&#x27;extérieur. Nous avons conçu Arlo pour que tout le monde puisse avoir de l&#x27;aide dans chaque foyer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu logiciel ou interface affiché.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;exprime en direct sur scène aux côtés d&#x27;un robot humanoïde, illustrant son discours par sa présence physique sans démonstration d&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:06 - 00:10:31</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, jetons un œil à l&#x27;exemple d&#x27;anime que nous avons préparé. Grille 7, niveau inférieur, déplacement vers l&#x27;arrière. Quelque chose est ici. Grille 7, kasokai, koubu hei idousuru.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec affichage d&#x27;exemples de rendus d&#x27;animation générés par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Pas de texte ni de prompt affiché à l&#x27;écran, uniquement les visuels de démonstration de l&#x27;exemple d&#x27;anime.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente et illustre visuellement son exemple de projet d&#x27;anime en affichant les différents plans générés par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_041_00-10-15.jpg" alt="Affichage côte à côte de deux plans animés générés par IA : à gauche, Jack en version animée s&#x27;exprimant dans une ruelle cyberpunk colorée ; à droite, un plan en noir et blanc d&#x27;un soldat marchant dans un couloir sombre." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_041_00-10-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:15</span>
+                        <span class="caption-text">Affichage côte à côte de deux plans animés générés par IA : à gauche, Jack en version animée s&#x27;exprimant dans une ruelle cyberpunk colorée ; à droite, un plan en noir et blanc d&#x27;un soldat marchant dans un couloir sombre.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_042_00-10-29.jpg" alt="Affichage côte à côte de deux plans animés générés par IA : à gauche, une vue de dos d&#x27;un soldat en noir et blanc dans une zone industrielle sombre ; à droite, le plan animé coloré de Jack dans la ruelle cyberpunk." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_042_00-10-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:29</span>
+                        <span class="caption-text">Affichage côte à côte de deux plans animés générés par IA : à gauche, une vue de dos d&#x27;un soldat en noir et blanc dans une zone industrielle sombre ; à droite, le plan animé coloré de Jack dans la ruelle cyberpunk.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:34 - 00:10:52</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nanika ga iru. Et comme vous pouvez le voir, le résultat ici fonctionne aussi très bien. En animation, tout est beaucoup plus indulgent. Non pas que nous en ayons vraiment besoin avec ce flux de travail, car les résultats sont déjà plutôt excellents.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Démonstration de rendus vidéo animés générés par intelligence artificielle, sans interface logicielle visible.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Séquence vidéo montrant des animations de style cinématique (personnage armé de dos dans une ambiance enfumée et sombre, puis intérieur de vaisseau spatial ou couloir futuriste).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation à l&#x27;écran d&#x27;exemples de résultats d&#x27;animation obtenus grâce au workflow d&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_043_00-10-36.jpg" alt="Extrait vidéo démontrant des animations générées par IA avec un personnage dans un couloir sombre, puis un décor futuriste éclairé par des faisceaux lumineux." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_043_00-10-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:36</span>
+                        <span class="caption-text">Extrait vidéo démontrant des animations générées par IA avec un personnage dans un couloir sombre, puis un décor futuriste éclairé par des faisceaux lumineux.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:52 - 00:11:12</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je veux aussi jeter un œil à notre exemple de publicité pour une assurance. C&#x27;est là que nous l&#x27;avons doublé en russe. Personne ne veut passer son samedi matin à penser à l&#x27;assurance habitation. Mais quand quelque chose tourne mal, et que quelque chose tourne toujours mal, vous voulez que ce soit réglé. Discrètement, rapidement. C&#x27;est à ça que sert Anka. Vous n&#x27;y pensez pas, ça s&#x27;occupe de tout.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> L&#x27;interface d&#x27;ElevenLabs avec le panneau de navigation latéral gauche (Voices, Studio, Flows, Templates, Image &amp; Video, etc.) et l&#x27;historique des médias générés au centre.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans l&#x27;interface d&#x27;ElevenLabs, on aperçoit des vignettes de vidéos avec des boutons comme &quot;Edit&quot;, &quot;Open Studio&quot;, &quot;Extend&quot;, &quot;Sync 3&quot; et des aperçus de clips (un homme en costume, un homme à vélo, un plateau de présentation futuriste).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;historique des vidéos générées sur ElevenLabs et compare deux versions vidéo d&#x27;une publicité (couleur et noir et blanc).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_044_00-10-54.jpg" alt="Interface d&#x27;ElevenLabs (section Image &amp; Video / History) montrant l&#x27;historique des vidéos générées, avec une incrustation vidéo du créateur (PiP) en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_044_00-10-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:54</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs (section Image &amp; Video / History) montrant l&#x27;historique des vidéos générées, avec une incrustation vidéo du créateur (PiP) en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_045_00-11-02.jpg" alt="Comparatif visuel de deux versions d&#x27;une vidéo montrant un homme à vélo dans une rue résidentielle : une en couleur et une en noir et blanc." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_045_00-11-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:02</span>
+                        <span class="caption-text">Comparatif visuel de deux versions d&#x27;une vidéo montrant un homme à vélo dans une rue résidentielle : une en couleur et une en noir et blanc.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:12 - 00:11:58</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anka. Stable quand ça compte. Никому не хочется тратить субботнее утро на мысли о страховании жилья. Но когда что-то идет не так, а что-то всегда идет не так, хочется, чтобы все уладилось. ticho and быстро. For this is anko. You don&#x27;t think about it. He just does his job. Anka. The ease when it&#x27;s important. often a problem with AI tools but Sync 3 seems to be doing pretty damn good here. And let&#x27;s take a</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Affichage de scènes vidéo comparatives et de rendus visuels illustrant un outil vidéo par IA, avec le créateur en incrustation PiP dans l&#x27;image 2.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte textuel explicite ni prompt textuel visible, uniquement des séquences vidéo générées ou démontrées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre des exemples de plans vidéo urbains pour illustrer l&#x27;outil testé, tout en commentant son fonctionnement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_046_00-11-14.jpg" alt="Comparatif visuel de deux plans vidéo d&#x27;un homme à vélo en milieu urbain." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_046_00-11-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:14</span>
+                        <span class="caption-text">Comparatif visuel de deux plans vidéo d&#x27;un homme à vélo en milieu urbain.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_047_00-11-43.jpg" alt="Plan vidéo principal de l&#x27;homme à vélo dans une rue résidentielle, avec incrustation PiP du créateur dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_047_00-11-43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:43</span>
+                        <span class="caption-text">Plan vidéo principal de l&#x27;homme à vélo dans une rue résidentielle, avec incrustation PiP du créateur dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:58 - 00:12:32</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">regardez maintenant je parle en turc ce qui n&#x27;est pas le cas en vrai pour info. Je suis Jack. J&#x27;ai passé plus d&#x27;une décennie à créer des effets visuels pour de nombreuses plus grandes marques de la planète. Ben Jack. On yıla aşkın süredir gezegendeki en büyük markaların bir çoğu için görsel efektler üretiyorum. Et ce qui est génial avec cet exemple, c&#x27;est qu&#x27;on n&#x27;a aucune sorte de déformation sur mon micro. Et par là, je veux dire qu&#x27;il ne se déforme pas d&#x27;une manière étrange suite à la synchronisation labiale. Et je veux continuer et vous montrer quelques cas d&#x27;utilisation créatifs supplémentaires pour ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme ElevenLabs (section Image &amp; Video History), avec le panneau de navigation latéral et les miniatures de vidéos dans l&#x27;historique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte et éléments visibles dans l&#x27;interface : &quot;ElevenLabs&quot;, &quot;ElevenCreative&quot;, &quot;History&quot;, &quot;Search generations...&quot;, &quot;+ Model&quot;, &quot;+ Type&quot;, &quot;May 29&quot;, &quot;Sync 3&quot;, &quot;1,986 left&quot;, ainsi que l&#x27;encadré vidéo actif affichant Jack.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;historique de l&#x27;interface ElevenLabs avec les différentes vidéos générées et synchronisées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_048_00-12-00.jpg" alt="Interface d&#x27;ElevenLabs affichant l&#x27;historique des générations vidéo (Image &amp; Video History) avec plusieurs aperçus et miniatures de vidéos générées." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_048_00-12-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:00</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs affichant l&#x27;historique des générations vidéo (Image &amp; Video History) avec plusieurs aperçus et miniatures de vidéos générées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:32 - 00:12:52</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">workflow particulier. Donc nous avons ici une scène de moi assis à Paris ou quelque part en France à la terrasse d&#x27;un café, et j&#x27;ai une interaction avec un serveur plutôt impoli, puis je renverse un peu la situation. Jetons un coup d&#x27;œil au résultat final, puis je vous expliquerai exactement ce que j&#x27;ai fait. Avez-vous déjà décidé ce que vous voulez ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (logiciel de montage vidéo)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneaux de Premiere Pro comprenant le chutier (Bin: DUB V2), la timeline avec les pistes vidéo/audio (French Scene - predub), le moniteur de prévisualisation et le panneau Text / Subtitle avec la police Helvetica Neue et le texte &quot;Grand Marnier soufflé.&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du projet de montage sur la timeline de Premiere Pro et affichage de la scène générée à la terrasse d&#x27;un café à Paris.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_049_00-12-34.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant le montage d&#x27;une vidéo avec le panneau de sous-titres, le chutier et la timeline multi-pistes, avec le créateur en incrustation (PiP) dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_049_00-12-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:34</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant le montage d&#x27;une vidéo avec le panneau de sous-titres, le chutier et la timeline multi-pistes, avec le créateur en incrustation (PiP) dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_050_00-12-50.jpg" alt="Scène vidéo générée montrant Jack assis à la terrasse d&#x27;un café parisien en train de lire un menu, avec une tasse de café sur la table." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_050_00-12-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:50</span>
+                        <span class="caption-text">Scène vidéo générée montrant Jack assis à la terrasse d&#x27;un café parisien en train de lire un menu, avec une tasse de café sur la table.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:53 - 00:13:12</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ouais. Est-ce que je peux avoir le croque-monsieur, s&#x27;il vous plaît ? Même pas foutu de parler la langue locale. En fait, je vais commencer par le plateau de fruits de mer, une bouteille de chablis premier cru, et je finirai par le soufflet au Grand Marnier. Donc vous pouvez voir que cela fonctionne vraiment très bien, mais la première génération de vidéo a été entièrement faite en anglais.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu logiciel, interface ou prompt textuel visible. Les images montrent des extraits vidéo générés par IA en extérieur et le créateur dans son studio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur parle face caméra dans son studio et commente des séquences vidéo générées par IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:12 - 00:13:38</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ce que j&#x27;ai fait, c&#x27;est que j&#x27;ai pris cette génération originale et je l&#x27;ai doublée en français pour me permettre de prononcer cette réplique finale en français courant. Et comme vous pouvez le voir dans le montage, c&#x27;est vraiment très simple. Je l&#x27;ai littéralement déposée par-dessus la génération vidéo originale. Donc on passe de la génération originale entièrement en anglais directement à la génération doublée en français.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (avec incrustation caméra du créateur en bas à droite).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des clips sur la timeline incluant &quot;ElevenLabs_video_seedance-2-0&quot; et &quot;ElevenLabs_video_sync-3&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de montage vidéo d&#x27;Adobe Premiere Pro et zoome sur la timeline pour illustrer la superposition des pistes vidéo et audio doublées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_051_00-13-14.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline avec les pistes vidéo et audio, ainsi qu&#x27;un encadré PiP du créateur." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_051_00-13-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:14</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline avec les pistes vidéo et audio, ainsi qu&#x27;un encadré PiP du créateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_052_00-13-30.jpg" alt="Vue rapprochée de la timeline d&#x27;Adobe Premiere Pro montrant le positionnement des pistes vidéo superposées et des fichiers audio." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_052_00-13-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:30</span>
+                        <span class="caption-text">Vue rapprochée de la timeline d&#x27;Adobe Premiere Pro montrant le positionnement des pistes vidéo superposées et des fichiers audio.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:38 - 00:13:57</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ça fonctionne vraiment très bien. Et mettons cela en pratique ici. Donc nous allons passer à la scène de la mafia et j&#x27;ai déjà importé la version doublée de la scène de la mafia où nous parlons en italien. Donc je vais simplement faire glisser cela directement sur la timeline.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (logiciel de montage vidéo).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fenêtre de montage contenant divers onglets (French Scene, Facecam, Anime Scene, Keynote Scene, Mafia Scene), pistes vidéo (V1, V2) et audio (A1, A2, A3), ainsi qu&#x27;un chutier montrant des dossiers de projets et des clips vidéo. Un encadré PiP (Picture-in-Picture) montre le créateur dans son studio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son écran de montage avec Adobe Premiere Pro, démontrant l&#x27;importation et le glisser-déposer de la scène de la mafia doublée sur la timeline.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_053_00-13-47.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline et le chutier avec la scène de la mafia doublée en italien." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_053_00-13-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:47</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline et le chutier avec la scène de la mafia doublée en italien.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:57 - 00:14:18</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et bien sûr, cela correspond exactement à la longueur de génération de la vidéo originale. Donc, après un montage très basique ici où je fais en gros des fondues d&#x27;entrée et de sortie sur les pistes audio, c&#x27;est le résultat que nous obtenons. Tu m&#x27;avais dit que c&#x27;était réglé. Tu m&#x27;as regardé dans les yeux et tu m&#x27;as dit que c&#x27;était réglé. Il y a eu une complication. C&#x27;est tout. Donne-moi deux jours. La complication. Mon père a eu une complication une fois.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de montage vidéo (semblable à Adobe Premiere Pro ou DaVinci Resolve) avec une timeline multiligne (pistes V1, A1, A2, A3) et un aperçu vidéo en incrustation (PiP).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Timeline de montage avec des clips nommés &quot;ElevenLabs_video_seedance-2-...&quot;, &quot;Mafia Scene - predub&quot;, &quot;French Scene - predub&quot;, etc. Sous-titre visible dans l&#x27;image 3 : &quot;A complication?&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son plan de montage chronologique avec les pistes audio en cours d&#x27;ajustement, puis présente le rendu final de la scène de mafia générée par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_054_00-14-08.jpg" alt="Interface d&#x27;un logiciel de montage vidéo montrant la timeline avec plusieurs pistes audio et vidéo, ainsi qu&#x27;une petite incrustation vidéo (PiP) de Jack en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_054_00-14-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:08</span>
+                        <span class="caption-text">Interface d&#x27;un logiciel de montage vidéo montrant la timeline avec plusieurs pistes audio et vidéo, ainsi qu&#x27;une petite incrustation vidéo (PiP) de Jack en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_055_00-14-16.jpg" alt="Extrait de la vidéo générée montrant deux hommes sur les docks de port la nuit dans une ambiance sombre et enfumée, avec le sous-titre &quot;A complication?&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_055_00-14-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:16</span>
+                        <span class="caption-text">Extrait de la vidéo générée montrant deux hommes sur les docks de port la nuit dans une ambiance sombre et enfumée, avec le sous-titre &quot;A complication?&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:18 - 00:14:39</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il l&#x27;a enterrée dans les fondations d&#x27;un chi... J&#x27;ai toujours respecté votre famille. Vous le savez. S&#x27;il vous plaît, laissez-moi arranger les choses. Règle l&#x27;affaire. Ou je commence à jeter les fondations. La scène paraît donc soudainement beaucoup plus dynamique parce que je passe à l&#x27;italien. Et puis bien sûr, il faut que l&#x27;on jette un œil à moi tenant l&#x27;iPhone Fold.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de montage vidéo sur macOS affichant des fenêtres de gestion de fichiers et une timeline multipiste.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms de fichiers visibles dans le gestionnaire : « ElevenLabs_video_sync_3_2026-05-27T18_02_28.mp4 », « Pre-dub », « Dub », « French Scene - predub_fr_dubbed.mp3 ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre une scène cinématique de mafieux, puis l&#x27;interface de son logiciel de montage avec les fichiers de doublage, tout en s&#x27;exprimant face caméra dans une incrustation PiP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_056_00-14-20.jpg" alt="Scène cinématique générée par IA montrant un homme en costume et chapeau de type mafieux parlant à un autre personnage dans une rue pavée et brumeuse." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_056_00-14-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:20</span>
+                        <span class="caption-text">Scène cinématique générée par IA montrant un homme en costume et chapeau de type mafieux parlant à un autre personnage dans une rue pavée et brumeuse.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_057_00-14-37.jpg" alt="Interface d&#x27;un logiciel de montage vidéo (type Premiere Pro ou DaVinci Resolve) avec des fenêtres de dossiers (Dub, Pre-dub) et un encadré PiP montrant Jack dans son studio." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_057_00-14-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:37</span>
+                        <span class="caption-text">Interface d&#x27;un logiciel de montage vidéo (type Premiere Pro ou DaVinci Resolve) avec des fenêtres de dossiers (Dub, Pre-dub) et un encadré PiP montrant Jack dans son studio.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:39 - 00:15:03</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et nous avons doublé cela dans deux langues différentes pour le tester. C&#x27;est un changement absolu de paradigme. Wow, les gars. C&#x27;est un changement absolu de paradigme. Wow, tout le monde. C&#x27;est vraiment, c&#x27;est incroyable. Maintenant, dans l&#x27;ensemble, je pense que c&#x27;est vraiment très bien, surtout que la langue évolue vraiment de manière spectaculaire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de montage vidéo (type Premiere Pro / DaVinci Resolve) avec gestion des fichiers de doublage (dossiers &quot;Dub&quot; et &quot;Pre-dub&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms de fichiers visibles dans l&#x27;explorateur : &quot;ElevenLabs_video_sync-3_2026-05-27T18_40_24.mp4&quot;, &quot;French Scene - predub_fr_dubbed.mp3&quot;, ainsi que divers fichiers audio et vidéo générés par ElevenLabs.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;arborescence des fichiers de doublage dans son logiciel de montage pour illustrer le processus de test de doublage multilingue.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_058_00-14-41.jpg" alt="Interface d&#x27;un logiciel de montage vidéo affichant l&#x27;explorateur de fichiers avec des dossiers de doublage et de pré-doublage ainsi qu&#x27;une frise chronologique." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_058_00-14-41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:41</span>
+                        <span class="caption-text">Interface d&#x27;un logiciel de montage vidéo affichant l&#x27;explorateur de fichiers avec des dossiers de doublage et de pré-doublage ainsi qu&#x27;une frise chronologique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:03 - 00:15:22</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il y a une courte section au milieu où j&#x27;ai l&#x27;impression que la bouche ne bouge pas tout à fait assez avec le phrasé japonais. Oua, tout le monde, c&#x27;est vraiment révolutionnaire. Maintenant, ma femme et moi avons eu beaucoup de discussions à ce sujet, et elle pense que ça fonctionne très bien en fait.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu logiciel ou interface visible. Jack présente un téléphone portable (affichage d&#x27;un écran de verrouillage et du logo Apple au dos) à la caméra, mais il s&#x27;agit d&#x27;une illustration physique et non d&#x27;une démonstration d&#x27;interface ou d&#x27;outil IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement à la caméra dans son studio en parlant de synchronisation labiale et en tenant un smartphone dans sa main.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:22 - 00:15:44</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je veux que vous laissiez des commentaires en dessous et me fassiez savoir si vous êtes d&#x27;accord avec moi ou avec ma femme. Et si vous êtes d&#x27;accord avec ma femme, on va se brouiller. Mais je pense que cela nous amène gentiment à la conclusion de ce projet et de mes conclusions. Probablement le plus grand inconvénient du doublage V2 à mon avis, c&#x27;est que cela ne fonctionne pas pour le chant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation avec écran de transition textuel (pas d&#x27;interface logicielle interactive).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran : &quot;conclusion&quot; en blanc et &quot;my honest take&quot; en jaune en dessous.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;un écran de titre/transition illustrant la conclusion de la vidéo pendant que le créateur commente vocalement le sujet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_059_00-15-33.jpg" alt="Écran de transition ou diapositive affichant le texte de conclusion de la vidéo sur un fond flouté aux tons bleus et orangés." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_059_00-15-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:33</span>
+                        <span class="caption-text">Écran de transition ou diapositive affichant le texte de conclusion de la vidéo sur un fond flouté aux tons bleus et orangés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:44 - 00:16:16</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce qui finit par se produire si vous téléchargez la chanson de quelqu&#x27;un, même s&#x27;il s&#x27;agit juste d&#x27;une piste vocale isolée, c&#x27;est qu&#x27;elle reste simplement dans la langue précédente comme elle l&#x27;aurait fait auparavant, et je pense qu&#x27;il y a ici une énorme application créative. Vous avez peut-être vu récemment que j&#x27;ai créé un clip vidéo entier en utilisant l&#x27;IA. Donc, si vous étiez capable de faire ça et ensuite de l&#x27;adapter pour un public différent en utilisant cet outil de doublage, le potentiel est énorme. Mais prendre quelqu&#x27;un qui est réellement en train de chanter ajoute un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustation PiP du créateur dans le coin inférieur gauche (Jack face caméra) et diffusion d&#x27;extraits d&#x27;un clip vidéo musical généré par IA en plan principal.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sous-titres affichés dans les images 3 (&quot;Everyone&#x27;s so comfortable.&quot;) et 4 (&quot;my wiring is off.&quot;). Visuels d&#x27;un clip vidéo musical généré par intelligence artificielle mettant en scène un personnage à la peau verte dans divers décors (mur en marbre, tapis roulant nocturne, intérieur avec sweat à capuche, matelas au sol).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre ses propos sur le doublage de clips musicaux générés par l&#x27;IA en diffusant des extraits de sa propre création musicale visuelle, avec une petite fenêtre PiP montrant Jack en train de parler.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_060_00-15-46.jpg" alt="Extrait du clip musical généré par IA montrant des empreintes de mains vertes sur un mur en marbre blanc." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_060_00-15-46.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:46</span>
+                        <span class="caption-text">Extrait du clip musical généré par IA montrant des empreintes de mains vertes sur un mur en marbre blanc.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_061_00-15-55.jpg" alt="Extrait du clip musical généré par IA montrant un personnage à la peau verte portant des lunettes de soleil et marchant sur un tapis roulant la nuit." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_061_00-15-55.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:55</span>
+                        <span class="caption-text">Extrait du clip musical généré par IA montrant un personnage à la peau verte portant des lunettes de soleil et marchant sur un tapis roulant la nuit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_062_00-16-06.jpg" alt="Extrait du clip musical généré par IA montrant un personnage chauve à la peau verte avec un sweat à capuche violet, avec des sous-titres en bas." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_062_00-16-06.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:06</span>
+                        <span class="caption-text">Extrait du clip musical généré par IA montrant un personnage chauve à la peau verte avec un sweat à capuche violet, avec des sous-titres en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_063_00-16-14.jpg" alt="Extrait du clip musical généré par IA montrant un personnage à la peau verte allongé sur un matelas sale posé sur le sol." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_063_00-16-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:14</span>
+                        <span class="caption-text">Extrait du clip musical généré par IA montrant un personnage à la peau verte allongé sur un matelas sale posé sur le sol.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:16 - 00:16:48</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">niveau de complexité supplémentaire là. Peut-être un jour, peut-être dans la V3 ou V4 ou quelque chose comme ça. Mais je pense que ce serait génial si l&#x27;équipe d&#x27;ElevenLabs pouvait travailler sur cette mise à jour. Ce que je pense personnellement qui serait vraiment pratique aussi, si c&#x27;est possible, c&#x27;est que lorsque vous récupérez votre piste doublée, vous puissiez également avoir une transcription dans la langue précédente ainsi que dans la langue vers laquelle vous avez basculé, car clairement ElevenLabs a ces données, ils doivent forcément les avoir pour faire tourner le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;ElevenLabs (outil de doublage) et lecteur vidéo/audio intégré avec affichage de métadonnées de doublage.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;Anime Scene - predub.mp3&quot;, &quot;May 29, 2026, 10:19 AM&quot;, &quot;Source Language: Auto-Detect&quot;, &quot;Target Language: Japanese&quot;, &quot;Source: Upload&quot;, &quot;Cloning strength: 7&quot;, &quot;Video Resolution: N/A&quot;, &quot;Watermarked: No&quot;, &quot;Dubbed Range: Start - End&quot;, &quot;Credits Used: N/A&quot;, &quot;Dubbing ID: uk6oNJSWbtGCL8ervKTv&quot;, ainsi que les boutons &quot;Original&quot;, &quot;Japanese&quot; et &quot;Download&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle d&#x27;une image générée par IA illustrant un bureau recouvert de peinture, suivie de l&#x27;affichage de l&#x27;interface des paramètres de doublage audio d&#x27;ElevenLabs.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_064_00-16-18.jpg" alt="Image générée par IA montrant un homme chauve en costume dans un bureau entièrement éclaboussé de peinture verte avec un petit encadré PiP de Jack dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_064_00-16-18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:18</span>
+                        <span class="caption-text">Image générée par IA montrant un homme chauve en costume dans un bureau entièrement éclaboussé de peinture verte avec un petit encadré PiP de Jack dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_065_00-16-38.jpg" alt="Interface d&#x27;ElevenLabs affichant les détails du doublage audio avec le lecteur, le bouton de téléchargement et les métadonnées (Source Language, Target Language, Cloning strength, etc.) et l&#x27;encadré PiP de Jack." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_065_00-16-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:38</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs affichant les détails du doublage audio avec le lecteur, le bouton de téléchargement et les métadonnées (Source Language, Target Language, Cloning strength, etc.) et l&#x27;encadré PiP de Jack.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:48 - 00:17:17</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">modèle vocal et une autre chose que je voulais souligner et cela a tout à fait de sens c&#x27;est que si vous passez d&#x27;une langue qui est plus proche d&#x27;une autre géographiquement. Donc par là je veux dire que si vous passez de l&#x27;anglais au français par exemple, les résultats vont être beaucoup plus efficaces que si vous passez de l&#x27;anglais au japonais parce que ces langues sont tellement différentes. Je pense quand même que le doublage v2 et sync 3 ont très bien géré ce changement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu textuel ou interface logicielle visible à l&#x27;écran, le créateur s&#x27;exprime directement face caméra dans son studio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur parle en studio avec des mouvements de mains pour illustrer ses explications sur les modèles de doublage vocal et la distance géographique entre les langues.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:17 - 00:17:37</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est juste quelque chose que je voulais souligner. Et maintenant, je veux vous donner cette astuce bonus pour vous assurer d&#x27;obtenir le doublage le meilleur, le plus cohérent et le plus précis possible. Et c&#x27;est juste une petite astuce astucieuse pour vérifier en fait que le doublage fonctionne comme vous l&#x27;espérez.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;ElevenLabs (module Dubbing) avec un menu latéral gauche et un panneau principal de téléchargement de fichiers.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On peut lire les éléments suivants sur l&#x27;interface : « ElevenLabs », « Dubbing New », « Upload », « Paste URL », « Select files or drag and drop them here », « Powered by the new Dubbing v2 alpha model », et dans la section « Recent Dubs » : « Anime Scene - predub.mp3 », « Facecam - predub.mp3 », « Insurance Scene - predub.mp3 ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface de doublage d&#x27;ElevenLabs tout en parlant à l&#x27;écran, visible en incrustation (PiP) dans le coin inférieur gauche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_066_00-17-35.jpg" alt="Interface de la plateforme ElevenLabs sur l&#x27;outil Dubbing (avec une incrustation vidéo PiP de Jack en bas à gauche)." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_066_00-17-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:35</span>
+                        <span class="caption-text">Interface de la plateforme ElevenLabs sur l&#x27;outil Dubbing (avec une incrustation vidéo PiP de Jack en bas à gauche).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:37 - 00:17:58</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce que vous voulez faire ensuite, c&#x27;est cliquer sur « sélectionner des fichiers » et vous voulez télécharger un de vos exemples doublés. Donc je vais choisir la caméra frontale où je parlais en turc. Alors allons-y et téléchargeons ça. Et comme vous l&#x27;avez sans doute deviné maintenant, pour la langue, nous voulons sélectionner l&#x27;anglais. Donc on inverse essentiellement le processus.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;ElevenLabs (section Dubbing) avec un encadré vidéo PiP du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On peut voir le bouton &quot;Select files or drag and drop them here&quot;, l&#x27;indicateur &quot;Powered by the new Dubbing v2 alpha model&quot;, et dans la liste des doublages récents : &quot;Facecam - predub.mp3&quot; en turc (Turkish).</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole le bouton &quot;Select files&quot; pour importer un fichier audio ou vidéo de test.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_067_00-17-39.jpg" alt="Interface d&#x27;ElevenLabs (module Dubbing) affichant la zone de dépôt de fichiers et les doublages récents." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_067_00-17-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:39</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs (module Dubbing) affichant la zone de dépôt de fichiers et les doublages récents.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:58 - 00:18:31</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si nous continuons et cliquons sur générer, cela va nous permettre de simplement vérifier une seconde fois que le doublage fait un travail précis. Très bien, nous avons récupéré cette génération. Ouvrons-la donc et écoutons. Je m&#x27;appelle Jack. Pendant plus d&#x27;une décennie, j&#x27;ai créé des effets visuels pour certaines des plus grandes marques de la planète. Voilà donc. c&#x27;est juste une autre façon vraiment astucieuse de valider vos résultats si vous n&#x27;avez peut-être aucun autre moyen de le faire. Et cela étant dit les gars, nous sommes arrivés à la fin du tutoriel d&#x27;aujourd&#x27;hui. Si vous avez des questions, n&#x27;hésitez pas à les poser en bas dans la section des commentaires. Si vous avez apprécié</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;ElevenLabs (outil de doublage &quot;Dubbing&quot;), incluant une vue PiP (Picture-in-Picture) de Jack dans son studio en bas à gauche sur les images valides.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menus d&#x27;ElevenLabs (Home, Voices, Studio, Dubbing), nom de fichier &quot;Facecam - predub...&quot;, statut du modèle &quot;Dubbing v2 alpha&quot;, lecteur audio avec options &quot;Original&quot; / &quot;English&quot; et bouton &quot;Download&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de doublage d&#x27;ElevenLabs, puis ouvre le lecteur audio pour écouter le résultat généré et vérifier la qualité du doublage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_068_00-18-00.jpg" alt="Interface d&#x27;ElevenLabs (section Dubbing) montrant le panneau de génération et le fichier audio importé." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_068_00-18-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:00</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs (section Dubbing) montrant le panneau de génération et le fichier audio importé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-wM0zOwH4d2s/frame_069_00-18-20.jpg" alt="Interface d&#x27;ElevenLabs avec une fenêtre pop-up de lecteur audio pour écouter le résultat du doublage." loading="lazy" onclick="openLightbox('screenshots/YT-wM0zOwH4d2s/frame_069_00-18-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:20</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs avec une fenêtre pop-up de lecteur audio pour écouter le résultat du doublage.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-42">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:31 - 00:18:38</span>
+                <span class="segment-idx">Segment #42</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pour la vidéo d&#x27;aujourd&#x27;hui, assurez-vous de mettre un pouce bleu pour moi et pensez à vous abonner. Je vous remercie tous d&#x27;avoir regardé et je vous retrouve dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Jack face caméra dans son studio avec un micro, une étagère en arrière-plan et un bandeau d&#x27;appel à l&#x27;action &quot;Subscribe&quot; en bas à gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement aux spectateurs pour conclure la vidéo et les encourage à s&#x27;abonner et à aimer la vidéo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

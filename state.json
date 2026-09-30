@@ -16,7 +16,8 @@
     "CjCDpNCqEuY",
     "7HhlSu3pPvU",
     "vwL_c5U0F3Y",
-    "NNO7KMqZEFM"
+    "NNO7KMqZEFM",
+    "wM0zOwH4d2s"
   ],
   "processed_videos": [
     {
@@ -256,9 +257,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-06-08_YT-NNO7KMqZEFM_Comment diriger des vidéos IA avec des tracés dessinés à la main_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T05:12:55Z",
       "status": "completed"
+    },
+    {
+      "video_id": "wM0zOwH4d2s",
+      "title": "Comment traduire votre vidéo IA dans n'importe quelle langue (Workflow complet)",
+      "raw_title": "How to Turn Your AI Video Into Any Language (Full Workflow)",
+      "filename_md": "2026-05-31_YT-wM0zOwH4d2s_Comment traduire votre vidéo IA dans n'importe quelle langue (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-05-31_YT-wM0zOwH4d2s_Comment traduire votre vidéo IA dans n'importe quelle langue (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-05-31",
+      "duration": 1138,
+      "screenshots_count": 69,
+      "filepath_md": "/root/YT_JackVsAI/2026-05-31_YT-wM0zOwH4d2s_Comment traduire votre vidéo IA dans n'importe quelle langue (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-05-31_YT-wM0zOwH4d2s_Comment traduire votre vidéo IA dans n'importe quelle langue (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-30T05:28:07Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 17,
+  "completed_count": 18,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-30T04:00:03Z"
