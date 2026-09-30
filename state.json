@@ -24,7 +24,8 @@
     "_LXTbKfqeHA",
     "FSfjVOG3tAE",
     "ClIaRcvwnTQ",
-    "7lLrBwRwij0"
+    "7lLrBwRwij0",
+    "suIwxbO-_ZE"
   ],
   "processed_videos": [
     {
@@ -376,9 +377,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-04-26_YT-7lLrBwRwij0_Comment utiliser Seedance 2.0 pour des pubs de mode par IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T17:22:38Z",
       "status": "completed"
+    },
+    {
+      "video_id": "suIwxbO-_ZE",
+      "title": "Comment utiliser Seedance 2.0 pour le cinéma IA (Workflow complet)",
+      "raw_title": "How to Use Seedance 2.0 for AI Filmmaking (Full Workflow)",
+      "filename_md": "2026-04-12_YT-suIwxbO-_ZE_Comment utiliser Seedance 2.0 pour le cinéma IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-04-12_YT-suIwxbO-_ZE_Comment utiliser Seedance 2.0 pour le cinéma IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-04-12",
+      "duration": 1179,
+      "screenshots_count": 78,
+      "filepath_md": "/root/YT_JackVsAI/2026-04-12_YT-suIwxbO-_ZE_Comment utiliser Seedance 2.0 pour le cinéma IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-04-12_YT-suIwxbO-_ZE_Comment utiliser Seedance 2.0 pour le cinéma IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-30T17:58:05Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 25,
+  "completed_count": 26,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-30T16:00:04Z"
