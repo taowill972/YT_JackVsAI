@@ -21,7 +21,8 @@
     "Is4wgEpPMJQ",
     "CghKYofqzfI",
     "Dh221nmMeQ8",
-    "_LXTbKfqeHA"
+    "_LXTbKfqeHA",
+    "FSfjVOG3tAE"
   ],
   "processed_videos": [
     {
@@ -331,9 +332,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-05-08_YT-_LXTbKfqeHA_ARRÊTEZ d'écrire des prompts pour vos films IA — Cet agent le fait pour vous_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T11:45:28Z",
       "status": "completed"
+    },
+    {
+      "video_id": "FSfjVOG3tAE",
+      "title": "Claude + Seedance 2.0 = UNE ANIMATION IA INCROYABLE",
+      "raw_title": "Claude + Seedance 2.0 = INCREDIBLE AI ANIMATION",
+      "filename_md": "2026-05-05_YT-FSfjVOG3tAE_Claude + Seedance 2.0 = UNE ANIMATION IA INCROYABLE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-05-05_YT-FSfjVOG3tAE_Claude + Seedance 2.0 = UNE ANIMATION IA INCROYABLE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-05-05",
+      "duration": 1603,
+      "screenshots_count": 99,
+      "filepath_md": "/root/YT_JackVsAI/2026-05-05_YT-FSfjVOG3tAE_Claude + Seedance 2.0 = UNE ANIMATION IA INCROYABLE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-05-05_YT-FSfjVOG3tAE_Claude + Seedance 2.0 = UNE ANIMATION IA INCROYABLE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-30T12:37:27Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 22,
+  "completed_count": 23,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-30T10:00:04Z"
