@@ -26,7 +26,8 @@
     "ClIaRcvwnTQ",
     "7lLrBwRwij0",
     "suIwxbO-_ZE",
-    "9_1tIRHfomQ"
+    "9_1tIRHfomQ",
+    "xS6WVR82nQE"
   ],
   "processed_videos": [
     {
@@ -406,9 +407,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-04-09_YT-9_1tIRHfomQ_Comment se cloner avec l'IA et ne plus JAMAIS filmer_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T18:42:49Z",
       "status": "completed"
+    },
+    {
+      "video_id": "xS6WVR82nQE",
+      "title": "Seedance 2.0 est ENFIN là… Est-il meilleur que Kling 3.0 ?",
+      "raw_title": "Seedance 2.0 is FINALLY here… Does it beat Kling 3.0?",
+      "filename_md": "2026-04-04_YT-xS6WVR82nQE_Seedance 2.0 est ENFIN là… Est-il meilleur que Kling 3.0_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-04-04_YT-xS6WVR82nQE_Seedance 2.0 est ENFIN là… Est-il meilleur que Kling 3.0_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-04-04",
+      "duration": 1303,
+      "screenshots_count": 101,
+      "filepath_md": "/root/YT_JackVsAI/2026-04-04_YT-xS6WVR82nQE_Seedance 2.0 est ENFIN là… Est-il meilleur que Kling 3.0_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-04-04_YT-xS6WVR82nQE_Seedance 2.0 est ENFIN là… Est-il meilleur que Kling 3.0_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-30T19:13:43Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 27,
+  "completed_count": 28,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-30T16:00:04Z"
