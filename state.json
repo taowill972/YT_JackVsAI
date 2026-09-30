@@ -31,7 +31,8 @@
     "ncD-OSWBWi0",
     "L7ufHNtj5Rg",
     "s4b8iU3ecTs",
-    "DJsprWiw130"
+    "DJsprWiw130",
+    "TKkg-8P7jTM"
   ],
   "processed_videos": [
     {
@@ -481,9 +482,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-02-28_YT-DJsprWiw130_Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILL_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T23:06:52Z",
       "status": "completed"
+    },
+    {
+      "video_id": "TKkg-8P7jTM",
+      "title": "Comment créer des mouvements de caméra cinématiques avec l'IA (Masterclass Kling 3.0)",
+      "raw_title": "How to Create Cinematic Camera Movement with AI (Kling 3.0 Masterclass)",
+      "filename_md": "2026-02-16_YT-TKkg-8P7jTM_Comment créer des mouvements de caméra cinématiques avec l'IA (Masterclass Kling_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-02-16_YT-TKkg-8P7jTM_Comment créer des mouvements de caméra cinématiques avec l'IA (Masterclass Kling_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-02-16",
+      "duration": 1511,
+      "screenshots_count": 105,
+      "filepath_md": "/root/YT_JackVsAI/2026-02-16_YT-TKkg-8P7jTM_Comment créer des mouvements de caméra cinématiques avec l'IA (Masterclass Kling_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-02-16_YT-TKkg-8P7jTM_Comment créer des mouvements de caméra cinématiques avec l'IA (Masterclass Kling_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-30T23:32:38Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 32,
+  "completed_count": 33,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-30T22:00:06Z"
