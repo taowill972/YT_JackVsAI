@@ -19,7 +19,8 @@
     "NNO7KMqZEFM",
     "wM0zOwH4d2s",
     "Is4wgEpPMJQ",
-    "CghKYofqzfI"
+    "CghKYofqzfI",
+    "Dh221nmMeQ8"
   ],
   "processed_videos": [
     {
@@ -301,9 +302,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-05-17_YT-CghKYofqzfI_Comment créer des clips vidéo IA avec un lip sync parfait (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T10:53:12Z",
       "status": "completed"
+    },
+    {
+      "video_id": "Dh221nmMeQ8",
+      "title": "Créer des scènes de combat cinématographiques avec l'IA (Workflow complet)",
+      "raw_title": "How to Make Cinematic Fight Scenes with AI (Full Workflow)",
+      "filename_md": "2026-05-12_YT-Dh221nmMeQ8_Créer des scènes de combat cinématographiques avec l'IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-05-12_YT-Dh221nmMeQ8_Créer des scènes de combat cinématographiques avec l'IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-05-12",
+      "duration": 1435,
+      "screenshots_count": 99,
+      "filepath_md": "/root/YT_JackVsAI/2026-05-12_YT-Dh221nmMeQ8_Créer des scènes de combat cinématographiques avec l'IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-05-12_YT-Dh221nmMeQ8_Créer des scènes de combat cinématographiques avec l'IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-30T11:18:05Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 20,
+  "completed_count": 21,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-30T10:00:04Z"
