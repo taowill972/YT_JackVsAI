@@ -23,7 +23,8 @@
     "Dh221nmMeQ8",
     "_LXTbKfqeHA",
     "FSfjVOG3tAE",
-    "ClIaRcvwnTQ"
+    "ClIaRcvwnTQ",
+    "7lLrBwRwij0"
   ],
   "processed_videos": [
     {
@@ -361,9 +362,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-04-30_YT-ClIaRcvwnTQ_Comment utiliser Seedance 2.0 pour la publicité par IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T16:38:17Z",
       "status": "completed"
+    },
+    {
+      "video_id": "7lLrBwRwij0",
+      "title": "Comment utiliser Seedance 2.0 pour des pubs de mode par IA (Workflow complet)",
+      "raw_title": "How to use Seedance 2.0 for AI Fashion Ads (Full Workflow)",
+      "filename_md": "2026-04-26_YT-7lLrBwRwij0_Comment utiliser Seedance 2.0 pour des pubs de mode par IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-04-26_YT-7lLrBwRwij0_Comment utiliser Seedance 2.0 pour des pubs de mode par IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-04-26",
+      "duration": 1097,
+      "screenshots_count": 87,
+      "filepath_md": "/root/YT_JackVsAI/2026-04-26_YT-7lLrBwRwij0_Comment utiliser Seedance 2.0 pour des pubs de mode par IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-04-26_YT-7lLrBwRwij0_Comment utiliser Seedance 2.0 pour des pubs de mode par IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-30T17:22:38Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 24,
+  "completed_count": 25,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-30T16:00:04Z"
