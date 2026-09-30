@@ -25,7 +25,8 @@
     "FSfjVOG3tAE",
     "ClIaRcvwnTQ",
     "7lLrBwRwij0",
-    "suIwxbO-_ZE"
+    "suIwxbO-_ZE",
+    "9_1tIRHfomQ"
   ],
   "processed_videos": [
     {
@@ -391,9 +392,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-04-12_YT-suIwxbO-_ZE_Comment utiliser Seedance 2.0 pour le cinéma IA (Workflow complet)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T17:58:05Z",
       "status": "completed"
+    },
+    {
+      "video_id": "9_1tIRHfomQ",
+      "title": "Comment se cloner avec l'IA et ne plus JAMAIS filmer",
+      "raw_title": "How to Clone Yourself With AI and NEVER Film Again",
+      "filename_md": "2026-04-09_YT-9_1tIRHfomQ_Comment se cloner avec l'IA et ne plus JAMAIS filmer_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-04-09_YT-9_1tIRHfomQ_Comment se cloner avec l'IA et ne plus JAMAIS filmer_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-04-09",
+      "duration": 1026,
+      "screenshots_count": 60,
+      "filepath_md": "/root/YT_JackVsAI/2026-04-09_YT-9_1tIRHfomQ_Comment se cloner avec l'IA et ne plus JAMAIS filmer_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-04-09_YT-9_1tIRHfomQ_Comment se cloner avec l'IA et ne plus JAMAIS filmer_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-09-30T18:42:49Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 26,
+  "completed_count": 27,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-09-30T16:00:04Z"

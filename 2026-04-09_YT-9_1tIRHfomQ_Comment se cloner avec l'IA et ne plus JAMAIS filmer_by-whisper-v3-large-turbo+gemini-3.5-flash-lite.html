@@ -1,0 +1,2469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment se cloner avec l&#x27;IA et ne plus JAMAIS filmer — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment se cloner avec l&#x27;IA et ne plus JAMAIS filmer</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-09</span>
+                <span class="badge">⏱️ 17m 06s</span>
+                <span class="badge">🆔 <code>9_1tIRHfomQ</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=9_1tIRHfomQ" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>La création de contenu vidéo à fort volume représente un défi éreintant pour les créateurs modernes, souvent confrontés à l'épuisement professionnel, aux contraintes logistiques et aux urgences de production. Dans cette vidéo, le créateur Jack Vs. AI dévoile une solution radicale pour s'affranchir du tournage traditionnel : le clonage numérique complet grâce à l'intelligence artificielle. En s'appuyant sur des technologies de pointe, il démontre qu'il est possible de générer des vidéos au rendu photoréaliste d'une personne — incluant ses expressions faciales, sa gestuelle, sa voix et ses vêtements — en partant d'une simple séquence de 15 secondes et d'un échantillon audio.</p><p>La méthode étape par étape présentée repose sur l'utilisation de la plateforme HeyGen, depuis l'importation brute de la vidéo de référence jusqu'à la vérification rigoureuse de l'identité pour des raisons de sécurité éthique. Jack détaille ensuite comment personnaliser l'avatar en modifiant son "look de base" à l'aide d'une image neutre ou d'éléments de scène contextuels, permettant ainsi de simuler des décors de studio professionnels et des tenues variées sans budget de production réel. Enfin, le processus aborde le clonage vocal à travers différents moteurs text-to-speech, soulignant les nuances d'intonation et l'impact des accents régionaux sur la fidélité du résultat final.</p><p>Cette approche révolutionnaire change la donne pour les marques et les créateurs en quête de productivité. Elle permet de multiplier la cadence de publication par dix tout en préservant la qualité perçue. Que ce soit pour pallier une absence de studio, gérer des révisions urgentes de clients ou automatiser des flux de production, l'avatar IA offre une flexibilité inédite, redéfinissant les frontières de la post-production et de la création de contenu vidéo.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">flux</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Optimisation de la vidéo de référence** : Utiliser un enregistrement brut de 15 secondes sans script rigide permet de capturer des pauses naturelles, des hésitations et des mouvements oculaires authentiques indispensables pour l&#x27;IA.</span></li><li><span class="point-bullet">✦</span><span>Sécurité et vérification d&#x27;identité** : Le système exige une validation par lecture d&#x27;un code face à la webcam afin d&#x27;empêcher l&#x27;usurpation d&#x27;identité non consentie et l&#x27;utilisation malveillante des avatars.</span></li><li><span class="point-bullet">✦</span><span>Gestion des accessoires complexes** : Le port de lunettes ou de casquettes peut bloquer partiellement le visage, mais l&#x27;IA moderne de HeyGen parvient tout de même à traiter ces éléments avec un résultat visuel convaincant.</span></li><li><span class="point-bullet">✦</span><span>Maîtrise du look de base** : Téléverser une image fixe avec une expression neutre permet d&#x27;éviter que l&#x27;outil ne sélectionne automatiquement une frame aux expressions faciales inappropriées extraites de la vidéo brute.</span></li><li><span class="point-bullet">✦</span><span>Verrouillage de la cohérence des personnages** : L&#x27;utilisation d&#x27;images de référence multiples dans les éléments de scène aide à stabiliser l&#x27;apparence de l&#x27;avatar à travers différentes générations de décors.</span></li><li><span class="point-bullet">✦</span><span>Personnalisation radicale des décors** : Il est possible de modifier instantanément l&#x27;environnement et la garde-robe de l&#x27;avatar (du sweat décontracté au costume de studio sophistiqué avec éclairage dramatique) via des prompts textuels.</span></li><li><span class="point-bullet">✦</span><span>Dissociation audio-visuelle** : Le workflow permet de produire du contenu en important simplement un fichier audio pré-enregistré, libérant ainsi le créateur de la nécessité physique d&#x27;être présent dans son studio.</span></li><li><span class="point-bullet">✦</span><span>Comparaison des modèles vocaux** : Les différents moteurs de clonage vocal (comme 11labs ou Phish) réagissent différemment selon la complexité du timbre, nécessitant des tests d&#x27;écoute pour trouver le meilleur compromis en termes d&#x27;énergie et d&#x27;émotion.</span></li><li><span class="point-bullet">✦</span><span>Défis liés aux accents régionaux** : Les accents spécifiques ou prononcés (comme l&#x27;anglais du sud de l&#x27;Angleterre) peuvent altérer la fluidité du clonage vocal automatisé, générant parfois un rendu légèrement monotone.</span></li><li><span class="point-bullet">✦</span><span>Gain de productivité massif** : Cette méthode permet de multiplier par dix le volume de production de contenu tout en s&#x27;affranchissant des contraintes matérielles, des déplacements et de la fatigue liée aux tournages répétés.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:19</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La création de contenu est putain de brutale. Comment êtes-vous censé publier chaque jour sans perdre la tête ? Et si le projet parfait débarque de votre marque de rêve et que vous n&#x27;êtes nulle part près de votre installation ? Ou qu&#x27;un client a besoin de révisions maintenant et que votre emploi du temps est déjà surchargé ? C&#x27;est suffisant pour vous donner envie de jeter l&#x27;éponge, mais j&#x27;ai une confession à faire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra et scènes d&#x27;illustration par Jack Vs. AI, sans partage d&#x27;écran de logiciel ou démonstration technique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;CONTENT CREATION IS F*CKING BRUTAL&quot;, &quot;PERFECT PROJECT LANDS&quot;, &quot;NOWHERE NEAR YOUR SETUP&quot;, &quot;IT&#x27;S ENOUGH MAKE YOU WANT TO THROW IN THE TOWEL...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack illustre la difficulté de la création de contenu à travers des saynètes et s&#x27;exprime face caméra dans son studio.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:19 - 00:00:55</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ces plans de face, ils n&#x27;étaient pas réels. C&#x27;était mon avatar IA. Il a l&#x27;exacte apparence et la voix de moi-même. Il peut être stylisé comme je le veux, placé dans n&#x27;importe quel environnement que je choisis et utilisé pour créer du contenu sans jamais avoir besoin d&#x27;une caméra, et cela change tout pour les créateurs et les marques qui essaient d&#x27;augmenter leur volume de production sans s&#x27;épuiser complètement. Dans la vidéo d&#x27;aujourd&#x27;hui, je vais vous montrer comment construire votre propre avatar IA réaliste en téléversant seulement 15 secondes de séquence et comment vous pouvez multiplier par 10 votre production sans sacrifier la qualité. Avant d&#x27;entrer dans le vif du sujet, je suis Jack.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou interface logicielle visible (uniquement des graphiques textuels de sous-titres : &quot;IN TODAYS VIDEO BUILD YOU OWN AI AVATAR&quot; sur l&#x27;image 3 et &quot;10X OUTPUT&quot; / &quot;WITHOUT SACRIFICING QUALITY&quot; sur l&#x27;image 4).</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement à la caméra en plan-séquence dans son studio de création.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:55 - 00:01:17</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et si vous voulez rester informés de tous les derniers outils et plateformes d&#x27;IA, assurez-vous de lâcher un pouce bleu sur cette vidéo et pensez à vous abonner. Pour commencer à créer, nous sommes sur HeyGen, et sur la page d&#x27;accueil, vous voulez aller sur créer votre propre avatar IA. Maintenant nous avons une option ici pour créer un personnage virtuel, ce qui est utile si vous ne cherchez pas à recréer l&#x27;apparence de quelqu&#x27;un.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une chaîne YouTube (Image 1) puis l&#x27;interface de la plateforme de génération vidéo HeyGen (Images 2 et 3).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur l&#x27;image 1, miniatures de vidéos YouTube avec des titres comme &#x27;Seedance 2.0 is FINALLY here&#x27;, &#x27;How to use Kling 3.0&#x27;. Sur l&#x27;image 2, tableau de bord HeyGen avec le texte &#x27;Hey Jack, where do you want to start?&#x27; et des options (AI Studio, Video Agent, Script to Video, Avatars, Translate, Upscale video). Sur l&#x27;image 3, interface &#x27;Create a new avatar&#x27; avec deux choix : &#x27;Clone a real person&#x27; et &#x27;Create a virtual character&#x27;, avec un sous-titre en bas : &#x27;CREATE A VIRTUAL CHARACTER USEFUL TO AVOID USING SOMEONE&#x27;S LIKENESS&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue d&#x27;abord sur une page YouTube pour introduire son sujet, puis bascule sur l&#x27;interface de l&#x27;outil HeyGen pour montrer comment accéder à la création d&#x27;un avatar virtuel et présenter les différentes options disponibles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_001_00-00-57.jpg" alt="Navigation sur une chaîne YouTube affichant différentes miniatures de vidéos de tutoriels sur l&#x27;IA avec Jack en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_001_00-00-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:57</span>
+                        <span class="caption-text">Navigation sur une chaîne YouTube affichant différentes miniatures de vidéos de tutoriels sur l&#x27;IA avec Jack en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_002_00-01-06.jpg" alt="Page d&#x27;accueil de la plateforme HeyGen montrant les différentes options de création vidéo et d&#x27;avatars." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_002_00-01-06.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:06</span>
+                        <span class="caption-text">Page d&#x27;accueil de la plateforme HeyGen montrant les différentes options de création vidéo et d&#x27;avatars.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_003_00-01-15.jpg" alt="Page de création d&#x27;avatar sur HeyGen avec les options &#x27;Clone a real person&#x27; et &#x27;Create a virtual character&#x27;." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_003_00-01-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:15</span>
+                        <span class="caption-text">Page de création d&#x27;avatar sur HeyGen avec les options &#x27;Clone a real person&#x27; et &#x27;Create a virtual character&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:17 - 00:01:53</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ou nous pouvons cloner une vraie personne, ce qui est bien sûr sur quoi nous nous concentrons, alors nous allons aller de l&#x27;avant et cliquer là-dessus. La première étape consiste à télécharger juste 15 secondes de séquences de vous-même, qu&#x27;Heygen utilisera ensuite pour entraîner votre avatar IA. Donc ici, il va recréer vos manières, votre style de présentation et appliquer cela au mouvement de la vidéo. Nous pouvons enregistrer via une webcam. Nous pouvons à la place utiliser notre téléphone, ou nous pouvons télécharger des séquences. Je vais glisser-déposer cette vidéo que j&#x27;ai prise de moi-même. Et honnêtement, c&#x27;est juste moi en train de raconter n&#x27;importe quoi. Je dis juste les</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Heygen (outil de génération et clonage de vidéo par IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;Create a new avatar&quot;, &quot;Clone a real person&quot;, &quot;Create a virtual character&quot;, &quot;Create your Avatar in 15 seconds&quot;, &quot;Record via webcam&quot;, &quot;Record via phone&quot;, &quot;upload footage&quot;, &quot;Landscape&quot;, &quot;MacBook Pro Cam&quot;, &quot;Default - MacBook&quot;, &quot;I&#x27;m ready&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface d&#x27;Heygen, survole l&#x27;option de clonage d&#x27;une vraie personne, puis explore les différentes méthodes d&#x27;enregistrement (webcam, téléphone, et téléchargement de séquences).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_004_00-01-19.jpg" alt="Interface d&#x27;Heygen montrant l&#x27;option &#x27;Clone a real person&#x27; pour créer un avatar à partir d&#x27;une vraie personne." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_004_00-01-19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:19</span>
+                        <span class="caption-text">Interface d&#x27;Heygen montrant l&#x27;option &#x27;Clone a real person&#x27; pour créer un avatar à partir d&#x27;une vraie personne.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_005_00-01-30.jpg" alt="Interface d&#x27;Heygen pour la création d&#x27;avatar avec l&#x27;option d&#x27;enregistrement &#x27;Record via webcam&#x27;." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_005_00-01-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:30</span>
+                        <span class="caption-text">Interface d&#x27;Heygen pour la création d&#x27;avatar avec l&#x27;option d&#x27;enregistrement &#x27;Record via webcam&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_006_00-01-41.jpg" alt="Interface d&#x27;Heygen affichant l&#x27;option &#x27;Record via phone&#x27; avec un espace pour un code QR." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_006_00-01-41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:41</span>
+                        <span class="caption-text">Interface d&#x27;Heygen affichant l&#x27;option &#x27;Record via phone&#x27; avec un espace pour un code QR.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:53 - 00:02:27</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les premières choses qui me sont venues à l&#x27;esprit, mais je pense que c&#x27;est bien parce que je ne livre pas quelque chose qui a été scripté, il y a donc beaucoup de pauses et de silences naturels au milieu de la référence vidéo. Mes gestes de la main, la rotation de la tête, ces mouvements subtils des yeux se produisent tous de la même manière que si j&#x27;avais une conversation normale avec quelqu&#x27;un, et tout cela va être très utile lorsqu&#x27;il s&#x27;agira d&#x27;entraîner l&#x27;IA. Nous pouvons donc ajouter un nom pour notre avatar, puis cliquer sur créer. Le processus se déroule donc très rapidement et comme vous</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de création d&#x27;avatar (style HeyGen ou similaire) avec un menu latéral sombre et une fenêtre principale de confirmation de génération d&#x27;avatar, incluant une incrustation vidéo (PiP) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;Your Avatar is ready to use!&quot;, &quot;Choose your avatar&#x27;s voice, then start creating videos!&quot;, et un bouton bleu &quot;Use in a video&quot;. Dans le panneau latéral gauche : &quot;Avatar&quot;, &quot;Video Agent&quot;, &quot;Translate&quot;, &quot;Apps&quot;, &quot;Projects&quot;, &quot;Avatars&quot;, &quot;AI Studio&quot;, &quot;Avatar Shots New&quot;, &quot;Templates&quot;, &quot;Brand System&quot;, &quot;PPT/PDF to video&quot;, &quot;Recent&quot;, &quot;Untitled Video&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;application de création d&#x27;avatar qui indique que le traitement est terminé avec succès et que l&#x27;avatar est prêt à être utilisé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_007_00-02-25.jpg" alt="Interface montrant que l&#x27;avatar est prêt à être utilisé avec un bouton bleu &#x27;Use in a video&#x27; et le créateur en incrustation vidéo (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_007_00-02-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:25</span>
+                        <span class="caption-text">Interface montrant que l&#x27;avatar est prêt à être utilisé avec un bouton bleu &#x27;Use in a video&#x27; et le créateur en incrustation vidéo (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:27 - 00:02:51</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">On peut voir que nous avons maintenant l&#x27;option d&#x27;utiliser notre avatar dans une vidéo. Maintenant, nous avons une étape très importante ici pour vérifier notre identité. C&#x27;est pour que nous ne puissions pas simplement aller cloner n&#x27;importe qui et leur faire dire des choses qu&#x27;ils ne diraient pas. Donc, une fois que j&#x27;ai cliqué sur vérifier, tout ce que j&#x27;ai à faire est de lire ce code à haute voix devant ma webcam et en 30 à 60 secondes notre avatar sera approuvé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme HeyGen montrant les options de création et de vérification d&#x27;avatar.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes visibles : &#x27;Your Avatar is ready to use!&#x27;, &#x27;Verify identity&#x27;, &#x27;8 - HeyGen - 8&#x27;, &#x27;Avatar Verified&#x27;.
+[DESC_IMAGE_1] L&#x27;utilisateur visualise l&#x27;écran de préparation de l&#x27;avatar et s&#x27;apprête à passer à l&#x27;étape suivante.
+[DESC_IMAGE_2] L&#x27;utilisateur effectue la vérification d&#x27;identité en lisant le code affiché face à sa webcam.
+[DESC_IMAGE_3] L&#x27;avatar est officiellement vérifié et validé dans l&#x27;interface de l&#x27;outil HeyGen.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration pédagogique et présentation du workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_008_00-02-29.jpg" alt="Écran de confirmation indiquant que l&#x27;avatar est prêt à être utilisé avec un bouton bleu &#x27;Use in a video&#x27;." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_008_00-02-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:29</span>
+                        <span class="caption-text">Écran de confirmation indiquant que l&#x27;avatar est prêt à être utilisé avec un bouton bleu &#x27;Use in a video&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_009_00-02-43.jpg" alt="Interface de vérification d&#x27;identité avec la webcam active et le code à lire à voix haute &#x27;8 - HeyGen - 8&#x27;." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_009_00-02-43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:43</span>
+                        <span class="caption-text">Interface de vérification d&#x27;identité avec la webcam active et le code à lire à voix haute &#x27;8 - HeyGen - 8&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_010_00-02-49.jpg" alt="Fenêtre de confirmation pop-up indiquant &#x27;Avatar Verified&#x27; avec un bouton &#x27;Done&#x27;." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_010_00-02-49.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:49</span>
+                        <span class="caption-text">Fenêtre de confirmation pop-up indiquant &#x27;Avatar Verified&#x27; avec un bouton &#x27;Done&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:51 - 00:03:27</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Simple comme bonjour. Et maintenant, nous pouvons nous lancer dans la conception de notre look, ce qui est l&#x27;un des principaux avantages d&#x27;avoir un avatar IA, car nous pouvons les adapter spécifiquement à n&#x27;importe quel cas d&#x27;usage. Nous pourrions vouloir que les vêtements ou l&#x27;arrière-plan fassent décontracté, ou nous pourrions vouloir opter pour la direction opposée et choisir quelque chose de beaucoup plus formel. Maintenant, la première chose que je veux faire est de survoler cette image de moi en bas et de sélectionner « changer le look de base » (change base look), et maintenant j&#x27;ai la possibilité de téléverser cette photo fixe que j&#x27;ai prise de moi dans ma configuration normale avec une expression très neutre. Alors allons-y.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de création d&#x27;avatars IA avec panneau de script à gauche, zone de prévisualisation centrale et options de design de look à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible dans l&#x27;interface : &quot;Avatar videos&quot;, &quot;Untitled Video&quot;, &quot;Brand System&quot;, &quot;Design Look With AI&quot;, &quot;Change base look&quot;, &quot;Describe the edits you&#x27;d like to make to&quot;, &quot;16:9&quot;, &quot;Generate&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur survole une image miniature dans l&#x27;interface de design d&#x27;avatar pour sélectionner l&#x27;option de modification du look de base.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_011_00-03-04.jpg" alt="Interface de l&#x27;application de création d&#x27;avatars IA montrant le panneau latéral avec différentes options de design de look et la vidéo principale de l&#x27;orateur." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_011_00-03-04.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:04</span>
+                        <span class="caption-text">Interface de l&#x27;application de création d&#x27;avatars IA montrant le panneau latéral avec différentes options de design de look et la vidéo principale de l&#x27;orateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_012_00-03-16.jpg" alt="Gros plan sur l&#x27;interface montrant le survol de l&#x27;image miniature avec l&#x27;option « Change Base Look » affichée." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_012_00-03-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:16</span>
+                        <span class="caption-text">Gros plan sur l&#x27;interface montrant le survol de l&#x27;image miniature avec l&#x27;option « Change Base Look » affichée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:27 - 00:03:46</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et déposez ça là. Maintenant, si nous ne changeons pas notre look de base ici, HeyGen va automatiquement parcourir et sélectionner une image de cette séquence vidéo que nous avons téléchargée un peu plus tôt. Et ça conviendra peut-être très bien pour vous, mais j&#x27;ai réalisé que je fais beaucoup de têtes bizarres quand je parle face caméra.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran logiciel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu textuel, interface ou prompt visible.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur parle face caméra en gesticulant devant son micro.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:47 - 00:04:14</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">L&#x27;outil a donc du mal à trouver une expression neutre, ce qui est finalement ce que nous recherchons ici. Et vous pouvez voir qu&#x27;un problème est signalé ici, et c&#x27;est parce que je porte mes lunettes et ma casquette, qui bloquent efficacement mon visage. Mais vous savez quoi ? Je vais laisser ça tel quel. C&#x27;est comme ça que je m&#x27;habille pour mes vidéos. Je veux donc voir comment HeyGen gère réellement cette situation. Est-ce que ça peut quand même donner un résultat convaincant avec ces éléments présents ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> HeyGen (interface de création vidéo par IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Messages d&#x27;avertissement visibles : &quot;Not recommended as a base look&quot;, &quot;Quality issues in this image can affect how closely new looks resemble you&quot;, &quot;Face visibility &amp; Accessories&quot;, &quot;10 passed checks&quot;, ratio 16:9, options de style et de design.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de HeyGen avec un avertissement de qualité lié à ses lunettes et sa casquette, expliquant qu&#x27;il souhaite tester l&#x27;outil avec sa tenue habituelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_013_00-03-56.jpg" alt="Gros plan sur l&#x27;interface de HeyGen montrant un avertissement concernant la visibilité du visage et les accessoires." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_013_00-03-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:56</span>
+                        <span class="caption-text">Gros plan sur l&#x27;interface de HeyGen montrant un avertissement concernant la visibilité du visage et les accessoires.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_014_00-04-05.jpg" alt="Vue complète de l&#x27;interface HeyGen montrant le panneau de script, la timeline vidéo et les options de design avec l&#x27;alerte d&#x27;accessoires." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_014_00-04-05.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:05</span>
+                        <span class="caption-text">Vue complète de l&#x27;interface HeyGen montrant le panneau de script, la timeline vidéo et les options de design avec l&#x27;alerte d&#x27;accessoires.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:14 - 00:04:32</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, vous pouvez voir que nous avons tout un tas de looks prédéfinis et que n&#x27;importe lequel dont le style nous plaît, nous pouvons simplement cliquer sur &quot;remix look&quot; et nous pouvons en envoyer autant que nous le voulons ici. Et si nous cliquons sur &quot;view&quot;, nous pouvons voir chacun d&#x27;eux en cours de génération au fur et à mesure.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de type montage vidéo ou avatar IA avec barre latérale d&#x27;outils (Avatar, Media, Elements, Music, Captions, Recorder, Templates, Layers) et grille de sélection de styles.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau latéral avec des vignettes de styles prédéfinis (looks), bouton &quot;Remix look&quot;, et vignettes de génération en cours avec indication de progression (&quot;34%&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur survole une option &quot;Remix look&quot; sur une vignette de style, puis l&#x27;écran suivant montre la progression de la génération des avatars modifiés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_015_00-04-16.jpg" alt="Interface de l&#x27;application montrant la bibliothèque de looks prédéfinis avec l&#x27;option &quot;Remix look&quot; survolée." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_015_00-04-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:16</span>
+                        <span class="caption-text">Interface de l&#x27;application montrant la bibliothèque de looks prédéfinis avec l&#x27;option &quot;Remix look&quot; survolée.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_016_00-04-30.jpg" alt="Interface montrant le panneau latéral avec des aperçus en cours de génération, dont un affichant &quot;34%&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_016_00-04-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:30</span>
+                        <span class="caption-text">Interface montrant le panneau latéral avec des aperçus en cours de génération, dont un affichant &quot;34%&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:32 - 00:04:54</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais si nous voulons avoir un tout petit peu plus de contrôle sur cette étape du processus, ce que nous pouvons faire, c&#x27;est survoler cette icône ici et sélectionner quelques éléments de scène. Si je clique dessus, vous pouvez voir que j&#x27;ai quelques images de référence de moi-même. Je vais donc aller de l&#x27;avant et sélectionner ces deux-là. Et cela va essentiellement aider à verrouiller la cohérence des personnages.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de création vidéo par IA (similaire à HeyGen ou outil similaire) avec panneau de gestion des éléments de scène et prévisualisation vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible : &quot;Add a scene element&quot;, &quot;Upload or select up to 3 images to reference specific products, objects, or outfits in your avatar&quot;, &quot;Design Look With AI&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de sélection des éléments de scène et sélectionne deux images de référence de lui-même pour assurer la cohérence du personnage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_017_00-04-34.jpg" alt="Interface logicielle de création vidéo avec panneau latéral permettant de choisir des éléments de scène ou des avatars." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_017_00-04-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:34</span>
+                        <span class="caption-text">Interface logicielle de création vidéo avec panneau latéral permettant de choisir des éléments de scène ou des avatars.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_018_00-04-43.jpg" alt="Fenêtre contextuelle &quot;Add a scene element&quot; affichant deux images de référence du visage du créateur." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_018_00-04-43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:43</span>
+                        <span class="caption-text">Fenêtre contextuelle &quot;Add a scene element&quot; affichant deux images de référence du visage du créateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:54 - 00:05:14</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous pourrions opter pour quelque chose de plutôt simple, comme montrer le même homme barbu portant un sweat à capuche gris. Allez-y et lancez cette génération. Ou peut-être un changement un peu plus radical. Nous dirons donc de montrer le même homme barbu dans une veste de travail et un t-shirt gris foncé à l&#x27;intérieur d&#x27;un studio de podcast avec un éclairage violet dramatique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de génération vidéo par IA avec panneaux latéraux (Recorder, Templates, Layers, Interactivity), grille de prévisualisations et zone de prompt.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible dans le champ de prompt : &quot;Show the same bearded man wearing a grey hoodie.&quot; Bouton &quot;Generate&quot; bleu, format 16:9, et vignette étiquetée &quot;Base Look&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de génération avec le prompt saisi pour recréer le personnage avec un sweat à capuche gris.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_019_00-04-56.jpg" alt="Interface de l&#x27;outil de génération vidéo montrant une grille de prévisualisations, une vignette &quot;Base Look&quot; et un champ de prompt textuel." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_019_00-04-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:56</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo montrant une grille de prévisualisations, une vignette &quot;Base Look&quot; et un champ de prompt textuel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:14 - 00:05:34</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si nous allons dans l&#x27;aperçu maintenant, vous verrez que nous avons cette très grande variété de looks différents. Des arrière-plans alternatifs, des vêtements et une orientation. Juste une sélection massive parmi laquelle vous pouvez choisir. Cela signifie que vous pouvez refaire le studio ou la garde-robe de votre avatar sans avoir à dépenser des milliers d&#x27;euros en réalité.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de création d&#x27;avatar avec panneau de sélection à droite (Avatar, Media, Elements, Music, Captions, Recorder, Templates, Layers) et un écran vidéo à gauche affichant l&#x27;animateur et des mots clés.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;BACKGROUND&quot;, &quot;CLOTHING&quot;, &quot;ORIENTATION&quot;. Dans le panneau latéral : en-tête &quot;Jack Kennedy&quot;, option &quot;Replace avatar&quot;, et une grille de vignettes montrant différentes tenues et arrière-plans pour l&#x27;avatar. Un bouton bleu &quot;Generate&quot; en haut à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface logicielle et le panneau latéral permettant de modifier l&#x27;apparence, l&#x27;arrière-plan et les vêtements de l&#x27;avatar.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_020_00-05-24.jpg" alt="Interface de l&#x27;outil montrant un panneau latéral avec une grille d&#x27;avatars aux styles variés et du texte à l&#x27;écran listant &#x27;BACKGROUND, CLOTHING, ORIENTATION&#x27;." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_020_00-05-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:24</span>
+                        <span class="caption-text">Interface de l&#x27;outil montrant un panneau latéral avec une grille d&#x27;avatars aux styles variés et du texte à l&#x27;écran listant &#x27;BACKGROUND, CLOTHING, ORIENTATION&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:35 - 00:05:53</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce processus consiste à avoir de la variété et à vous donner le plus de contrôle possible. Maintenant, en ce qui concerne notre voix, nous avons plusieurs options différentes. Si vous avez un enregistrement de bonne qualité de vous-même prononçant votre script, vous pouvez vous rendre sur le côté gauche et cliquer sur l&#x27;option de téléchargement audio.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface d&#x27;un logiciel de création de vidéos par avatar IA (type HeyGen ou similaire) avec panneau latéral de configuration de l&#x27;avatar et de la voix.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible dans l&#x27;interface : &quot;Avatar videos&quot;, &quot;Untitled Video&quot;, &quot;Brand System&quot;, &quot;Script&quot;, &quot;Type your script or use &#x27;/&#x27; for commands&quot;, &quot;Upload audio&quot;, &quot;Script Writer&quot;, &quot;Avatar &amp; Voice (Scene 1)&quot;, &quot;Jack Kennedy&quot;, &quot;Avatar V&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole ou clique sur les options de configuration vocale et de téléchargement audio sur le côté gauche de l&#x27;interface.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_021_00-05-44.jpg" alt="Interface complète de l&#x27;application de création de vidéos par avatar montrant le panneau latéral des options vocales et l&#x27;aperçu de la scène." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_021_00-05-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:44</span>
+                        <span class="caption-text">Interface complète de l&#x27;application de création de vidéos par avatar montrant le panneau latéral des options vocales et l&#x27;aperçu de la scène.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_022_00-05-51.jpg" alt="Gros plan sur le panneau de script à gauche de l&#x27;interface montrant les boutons &quot;Upload audio&quot; et &quot;Script Writer&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_022_00-05-51.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:51</span>
+                        <span class="caption-text">Gros plan sur le panneau de script à gauche de l&#x27;interface montrant les boutons &quot;Upload audio&quot; et &quot;Script Writer&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:53 - 00:06:26</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cet audio sera ensuite appliqué sur votre avatar IA et j&#x27;obtiens de très bons résultats de cette façon. Disons donc qu&#x27;il n&#x27;est pas pratique pour vous d&#x27;être dans votre studio à la maison, mais que vous voulez quand même produire du contenu. Vous pouvez balancer un enregistrement audio et laisser HeyGen s&#x27;occuper de la partie visuelle. L&#x27;autre option est de survoler cet onglet ici pour la voix et de cliquer dessus. Et vous pouvez voir que j&#x27;ai déjà une voix créée ici, mais si nous cliquons sur &quot;changer&quot;, vous verrez que nous avons l&#x27;option de cloner, concevoir une voix ou importer depuis un tiers.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> HeyGen (interface de création d&#x27;avatars et de clonage vocal)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menus et paramètres visibles : &quot;Edit Voice&quot;, &quot;Jack Kennedy&quot;, &quot;Voice clone&quot;, &quot;Improve this voice&quot;, &quot;Switch voice&quot;, curseurs &quot;Speed&quot; et &quot;Volume&quot; à 100%, onglets latéraux (Agent, Avatar, Media, Elements, Music, Captions, Recorder, Templates), option &quot;Import from 3rd party&quot;, &quot;Voice Clone&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de HeyGen avec les options de gestion de la voix et du clonage vocal.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_023_00-06-15.jpg" alt="Interface HeyGen montrant les options de configuration de la voix &quot;Jack Kennedy&quot; avec curseurs de vitesse et de volume." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_023_00-06-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:15</span>
+                        <span class="caption-text">Interface HeyGen montrant les options de configuration de la voix &quot;Jack Kennedy&quot; avec curseurs de vitesse et de volume.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_024_00-06-24.jpg" alt="Fenêtre modale HeyGen montrant les options de clonage, de design de voix et d&#x27;importation depuis un tiers." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_024_00-06-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:24</span>
+                        <span class="caption-text">Fenêtre modale HeyGen montrant les options de clonage, de design de voix et d&#x27;importation depuis un tiers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:26 - 00:07:01</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ici, nous voulons aller de l&#x27;avant et cliquer sur cloner votre voix. Maintenant, nous avons l&#x27;option d&#x27;enregistrer directement dans HeyGen. Encore une fois, nous pouvons importer un fichier audio. Je vais donc suivre cette voie. Une fois de plus, je peux aller de l&#x27;avant et déposer mon fichier audio pré-enregistré. Cela étant dit, nous pouvons cliquer sur générer la voix et attendre pendant que notre voix est clonée. Une fois que c&#x27;est traité, vous verrez que nous avons quelques options différentes, chacune utilisant un modèle de voix IA différent. Maintenant, allons écouter cela. Un excellent clone vocal doit sembler clair, énergique, et exactement comme vous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de HeyGen (fenêtre modale &quot;Create voice clone&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fenêtre modale &quot;Create voice clone&quot; avec les onglets &quot;Record audio&quot; et &quot;Upload audio&quot;, instructions de lecture d&#x27;un texte d&#x27;exemple (&quot;OH my gosh... I can HARDLY sit still right now...&quot;), sélection de la langue (English) et du microphone (MacBook Pro Microphone), bouton d&#x27;enregistrement rouge avec compteur (00:00 / 00:30). Encadré PiP montrant Jack dans son studio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de clonage vocal de HeyGen, illustrant les options d&#x27;enregistrement ou d&#x27;importation d&#x27;un fichier audio.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_025_00-06-28.jpg" alt="Interface HeyGen affichant la fenêtre modale de création de clone vocal avec les options d&#x27;enregistrement direct et un encadré PiP du présentateur dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_025_00-06-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:28</span>
+                        <span class="caption-text">Interface HeyGen affichant la fenêtre modale de création de clone vocal avec les options d&#x27;enregistrement direct et un encadré PiP du présentateur dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:01 - 00:07:39</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ouais, d&#x27;accord. Celle-là ne fait pas l&#x27;affaire. Essayons 11labs v3. Fermez les yeux. Est-ce que ça ressemble à votre voix ? Si vous aimez ce que vous entendez, créons votre premier. Donc, pour les deux résultats d&#x27;11labs, je ne suis pas vraiment convaincu. Allons-y et essayons Phish. Salut, je suis ravi que tu sois là. Voici l&#x27;aperçu de ton clone vocal. Écoute rapidement. Donc, même si ça me ressemble un peu, je ne pense pas que ce soit parfait à 100 %. C&#x27;est un peu monotone et il n&#x27;y a pas beaucoup d&#x27;émotion ou d&#x27;enthousiasme dans le rendu. Cependant, c&#x27;est la meilleure des options que nous avons ici. Donc je vais cliquer sur</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de clonage vocal (probablement HeyGen ou outil similaire) avec gestion des modèles audio ElevenLabs et Fish, incluant une incrustation vidéo PiP (Picture-in-Picture) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes visibles : &quot;Voice clone ready&quot;, &quot;HeyGen_Audio_Training_2&quot;, &quot;ElevenLabs&quot;, &quot;ElevenLabs V3&quot;, &quot;Fish&quot;, &quot;Re-record&quot;, &quot;Use this voice&quot;, &quot;MY VOICE CLONE&quot;, &quot;SPEECH IS A LITTLE MONOTONAL&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue à travers différentes options de modèles de clonage vocal (ElevenLabs, ElevenLabs V3, Fish) pour comparer le rendu audio par rapport à sa propre voix.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_026_00-07-03.jpg" alt="Interface de clonage vocal affichant les options de test avec incrustation vidéo PiP du créateur." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_026_00-07-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:03</span>
+                        <span class="caption-text">Interface de clonage vocal affichant les options de test avec incrustation vidéo PiP du créateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_027_00-07-14.jpg" alt="Fenêtre modale &quot;Voice clone ready&quot; montrant les différentes options ElevenLabs et Fish, avec le créateur en PiP." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_027_00-07-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:14</span>
+                        <span class="caption-text">Fenêtre modale &quot;Voice clone ready&quot; montrant les différentes options ElevenLabs et Fish, avec le créateur en PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_028_00-07-26.jpg" alt="Affichage du texte incrusté &quot;MY VOICE CLONE&quot; et &quot;SPEECH IS A LITTLE MONOTONAL&quot; pendant la revue des voix." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_028_00-07-26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:26</span>
+                        <span class="caption-text">Affichage du texte incrusté &quot;MY VOICE CLONE&quot; et &quot;SPEECH IS A LITTLE MONOTONAL&quot; pendant la revue des voix.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_029_00-07-37.jpg" alt="Sélection de l&#x27;option de clonage vocal &quot;Fish&quot; dans l&#x27;interface de test." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_029_00-07-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:37</span>
+                        <span class="caption-text">Sélection de l&#x27;option de clonage vocal &quot;Fish&quot; dans l&#x27;interface de test.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:39 - 00:08:12</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">utilisez cette voix. Maintenant, la difficulté pour cloner ma voix est peut-être due au fait que j&#x27;ai un accent un peu bizarre. Je suis né et j&#x27;ai grandi dans le sud de l&#x27;Angleterre, ce qui donne un accent plutôt huppé, j&#x27;imagine qu&#x27;on pourrait dire, mais maintenant j&#x27;habite dans le sud de Londres. Il y a donc en quelque sorte deux opposés polaires dans mon accent qui se manifestent au fil des phrases, vous savez, c&#x27;est donc peut-être un peu difficile pour un modèle d&#x27;IA de vraiment saisir ou comprendre mon accent spécifique. Comme je le dis, cependant, si je devais utiliser cet outil, je me contenterais de télécharger un audio. Et de cette façon,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de clonage vocal (avec panneau de script et options &#x27;Upload audio&#x27; / &#x27;Script Writer&#x27;) et incrustation vidéo de Jack.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible : &#x27;Script&#x27;, &#x27;Type your script or use &#x27;/&#x27; for commands&#x27;, &#x27;Upload audio&#x27;, &#x27;Script Writer&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris clique sur le bouton &#x27;Upload audio&#x27; de l&#x27;interface pendant que Jack s&#x27;exprime.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_030_00-08-10.jpg" alt="Interface de l&#x27;outil de clonage vocal montrant la zone de script et le bouton &#x27;Upload audio&#x27;, avec Jack en incrustation vidéo (PiP)" loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_030_00-08-10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:10</span>
+                        <span class="caption-text">Interface de l&#x27;outil de clonage vocal montrant la zone de script et le bouton &#x27;Upload audio&#x27;, avec Jack en incrustation vidéo (PiP)</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:12 - 00:08:37</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vous savez que la voix va sembler naturelle parce que c&#x27;est en fait la vôtre. Vous verrez également sur le côté gauche, nous pouvons insérer ici le script que nous aimerions voir lu par notre avatar IA. Et il y a également quelques options différentes ici pour verrouiller ce ton spécifique. Si nous cliquons sur l&#x27;onglet style de diffusion, nous pouvons diriger notre voix en décrivant le type d&#x27;émotion que nous recherchons.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface HeyGen (panneau de script à gauche, fenêtre de prévisualisation vidéo au centre, panneau de configuration avatar à droite).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du script visible à l&#x27;écran commençant par « Content creation is f****** brutal... » et options de l&#x27;avatar (Avatar, Voice, Motion Engine, Avatar Background, Layout, Delivery style).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de HeyGen, déplace son curseur et zoome sur l&#x27;option de style de diffusion pour contrôler l&#x27;émotion de l&#x27;avatar.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_031_00-08-21.jpg" alt="Interface de l&#x27;outil HeyGen affichant le panneau de script à gauche et l&#x27;avatar vidéo au centre avec ses paramètres à droite." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_031_00-08-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:21</span>
+                        <span class="caption-text">Interface de l&#x27;outil HeyGen affichant le panneau de script à gauche et l&#x27;avatar vidéo au centre avec ses paramètres à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_032_00-08-35.jpg" alt="Interface de HeyGen montrant l&#x27;apparition de l&#x27;onglet « Delivery style » en bas à gauche sous le script." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_032_00-08-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:35</span>
+                        <span class="caption-text">Interface de HeyGen montrant l&#x27;apparition de l&#x27;onglet « Delivery style » en bas à gauche sous le script.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:37 - 00:08:59</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pouvons également utiliser le miroir de voix. C&#x27;est donc là que nous pouvons nous enregistrer, puis HeyGen fera correspondre l&#x27;interprétation en utilisant le clone vocal pour rapprocher un peu plus les choses de notre son réel. Et puis nous pouvons, bien sûr, également utiliser l&#x27;amélioration automatique pour ajouter des balises afin de contrôler l&#x27;émotion, le rythme et les effets sonores si vous voulez un parcours plus direct.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> HeyGen (interface de création vidéo par IA avec panneau de script à gauche, aperçu vidéo au centre et paramètres d&#x27;avatar/voix à droite)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du script : &quot;Content creation is f****** brutal...&quot;, options de style de livraison incluant &quot;Direct voice&quot;, &quot;Mirror voice&quot; (&quot;Record yourself, we&#x27;ll match your delivery in the selected voice&quot;) et &quot;Auto-enhance&quot; (&quot;Automatically adds tags to control emotion, pacing, and sound effects&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole et sélectionne l&#x27;option &quot;Mirror voice&quot; puis &quot;Auto-enhance&quot; dans l&#x27;interface de HeyGen.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_033_00-08-39.jpg" alt="Interface HeyGen montrant l&#x27;option &quot;Mirror voice&quot; sélectionnée dans le panneau de script." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_033_00-08-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:39</span>
+                        <span class="caption-text">Interface HeyGen montrant l&#x27;option &quot;Mirror voice&quot; sélectionnée dans le panneau de script.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_034_00-08-57.jpg" alt="Interface HeyGen montrant l&#x27;option &quot;Auto-enhance&quot; sélectionnée dans le panneau de script." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_034_00-08-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:57</span>
+                        <span class="caption-text">Interface HeyGen montrant l&#x27;option &quot;Auto-enhance&quot; sélectionnée dans le panneau de script.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:59 - 00:09:27</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Allons-y et testons le clonage vocal ici. Donc nous allons simplement utiliser le microphone de base intégré à notre ordinateur portable ici. Ce microphone est configuré avec mon installation d&#x27;enregistrement donc il ne va pas être utilisé pour cela. Comment est-on censé publier du contenu tous les jours sans perdre la tête ? Eh bien, j&#x27;ai une confession à faire. Donc, une fois cela enregistré, nous pouvons aller de l&#x27;avant et cliquer sur appliquer. Très bien, écoutons le résultat que nous avons obtenu. Comment est-on censé publier du contenu tous les jours sans perdre la tête ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> HeyGen (application web de génération d&#x27;avatars et de synthèse vocale par IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fenêtres modales de clonage vocal (&quot;Mirror your voice&quot;), options &quot;Record audio&quot; et &quot;Upload audio&quot;, sélection du microphone intégré (MacBook Pro Microphone), script textuel affiché dans le panneau de gauche et options d&#x27;avatar à droite (Avatar 5).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de HeyGen pour enregistrer sa voix et appliquer le clonage vocal, puis écoute le résultat.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_035_00-09-09.jpg" alt="Interface HeyGen affichant la fenêtre contextuelle de clonage vocal &#x27;Mirror your voice&#x27; avec un enregistreur audio." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_035_00-09-09.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:09</span>
+                        <span class="caption-text">Interface HeyGen affichant la fenêtre contextuelle de clonage vocal &#x27;Mirror your voice&#x27; avec un enregistreur audio.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_036_00-09-18.jpg" alt="Interface HeyGen affichant la fenêtre de confirmation audio &#x27;Confirm audio&#x27; avec un bouton &#x27;Apply&#x27;." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_036_00-09-18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:18</span>
+                        <span class="caption-text">Interface HeyGen affichant la fenêtre de confirmation audio &#x27;Confirm audio&#x27; avec un bouton &#x27;Apply&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_037_00-09-25.jpg" alt="Interface HeyGen affichant le panneau d&#x27;édition de script et les paramètres de l&#x27;avatar avec une incrustation vidéo du créateur." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_037_00-09-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:25</span>
+                        <span class="caption-text">Interface HeyGen affichant le panneau d&#x27;édition de script et les paramètres de l&#x27;avatar avec une incrustation vidéo du créateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:27 - 00:10:00</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Eh bien, j&#x27;ai une confession à vous faire. Tout ce que vous venez de voir n&#x27;était même pas moi. C&#x27;était mon avatar IA, donc encore une fois, bien que ce ne soit pas parfait, je pense que c&#x27;est plus proche que d&#x27;utiliser simplement le clone vocal de base, je pense que le mirroring aide un peu à l&#x27;améliorer et à se rapprocher de mes types de maniérismes pour notre moteur de mouvement. Nous voulons vraiment utiliser l&#x27;avatar 5, c&#x27;est le dernier modèle de HeyGen et cela mènera à ces mouvements vraiment agréables et naturels qui se marieront bien avec votre clone vocal. En ce qui concerne l&#x27;arrière-plan, vous pouvez le personnaliser en sélectionnant l&#x27;un des fonds de catalogue.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface HeyGen (logiciel de création d&#x27;avatars par IA), comportant un panneau de script textuel à gauche, un lecteur vidéo central avec l&#x27;avatar et un panneau de configuration à droite (Avatar, Voice, Motion Engine, Avatar Background, Layout, Radius, Zoom).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du script visible à l&#x27;écran (« Content creation is brutal... »), réglages de l&#x27;avatar (« Jack Kennedy », « HeyGen_Audio_Training_2 », « Motion Engine: Avatar V »), et menus déroulants proposant les versions Avatar V (Premium, « Moves like you. Motion adapts to script »), Avatar IV et Avatar III.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de HeyGen en expliquant l&#x27;utilisation de l&#x27;avatar IA et sélectionne ou survole le paramètre du moteur de mouvement « Avatar V ».</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_038_00-09-29.jpg" alt="Interface de l&#x27;application HeyGen montrant le panneau de script à gauche et l&#x27;aperçu vidéo de l&#x27;avatar au centre." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_038_00-09-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:29</span>
+                        <span class="caption-text">Interface de l&#x27;application HeyGen montrant le panneau de script à gauche et l&#x27;aperçu vidéo de l&#x27;avatar au centre.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_039_00-09-50.jpg" alt="Interface de HeyGen affichant le panneau latéral de sélection du moteur de mouvement avec l&#x27;option « Avatar V » mise en avant." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_039_00-09-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:50</span>
+                        <span class="caption-text">Interface de HeyGen affichant le panneau latéral de sélection du moteur de mouvement avec l&#x27;option « Avatar V » mise en avant.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:00 - 00:10:34</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des images disponibles sur HeyGen. Vous pouvez également supprimer directement l&#x27;arrière-plan ou aller de l&#x27;avant et ajouter une couleur spécifique à la place, comme cette couleur de fond vert. Très utile lorsqu&#x27;il s&#x27;agit du montage. Vous pouvez voir à partir de ce résultat que cela ne fait pas un travail parfait pour m&#x27;isoler de l&#x27;arrière-plan. C&#x27;est probablement parce qu&#x27;il n&#x27;y a pas tellement de contraste entre, par exemple, cette chaise et puis la chaise là-bas derrière moi. Mais c&#x27;est probablement assez bien si vous l&#x27;utilisez simplement pour du contenu social, des TikToks et des choses comme ça où ça va être assez petit dans le cadre. Si nous revenons à</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface HeyGen (éditeur vidéo et studio d&#x27;avatars avec panneau de script à gauche, aperçu central et options d&#x27;avatar et de voix à droite).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du script visible à gauche (&quot;So I first started experimenting...&quot;), options &quot;Avatar Background&quot; (&quot;Customize&quot;, &quot;Remove&quot;, &quot;Color&quot;, &quot;Original&quot;), panneau &quot;Background Color&quot; avec code couleur hexadécimal (#1AFF00).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur démontre l&#x27;utilisation des options de suppression et de modification de l&#x27;arrière-plan (fond vert) sur l&#x27;interface HeyGen, tout en expliquant les limites du détourage automatique selon le contraste.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_040_00-10-02.jpg" alt="Interface HeyGen montrant les options de personnalisation de l&#x27;arrière-plan de l&#x27;avatar et l&#x27;incrustation vidéo du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_040_00-10-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:02</span>
+                        <span class="caption-text">Interface HeyGen montrant les options de personnalisation de l&#x27;arrière-plan de l&#x27;avatar et l&#x27;incrustation vidéo du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_041_00-10-12.jpg" alt="Interface HeyGen affichant le sélecteur de couleur d&#x27;arrière-plan avec un écran vert appliqué à l&#x27;avatar." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_041_00-10-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:12</span>
+                        <span class="caption-text">Interface HeyGen affichant le sélecteur de couleur d&#x27;arrière-plan avec un écran vert appliqué à l&#x27;avatar.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_042_00-10-32.jpg" alt="Interface HeyGen montrant le retour aux options de l&#x27;arrière-plan de l&#x27;avatar avec les boutons de configuration." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_042_00-10-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:32</span>
+                        <span class="caption-text">Interface HeyGen montrant le retour aux options de l&#x27;arrière-plan de l&#x27;avatar avec les boutons de configuration.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:34 - 00:11:09</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">notre arrière-plan d&#x27;origine, nous pouvons également utiliser cette option de recadrage en cercle ici qui est vraiment utile si vous créez du contenu de style tutoriel et en raison du fonctionnement d&#x27;Avatar 5, il est tout à fait viable d&#x27;utiliser cet outil pour faire du contenu long comme vous vous y attendriez pour des tutoriels, donc ce flux de travail pourrait être vraiment très pratique. Tout, des visuels à votre voix, va rester bien cohérent que vous génériez des clips de 30 secondes ou des clips dépassant 10 minutes. Vous allez avoir cette cohérence là pour une variété de cas d&#x27;utilisation. Pour cet exemple cependant, nous pouvons simplement aller de l&#x27;avant et cliquer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de génération d&#x27;avatairs vidéo par IA (type HeyGen / Avatar V) avec panneau de script à gauche, aperçu vidéo central et panneau de paramètres d&#x27;avatar et de voix à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du script visible dans le panneau latéral de gauche, paramètres &quot;Avatar Background&quot;, options de disposition &quot;Original&quot; et &quot;Circle&quot;, curseurs de &quot;Radius&quot; et &quot;Zoom&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;utilisation de l&#x27;option de recadrage circulaire pour l&#x27;arrière-plan de l&#x27;avatar et ajuste les paramètres de disposition.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_043_00-10-36.jpg" alt="Interface du logiciel de création d&#x27;avatars IA montrant l&#x27;éditeur de scène avec l&#x27;option de disposition en cercle sélectionnée." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_043_00-10-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:36</span>
+                        <span class="caption-text">Interface du logiciel de création d&#x27;avatars IA montrant l&#x27;éditeur de scène avec l&#x27;option de disposition en cercle sélectionnée.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_044_00-11-07.jpg" alt="Interface de création d&#x27;avatar montrant le rendu vidéo avec le sujet recadré dans un cercle sur fond blanc uni." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_044_00-11-07.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:07</span>
+                        <span class="caption-text">Interface de création d&#x27;avatar montrant le rendu vidéo avec le sujet recadré dans un cercle sur fond blanc uni.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:09 - 00:11:43</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">original et une fois que nous sommes satisfaits de tout le reste, nous pouvons aller tout en haut à droite et cliquer sur générer. Nous avons ici un ensemble d&#x27;options incluant la résolution et le format également, webm si nous voulons un arrière-plan transparent par exemple. Une fois que vous avez verrouillé tous ces détails, vous pouvez cliquer sur soumettre ce qui est utile aussi c&#x27;est que nous pouvons également enregistrer ce modèle donc nous pourrions aller de l&#x27;avant et l&#x27;appeler quelque chose comme jack studio afin de pouvoir le réutiliser plus tard et maintenant il s&#x27;agit juste d&#x27;attendre que notre génération arrive donc nous avons ici toute une série de générations différentes</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme HeyGen (génération de vidéos par avatar IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menus de configuration d&#x27;avatar et de voix, paramètres de génération vidéo (&quot;Generate Video&quot;, &quot;Title: Jack test&quot;, &quot;Resolution: 1080p&quot;, &quot;Fps: 25&quot;, &quot;Format: MP4 / WebM (transparent background)&quot;), et galerie de projets dans le tableau de bord (&quot;Projects&quot;, &quot;Side angle&quot;, &quot;Vertical&quot;, &quot;Voice Mirroring&quot;, &quot;Jack test&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre comment accéder aux options de génération, sélectionner le format WebM avec fond transparent, puis présente la bibliothèque de toutes les vidéos générées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_045_00-11-11.jpg" alt="Interface HeyGen montrant l&#x27;éditeur vidéo avec le panneau de script à gauche et les réglages d&#x27;avatar à droite." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_045_00-11-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:11</span>
+                        <span class="caption-text">Interface HeyGen montrant l&#x27;éditeur vidéo avec le panneau de script à gauche et les réglages d&#x27;avatar à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_046_00-11-21.jpg" alt="Fenêtre contextuelle de génération vidéo sur HeyGen permettant de choisir la résolution, les FPS et le format (MP4 ou WebM avec fond transparent)." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_046_00-11-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:21</span>
+                        <span class="caption-text">Fenêtre contextuelle de génération vidéo sur HeyGen permettant de choisir la résolution, les FPS et le format (MP4 ou WebM avec fond transparent).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_047_00-11-41.jpg" alt="Tableau de bord HeyGen (Projects) affichant la bibliothèque de vidéos générées avec différents avatars et arrière-plans." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_047_00-11-41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:41</span>
+                        <span class="caption-text">Tableau de bord HeyGen (Projects) affichant la bibliothèque de vidéos générées avec différents avatars et arrière-plans.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:43 - 00:12:17</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">que j&#x27;ai fabriquée ici à l&#x27;intérieur de HeyGen et pour finir la vidéo, je voulais aller de l&#x27;avant et jeter un œil à certaines d&#x27;entre elles dans les plus grands détails. Alors tout d&#x27;abord, regardons notre sorte d&#x27;exemple principal ici où cela correspond au cadrage que vous pouvez voir sur ma webcam en ce qui concerne mon visage en ce moment. Donc juste un rappel que la voix que vous pouvez entendre était un fichier audio téléchargé, donc vraiment avec cet exemple, nous nous concentrons sur les visuels. À quel point les mouvements du visage et du haut du corps ainsi que ce genre de gestes de la main sont-ils réalistes ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> HeyGen (plateforme de génération d&#x27;avatairs par IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des projets visibles : &quot;Side angle&quot;, &quot;Vertical&quot;, &quot;Voice Mirroring&quot;, &quot;Jack test&quot;, &quot;Untitled Video&quot;. Boutons d&#x27;édition (&quot;Edit&quot;, &quot;New revision in AI Studio&quot;, &quot;Translate&quot;). Texte incrusté en bas à droite : &quot;THE VOICE IS AN UPLOADED AUDIO FILE&quot;. Résumé en bas : &quot;Discover the challenges and fun of prompt engineering with AI art tools like Midjourney.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris navigue à travers la grille de projets HeyGen puis sélectionne une vidéo spécifique pour l&#x27;afficher en grand format avec les options d&#x27;édition.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_048_00-11-45.jpg" alt="Interface HeyGen montrant la bibliothèque de projets avec différentes vidéos d&#x27;avatairs générés." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_048_00-11-45.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:45</span>
+                        <span class="caption-text">Interface HeyGen montrant la bibliothèque de projets avec différentes vidéos d&#x27;avatairs générés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_049_00-11-55.jpg" alt="Gros plan sur la sélection d&#x27;une vignette de vidéo dans HeyGen." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_049_00-11-55.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:55</span>
+                        <span class="caption-text">Gros plan sur la sélection d&#x27;une vignette de vidéo dans HeyGen.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_050_00-12-06.jpg" alt="Interface de lecture d&#x27;une vidéo générée dans HeyGen avec un encadré incrusté et du texte explicatif." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_050_00-12-06.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:06</span>
+                        <span class="caption-text">Interface de lecture d&#x27;une vidéo générée dans HeyGen avec un encadré incrusté et du texte explicatif.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:17 - 00:12:51</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">aussi. Après un certain temps, je me suis rendu compte qu&#x27;amener l&#x27;IA à faire ce que l&#x27;on voulait demandait une courbe d&#x27;apprentissage assez raide, mais que cela faisait aussi partie du plaisir d&#x27;une certaine manière, cela devient assez addictif, tout ce qui touche au prompting. Comment allez-vous communiquer votre vision à une IA qui n&#x27;a absolument aucun contexte au-delà de ce qu&#x27;on lui fournit ? Je dois donc dire que je trouve cela vraiment très impressionnant. Ces mouvements de yeux subtils, la façon dont ma tête pivote,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu logiciel, code, prompt ou interface n&#x27;est affiché.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra dans son studio, gesticulant des mains pour illustrer ses propos sur l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:51 - 00:13:27</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et vous pouvez voir les reflets lumineux qui se déplacent dans mes lunettes. Il s&#x27;avère que l&#x27;utilisation de ces accessoires n&#x27;a causé aucun problème réel du tout, malgré le fait qu&#x27;ils aient été signalés. Probablement ce que je trouve le plus impressionnant à propos de HeyGen, c&#x27;est le mouvement de synchronisation labiale. Ça a l&#x27;air vraiment très bien réussi. Il n&#x27;y a rien qui semble particulièrement artificiel là-dedans, ce qui est vraiment super. On peut voir ici que HeyGen a vraiment appliqué de manière significative les séquences vidéo que nous avons téléchargées au début pour entraîner notre avatar. Il bouge et se comporte vraiment comme je le fais.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou interface logicielle visible à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;exprime face caméra en plateau dans son studio, gesticulant pour illustrer son propos sur l&#x27;avatar HeyGen.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:27 - 00:13:50</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">quand je m&#x27;adresse directement à la caméra. Maintenant, je veux jeter un œil à un exemple vertical que vous pourriez utiliser pour du contenu court. Et cela utilise aussi le clonage de voix. Donc c&#x27;est ici que nous avons notre clone vocal et nous utilisions simplement le microphone intégré de mon ordinateur portable pour lire le script en utilisant mes propres intonations.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web ou de logiciel de montage/visualisation vidéo affichant un lecteur au format vertical (Reels/Shorts) au centre avec des boutons de réaction en bas, et une incrustation vidéo PiP du créateur dans un cadre bleu en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un lecteur vidéo vertical affichant une vidéo de Jack, sur fond sombre avec divers menus de navigation et boutons de réaction.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente une vidéo au format vertical sur son écran, illustrant l&#x27;utilisation du clonage de voix pour du contenu court.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_051_00-13-35.jpg" alt="Aperçu d&#x27;un lecteur vidéo au format vertical (Shorts/Reels) montrant une vidéo de démonstration avec le créateur, intégré dans une interface de type logiciel ou plateforme web de retouche/visualisation avec incrustation PiP du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_051_00-13-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:35</span>
+                        <span class="caption-text">Aperçu d&#x27;un lecteur vidéo au format vertical (Shorts/Reels) montrant une vidéo de démonstration avec le créateur, intégré dans une interface de type logiciel ou plateforme web de retouche/visualisation avec incrustation PiP du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:50 - 00:14:09</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, cela est appliqué au clone vocal pour essayer de le rapprocher de mon accent réel. Écoutons donc cet exemple. Comment es-tu censé publier une vidéo tous les jours sans perdre la boule ? Eh bien, j&#x27;ai une confession à vous faire. Tout ce que vous venez de regarder n&#x27;était même pas moi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de lecture vidéo avec incrustation PiP (Picture-in-Picture) du présentateur en bas à gauche et icônes d&#x27;évaluation sous la vidéo centrale.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec des emojis et icônes de réaction en bas de la vidéo centrale.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre un exemple de vidéo en cours de lecture au centre de l&#x27;écran tout en apparaissant en incrustation PiP en bas à gauche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_052_00-13-52.jpg" alt="Interface logicielle affichant une vidéo verticalement avec un encadré incrusté (PiP) du créateur en bas à gauche et des options d&#x27;interaction en bas." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_052_00-13-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:52</span>
+                        <span class="caption-text">Interface logicielle affichant une vidéo verticalement avec un encadré incrusté (PiP) du créateur en bas à gauche et des options d&#x27;interaction en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:09 - 00:14:47</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">était mon avatar IA. Donc encore une fois, les gestes des mains et ces mouvements faciaux subtils sont vraiment parfaits. La voix, bien que ce ne soit pas parfait, je pense que le mirroring vocal a réussi à faire pencher la balance un peu plus vers ma vraie façon de parler. Je continuerais quand même à privilégier l&#x27;importation d&#x27;un fichier audio pour être tout à fait honnête. Mais vous pouvez voir ici qu&#x27;en utilisant HeyGen, vous pourriez tout à fait l&#x27;utiliser pour du contenu court format, je pense. Ça ne donne pas cette ambiance d&#x27;avatars IA où ils ont l&#x27;air très rigides et sans vie. Il y a beaucoup plus de réalisme humaniste qui se dégage ici. Et nous allons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran (intégration de graphismes textuels et d&#x27;un avatar vidéo incrusté, mais aucun logiciel ou outil n&#x27;est affiché à l&#x27;écran).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran : &quot;VOICE MIRRORING RECORDED ON LAPTOP MICROPHONE AND APPLIED TO HIGH QUALITY VOICE CLONE&quot;, &quot;VOICE GENERATION VOICE MIRRORING IS CLOSER TO HOW I ACTUALLY SOUND&quot;, &quot;USING HEYGEN DEFINITELY USABLE FOR GENERATING SHORT FORM&quot;, &quot;USING HEYGEN GENERATED AVATARS DON&#x27;T FEEL TOO STIFF OR LIFELESS&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur parle face caméra tout en gesticulant, illustré par des encadrés montrant son avatar IA et des textes récapitulatifs.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:47 - 00:15:19</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">finissons par jeter un rapide coup d&#x27;œil à notre exemple de fond vert également ici. Après un certain temps, je me suis rendu compte que faire faire à l&#x27;IA ce que l&#x27;on voulait demandait un apprentissage assez difficile, mais c&#x27;était aussi une part du plaisir d&#x27;une certaine manière. Ça devient assez addictif, tout le côté ingénierie de prompt. Comment allez-vous communiquer votre vision à une IA qui n&#x27;a absolument aucun contexte au-delà de ce que nous lui fournissons ? Donc encore une fois, la performance de mon avatar a l&#x27;air plutôt pas mal.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de prévisualisation vidéo avec panneau latéral et incrustation (PiP) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Vidéo verticale montrant Jack sur fond vert, boutons d&#x27;interaction et de lecture, encadré PiP de Jack dans son studio avec son micro.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre un exemple de vidéo sur fond vert via une interface logicielle tout en continuant sa présentation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_053_00-14-49.jpg" alt="Interface logicielle affichant une vidéo verticale sur fond vert avec des options de lecture et un encadré PiP de Jack en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_053_00-14-49.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:49</span>
+                        <span class="caption-text">Interface logicielle affichant une vidéo verticale sur fond vert avec des options de lecture et un encadré PiP de Jack en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:19 - 00:15:51</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">super, je pense. Et c&#x27;est sympa de voir cette vue de caméra légèrement différente si vous vouliez l&#x27;utiliser pour certains de vos montages. Nous pouvons redessiner l&#x27;image elle-même, l&#x27;image de base, puis appliquer le mouvement et la voix de notre avatar à celle-ci si vous voulez un peu changer les choses. Là où nous rencontrons quelques difficultés, c&#x27;est au niveau du masquage par IA, où l&#x27;on peut voir l&#x27;arrière-plan clignoter de manière intermittente autour des doigts, des poignets et de ce genre de choses. Encore une fois, je pense que c&#x27;est probablement parce qu&#x27;il n&#x27;y a pas énormément de contraste entre les éléments de premier plan dans le plan que vous pouvez voir.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustation d&#x27;avatar sur fond bleu et panneaux de texte explicatifs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &#x27;LIMITATIONS&#x27;, &#x27;DIFFICULTY WITH AI MASKING BACKGROUND FLICKERS AROUND FINGERS AND WRISTS&#x27;, &#x27;CAUSED BY LACK OF CONTRAST BETWEEN BACKGROUND AND SUBJECT&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les limites techniques de l&#x27;IA en matière de masquage et de contraste, illustrées par des puces textuelles à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_054_00-15-41.jpg" alt="Affichage d&#x27;un panneau textuel avec le titre &#x27;LIMITATIONS&#x27; listant les problèmes de masquage par IA et de scintillement autour des doigts et des poignets." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_054_00-15-41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:41</span>
+                        <span class="caption-text">Affichage d&#x27;un panneau textuel avec le titre &#x27;LIMITATIONS&#x27; listant les problèmes de masquage par IA et de scintillement autour des doigts et des poignets.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_055_00-15-49.jpg" alt="Affichage d&#x27;un panneau textuel expliquant que ces limitations sont causées par le manque de contraste entre l&#x27;arrière-plan et le sujet." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_055_00-15-49.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:49</span>
+                        <span class="caption-text">Affichage d&#x27;un panneau textuel expliquant que ces limitations sont causées par le manque de contraste entre l&#x27;arrière-plan et le sujet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:51 - 00:16:24</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en ce moment. Et les éléments d&#x27;arrière-plan, la couleur de cette chaise, par exemple, très similaire à la couleur de la chaise derrière moi. Donc si vous aviez un vrai écran vert là-bas, cela devrait éliminer ce problème. L&#x27;IA a du mal à comprendre ce qui est un élément de premier plan et d&#x27;arrière-plan. Essentiellement toujours, je veux dire, le contenu social est très indulgent. Je pense toujours que cela pourrait être viable dans un montage pour être tout à fait honnête. Ceci étant dit cependant, les gars, j&#x27;espère vraiment que vous avez apprécié la vidéo d&#x27;aujourd&#x27;hui. Si vous avez la moindre question, assurez-vous de les laisser en bas</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de montage vidéo avec habillage graphique, incrustations vidéo et affichage textuel de démonstration (fond bleu, encadrés stylisés).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran : &quot;LIMITATIONS CAUSED BY LACK OF CONTRAST BETWEEN BACKGROUND AND SUBJECT&quot; (Limitations causées par le manque de contraste entre l&#x27;arrière-plan et le sujet).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente visuellement des exemples de détourage et de masquage par IA en comparant les arrière-plans et les chaises, puis s&#x27;adresse directement à l&#x27;audience en fin de vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_056_00-15-53.jpg" alt="Démonstration graphique montrant les limitations du détourage par IA en raison du manque de contraste entre l&#x27;arrière-plan et le sujet, avec incrustation vidéo et fond vert." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_056_00-15-53.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:53</span>
+                        <span class="caption-text">Démonstration graphique montrant les limitations du détourage par IA en raison du manque de contraste entre l&#x27;arrière-plan et le sujet, avec incrustation vidéo et fond vert.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_057_00-16-03.jpg" alt="Poursuite de la démonstration graphique avec le créateur expliquant les problèmes de détection entre premier plan et arrière-plan." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_057_00-16-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:03</span>
+                        <span class="caption-text">Poursuite de la démonstration graphique avec le créateur expliquant les problèmes de détection entre premier plan et arrière-plan.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_058_00-16-14.jpg" alt="Vue finale du montage graphique de démonstration avant la transition vers la caméra principale." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_058_00-16-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:14</span>
+                        <span class="caption-text">Vue finale du montage graphique de démonstration avant la transition vers la caméra principale.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:24 - 00:16:57</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en dessous dans la section des commentaires. J&#x27;essaie toujours d&#x27;en répondre à autant que possible. Si vous souhaitez me soutenir, vous pouvez aller lâcher un pouce bleu sur cette vidéo. Et bien sûr, pensez à vous abonner afin que je puisse vous tenir au courant de toutes les dernières plateformes et outils d&#x27;IA. Nous avons exploré HeyGen avec beaucoup de détails. Aujourd&#x27;hui, nous avons jeté un œil à leur nouveau modèle Avatar 5. Et si vous souhaitez l&#x27;utiliser vous-même pour vos propres projets créatifs, vous trouverez un lien vers l&#x27;outil juste en dessous dans la description de la vidéo. J&#x27;apprécie vraiment que vous ayez regardé aujourd&#x27;hui, si vous vouliez</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> HeyGen (Avatar 5) et interface de navigation YouTube/vidéos.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface HeyGen avec panneau latéral droit montrant différents avatars, options de styles et de prompts textuels (« Describe the edits you&#x27;d like to make to »), ainsi qu&#x27;une grille de miniatures de vidéos YouTube.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface du logiciel HeyGen et ses différentes options d&#x27;avatars tout en s&#x27;exprimant face à la caméra.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_059_00-16-35.jpg" alt="Affichage d&#x27;une grille de vidéos sur l&#x27;écran avec Jack en incrustation PiP dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_059_00-16-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:35</span>
+                        <span class="caption-text">Affichage d&#x27;une grille de vidéos sur l&#x27;écran avec Jack en incrustation PiP dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-9_1tIRHfomQ/frame_060_00-16-46.jpg" alt="Interface de l&#x27;outil HeyGen affichant l&#x27;édition vidéo avec Avatar 5 et la bibliothèque de looks/avatars sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-9_1tIRHfomQ/frame_060_00-16-46.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:46</span>
+                        <span class="caption-text">Interface de l&#x27;outil HeyGen affichant l&#x27;édition vidéo avec Avatar 5 et la bibliothèque de looks/avatars sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:57 - 00:17:06</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">allez-y et consultez un peu plus de mon contenu, vous pouvez cliquer sur la vidéo à l&#x27;écran maintenant sinon passez une excellente fin de journée les gars et je vous retrouve dans la prochaine</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu logiciel ou visuel affiché à l&#x27;écran, uniquement le créateur Jack dans son studio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur parle face caméra pour conclure la vidéo et inciter le spectateur à regarder une autre vidéo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
