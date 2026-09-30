@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment diriger des vidéos IA avec des tracés dessinés à la main — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment diriger des vidéos IA avec des tracés dessinés à la main</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-06-08</span>
+                <span class="badge">⏱️ 16m 37s</span>
+                <span class="badge">🆔 <code>NNO7KMqZEFM</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=NNO7KMqZEFM" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>La création de vidéos par intelligence artificielle franchit un cap décisif grâce à l'émergence du contrôle par croquis, une technique qui permet de guider précisément les mouvements de caméra et d'action en superposant de simples tracés dessinés à la main sur une image de départ. Fini le syndrome de la page blanche, les itérations textuelles interminables et le hasard algorithmique : cette approche offre aux créateurs une direction artistique chirurgicale. Dans ce tutoriel, Jack — expert en effets visuels — démocratise ce processus viral en dévoilant un flux de travail complet, itératif et accessible, combinant des LLM pour la structuration de prompts, des générateurs d'images performants et des outils vidéo avancés basés sur des trajectoires de mouvement.</p><p>Le workflow s'articule autour d'une méthodologie rigoureuse en plusieurs étapes : la conception d'un environnement riche via un prompt structuré par intelligence artificielle, l'intégration optionnelle d'un personnage personnalisé cohérent, puis l'export de l'image vers un support de dessin (comme une tablette tactile ou un simple logiciel de retouche) pour y tracer des lignes directionnelles contrastées. En combinant ce guide visuel avec les modèles vidéo de pointe, l'IA interprète instantanément les vecteurs de mouvement — qu'il s'agisse d'un plan orbital autour d'une tour futuriste ou d'une cinématique d'action complexe. Les créateurs s'affranchissent ainsi des limites traditionnelles de la génération procédurale pour orchestrer leurs plans avec une précision quasi-humaine.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude</span><span class="tool-tag">Seedance</span><span class="tool-tag">flux</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Le contrôle par croquis (Sketch-Guided Video)** : Remplacer ou compléter les prompts textuels par des tracés dessinés à la main permet de dictater précisément la trajectoire de la caméra ou l&#x27;action des éléments à l&#x27;écran.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;utilisation de fichiers de compétences MD** : Injecter un fichier Markdown (MD) de génération d&#x27;images dans un LLM (comme Claude) permet d&#x27;appliquer un cadre rigoureux qui transforme une description sommaire en un prompt technique et hautement détaillé.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;optimisation des crédits créatifs** : Exploiter les modes de qualité « bas » ou « moyen » sur les plateformes offrant des générations illimitées permet d&#x27;expérimenter massivement sans épuiser son capital de crédits.</span></li><li><span class="point-bullet">✦</span><span>Génération d&#x27;environnements par lots** : Produire systématiquement plusieurs options d&#x27;images (par exemple, trois variantes) à partir d&#x27;un même prompt offre une marge de choix artistique précieuse avant de passer à l&#x27;animation.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;intégration optionnelle de personnages personnalisés** : Fournir au LLM des images de référence de soi-même ou d&#x27;un sujet spécifique permet de générer des personnages cohérents intégrés de surcroît dans l&#x27;univers de science-fiction créé.</span></li><li><span class="point-bullet">✦</span><span>La fusion des prompts de personnages** : Demander au LLM de fusionner les vues de face et de dos en un seul prompt unifié simplifie considérablement le processus de génération d&#x27;image de référence.</span></li><li><span class="point-bullet">✦</span><span>Le choix stratégique des couleurs de tracé** : Ne jamais utiliser par défaut une couleur qui se fond dans l&#x27;image (comme le rouge si l&#x27;image est rouge) ; il faut choisir une couleur vive et contrastée pour que le modèle vidéo l&#x27;isole parfaitement.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;indication de profondeur par le dessin** : Effacer partiellement ou modifier le tracé lorsqu&#x27;il passe derrière un obstacle (comme une tour) permet de signifier explicitement à l&#x27;IA la notion de premier plan et d&#x27;arrière-plan (effet d&#x27;orbite 3D).</span></li><li><span class="point-bullet">✦</span><span>La flexibilité des outils de dessin** : Aucun logiciel sophistiqué n&#x27;est indispensable pour tracer les trajectoires ; un simple outil gratuit comme Microsoft Paint ou une application sur smartphone/tablette suffit amplement.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;adéquation des formats de sortie** : Sélectionner rigoureusement le format d&#x27;image et de vidéo (16:9 pour le cinéma/desktop, 9:16 pour les réseaux sociaux verticaux) dès les paramètres initiaux pour éviter les recadrages destructeurs.</span></li><li><span class="point-bullet">✦</span><span>Le choix du modèle vidéo (C-Dance 2)** : Pour que le tracé devienne une boussole d&#x27;animation efficace, l&#x27;utilisation de modèles spécialisés comme C-Dance 2 configurés en haute résolution (1080p) garantit un rendu professionnel.</span></li><li><span class="point-bullet">✦</span><span>La progressivité de l&#x27;apprentissage technique** : Pour les débutants, il est conseillé de tester le flux de travail sur des résolutions inférieures (480p ou 720p) avant de lancer des calculs lourds en haute définition.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:36</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La vidéo par IA vient de devenir beaucoup plus intelligente car vous pouvez désormais diriger vos générations en utilisant rien de plus qu&#x27;un simple croquis. Ce qui ressemble à un dessin grossier peut devenir un plan de drone cinématique, un point de vue unique ou même une séquence d&#x27;action complète. Alors, au lieu de modifier sans fin les descriptions textuelles, de régénérer des plans et d&#x27;espérer que l&#x27;IA fasse ce que vous décrivez, vous pouvez simplement esquisser le mouvement que vous voulez, appuyer sur générer et regarder la magie opérer. Je suis Jack, j&#x27;ai passé plus d&#x27;une décennie à créer des effets visuels pour certaines des plus grandes marques de la planète et maintenant j&#x27;utilise l&#x27;IA pour réinventer la création.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo illustrative avec texte incrusté (&#x27;a unique POV&#x27;, &#x27;the movement you want&#x27;, &#x27;and now I&#x27;m using&#x27;) et double affichage côte à côte (image de référence avec tracés de mouvement et rendu vidéo IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &#x27;a unique POV&#x27;, &#x27;the movement you want&#x27;, &#x27;and now I&#x27;m using&#x27;. Visuels de démonstration montrant des statues dorées, des scènes d&#x27;intérieur avec des objets et des cartes fantastiques accompagnées de tracés vectoriels rouges indiquant le mouvement de caméra ou d&#x27;objets.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation dynamique de visuels illustrant le fonctionnement de la génération vidéo par IA guidée par des esquisses et des tracés de trajectoire.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_001_00-00-13.jpg" alt="Démonstration visuelle avec le texte &#x27;a unique POV&#x27; montrant une image avec des flèches de trajectoire rouge et le résultat vidéo généré à droite." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_001_00-00-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:13</span>
+                        <span class="caption-text">Démonstration visuelle avec le texte &#x27;a unique POV&#x27; montrant une image avec des flèches de trajectoire rouge et le résultat vidéo généré à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_002_00-00-24.jpg" alt="Démonstration visuelle avec le texte &#x27;the movement you want&#x27; montrant une image avec des annotations de mouvement et le résultat vidéo généré à droite." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_002_00-00-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:24</span>
+                        <span class="caption-text">Démonstration visuelle avec le texte &#x27;the movement you want&#x27; montrant une image avec des annotations de mouvement et le résultat vidéo généré à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_003_00-00-34.jpg" alt="Démonstration visuelle avec le texte &#x27;and now I&#x27;m using&#x27; montrant une carte fantastique annotée et le résultat vidéo d&#x27;un volcan en éruption à droite." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_003_00-00-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:34</span>
+                        <span class="caption-text">Démonstration visuelle avec le texte &#x27;and now I&#x27;m using&#x27; montrant une carte fantastique annotée et le résultat vidéo d&#x27;un volcan en éruption à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:36 - 00:01:12</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">workflows. Dans cette vidéo, je vais vous montrer exactement comment utiliser cette méthode et je partagerai tous mes prompts et matériels de manière totalement gratuite. Si vous appréciez le contenu d&#x27;aujourd&#x27;hui, n&#x27;hésitez pas à lâcher un pouce bleu pour moi et à vous abonner. Bon, passons aux choses sérieuses. Chaque jour, il semble y avoir une nouvelle façon ingénieuse d&#x27;utiliser les outils vidéo par IA, et aujourd&#x27;hui ne fait pas exception. Vous avez probablement vu ces vidéos devenir virales sur les réseaux sociaux, où l&#x27;on observe un tracé dessiné à la main extrêmement basique par-dessus une image, et empilé juste au-dessus, la génération qui en résulte. C&#x27;est vraiment unique</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de génération vidéo avec une zone centrale affichant des exemples de vidéos empilées verticalement montrant un tracé rouge sur une image.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Exemples de vidéos avec un tracé dessiné à la main de couleur rouge sur une image et le résultat vidéo généré empilé au-dessus.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle d&#x27;exemples de vidéos virales issues des réseaux sociaux démontrant la méthode de tracé sur image.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_004_00-01-01.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil vidéo avec superposition de vidéos virales au centre et incrustation vidéo du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_004_00-01-01.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:01</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil vidéo avec superposition de vidéos virales au centre et incrustation vidéo du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:12 - 00:01:44</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">approche pour utiliser les outils mais personne ne vous dit vraiment exactement comment mettre cela en pratique vous-même. Mais c&#x27;est là que j&#x27;interviens car nous allons explorer cette technique en profondeur et je vais partager toutes les astuces et conseils que les autres créateurs ne vous disent pas. J&#x27;ai généré tous les visuels du projet d&#x27;aujourd&#x27;hui sur Artlist et si vous voulez suivre en même temps, vous trouverez un lien en bas dans la description. La première chose que nous devons faire est de générer nos images de départ. Je suis actuellement sur la page d&#x27;accueil d&#x27;Artlist et nous voulons naviguer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme Artlist (Artlist.io) avec la barre de navigation supérieure (Home, AI Toolkit, Stock Catalog, Studio) et les différentes catégories d&#x27;outils IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible sur l&#x27;interface : &quot;Bring any idea to life&quot;, &quot;AI Toolkit&quot;, &quot;Artlist Studio&quot;, &quot;Create with leading AI tools&quot;, &quot;AI Image&quot;, &quot;AI Video&quot;, &quot;AI Music&quot;, &quot;AI Voiceover&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue sur la page d&#x27;accueil d&#x27;Artlist et présente les différentes sections de la plateforme dédiées à la génération d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_005_00-01-23.jpg" alt="Navigation sur le site d&#x27;Artlist avec le présentateur en incrustation (PiP) dans le coin inférieur gauche" loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_005_00-01-23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:23</span>
+                        <span class="caption-text">Navigation sur le site d&#x27;Artlist avec le présentateur en incrustation (PiP) dans le coin inférieur gauche</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_006_00-01-42.jpg" alt="Page d&#x27;accueil de la plateforme Artlist affichant les sections AI Toolkit et Artlist Studio, avec le présentateur en incrustation (PiP)" loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_006_00-01-42.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:42</span>
+                        <span class="caption-text">Page d&#x27;accueil de la plateforme Artlist affichant les sections AI Toolkit et Artlist Studio, avec le présentateur en incrustation (PiP)</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:44 - 00:02:22</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vers la boîte à outils d&#x27;IA. Et vous constaterez que toutes vos générations sont organisées dans ces sessions individuelles pratiques. Donc nous allons aller de l&#x27;avant et plonger dans celle-ci ici. Et ici nous avons toutes les différentes images que j&#x27;ai générées afin de démontrer ce flux de travail. Et j&#x27;ai trouvé que ces types de dispositions de cartes aériennes fonctionnent vraiment très bien pour cette technique. Maintenant, le secret de toute image IA de haute qualité est un prompt incroyablement détaillé, mais je vais vous montrer comment vous pouvez les construire très facilement. Je veux que vous vous dirigiez vers ChatGPT, Gemini ou Claude.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Artlist AI Toolkit (images 1 et 2) et Claude (image 4).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes visibles : &#x27;Home&#x27;, &#x27;AI Toolkit&#x27;, &#x27;Stock Catalog&#x27;, &#x27;Studio&#x27;, &#x27;Artlist Studio&#x27;, prompt &#x27;colossal golden statue standing&#x27;, interface de Claude avec &#x27;Hey there, Jack&#x27;, &#x27;How can I help you today?&#x27;, &#x27;Sonnet 4.6 Medium&#x27;, et les boutons de raccourci Write, Create, Learn, Code, Life stuff.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface d&#x27;Artlist, montre une grille d&#x27;images générées par IA, puis bascule sur l&#x27;interface de l&#x27;assistant Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_007_00-01-46.jpg" alt="Interface d&#x27;Artlist montrant la navigation vers l&#x27;onglet &#x27;AI Toolkit&#x27; avec la vidéo de démonstration en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_007_00-01-46.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:46</span>
+                        <span class="caption-text">Interface d&#x27;Artlist montrant la navigation vers l&#x27;onglet &#x27;AI Toolkit&#x27; avec la vidéo de démonstration en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_008_00-01-58.jpg" alt="Galerie de générations d&#x27;images sur Artlist avec le prompt &#x27;colossal golden statue standing&#x27; visible en haut." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_008_00-01-58.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:58</span>
+                        <span class="caption-text">Galerie de générations d&#x27;images sur Artlist avec le prompt &#x27;colossal golden statue standing&#x27; visible en haut.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_009_00-02-20.jpg" alt="Interface de l&#x27;assistant IA Claude affichant le message d&#x27;accueil &#x27;Hey there, Jack&#x27; et le champ de saisie avec le modèle &#x27;Sonnet 4.6&#x27;." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_009_00-02-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:20</span>
+                        <span class="caption-text">Interface de l&#x27;assistant IA Claude affichant le message d&#x27;accueil &#x27;Hey there, Jack&#x27; et le champ de saisie avec le modèle &#x27;Sonnet 4.6&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:22 - 00:03:04</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">dans mon cas, parce que la super nouvelle ici, c&#x27;est que ce flux de travail fonctionnera dans n&#x27;importe quel grand modèle de langage que vous préférez. Nous allons procéder au téléchargement du fichier MD de génération d&#x27;images par IA, et vous le trouverez sur le lien de ma communauté School dans la description. Et ce qui est génial avec ça, c&#x27;est que je peux maintenant décrire de manière très vague ce que je recherche, et ce fichier MD va appliquer un cadre pour nous construire un prompt vraiment détaillé. Par exemple, nous pouvons dire : plan d&#x27;ensemble en vue trois quarts d&#x27;une ville de science-fiction futuriste avec une grande tour dans le coin supérieur droit.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;assistant IA Claude avec un encadré de chat central et une incrustation vidéo (PiP) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;Hey there, Jack&quot;, nom du fichier uploadé &quot;AI Image Generation Framework...&quot;, modèle &quot;Sonnet 4.6&quot;, et légende textuelle jaune en bas &quot;link in the description&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;outil de langage Claude où un fichier de framework d&#x27;intelligence artificielle est importé pour automatiser la création de prompts détaillés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_010_00-02-37.jpg" alt="Interface de Claude montrant le téléchargement du fichier MD &#x27;AI Image Generation Framework&#x27; dans la boîte de saisie." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_010_00-02-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:37</span>
+                        <span class="caption-text">Interface de Claude montrant le téléchargement du fichier MD &#x27;AI Image Generation Framework&#x27; dans la boîte de saisie.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:04 - 00:03:23</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si nous continuons et envoyons ceci, vous allez voir que tout de suite Claude se met au travail. Il lit la compétence de génération d&#x27;images. Et vous pouvez voir qu&#x27;ainsi, nous avons ce prompt très détaillé avec juste une entrée très basique de ma part en tant qu&#x27;utilisateur. Donc ce que nous pouvons faire maintenant, c&#x27;est le copier.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;assistant IA Claude avec une zone de texte en bas (&quot;Write a message...&quot;, &quot;Sonnet 4.6 Medium&quot;) et un encadré PiP du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On peut lire un bloc de texte descriptif généré : &quot;Three-quarter view, wide establishing shot of a futuristic sci-fi city with a large tower in the top right-hand corner.&quot; et un petit encadré intitulé &quot;AI Image Generation Framework...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre le résultat de la génération de prompt détaillée obtenue dans l&#x27;interface de Claude, prête à être copiée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_011_00-03-06.jpg" alt="Interface de l&#x27;assistant Claude affichant un prompt détaillé généré à partir d&#x27;une simple entrée utilisateur, avec un encadré vidéo (PiP) du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_011_00-03-06.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:06</span>
+                        <span class="caption-text">Interface de l&#x27;assistant Claude affichant un prompt détaillé généré à partir d&#x27;une simple entrée utilisateur, avec un encadré vidéo (PiP) du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:23 - 00:03:57</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais retourner sur Artlist. Et, vous savez, je vais créer une nouvelle session pour ça. On peut simplement coller le prompt que Claude vient de nous écrire. Et ensuite, on veut sélectionner le modèle qu&#x27;on va utiliser pour générer notre image. Personnellement, je pense que GPT image 2 est la meilleure offre sur le marché en ce moment, donc on va sélectionner &quot;utiliser le modèle&quot; et ensuite on a d&#x27;autres paramètres à regarder ici. Le format d&#x27;image, on va opter pour du 16 par 9, le 9 par 16 est super pour le contenu sur les réseaux sociaux, et ensuite on a trois options différentes pour la qualité. On a bas,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Artlist (AI Toolkit) avec panneau de génération d&#x27;images, champs de texte et menus déroulants de configuration.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;Wide establishing shot, 35mm lens, three-quarter elevated angle looking across the city...&quot;, choix de modèles (&quot;Nano Banana 2&quot;, &quot;Nano Banana Pro&quot;, &quot;Seedream 5.0&quot;), ratios (1:1, 16:9, 9:16, 3:4, 4:3), options de qualité (Low, Medium, High) et nombre d&#x27;images (1 à 4).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue sur Artlist, crée une nouvelle session, colle un prompt textuel, sélectionne un modèle de génération d&#x27;image et explore les paramètres de format et de qualité.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_012_00-03-25.jpg" alt="Interface d&#x27;Artlist AI Toolkit montrant la bibliothèque de visuels générés et le champ de prompt." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_012_00-03-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:25</span>
+                        <span class="caption-text">Interface d&#x27;Artlist AI Toolkit montrant la bibliothèque de visuels générés et le champ de prompt.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_013_00-03-35.jpg" alt="Interface d&#x27;Artlist affichant le prompt collé et le menu déroulant de sélection des modèles d&#x27;IA." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_013_00-03-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:35</span>
+                        <span class="caption-text">Interface d&#x27;Artlist affichant le prompt collé et le menu déroulant de sélection des modèles d&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_014_00-03-55.jpg" alt="Fenêtre des paramètres d&#x27;Artlist montrant le choix du ratio (16:9) et les options de qualité." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_014_00-03-55.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:55</span>
+                        <span class="caption-text">Fenêtre des paramètres d&#x27;Artlist montrant le choix du ratio (16:9) et les options de qualité.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:57 - 00:04:15</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">moyen et élevé mais vous remarquerez que bas et moyen ont ces petits symboles à côté d&#x27;eux Et c&#x27;est parce qu&#x27;avec certains abonnements sur Artlist actuellement, vous pouvez obtenir des générations illimitées. Vous pouvez donc expérimenter beaucoup avec l&#x27;IA sans dépenser de crédits, ce qui est tout simplement parfait pour ce flux de travail.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de génération d&#x27;image par IA avec panneau de paramètres (Aspect Ratio, Quality, Number of Images) et incrustation vidéo du créateur dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Options de format (1:1, 16:9, 9:16, 3:4, 4:3), options de qualité (Low avec symbole infini, Medium avec symbole infini, High), et nombre d&#x27;images (1, 2, 3, 4). En arrière-plan, un long prompt textuel en anglais décrivant une mégastructure futuriste et cyberpunk.</p>
+                        <p><strong>Action / Démonstration :</strong> Un curseur de souris survole l&#x27;option &quot;Low&quot; dans la section qualité de l&#x27;interface de génération.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_015_00-03-59.jpg" alt="Interface de configuration montrant les options de format d&#x27;image (Aspect Ratio), de qualité (Quality avec les options Low, Medium, High et des symboles d&#x27;infinité) et le nombre d&#x27;images." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_015_00-03-59.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:59</span>
+                        <span class="caption-text">Interface de configuration montrant les options de format d&#x27;image (Aspect Ratio), de qualité (Quality avec les options Low, Medium, High et des symboles d&#x27;infinité) et le nombre d&#x27;images.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:16 - 00:04:52</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais sélectionner &quot;medium&quot; ici et je veux créer trois images. J&#x27;ai donc un léger choix. Je ne dépense aucun crédit, donc autant le faire. Nous avons donc reçu quelques options différentes ici. Personnellement, c&#x27;est ma préférée, bien que les deux autres soient formidables aussi, donc je pense que nous allons opter pour celle-ci. Ce que vous voulez faire ensuite, c&#x27;est la télécharger, nous verrons comment l&#x27;utiliser très bientôt, mais ensuite je veux aborder une étape que beaucoup d&#x27;autres créateurs oublient, elle est facultative mais elle vous donne beaucoup plus de contrôle sur votre résultat final et cela implique en fait</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme de génération d&#x27;images par IA Artlist (avec encadré PiP du présentateur Jack).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menus de configuration de génération : Aspect Ratio (1:1, 16:9, 9:16, 3:4, 4:3), Quality (Low, Medium, High), Number of Images. Panneau latéral affichant le prompt descriptif d&#x27;une mégapole de science-fiction, le modèle utilisé (GPT Image 2), le format 16:9, la qualité Medium, le type de fichier (JPEG) et la date de création (5 juin 2026).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre les paramètres de configuration et l&#x27;image générée finale avec les options de téléchargement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_016_00-04-18.jpg" alt="Interface de réglages d&#x27;Artlist montrant le choix du format (Aspect Ratio), de la qualité et du nombre d&#x27;images, avec le présentateur visible en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_016_00-04-18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:18</span>
+                        <span class="caption-text">Interface de réglages d&#x27;Artlist montrant le choix du format (Aspect Ratio), de la qualité et du nombre d&#x27;images, avec le présentateur visible en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_017_00-04-28.jpg" alt="Aperçu d&#x27;une image générée représentant une immense tour futuriste au milieu d&#x27;une ville tentaculaire, avec les options de téléchargement et les détails du prompt sur le panneau latéral droit, et le présentateur en PiP." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_017_00-04-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:28</span>
+                        <span class="caption-text">Aperçu d&#x27;une image générée représentant une immense tour futuriste au milieu d&#x27;une ville tentaculaire, avec les options de téléchargement et les détails du prompt sur le panneau latéral droit, et le présentateur en PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:52 - 00:05:25</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;ajout d&#x27;un personnage à votre scène. Donc nous sommes de retour sur Claude dans une nouvelle discussion et j&#x27;ai téléchargé le fichier MD de génération d&#x27;images aux côtés de quelques références d&#x27;images de moi-même et de la ville que nous venons de générer. Bien sûr, vous n&#x27;avez pas besoin de vous mettre dans vos générations, vous pouvez simplement décrire le type de personnage que vous recherchez à la place, mais je pense que c&#x27;est juste très amusant. Donc je vais dire montre le même homme barbu portant un jetpack sur son dos. Je veux voir une vue de face et de dos</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude (Anthropic), avec une disposition de chat épurée, un sélecteur de modèle (&quot;Sonnet 4.6 Medium&quot;), des boutons de raccourci (&quot;Write&quot;, &quot;Create&quot;, &quot;Learn&quot;, &quot;Code&quot;, &quot;Life stuff&quot;), et une incrustation vidéo (PiP) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;step two adding personality&quot; (Image 1). Message d&#x27;accueil de Claude : &quot;Hey there, Jack&quot; et &quot;How can I help you today?&quot;. Fichiers importés : &quot;AI Image Generation Framework...&quot; (.MD), trois photos de profil/face/profil de Jack, et une image d&#x27;une ville futuriste au crépuscule. Options de modèles : &quot;Sonnet 4.6 Medium&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre graphiquement la transition vers la deuxième étape, puis présente l&#x27;interface de Claude où les fichiers de référence et le framework de génération d&#x27;images ont été importés dans une nouvelle conversation avant de taper le prompt.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_018_00-04-54.jpg" alt="Écran de transition affichant le titre de l&#x27;étape : &quot;step two adding personality&quot; sur un fond dégradé bleu et rose." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_018_00-04-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:54</span>
+                        <span class="caption-text">Écran de transition affichant le titre de l&#x27;étape : &quot;step two adding personality&quot; sur un fond dégradé bleu et rose.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_019_00-05-03.jpg" alt="Interface de l&#x27;outil Claude montrant un nouveau chat avec des fichiers importés (un fichier Markdown et plusieurs photos de référence de Jack et de la ville), avec le créateur en incrustation vidéo (PiP) en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_019_00-05-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:03</span>
+                        <span class="caption-text">Interface de l&#x27;outil Claude montrant un nouveau chat avec des fichiers importés (un fichier Markdown et plusieurs photos de référence de Jack et de la ville), avec le créateur en incrustation vidéo (PiP) en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_020_00-05-14.jpg" alt="Interface de l&#x27;outil Claude avec la zone de texte vide &quot;How can I help you today?&quot; et les fichiers joints en haut du champ de saisie, avec le créateur visible en incrustation vidéo (PiP) en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_020_00-05-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:14</span>
+                        <span class="caption-text">Interface de l&#x27;outil Claude avec la zone de texte vide &quot;How can I help you today?&quot; et les fichiers joints en haut du champ de saisie, avec le créateur visible en incrustation vidéo (PiP) en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:25 - 00:06:00</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">du personnage et je veux que cela fonctionne dans le monde que j&#x27;ai conçu, cette sorte de ville de science-fiction. Donc, allons-y et envoyons ceci, et encore une fois Claude va lire ce cadre et nous renvoyer un prompt très détaillé. Donc Claude m&#x27;a en fait donné deux prompts séparés ici, un pour la vue de face et un pour l&#x27;arrière. Je vais simplement dire : « Peux-tu combiner ces prompts en un seul prompt pour les deux vues ? » et juste comme ça, nous récupérons un prompt combiné, ce qui va juste simplifier un peu le flux de travail. Maintenant, nous allons copier notre nouveau prompt et retourner</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude (interface de chat textuel avec assistant IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de l&#x27;interface Claude : « Hey there, Jack », champ de saisie « How can I help you today? », modèle « Sonnet 4.6 Medium ». Dans l&#x27;image 3, affichage de blocs de texte de prompts en anglais décrivant une scène urbaine de science-fiction (« partial silhouette. The city vista... ») et des notes méthodologiques sur l&#x27;approche du design.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son écran de travail sur l&#x27;interface de Claude pour générer, affiner et combiner des prompts textuels destinés à la conception de personnages et d&#x27;environnements de science-fiction.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_021_00-05-27.jpg" alt="Interface de Claude affichant le texte de bienvenue « Hey there, Jack » avec des vignettes de référence d&#x27;images et un champ de saisie, avec Jack visible en bas à gauche dans un encadré PiP." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_021_00-05-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:27</span>
+                        <span class="caption-text">Interface de Claude affichant le texte de bienvenue « Hey there, Jack » avec des vignettes de référence d&#x27;images et un champ de saisie, avec Jack visible en bas à gauche dans un encadré PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_022_00-05-49.jpg" alt="Interface de Claude affichant le résultat de la génération de prompts détaillés et de notes d&#x27;approche, avec Jack visible en bas à gauche dans un encadré PiP." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_022_00-05-49.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:49</span>
+                        <span class="caption-text">Interface de Claude affichant le résultat de la génération de prompts détaillés et de notes d&#x27;approche, avec Jack visible en bas à gauche dans un encadré PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:00 - 00:06:37</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">passer à art list et y déposer le prompt et je vais utiliser ces mêmes images de moi comme références ainsi que l&#x27;environnement de science-fiction que nous venons de générer, alors allons-y et envoyons ceci. Et nous avons en retour de superbes générations de moi en tant que personnage portant ce jet pack futuriste. Je peux donc maintenant l&#x27;inclure dans notre génération. Nous avons maintenant notre monde ou environnement et notre personnage. Nous sommes donc maintenant prêts à tracer nos trajectoires de mouvement. Et pour cela, vous pouvez utiliser n&#x27;importe quel logiciel que vous voulez. Honnêtement, vous pourriez simplement utiliser Microsoft Paint ou quelque chose comme ça. Vraiment basique. Vous</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Artlist (AI Toolkit)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts textuels détaillés pour la génération de personnages et d&#x27;environnements, paramètres de modèle (GPT Image 2, format 16:9, qualité Medium).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue sur la plateforme Artlist pour générer et examiner des images de personnages basées sur ses propres références.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_023_00-06-02.jpg" alt="Interface d&#x27;Artlist AI Toolkit montrant un prompt textuel détaillé décrivant un personnage futuriste avec un jet pack dans un paysage urbain." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_023_00-06-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:02</span>
+                        <span class="caption-text">Interface d&#x27;Artlist AI Toolkit montrant un prompt textuel détaillé décrivant un personnage futuriste avec un jet pack dans un paysage urbain.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_024_00-06-13.jpg" alt="Interface d&#x27;Artlist affichant le résultat de la génération avec une double vue (recto/verso) d&#x27;un personnage portant un jet pack dans un décor futuriste." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_024_00-06-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:13</span>
+                        <span class="caption-text">Interface d&#x27;Artlist affichant le résultat de la génération avec une double vue (recto/verso) d&#x27;un personnage portant un jet pack dans un décor futuriste.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_025_00-06-25.jpg" alt="Galerie de projets sur Artlist montrant plusieurs images générées de personnages et d&#x27;environnements futuristes." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_025_00-06-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:25</span>
+                        <span class="caption-text">Galerie de projets sur Artlist montrant plusieurs images générées de personnages et d&#x27;environnements futuristes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:37 - 00:07:12</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">peut l&#x27;envoyer sur votre téléphone et le modifier et dessiner par-dessus comme ça mais dans mon cas je vais utiliser mon iPad. Maintenant c&#x27;est définitivement exagéré mais au moins ça me donne une excuse pour utiliser mon iPad que je ne semble plus jamais utiliser. Donc je vais simplement aller de l&#x27;avant et partager cette image que nous avons générée avec mon iPad et littéralement tout ce que je vais faire c&#x27;est dessiner une ligne en commençant ici et nous allons en quelque sorte tourner autour de la tour ici et ensuite je vais juste effacer un peu ce morceau ici pour montrer au modèle vidéo. Il va passer derrière la tour et faire comme une orbite autour d&#x27;elle.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de dessin sur iPad (type Procreate ou outil de retouche) affichant une image de paysage urbain avec une tour.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Image générée représentant une vue aérienne d&#x27;une ville avec une grande tour, sur laquelle des traits de dessin rouges/roses sont ajoutés.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack tient son iPad et dessine par-dessus l&#x27;image avec un stylet pour indiquer la trajectoire souhaitée à l&#x27;outil vidéo IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_026_00-07-01.jpg" alt="Jack utilise un stylet pour dessiner des annotations et des repères par-dessus une image générée affichée sur son iPad." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_026_00-07-01.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:01</span>
+                        <span class="caption-text">Jack utilise un stylet pour dessiner des annotations et des repères par-dessus une image générée affichée sur son iPad.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:12 - 00:07:35</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je viens de dessiner ce chemin qui part de cette sorte de route principale, monte jusqu&#x27;à cette tour et fait une orbite autour d&#x27;elle. Et une chose qui peut sembler évidente mais que certaines personnes ont tendance à oublier, ne vous contentez pas par défaut d&#x27;avoir une ligne rouge. Choisissez une couleur qui se détachera de l&#x27;arrière-plan. Donc je vais envoyer ceci à mon ordinateur et nous avons maintenant notre chemin esquissé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme Artlist avec un panneau latéral d&#x27;historique ou de médias et une vue principale affichant une image générée avec un tracé rouge.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Image d&#x27;une mégalopole futuriste au crépuscule avec une immense tour centrale et une autoroute surélevée parcourue par un tracé rouge en spirale.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre le résultat de son esquisse sur tablette, puis l&#x27;écran bascule sur l&#x27;affichage de l&#x27;ordinateur où le visuel est importé avec le tracé rouge bien visible.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_027_00-07-33.jpg" alt="Capture de l&#x27;écran d&#x27;ordinateur (Artlist) montrant l&#x27;image de la ville futuriste avec le tracé rouge en superposition et le retour vidéo du créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_027_00-07-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:33</span>
+                        <span class="caption-text">Capture de l&#x27;écran d&#x27;ordinateur (Artlist) montrant l&#x27;image de la ville futuriste avec le tracé rouge en superposition et le retour vidéo du créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:35 - 00:08:07</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est donc le moment de donner vie à notre scène. Donc d&#x27;abord, nous voulons basculer de l&#x27;onglet image vers la vidéo ou le modèle de choix, nous devons absolument utiliser C-Dance 2, et nous avons d&#x27;autres préférences ici à aborder. Je vais sélectionner une résolution 1080p, si vous êtes juste en train de tester et de vous familiariser avec ce flux de travail, vous pouvez choisir 720p ou 480p. Nous voulons un format 16 par 9 et je veux une durée de sept secondes je crois. Assurez-vous également que le bouton audio est activé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération vidéo (type Seedance / Kling) avec un menu contextuel de sélection de modèle et un encadré PiP montrant le présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur l&#x27;image 1 : &quot;step four&quot;, &quot;video prompting&quot;. Sur l&#x27;image 2 : options du menu &quot;Kling 3.0&quot;, &quot;Seedance 2.0&quot;, &quot;Seedance 2.0 Fast&quot;, &quot;Show all&quot;, ainsi que les paramètres de génération vidéo en bas (&quot;Video&quot;, &quot;Auto / Pro / 5 Seconds&quot;, &quot;Unlimited&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;étape quatre sur le prompt vidéo, puis montre la sélection du modèle Seedance 2.0 dans l&#x27;interface de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_028_00-07-37.jpg" alt="Écran de transition affichant le titre de l&#x27;étape en cours sur un fond dégradé flouté." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_028_00-07-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:37</span>
+                        <span class="caption-text">Écran de transition affichant le titre de l&#x27;étape en cours sur un fond dégradé flouté.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_029_00-07-47.jpg" alt="Interface de l&#x27;outil de génération vidéo montrant le menu déroulant de sélection du modèle (Kling 3.0, Seedance 2.0, Seedance 2.0 Fast) avec Jack en médaillon PiP en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_029_00-07-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:47</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo montrant le menu déroulant de sélection du modèle (Kling 3.0, Seedance 2.0, Seedance 2.0 Fast) avec Jack en médaillon PiP en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:07 - 00:08:31</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc j&#x27;ai pris les devants et j&#x27;ai téléchargé mon image de référence du chemin tracé. Je veux aussi ajouter mon image de référence personnelle avec le jetpack. On va aller chercher celle-ci ici et l&#x27;ajouter également. Vous remarquerez peut-être que la seule chose qui nous manque maintenant, c&#x27;est notre prompt textuel. Alors, comment allons-nous le construire ? C&#x27;est exact, comme vous l&#x27;avez peut-être deviné, nous sommes de retour sur Claude. Une fois de plus, il va nous aider à élaborer notre prompt textuel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil de génération vidéo Seedance avec incrustation vidéo du créateur (PiP) dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible dans l&#x27;interface de Seedance : &quot;Use @ to mention your images, videos or audio (e.g., &#x27;hat from @img1&#x27;, &#x27;motion from @vid1&#x27;)&quot;, options de format &quot;16:9 / 1080p / 7 Seconds&quot;, modèle &quot;Seedance 2.0&quot;, et bouton &quot;Generate&quot;. Vignettes de référence &quot;@img1&quot; et &quot;@img2&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;ajout progressif d&#x27;images de référence dans l&#x27;interface de Seedance avant d&#x27;expliquer qu&#x27;il va utiliser Claude pour rédiger le prompt textuel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_030_00-08-09.jpg" alt="Interface de Seedance montrant une image de référence de paysage urbain (@img1) importée." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_030_00-08-09.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:09</span>
+                        <span class="caption-text">Interface de Seedance montrant une image de référence de paysage urbain (@img1) importée.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_031_00-08-24.jpg" alt="Interface de Seedance montrant deux images de référence importées (@img1 et @img2) avec le champ de prompt textuel vide." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_031_00-08-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:24</span>
+                        <span class="caption-text">Interface de Seedance montrant deux images de référence importées (@img1 et @img2) avec le champ de prompt textuel vide.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:32 - 00:08:54</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La première chose que vous voulez faire est de téléverser un autre fichier MD maintenant. C&#x27;est ce qu&#x27;on appelle la compétence de chemin dessiné à la main. Je vais donc le faire téléverser ici et ça va simplement éliminer toute incertitude de ce processus. Encore une fois, c&#x27;est une compétence que j&#x27;ai construite pour cet objectif spécifique. Et j&#x27;ai également téléversé l&#x27;image de référence de notre personnage aux côtés du chemin dessiné à la main que nous avons assemblé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Explorateur de fichiers système (Image #1) et interface web de l&#x27;assistant IA Claude avec le modèle Sonnet 4.6 (Image #3).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms de fichiers visibles : &#x27;Hand Drawn Path Video Prompt Skill.md&#x27;, &#x27;AI Image Generation Framework V2.md&#x27;. Salutation de Claude : &#x27;Hey there, Jack&#x27; et champ de texte &#x27;How can I help you today?&#x27;. Boutons d&#x27;action : Write, Create, Learn, Code, Life stuff.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;arborescence des fichiers pour sélectionner le script Markdown, puis présente l&#x27;interface de Claude où les fichiers et images de référence du personnage sont importés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_032_00-08-34.jpg" alt="Explorateur de fichiers montrant le dossier &#x27;Sketch to Shot&#x27; avec les fichiers &#x27;Hand Drawn Path Video Prompt Skill.md&#x27; et &#x27;AI Image Generation Framework V2.md&#x27;." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_032_00-08-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:34</span>
+                        <span class="caption-text">Explorateur de fichiers montrant le dossier &#x27;Sketch to Shot&#x27; avec les fichiers &#x27;Hand Drawn Path Video Prompt Skill.md&#x27; et &#x27;AI Image Generation Framework V2.md&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_033_00-08-52.jpg" alt="Interface de Claude (Sonnet 4.6 Medium) affichant le fichier &#x27;Hand Drawn Path Video Prompt Skill.md&#x27; et deux images de référence de personnage et de décor urbain téléversées." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_033_00-08-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:52</span>
+                        <span class="caption-text">Interface de Claude (Sonnet 4.6 Medium) affichant le fichier &#x27;Hand Drawn Path Video Prompt Skill.md&#x27; et deux images de référence de personnage et de décor urbain téléversées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:54 - 00:09:17</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il est très important que nous ajoutons cela. Et maintenant, nous voulons simplement décrire très grossièrement ce que nous voulons qu&#x27;il se passe dans notre plan. Je vais donc dire qu&#x27;avec l&#x27;homme ayant le dos tourné à la caméra et volant à l&#x27;aide du jetpack, il vole vers la grande tour et orbite autour d&#x27;elle avant de s&#x27;arrêter et de regarder en arrière vers l&#x27;immense tour.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude (Anthropic)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte « Hey there, Jack », champ de saisie « How can I help you today? », sélecteur de modèle « Sonnet 4.6 Medium », pièces jointes incluant un fichier Markdown (« Hand Drawn Path Video Prompt Skill.md ») et deux images de référence de personnages et de décors urbains.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur interagit avec l&#x27;interface de l&#x27;assistant IA Claude pour rédiger ou affiner un prompt vidéo basé sur des images et des scripts de compétences.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_034_00-08-56.jpg" alt="Interface de Claude montrant les fichiers joints et le champ de saisie du prompt avec un encadré vidéo de Jack en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_034_00-08-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:56</span>
+                        <span class="caption-text">Interface de Claude montrant les fichiers joints et le champ de saisie du prompt avec un encadré vidéo de Jack en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_035_00-09-10.jpg" alt="Interface de Claude affichant le curseur clignotant dans le champ de texte « How can I help you today? » avec le fichier de compétences et les images de référence." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_035_00-09-10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:10</span>
+                        <span class="caption-text">Interface de Claude affichant le curseur clignotant dans le champ de texte « How can I help you today? » avec le fichier de compétences et les images de référence.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:17 - 00:09:41</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est super simple. Nous pouvons y aller et envoyer ceci. Et une fois de plus, Claude va se mettre au travail pour nous. Pendant le montage, je me suis rendu compte que j&#x27;avais oublié de dire à Claude quelle longueur je voulais pour ma génération. Cela n&#x27;a finalement pas eu d&#x27;importance. Dans mon cas, j&#x27;obtiens quand même un résultat vraiment cool. Je vous suggérerais de dire à Claude que vous voulez une génération de 7 secondes de long ou de 15 secondes de long, par exemple, juste pour vous assurer que cela fonctionne vraiment bien.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;assistant IA Claude sur fond sombre, avec une fenêtre d&#x27;affichage du texte généré et une incrustation vidéo (PiP) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible du prompt dans l&#x27;interface de Claude : &quot;With the man having his back to the camera and flying using the jet pack, he flies towards the large tower and orbits around it before stopping and looking back at the huge tower.&quot; Un petit symbole de chargement/génération animé est également visible à gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Claude à l&#x27;écran tout en continuant ses explications face caméra sur le processus de génération par intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_036_00-09-19.jpg" alt="Interface de l&#x27;application Claude affichant un prompt textuel décrivant un personnage volant avec un jet pack, avec le créateur en incrustation (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_036_00-09-19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:19</span>
+                        <span class="caption-text">Interface de l&#x27;application Claude affichant un prompt textuel décrivant un personnage volant avec un jet pack, avec le créateur en incrustation (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:42 - 00:10:02</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc vous pouvez voir que Claude a réellement analysé la trajectoire que nous avons dessinée par-dessus notre image, et il a même identifié le style que nous recherchons en faisant référence à une qualité de rendu photoréaliste. Et encore une fois, avec une saisie très basique, vous allez obtenir ce prompt extrêmement détaillé conçu spécifiquement pour ce flux de travail.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude (interface web de chat IA) avec incrustation vidéo (PiP) du présentateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de la conversation affichant l&#x27;analyse du chemin tracé à la main (« Path analysis from Image 2: The red line starts from low-right... »), le registre visuel (« Cinematic CGI realism — photorealistic render quality ») et la génération du prompt final.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;interface présente la réponse textuelle de l&#x27;IA analysant l&#x27;image fournie par l&#x27;utilisateur pour rédiger un prompt vidéo détaillé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_037_00-09-44.jpg" alt="Interface de l&#x27;outil Claude affichant l&#x27;analyse détaillée d&#x27;une image avec un tracé et la génération d&#x27;un prompt vidéo, avec le présentateur visible en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_037_00-09-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:44</span>
+                        <span class="caption-text">Interface de l&#x27;outil Claude affichant l&#x27;analyse détaillée d&#x27;une image avec un tracé et la génération d&#x27;un prompt vidéo, avec le présentateur visible en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:02 - 00:10:29</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc allons-y pour copier ceci. De retour sur Artlist, je vais déposer cela directement dans le champ de texte du prompt. Nous pouvons lancer la génération. Et nous obtenons notre génération ici de moi utilisant le jetpack pour voler vers cette tour et orbiter autour d&#x27;elle. Seedance 2 adhère vraiment très bien au style de génération que nous recherchons, tout en ayant un bon niveau de compréhension de notre environnement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Artlist (AI Toolkit / Seedance 2.0)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt décrivant une séquence cinématographique de 20 secondes d&#x27;un opérateur en jetpack volant près d&#x27;une tour-flèche colossale au crépuscule. Paramètres : Seedance 2.0, format 16:9, 1080p.</p>
+                        <p><strong>Action / Démonstration :</strong> Copie et collage d&#x27;un prompt textuel dans le champ de génération d&#x27;Artlist (Seedance 2.0), puis lecture de la vidéo générée montrant le personnage volant autour de la tour.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_038_00-10-11.jpg" alt="Interface d&#x27;Artlist montrant le prompt détaillé pour Seedance 2.0 avec les images de référence." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_038_00-10-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:11</span>
+                        <span class="caption-text">Interface d&#x27;Artlist montrant le prompt détaillé pour Seedance 2.0 avec les images de référence.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_039_00-10-20.jpg" alt="Résultat de génération vidéo sur Artlist montrant un personnage avec un jetpack volant près d&#x27;une grande tour." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_039_00-10-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:20</span>
+                        <span class="caption-text">Résultat de génération vidéo sur Artlist montrant un personnage avec un jetpack volant près d&#x27;une grande tour.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_040_00-10-27.jpg" alt="Poursuite de la lecture de la vidéo générée montrant le personnage en orbite autour de la tour." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_040_00-10-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:27</span>
+                        <span class="caption-text">Poursuite de la lecture de la vidéo générée montrant le personnage en orbite autour de la tour.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:29 - 00:11:00</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, bien sûr, nous aurions aussi pu opter pour un plan de drone ou un plan en POV. Mais je trouve juste vraiment sympa de vous montrer les gars que vous pouvez également intégrer des personnages dans vos générations en utilisant cette méthode. Je veux maintenant jeter un œil à d&#x27;autres exemples que j&#x27;ai assemblés avec ce flux de travail car il y a différentes manières d&#x27;utiliser cette technique. Alors tout d&#x27;abord nous avons cet exemple ici qui est ce plan de style drone vraiment assez dramatique survolant tous ces biomes très uniques.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de la plateforme Artlist (section AI Tools / Seedance 2.0).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau de configuration affichant le champ &quot;Prompt&quot;, les paramètres de modèle (&quot;Seedance 2.0&quot;), le format d&#x27;image (&quot;16:9&quot;), et la qualité (&quot;1080p&quot;). Texte visible dans le prompt : &quot;Use the uploaded image as a route-planning terrain map. The red drawn line is only a sketched camera flight path...&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente des exemples de vidéos générées par IA sur la plateforme Artlist en affichant l&#x27;interface de Seedance 2.0 avec des prompts textuels et des réglages de génération de plans de drone.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_041_00-10-40.jpg" alt="Interface de la plateforme Artlist montrant un générateur de vidéo par IA avec un aperçu de ville futuriste au crépuscule." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_041_00-10-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:40</span>
+                        <span class="caption-text">Interface de la plateforme Artlist montrant un générateur de vidéo par IA avec un aperçu de ville futuriste au crépuscule.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_042_00-10-58.jpg" alt="Interface de la plateforme Artlist montrant un plan de type drone survolant un monde fantastique avec un volcan et une statue géante." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_042_00-10-58.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:58</span>
+                        <span class="caption-text">Interface de la plateforme Artlist montrant un plan de type drone survolant un monde fantastique avec un volcan et une statue géante.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:00 - 00:11:38</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc j&#x27;ai assemblé cette carte où il y a ces différents environnements et j&#x27;ai dû me placer dans le coin supérieur droit comme faisant partie d&#x27;une sorte de temple ou quelque chose comme ça et vous obtenez un résultat vraiment très agréable, dramatique, cinématique et stylisé, donc pour moi c&#x27;est un peu là que ce flux de travail brille, j&#x27;ai l&#x27;impression, en utilisant nos chemins dessinés à la main pour dicter la façon dont nous voulons que la caméra bouge plutôt que d&#x27;avoir à le décrire nous-mêmes ce qui peut être un peu délicat, et un autre exemple ici où nous utilisons à nouveau notre chemin dessiné à la main pour diriger le mouvement de la caméra, c&#x27;est un mouvement de style drone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Artlist (outil de génération vidéo par IA Seedance) avec panneau latéral de configuration et aperçu vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;Use the uploaded image as a route-planning terrain map. The red drawn line is only a sketched camera flight path and must be completely removed from the final video. Create a 10-second continuous cinematic drone flyover through the shown location. No cuts. Invisible aerial camera only. The movement must feel like one single unbroken flight across the entire world. Follow the route in this exact...&quot; Paramètres de configuration : Model: Seedance 2.0, Aspect ratio: 16:9, Quality: 1080p.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface d&#x27;Artlist Seedance et commente les résultats de génération vidéo basés sur des tracés de trajectoire de caméra dessinés à la main sur des cartes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_043_00-11-02.jpg" alt="Interface d&#x27;Artlist montrant la génération d&#x27;une vidéo de survol de drone au-dessus d&#x27;une carte de terrain enneigée avec un tracé rouge." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_043_00-11-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:02</span>
+                        <span class="caption-text">Interface d&#x27;Artlist montrant la génération d&#x27;une vidéo de survol de drone au-dessus d&#x27;une carte de terrain enneigée avec un tracé rouge.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_044_00-11-13.jpg" alt="Vue de Jack face caméra dans son studio avec micro et éclairage néon en arrière-plan." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_044_00-11-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:13</span>
+                        <span class="caption-text">Vue de Jack face caméra dans son studio avec micro et éclairage néon en arrière-plan.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_045_00-11-36.jpg" alt="Interface d&#x27;Artlist affichant un mouvement de caméra de type drone autour d&#x27;une statue dorée tenant un globe terrestre." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_045_00-11-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:36</span>
+                        <span class="caption-text">Interface d&#x27;Artlist affichant un mouvement de caméra de type drone autour d&#x27;une statue dorée tenant un globe terrestre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:38 - 00:12:13</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">où nous sommes réellement en train de nous mettre en orbite autour de cette immense statue dorée de moi surplombant le bord d&#x27;une falaise. Et pour cela, j&#x27;ai une fois de plus utilisé une référence de personnage en combinaison avec notre tracé dessiné à la main pour vraiment verrouiller ce sentiment de cohérence du sujet ici. Je parle souvent beaucoup du contexte lorsque nous utilisons ces outils d&#x27;IA. Et si l&#x27;on regarde la première image, on ne peut pas exactement me voir sous l&#x27;angle sous lequel nous allons terminer lorsque le mouvement de caméra se termine. Et donc en ajoutant ce genre de feuille de personnage pour verrouiller la cohérence, vous allez obtenir une bien plus grande</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme Artlist (AI Tools) avec fenêtres de prévisualisation vidéo, panneau de prompt et paramètres de génération.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : « Use @img1 as a route-planning terrain map. The red line indicates the intended camera flight path and direction only... Create a 10-second single continuous cinematic drone flight around the shown subject. No cuts. No transitions. No teleporting. » Paramètres : Modèle Seedance 2.0 / GPT Image 2, format 16:9, qualité 720p/High, références de personnages avec images attachées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface d&#x27;un outil de génération vidéo par IA, démontrant l&#x27;utilisation de références de personnages et d&#x27;un tracé de trajectoire de caméra pour maintenir la cohérence visuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_046_00-11-40.jpg" alt="Interface d&#x27;Artlist montrant la vidéo générée de la statue dorée géante au bord d&#x27;une falaise avec une trajectoire de caméra dessinée en rouge." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_046_00-11-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:40</span>
+                        <span class="caption-text">Interface d&#x27;Artlist montrant la vidéo générée de la statue dorée géante au bord d&#x27;une falaise avec une trajectoire de caméra dessinée en rouge.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_047_00-11-50.jpg" alt="Gros plan sur le panneau de configuration du prompt textuel et des images de référence (character references) dans l&#x27;interface d&#x27;Artlist." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_047_00-11-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:50</span>
+                        <span class="caption-text">Gros plan sur le panneau de configuration du prompt textuel et des images de référence (character references) dans l&#x27;interface d&#x27;Artlist.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_048_00-12-02.jpg" alt="Affichage d&#x27;une image générée haute résolution montrant la statue dorée de Jack sur un sommet rocheux surplombant la côte, avec les détails du prompt et des paramètres du modèle." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_048_00-12-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:02</span>
+                        <span class="caption-text">Affichage d&#x27;une image générée haute résolution montrant la statue dorée de Jack sur un sommet rocheux surplombant la côte, avec les détails du prompt et des paramètres du modèle.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:13 - 00:12:47</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">résultat. Il s&#x27;agit de comprendre que l&#x27;IA, C-Dance 2 dans ce cas, ne comprend pas automatiquement à quoi vous ressemblez sous tous les angles. Nous devons fournir autant de contexte que possible. Maintenant, en utilisant cette même technique, vous pouvez en fait contrôler d&#x27;autres choses que la caméra. Dans cet exemple ici, nous avons ce genre de scène de style animation Pixar et j&#x27;ai en fait dessiné la trajectoire que je voulais que la balle rouge prenne. Vous avez probablement remarqué que la physique de ce plan n&#x27;a pas vraiment de sens complet même si c&#x27;est très amusant. Ce que j&#x27;essaie de faire ici à la place, c&#x27;est de dire à C-dance 2</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Artlist (outil de génération vidéo Seedance 2.0).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : « Use @img2 as a route-planning terrain map. The red line indicates the intended camera flight path and direction only. The red line, all arrows, and every annotation must be completely removed from the final video — they must not appear in any frame at any point. Create a 10-second single continuous cinematic drone flight around the shown subject. No cuts. No transitions. No teleporting. » / Paramètres : Modèle Seedance 2.0, format 16:9, qualité 720p.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Seedance avec des exemples de contrôle de caméra par trajectoire rouge et de génération de scènes animées inspirées de Pixar.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_049_00-12-15.jpg" alt="Interface d&#x27;Artlist montrant la génération d&#x27;une vidéo avec un rendu de statue dorée et un panneau de configuration à droite." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_049_00-12-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:15</span>
+                        <span class="caption-text">Interface d&#x27;Artlist montrant la génération d&#x27;une vidéo avec un rendu de statue dorée et un panneau de configuration à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_050_00-12-36.jpg" alt="Interface d&#x27;Artlist affichant une scène de style animation Pixar avec un personnage dans une pièce, et un prompt de trajectoire de balle rouge en médaillon." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_050_00-12-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:36</span>
+                        <span class="caption-text">Interface d&#x27;Artlist affichant une scène de style animation Pixar avec un personnage dans une pièce, et un prompt de trajectoire de balle rouge en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:47 - 00:13:22</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est exactement comme ça que je veux que vous déplaciez la balle, que cela ait du sens ou non. Faites simplement exactement ce que je dessine et c&#x27;est le résultat qu&#x27;on obtient, donc ça a marché. Et un autre exemple ici où nous utilisons cette méthode pour contrôler le personnage encore une fois, c&#x27;est cette génération de style de jeu vidéo qui personnellement était mon préféré de tout ce projet. Sea Dance 2 a utilisé cette trajectoire dessinée à la main de manière très pertinente. Elle s&#x27;y est plutôt bien tenue, mais je voulais aussi vous montrer un exemple où cette méthode n&#x27;a pas fonctionné. J&#x27;ai donc généré une image en regardant vers le bas</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Artlist (Seedance 2.0) avec panneau de configuration latéral, lecteur vidéo central et vignette PiP du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Modèle : Seedance 2.0, Format : 16:9, Qualité : 1080p, Résolution : 1920x1080, Durée : 7 sec, Type de fichier : MP4. Prompts sur l&#x27;utilisation d&#x27;images de référence et de tracés de trajectoire.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente différents exemples de générations vidéo contrôlées par des tracés et des images de référence, en expliquant les succès et les échecs de la méthode.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_051_00-12-49.jpg" alt="Interface de génération vidéo Seedance 2.0 sur Artlist, montrant un personnage 3D animé et un encadré avec une photo de référence annotée." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_051_00-12-49.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:49</span>
+                        <span class="caption-text">Interface de génération vidéo Seedance 2.0 sur Artlist, montrant un personnage 3D animé et un encadré avec une photo de référence annotée.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_052_00-12-59.jpg" alt="Interface Seedance 2.0 affichant un personnage style jeu vidéo sautant dans un décor enneigé, avec une carte de référence et un tracé rouge." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_052_00-12-59.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:59</span>
+                        <span class="caption-text">Interface Seedance 2.0 affichant un personnage style jeu vidéo sautant dans un décor enneigé, avec une carte de référence et un tracé rouge.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_053_00-13-11.jpg" alt="Interface Seedance 2.0 montrant le même personnage de jeu vidéo courant sur un pont dans un décor enneigé." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_053_00-13-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:11</span>
+                        <span class="caption-text">Interface Seedance 2.0 montrant le même personnage de jeu vidéo courant sur un pont dans un décor enneigé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_054_00-13-20.jpg" alt="Interface Seedance 2.0 affichant une scène sur un court de tennis en terre battue avec une trajectoire bleue tracée en incrustation." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_054_00-13-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:20</span>
+                        <span class="caption-text">Interface Seedance 2.0 affichant une scène sur un court de tennis en terre battue avec une trajectoire bleue tracée en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:22 - 00:13:58</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">sur un court de tennis et ensuite j&#x27;ai dessiné le mouvement de caméra que je recherchais et j&#x27;espérais que Sea Dance 2 aurait ce genre de compréhension physique du court de tennis. C&#x27;est assez basique mais bien sûr il est important que cela ait un sens physique et logique. Malheureusement, bien que cette génération soit plutôt cool, il y a toutes sortes de choses qui ne vont pas. La logique s&#x27;est en quelque sorte brisée, le positionnement du filet par exemple se retourne en quelque sorte à mi-parcours de la génération. Donc le fait est que si cette technique a du potentiel, elle n&#x27;est pas sans défauts. Et cela</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme Artlist avec Seedance 2.0 (panneau de paramètres à droite, lecteur vidéo au centre, image de référence en haut à droite avec une trajectoire bleue dessinée en forme de S).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible à droite : &quot;Use the uploaded image as a route-planning terrain map. The blue line indicates the intended camera flight path only...&quot; Paramètres : Model: Seedance 2.0, Aspect ratio: 16:9, Quality: 1080p, Resolution: 1920x1080, Duration: 7 sec, File type: MP4.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Seedance 2.0 sur Artlist avec le résultat de la vidéo générée sur un court de tennis et l&#x27;image de référence de la trajectoire de caméra.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_055_00-13-24.jpg" alt="Interface d&#x27;Artlist avec le modèle Seedance 2.0 montrant la génération vidéo d&#x27;un joueur de tennis et le panneau latéral affichant les paramètres et le prompt textuel." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_055_00-13-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:24</span>
+                        <span class="caption-text">Interface d&#x27;Artlist avec le modèle Seedance 2.0 montrant la génération vidéo d&#x27;un joueur de tennis et le panneau latéral affichant les paramètres et le prompt textuel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:58 - 00:14:31</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce qui m&#x27;amène gentiment à la conclusion de ce projet où nous pouvons parler à la fois du bon et du mauvais. Donc c&#x27;est en fait assez similaire au flux de travail de storyboard dont j&#x27;ai parlé récemment, où ce ne sera pas entièrement exact, n&#x27;est-ce pas. Ça ne va pas correspondre exactement au tracé dessiné à la main et je suis sûr que les plus observateurs d&#x27;entre vous l&#x27;auront remarqué. Parfois, le chemin dessiné à la main sera suivi plus précisément que d&#x27;autres, mais souvent il sera juste utilisé comme une sorte d&#x27;indication générale, une ambiance pour que Seedance 2 génère autour. Quelque chose d&#x27;autre que vous remarquerez peut-être du temp</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustation (PiP) et affichage de storyboard / rendus vidéo d&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &quot;conclusion&quot;, &quot;my honest take&quot;, storyboard &quot;DOWNHILL&quot; divisé en plusieurs vignettes de bandes dessinées de snowboard.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente une conclusion sur le projet en comparant un storyboard dessiné à la main avec le rendu vidéo final généré par Seedance 2, en commentant la précision du suivi du chemin.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_056_00-14-00.jpg" alt="Écran titre textuel sur fond dégradé avec les mots &#x27;conclusion&#x27; et &#x27;my honest take&#x27;." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_056_00-14-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:00</span>
+                        <span class="caption-text">Écran titre textuel sur fond dégradé avec les mots &#x27;conclusion&#x27; et &#x27;my honest take&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_057_00-14-09.jpg" alt="Comparaison côte à côte montrant un storyboard illustré de snowboard (intitulé DOWNHILL) et un rendu vidéo généré par IA montrant un snowboarder en action, avec Jack en incrustation vidéo (PiP) en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_057_00-14-09.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:09</span>
+                        <span class="caption-text">Comparaison côte à côte montrant un storyboard illustré de snowboard (intitulé DOWNHILL) et un rendu vidéo généré par IA montrant un snowboarder en action, avec Jack en incrustation vidéo (PiP) en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:31 - 00:15:05</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">le temps est que des déformations peuvent se produire lorsque vous utilisez ce flux de travail, surtout si vous essayez de vous déplacer dans un environnement très rapidement. C&#x27;est un peu comme si Seedance 2 avait ce genre de plans distincts du paysage et lorsqu&#x27;ils se croisent, des déformations bizarre se produisent, alors oui, gardez un œil là-dessus. J&#x27;ai également constaté lors de mes tests que lorsque vous essayez d&#x27;utiliser vos chemins pour contrôler des objets, les résultats peuvent être un peu incertains, il vaut donc mieux garder cela très simple comme je l&#x27;ai fait avec mon exemple de balle. J&#x27;aime bien le fait cependant que plutôt que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de démonstration vidéo / tutoriel Seedance 2 avec incrustation caméra (PiP) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Visualisation de cartes stylisées avec des lignes rouges de trajectoire et des exemples de rendu 3D d&#x27;un personnage tenant une sphère rouge.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre visuellement les problèmes de déformation spatiale et l&#x27;utilisation simple des chemins de contrôle d&#x27;objets.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_058_00-14-33.jpg" alt="Démonstration vidéo de Seedance 2 montrant une carte fantastique avec des tracés rouges et un rendu de paysage montagneux enneigé." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_058_00-14-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:33</span>
+                        <span class="caption-text">Démonstration vidéo de Seedance 2 montrant une carte fantastique avec des tracés rouges et un rendu de paysage montagneux enneigé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_059_00-14-54.jpg" alt="Démonstration vidéo de Seedance 2 illustrant un exemple simple avec une balle rouge tenue par l&#x27;avatar de Jack." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_059_00-14-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:54</span>
+                        <span class="caption-text">Démonstration vidéo de Seedance 2 illustrant un exemple simple avec une balle rouge tenue par l&#x27;avatar de Jack.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:05 - 00:15:39</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">juste en guidant la façon dont je voulais que le ballon se comporte, je pouvais le dessiner. Ça donne vraiment l&#x27;impression d&#x27;un flux de travail interactif très agréable où j&#x27;ai juste un tout petit peu plus de contrôle. Le tout meilleur cas d&#x27;usage pour ce flux de travail à mon avis est de contrôler la caméra quand on cherche ce genre de plans de drone vraiment cinématiques. Mais comme vous avez pu le voir avec mes exemples, vous pouvez obtenir de très bons résultats en contrôlant des personnages aussi. Globalement, mes choses préférées à propos de cette technique sont la vitesse et la simplicité. Si vous comptez utiliser les fichiers MD que j&#x27;ai préparés</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de tutoriel vidéo avec incrustation PiP du créateur et exemples de génération d&#x27;images/vidéos avec des annotations de trajectoire (lignes et flèches rouges).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Images de synthèse représentant une statue dorée tenant un orbe sur une montagne rocheuse et un paysage montagneux enneigé, annotées avec des tracés vectoriels rouges indiquant le mouvement ou le contrôle de la caméra.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre visuellement le contrôle de trajectoire et de mouvement à l&#x27;aide d&#x27;exemples vidéo annotés de flèches rouges.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_060_00-15-17.jpg" alt="Démonstration de génération vidéo avec une image de statue dorée sur une montagne et des tracés de trajectoire rouges, avec Jack en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_060_00-15-17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:17</span>
+                        <span class="caption-text">Démonstration de génération vidéo avec une image de statue dorée sur une montagne et des tracés de trajectoire rouges, avec Jack en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_061_00-15-28.jpg" alt="Démonstration de génération vidéo montrant un paysage enneigé fantastique avec des flèches et des lignes de trajectoire rouges, et un personnage animé en mouvement." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_061_00-15-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:28</span>
+                        <span class="caption-text">Démonstration de génération vidéo montrant un paysage enneigé fantastique avec des flèches et des lignes de trajectoire rouges, et un personnage animé en mouvement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:39 - 00:16:09</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ça enlève vraiment une grande part d&#x27;incertitude et vous permet de rassembler vos résultats très rapidement sans avoir à devenir trop technique, ce qui, je pense, est génial. Il y a aussi quelque chose d&#x27;assez satisfaisant à dessiner concrètement la façon dont votre génération va se terminer. Gardez définitivement un œil sur ce flux de travail car je pense que beaucoup de créateurs talentueux vont sortir des trucs incroyables en l&#x27;utilisant. Cela étant dit les gars, si vous avez des questions, n&#x27;hésitez pas à les laisser en bas dans la section des commentaires. J&#x27;essaie toujours d&#x27;en un maximum autant que je le peux.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de démonstration vidéo montrant des flux de travail de génération d&#x27;images/vidéos avec des tracés de trajectoire de caméra rouge et leurs résultats animés correspondants, avec une incrustation de la webcam du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Des images de synthèse générées par IA représentant une tour de type cyberpunk et une île fantastique avec un relief en forme de visage humain géant, superposées de lignes de guidage rouges.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre des exemples de vidéos générées où l&#x27;on trace un chemin rouge à l&#x27;écran pour définir la trajectoire du mouvement de caméra.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_062_00-15-50.jpg" alt="Démonstration à l&#x27;écran de la génération d&#x27;une tour futuriste avec un tracé rouge guidant le mouvement de caméra, et le rendu final en gros plan à droite." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_062_00-15-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:50</span>
+                        <span class="caption-text">Démonstration à l&#x27;écran de la génération d&#x27;une tour futuriste avec un tracé rouge guidant le mouvement de caméra, et le rendu final en gros plan à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-NNO7KMqZEFM/frame_063_00-15-59.jpg" alt="Démonstration d&#x27;une carte fantastique avec un tracé rouge menant à un temple géant en forme de visage portant une casquette et des lunettes." loading="lazy" onclick="openLightbox('screenshots/YT-NNO7KMqZEFM/frame_063_00-15-59.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:59</span>
+                        <span class="caption-text">Démonstration d&#x27;une carte fantastique avec un tracé rouge menant à un temple géant en forme de visage portant une casquette et des lunettes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:09 - 00:16:17</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous avez apprécié le contenu d&#x27;aujourd&#x27;hui, assurez-vous de lâcher un pouce bleu pour moi et pensez à vous abonner. Cela étant dit, je vous retrouve dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou code visible, l&#x27;image montre le présentateur (Jack) dans son studio avec un encart d&#x27;animation YouTube invitant à s&#x27;abonner et liker en bas à gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement à la caméra en faisant des gestes pour conclure la vidéo et inciter aux abonnements.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
