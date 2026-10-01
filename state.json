@@ -49,7 +49,8 @@
     "924pAFyrYIE",
     "4ZISxAzXKj0",
     "pE-f_SusfsU",
-    "Bcyx6Gq8WjI"
+    "Bcyx6Gq8WjI",
+    "AxMnVX9dQZ8"
   ],
   "processed_videos": [
     {
@@ -751,9 +752,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-10-19_YT-Bcyx6Gq8WjI_VEO 3.1 vs SORA 2 Quel modèle vidéo IA l'emporte_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T22:43:04Z",
       "status": "completed"
+    },
+    {
+      "video_id": "AxMnVX9dQZ8",
+      "title": "Comment créer des films IA (Hailuo AI x MiniMax Audio)",
+      "raw_title": "How to Make AI Movies (Hailuo AI x MiniMax Audio)",
+      "filename_md": "2025-10-10_YT-AxMnVX9dQZ8_Comment créer des films IA (Hailuo AI x MiniMax Audio)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-10-10_YT-AxMnVX9dQZ8_Comment créer des films IA (Hailuo AI x MiniMax Audio)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-10-10",
+      "duration": 1213,
+      "screenshots_count": 70,
+      "filepath_md": "/root/YT_JackVsAI/2025-10-10_YT-AxMnVX9dQZ8_Comment créer des films IA (Hailuo AI x MiniMax Audio)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-10-10_YT-AxMnVX9dQZ8_Comment créer des films IA (Hailuo AI x MiniMax Audio)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T23:00:18Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 50,
+  "completed_count": 51,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T22:00:04Z"

@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `50 / 59` (`84.7%`)
+- **Vidéos traitées** : `51 / 59` (`86.4%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -66,6 +66,7 @@
 | 2025-10-29 | [Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)](2025-10-29_YT-4ZISxAzXKj0_Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-10-29_YT-4ZISxAzXKj0_Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 26m 47s | `130 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=4ZISxAzXKj0) | `4ZISxAzXKj0` |
 | 2025-10-28 | [Nano Banana vient-il de PERDRE !? (Higgsfield Popcorn est ARRIVÉ)](2025-10-28_YT-pE-f_SusfsU_Nano Banana vient-il de PERDRE ! (Higgsfield Popcorn est ARRIVÉ)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-10-28_YT-pE-f_SusfsU_Nano Banana vient-il de PERDRE ! (Higgsfield Popcorn est ARRIVÉ)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 10s | `94 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=pE-f_SusfsU) | `pE-f_SusfsU` |
 | 2025-10-19 | [VEO 3.1 vs SORA 2 : Quel modèle vidéo IA l'emporte ?](2025-10-19_YT-Bcyx6Gq8WjI_VEO 3.1 vs SORA 2 Quel modèle vidéo IA l'emporte_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-10-19_YT-Bcyx6Gq8WjI_VEO 3.1 vs SORA 2 Quel modèle vidéo IA l'emporte_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 18m 52s | `110 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=Bcyx6Gq8WjI) | `Bcyx6Gq8WjI` |
+| 2025-10-10 | [Comment créer des films IA (Hailuo AI x MiniMax Audio)](2025-10-10_YT-AxMnVX9dQZ8_Comment créer des films IA (Hailuo AI x MiniMax Audio)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-10-10_YT-AxMnVX9dQZ8_Comment créer des films IA (Hailuo AI x MiniMax Audio)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 20m 13s | `70 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=AxMnVX9dQZ8) | `AxMnVX9dQZ8` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*

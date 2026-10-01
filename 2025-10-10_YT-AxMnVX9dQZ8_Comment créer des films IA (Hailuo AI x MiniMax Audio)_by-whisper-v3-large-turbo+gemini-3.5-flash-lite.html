@@ -1,0 +1,2735 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment créer des films IA (Hailuo AI x MiniMax Audio) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment créer des films IA (Hailuo AI x MiniMax Audio)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-10-10</span>
+                <span class="badge">⏱️ 20m 13s</span>
+                <span class="badge">🆔 <code>AxMnVX9dQZ8</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=AxMnVX9dQZ8" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>Dans cette vidéo, Jack Vs. AI dévoile un workflow complet et novateur pour la création de films par intelligence artificielle, combinant la génération d'images, l'animation vidéo et le design sonore de pointe. En s'appuyant sur l'écosystème Hailuo AI et son agent conversationnel intégré, Jack démontre comment concevoir un court-métrage narratif centré sur le voyage dans le temps, tout en maintenant une stricte cohérence visuelle et humaine d'une époque à une autre. La méthode repose sur l'utilisation conjointe de modules spécialisés, permettant aux créateurs de bâtir un véritable storyboard interactif et visuel en temps réel avant de passer à l'animation.</p><p>La démarche s'articule autour d'une approche itérative et structurée : génération d'images de départ via des prompts textuels précis couplés à une image de référence pour ancrer l'identité du personnage, gestion des formats d'image natifs, puis anticipation des comportements des modèles d'animation vidéo (comme Hailuo 2) face aux détails complexes du visage, tels que les yeux. En planifiant chaque scène de manière séquentielle — de l'ère préhistorique au futurisme dystopique inspiré de *Blade Runner* —, Jack illustre la puissance de ces nouveaux outils pour transporter instantanément le spectateur tout en conservant une qualité cinématographique ultra-détaillée et photoréaliste.</p><p>Ce tutoriel offre aux créateurs de contenu et réalisateurs indépendants une feuille de route pragmatique pour maîtriser la production vidéo par IA de bout en bout. En évitant les pièges classiques de l'incohérence visuelle et en exploitant des fonctionnalités avancées comme la génération en lot et le téléchargement sans filigrane, les utilisateurs disposent désormais des clés pour professionnaliser leurs productions visuelles, optimiser leur flux de travail sous Premiere Pro et repousser les limites de la narration visuelle assistée par ordinateur.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Hailuo</span><span class="tool-tag">MiniMax</span><span class="tool-tag">Minimax</span><span class="tool-tag">Nano Banana</span><span class="tool-tag">Premiere Pro</span><span class="tool-tag">flux</span><span class="tool-tag">minimax</span><span class="tool-tag">nano banana</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Utilisation d&#x27;un agent conversationnel intégré** : L&#x27;interface de chat de Hailuo AI permet de piloter la création d&#x27;images de manière fluide, combinant les capacités d&#x27;un LLM classique à la génération visuelle directe.</span></li><li><span class="point-bullet">✦</span><span>Le canevas comme storyboard en temps réel** : Disposer les images générées sur un espace de travail visuel permet d&#x27;avoir une vue d&#x27;ensemble du projet, d&#x27;évaluer la progression narrative et de comparer instantanément les différentes ambiances.</span></li><li><span class="point-bullet">✦</span><span>Maintien de la cohérence faciale** : Télécharger une image de référence neutre (sans accessoires particuliers comme des lunettes ou une casquette) permet au modèle de conserver les traits distinctifs du personnage à travers des époques variées.</span></li><li><span class="point-bullet">✦</span><span>Spécification du nombre de variations** : Demander explicitement à l&#x27;agent de générer plusieurs itérations (par exemple, quatre variantes d&#x27;un coup) à partir d&#x27;un même prompt maximise les chances d&#x27;obtenir rapidement l&#x27;image parfaite.</span></li><li><span class="point-bullet">✦</span><span>Gestion rigoureuse du ratio d&#x27;image** : Veiller à ce que l&#x27;image de référence et les paramètres initiaux soient configurés au format souhaité (comme le 16:9 cinématographique) pour éviter le format carré par défaut.</span></li><li><span class="point-bullet">✦</span><span>Anticipation des limites de l&#x27;IA lors de l&#x27;animation** : Choisir de préférence des angles de vue où le visage et les yeux sont clairement visibles afin de réduire la marge d&#x27;erreur et les approximations du modèle vidéo lors de la phase de mouvement.</span></li><li><span class="point-bullet">✦</span><span>Avoir une solution de secours (plan B)** : Face aux incertitudes de l&#x27;animation par IA, privilégier l&#x27;génération d&#x27;images alternatives ultra-réalistes et stables pour s&#x27;assurer d&#x27;avoir un rendu exploitable en cas d&#x27;échec du premier choix artistique.</span></li><li><span class="point-bullet">✦</span><span>Exportation professionnelle** : Penser à utiliser l&#x27;option de téléchargement &quot;sans filigrane&quot; pour récupérer des assets visuels propres et prêts à l&#x27;intégration dans un logiciel de montage.</span></li><li><span class="point-bullet">✦</span><span>Enrichissement progressif des prompts** : Affiner les descriptions textuelles en y ajoutant des éléments concrets et distinctifs (comme des « voitures volantes et planantes ») pour ancrer immédiatement le spectateur dans une temporalité futuriste précise.</span></li><li><span class="point-bullet">✦</span><span>Contraste visuel temporel** : Structurer la narration en créant des ruptures esthétiques nettes entre les époques (du passé vers le présent froid et le futur dystopique) pour renforcer l&#x27;impact dramatique du voyage dans le temps.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:21</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voir le monde se réinventer tant de fois était quelque chose qu&#x27;il considérait à la fois comme une bénédiction et une malédiction. Observer l&#x27;humanité s&#x27;épanouir d&#x27;une certaine manière et s&#x27;affronter brutalement d&#x27;une autre. Nous avons trouvé un nouveau sens en tant qu&#x27;espèce et fait des découvertes époustouflantes. Mais toutes nos avancées ont eu un prix.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation de séquences cinématiques générées par IA (style illustrations de narration visuelle sans interface de logiciel visible).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Générations visuelles représentant différentes époques de l&#x27;humanité : un homme préhistorique près d&#x27;un feu de camp dans une grotte, un personnage vêtu d&#x27;une toge dans un décor antique avec des statues, et un soldat en uniforme militaire dans une tranchée enflammée. Sous-titres blancs affichés au bas de l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur apparaît intégré dans des décors historiques générés par IA, illustrant narrativement l&#x27;évolution temporelle et les conflits de l&#x27;humanité à travers les âges.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:21 - 00:00:58</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Serions-nous un jour vraiment satisfaits ou notre ambition ne ferait-elle que croître davantage ? notre présent semble tout aussi déroutant que le passé et notre avenir semble plus incertain que jamais. Les outils d&#x27;IA les plus puissants vous permettent vraiment de transporter le spectateur à l&#x27;époque ou au lieu de votre choix et aujourd&#x27;hui nous allons explorer la suite d&#x27;outils Hyluo pour créer des images, les animer et ajouter un design sonore en utilisant l&#x27;audio minimax. Nous couvrirons l&#x27;ensemble du processus de réalisation de films par IA du début à la fin pour tester à quel point nous pouvons réussir au sein de Hyluo AI. Si vous appréciez la vidéo d&#x27;aujourd&#x27;hui,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de l&#x27;outil Hyluo AI (Minimax) avec un panneau de prompt sur la droite et une zone de prévisualisation vidéo au centre.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché en bas de l&#x27;écran : &quot;1. image creation 2. video generation&quot;. Panneau latéral affichant le prompt : &quot;tracking camera view, the bearded man walks through busy central London bustling around.&quot; et le logo &quot;MINIMAX / Hailuo AI&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface d&#x27;Hyluo AI en mode PiP tout en montrant une vidéo générée par IA d&#x27;un homme marchant dans Londres.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_001_00-00-46.jpg" alt="Interface de l&#x27;outil Hyluo AI affichant une vidéo générée d&#x27;un homme marchant dans une rue de Londres avec le créateur en incrustation vidéo (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_001_00-00-46.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:46</span>
+                        <span class="caption-text">Interface de l&#x27;outil Hyluo AI affichant une vidéo générée d&#x27;un homme marchant dans une rue de Londres avec le créateur en incrustation vidéo (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:58 - 00:01:33</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les gars, assurez-vous de mettre un pouce bleu pour moi, pensez à vous abonner et bien sûr, activez la cloche de notification pour ne jamais manquer aucune vidéo future. Cela étant dit, entrons dans le vif du sujet. Donc la première étape de notre parcours de création de films par IA est la création d&#x27;images, où nous allons générer les images de départ utilisées pour chaque scène individuelle de notre cinématique d&#x27;intro. Et si nous allons sur Premiere Pro, vous pouvez voir que nous avons en quelque sorte voyagé dans le temps nous-mêmes car les deux dernières scènes, la scène d&#x27;aujourd&#x27;hui ainsi que la scène futuriste, manquent parce que je ne les ai pas encore réellement créées, j&#x27;ai gardé ça pour l&#x27;enregistrer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro et interface web d&#x27;un outil de génération d&#x27;images par IA (avec incrustation vidéo PiP de Jack dans le coin inférieur gauche).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur l&#x27;image 2 : panneau latéral droit affichant une description détaillée de la création de variations d&#x27;une scène de garage d&#x27;ordinateur des années 1980 (&quot;The fourth and final image is ready to be converted...&quot;). Sur l&#x27;image 3 : interface Premiere Pro avec timeline de montage vidéo et moniteur affichant un plan de soldat en armure/casque avec un arrière-plan d&#x27;explosions.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la première étape de son processus de création et montre l&#x27;interface de montage Premiere Pro pour illustrer les scènes manquantes dans sa chronologie.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_002_00-01-10.jpg" alt="Interface d&#x27;un outil de génération par IA montrant une galerie de vignettes et un panneau de discussion textuel sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_002_00-01-10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:10</span>
+                        <span class="caption-text">Interface d&#x27;un outil de génération par IA montrant une galerie de vignettes et un panneau de discussion textuel sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_003_00-01-22.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline de montage et le moniteur avec une image générée d&#x27;un soldat dans une tranchée." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_003_00-01-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:22</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline de montage et le moniteur avec une image générée d&#x27;un soldat dans une tranchée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:33 - 00:02:08</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vidéo donc je peux vous emmener à travers le processus et le même flux de travail que nous allons appliquer à ces deux scènes manquantes est ce que j&#x27;utilise pour créer chaque scène avant maintenant pour commencer nous sommes sur l&#x27;agent Hyluo AI et c&#x27;est un outil plutôt cool en soi donc sur le côté droit ici nous avons une fenêtre de chat et cela fonctionne un peu comme n&#x27;importe quel autre LLM et comme je suis sûr que vous l&#x27;avez deviné cela vous permet de parler à l&#x27;agent HILUO et de lui demander de faire des choses comme vous générer des images en utilisant Nano Banana. Et sur le côté gauche ici et une fonctionnalité que je trouve vraiment très cool nous avons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro sur l&#x27;image 1 et interface web de l&#x27;agent Hyluo AI sur l&#x27;image 2, avec incrustation vidéo (PiP) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Timeline de montage vidéo, pistes audio et vidéo, interface de chat LLM avec des descriptions textuelles d&#x27;images générées (&quot;I have successfully created 4 variations...&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son écran de travail, naviguant d&#x27;abord entre le logiciel de montage vidéo et l&#x27;interface de l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_004_00-01-35.jpg" alt="Interface d&#x27;un logiciel de montage vidéo (Adobe Premiere Pro) affichant la timeline, le panneau source et un aperçu vidéo avec le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_004_00-01-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:35</span>
+                        <span class="caption-text">Interface d&#x27;un logiciel de montage vidéo (Adobe Premiere Pro) affichant la timeline, le panneau source et un aperçu vidéo avec le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_005_00-01-46.jpg" alt="Interface du site web Hyluo AI avec un panneau de chat textuel à droite et une zone de visualisation de projets au centre, avec le créateur en incrustation PiP en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_005_00-01-46.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:46</span>
+                        <span class="caption-text">Interface du site web Hyluo AI avec un panneau de chat textuel à droite et une zone de visualisation de projets au centre, avec le créateur en incrustation PiP en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:08 - 00:02:43</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce genre d&#x27;espace vide qui est appelé le canevas et ce qui se passe c&#x27;est que n&#x27;importe quand nous générons une image en utilisant cette fenêtre de chat sur la droite elle va être peuplée à l&#x27;intérieur du canevas et vous pouvez voir que j&#x27;ai commencé à disposer toutes mes images pour l&#x27;introduction cinématique comme si c&#x27;était une sorte de storyboard et cela vous permet de voir comment votre idée prend forme en temps réel et vous avez un point de comparaison entre nos très différentes scènes. Nous sommes capables de vérifier pour nous assurer que cette cohérence est là mais aussi que chaque image individuelle est visuellement assez frappante pour capturer le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de génération d&#x27;images et de storyboard (interface avec canevas infini et panneau de chat textuel latéral, comprenant un encadré vidéo incrusté de Jack en bas à gauche).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur le panneau de droite, affichage d&#x27;une image générée montrant un homme barbu dans un garage des années 1980 éclairé par la lueur verte d&#x27;un moniteur cathodique, accompagnée d&#x27;un texte descriptif détaillé de la génération. Sur le canevas central, multiples petites vignettes d&#x27;images agencées par séquences.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son espace de travail en canevas agissant comme un storyboard interactif où s&#x27;organisent les différentes images générées par l&#x27;IA pour son introduction cinématique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_006_00-02-10.jpg" alt="Interface de l&#x27;application de génération avec un grand espace de travail en canevas au centre montrant plusieurs images miniatures disposées en grille, et une fenêtre de chat textuel sur le panneau de droite." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_006_00-02-10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:10</span>
+                        <span class="caption-text">Interface de l&#x27;application de génération avec un grand espace de travail en canevas au centre montrant plusieurs images miniatures disposées en grille, et une fenêtre de chat textuel sur le panneau de droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:43 - 00:03:17</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;attention de l&#x27;audience. Et vous pouvez voir que pour certaines scènes nous avons seulement généré deux images parce que c&#x27;est tout ce que nous avions besoin de faire. Comme vous le savez tous avec l&#x27;IA il y a des essais et des erreurs impliqués donc certaines scènes prennent plus de générations pour trouver ce que vous cherchez surtout si comme moi peut-être vous ne savez pas exactement ce que vous voulez de Nano Banana donc cela demande un peu de relancer le même prompt ou de faire de légers ajustements tout au long du processus. Comme je le disais nous avons toutes nos images menant à la sorte de séquence des années 1980 qui concerne le fait de ramener un ordinateur personnel à la maison pour la première fois. Ce gigantesque</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Halisun-AI affichant un espace de travail sombre avec des miniatures d&#x27;images au centre, un panneau de chat textuel sur le côté droit, et une incrustation vidéo (PiP) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif dans le panneau de droite détaillant la génération de 4 variations de scènes de garage des années 1980 avec un homme barbu aux lunettes et des équipements rétro (disquettes, circuits, moniteur à l&#x27;écran vert). Des vignettes d&#x27;images générées sont affichées au centre de l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son écran de travail sur l&#x27;outil Halisun-AI tout en expliquant le processus de génération d&#x27;images et les essais nécessaires pour obtenir le résultat souhaité.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_007_00-02-45.jpg" alt="Interface de l&#x27;outil Halisun-AI montrant une grille d&#x27;images générées et un panneau de discussion textuel sur la droite, avec Jack incrusté en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_007_00-02-45.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:45</span>
+                        <span class="caption-text">Interface de l&#x27;outil Halisun-AI montrant une grille d&#x27;images générées et un panneau de discussion textuel sur la droite, avec Jack incrusté en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:17 - 00:03:50</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">saut technologique qui revêt une importance historique massive. Et ce que nous voulons faire, c&#x27;est créer un contraste saisissant maintenant en passant directement à nos jours. J&#x27;ai donc entré le prompt textuel pour la génération de notre image de départ d&#x27;aujourd&#x27;hui. Et quelque chose d&#x27;autre que j&#x27;apprécie vraiment avec l&#x27;agent Hyluo AI, c&#x27;est que nous pouvons dire quelque chose comme : &quot;Veuillez me générer quatre générations nano banana en utilisant le prompt ci-dessous&quot;. Vous pouvez donc spécifier combien de fois vous voulez que l&#x27;agent Hilo exécute le même prompt. Et pour le prompt textuel lui-même, nous avons dit : un homme barbu ayant l&#x27;air stressé,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;agent Hyluo AI (Hyluo AI agent) avec un panneau de discussion textuel à droite et une zone d&#x27;affichage des grilles d&#x27;images générées au centre, avec la webcam du présentateur en incrustation (PiP) en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran : &quot;Please generate me 4 nano banana generations using the below prompt...&quot; (Image 2) et le prompt détaillé décrivant un homme barbu stressé à Londres avec des écouteurs et un iPhone (Image 3).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur démontre l&#x27;utilisation de l&#x27;agent Hyluo AI pour spécifier le nombre de générations (quatre) souhaité à l&#x27;aide d&#x27;un prompt textuel spécifique, tout en affichant l&#x27;interface et un encart textuel illustratif.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_008_00-03-19.jpg" alt="Interface de l&#x27;agent Hyluo AI montrant l&#x27;historique des générations avec les résultats affichés dans le panneau principal et le créateur visible en incrustation." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_008_00-03-19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:19</span>
+                        <span class="caption-text">Interface de l&#x27;agent Hyluo AI montrant l&#x27;historique des générations avec les résultats affichés dans le panneau principal et le créateur visible en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_009_00-03-40.jpg" alt="Écran graphique coloré affichant le texte du prompt en superposition : &quot;Please generate me 4 nano banana generations using the below prompt...&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_009_00-03-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:40</span>
+                        <span class="caption-text">Écran graphique coloré affichant le texte du prompt en superposition : &quot;Please generate me 4 nano banana generations using the below prompt...&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_010_00-03-48.jpg" alt="Interface de l&#x27;agent Hyluo AI affichant le texte complet du prompt dans le panneau de discussion latéral droit." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_010_00-03-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:48</span>
+                        <span class="caption-text">Interface de l&#x27;agent Hyluo AI affichant le texte complet du prompt dans le panneau de discussion latéral droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:50 - 00:04:26</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en marchant dans le Londres d&#x27;aujourd&#x27;hui, portant un costume noir. Il porte des écouteurs Apple AirPods et a son iPhone Apple à la main. Esthétique froide, éclairage cinématique, ultra détaillé, photoréaliste. Et nous pouvons aller sur cette petite icône ici et télécharger notre image de référence. J&#x27;ai celle-ci de moi sans mes lunettes et ma casquette. La raison pour laquelle j&#x27;ai fait cela, c&#x27;est parce que je fais référence à des périodes où ces choses n&#x27;existaient tout simplement pas et je voulais avoir un très bon niveau de cohérence faciale pour moi-même à travers les différentes périodes, même lorsque nous sommes passés aux parties de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil d&#x27;intelligence artificielle (type chatbot/génération) avec un panneau latéral de discussion à droite et une zone centrale affichant des vignettes de générations, ainsi qu&#x27;une incrustation vidéo (PiP) du présentateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible sur l&#x27;image #1 : &quot;A bearded man looking stressed, walking through modern day London, wearing a black suit. He is wearing Apple AirPod headphones and has his Apple iPhone in his hand. Cold aesthetic. Cinematic lighting, ultra-detailed, photorealistic.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment rédiger le prompt et télécharger une image de référence pour maintenir la cohérence faciale d&#x27;une époque à une autre, tout en montrant l&#x27;interface et le texte à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_011_00-03-52.jpg" alt="Affichage d&#x27;un prompt textuel descriptif en anglais sur fond coloré." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_011_00-03-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:52</span>
+                        <span class="caption-text">Affichage d&#x27;un prompt textuel descriptif en anglais sur fond coloré.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_012_00-04-15.jpg" alt="Interface d&#x27;un outil de génération par IA avec un panneau de chat à droite et un retour vidéo/image, avec Jack en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_012_00-04-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:15</span>
+                        <span class="caption-text">Interface d&#x27;un outil de génération par IA avec un panneau de chat à droite et un retour vidéo/image, avec Jack en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:26 - 00:05:00</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;histoire où les casquettes et les lunettes existaient. Je voulais vraiment rendre mon visage très cohérent tout du long pour vendre l&#x27;idée et m&#x27;assurer que le concept passe bien auprès du spectateur. Et nous pouvons donc lancer ces générations maintenant et voir ce que nous obtenons. Et vous pouvez maintenant voir que le canevas a été peuplé par notre nouvelle génération. Nous pouvons donc cliquer sur chacune d&#x27;elles et aller sur cette petite icône ici pour les mettre en plein écran. Et tout de suite, parfait. Exactement ce que je voulais. Regardons-les toutes cependant pour nous assurer de trouver celle que nous aimons le plus. Et juste un conseil les gars,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web d&#x27;IA (type interface de génération par canevas avec panneau de discussion latéral à droite et incrustation vidéo du créateur en bas à gauche).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau latéral droit avec l&#x27;historique des générations textuelles et des miniatures d&#x27;images générées affichées sur le canevas central.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre le canevas de l&#x27;application web avec les nouvelles générations d&#x27;images affichées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_013_00-04-28.jpg" alt="Interface de l&#x27;application web d&#x27;IA avec le canevas affichant plusieurs miniatures de générations et Jack visible en incrustation PiP dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_013_00-04-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:28</span>
+                        <span class="caption-text">Interface de l&#x27;application web d&#x27;IA avec le canevas affichant plusieurs miniatures de générations et Jack visible en incrustation PiP dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:00 - 00:05:35</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Assurez-vous que l&#x27;image de référence que vous téléchargez est au format d&#x27;image que vous voulez que Hailuo AI génère pour vous en utilisant Nano Banana. Elle va toujours par défaut se mettre sur un format un sur un, donc je lui ai donné un seize par neuf parce que bien sûr c&#x27;est ce que nous voulons pour notre cas d&#x27;usage. Maintenant, j&#x27;aime vraiment cette première génération ici, j&#x27;aime aussi beaucoup celle-ci où je regarde mon téléphone. Les deux font exactement ce que j&#x27;imagine et ne vous inquiétez pas, soit dit en passant, nous pouvons aller de l&#x27;avant et les télécharger sans les filigranes incrustés, il suffit d&#x27;aller sur cette icône de téléchargement et de cliquer sur &quot;sans filigrane&quot;.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hailuo AI (MiniMax) avec un panneau latéral de discussion, une grille de miniatures de vidéos générées et un mode PiP montrant le créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes et panneaux de l&#x27;interface Hailuo AI / MiniMax, miniatures de vidéos, messages de discussion textuels dans le panneau latéral droit, filigrane discret en bas à droite de la vidéo générée.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface de Hailuo AI, zoome sur une vidéo générée où l&#x27;homme regarde son téléphone, puis clique sur l&#x27;icône de téléchargement pour ouvrir le menu contextuel permettant de retirer le filigrane.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_014_00-05-02.jpg" alt="Interface principale de Hailuo AI montrant une vue d&#x27;ensemble des générations de vidéos miniatures avec le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_014_00-05-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:02</span>
+                        <span class="caption-text">Interface principale de Hailuo AI montrant une vue d&#x27;ensemble des générations de vidéos miniatures avec le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_015_00-05-24.jpg" alt="Affichage en plein écran d&#x27;une vidéo générée montrant un homme en costume regardant son téléphone dans une rue de Londres avec des bus rouges." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_015_00-05-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:24</span>
+                        <span class="caption-text">Affichage en plein écran d&#x27;une vidéo générée montrant un homme en costume regardant son téléphone dans une rue de Londres avec des bus rouges.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_016_00-05-33.jpg" alt="Menu de téléchargement ouvert sur l&#x27;interface de Hailuo AI permettant de sélectionner l&#x27;option de téléchargement sans filigrane." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_016_00-05-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:33</span>
+                        <span class="caption-text">Menu de téléchargement ouvert sur l&#x27;interface de Hailuo AI permettant de sélectionner l&#x27;option de téléchargement sans filigrane.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:35 - 00:05:57</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">option. Ma préférence va en fait à celle-ci où je regarde mon téléphone, mais ma légère inquiétude est que lorsque nous allons animer ceci en utilisant Hyluo 2, leur générateur de vidéo par IA, l&#x27;IA ne sait pas réellement à quoi ressemblent mes yeux et il va donc y avoir un élément de devinette pour le modèle, et c&#x27;est le genre de chose auquel vous voulez penser avant de lancer vos générations.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une image générée en plein écran avec un encadré PiP (Picture-in-Picture) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Image générée représentant un homme en costume tenant un téléphone portable dans une rue urbaine avec des bus à impériale rouges à l&#x27;arrière-plan, et les logos des marques MINIMAX et Hyluo AI dans le coin inférieur droit de l&#x27;image.
+[CD] Affichage de l&#x27;image candidate sélectionnée pour l&#x27;animation avec le créateur en bas à gauche commentant le choix de cette option.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration pédagogique et présentation du workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_017_00-05-37.jpg" alt="Aperçu grand format d&#x27;une image générée montrant un homme en costume regardant son téléphone dans une rue de Londres avec des bus rouges, avec le créateur visible en incrustation PiP dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_017_00-05-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:37</span>
+                        <span class="caption-text">Aperçu grand format d&#x27;une image générée montrant un homme en costume regardant son téléphone dans une rue de Londres avec des bus rouges, avec le créateur visible en incrustation PiP dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:58 - 00:06:34</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cette première image, elle pourrait fonctionner vraiment très bien mais cela dépend de notre rendu. Je pense essentiellement que notre solution de secours va devoir être celle-ci. Et la raison à cela, c&#x27;est parce qu&#x27;elle nous offre une génération de mon visage très claire, réaliste et cohérente. Donc elle ne peut pas vraiment échouer. Mais je pense que nous allons générer les deux. Maintenant, nous avons rempli la fenêtre de chat avec notre prochain et dernier prompt textuel. Une fois de plus, nous demandons à Hylou de générer quatre variations via Nano Banana. Et le prompt textuel dit cette fois-ci : un homme barbu portant un sweat à capuche se tient dans une ville futuriste alors qu&#x27;il</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hyluo AI avec panneau latéral de chat et un écran de texte cinématique en plein écran.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt affiché à l&#x27;écran : « A bearded man wearing a hoodie stands in a futuristic city, whilst it is raining. Bladerunner inspired. Slightly cold and dystopian. Cinematic composition, visible skin texture, gritty, ultra-detailed, photorealistic. »</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;historique des générations sur Hyluo AI et présente le nouveau prompt textuel à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_018_00-06-00.jpg" alt="Aperçu en grand écran sur l&#x27;interface Hyluo AI d&#x27;une génération montrant un homme barbu en costume regardant son téléphone dans une rue de Londres avec des bus rouges." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_018_00-06-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:00</span>
+                        <span class="caption-text">Aperçu en grand écran sur l&#x27;interface Hyluo AI d&#x27;une génération montrant un homme barbu en costume regardant son téléphone dans une rue de Londres avec des bus rouges.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_019_00-06-10.jpg" alt="Gros plan similaire sur l&#x27;interface Hyluo AI mettant en valeur le visage barbu généré avec réalisme." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_019_00-06-10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:10</span>
+                        <span class="caption-text">Gros plan similaire sur l&#x27;interface Hyluo AI mettant en valeur le visage barbu généré avec réalisme.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_020_00-06-22.jpg" alt="Interface complète de l&#x27;application Hyluo AI montrant l&#x27;historique de génération et le panneau de chat textuel sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_020_00-06-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:22</span>
+                        <span class="caption-text">Interface complète de l&#x27;application Hyluo AI montrant l&#x27;historique de génération et le panneau de chat textuel sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_021_00-06-32.jpg" alt="Écran de texte sur fond dégradé bleu et rose affichant clairement le prompt textuel utilisé dans la vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_021_00-06-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:32</span>
+                        <span class="caption-text">Écran de texte sur fond dégradé bleu et rose affichant clairement le prompt textuel utilisé dans la vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:34 - 00:07:07</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en train de pleuvoir. Inspiré de Blade Runner, légèrement froid et dystopique, composition cinématographique, texture de peau visible, granuleux, ultra détaillé photo réaliste. Alors allons-y et exécutons ce prompt pour voir quels résultats nous obtenons en retour. D&#x27;accord, nous avons récupéré nos générations inspirées de Blade Runner. Et encore une fois, c&#x27;est exactement ce que je recherchais. Vraiment cinématographique et elles ont ce genre d&#x27;ambiance néon futuriste granuleuse. Maintenant, je veux juste exécuter à nouveau le même prompt avec un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération d&#x27;images/vidéos par IA avec panneau de discussion latéral et espace de travail central.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt : &quot;A bearded man wearing a hoodie stands in a futuristic city, whilst it is raining. Bladerunner inspired. Slightly cold and dystopian. Cinematic composition, visible skin texture, gritty, ultra-detailed, photorealistic.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage à l&#x27;écran du prompt textuel en cours de lecture, puis transition vers l&#x27;interface de l&#x27;outil affichant les résultats générés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_022_00-06-36.jpg" alt="Texte du prompt affiché à l&#x27;écran sur fond coloré dégradé bleu et rose." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_022_00-06-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:36</span>
+                        <span class="caption-text">Texte du prompt affiché à l&#x27;écran sur fond coloré dégradé bleu et rose.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_023_00-06-45.jpg" alt="Interface d&#x27;un outil de génération par IA montrant des vignettes de résultats et le présentateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_023_00-06-45.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:45</span>
+                        <span class="caption-text">Interface d&#x27;un outil de génération par IA montrant des vignettes de résultats et le présentateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:07 - 00:07:42</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Légère variation juste pour bien vendre l&#x27;idée que ça se passe dans le futur. Tout ce que j&#x27;ai fait, c&#x27;est ajouter cette courte phrase ici qui dit &quot;voitures volantes et planantes derrière lui&quot;. Donc on va envoyer cette génération et voir ce qu&#x27;on obtient. Je veux juste faire comprendre clairement au spectateur qu&#x27;on n&#x27;est pas de nos jours. Je veux un peu de technologie futuriste qui n&#x27;existe tout simplement pas aujourd&#x27;hui. Parfait. Donc vous pouvez voir à partir de la dernière série de générations qu&#x27;on a maintenant des voitures volantes derrière moi. Personnellement, j&#x27;aime beaucoup cette génération-ci. Elle a vraiment une super ressemblance avec moi aussi. Juste</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hailuo AI (Hailuo AI - Duffers Alpha 1) avec un panneau de chat/génération textuelle à droite et l&#x27;affichage du créateur en incrustation vidéo (PiP) en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans le panneau latéral : &quot;Please generate 4 new lumina generations using the below prompt... Flying hover cars behind him. Blade Runner inspired. Moody, cold and dystopian...&quot; et filigrane &quot;MINIMAX / Hailuo AI&quot; sur l&#x27;image générée.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son écran avec l&#x27;interface de l&#x27;outil d&#x27;intelligence artificielle Hailuo AI, présentant d&#x27;abord la liste des générations passées, puis l&#x27;affichage de la nouvelle image sélectionnée intégrant les voitures volantes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_024_00-07-09.jpg" alt="Interface de Hailuo AI montrant l&#x27;historique des générations avec les prompts textuels et le créateur incrusté en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_024_00-07-09.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:09</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant l&#x27;historique des générations avec les prompts textuels et le créateur incrusté en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_025_00-07-30.jpg" alt="Affichage en grand format de la nouvelle génération d&#x27;image avec un homme à capuche dans une ville futuriste sous la pluie et des voitures volantes." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_025_00-07-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:30</span>
+                        <span class="caption-text">Affichage en grand format de la nouvelle génération d&#x27;image avec un homme à capuche dans une ville futuriste sous la pluie et des voitures volantes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:42 - 00:08:18</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">imaginez-moi sans mes lunettes et ma casquette. Jetons un œil au dernier ici. Je n&#x27;aime pas tout à fait autant celui-ci. Je pense que le fait d&#x27;avoir la capuche ajoute vraiment du drame à la scène. Je vais donc cliquer sur l&#x27;option de téléchargement sans filigrane. Et maintenant, nous avons nos images de départ restantes générées. Nous avons deux options différentes lorsqu&#x27;il s&#x27;agit de moi de nos jours en train de marcher à Londres. Nous avons celle-ci où je regarde en avant et on peut clairement voir mon visage, ce qui est l&#x27;option la plus sûre. Et puis nous avons celle-ci où je regarde mon téléphone en bas. Mon option préférée, j&#x27;aime juste un peu plus la composition. Et puis bien sûr, nous avons l&#x27;image de fin finale,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Hailuo AI (navigateur web) et visualiseur d&#x27;images système.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface de Hailuo AI avec aperçu d&#x27;image en grand format, filigrane MiniMax / Hailuo AI en bas à droite, historique des générations miniatures.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;historique des générations d&#x27;images sur Hailuo AI et compare différentes options visuelles pour sa vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_026_00-07-44.jpg" alt="Interface de Hailuo AI affichant l&#x27;image générée d&#x27;un personnage avec une capuche dans un décor urbain cyberpunk sous la pluie." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_026_00-07-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:44</span>
+                        <span class="caption-text">Interface de Hailuo AI affichant l&#x27;image générée d&#x27;un personnage avec une capuche dans un décor urbain cyberpunk sous la pluie.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_027_00-07-54.jpg" alt="Interface de Hailuo AI montrant l&#x27;historique des générations et des images miniatures dans le panneau de gauche." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_027_00-07-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:54</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant l&#x27;historique des générations et des images miniatures dans le panneau de gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_028_00-08-06.jpg" alt="Visualiseur d&#x27;images affichant le rendu d&#x27;un homme en costume avec un téléphone dans les rues de Londres." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_028_00-08-06.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:06</span>
+                        <span class="caption-text">Visualiseur d&#x27;images affichant le rendu d&#x27;un homme en costume avec un téléphone dans les rues de Londres.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:18 - 00:08:53</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce look futuriste très dystopique. Très inspiré de Blade Runner et une façon très frappante de terminer notre court métrage. Donc, en retournant sur l&#x27;agent IA Hyluo, nous pouvons aller dans le coin supérieur gauche et cliquer sur retour. Et maintenant, en haut à gauche, vous pouvez voir l&#x27;option pour aller sur l&#x27;onglet vidéo, donc nous allons cliquer ici. Et vous pouvez voir toute une charge de générations de vidéos incroyables. J&#x27;adore vraiment Hyluo 02. C&#x27;est leur dernier modèle de génération de vidéo par IA. Ce que je préfère, c&#x27;est que ses générations sont</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de visionneuse d&#x27;images puis interface web de Hyluo AI avec panneau latéral, onglets de génération vidéo (Image to Video, Text to Video, Subject Reference) et vignettes de résultats.</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL visible sur les images 2 et 3 : &quot;hyluo.ai/v1/editors/...&quot; - Onglets : &quot;Image to Video&quot;, &quot;Text to Video&quot;, &quot;Subject Reference&quot; - Différentes vignettes de prévisualisation de vidéos d&#x27;astronautes et de scènes industrielles avec des invites textuelles associées (prompts).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue à travers l&#x27;interface de Hyluo AI, basculant entre la vue des images générées et l&#x27;onglet vidéo pour présenter le modèle Hyluo 02.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_029_00-08-20.jpg" alt="Visualisation d&#x27;une image au style Blade Runner affichée sur l&#x27;écran du créateur." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_029_00-08-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:20</span>
+                        <span class="caption-text">Visualisation d&#x27;une image au style Blade Runner affichée sur l&#x27;écran du créateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_030_00-08-30.jpg" alt="Navigation dans l&#x27;interface de l&#x27;agent IA Hyluo avec le panneau de navigation et les vignettes à droite." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_030_00-08-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:30</span>
+                        <span class="caption-text">Navigation dans l&#x27;interface de l&#x27;agent IA Hyluo avec le panneau de navigation et les vignettes à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_031_00-08-41.jpg" alt="Interface principale de Hyluo AI montrant l&#x27;onglet vidéo avec différentes générations et modèles affichés." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_031_00-08-41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:41</span>
+                        <span class="caption-text">Interface principale de Hyluo AI montrant l&#x27;onglet vidéo avec différentes générations et modèles affichés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:53 - 00:09:27</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">très cinématiques et ils sont constants également. Et par là je veux dire que vous n&#x27;avez pas besoin de relancer les mêmes invites textuelles encore et encore et encore. Vous pouvez voir que la plupart du temps je n&#x27;ai eu à le lancer qu&#x27;à quelques reprises. D&#x27;une manière générale, en faisant défiler, vous pouvez voir que j&#x27;obtiens les résultats que je recherche très rapidement. Et qu&#x27;est-ce que cela signifie ? Nous dépensons moins de crédits et alors tout le monde est heureux, n&#x27;est-ce pas ? Donc cela étant dit, nous pouvons maintenant aller de l&#x27;avant et générer les vidéos pour nos deux dernières scènes restantes. Maintenant, en termes de chaque plan, j&#x27;ai essayé de varier les mouvements de caméra. Donc le premier plan a</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Higgsfield AI (génération de vidéo) et logiciel de montage Adobe Premiere Pro, avec incrustation vidéo (PiP) du présentateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts visibles sur l&#x27;interface de Higgsfield AI : &quot;Static camera, the bearded man sits in the seat as the rocket blasts into space. Camera shaking.&quot;, &quot;Slow dolly zoom in, the bearded man speaks calmly to the audience, connecting with the lens.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur démontre l&#x27;interface de génération vidéo sur Higgsfield AI puis bascule sur le logiciel Adobe Premiere Pro pour montrer le montage des plans.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_032_00-08-55.jpg" alt="Interface de Higgsfield AI montrant un astronaute dans une capsule spatiale et un panneau latéral de clips générés." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_032_00-08-55.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:55</span>
+                        <span class="caption-text">Interface de Higgsfield AI montrant un astronaute dans une capsule spatiale et un panneau latéral de clips générés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_033_00-09-16.jpg" alt="Interface de Higgsfield AI avec un aperçu de l&#x27;astronaute et une liste de prompts textuels dans la colonne de droite." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_033_00-09-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:16</span>
+                        <span class="caption-text">Interface de Higgsfield AI avec un aperçu de l&#x27;astronaute et une liste de prompts textuels dans la colonne de droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_034_00-09-25.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la chronologie de montage vidéo et un personnage assis près d&#x27;un feu de camp." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_034_00-09-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:25</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la chronologie de montage vidéo et un personnage assis près d&#x27;un feu de camp.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:27 - 00:10:01</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce genre de mouvement de caméra dolly vers l&#x27;avant. Ensuite, on passe à un plan fixe, mouvement de caméra dolly, fixe, dolly, fixe, juste pour ajouter un peu de variation là-dedans. Donc notre vidéo des années 1980 a un mouvement dolly. On sait donc qu&#x27;on veut que ce plan soit fixe. Et on verra bien comment ça donne en réalité, parce que je marche à travers Londres. On devra peut-être faire un genre de plan de suivi ou quelque chose comme ça, mais tu sais quoi, allons-y et testons pour voir quel genre de résultats on obtient. Donc si j&#x27;ouvre mes téléchargements, je peux glisser-déposer notre première option pour moi en train de marcher à travers Londres, l&#x27;air très stressé en</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro et l&#x27;interface web de Higgsfield AI (mode Image to Video).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur les images 1 et 2, l&#x27;interface de montage Adobe Premiere Pro avec timeline multicouche et moniteur de prévisualisation vidéo. Sur l&#x27;image 3, l&#x27;interface de Higgsfield AI avec des exemples de générations (astronaute, homme des années 80) et le prompt visible : &quot;Static camera, the bearded man sits in his seat as the rocket blasts into space. Camera shaking.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son montage vidéo sur Premiere Pro (alternance de mouvements de caméra dolly et de plans fixes), puis bascule sur l&#x27;interface de Higgsfield AI pour préparer la génération d&#x27;un nouveau plan vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_035_00-09-29.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline avec une séquence de plans générés par IA dans l&#x27;Égypte ancienne, avec le créateur en incrustation vidéo (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_035_00-09-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:29</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline avec une séquence de plans générés par IA dans l&#x27;Égypte ancienne, avec le créateur en incrustation vidéo (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_036_00-09-39.jpg" alt="Interface d&#x27;Adobe Premiere Pro affichant une scène rétro des années 1980 dans le moniteur de prévisualisation, avec Jack visible en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_036_00-09-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:39</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro affichant une scène rétro des années 1980 dans le moniteur de prévisualisation, avec Jack visible en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_037_00-09-50.jpg" alt="Interface de l&#x27;outil web Higgsfield AI (Image to Video) avec le panneau de chargement d&#x27;images et la liste des prompts à droite." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_037_00-09-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:50</span>
+                        <span class="caption-text">Interface de l&#x27;outil web Higgsfield AI (Image to Video) avec le panneau de chargement d&#x27;images et la liste des prompts à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:01 - 00:10:36</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">de nos jours, plutôt précis, je dois dire, à part le costume, on ne me voit pas souvent porter un costume, et on va juste opter pour un prompt assez basique : caméra fixe, l&#x27;homme barbu marche dans le centre animé de Londres en ayant l&#x27;air stressé. On peut aussi sélectionner la résolution de sortie, comme on génère en 1080p, on ne peut aller qu&#x27;jusqu&#x27;à six secondes de longueur, mais c&#x27;est toujours bon pour notre cas d&#x27;usage. Si on descend à 2768p, on peut aller jusqu&#x27;à 10 secondes, mais je veux la résolution maximale, je sais que mes clips vont être courts donc je veux qu&#x27;ils soient vraiment nets, et en bas à droite, vous pouvez voir</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application web de génération vidéo Haiku.ai avec panneau de prévisualisation, zone de prompt et historique des générations à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : « Static camera, the bearded man walks through busy central London looking stressed. » Paramètres de résolution et de durée.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Haiku.ai, saisit ou affiche le prompt textuel, puis ajuste les paramètres de résolution et de durée de la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_038_00-10-03.jpg" alt="Interface de l&#x27;outil de génération vidéo Haiku.ai montrant le prompt textuel et le retour vidéo avec la webcam du créateur en incrustation." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_038_00-10-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:03</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo Haiku.ai montrant le prompt textuel et le retour vidéo avec la webcam du créateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_039_00-10-25.jpg" alt="Interface de Haiku.ai montrant les options de configuration de la résolution (1080p) et de durée de génération vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_039_00-10-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:25</span>
+                        <span class="caption-text">Interface de Haiku.ai montrant les options de configuration de la résolution (1080p) et de durée de génération vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:36 - 00:11:10</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il y a une option pour faire améliorer votre prompt, en général je laisse ceci activé, d&#x27;habitude je ne le fais pas pour beaucoup d&#x27;autres outils d&#x27;IA mais Haloo s&#x27;en sort plutôt bien en laissant cette option activée donc je vous suggère de faire de même. Bien sûr, expérimenter avec et sans est toujours une bonne option également, donc nous allons cliquer sur générer pour celle-ci. Je vais également configurer une autre option qui est un mouvement de caméra de suivi. Donc cliquez sur générer pour celle-ci et je vais glisser-déposer notre génération alternative. Et je viens d&#x27;ajouter un petit bout à la fin de ce prompt textuel ici. Donc en entier, il est écrit : l&#x27;homme barbu marche à travers</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Haloo AI (section Image to Video).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible dans l&#x27;interface indique : &quot;Static camera, the bearded man walks through busy central London looking stressed.&quot; puis modifié en &quot;Tracking camera move, the bearded man walks through busy central London looking stressed looking down at his phone.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de génération, explique les réglages d&#x27;amélioration du prompt et lance la génération d&#x27;une nouvelle vidéo avec un mouvement de caméra de suivi.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_040_00-10-38.jpg" alt="Interface de Haloo AI montrant les options de génération vidéo Image-to-Video avec le créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_040_00-10-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:38</span>
+                        <span class="caption-text">Interface de Haloo AI montrant les options de génération vidéo Image-to-Video avec le créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_041_00-11-08.jpg" alt="Interface de Haloo AI montrant le lancement de la génération avec le prompt mis à jour." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_041_00-11-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:08</span>
+                        <span class="caption-text">Interface de Haloo AI montrant le lancement de la génération avec le prompt mis à jour.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:10 - 00:11:30</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">un quartier animé du centre de Londres en ayant l&#x27;air stressé, en regardant son téléphone parce qu&#x27;on ne veut pas vraiment qu&#x27;il lève les yeux car, comme je l&#x27;ai dit avant, le modèle d&#x27;IA ne sait pas vraiment à quoi ressemblent mes yeux ou mon visage lorsqu&#x27;il est complètement relevé vers la caméra. Donc s&#x27;il essaie de générer ça, les choses pourraient devenir un peu bizarres. Donc nous allons générer celui-là ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Kling AI (Kling AI GenVideo / Image to Video) avec une incrustation vidéo (PiP) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt saisi : &#x27;Tracking camera move, the bearded man walks through busy central London looking stressed looking down at his phone.&#x27; Image de départ montrant un homme barbu en costume regardant son téléphone dans Londres, avec un panneau &#x27;Start Frame&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Kling AI et les paramètres de génération vidéo par IA pour animer l&#x27;image fixe.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_042_00-11-12.jpg" alt="Texte du prompt affiché sur fond coloré : &#x27;Tracking camera move, the bearded man walks through busy central London looking stressed looking down at his phone.&#x27;" loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_042_00-11-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:12</span>
+                        <span class="caption-text">Texte du prompt affiché sur fond coloré : &#x27;Tracking camera move, the bearded man walks through busy central London looking stressed looking down at his phone.&#x27;</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_043_00-11-20.jpg" alt="Interface de Kling AI (mode Image to Video) avec le panneau de génération et la webcam de Jack en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_043_00-11-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:20</span>
+                        <span class="caption-text">Interface de Kling AI (mode Image to Video) avec le panneau de génération et la webcam de Jack en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:30 - 00:11:55</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez voir que nous avons plusieurs générations qui se produisent toutes en même temps. Et notre prompt est optimisé avec celui du haut ici. C&#x27;est un processus assez rapide. Et je trouve que cela tend à aider à la cohérence de vos générations. Et nous pouvons également insérer notre image finale inspirée de Blade Runner. Vous voyez aussi que nous avons une option pour une image de début et de fin où Hylou 2 essaie de fusionner les deux ensemble avec une transition.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Hailuo AI (Minimax) - Interface de génération vidéo (Image to Video, Text to Video, Subject Reference).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Affichage de l&#x27;image de départ (Start Frame) d&#x27;un homme en costume regardant son téléphone dans Londres, et sur la droite, trois panneaux de génération vidéo simultanés avec des barres de progression et des prompts textuels visibles. En bas à gauche, incrustation vidéo (PiP) du créateur Jack dans son studio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Hailuo AI avec plusieurs générations de vidéos en cours d&#x27;exécution en parallèle et l&#x27;optimisation des prompts.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_044_00-11-32.jpg" alt="Interface du logiciel de génération vidéo Hailuo AI affichant plusieurs générations simultanées et un retour vidéo avec le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_044_00-11-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:32</span>
+                        <span class="caption-text">Interface du logiciel de génération vidéo Hailuo AI affichant plusieurs générations simultanées et un retour vidéo avec le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:55 - 00:12:18</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est une chose plutôt cool à expérimenter également, mais encore une fois, ce n&#x27;est pas vraiment ce que nous voulons pour ce cas d&#x27;utilisation particulier. Et pour le prompt textuel, nous allons opter pour un mouvement de caméra avant lent en travelling (slow dolly camera move in). L&#x27;homme barbu fixe droit devant lui en silence sans parler. Forte pluie, voitures volantes derrière lui. Nous allons cliquer sur générer pour cela. Et je pense que je pourrais aussi essayer une option de caméra statique, juste pour me couvrir un peu.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de génération de vidéo par IA (type Kling / Runway / Seedance) avec panneau latéral de prévisualisation, zone de prompt et historique à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible dans la zone de prompt : &quot;Slow dolly camera move in, the bearded man stares forward silently without talking. Heavy rain, flying cars behind him.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;outil de génération vidéo et saisit un nouveau prompt textuel pour générer une variante avec un mouvement de caméra en travelling avant.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_045_00-11-57.jpg" alt="Interface de l&#x27;outil de génération vidéo affichant l&#x27;espace de travail avec un personnage cyberpunk, la saisie du prompt textuel en bas à gauche et la caméra de Jack en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_045_00-11-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:57</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo affichant l&#x27;espace de travail avec un personnage cyberpunk, la saisie du prompt textuel en bas à gauche et la caméra de Jack en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_046_00-12-03.jpg" alt="Écran de texte sur fond coloré dégradé (bleu/rose) affichant en gros caractères blancs le prompt textuel saisi par le créateur." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_046_00-12-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:03</span>
+                        <span class="caption-text">Écran de texte sur fond coloré dégradé (bleu/rose) affichant en gros caractères blancs le prompt textuel saisi par le créateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:18 - 00:12:37</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Bon, nous avons maintenant récupéré nos générations de vidéo Hyluo et ça a fait un super travail, comme je l&#x27;avais prédit. En ouvrant le premier plan ici, c&#x27;était notre option de caméra fixe. Vous pouvez voir que je ne marche pas, donc ça ne donne pas vraiment ce que je voulais. C&#x27;est de ma faute cependant. Je savais déjà un peu que dire caméra fixe ne fonctionnerait pas vraiment.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hyluo AI (outil de génération de vidéo par intelligence artificielle) avec affichage de la bibliothèque de créations, panneaux de prompts et aperçu vidéo avec encadré PiP du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : « Static camera, the bearded man walks through busy central London looking stressed. » Paramètres de génération et historique des clips générés dans le panneau latéral droit.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente les résultats de génération vidéo sur l&#x27;interface de Hyluo AI, en inspectant les différents plans vidéo générés (notamment l&#x27;option de caméra fixe).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_047_00-12-20.jpg" alt="Interface de la plateforme de génération vidéo Hyluo AI affichant les différentes générations de vidéos et les résultats avec les prompts associés." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_047_00-12-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:20</span>
+                        <span class="caption-text">Interface de la plateforme de génération vidéo Hyluo AI affichant les différentes générations de vidéos et les résultats avec les prompts associés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_048_00-12-28.jpg" alt="Gros plan sur le lecteur vidéo au sein de l&#x27;interface Hyluo AI montrant le premier plan avec l&#x27;homme barbu en costume marchant dans les rues de Londres." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_048_00-12-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:28</span>
+                        <span class="caption-text">Gros plan sur le lecteur vidéo au sein de l&#x27;interface Hyluo AI montrant le premier plan avec l&#x27;homme barbu en costume marchant dans les rues de Londres.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:37 - 00:12:55</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais si nous revenons en arrière et vérifions notre option de caméra de suivi, c&#x27;est exactement ce que je voulais. Et je finis par regarder en bas de toute façon. Donc ça couvre en quelque sorte les deux aspects. Et nous avons aussi notre troisième option. Regardez juste à quel point c&#x27;est dynamique. Regardez à quel point le plan change et à quel point de Londres cela montre. Dingue.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hailuo AI (MiniMax) avec panneau de prévisualisation vidéo, historique des générations à droite et incrustation vidéo du créateur (Jack) en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;Tracking camera move, the bearded man walks through busy central London looking stressed looking down at his phone.&quot; Paramètres : Start Frame, High Quality, 1080p.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface de Hailuo AI, sélectionne et visionne différentes options de mouvements de caméra de suivi pour la vidéo générée d&#x27;un homme à Londres.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_049_00-12-39.jpg" alt="Interface de Hailuo AI montrant l&#x27;option de caméra de suivi avec plusieurs vidéos générées en arrière-plan et le créateur en incrustation." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_049_00-12-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:39</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant l&#x27;option de caméra de suivi avec plusieurs vidéos générées en arrière-plan et le créateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_050_00-12-46.jpg" alt="Visualisation en grand format de la vidéo générée montrant l&#x27;homme barbu marchant dans les rues de Londres avec un bus rouge." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_050_00-12-46.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:46</span>
+                        <span class="caption-text">Visualisation en grand format de la vidéo générée montrant l&#x27;homme barbu marchant dans les rues de Londres avec un bus rouge.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_051_00-12-53.jpg" alt="Gros plan sur le mouvement dynamique de la caméra de suivi montrant l&#x27;homme marchant et regardant son téléphone à Londres." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_051_00-12-53.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:53</span>
+                        <span class="caption-text">Gros plan sur le mouvement dynamique de la caméra de suivi montrant l&#x27;homme marchant et regardant son téléphone à Londres.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:56 - 00:13:32</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous allons essayer les deux dans le montage et voir lequel fonctionne le mieux. Et maintenant, je suis impatient de vous montrer ceci. Nous avons nos générations Blade Runner. Nous allons commencer par ma moins préférée, qui est la caméra fixe. Un peu sans vie. Encore une fois, c&#x27;est de ma faute. La caméra fixe ne fonctionne tout simplement pas aussi bien lorsqu&#x27;il s&#x27;agit de ce type de plan, je suppose. Mais si nous allons jeter un œil au mouvement de caméra lent de rapprochement dolly in, c&#x27;est exactement ce que nous voulions. C&#x27;est le résultat dont nous avons besoin. Et nous allons terminer le court métrage en beauté. Et on peut dire très clairement que cela se passe dans le futur. Donc je vais</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de l&#x27;outil de génération vidéo par IA MiniMax Hailuo AI (avec la miniature du créateur en incrustation PiP dans le coin inférieur gauche).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur l&#x27;image 1, le prompt visible est : &quot;Tracking camera move, the bearded man walks through busy central London looking stressed looking down at his phone.&quot; Sur l&#x27;image 2, le prompt est : &quot;Static camera, the hooded man stares forward silently without talking. Heavy rain, flying cars behind him.&quot; Sur l&#x27;image 3, le prompt est : &quot;Slow dolly camera move in, the hooded man stares forward silently without talking. Heavy rain, flying cars behind him.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente différentes générations de vidéos par IA (plans de type Blade Runner et Londres) en comparant l&#x27;effet d&#x27;une caméra fixe par rapport à un mouvement de caméra lent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_052_00-12-58.jpg" alt="Interface de MiniMax Hailuo AI montrant un homme barbu en costume marchant dans Londres avec un prompt de mouvement de caméra de suivi." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_052_00-12-58.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:58</span>
+                        <span class="caption-text">Interface de MiniMax Hailuo AI montrant un homme barbu en costume marchant dans Londres avec un prompt de mouvement de caméra de suivi.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_053_00-13-08.jpg" alt="Interface de MiniMax Hailuo AI affichant un homme à capuche dans un décor urbain cyberpunk futuriste (Blade Runner) avec une caméra fixe." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_053_00-13-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:08</span>
+                        <span class="caption-text">Interface de MiniMax Hailuo AI affichant un homme à capuche dans un décor urbain cyberpunk futuriste (Blade Runner) avec une caméra fixe.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_054_00-13-30.jpg" alt="Interface de MiniMax Hailuo AI affichant le même plan cyberpunk avec un mouvement de caméra lent en zoom avant (dolly in)." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_054_00-13-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:30</span>
+                        <span class="caption-text">Interface de MiniMax Hailuo AI affichant le même plan cyberpunk avec un mouvement de caméra lent en zoom avant (dolly in).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:32 - 00:14:35</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">allons-y et téléchargeons toutes ces vidéos sans nos filigranes dessus. Bien sûr, nous ne voulons pas vraiment cela lorsqu&#x27;il s&#x27;agit de notre réalisation de films par IA. Nous avons donc maintenant ajouté nos nouvelles générations pour terminer le film. Nous avons le plan d&#x27;aujourd&#x27;hui ainsi que notre plan futuriste. Et j&#x27;ai également ajouté quelques couches audio. Nous avons de la musique et des effets sonores. Alors allons-y et regardons tout cela dans son état actuel. Pour que vous puissiez voir que tout fonctionne vraiment</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Haivision AI (navigateur web) et Adobe Premiere Pro (logiciel de montage).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts visibles sur l&#x27;interface Haivision AI : &#x27;Tracking camera move, the bearded man walks through busy central London looking stressed, turning down of his phone&#x27; et &#x27;Static camera, the bearded man stares forward silently without talking. Heavy rain, flying cars behind him.&#x27;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre le téléchargement des clips depuis la plateforme Haivision AI sans filigrane, puis passe sur Adobe Premiere Pro pour assembler les plans actuels et futuristes avec des pistes audio et musicales, et lance la lecture de la timeline pour vérifier le résultat.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_055_00-13-34.jpg" alt="Interface de la plateforme de génération vidéo (Haivision AI) montrant la bibliothèque de clips générés et les options de téléchargement." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_055_00-13-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:34</span>
+                        <span class="caption-text">Interface de la plateforme de génération vidéo (Haivision AI) montrant la bibliothèque de clips générés et les options de téléchargement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_056_00-13-54.jpg" alt="Interface du logiciel de montage Adobe Premiere Pro affichant la timeline multipiste avec les clips vidéo et audio assemblés." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_056_00-13-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:54</span>
+                        <span class="caption-text">Interface du logiciel de montage Adobe Premiere Pro affichant la timeline multipiste avec les clips vidéo et audio assemblés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_057_00-14-33.jpg" alt="Retour sur l&#x27;interface d&#x27;Adobe Premiere Pro pendant la lecture de la timeline avec l&#x27;écran de prévisualisation noir." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_057_00-14-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:33</span>
+                        <span class="caption-text">Retour sur l&#x27;interface d&#x27;Adobe Premiere Pro pendant la lecture de la timeline avec l&#x27;écran de prévisualisation noir.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:35 - 00:15:00</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">joliment, mais il nous manque quelque chose. Ce dont nous avons besoin, c&#x27;est d&#x27;une narration ou d&#x27;une voix off vraiment puissante pour aider à raconter notre histoire et à vendre véritablement le concept. Et maintenant, pour ce faire, nous allons nous rendre sur minimax.io slash audio. Vous pouvez voir que nous avons plusieurs options différentes en ce qui materne les voix. Nous avons l&#x27;isoleur de voix, le clone de voix, et ce qui nous intéresse vraiment, c&#x27;est la conception de voix.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Image 1 : Adobe Premiere Pro. Image 2 : Minimax.io/audio (Interface web de création audio par IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Image 1 : Chronologie de montage avec pistes audio et vidéo, panneau de projet avec vignettes. Image 2 : Titre &quot;Create Lifelike Audio&quot;, onglets &quot;Text to Speech&quot; et &quot;Music Creation&quot;, options de voix (&quot;Voice Design&quot;, &quot;Voice Clone&quot;, &quot;Voice Isolator&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son écran de montage vidéo, puis navigue sur le site web de Minimax Audio pour présenter les différentes options de clonage et de design vocal.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_058_00-14-37.jpg" alt="Interface d&#x27;un logiciel de montage vidéo (Adobe Premiere Pro) avec le panneau de montage, le moniteur et un encadré PiP montrant le créateur." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_058_00-14-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:37</span>
+                        <span class="caption-text">Interface d&#x27;un logiciel de montage vidéo (Adobe Premiere Pro) avec le panneau de montage, le moniteur et un encadré PiP montrant le créateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_059_00-14-52.jpg" alt="Interface du site web Minimax Audio (&quot;Create Lifelike Audio&quot;) affichant différentes options de voix et un encadré PiP du créateur." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_059_00-14-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:52</span>
+                        <span class="caption-text">Interface du site web Minimax Audio (&quot;Create Lifelike Audio&quot;) affichant différentes options de voix et un encadré PiP du créateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:00 - 00:15:22</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pouvons également aller explorer davantage et nous pouvons consulter leur bibliothèque de voix existante. Et il y en a de vraiment superbes ici pour toutes sortes de cas d&#x27;utilisation différents. Jetons un coup d&#x27;œil à certaines d&#x27;entre elles. Donc, partenaire mature. Nous devons aborder cette situation avec à la fois sagesse et compréhension. Conteur captivant. Imaginez ceci. Clair de lune, château ancien et un mystère qui n&#x27;attend qu&#x27;à être résolu.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de MiniMax Audio (affichage du navigateur avec les onglets Voice Design, Voice Clone, Voice Control, et la liste des voix). Le présentateur apparaît dans un encadré PiP (Picture-in-Picture) en bas à gauche de l&#x27;écran.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des profils vocaux visibles dans la bibliothèque : &quot;Mature Partner&quot;, &quot;Trustworthy Man&quot;, &quot;Captivating Storyteller&quot;, &quot;Man with Deep Voice&quot;, &quot;Graceful Lady&quot;, &quot;Insightful Speaker&quot;, &quot;Whimsical Girl&quot;, etc. Boutons d&#x27;écoute (Audition) et d&#x27;utilisation (Use) associés à chaque voix.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface de la bibliothèque de voix de MiniMax Audio et s&#x27;apprête à faire écouter des exemples de voix.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_060_00-15-02.jpg" alt="Interface de MiniMax Audio affichant la bibliothèque de voix (Voice Library) avec la liste des profils vocaux disponibles." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_060_00-15-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:02</span>
+                        <span class="caption-text">Interface de MiniMax Audio affichant la bibliothèque de voix (Voice Library) avec la liste des profils vocaux disponibles.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:22 - 00:15:54</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;aime vraiment beaucoup celle de la dame élégante. Elle ne convient pas pour notre concept, mais elle donne une impression très chaleureuse et presque rassurante aussi. On peut voir qu&#x27;on peut accéder à une bibliothèque et trouver une voix qui correspond à n&#x27;importe quel type d&#x27;ambiance que l&#x27;on recherche vraiment. Il y a quelque chose de charmant dans le calme, la brise légère qui danse à travers les feuilles, le tintement délicat du thé chinois qu&#x27;on sert, et on peut voir aussi que si l&#x27;on se dirige vers la conception de voix (voice design), on peut en fait saisir un texte pour spécifier le type de voix que l&#x27;on aimerait.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> MiniMax Audio (navigateur web), avec le panneau latéral gauche contenant les options (Home, Voice Library, Text-to-speech, Music, Voice Design, Voice Clone, Hire a voiceover), et un encadré incrusté (Picture-in-Picture) montrant Jack dans son studio.</p>
+                        <p><strong>Contenu textuel & Code :</strong> La liste des voix disponibles dans la bibliothèque (Voice Library), incluant &quot;Nature&#x27;s Partner&quot;, &quot;Trustworthy Man&quot;, &quot;Captivating Storyteller&quot;, &quot;Man with Deep Voice&quot;, et &quot;Graceful Lady&quot; qui est mise en surbrillance. À droite, les options de lecture et d&#x27;utilisation (&quot;Use&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans la bibliothèque de voix de MiniMax Audio et sélectionne la voix &quot;Graceful Lady&quot; tout en expliquant ses caractéristiques et son atmosphère.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_061_00-15-24.jpg" alt="Interface de MiniMax Audio affichant la bibliothèque de voix (Voice Library) avec la sélection de la voix &quot;Graceful Lady&quot;, et le créateur visible en incrustation PiP en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_061_00-15-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:24</span>
+                        <span class="caption-text">Interface de MiniMax Audio affichant la bibliothèque de voix (Voice Library) avec la sélection de la voix &quot;Graceful Lady&quot;, et le créateur visible en incrustation PiP en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:54 - 00:16:15</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">génération. En retournant dans ma bibliothèque de voix, vous pouvez réellement voir certaines de celles que j&#x27;ai déjà créées. Nous avons donc le chevalier usé par le temps, qui est vraiment cool. C&#x27;était quelque chose qu&#x27;il considérait à la fois comme une bénédiction et une malédiction. La voix du scientifique réservé, je l&#x27;ai vraiment aimée aussi. Honnêtement, j&#x27;ai juste entré le genre d&#x27;ambiance que je recherchais et Minimax Audio m&#x27;a simplement redonné de très superbes générations.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Minimax Audio (section « Voice Library » / « My Voices ») avec une vue en liste des profils vocaux créés, accompagnée d&#x27;un encadré PiP (Picture-in-Picture) de Jack dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des profils vocaux listés à l&#x27;écran : « WEATHERED KNIGHT », « RESERVED SCIENTIST », ainsi que des boutons d&#x27;action (« Voice Design », « Share », « Use ») pour chaque voix.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans son interface Minimax Audio pour afficher la bibliothèque de voix générées et présente les différents profils vocaux.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_062_00-15-56.jpg" alt="Interface de Minimax Audio montrant la bibliothèque de voix (« My Voices ») avec plusieurs profils vocaux générés et le créateur visible en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_062_00-15-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:56</span>
+                        <span class="caption-text">Interface de Minimax Audio montrant la bibliothèque de voix (« My Voices ») avec plusieurs profils vocaux générés et le créateur visible en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:16 - 00:16:50</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Écoutons celle-ci. Voir le monde se réinventer tant de fois. Et vous pouvez voir que je teste les lignes que nous avons utilisées dans la cinématique d&#x27;introduction finale pour voir lesquelles convenaient le mieux à l&#x27;histoire elle-même. J&#x27;ai beaucoup aimé Gruff Man également. Mais ce que nous avons finalement choisi, c&#x27;est celle-ci appelée Audiobook. Donc, si vous souhaitez créer une génération en utilisant cette voix, nous pouvons aller dans l&#x27;onglet Use et cliquer dessus. Nous pouvons ajouter le texte de notre choix à l&#x27;intérieur de cela.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de MiniMax Audio (onglets Voice Library, My Voices, Collected Voices) avec incrustation vidéo (PiP) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de voix affichée à l&#x27;écran : &quot;CAVERNBERK&quot;, &quot;WEATHERED KNIGHT&quot;, &quot;AUDIOBOOK&quot;, &quot;DERANGED SCIENTIST&quot;, &quot;GHOST STORY&quot;, &quot;OLD STORYTELLER&quot;, &quot;GRUFF MAN&quot;. Des boutons &quot;Voice Design&quot;, &quot;Share&quot; et &quot;Use&quot; sont visibles à côté de chaque voix.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface web de MiniMax Audio pour examiner et comparer les différentes voix générées pour son projet d&#x27;introduction cinématique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_063_00-16-18.jpg" alt="Interface de MiniMax montrant la liste des voix personnalisées avec les options de test et d&#x27;utilisation." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_063_00-16-18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:18</span>
+                        <span class="caption-text">Interface de MiniMax montrant la liste des voix personnalisées avec les options de test et d&#x27;utilisation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:50 - 00:17:11</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">boîte ici. Et vous pouvez voir également que nous avons pas mal d&#x27;options sur le côté droit. Vous pouvez devenir vraiment technique si vous le voulez et aller dans la section du modificateur de voix. Nous pouvons examiner l&#x27;assombrissement de la voix, l&#x27;éclaircissement, la rendre plus forte ou plus douce, plus nasillarde ou plus nette. Vous pouvez même ajouter des effets comme un écho spatial, un écho d&#x27;auditorium, un téléphone lo-fi et robotique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de MiniMax Audio (Speech Synthesis) avec un panneau de configuration des paramètres vocaux sur la droite et une incrustation vidéo (Picture-in-Picture) de Jack dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de synthèse vocale affiché dans la zone principale, menu latéral droit avec les options de réglage de la voix, curseurs de vitesse, de hauteur et de volume, section &quot;Voice Modifier&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de synthèse vocale et zoome visuellement sur les options de modification de la voix situées dans le panneau latéral droit.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_064_00-16-52.jpg" alt="Interface de MiniMax Audio montrant le panneau latéral des options de synthèse vocale et le modificateur de voix, avec Jack visible en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_064_00-16-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:52</span>
+                        <span class="caption-text">Interface de MiniMax Audio montrant le panneau latéral des options de synthèse vocale et le modificateur de voix, avec Jack visible en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:12 - 00:17:40</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et en revenant ici, nous pouvons même choisir une émotion. Ça peut donc être automatique, joyeux, triste, en colère, dégoûté, surpris, ou même neutre. On peut modifier la vitesse, la hauteur de voix et le volume. Il y a donc beaucoup de paramètres ici. Vous pouvez obtenir un bon résultat tout de suite, pour être honnête, mais si vous voulez vraiment chipoter et le concevoir exactement comme vous l&#x27;imaginez, vous en avez la possibilité. Alors allons-y pour générer en utilisant la voix finale que nous avons choisie.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> MiniMax Audio / Speech Synthesis (avec un encadré PiP du présentateur en bas à gauche).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Zone de texte avec un paragraphe en anglais pour la synthèse vocale, et dans le panneau latéral droit (Settings) : section Voice avec un échantillon audio (&quot;Audio0026&quot;), section Voice Modifier avec le curseur d&#x27;émotion (Emotion) réglé sur &quot;Auto&quot;, ainsi que des curseurs pour le volume. En bas à droite, un bouton violet &quot;Generate&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente l&#x27;interface de synthèse vocale de MiniMax en expliquant la personnalisation des paramètres audio et des émotions.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_065_00-17-14.jpg" alt="Interface de MiniMax (Speech Synthesis) montrant le panneau des paramètres vocaux avec les options d&#x27;émotion, de vitesse, de hauteur et de volume." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_065_00-17-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:14</span>
+                        <span class="caption-text">Interface de MiniMax (Speech Synthesis) montrant le panneau des paramètres vocaux avec les options d&#x27;émotion, de vitesse, de hauteur et de volume.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:40 - 00:18:16</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voir le monde se réinventer tant de fois. J&#x27;ai donc pensé qu&#x27;il y avait quelque chose de très captivant dans cette voix et qu&#x27;elle convenait vraiment très bien au concept lui-même. J&#x27;ai essayé pas mal de voix différentes sur la timeline pour voir ce que je préférais. Il y a beaucoup de bonnes options, pour être honnête avec vous. Comme vous l&#x27;avez vu, il y a une bibliothèque très variée ici sur Minimax Audio. Je vous recommande donc, lorsqu&#x27;il s&#x27;agit de votre propre réalisation de films par IA, de prendre votre temps, d&#x27;en tester toute une série et de trouver exactement ce que vous recherchez. Nous avons donc fini par générer le passage de discours que vous entendez dans la cinématique d&#x27;introduction finale. Et si nous retournons sur notre</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Minimax Audio (Speech Synthesis) avec un panneau de configuration des paramètres vocaux à droite et un encadré vidéo du créateur en incrustation (PiP).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de synthèse vocale saisi dans la zone centrale et paramètres de voix visibles dans le panneau latéral droit.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur démontre l&#x27;utilisation de l&#x27;outil de synthèse vocale Minimax Audio avec l&#x27;affichage de sa webcam en incrustation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_066_00-17-42.jpg" alt="Interface de Minimax Audio montrant l&#x27;outil de synthèse vocale avec un texte saisi et un encadré PiP du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_066_00-17-42.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:42</span>
+                        <span class="caption-text">Interface de Minimax Audio montrant l&#x27;outil de synthèse vocale avec un texte saisi et un encadré PiP du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:16 - 00:18:50</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Chronologie Premiere Pro, je peux réactiver cette piste audio et nous pouvons regarder le film final dans toute sa splendeur. Et vous pouvez voir comment l&#x27;émotion transparaît dans la voix off. On a vraiment l&#x27;impression qu&#x27;un véritable acteur vocal prononce les répliques. Et bien sûr, cela permet de porter notre réalisation de films par IA au niveau supérieur. Cela ne sert pas seulement à raconter une histoire. Cela présente également un certain ton. C&#x27;est vraiment assez envoûtant, ce qui correspond exactement à ce que je recherchais. Nous avons maintenant la combinaison de la musique, des effets sonores et de la voix off directement au premier plan du mixage. Écoutons cela.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (timeline de montage vidéo, moniteur de programme, panneau de projet et pistes audio/vidéo).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Timeline de montage avec pistes audio et vidéo, moniteur de prévisualisation affichant un homme barbu assis près d&#x27;un feu de camp dans une ambiance sombre et enfumée, et incrustation vidéo (PiP) du créateur en bas à gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente son projet de montage vidéo dans Premiere Pro, prêt à réactiver la piste audio pour faire écouter le résultat final.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_067_00-18-18.jpg" alt="Interface du logiciel Adobe Premiere Pro affichant la timeline, le moniteur de prévisualisation avec un personnage près d&#x27;un feu de camp, et le créateur visible en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_067_00-18-18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:18</span>
+                        <span class="caption-text">Interface du logiciel Adobe Premiere Pro affichant la timeline, le moniteur de prévisualisation avec un personnage près d&#x27;un feu de camp, et le créateur visible en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:50 - 00:19:27</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voir le monde se réinventer tant de fois était quelque chose qu&#x27;il considérait à la fois comme une bénédiction et une malédiction. Observer l&#x27;humanité s&#x27;épanouir d&#x27;une certaine manière et s&#x27;affronter brutalement d&#x27;une autre. Nous avons trouvé un nouveau sens en tant d&#x27;espèces et avons fait des découvertes époustouflantes, mais toutes nos avancées ont eu un prix. Serions-nous un jour vraiment satisfaits ou notre ambition ne ferait-elle que grandir ? Notre présent semble tout aussi confus que le passé et notre avenir semble plus incertain que jamais, alors voilà les gars.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran (illustrations générées par IA de Jack dans différentes époques historiques et futuristes).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou interface logicielle visible.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur apparaît sous forme de différentes incarnations générées par intelligence artificielle (homme préhistorique au coin du feu, chevalier en armure médiévale, homme en tenue rétro des années 80 devant un ordinateur vintage, personnage encapuchonné dans une rue urbaine futuriste sous la pluie).</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:27 - 00:19:59</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">allez vous pouvez voir à quel point il est possible de créer uniquement en utilisant Hyluo AI et j&#x27;aimerais vous transmettre ce type de flux de travail les gars parce que je sais que ça peut être un peu frustrant de jongler entre plein d&#x27;outils et de plateformes d&#x27;IA différents c&#x27;est une super option à découvrir si vous avez la moindre question assurez-vous de la poser en bas dans la section des commentaires je fais de mon mieux pour répondre au maximum d&#x27;entre vous si vous avez apprécié le contenu d&#x27;aujourd&#x27;hui n&#x27;oubliez pas de lâcher un pouce bleu pour moi pensez à vous abonner et bien sûr à activer la cloche</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec incrustation (PiP) du créateur et affichage d&#x27;animations d&#x27;appel à l&#x27;action (pouce bleu, abonnement, cloche).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Exemples de vidéos générées par IA (homme préhistorique, chevalier, astronaute) illustrant les capacités de Hyluo AI, suivis d&#x27;un écran de fin avec boutons animés &quot;Like&quot;, &quot;Subscribe&quot; et icône de cloche.
+[DESC_IMAGE_4]</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre des exemples de vidéos cinématiques générées par intelligence artificielle tout en parlant à la caméra, puis conclut la vidéo en incitant les spectateurs à interagir, s&#x27;abonner et activer les notifications.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_068_00-19-29.jpg" alt="Vidéo générée par IA montrant un homme préhistorique assis près d&#x27;un feu dans une grotte, avec le présentateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_068_00-19-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:19:29</span>
+                        <span class="caption-text">Vidéo générée par IA montrant un homme préhistorique assis près d&#x27;un feu dans une grotte, avec le présentateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_069_00-19-38.jpg" alt="Vidéo générée par IA montrant un chevalier en armure tenant une épée dans une forêt sombre, avec le présentateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_069_00-19-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:19:38</span>
+                        <span class="caption-text">Vidéo générée par IA montrant un chevalier en armure tenant une épée dans une forêt sombre, avec le présentateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-AxMnVX9dQZ8/frame_070_00-19-49.jpg" alt="Vidéo générée par IA montrant un astronaute dans la cabine d&#x27;un vaisseau spatial regardant par le hublot, avec le présentateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-AxMnVX9dQZ8/frame_070_00-19-49.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:19:49</span>
+                        <span class="caption-text">Vidéo générée par IA montrant un astronaute dans la cabine d&#x27;un vaisseau spatial regardant par le hublot, avec le présentateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:59 - 00:20:13</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;icône de notification pour ne jamais manquer aucune future vidéo car nous explorons toutes sortes d&#x27;outils d&#x27;IA passionnants dans les semaines à venir. Merci pour tout l&#x27;amour et le soutien sur les dernières vidéos, les gars. Passez une excellente journée et je vous retrouve dans la prochaine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte ou paramètre visible, le créateur apparaît incrusté (Picture-in-Picture) sur un fond coloré dégradé bleu et rose, en train de parler devant son micro dans son studio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur fait des gestes avec ses mains pour conclure la vidéo et remercier son audience.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
