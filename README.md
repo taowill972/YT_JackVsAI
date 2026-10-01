@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `34 / 59` (`57.6%`)
+- **Vidéos traitées** : `35 / 59` (`59.3%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -50,6 +50,7 @@
 | 2026-02-28 | [Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILLIMITÉS !)](2026-02-28_YT-DJsprWiw130_Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILL_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-02-28_YT-DJsprWiw130_Comment créer des personnages cohérents dans vos vidéos IA (ANGLES DE CAMÉRA ILL_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 01s | `85 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=DJsprWiw130) | `DJsprWiw130` |
 | 2026-02-16 | [Comment créer des mouvements de caméra cinématiques avec l'IA (Masterclass Kling 3.0)](2026-02-16_YT-TKkg-8P7jTM_Comment créer des mouvements de caméra cinématiques avec l'IA (Masterclass Kling_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-02-16_YT-TKkg-8P7jTM_Comment créer des mouvements de caméra cinématiques avec l'IA (Masterclass Kling_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 25m 11s | `105 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=TKkg-8P7jTM) | `TKkg-8P7jTM` |
 | 2026-02-04 | [Comment utiliser Kling 3.0 pour la réalisation de films par IA](2026-02-04_YT-tqZ0JuUevwA_Comment utiliser Kling 3.0 pour la réalisation de films par IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-02-04_YT-tqZ0JuUevwA_Comment utiliser Kling 3.0 pour la réalisation de films par IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 20m 38s | `108 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=tqZ0JuUevwA) | `tqZ0JuUevwA` |
+| 2026-02-01 | [Comment créer des influenceurs IA pour des pubs produits (CONTRÔLE TOTAL)](2026-02-01_YT-FLQxZ0zrNII_Comment créer des influenceurs IA pour des pubs produits (CONTRÔLE TOTAL)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-02-01_YT-FLQxZ0zrNII_Comment créer des influenceurs IA pour des pubs produits (CONTRÔLE TOTAL)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 24m 40s | `126 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=FLQxZ0zrNII) | `FLQxZ0zrNII` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
