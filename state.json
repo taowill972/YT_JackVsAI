@@ -38,7 +38,8 @@
     "xaQNxC1BTHw",
     "MwftLxzEXk0",
     "INphz5q2Zrs",
-    "esAfAQV7p9I"
+    "esAfAQV7p9I",
+    "J_u-XYM1Mng"
   ],
   "processed_videos": [
     {
@@ -586,9 +587,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-12-15_YT-esAfAQV7p9I_Créer des pubs produits haut de gamme avec l'IA (Guide étape par étape)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T10:21:51Z",
       "status": "completed"
+    },
+    {
+      "video_id": "J_u-XYM1Mng",
+      "title": "Comment créer des publicités de mode avec l'IA (C'EST ÉPOUSTOUFLANT)",
+      "raw_title": "How to Make Fashion Ads with AI (MIND BLOWING)",
+      "filename_md": "2025-12-09_YT-J_u-XYM1Mng_Comment créer des publicités de mode avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-12-09_YT-J_u-XYM1Mng_Comment créer des publicités de mode avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-12-09",
+      "duration": 1039,
+      "screenshots_count": 112,
+      "filepath_md": "/root/YT_JackVsAI/2025-12-09_YT-J_u-XYM1Mng_Comment créer des publicités de mode avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-12-09_YT-J_u-XYM1Mng_Comment créer des publicités de mode avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T10:46:33Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 39,
+  "completed_count": 40,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T10:00:04Z"
