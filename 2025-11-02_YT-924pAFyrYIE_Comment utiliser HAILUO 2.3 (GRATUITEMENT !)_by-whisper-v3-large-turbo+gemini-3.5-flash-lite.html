@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment utiliser HAILUO 2.3 (GRATUITEMENT !) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment utiliser HAILUO 2.3 (GRATUITEMENT !)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-11-02</span>
+                <span class="badge">⏱️ 14m 33s</span>
+                <span class="badge">🆔 <code>924pAFyrYIE</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=924pAFyrYIE" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>Jack, artiste VFX publicitaire cumulant plus d'une décennie d'expérience auprès des plus grandes marques mondiales, décortique dans cette vidéo le modèle vidéo par IA Hailuo 2.3. Ce dernier s'impose comme un outil incontournable de l'industrie en générant des personnages ultra-réalistes dotés de micro-détails expressifs, sans nécessiter d'acteurs, de caméras physiques ou de capture de mouvement. La mise en valeur de cette technologie met en lumière un bond en avant spectaculaire en matière de réalisme cinématique, de rendu des textiles et d'interaction physique, rivalisant directement avec les productions traditionnelles tout en démocratisant l'accès aux effets visuels haut de gamme.</p><p>La méthode pas à pas démontrée par Jack repose sur une approche comparative par catégories exigeantes : la danse et la performance, les séquences d'action dynamiques, le réalisme facial, les rendus stylisés (anime) et les publicités de produits e-commerce. À partir d'une image fixe générée par IA (utilisée comme image de départ ou *frame* de référence), Jack insère des prompts textuels précis décrivant le mouvement, l'action et la dynamique de caméra. Chaque génération de 768p d'une durée de six secondes, obtenue en environ une minute et demie, est ensuite analysée de manière critique afin d'identifier les forces (réflexions lumineuses, plis réalistes des vêtements, clignements de paupières naturels) et les faiblesses inhérentes à l'IA (distorsions d'arrière-plan ou légères dérives environnementales).</p><p>Pour les créateurs de contenu et les réalisateurs publicitaires, les bénéfices concrets sont immenses. Non seulement Hailuo 2.3 propose quatre générations gratuites quotidiennes, mais l'enseignement majeur réside dans l'art du montage sélectif : il ne s'agit pas de consommer aveuglément une génération entière, mais d'extraire chirurgicalement les fragments parfaits (comme un regard subtil ou un mouvement de caméra fluide) pour les intégrer dans un montage cinématique final. Cette flexibilité stylistique, allant de l'action réelle à l'anime, redéfinit les standards de la production vidéo assistée par intelligence artificielle et offre un contrôle créatif total aux professionnels.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">HAILUO 2.3</span><span class="tool-tag">Hailuo</span><span class="tool-tag">Hailuo 2.3</span><span class="tool-tag">flux</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Accessibilité et gratuité stratégique** : Hailuo 2.3 propose actuellement quatre générations gratuites par jour en résolution 768p (pour des clips de six secondes), constituant une opportunité idéale pour tester le modèle sans risque financier.</span></li><li><span class="point-bullet">✦</span><span>Réalisme anatomique et textuel accru** : Le modèle excelle dans la simulation physique, reproduisant avec une grande fidélité les reflets sur les surfaces brillantes, les interactions avec les fluides et les plis naturels des vêtements lors des mouvements.</span></li><li><span class="point-bullet">✦</span><span>Gestion des performances de danse** : Pour tester la danse (K-pop ou ballet), l&#x27;utilisation d&#x27;images fixes de personnages stylisés combinées à des descriptions de mouvements précis garantit des transitions fluides et un dynamisme corporel saisissant.</span></li><li><span class="point-bullet">✦</span><span>Nuances faciales et micro-expressions** : Bien que certains regards puissent paraître robotiques, le modèle intègre des clignements de yeux lents et naturels en fin de génération, insufflant une dimension profondément humaine aux personnages.</span></li><li><span class="point-bullet">✦</span><span>Dynamisme des scènes d&#x27;action** : L&#x27;intégration de prompts orientés vers les arts martiaux et les combats rapides permet d&#x27;obtenir des séquences frénétiques et cohérentes, tout en maintenant la stabilité des personnages du début à la fin.</span></li><li><span class="point-bullet">✦</span><span>Contrôle avancé de la caméra** : L&#x27;utilisation de mots-clés spécifiques comme « mouvement de caméra de suivi dynamique » ou « mouvement de caméra sur appareil tenu à main » renforce l&#x27;immersion et l&#x27;esthétique cinématographique des plans.</span></li><li><span class="point-bullet">✦</span><span>Sélection chirurgicale des séquences (Montage)** : En tant que réalisateur, il ne faut jamais se sentir obligé d&#x27;utiliser une génération dans son intégralité ; l&#x27;excellence réside dans l&#x27;extraction des meilleures fractions de secondes (un regard, un mouvement) pour les intégrer au montage final.</span></li><li><span class="point-bullet">✦</span><span>Précision environnementale des prompts** : Pour éviter les dérives d&#x27;arrière-plan (comme un sol en métal liquide qui se transforme soudainement en eau bleue), il est crucial de décrire précisément l&#x27;environnement souhaité dans le prompt textuel.</span></li><li><span class="point-bullet">✦</span><span>Gestion du temps de rendu** : Le temps de génération pour un clip de six secondes en 768p est d&#x27;environ une minute et demie, offrant un compromis très efficace entre rapidité d&#x27;itération et qualité visuelle.</span></li><li><span class="point-bullet">✦</span><span>Polyvalence stylistique** : Le modèle ne se limite pas au réalisme photographique et gère également avec brio des rendus stylisés et artistiques, notamment l&#x27;anime et les publicités de produits e-commerce.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:35</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Hylou vient de forcer tout le monde à prêter attention. Ils viennent de sortir leur modèle 2.3, c&#x27;est absolument insensé et cela vient même avec des générations gratuites. Nous parlons de personnages IA qui agissent comme de vrais humains. Pas d&#x27;acteurs, pas de caméras et aucune capture de mouvement requise. La dernière mise à jour de Hylou ajoute un réalisme de mouvement d&#x27;un niveau supérieur, des micro-détails expressifs et un contrôle total sur le style, allant de l&#x27;action réelle cinématique à l&#x27;anime. Si vous avez l&#x27;impression que votre contenu IA ne fonctionne plus, il est peut-être temps de passer à ce modèle. Je suis Jack, je suis un [expert en] vfx</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran sous forme de sous-titres dynamiques (« to pay attention. », « like real humans. », « and total control », « to this model. ») superposés à des extraits vidéo démonstratifs générés par IA illustrant le modèle Hylou 2.3.</p>
+                        <p><strong>Action / Démonstration :</strong> Le locuteur parle de la sortie du modèle Hylou 2.3 pendant que des séquences vidéo de démonstration illustrent les capacités de génération de personnages réalistes et animés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:35 - 00:01:10</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">artiste dans l&#x27;industrie de la publicité depuis plus d&#x27;une décennie maintenant et j&#x27;ai travaillé avec beaucoup des plus grandes marques de la planète dans cette vidéo nous allons explorer Hilo 2.3 je vais décortiquer les plus grandes améliorations avec cette mise à jour et vous montrer comment il gère les séquences d&#x27;action de danse et les plans de produits et si vous aimez le contenu d&#x27;aujourd&#x27;hui les gars assurez-vous de lâcher un pouce bleu pour moi pensez à vous abonner et bien sûr à activer cette cloche de notification. Très bien, entrons dans le vif du sujet. Donc pour tester en profondeur ce nouveau modèle vidéo, nous allons explorer certaines catégories. Nous allons examiner la danse et la performance, les séquences d&#x27;action, les looks stylisés, le réalisme facial et les produits.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec extraits de rendus IA et incrustation de texte de listes de catégories.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;dance&quot;, &quot;dance &amp; performance&quot;, &quot;action &amp; fight scenes&quot;, &quot;stylised looks&quot;, &quot;facial realism&quot;, &quot;product ads&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente des exemples vidéo de danse générés par IA et énumère les différentes catégories de tests du modèle Hilo 2.3.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_001_00-00-47.jpg" alt="Grille de quatre vidéos démo générées par IA montrant des personnages stylisés avec des fissures lumineuses et des éléments publicitaires (montre)." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_001_00-00-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:47</span>
+                        <span class="caption-text">Grille de quatre vidéos démo générées par IA montrant des personnages stylisés avec des fissures lumineuses et des éléments publicitaires (montre).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_002_00-01-08.jpg" alt="Écran divisé montrant Jack à droite et une liste de catégories à tester à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_002_00-01-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:08</span>
+                        <span class="caption-text">Écran divisé montrant Jack à droite et une liste de catégories à tester à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:10 - 00:01:42</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">publicités et e-commerce. Donc vous repartirez de cette vidéo avec un aperçu très détaillé de ce dont ce modèle est capable. Alors nous voici sur Hyluo.ai. Si vous voulez aller jeter un œil à la plateforme, vous pouvez cliquer sur le lien en bas dans la description. Si nous allons dans le coin supérieur gauche et cliquons sur l&#x27;onglet vidéo, nous entrons dans cette fenêtre et vous pouvez voir que j&#x27;ai Hilo 2.3 disponible ici pour moi et ils proposent actuellement quatre générations gratuites par jour, c&#x27;est donc le moment idéal pour vous lancer et tester l&#x27;outil vous-même. Vous pouvez voir une tonne d&#x27;autres</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Le navigateur web affiche la plateforme de génération vidéo par IA Hyluo.ai avec l&#x27;onglet vidéo sélectionné, une barre de recherche de prompts (« Transform Idea to Visual »), une grille de créations tendance et une incrustation vidéo (PiP) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On peut lire les textes « Transform Idea to Visual », « Hailuo AI Agent », « Hailuo 2.3/2.3 Fast », « 0/2000 » dans la zone de texte, et l&#x27;option « Hailuo 2.3 NEW Free Trials 4/4 » ainsi que la résolution « 768p ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole le sélecteur de modèle Hailuo 2.3 pour montrer la disponibilité de quatre essais gratuits par jour aux utilisateurs.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_003_00-01-21.jpg" alt="Page d&#x27;accueil du site Hyluo.ai montrant l&#x27;interface principale avec les vidéos tendance et le créateur en incrustation vidéo (PiP) dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_003_00-01-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:21</span>
+                        <span class="caption-text">Page d&#x27;accueil du site Hyluo.ai montrant l&#x27;interface principale avec les vidéos tendance et le créateur en incrustation vidéo (PiP) dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_004_00-01-32.jpg" alt="Gros plan sur le menu déroulant de sélection du modèle Hailuo 2.3 avec l&#x27;indication « Free Trials 4/4 » et un curseur de souris pointant dessus." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_004_00-01-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:32</span>
+                        <span class="caption-text">Gros plan sur le menu déroulant de sélection du modèle Hailuo 2.3 avec l&#x27;indication « Free Trials 4/4 » et un curseur de souris pointant dessus.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_005_00-01-40.jpg" alt="Interface de génération vidéo sur Hyluo.ai affichant les options Image to Video, Text to Video, Subject Reference et la liste des modèles disponibles." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_005_00-01-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:40</span>
+                        <span class="caption-text">Interface de génération vidéo sur Hyluo.ai affichant les options Image to Video, Text to Video, Subject Reference et la liste des modèles disponibles.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:42 - 00:02:18</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des générations que j&#x27;ai faites ici pour mes vidéos précédentes. Je note vraiment cet outil assez haut. on récupère des trucs vraiment très cinématiques ici et vous pouvez voir une vraie variété de générations différentes également. Mais comment allons-nous tester toutes ces différentes catégories ? Nous avons besoin d&#x27;un personnage. Eh bien, le voilà, un personnage IA pré-fabriqué que j&#x27;ai fait plus tôt dans la journée. Et nous avons juste une variété de différentes sorties d&#x27;images IA ici afin que nous puissions tester minutieusement Hyluo. Quelque chose comme ça bien sûr va être génial pour tester la danse et la performance donc je pense que nous allons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;outil Hyluo (hyluo.ai) avec un panneau de configuration à gauche, une galerie de clips vidéo générés à droite, et un retour caméra du créateur en incrustation PiP.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Galerie montrant plusieurs clips vidéo générés (un astronaute dans l&#x27;espace, un personnage dans une pièce rétro aux néons, un chevalier en armure). Paramètres visibles : modèles Hyluo 2.2, curseurs de résolution, quantité, et prompts textuels associés.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface de l&#x27;outil Hyluo et navigue à travers différentes générations de vidéos et d&#x27;images IA pour démontrer les capacités de la plateforme.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_006_00-01-44.jpg" alt="Interface de l&#x27;outil Hyluo montrant le panneau de génération vidéo à gauche et une galerie de vidéos générées à droite, avec le créateur en incrustation vidéo (PiP) dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_006_00-01-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:44</span>
+                        <span class="caption-text">Interface de l&#x27;outil Hyluo montrant le panneau de génération vidéo à gauche et une galerie de vidéos générées à droite, avec le créateur en incrustation vidéo (PiP) dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_007_00-02-07.jpg" alt="Visualisation en plein écran d&#x27;une image générée par IA représentant un personnage féminin futuriste en combinaison brillante dans l&#x27;eau, avec le créateur en incrustation vidéo (PiP) dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_007_00-02-07.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:07</span>
+                        <span class="caption-text">Visualisation en plein écran d&#x27;une image générée par IA représentant un personnage féminin futuriste en combinaison brillante dans l&#x27;eau, avec le créateur en incrustation vidéo (PiP) dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:18 - 00:02:50</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">commençons par là. Nous pouvons continuer et glisser-déposer notre image de notre femme au style de métal liquide et en ce qui concerne notre prompt textuel, nous allons opter pour ceci. La femme exécute une routine de K-pop à haute énergie, exécutant des mouvements précis et synchronisés avec un rythme parfait et des transitions fluides. Bien sûr, en ce qui concerne le modèle vidéo, nous voulons Hailuo 2.3 et si nous survolons ici, vous pouvez voir un peu plus de détails, vous pouvez générer quatre vidéos gratuites de 768p de six secondes par jour. Très bien, allons-y et cliquons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;outil de génération vidéo Hailuo AI (miniMax).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts textuels de génération vidéo, sélection du modèle Hailuo 2.3, options de résolution (768p) et durée (6s), indications de essais gratuits quotidiens (Free Trials 4/4).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de glisser-déposer d&#x27;image, affiche le prompt textuel à l&#x27;écran, puis survole et clique sur le menu de sélection du modèle vidéo Hailuo 2.3.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_008_00-02-20.jpg" alt="Interface principale de Hailuo AI montrant la zone de téléchargement d&#x27;image pour l&#x27;option Image to Video et les exemples de génération sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_008_00-02-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:20</span>
+                        <span class="caption-text">Interface principale de Hailuo AI montrant la zone de téléchargement d&#x27;image pour l&#x27;option Image to Video et les exemples de génération sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_009_00-02-29.jpg" alt="Texte du prompt affiché en plein écran : &quot;The woman performs a high-energy K-pop routine, executing sharp, synchronized moves with perfect rhythm and fluid transitions.&quot;" loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_009_00-02-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:29</span>
+                        <span class="caption-text">Texte du prompt affiché en plein écran : &quot;The woman performs a high-energy K-pop routine, executing sharp, synchronized moves with perfect rhythm and fluid transitions.&quot;</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_010_00-02-40.jpg" alt="Menu déroulant des modèles vidéo de Hailuo AI affichant les versions Hailuo 2.3, Hailuo 2.3-Fast, Hailuo 2.0, Veo 3.1 et Hailuo 1.0-Director." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_010_00-02-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:40</span>
+                        <span class="caption-text">Menu déroulant des modèles vidéo de Hailuo AI affichant les versions Hailuo 2.3, Hailuo 2.3-Fast, Hailuo 2.0, Veo 3.1 et Hailuo 1.0-Director.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:50 - 00:03:23</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">générer. Bon, nous avons notre première génération de retour, jetons-y un œil. Donc je dois dire que la façon dont le corps de la femme bouge semble très réaliste, très fidèle à la réalité. L&#x27;interaction avec le métal liquide dans lequel elle est en quelque sorte assise bouge de manière assez réaliste. Certains des points forts pour moi sont les reflets que nous obtenons sur ce matériau très brillant et les plis causés par ses mouvements de danse également. Si j&#x27;allais être hypercritique, je dirais que la façon dont une partie de ce truc de métal liquide sous elle, la façon dont une partie bouge, semble juste un petit peu</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de génération de vidéo par IA (type Kling / Seedance) avec panneau de prévisualisation à gauche, galerie de générations à droite et fenêtre PiP de la webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : « The woman performs an elegant ballet sequence, balancing gracefully on pointe... » ainsi que des miniatures de vidéos générées avec des paramètres techniques (Seed-Fusion, Kling 3.0, Dynamic Optimization).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue et commente les différentes générations de vidéos IA à l&#x27;écran, en inspectant les détails des mouvements et des textures.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_011_00-02-52.jpg" alt="Interface de l&#x27;outil de génération vidéo IA montrant le résultat avec une femme vêtue d&#x27;une combinaison en métal liquide et la webcam du créateur en incrustation." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_011_00-02-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:52</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo IA montrant le résultat avec une femme vêtue d&#x27;une combinaison en métal liquide et la webcam du créateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_012_00-03-12.jpg" alt="Gros plan sur le haut du corps d&#x27;une femme habillée en combinaison moulante argentée brillante de type métal liquide." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_012_00-03-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:12</span>
+                        <span class="caption-text">Gros plan sur le haut du corps d&#x27;une femme habillée en combinaison moulante argentée brillante de type métal liquide.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_013_00-03-21.jpg" alt="Gros plan sur le bas du corps et les jambes de la femme dans l&#x27;eau au milieu du liquide argenté réfléchissant." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_013_00-03-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:21</span>
+                        <span class="caption-text">Gros plan sur le bas du corps et les jambes de la femme dans l&#x27;eau au milieu du liquide argenté réfléchissant.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:23 - 00:03:58</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">comme une image fixe qui se déforme régulièrement dans le cadre. Le point de contact réel avec le métal liquide sous elle, surtout quand elle devient un peu plus erratique avec ses mouvements de danse, pour moi ça a l&#x27;air plutôt réaliste, mais c&#x27;est juste ce qu&#x27;il y a derrière elle qui se déforme régulièrement qui gâche un peu l&#x27;illusion, mais les reflets dans l&#x27;eau, il y a beaucoup de superbes détails ici qui ont l&#x27;air vraiment cool, testons un autre prompt : la femme exécute une séquence de ballet élégante en s&#x27;équilibrant gracieusement tandis que ses bras se déplacent avec un contrôle précis et expressif, générons celui-ci et juste pour vous donner une idée</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hailuo AI (Minimax) avec lecteur vidéo, panneau de prompt latéral, options de modèle (V02.2) et miniature du créateur en incrustation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt visible : &quot;The woman performs a high energy K-pop routine, executing sharp, synchronized moves with perfect rhythm and fluid smoothness.&quot; Paramètres : Motion : Draft-frames, V02.2, Enhanced Optimization : 1080p. Texte affiché à la fin : &quot;The woman performs an elegant ballet sequence, balancing gracefully on pointe as her arms flow with precise, expressive control.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur commente les détails visuels et les défauts de distorsion d&#x27;arrière-plan de la vidéo générée, puis introduit et tape un nouveau prompt de test pour une séquence de ballet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_014_00-03-25.jpg" alt="Gros plan sur la femme recouverte de métal liquide se tenant dans l&#x27;eau, montrant les détails des reflets et de la texture." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_014_00-03-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:25</span>
+                        <span class="caption-text">Gros plan sur la femme recouverte de métal liquide se tenant dans l&#x27;eau, montrant les détails des reflets et de la texture.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_015_00-03-35.jpg" alt="Interface complète de Hailuo AI montrant la vidéo générée de la femme en métal liquide dans une grotte d&#x27;eau, avec le panneau de prompt à droite et le créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_015_00-03-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:35</span>
+                        <span class="caption-text">Interface complète de Hailuo AI montrant la vidéo générée de la femme en métal liquide dans une grotte d&#x27;eau, avec le panneau de prompt à droite et le créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_016_00-03-56.jpg" alt="Texte en gros plan affichant le prompt du nouveau test de génération : &quot;The woman performs an elegant ballet sequence, balancing gracefully on pointe as her arms flow with precise, expressive control.&quot;" loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_016_00-03-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:56</span>
+                        <span class="caption-text">Texte en gros plan affichant le prompt du nouveau test de génération : &quot;The woman performs an elegant ballet sequence, balancing gracefully on pointe as her arms flow with precise, expressive control.&quot;</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:58 - 00:04:33</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">du temps nécessaire pour chaque génération, on parle d&#x27;une minute et demie pour une sortie de 768p de six secondes. Allons regarder notre séquence de ballet maintenant. Donc évidemment une ambiance très différente de notre première génération de danse. Celle-ci est beaucoup plus gracieuse. Elle a un flux vraiment très agréable. Encore une fois, je veux parler de la façon dont le tissu se froisse et se plisse de manière réaliste et j&#x27;aime vraiment certains des mouvements subtils des yeux que nous obtenons également dans cette génération. Cela donne une sensation beaucoup plus humaine. Il y a des moments où son</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hailoo AI (MiniMax) avec panneau de prompt latéral, lecteur vidéo et incrustation vidéo (PiP) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;The latest update includes both Hailuo 2.3 and Hailuo 2.3 Fast models...&quot;, et prompt : &quot;The woman performs an elegant ballet sequence, balancing gracefully on pointe as her arms flow with precise, expressive control.&quot; Paramètres visibles : Modèle &quot;SVD 2.3&quot;, &quot;Motion Enhancement: 768P&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur commente la nouvelle génération vidéo de ballet, analyse le réalisme du tissu et des mouvements de la femme, tout en montrant les résultats visuels à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_017_00-04-00.jpg" alt="Interface du navigateur affichant le site Hailoo AI avec le texte sur les modèles Hailoo 2.3 Fast et un insert vidéo où Jack montre un chronomètre sur son téléphone." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_017_00-04-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:00</span>
+                        <span class="caption-text">Interface du navigateur affichant le site Hailoo AI avec le texte sur les modèles Hailoo 2.3 Fast et un insert vidéo où Jack montre un chronomètre sur son téléphone.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_018_00-04-10.jpg" alt="Interface Web de Hailoo AI montrant la vidéo générée d&#x27;une femme en combinaison brillante effectuant une danse, avec le panneau de prompt sur le côté droit et le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_018_00-04-10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:10</span>
+                        <span class="caption-text">Interface Web de Hailoo AI montrant la vidéo générée d&#x27;une femme en combinaison brillante effectuant une danse, avec le panneau de prompt sur le côté droit et le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_019_00-04-22.jpg" alt="Gros plan sur la vidéo générée montrant le haut du corps d&#x27;une femme portant une combinaison brillante semblable à du latex avec des plis réalistes." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_019_00-04-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:22</span>
+                        <span class="caption-text">Gros plan sur la vidéo générée montrant le haut du corps d&#x27;une femme portant une combinaison brillante semblable à du latex avec des plis réalistes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_020_00-04-31.jpg" alt="Gros plan resserré sur le visage et le torse de la femme dans la vidéo générée par IA, mettant en valeur les détails du costume et du visage." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_020_00-04-31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:31</span>
+                        <span class="caption-text">Gros plan resserré sur le visage et le torse de la femme dans la vidéo générée par IA, mettant en valeur les détails du costume et du visage.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:33 - 00:05:06</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les yeux deviennent un peu robotiques et on brise en quelque sorte cette illusion, mais vers la fin de la génération, on peut voir qu&#x27;elle cligne des yeux très lentement et cela donne vraiment un aspect beaucoup plus vivant, et je parle beaucoup sur cette chaîne du fait qu&#x27;il n&#x27;est pas nécessaire d&#x27;utiliser une génération entière si on ne le veut pas, simplement parce qu&#x27;on a dépensé des crédits pour cela, dans ce cas-ci nous ne l&#x27;avons d&#x27;ailleurs pas fait, vous allez avoir beaucoup plus de succès en tant que réalisateur ou publicitaire en IA si vous prenez les meilleures parties de chaque génération et dans ce cas-ci, peut-être que nous voulons utiliser ce mouvement des yeux vraiment subtil et agréable à l&#x27;intérieur</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Hailuo AI (MiniMax) dans un navigateur web, avec un panneau latéral droit affichant les détails du prompt et une incrustation vidéo (Picture-in-Picture) du créateur Jack dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible dans le panneau latéral indique : &quot;The woman performs an elegant ballet sequence, balancing gracefully on pointe as her arms flow with precise, expressive control.&quot; Paramètres visibles : Start Frame, I2V 2.0, Enhance Optimization (ON). Logos MINIMAX et Hailuo AI visibles en bas à droite de la vidéo générée.</p>
+                        <p><strong>Action / Démonstration :</strong> Le lecteur vidéo affiche la lecture d&#x27;une génération montrant une femme vêtue d&#x27;une combinaison brillante dans un décor aquatique sombre, tandis que le créateur Jack commente la séquence dans l&#x27;encadré PiP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_021_00-04-35.jpg" alt="Interface de Hailuo AI montrant une femme en costume brillant dans l&#x27;eau avec le créateur en incrustation PiP dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_021_00-04-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:35</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant une femme en costume brillant dans l&#x27;eau avec le créateur en incrustation PiP dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:06 - 00:05:38</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">notre film d&#x27;IA. Je dirais donc que c&#x27;est plutôt réussi en ce qui concerne les tests de danse et de performance. Je veux maintenant passer aux scènes de combat ou aux séquences d&#x27;action. Nous avons donc ce plan ici que nous allons utiliser pour cela, alors je vais aller le glisser-déposer dans la fenêtre de la frame de départ et pour le prompt textuel, nous allons mettre : la femme se lance dans une scène de combat rapide, esquivant et frappant avec une précision acrobatique explosive, mouvement de caméra de suivi dynamique, et nous allons cliquer sur générer pour celui-ci et ce que nous ferons également, c&#x27;est tester une alternative.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;outil de génération vidéo Kling AI (ou équivalent), avec vue en split-screen (panneau de configuration à gauche et galerie de créations à droite), incluant un encadré PiP (Picture-in-Picture) du créateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt textuel saisi dans l&#x27;interface : &quot;The woman launches into a fast-paced fight scene, dodging and striking with explosive, acrobatic precision. Dynamic tracking camera movement.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface du logiciel, glisse-dépose l&#x27;image source, saisit le prompt textuel pour la scène de combat et lance la génération de la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_022_00-05-08.jpg" alt="Interface du logiciel de génération vidéo IA montrant les résultats des tests de danse précédents avec un aperçu vidéo et le panneau de contrôle." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_022_00-05-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:08</span>
+                        <span class="caption-text">Interface du logiciel de génération vidéo IA montrant les résultats des tests de danse précédents avec un aperçu vidéo et le panneau de contrôle.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_023_00-05-28.jpg" alt="Texte incrusté en gros caractères noirs sur fond blanc affichant le prompt textuel décrivant la scène de combat." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_023_00-05-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:28</span>
+                        <span class="caption-text">Texte incrusté en gros caractères noirs sur fond blanc affichant le prompt textuel décrivant la scène de combat.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_024_00-05-36.jpg" alt="Interface du logiciel avec la nouvelle image de départ importée et le prompt textuel du combat saisi, prêt pour la génération." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_024_00-05-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:36</span>
+                        <span class="caption-text">Interface du logiciel avec la nouvelle image de départ importée et le prompt textuel du combat saisi, prêt pour la génération.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:38 - 00:06:14</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">invite la femme à canaliser son énergie dans une séquence de combat dynamique libérant des mouvements rapides d&#x27;arts martiaux remplis d&#x27;intensité et de puissance et je pense que je vais ajouter à la fin ici juste pour obtenir une ambiance légèrement différente nous allons opter pour un mouvement de caméra sur appareil tenu à main générons celui-ci également très bien examinons nos générations de scènes de combat en commençant par la première ok c&#x27;est plutôt cool le mouvement semble très réaliste une sorte de scène de combat très frénétique et la façon dont leurs corps interagissent avec l&#x27;eau ou le métal liquide en dessous d&#x27;eux est très fidèle à la réalité</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de la plateforme de génération vidéo IA Hailuo AI (Minimax).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;The woman channels her energy into a dynamic combat sequence, unleashing rapid martial arts movements filled with intensity and power. Handheld...&quot; ainsi que les paramètres de génération (modèle Hailuo 2.3).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur configure les prompts de génération vidéo, lance le rendu et commente la fluidité et le réalisme des mouvements de combat générés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_025_00-05-40.jpg" alt="Texte du prompt décrivant la séquence de combat d&#x27;arts martiaux affiché sur fond blanc." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_025_00-05-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:40</span>
+                        <span class="caption-text">Texte du prompt décrivant la séquence de combat d&#x27;arts martiaux affiché sur fond blanc.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_026_00-05-51.jpg" alt="Interface de Hailuo AI montrant la configuration de l&#x27;image à la vidéo avec le champ de texte du prompt et le retour vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_026_00-05-51.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:51</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant la configuration de l&#x27;image à la vidéo avec le champ de texte du prompt et le retour vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_027_00-06-03.jpg" alt="Résultat de génération vidéo dans Hailuo AI montrant deux personnages vêtus de combinaisons métalliques s&#x27;affrontant dans un combat dynamique." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_027_00-06-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:03</span>
+                        <span class="caption-text">Résultat de génération vidéo dans Hailuo AI montrant deux personnages vêtus de combinaisons métalliques s&#x27;affrontant dans un combat dynamique.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_028_00-06-12.jpg" alt="Gros plan sur le rendu vidéo dans Hailuo AI avec les personnages interagissant avec une surface liquide métallique." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_028_00-06-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:12</span>
+                        <span class="caption-text">Gros plan sur le rendu vidéo dans Hailuo AI avec les personnages interagissant avec une surface liquide métallique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:14 - 00:06:51</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">je pense que vers la fin de la génération, ça commence vraiment à devenir un peu brouillon. Peut-être que je vais balancer une partie ralentie de la séquence ou même genre un arrêt sur image pour mettre ça en valeur pour vous les gars. Mais je ne pense pas que ce soit suffisant pour rendre ça moins impressionnant. Ça me paraît plutôt super. J&#x27;adore la façon dont c&#x27;est géré encore une fois le mouvement du tissu et nos personnages restent tous les deux bien cohérents du début à la fin. L&#x27;environnement change un tout petit peu. On est passé de ce genre d&#x27;ambiance métal liquide à de l&#x27;eau bleue bien claire vers la fin de la génération. On aurait peut-être pu éviter ça en faisant mieux</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hailuo AI (MiniMax) avec lecteur vidéo central, barre de progression, et panneau de prompt textuel sur la droite incluant les options &quot;Start Frame: V2.3&quot; et &quot;Enable Optimization: Fast&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible dans le panneau de prompt à droite : &quot;The woman launches into a fast-paced fight scene, dodging and striking with explosive, acrobatic precision. Dynamic tracking camera movement.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur commente la vidéo générée par IA affichée à l&#x27;écran, montrant deux personnages s&#x27;affrontant dans l&#x27;eau, tandis que l&#x27;interface de la plateforme web présente les paramètres et le prompt de génération.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_029_00-06-16.jpg" alt="Interface de Hailuo AI affichant la lecture vidéo d&#x27;une scène de combat aquatique avec des personnages en combinaisons argentées, avec Jack visible en bas à droite dans un encadré PiP." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_029_00-06-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:16</span>
+                        <span class="caption-text">Interface de Hailuo AI affichant la lecture vidéo d&#x27;une scène de combat aquatique avec des personnages en combinaisons argentées, avec Jack visible en bas à droite dans un encadré PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_030_00-06-27.jpg" alt="Interface de Hailuo AI montrant la suite de la lecture vidéo du combat avec de l&#x27;eau et des éclaboussures, et Jack en encadré PiP gesticulant." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_030_00-06-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:27</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant la suite de la lecture vidéo du combat avec de l&#x27;eau et des éclaboussures, et Jack en encadré PiP gesticulant.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_031_00-06-40.jpg" alt="Interface de Hailuo AI montrant un mouvement rapide des personnages dans l&#x27;eau, avec le panneau de prompt visible à droite." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_031_00-06-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:40</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant un mouvement rapide des personnages dans l&#x27;eau, avec le panneau de prompt visible à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:51 - 00:07:25</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en décrivant l&#x27;environnement dans lequel nous voulons que la génération ait lieu. Nous nous concentrons vraiment ici sur la façon dont cela gère les mouvements corporels et je pense que Hylou fait un très bon travail moi-même. Allons de l&#x27;avant et vérifions la deuxième génération. Donc, ce que j&#x27;aime vraiment dans celle-ci en particulier, c&#x27;est le mouvement de caméra d&#x27;appareil tenu à la main. J&#x27;aime vraiment la fin de cette génération, la façon dont nous terminons sur le visage de la femme semble très dynamique et cinématographique et notre personnage masculin joue un rôle beaucoup plus défensif, il essaie de bloquer beaucoup un autre test très réussi donc je vais</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hailuo AI (MiniMax) avec des options de génération vidéo, de réglage de prompts textuels et de prévisualisation, incluant une incrustation vidéo (PiP) du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible sur le panneau latéral : « The woman launches into a fast-paced fight scene, dodging and striking with acrobatic precision. Dynamic tracking camera movement. » Paramètres visibles : Start Frame, Hylou 2.3.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue et commente les différentes générations vidéo générées par l&#x27;IA sur l&#x27;interface Hailuo AI.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_032_00-06-53.jpg" alt="Visualisation d&#x27;une vidéo générée montrant deux personnages en tenues argentées combattant dans l&#x27;eau sur l&#x27;interface de Hailuo AI." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_032_00-06-53.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:53</span>
+                        <span class="caption-text">Visualisation d&#x27;une vidéo générée montrant deux personnages en tenues argentées combattant dans l&#x27;eau sur l&#x27;interface de Hailuo AI.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_033_00-07-03.jpg" alt="Interface principale de Hailuo AI avec un panneau de prévisualisation à gauche et une liste de générations de vidéos sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_033_00-07-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:03</span>
+                        <span class="caption-text">Interface principale de Hailuo AI avec un panneau de prévisualisation à gauche et une liste de générations de vidéos sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_034_00-07-14.jpg" alt="Gros plan sur un extrait de la génération montrant les deux personnages en plein mouvement d&#x27;arts martiaux avec les logos Minimax et Hailuo AI." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_034_00-07-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:14</span>
+                        <span class="caption-text">Gros plan sur un extrait de la génération montrant les deux personnages en plein mouvement d&#x27;arts martiaux avec les logos Minimax et Hailuo AI.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:25 - 00:07:57</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et ensuite je veux aller voir certains des rendus plus stylisés que l&#x27;on peut obtenir donc nous allons regarder un peu d&#x27;anime pour cela nous allons commencer par cette image en gros plan particulière ici donc nous allons aller la glisser-déposer comme notre image de départ et en termes de prompt textuel nous allons dire la femme réagit subtilement alors que son expression passe du calme à l&#x27;émotion, ses yeux scintillant de micro-mouvements nuancés animation de style anime allons cliquer sur générer pour ça et je veux tester notre scène de combat de style anime pour voir comment</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de génération de vidéo par IA (probablement Kling ou un outil similaire) avec des options &quot;Image to Video&quot;, &quot;Text to Video&quot;, &quot;Subject Reference&quot;, un champ de prompt textuel et une section de prévisualisation des résultats.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt textuel affiché à l&#x27;écran : &quot;The woman reacts subtly as her expression shifts from calm to emotional, her eyes glistening with nuanced micro-movements. Anime style animation.&quot; Un bouton de génération et des aperçus vidéo dans le panneau latéral.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;outil d&#x27;IA, insère une image de départ, tape ou affiche le prompt textuel décrivant une animation de style anime, puis clique sur le bouton de génération.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_035_00-07-27.jpg" alt="Interface de l&#x27;outil de génération vidéo affichant les options Image to Video et les prompts textuels." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_035_00-07-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:27</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo affichant les options Image to Video et les prompts textuels.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_036_00-07-47.jpg" alt="Gros plan textuel affichant le prompt exact sur fond blanc utilisé pour l&#x27;animation style anime." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_036_00-07-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:47</span>
+                        <span class="caption-text">Gros plan textuel affichant le prompt exact sur fond blanc utilisé pour l&#x27;animation style anime.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_037_00-07-55.jpg" alt="Interface de l&#x27;outil montrant le lancement de la génération vidéo avec un encadré de prévisualisation et Jack en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_037_00-07-55.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:55</span>
+                        <span class="caption-text">Interface de l&#x27;outil montrant le lancement de la génération vidéo avec un encadré de prévisualisation et Jack en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:57 - 00:08:30</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">cela se compare à notre résultat en prises de vue réelles d&#x27;avant, en réutilisant simplement le même prompt textuel de nos générations précédentes et je veux juste ajouter à la fin animation style anime, faisons générer celui-ci également. Très bien, notre première génération étant prête, allons jeter un œil. Donc nous avons ce genre de changement émotionnel où notre femme a l&#x27;air plutôt heureuse puis quelque chose la touche, elle se sent un peu émotive et commence à pleurer, et on a vraiment l&#x27;impression du type de style d&#x27;animation qu&#x27;on attendrait d&#x27;un anime. Je dirais que j&#x27;aimerais voir un peu plus de mouvement en ce qui concerne</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hailuo AI (MiniMax) avec panneau de prompt à droite et lecteur vidéo au centre.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : « The woman reacts subtly as her expression shifts from calm to emotional, her eyes glistening with nuanced micro movements, anime style animation. »</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue sur l&#x27;interface de génération vidéo, lance une nouvelle génération avec un style anime et analyse le résultat visuel obtenu.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_038_00-07-59.jpg" alt="Interface de l&#x27;outil Hailuo AI montrant le tableau de bord de génération de vidéo avec un aperçu en cours." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_038_00-07-59.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:59</span>
+                        <span class="caption-text">Interface de l&#x27;outil Hailuo AI montrant le tableau de bord de génération de vidéo avec un aperçu en cours.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_039_00-08-20.jpg" alt="Gros plan sur le rendu vidéo généré montrant un personnage féminin d&#x27;anime en larmes." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_039_00-08-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:20</span>
+                        <span class="caption-text">Gros plan sur le rendu vidéo généré montrant un personnage féminin d&#x27;anime en larmes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_040_00-08-28.jpg" alt="Visualisation de la vidéo générée dans l&#x27;interface de Hailuo AI avec la webcam du créateur en incrustation." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_040_00-08-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:28</span>
+                        <span class="caption-text">Visualisation de la vidéo générée dans l&#x27;interface de Hailuo AI avec la webcam du créateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:30 - 00:09:05</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">au métal liquide dans lequel elle est assise. Il bouge mais très subtilement et je pense personnellement que j&#x27;aurais dû rendre cette génération un peu plus dynamique en ajoutant un léger mouvement de travelling avant, mais ça nous donne quand même un super aperçu de la façon dont le modèle gère ce genre de changements faciaux subtils. Très curieux de voir comment il va gérer la scène de combat, on a récupéré notre génération pour ça maintenant, jetons un œil : donc celle-ci n&#x27;est pas vraiment super réussie, une partie de la physicalité du combat n&#x27;a pas beaucoup de sens, c&#x27;est un peu la première fois que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de MiniMax Hailuo AI (hailuoai.video) affichant un lecteur vidéo, le texte du prompt sur le panneau latéral droit, ainsi qu&#x27;une petite fenêtre PiP du créateur dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible sur l&#x27;image 1 : &quot;The woman rests jawily as her expression shifts from calm to emotional, her eyes glowing with advanced micro movements, Anime style animation.&quot; Texte du prompt visible sur l&#x27;image 2 : &quot;The woman launches into a fast-paced fight scene, dodging and striking with explosive, acrobatic precision, Anime style animation.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le navigateur web affiche la plateforme de génération vidéo MiniMax Hailuo AI avec un lecteur vidéo montrant des animations de style anime, tandis que le créateur commente les résultats en bas à droite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_041_00-08-32.jpg" alt="Interface de Hailuo AI montrant une femme dans une combinaison en métal liquide avec des micro-mouvements faciaux subtils, et la webcam du créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_041_00-08-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:32</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant une femme dans une combinaison en métal liquide avec des micro-mouvements faciaux subtils, et la webcam du créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_042_00-08-54.jpg" alt="Interface de Hailuo AI montrant une scène de combat animée entre deux personnages dans des combinaisons en métal liquide, avec le panneau de prompt latéral." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_042_00-08-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:54</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant une scène de combat animée entre deux personnages dans des combinaisons en métal liquide, avec le panneau de prompt latéral.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:05 - 00:09:36</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avons vu le modèle lutter avec un prompt comme celui-ci et cela ne donne pas vraiment l&#x27;impression d&#x27;un style anime selon moi. À certains moments, nous perdons aussi un peu de la cohérence des personnages, en particulier le visage de la femme qui se métamorphose en quelque sorte du style dessin animé anime vers un look plus live-action et un mélange étrange des deux pendant certaines images. Je vais certainement aller de l&#x27;avant et faire un peu plus de tests avec ceci, peut-être concevoir un prompt pour que cela ressemble davantage à ce que l&#x27;on attendrait dans une scène de combat d&#x27;anime.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Hailuo AI (MiniMax)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt visible sur l&#x27;image 1 : &quot;The woman launches into a fast-paced fight scene, dodging and striking with explosive, acrobatic precision. Anime style animation.&quot; Paramètres visibles : Start Frame, SIV 2.5, Enhance Optimization, 720P.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Hailuo AI et les clips générés tout en commentant la cohérence visuelle et le style anime.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_043_00-09-07.jpg" alt="Interface de l&#x27;outil Hailuo AI affichant une vidéo de combat entre deux personnages dans un décor aquatique sombre, avec le prompt textuel et la webcam du créateur en incrustation." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_043_00-09-07.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:07</span>
+                        <span class="caption-text">Interface de l&#x27;outil Hailuo AI affichant une vidéo de combat entre deux personnages dans un décor aquatique sombre, avec le prompt textuel et la webcam du créateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_044_00-09-34.jpg" alt="Interface de Hailuo AI montrant le tableau de bord de génération avec plusieurs clips vidéo générés et les champs de saisie de prompts." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_044_00-09-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:34</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant le tableau de bord de génération avec plusieurs clips vidéo générés et les champs de saisie de prompts.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:36 - 00:09:57</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si j&#x27;obtenais de meilleurs résultats, vous verriez ça en ce moment même. Dans la vidéo, je peux l&#x27;ajouter par-dessus et j&#x27;ajouterai également le texte du prompt. Comme ça, vous connaissez les changements que j&#x27;ai faits pour obtenir un meilleur rendu. Donc maintenant, nous allons faire un gros plan et nous allons voir comment Hyluo gère ces changements faciaux subtils sur une sortie en prises de vue réelles par rapport à la génération animée de tout à l&#x27;heure.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visionneuse de média ou lecteur vidéo affichant des contenus visuels générés par IA avec incrustation PiP du créateur dans le coin inférieur droit (image 2).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran dans l&#x27;image 1 : « In an anime style like Dragon Ball Z the woman and man have a dramatic, fast paced, stylised fight. Dynamic camera movement, hand animated and intense. » Nom de fichier visible dans la barre de titre de l&#x27;image 2 : « ccf6d48ff7...png ».</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage des exemples générés par IA comparés par le créateur, montrant d&#x27;abord une scène de combat animée puis une image fixe en gros plan.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_045_00-09-38.jpg" alt="Génération vidéo de style anime montrant deux personnages en train de se battre dans l&#x27;eau avec le texte du prompt affiché en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_045_00-09-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:38</span>
+                        <span class="caption-text">Génération vidéo de style anime montrant deux personnages en train de se battre dans l&#x27;eau avec le texte du prompt affiché en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_046_00-09-47.jpg" alt="Gros plan sur une image fixe photoréaliste d&#x27;une femme couverte d&#x27;un revêtement métallique brillant dans l&#x27;eau, avec le créateur visible en incrustation (PiP) dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_046_00-09-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:47</span>
+                        <span class="caption-text">Gros plan sur une image fixe photoréaliste d&#x27;une femme couverte d&#x27;un revêtement métallique brillant dans l&#x27;eau, avec le créateur visible en incrustation (PiP) dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:57 - 00:10:34</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous réutilisons un prompt très similaire à celui que nous avons utilisé un peu plus tôt, mais je veux vraiment ajouter un mouvement de caméra dolly lent juste pour ajouter un peu plus de dynamisme et encore une fois, juste un prompt légèrement alternatif que je vais insérer ici également avec un mouvement de caméra dolly lent, allons lancer une seconde génération aussi pour analyser vraiment ce modèle vidéo à fond, donc j&#x27;aime vraiment la façon dont le fluide bouge derrière elle dans cette génération et alors que nous nous approchons vraiment très près des yeux de la femme, elle commence à avoir les larmes aux yeux et ce niveau de détail</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de la plateforme de génération vidéo Hailuo AI (MiniMax).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible du prompt dans l&#x27;interface : « The woman reacts subtly as her expression shifts from calm to emotional, her eyes glistening with nuanced micro movements. Slow dolly camera move in. »</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Hailuo AI avec la configuration d&#x27;un nouveau prompt incluant un mouvement de caméra dolly lent, puis présente le résultat de la vidéo générée avec les détails du visage et du mouvement des fluides.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_047_00-09-59.jpg" alt="Interface de Hailuo AI montrant la zone de saisie du prompt pour la génération vidéo à partir d&#x27;une image." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_047_00-09-59.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:59</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant la zone de saisie du prompt pour la génération vidéo à partir d&#x27;une image.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_048_00-10-22.jpg" alt="Affichage en gros plan du résultat vidéo généré par Hailuo AI, montrant la femme dans un style hyperréaliste avec un mouvement de caméra dolly avant." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_048_00-10-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:22</span>
+                        <span class="caption-text">Affichage en gros plan du résultat vidéo généré par Hailuo AI, montrant la femme dans un style hyperréaliste avec un mouvement de caméra dolly avant.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_049_00-10-32.jpg" alt="Affichage du résultat vidéo généré sur Hailuo AI, montrant le plan de la femme avec le fluide en arrière-plan et le panneau de prompt sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_049_00-10-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:32</span>
+                        <span class="caption-text">Affichage du résultat vidéo généré sur Hailuo AI, montrant le plan de la femme avec le fluide en arrière-plan et le panneau de prompt sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:34 - 00:11:02</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;image finale est vraiment folle. On manque un peu de texture de peau pour être honnête, l&#x27;image de départ n&#x27;avait pas énormément de pores visibles et tout ça, mais Hyluo ajoute vraiment de très jolis détails également. Si vous regardez en haut à droite pour observer le sourcil, c&#x27;est assez fou. On peut y voir les brins de cheveux individuels. Je dirais que c&#x27;est probablement la génération la plus impressionnante qu&#x27;on ait eue jusqu&#x27;ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hailuo AI (MiniMax) avec un panneau latéral droit pour le prompt textuel et un aperçu vidéo principal au centre, incluant une incrustation vidéo (PiP) du créateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible dans le panneau latéral indique : &quot;The woman reacts subtly as her expressive shifts from calm to emotional, her eyes gleaming with nuanced micro movements. Slow dolly camera move in.&quot; On peut aussi lire &quot;Start Frame: V2.0&quot; et &quot;Enable Optimization: Text&quot;. Les logos &quot;MINIMAX&quot; et &quot;Hailuo AI&quot; apparaissent en bas à droite de la vidéo.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur commente la vidéo générée à l&#x27;écran, en pointant du doigt les détails des sourcils et de la texture sur l&#x27;interface de Hailuo AI.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_050_00-10-36.jpg" alt="Interface du site Hailuo AI affichant le résultat vidéo du visage d&#x27;une femme avec le prompt associé et la caméra du créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_050_00-10-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:36</span>
+                        <span class="caption-text">Interface du site Hailuo AI affichant le résultat vidéo du visage d&#x27;une femme avec le prompt associé et la caméra du créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_051_00-10-53.jpg" alt="Gros plan plein écran sur l&#x27;œil droit et l&#x27;oreille d&#x27;un personnage féminin généré par IA montrant le niveau de détail des sourcils et des mèches de cheveux." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_051_00-10-53.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:53</span>
+                        <span class="caption-text">Gros plan plein écran sur l&#x27;œil droit et l&#x27;oreille d&#x27;un personnage féminin généré par IA montrant le niveau de détail des sourcils et des mèches de cheveux.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_052_00-11-00.jpg" alt="Interface du site Hailuo AI affichant un gros plan sur le visage du personnage féminin généré avec le panneau latéral du prompt et le retour vidéo du créateur en PiP." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_052_00-11-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:00</span>
+                        <span class="caption-text">Interface du site Hailuo AI affichant un gros plan sur le visage du personnage féminin généré avec le panneau latéral du prompt et le retour vidéo du créateur en PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:02 - 00:11:36</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça fait très cinématique, plutôt réaliste, et ces détails texturaux qu&#x27;Hailuo 2.3 ajoute m&#x27;en mettent plein la vue, je ne vais pas mentir. Très bien, regardons notre deuxième génération. Donc elle commence par avoir l&#x27;air vraiment heureuse, secoue un peu la tête et passe à un air triste et presque en colère, et encore une fois, je pense que c&#x27;est vraiment là que le modèle vidéo commence à briller pour moi. Ce genre de changements très subtils dans l&#x27;émotion humaine, c&#x27;est vraiment assez impressionnant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hailuo AI (MiniMax) avec un lecteur vidéo, un panneau latéral pour le prompt textuel et un encadré PiP du créateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt visible dans le panneau de droite indique : &quot;The woman reacts subtly as her expression shifts from calm to emotional, her eyes glistening with nuanced macro movements. Slow dolly camera move in.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente une vidéo générée par IA illustrant les transitions émotionnelles subtiles d&#x27;un personnage féminin au corps métallique sur Hailuo AI.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_053_00-11-04.jpg" alt="Interface de Hailuo AI montrant une femme avec un corps métallique brillant, affichant une expression neutre à calme." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_053_00-11-04.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:04</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant une femme avec un corps métallique brillant, affichant une expression neutre à calme.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_054_00-11-14.jpg" alt="Interface de Hailuo AI montrant la même femme souriant légèrement et secouant la tête." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_054_00-11-14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:14</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant la même femme souriant légèrement et secouant la tête.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_055_00-11-25.jpg" alt="Interface de Hailuo AI montrant la femme avec une expression faciale plus sombre, triste ou en colère." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_055_00-11-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:25</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant la femme avec une expression faciale plus sombre, triste ou en colère.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:36 - 00:12:09</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et pour finir, nous allons jeter un œil à quelques plans de produits également. Nous avons la femme ici tenant cette montre dorée au look premium et ici elle tient ce produit de soin pour la peau également. Commençons donc par la montre. Pour le prompt textuel, nous allons opter pour : la femme présente une montre de luxe avec des mouvements de main gracieux, la tournant lentement pour mettre en valeur ses détails et ses reflets. Mouvement de caméra dynamique tenu à la main pour tester quelque chose d&#x27;un peu différent. Glissons et déposons également celui où elle tient ce produit de soin pour la peau et je</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;outil de génération vidéo Kling / Kling AI (ou similaire, type Hailuo AI) avec panneau de prévisualisation et historique des générations à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran : &quot;The woman presents a luxury watch with graceful hand movements, turning it slowly to highlight its details and reflections. Dynamic handheld device camera movement.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;outil de génération, affiche le prompt textuel en grand, puis revient sur l&#x27;interface montrant le chargement d&#x27;une nouvelle image pour le produit de soin.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_056_00-11-38.jpg" alt="Interface de l&#x27;outil de génération vidéo avec une fenêtre de sélection de fichiers ouverte par-dessus." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_056_00-11-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:38</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo avec une fenêtre de sélection de fichiers ouverte par-dessus.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_057_00-11-58.jpg" alt="Gros plan sur le texte du prompt en anglais affiché en plein écran sur fond blanc." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_057_00-11-58.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:58</span>
+                        <span class="caption-text">Gros plan sur le texte du prompt en anglais affiché en plein écran sur fond blanc.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_058_00-12-07.jpg" alt="Interface de l&#x27;outil montrant la génération en cours et les miniatures des vidéos précédentes sur le panneau latéral droit." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_058_00-12-07.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:07</span>
+                        <span class="caption-text">Interface de l&#x27;outil montrant la génération en cours et les miniatures des vidéos précédentes sur le panneau latéral droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:09 - 00:12:43</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je veux pousser le modèle vidéo un peu plus loin ici. Dans le prompt textuel, nous allons dire que la femme présente un produit de soin élégant. Elle retire délicatement le couvercle en tournant et commence à appliquer la crème sur son visage avec des gestes fluides et naturels tout en maintenant un contact visuel confiant et réaliste. Très bien, nous avons récupéré notre génération de montre, jetons-y un œil. D&#x27;accord, ce n&#x27;est pas vraiment ce que nous recherchions avec cette génération, la montre se comporte d&#x27;une manière assez étrange. J&#x27;aime la façon dont la caméra s&#x27;approche en zoom avant pour y voir de plus près, mais nous perdons un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Hailuo AI (Minimax) pour la génération de vidéo par IA (mode Image-to-Video).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : « The woman showcases a sleek skincare product, she gracefully twists of the lid and begins applying the cream to her face with smooth, natural gestures while maintaining confident, realistic eye contact. Slow dolly camera move in. »</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;outil Hailuo AI, affiche le prompt textuel utilisé, puis examine le résultat de la génération vidéo d&#x27;une femme avec une montre en or tout en commentant le comportement étrange de la montre et le mouvement de caméra.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_059_00-12-11.jpg" alt="Interface de Hailuo AI montrant l&#x27;éditeur Image-to-Video avec un aperçu de la femme tenant un produit de soin." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_059_00-12-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:11</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant l&#x27;éditeur Image-to-Video avec un aperçu de la femme tenant un produit de soin.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_060_00-12-21.jpg" alt="Texte incrusté en gros caractères affichant le prompt textuel détaillé pour la génération vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_060_00-12-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:21</span>
+                        <span class="caption-text">Texte incrusté en gros caractères affichant le prompt textuel détaillé pour la génération vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_061_00-12-32.jpg" alt="Résultat de la génération vidéo montrant une femme tenant une montre en or près de son visage dans l&#x27;interface Hailuo AI." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_061_00-12-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:32</span>
+                        <span class="caption-text">Résultat de la génération vidéo montrant une femme tenant une montre en or près de son visage dans l&#x27;interface Hailuo AI.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_062_00-12-41.jpg" alt="Gros plan sur le résultat vidéo avec effet de zoom avant (dolly in) sur la montre en or tenue par la femme." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_062_00-12-41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:41</span>
+                        <span class="caption-text">Gros plan sur le résultat vidéo avec effet de zoom avant (dolly in) sur la montre en or tenue par la femme.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:43 - 00:13:19</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Un petit problème de cohérence de produit ici malheureusement. Ça ne colle pas vraiment au prompt textuel qu&#x27;on lui a donné. C&#x27;est un peu dommage pour cette génération, mais vous savez qu&#x27;avec l&#x27;IA, c&#x27;est parfois une question d&#x27;essais et d&#x27;erreurs. Donc, une fois de plus, je vais relancer ce même prompt et je vais le mettre par-dessus la vidéo pour que vous puissiez voir qu&#x27;on a bien, espérons-le, obtenu une génération qui correspondait davantage à ce qu&#x27;on cherchait. Je suis vraiment curieux maintenant de voir comment Hailuo 2.3 va gérer cette génération-ci, où nous avons effectivement demandé à la femme de dévisser le capuchon supérieur du produit de soin de la peau, puis de l&#x27;appliquer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de la plateforme de génération vidéo Hailuo AI (hailuoai.video).</p>
+                        <p><strong>Contenu textuel & Code :</strong> On peut lire le prompt textuel dans le panneau de droite : &quot;The woman presents a luxury watch with graceful hand movements, turning it slowly to highlight its details and reflections. Dynamic handheld device camera movement.&quot; Paramètres visibles : Start Frame, UV 2.3, General optimization. Logos Minimax et Hailuo AI dans le lecteur vidéo.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente le résultat d&#x27;une génération vidéo sur Hailuo AI, analyse le manque de cohérence du produit par rapport au prompt, puis montre l&#x27;interface de l&#x27;outil pour relancer une nouvelle génération avec un produit de soin de la peau.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_063_00-12-45.jpg" alt="Interface de Hailuo AI montrant la lecture d&#x27;une vidéo générée avec le prompt sur la montre de luxe." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_063_00-12-45.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:45</span>
+                        <span class="caption-text">Interface de Hailuo AI montrant la lecture d&#x27;une vidéo générée avec le prompt sur la montre de luxe.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_064_00-12-56.jpg" alt="Poursuite de la lecture de la vidéo générée dans Hailuo AI avec la femme présentant la montre." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_064_00-12-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:56</span>
+                        <span class="caption-text">Poursuite de la lecture de la vidéo générée dans Hailuo AI avec la femme présentant la montre.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_065_00-13-07.jpg" alt="Interface de Hailuo AI (Image to Video) montrant les paramètres de génération et l&#x27;historique des créations." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_065_00-13-07.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:07</span>
+                        <span class="caption-text">Interface de Hailuo AI (Image to Video) montrant les paramètres de génération et l&#x27;historique des créations.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:19 - 00:13:54</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">sur son visage. Ça va être intéressant. C&#x27;est parti. Donc elle ne visse pas le capuchon. La façon dont elle l&#x27;enlève n&#x27;est pas trop mal. Nous avons un bon niveau de cohérence du produit. On voit que les reflets ont l&#x27;air plutôt bons, c&#x27;est un prompt textuel assez difficile à réaliser, je dois dire. Il y a encore de très bonnes choses là-dedans. Encore une fois, l&#x27;interaction avec le fluide dans lequel la femme est allongée a l&#x27;air vraiment superbe. En tant que personnage, elle reste également bien cohérente. Je pense que, de manière générale, j&#x27;ai été très impressionné par Hailuo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de l&#x27;outil de génération vidéo Hailuo AI (MiniMax), avec des panneaux de prompts, des options de modèles (Hailuo 2.3) et une vignette vidéo avec l&#x27;incrustation PiP du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;The woman showcases a sleek skincare product, she gracefully twists off the lid and begins applying the cream to her face with smooth, natural gestures while maintaining confident, steadily eye contact. Slow dolly camera move in.&quot; Paramètres visibles : Start Frame, Hiv 2.3, Global consistency. Filigranes &quot;MINIMAX&quot; et &quot;Hailuo AI&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur commente l&#x27;interface de Hailuo AI et les différentes vidéos générées montrant une femme interagissant avec un produit de beauté et de l&#x27;eau.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_066_00-13-21.jpg" alt="Interface de l&#x27;outil Hailuo AI affichant le panneau de génération avec l&#x27;image d&#x27;une femme tenant un pot de crème et les résultats de différentes générations dans une grille, avec une incrustation vidéo du créateur dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_066_00-13-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:21</span>
+                        <span class="caption-text">Interface de l&#x27;outil Hailuo AI affichant le panneau de génération avec l&#x27;image d&#x27;une femme tenant un pot de crème et les résultats de différentes générations dans une grille, avec une incrustation vidéo du créateur dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_067_00-13-31.jpg" alt="Lecteur vidéo en plein écran sur l&#x27;interface Hailuo AI montrant une femme appliquant de la crème sur son visage près d&#x27;une surface d&#x27;eau réfléchissante, avec l&#x27;incrustation du créateur en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_067_00-13-31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:31</span>
+                        <span class="caption-text">Lecteur vidéo en plein écran sur l&#x27;interface Hailuo AI montrant une femme appliquant de la crème sur son visage près d&#x27;une surface d&#x27;eau réfléchissante, avec l&#x27;incrustation du créateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:54 - 00:14:24</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">2.3 vous auriez vu toute une série de tests différents dans cette vidéo donc j&#x27;espère que vous repartirez avec une meilleure impression de ce dont l&#x27;outil est capable. Et si vous voulez aller le tester, vous pouvez cliquer sur le lien en bas dans la description. Comme je l&#x27;ai dit plus tôt, Hylio propose actuellement quatre générations gratuites par jour. Merci beaucoup d&#x27;avoir regardé les gars. Si vous avez apprécié la vidéo d&#x27;aujourd&#x27;hui, n&#x27;oubliez pas d&#x27;y mettre un gros pouce bleu pour moi. Si vous êtes nouveau sur la chaîne, pensez à vous abonner pour rejoindre notre communauté en pleine croissance.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme de génération vidéo en ligne Hylio AI (avec le watermark de Minimax / Hailuo AI), incluant un panneau de prompt textuel à droite et les vignettes des générations précédentes.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible sur le panneau de droite : &quot;The camera showcases a sleek, skincare product, she gracefully twists off the lid and begins applying the cream to her face with smooth, natural gestures while maintaining confident, static eye contact. Slow dolly camera moves in.&quot; Paramètres visibles : &quot;Shot Frames: 120 / 2.0&quot; et &quot;Enable Optimization: Shift&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente différents exemples de vidéos générées par l&#x27;IA démontrant les capacités de rendu réaliste et les mouvements de caméra fluides de l&#x27;outil Hylio.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_068_00-13-56.jpg" alt="Interface de la plateforme affichant une vidéo générée d&#x27;une femme tenant un pot de crème cosmétique, avec le panneau de prompt textuel sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_068_00-13-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:56</span>
+                        <span class="caption-text">Interface de la plateforme affichant une vidéo générée d&#x27;une femme tenant un pot de crème cosmétique, avec le panneau de prompt textuel sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-924pAFyrYIE/frame_069_00-14-05.jpg" alt="Affichage d&#x27;un rendu vidéo généré montrant un visage semblable à de la porcelaine avec des fissures lumineuses dorées s&#x27;ouvrant sur la peau." loading="lazy" onclick="openLightbox('screenshots/YT-924pAFyrYIE/frame_069_00-14-05.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:05</span>
+                        <span class="caption-text">Affichage d&#x27;un rendu vidéo généré montrant un visage semblable à de la porcelaine avec des fissures lumineuses dorées s&#x27;ouvrant sur la peau.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:24 - 00:14:32</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et bien sûr, activez la cloche de notification pour ne jamais manquer de futures publications. Passez une excellente journée, les gars, et je vous retrouve dans la prochaine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun texte, prompt ou paramètre technique visible. L&#x27;écran principal est entièrement blanc, avec uniquement le créateur visible dans un petit encadré PiP (Picture-in-Picture) en bas à droite de l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur apparaît en bas à droite dans un petit encadré vidéo (PiP), gesticulant et s&#x27;adressant aux spectateurs pour conclure la vidéo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

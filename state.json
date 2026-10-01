@@ -45,7 +45,8 @@
     "C_iQeGmS9z8",
     "tlNeoxDZwFY",
     "n_la3L1d0Cc",
-    "keT_ywKa_lM"
+    "keT_ywKa_lM",
+    "924pAFyrYIE"
   ],
   "processed_videos": [
     {
@@ -691,9 +692,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-11-11_YT-keT_ywKa_lM_Comment transformer une image en plusieurs angles de caméra avec l'IA (OUTILS GR_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T17:53:17Z",
       "status": "completed"
+    },
+    {
+      "video_id": "924pAFyrYIE",
+      "title": "Comment utiliser HAILUO 2.3 (GRATUITEMENT !)",
+      "raw_title": "How to use HAILUO 2.3 (FOR FREE!)",
+      "filename_md": "2025-11-02_YT-924pAFyrYIE_Comment utiliser HAILUO 2.3 (GRATUITEMENT !)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-11-02_YT-924pAFyrYIE_Comment utiliser HAILUO 2.3 (GRATUITEMENT !)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-11-02",
+      "duration": 873,
+      "screenshots_count": 69,
+      "filepath_md": "/root/YT_JackVsAI/2025-11-02_YT-924pAFyrYIE_Comment utiliser HAILUO 2.3 (GRATUITEMENT !)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-11-02_YT-924pAFyrYIE_Comment utiliser HAILUO 2.3 (GRATUITEMENT !)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T18:12:02Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 46,
+  "completed_count": 47,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T16:00:06Z"
