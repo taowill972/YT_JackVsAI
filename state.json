@@ -46,7 +46,8 @@
     "tlNeoxDZwFY",
     "n_la3L1d0Cc",
     "keT_ywKa_lM",
-    "924pAFyrYIE"
+    "924pAFyrYIE",
+    "4ZISxAzXKj0"
   ],
   "processed_videos": [
     {
@@ -706,9 +707,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-11-02_YT-924pAFyrYIE_Comment utiliser HAILUO 2.3 (GRATUITEMENT !)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T18:12:02Z",
       "status": "completed"
+    },
+    {
+      "video_id": "4ZISxAzXKj0",
+      "title": "Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)",
+      "raw_title": "How to Make Full CGI Ads with AI (MIND BLOWING)",
+      "filename_md": "2025-10-29_YT-4ZISxAzXKj0_Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-10-29_YT-4ZISxAzXKj0_Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-10-29",
+      "duration": 1607,
+      "screenshots_count": 130,
+      "filepath_md": "/root/YT_JackVsAI/2025-10-29_YT-4ZISxAzXKj0_Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-10-29_YT-4ZISxAzXKj0_Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T18:41:45Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 47,
+  "completed_count": 48,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T16:00:06Z"

@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `47 / 59` (`79.7%`)
+- **Vidéos traitées** : `48 / 59` (`81.4%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -63,6 +63,7 @@
 | 2025-11-11 | [Comment utiliser Midjourney GRATUITEMENT (non, c'est vraiment vrai)](2025-11-11_YT-n_la3L1d0Cc_Comment utiliser Midjourney GRATUITEMENT (non, c'est vraiment vrai)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-11-11_YT-n_la3L1d0Cc_Comment utiliser Midjourney GRATUITEMENT (non, c'est vraiment vrai)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 11m 42s | `73 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=n_la3L1d0Cc) | `n_la3L1d0Cc` |
 | 2025-11-11 | [Comment transformer une image en plusieurs angles de caméra avec l'IA (OUTILS GRATUITS)](2025-11-11_YT-keT_ywKa_lM_Comment transformer une image en plusieurs angles de caméra avec l'IA (OUTILS GR_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-11-11_YT-keT_ywKa_lM_Comment transformer une image en plusieurs angles de caméra avec l'IA (OUTILS GR_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 29m 13s | `141 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=keT_ywKa_lM) | `keT_ywKa_lM` |
 | 2025-11-02 | [Comment utiliser HAILUO 2.3 (GRATUITEMENT !)](2025-11-02_YT-924pAFyrYIE_Comment utiliser HAILUO 2.3 (GRATUITEMENT !)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-11-02_YT-924pAFyrYIE_Comment utiliser HAILUO 2.3 (GRATUITEMENT !)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 14m 33s | `69 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=924pAFyrYIE) | `924pAFyrYIE` |
+| 2025-10-29 | [Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)](2025-10-29_YT-4ZISxAzXKj0_Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-10-29_YT-4ZISxAzXKj0_Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 26m 47s | `130 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=4ZISxAzXKj0) | `4ZISxAzXKj0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
