@@ -32,7 +32,8 @@
     "L7ufHNtj5Rg",
     "s4b8iU3ecTs",
     "DJsprWiw130",
-    "TKkg-8P7jTM"
+    "TKkg-8P7jTM",
+    "tqZ0JuUevwA"
   ],
   "processed_videos": [
     {
@@ -496,10 +497,24 @@
       "filepath_html": "/root/YT_JackVsAI/2026-02-16_YT-TKkg-8P7jTM_Comment créer des mouvements de caméra cinématiques avec l'IA (Masterclass Kling_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-09-30T23:32:38Z",
       "status": "completed"
+    },
+    {
+      "video_id": "tqZ0JuUevwA",
+      "title": "Comment utiliser Kling 3.0 pour la réalisation de films par IA",
+      "raw_title": "How to use Kling 3.0 for AI Filmmaking",
+      "filename_md": "2026-02-04_YT-tqZ0JuUevwA_Comment utiliser Kling 3.0 pour la réalisation de films par IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-02-04_YT-tqZ0JuUevwA_Comment utiliser Kling 3.0 pour la réalisation de films par IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-02-04",
+      "duration": 1238,
+      "screenshots_count": 108,
+      "filepath_md": "/root/YT_JackVsAI/2026-02-04_YT-tqZ0JuUevwA_Comment utiliser Kling 3.0 pour la réalisation de films par IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-02-04_YT-tqZ0JuUevwA_Comment utiliser Kling 3.0 pour la réalisation de films par IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T04:22:28Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 33,
+  "completed_count": 34,
   "total_catalog_count": 59,
   "status": "running",
-  "last_run_timestamp": "2026-09-30T22:00:06Z"
+  "last_run_timestamp": "2026-10-01T04:00:03Z"
 }
