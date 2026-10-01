@@ -39,7 +39,8 @@
     "MwftLxzEXk0",
     "INphz5q2Zrs",
     "esAfAQV7p9I",
-    "J_u-XYM1Mng"
+    "J_u-XYM1Mng",
+    "EL9FzwEirxc"
   ],
   "processed_videos": [
     {
@@ -601,9 +602,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-12-09_YT-J_u-XYM1Mng_Comment créer des publicités de mode avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T10:46:33Z",
       "status": "completed"
+    },
+    {
+      "video_id": "EL9FzwEirxc",
+      "title": "Comment créer des pubs de Noël avec l'IA (RÉSULTATS DE FOLIE)",
+      "raw_title": "How to make Christmas ads with AI (INSANE RESULTS)",
+      "filename_md": "2025-12-03_YT-EL9FzwEirxc_Comment créer des pubs de Noël avec l'IA (RÉSULTATS DE FOLIE)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-12-03_YT-EL9FzwEirxc_Comment créer des pubs de Noël avec l'IA (RÉSULTATS DE FOLIE)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-12-03",
+      "duration": 2016,
+      "screenshots_count": 166,
+      "filepath_md": "/root/YT_JackVsAI/2025-12-03_YT-EL9FzwEirxc_Comment créer des pubs de Noël avec l'IA (RÉSULTATS DE FOLIE)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-12-03_YT-EL9FzwEirxc_Comment créer des pubs de Noël avec l'IA (RÉSULTATS DE FOLIE)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T11:23:52Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 40,
+  "completed_count": 41,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T10:00:04Z"
