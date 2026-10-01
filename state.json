@@ -34,7 +34,8 @@
     "DJsprWiw130",
     "TKkg-8P7jTM",
     "tqZ0JuUevwA",
-    "FLQxZ0zrNII"
+    "FLQxZ0zrNII",
+    "xaQNxC1BTHw"
   ],
   "processed_videos": [
     {
@@ -526,9 +527,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-02-01_YT-FLQxZ0zrNII_Comment créer des influenceurs IA pour des pubs produits (CONTRÔLE TOTAL)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T04:43:29Z",
       "status": "completed"
+    },
+    {
+      "video_id": "xaQNxC1BTHw",
+      "title": "Créer des publicités animées prêtes pour la télé avec l'IA — Le guide ultime",
+      "raw_title": "How to Build TV Ready Animated Ads With AI — Ultimate Guide",
+      "filename_md": "2026-01-25_YT-xaQNxC1BTHw_Créer des publicités animées prêtes pour la télé avec l'IA — Le guide ultime_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-01-25_YT-xaQNxC1BTHw_Créer des publicités animées prêtes pour la télé avec l'IA — Le guide ultime_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-01-25",
+      "duration": 1967,
+      "screenshots_count": 148,
+      "filepath_md": "/root/YT_JackVsAI/2026-01-25_YT-xaQNxC1BTHw_Créer des publicités animées prêtes pour la télé avec l'IA — Le guide ultime_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-01-25_YT-xaQNxC1BTHw_Créer des publicités animées prêtes pour la télé avec l'IA — Le guide ultime_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T05:11:00Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 35,
+  "completed_count": 36,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T04:00:03Z"
