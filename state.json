@@ -50,7 +50,8 @@
     "4ZISxAzXKj0",
     "pE-f_SusfsU",
     "Bcyx6Gq8WjI",
-    "AxMnVX9dQZ8"
+    "AxMnVX9dQZ8",
+    "yvD8TxNsR4Q"
   ],
   "processed_videos": [
     {
@@ -766,9 +767,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-10-10_YT-AxMnVX9dQZ8_Comment créer des films IA (Hailuo AI x MiniMax Audio)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T23:00:18Z",
       "status": "completed"
+    },
+    {
+      "video_id": "yvD8TxNsR4Q",
+      "title": "WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)",
+      "raw_title": "WAN 2.5 CRUSHES VEO 3 (Higgsfield AI Workflow)",
+      "filename_md": "2025-09-26_YT-yvD8TxNsR4Q_WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-09-26_YT-yvD8TxNsR4Q_WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-09-26",
+      "duration": 649,
+      "screenshots_count": 45,
+      "filepath_md": "/root/YT_JackVsAI/2025-09-26_YT-yvD8TxNsR4Q_WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-09-26_YT-yvD8TxNsR4Q_WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T23:08:15Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 51,
+  "completed_count": 52,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T22:00:04Z"

@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-09-26</span>
+                <span class="badge">⏱️ 10m 49s</span>
+                <span class="badge">🆔 <code>yvD8TxNsR4Q</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=yvD8TxNsR4Q" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>La sortie de WAN 2.5 marque un tournant majeur dans l'écosystème de la vidéo par intelligence artificielle, souvent qualifié à tort de simple "tueur de VEO3". Ce modèle se distingue par sa génération audio native (effets sonores et parole), la création de séquences en résolution 1080p jusqu'à 10 secondes, et surtout son absence totale de censure. Cette liberté créative permet l'utilisation d'images de célébrités et l'intégration de dialogues crus, ouvrant des perspectives immenses pour la publicité et la narration complexe. L'analyste Jack démontre l'efficacité de cet outil à travers un cas pratique complet hébergé sur la plateforme Higgsfield AI.</p><p>Le workflow présenté combine habilement plusieurs technologies de pointe pour façonner l'introduction d'une vidéo. En partant d'une erreur fortuite lors de la génération d'une image de base, Jack utilise le modèle Nano Banana pour créer un gros plan ultra-détaillé d'un moine humanoïde à la peau de géode. Cette ressource visuelle est ensuite injectée dans WAN 2.5 via Higgsfield pour animer la scène. L'utilisation stratégique des options de personnalisation — comme l'activation ou la désactivation de l'amélioration de prompt et le choix entre les modes rapide et standard — permet d'ajuster précisément le niveau de contrôle créatif et d'optimiser l'utilisation des crédits de génération.</p><p>Pour les créateurs de contenu, ce tutoriel offre une feuille de route actionnable pour intégrer WAN 2.5 dans une chaîne de production professionnelle. En combinant les sorties brutes du modèle avec des retouches en post-production sous Premiere Pro (ajout d'ambiances sonores et d'une couche de grain de pellicule cinématographique), Jack montre comment surmonter l'aspect parfois trop synthétique de l'IA. L'accès à des générations illimitées en file d'attente standard sur Higgsfield démocratise l'expérimentation, faisant de ce workflow un standard incontournable pour produire des plans complexes, cohérents et esthétiquement saisissants à moindre coût.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">ElevenLabs</span><span class="tool-tag">Flux</span><span class="tool-tag">Higgsfield</span><span class="tool-tag">Nano Banana</span><span class="tool-tag">Premiere Pro</span><span class="tool-tag">VEO 3</span><span class="tool-tag">WAN</span><span class="tool-tag">WAN 2.5</span><span class="tool-tag">Wan 2.5</span><span class="tool-tag">nano banana</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Avantage de la non-censure** : WAN 2.5 supprime les filtres stricts, permettant une liberté narrative totale, l&#x27;intégration de personnalités publiques et l&#x27;utilisation de dialogues jurés sans blocage algorithmique.</span></li><li><span class="point-bullet">✦</span><span>Audio natif intégré** : Le modèle intègre directement la génération d&#x27;effets sonores et de paroles synchronisées, réduisant le besoin d&#x27;interventions audio externes pour les scènes basiques.</span></li><li><span class="point-bullet">✦</span><span>Capacité des séquences** : Possibilité de générer des clips vidéo d&#x27;une durée maximale de 10 secondes en résolution 1080p, surpassant la limite des 8 secondes de ses concurrents directs.</span></li><li><span class="point-bullet">✦</span><span>Erreur créative fortuite** : L&#x27;intégration accidentelle d&#x27;une image personnelle dans le prompt initial de Nano Banana a donné naissance à un personnage unique (moine géode avec lunettes et barbe), prouvant l&#x27;intérêt d&#x27;itérer à partir d&#x27;accidents visuels.</span></li><li><span class="point-bullet">✦</span><span>Gestion de l&#x27;amélioration des prompts** : Il est recommandé de désactiver l&#x27;option d&#x27;amélioration automatique si l&#x27;on possède un prompt textuel extrêmement précis, et de l&#x27;activer pour laisser l&#x27;IA enrichir les détails visuels de la scène.</span></li><li><span class="point-bullet">✦</span><span>Arbitrage qualité / vitesse** : Le modèle standard &quot;WAN 2.5&quot; offre une qualité supérieure, tandis que la version &quot;WAN 2.5 fast&quot; privilégie la rapidité d&#x27;exécution pour le prototypage rapide.</span></li><li><span class="point-bullet">✦</span><span>Optimisation des coûts via le mode illimité** : L&#x27;utilisation de la file d&#x27;attente standard sur Higgsfield permet d&#x27;obtenir des générations illimitées sans consommer de crédits, au prix d&#x27;un temps d&#x27;attente légèrement supérieur.</span></li><li><span class="point-bullet">✦</span><span>Cohérence des plans complexes** : Le modèle gère remarquablement bien les mouvements de caméra rapides (*whip pans*) et les transitions spatiales complexes dans un décor sans perdre la cohérence visuelle.</span></li><li><span class="point-bullet">✦</span><span>Post-production et grain cinématographique** : L&#x27;ajout d&#x27;une couche de réglage avec du grain de pellicule sous Premiere Pro permet d&#x27;atténuer l&#x27;aspect &quot;trop propre&quot; de l&#x27;IA et d&#x27;apporter une texture visuelle professionnelle issue des effets visuels (VFX).</span></li><li><span class="point-bullet">✦</span><span>Séparation audio et vidéo** : Bien que WAN 2.5 puisse générer l&#x27;audio, il est parfois préférable de laisser le champ vide pour intégrer manuellement des ambiances sonores (comme le bruit des vagues) en post-production pour un contrôle artistique accru.</span></li><li><span class="point-bullet">✦</span><span>Flexibilité de l&#x27;Image-to-Video** : Conserver le contrôle de l&#x27;image de départ (*Image-to-Video*) garantit une continuité esthétique rigoureuse entre le design du personnage et son animation finale.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:29</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc WAN 2.5 vient de sortir et c&#x27;est non censuré, donc vous pouvez dire p**** de t***** autant que vous voulez. L&#x27;intro que vous venez de voir a donc été générée en utilisant WAN 2.5, que beaucoup de gens appellent le tueur de VO3 mais ce n&#x27;est pas vraiment vrai. Tout d&#x27;abord, parlons de pourquoi WAN 2.5 est un gros événement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de montage vidéo ou navigateur affichant des clips vidéo générés par IA en plein écran avec incrustation PiP (Picture-in-Picture) du créateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte incrusté à l&#x27;écran : &quot;So WAN 2.5 just dropped&quot; (sur l&#x27;image 1), interface YouTube/vidéo avec boutons &quot;Like&quot;, &quot;Subscribed&quot; et cloche de notification (sur l&#x27;image 4).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur commente et présente des séquences vidéo générées par le modèle d&#x27;intelligence artificielle WAN 2.5.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_001_00-00-19.jpg" alt="Rendu vidéo généré par IA montrant un personnage en robe de moine s&#x27;envolant dans un ciel nuageux avec une traînée de fumée violette, avec le créateur en incrustation PiP dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_001_00-00-19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:19</span>
+                        <span class="caption-text">Rendu vidéo généré par IA montrant un personnage en robe de moine s&#x27;envolant dans un ciel nuageux avec une traînée de fumée violette, avec le créateur en incrustation PiP dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_002_00-00-27.jpg" alt="Rendu vidéo généré par IA montrant un soldat rampant dans une tranchée boueuse, encadré sur un fond stylisé avec le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_002_00-00-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:27</span>
+                        <span class="caption-text">Rendu vidéo généré par IA montrant un soldat rampant dans une tranchée boueuse, encadré sur un fond stylisé avec le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:29 - 00:00:49</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il propose une génération audio native, donc on parle d&#x27;effets sonores ainsi que de parole. Vous êtes capable de générer jusqu&#x27;à 10 secondes de séquences vidéo en résolution 1080p. Et bien sûr, il offre l&#x27;option de l&#x27;image vers vidéo comme VO3, donc vous conservez ce niveau de contrôle. En termes d&#x27;applications, les possibilités sont véritablement illimitées.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le créateur Jack apparaît en incrustation (PiP) dans le coin inférieur droit, tandis que les images principales montrent des extraits de vidéos générées par IA (un homme devant un iceberg, un insecte bioluminescent, et un paysage désertique avec des éclairs), sans interface logicielle visible.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur parle face à sa caméra dans son studio, commentant les capacités de génération audio et vidéo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:49 - 00:01:10</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pouvons créer du contenu parlant et des publicités de produits. Il est capable d&#x27;exécuter des requêtes vraiment très complexes. et je pense ce qui va attirer beaucoup de gens vers cet outil, c&#x27;est le fait qu&#x27;il soit non censuré, ce qui signifie que vous avez beaucoup plus de liberté créative en termes de construction de votre scène. Vous pouvez utiliser l&#x27;image d&#x27;une célébrité, par exemple, ou vous pouvez même jurer comme vous l&#x27;avez vu dans l&#x27;intro.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Lecteur vidéo de démonstration avec incrustation PiP du créateur dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Séquences vidéo générées par intelligence artificielle illustrant des scènes complexes et dynamiques (créatures fantastiques, bureau d&#x27;enquête, dragon en vol).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre son propos en diffusant des exemples de vidéos générées par IA démontrant les capacités créatives et complexes de l&#x27;outil.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_003_00-00-51.jpg" alt="Démonstration vidéo générée montrant des personnages chevauchant de grandes créatures écailleuses dans un paysage désertique sous des éclairs." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_003_00-00-51.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:51</span>
+                        <span class="caption-text">Démonstration vidéo générée montrant des personnages chevauchant de grandes créatures écailleuses dans un paysage désertique sous des éclairs.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_004_00-01-00.jpg" alt="Démonstration vidéo montrant une femme assise à un bureau encombré de dossiers dans une pièce aux murs tapissés de notes et de documents d&#x27;enquête." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_004_00-01-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:00</span>
+                        <span class="caption-text">Démonstration vidéo montrant une femme assise à un bureau encombré de dossiers dans une pièce aux murs tapissés de notes et de documents d&#x27;enquête.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_005_00-01-08.jpg" alt="Démonstration vidéo montrant une vue arrière d&#x27;une personne chevauchant un grand dragon volant à travers des canyons rocheux." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_005_00-01-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:08</span>
+                        <span class="caption-text">Démonstration vidéo montrant une vue arrière d&#x27;une personne chevauchant un grand dragon volant à travers des canyons rocheux.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:11 - 00:01:31</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;ai testé WAN sur Higgsfield et ils proposent une option pour des générations illimitées si vous avez les abonnements Ultimate ou Creator, ainsi que des essais gratuits quotidiens pour tous les abonnements. C&#x27;est donc le moment idéal pour vous lancer et faire quelques tests si cela vous intéresse. Bien sûr, si vous souhaitez aller voir ça par vous-même, assurez-vous de cliquer sur le lien dans la description ci-dessous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme de création vidéo par IA Higgsfield (higgsfield.ai), avec un encadré vidéo (PiP) du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes visibles : &quot;UNLIMITED WAN 2.5&quot;, &quot;UNLIMITED KLING 2.5&quot;, &quot;WAN 2.5 COMMUNITY&quot;, &quot;365 FREE UNLIMITED GENERATIONS&quot;, ainsi que de multiples vignettes de prévisualisation de vidéos générées par IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur parle à l&#x27;écran tandis que la page d&#x27;accueil de la plateforme Higgsfield défile pour montrer les différentes options d&#x27;abonnements et les exemples de la communauté.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_006_00-01-13.jpg" alt="Interface du site web Higgsfield affichant des aperçus de vidéos générées avec WAN 2.5 et Kling 2.5, avec le créateur en incrustation vidéo (PiP) en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_006_00-01-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:13</span>
+                        <span class="caption-text">Interface du site web Higgsfield affichant des aperçus de vidéos générées avec WAN 2.5 et Kling 2.5, avec le créateur en incrustation vidéo (PiP) en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_007_00-01-21.jpg" alt="Interface de Higgsfield montrant la galerie de créations WAN 2.5 Community avec différentes vignettes vidéo et les bannières d&#x27;offres illimitées." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_007_00-01-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:21</span>
+                        <span class="caption-text">Interface de Higgsfield montrant la galerie de créations WAN 2.5 Community avec différentes vignettes vidéo et les bannières d&#x27;offres illimitées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_008_00-01-29.jpg" alt="Interface de Higgsfield affichant la section &#x27;WAN 2.5 Community&#x27; avec des exemples de générations vidéo par IA et les options de navigation du site." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_008_00-01-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:29</span>
+                        <span class="caption-text">Interface de Higgsfield affichant la section &#x27;WAN 2.5 Community&#x27; avec des exemples de générations vidéo par IA et les options de navigation du site.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:31 - 00:01:50</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et vous pouvez voir qu&#x27;ils ont une section pour leurs générations WAN 2.5 favorites créées par la communauté. J&#x27;ai donc pensé qu&#x27;on commencerait par jeter un œil à certaines d&#x27;entre elles. Et ensuite je vous présenterai le workflow que j&#x27;utilise pour créer l&#x27;intro. Je suis immédiatement attiré ici par ce clip de Double Door avec l&#x27;iPhone. J&#x27;étais en train de regarder Definitely Hallows Part 2 hier soir.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une plateforme de génération vidéo IA (style Higgsfield) avec la section &quot;WAN 2.5 COMMUNITY&quot; et les onglets de navigation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titres &quot;WAN 2.5 COMMUNITY&quot;, &quot;VISUAL EFFECTS&quot;, miniatures de vidéos générées par la communauté (personnages, créatures, portraits), et le flux vidéo du créateur en incrustation PiP.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue sur la page web présentant les créations de la communauté WAN 2.5 et commente les différentes vidéos affichées à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_009_00-01-33.jpg" alt="Page web de la communauté WAN 2.5 montrant une grille de vidéos générées par les utilisateurs et le créateur dans un encadré PiP en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_009_00-01-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:33</span>
+                        <span class="caption-text">Page web de la communauté WAN 2.5 montrant une grille de vidéos générées par les utilisateurs et le créateur dans un encadré PiP en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_010_00-01-40.jpg" alt="Page web de la communauté WAN 2.5 affichant d&#x27;autres clips vidéo générés par IA, notamment un gros plan sur un iPhone avec le logo Apple lumineux." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_010_00-01-40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:40</span>
+                        <span class="caption-text">Page web de la communauté WAN 2.5 affichant d&#x27;autres clips vidéo générés par IA, notamment un gros plan sur un iPhone avec le logo Apple lumineux.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:50 - 00:02:25</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je n&#x27;ai vraiment pas vu venir qu&#x27;il manipulerait ce genre de techno. Jetons un petit coup d&#x27;œil. La plus grande magie est un iPhone. Ouais, c&#x27;est plutôt impressionnant. Donc le discours, le mouvement de la bouche ont l&#x27;air plutôt bons. Les reflets sur l&#x27;arrière du téléphone aussi, tout a l&#x27;air vraiment sympa et réaliste. Je vérifie, j&#x27;attends cette chute comme une tempête dans le ciel. Maintenant le nouveau modèle est là et il m&#x27;emmène haut. Je parle de puissance dans les lignes. Chaque mot est une flamme. Je me sens suralimenté, impossible de retenir le jeu. Les gars, vous devez comprendre, c&#x27;est un prompt vraiment très complexe avec les mouvements de caméra rapides (whip pans) et les déplacements entre différentes pièces de la maison de cette personne, mais il</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme &quot;Wan 2.5 Community&quot; (Higgfield / Wan 2.5), avec interface de lecture vidéo et panneau latéral de prompts descriptifs en anglais.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible sur le panneau latéral droit décrivant précisément l&#x27;action et les mouvements complexes de la caméra : &quot;The video starts with a medium close-up of a man standing in a narrow hallway...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue sur la plateforme Wan 2.5, parcourt la galerie de vidéos générées par IA et lance la lecture de clips montrant des interactions complexes, des mouvements de caméra fluides et des rendus réalistes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_011_00-01-52.jpg" alt="Interface du site web Wan 2.5 Community montrant une grille de vidéos générées par IA." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_011_00-01-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:52</span>
+                        <span class="caption-text">Interface du site web Wan 2.5 Community montrant une grille de vidéos générées par IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_012_00-02-02.jpg" alt="Lecteur vidéo sur la plateforme Wan 2.5 affichant un personnage ressemblant à Gandalf tenant un iPhone lumineux dans un couloir brumeux." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_012_00-02-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:02</span>
+                        <span class="caption-text">Lecteur vidéo sur la plateforme Wan 2.5 affichant un personnage ressemblant à Gandalf tenant un iPhone lumineux dans un couloir brumeux.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_013_00-02-13.jpg" alt="Lecteur vidéo sur Wan 2.5 montrant un homme dans un salon chaleureux avec une bibliothèque, affichant le texte descriptif du prompt complet du plan complexe." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_013_00-02-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:13</span>
+                        <span class="caption-text">Lecteur vidéo sur Wan 2.5 montrant un homme dans un salon chaleureux avec une bibliothèque, affichant le texte descriptif du prompt complet du plan complexe.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_014_00-02-23.jpg" alt="Lecteur vidéo sur Wan 2.5 montrant un mouvement de caméra rapide (whip pan) avec le personnage traversant un couloir entre deux pièces." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_014_00-02-23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:23</span>
+                        <span class="caption-text">Lecteur vidéo sur Wan 2.5 montrant un mouvement de caméra rapide (whip pan) avec le personnage traversant un couloir entre deux pièces.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:25 - 00:02:58</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">tout semble toujours cohérent qu&#x27;est-ce qu&#x27;on a là le loup de wall street nutella la seule chose plus douce que le nutella c&#x27;est margot robbie la seule chose plus douce que le nutella c&#x27;est margot robbie la netteté aussi ça a l&#x27;air vraiment d&#x27;une super qualité oh et le classique pulp fiction tout le monde adore faire des versions ia de cette scène bois du coca ou on te tue en train de faire entièrement sortir le pistolet du cadre avec une canette de coca alors qu&#x27;est-ce que c&#x27;est c&#x27;est une scène de ça vient de the revenant n&#x27;est-ce pas et en ce moment tout ce dont j&#x27;ai besoin</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme web d&#x27;Higgfield AI (affichage de galerie vidéo et lecteur de lecture avec panneau de description des prompts sur le côté droit).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau latéral affichant les prompts de génération textuelle pour chaque scène de film parodiée (Le Loup de Wall Street, Pulp Fiction, The Revenant).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue et commente différentes vidéos générées par intelligence artificielle sur la plateforme Higgsfield, en présentant des versions parodiques de films célèbres.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_015_00-02-27.jpg" alt="Interface du site web d&#x27;Higgfield affichant une grille de vidéos générées par IA incluant des célébrités et des scènes de films." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_015_00-02-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:27</span>
+                        <span class="caption-text">Interface du site web d&#x27;Higgfield affichant une grille de vidéos générées par IA incluant des célébrités et des scènes de films.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_016_00-02-36.jpg" alt="Vidéo générée par IA parodiant Le Loup de Wall Street avec Leonardo DiCaprio tenant un pot de Nutella géant." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_016_00-02-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:36</span>
+                        <span class="caption-text">Vidéo générée par IA parodiant Le Loup de Wall Street avec Leonardo DiCaprio tenant un pot de Nutella géant.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_017_00-02-47.jpg" alt="Vidéo générée par IA parodiant Pulp Fiction avec une canette de Coca-Cola au premier plan masquant le pistolet." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_017_00-02-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:47</span>
+                        <span class="caption-text">Vidéo générée par IA parodiant Pulp Fiction avec une canette de Coca-Cola au premier plan masquant le pistolet.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_018_00-02-56.jpg" alt="Vidéo générée par IA parodiant The Revenant avec Leonardo DiCaprio blessé regardant par une fenêtre." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_018_00-02-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:56</span>
+                        <span class="caption-text">Vidéo générée par IA parodiant The Revenant avec Leonardo DiCaprio blessé regardant par une fenêtre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:58 - 00:03:32</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est Jack et Sydney Sweeney, des résultats vraiment assez impressionnants ici avec Wan 2.5 et vous pouvez vraiment voir la variété de contenu que vous allez pouvoir créer avec cet outil qui est plutôt polyve [...] avec cela dit, laissez-moi vous guider rapidement à travers le processus de la façon dont j&#x27;ai créé l&#x27;intro pour cette vidéo sur Higgsfield en utilisant Wan 2.5 donc de retour sur la page d&#x27;accueil ici de Higgsfield si nous allons en haut dans le coin supérieur gauche vers l&#x27;onglet image nous pouvons aller dans créer une image et vous pouvez voir toute une charge d&#x27;images que j&#x27;ai générées ici vous avez accès à plusieurs</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme de création vidéo et d&#x27;images par IA Higgsfield (higgsfield.ai), avec incrustation vidéo PiP du créateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible sur l&#x27;image 1 : &quot;A bearded man with blond and scars on his face stares ahead with wild, desperate eyes as sunlight spills through a nearby window...&quot; Texte visible sur l&#x27;image 4 : &quot;Times Square, New York, pitched with neon screens and symbolless Nissan in shock. The bearded man sits on the bonnet of a matte-black sport car...&quot; Mentions d&#x27;onglets : Explore, Image, Video, Edit, Assist, Apps, Community, Wan 2.5.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue sur la plateforme Higgsfield, montre des exemples de vidéos générées avec Wan 2.5 et accède à sa galerie d&#x27;images personnelles générées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_019_00-03-00.jpg" alt="Interface de Higgsfield montrant une vidéo générée avec une bouteille de Jack Daniel&#x27;s et le panneau de prompt textuel sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_019_00-03-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:00</span>
+                        <span class="caption-text">Interface de Higgsfield montrant une vidéo générée avec une bouteille de Jack Daniel&#x27;s et le panneau de prompt textuel sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_020_00-03-10.jpg" alt="Page d&#x27;accueil de Higgsfield affichant une grille variée de contenus créés par la communauté avec divers sujets visuels." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_020_00-03-10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:10</span>
+                        <span class="caption-text">Page d&#x27;accueil de Higgsfield affichant une grille variée de contenus créés par la communauté avec divers sujets visuels.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_021_00-03-21.jpg" alt="Section Wan 2.5 Community sur Higgsfield avec des bannières promotionnelles et des exemples de générations." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_021_00-03-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:21</span>
+                        <span class="caption-text">Section Wan 2.5 Community sur Higgsfield avec des bannières promotionnelles et des exemples de générations.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_022_00-03-30.jpg" alt="Galerie d&#x27;images générées par l&#x27;utilisateur sur Higgsfield montrant des plans sur fond vert et des effets spéciaux avec des prompts textuels." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_022_00-03-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:30</span>
+                        <span class="caption-text">Galerie d&#x27;images générées par l&#x27;utilisateur sur Higgsfield montrant des plans sur fond vert et des effets spéciaux avec des prompts textuels.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:32 - 00:04:10</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">différents outils incluant Higgsfield Soul, leur propre modèle d&#x27;image Nano Banana, Seedream 4.0 et Flux Context Max. Maintenant, le personnage de l&#x27;intro a été généré en utilisant Nano Banana et en fait, avec un prompt textuel très simple : j&#x27;ai juste écrit un humanoïde dont la peau est en géode craquelée, brillant d&#x27;un éclat violet de l&#x27;intérieur, portant de simples robes de moine orange en lambeaux, assis en parfaite méditation sur une falaise avec des vagues de tempête s&#x27;écrasant en contrebas, et j&#x27;ai accidentellement laissé cette référence d&#x27;image de moi-même, et vous pouvez voir que cela a fini par influencer le résultat final parce que notre moine géode a des lunettes et une barbe.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Higgsfield, présentant des galeries de générations d&#x27;images et des menus de sélection de modèles d&#x27;IA avec affichage incrusté du créateur (PiP).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu de sélection des modèles d&#x27;IA incluant Higgsfield Soul, Nano Banana, Seedream 4.0, Flux Context Max ; champ de prompt textuel décrivant le moine humanoïde en géode avec des robes de moine orange.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue et démontre l&#x27;interface de Higgsfield et l&#x27;utilisation du modèle Nano Banana pour générer le personnage du moine géode à partir d&#x27;un prompt textuel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_023_00-03-34.jpg" alt="Interface du navigateur affichant une galerie d&#x27;images générées par IA sur Higgsfield, avec un menu déroulant listant les différents modèles (Higgsfield Soul, Nano Banana, Seedream 4.0, etc.) et le créateur visible en incrustation PiP en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_023_00-03-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:34</span>
+                        <span class="caption-text">Interface du navigateur affichant une galerie d&#x27;images générées par IA sur Higgsfield, avec un menu déroulant listant les différents modèles (Higgsfield Soul, Nano Banana, Seedream 4.0, etc.) et le créateur visible en incrustation PiP en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_024_00-03-45.jpg" alt="Gros plan sur l&#x27;interface d&#x27;édition de prompt de Higgsfield montrant l&#x27;image générée du moine géode en méditation au bord d&#x27;une falaise, avec le champ de texte du prompt visible en bas." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_024_00-03-45.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:45</span>
+                        <span class="caption-text">Gros plan sur l&#x27;interface d&#x27;édition de prompt de Higgsfield montrant l&#x27;image générée du moine géode en méditation au bord d&#x27;une falaise, avec le champ de texte du prompt visible en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:10 - 00:04:45</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il y a donc un petit peu de moi là-dedans quelque part. Et si nous allons simplement télécharger cette image, nous pouvons créer le plan en gros plan. J&#x27;avais initialement construit ça ici. Je crois que j&#x27;ai dû le supprimer ou quelque chose comme ça, mais nous pouvons simplement refaire ça. Maintenant, nous pouvons aller sélectionner Nano Banana dans le menu des outils et nous pouvons télécharger notre image de départ et simplement procéder avec un simple prompt montrant un gros plan extrême du visage de l&#x27;homme et cliquer sur générer et vous pouvez voir ici que nous avons également l&#x27;option pour des générations illimitées en ce qui concerne nano banana raison i</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface Web de l&#x27;outil de création artistique (Higgfield) combinée avec des fenêtres de l&#x27;explorateur de fichiers Windows.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes visibles : &quot;A humanoid whose skin is cracked purple...&quot;, &quot;Nano Banana&quot;, &quot;Show an extreme close-up of the man&#x27;s face&quot;, option &quot;Unlimited&quot; activée.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface, sélectionne l&#x27;outil Nano Banana, télécharge une image de départ, tape un prompt textuel pour générer un gros plan et lance la génération.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_025_00-04-12.jpg" alt="Interface de l&#x27;outil Web affichant une image d&#x27;un moine méditant avec des lueurs violettes sur les bras et les yeux, accompagnée du panneau de prompt en bas." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_025_00-04-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:12</span>
+                        <span class="caption-text">Interface de l&#x27;outil Web affichant une image d&#x27;un moine méditant avec des lueurs violettes sur les bras et les yeux, accompagnée du panneau de prompt en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_026_00-04-22.jpg" alt="Explorateur de fichiers Windows ouvert par-dessus l&#x27;interface pour sélectionner une image de téléchargement." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_026_00-04-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:22</span>
+                        <span class="caption-text">Explorateur de fichiers Windows ouvert par-dessus l&#x27;interface pour sélectionner une image de téléchargement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_027_00-04-34.jpg" alt="Galerie de l&#x27;application web montrant plusieurs créations avec le menu de prompt et l&#x27;option « Nano Banana » sélectionnée en bas." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_027_00-04-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:34</span>
+                        <span class="caption-text">Galerie de l&#x27;application web montrant plusieurs créations avec le menu de prompt et l&#x27;option « Nano Banana » sélectionnée en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_028_00-04-43.jpg" alt="Interface de génération affichant un carré bleu « In progress » en haut à gauche pendant que la génération est lancée." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_028_00-04-43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:43</span>
+                        <span class="caption-text">Interface de génération affichant un carré bleu « In progress » en haut à gauche pendant que la génération est lancée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:45 - 00:05:21</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si je n&#x27;ai pas utilisé ça juste avant, c&#x27;est parce qu&#x27;on se retrouve dans une file d&#x27;attente un tout petit peu plus longue, mais l&#x27;avantage bien sûr, c&#x27;est qu&#x27;on ne dépense aucun crédit et vous pouvez voir notre résultat ici, absolument parfait, avec beaucoup de très beaux détails texturaux. Et une fois que nos images de départ sont téléchargées, nous pouvons remonter tout en haut dans le coin supérieur gauche et cette fois aller sur l&#x27;onglet vidéo. On descend juste sur créer une vidéo, tout en haut on veut sélectionner général, on peut aller télécharger notre image de départ, on veut remplir notre invite textuelle et si vous vouliez réutiliser une invite d&#x27;une génération précédente, vous pouvez simplement aller sur le côté droit et cliquer dessus et ça va</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Higgsfield AI (génération d&#x27;images et de vidéos), avec une incrustation vidéo (PiP) du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Options de l&#x27;onglet vidéo : &quot;General&quot;, champ &quot;Upload image&quot;, sélecteur de modèle (Max 2.5 Fast), curseur de durée, résolution (720p), mode illimité et bouton &quot;Generate 0&quot;. Fenêtre de l&#x27;explorateur Windows avec des fichiers images et vidéos.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface de Higgsfield AI, ouvre l&#x27;explorateur de fichiers pour sélectionner une image de départ, bascule sur l&#x27;onglet vidéo et prépare les paramètres de génération.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_029_00-04-47.jpg" alt="Interface de Higgsfield AI montrant une grille de résultats d&#x27;images générées et le panneau de génération actif en bas." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_029_00-04-47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:47</span>
+                        <span class="caption-text">Interface de Higgsfield AI montrant une grille de résultats d&#x27;images générées et le panneau de génération actif en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_030_00-05-09.jpg" alt="Interface de Higgsfield AI sur l&#x27;onglet vidéo avec une fenêtre de l&#x27;explorateur Windows ouverte pour sélectionner une image." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_030_00-05-09.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:09</span>
+                        <span class="caption-text">Interface de Higgsfield AI sur l&#x27;onglet vidéo avec une fenêtre de l&#x27;explorateur Windows ouverte pour sélectionner une image.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_031_00-05-19.jpg" alt="Interface de l&#x27;onglet vidéo sur Higgsfield AI avec l&#x27;image sélectionnée du moine cybernétique et les options de prompt." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_031_00-05-19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:19</span>
+                        <span class="caption-text">Interface de l&#x27;onglet vidéo sur Higgsfield AI avec l&#x27;image sélectionnée du moine cybernétique et les options de prompt.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:21 - 00:05:59</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">remplissez ce champ maintenant vous avez aussi l&#x27;option d&#x27;activation ou de désactivation de l&#x27;amélioration, vraiment cela est adapté à votre cas d&#x27;utilisation si vous avez écrit un prompt textuel très spécifique et que vous savez exactement ce que vous voulez obtenir de WAN 2.5, vous feriez mieux de laisser l&#x27;amélioration désactivée mais si vous voulez qu&#x27;il ait un peu plus de liberté, il va analyser l&#x27;image et en quelque sorte aider à étoffer votre prompt avec plus de détails bien sûr ici nous pouvons choisir parmi une grande variété de modèles de génération vidéo. Nous avons WAN 2.5 et WAN 2.5 fast. Vous pouvez obtenir des résultats de meilleure qualité à partir de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération de vidéo par IA avec un panneau de configuration à gauche, une zone de visualisation centrale affichant une image de moine mystique au bord de l&#x27;eau, et une petite incrustation vidéo (PiP) du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans le panneau latéral : &quot;The man is laughing mockingly, he stands on the rock and the camera follows him, as he leaps into the air and flies through the stormy sky, as the camera follows him, he leaves a glowing purple trail behind.&quot; Options visibles incluant &quot;Enhance on&quot;, le sélecteur de modèle &quot;WAN 2.5 fast&quot;, le curseur de durée &quot;5s&quot;, et la résolution &quot;720p&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface de l&#x27;outil de génération vidéo et commente les options de paramétrage des prompts et des modèles WAN 2.5.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_032_00-05-23.jpg" alt="Interface de l&#x27;outil de génération vidéo montrant les options de prompt et de sélection des modèles WAN 2.5." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_032_00-05-23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:23</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo montrant les options de prompt et de sélection des modèles WAN 2.5.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:59 - 00:06:33</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">juste le modèle 2.5 mais avec l&#x27;option rapide, vous obtiendrez vos générations beaucoup plus rapidement. Nous pouvons ensuite sélectionner la durée que nous voulons. Nous pouvons opter pour 5 secondes ou 10 secondes. VO3 ne va que jusqu&#x27;à 8 secondes, gardez donc cela à l&#x27;esprit. Et puis nous pouvons aussi sélectionner notre résolution en allant jusqu&#x27;à 1080p. La seule chose avec ceci, c&#x27;est que si nous voulions utiliser les générations illimitées, nous devrions nous en tenir au 720p et avec cela, vous pouvez voir ici que nous avons l&#x27;option d&#x27;activer et de désactiver le mode illimité et cela signifie simplement que vous ne dépenserez pas de crédits pour vos générations mais vous serez simplement placé dans</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Higgsfield AI (higgsfield.ai) avec un panneau de sélection des modèles vidéo, des paramètres de génération (durée, résolution, mode illimité) et un encadré PiP du créateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menus déroulants des modèles (Higgsfield Lite, Standard, Turbo, Kling 2.5/3.1, Wan 2.5 Unlimited/Fast, Google Veo, Minimax, Seedance Pro), paramètres de génération (durée 5s/10s, résolution 720p/1080p, &quot;Unlimited mode&quot;). Un aperçu vidéo montre un personnage en train de méditer avec des effets violets lumineux. Un prompt textuel est visible sur le panneau latéral gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre et survole les différents paramètres de configuration de génération vidéo sur l&#x27;interface de Higgsfield AI, notamment les options de vitesse, de durée, de résolution et le mode illimité.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_033_00-06-01.jpg" alt="Interface de Higgsfield AI affichant les différents modèles de génération vidéo, les options de durée, de résolution et le mode illimité avec le créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_033_00-06-01.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:01</span>
+                        <span class="caption-text">Interface de Higgsfield AI affichant les différents modèles de génération vidéo, les options de durée, de résolution et le mode illimité avec le créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:33 - 00:07:09</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">la file d&#x27;attente standard plutôt que la file d&#x27;attente prioritaire, donc c&#x27;est idéal si vous voulez faire un peu d&#x27;expérimentation avec WAN 2.5, peut-être que vous pourriez lancer quelques générations différentes, aller vous faire une tasse de thé, revenir, elles seront terminées et vous pourrez voir le résultat. J&#x27;ai donc assemblé un montage très basique en combinant mes trois différentes sorties WAN 2.5. J&#x27;ai simplement ajouté un son d&#x27;ambiance en arrière-plan avec des vagues qui s&#x27;écrasent. Maintenant, vous auriez pu obtenir cela généré directement via WAN 2.5. Je n&#x27;ai tout simplement pas spécifié que je voulais que ce soit ajouté dans le texte du prompt. Personnellement, j&#x27;aime pouvoir ajouter des effets sonores d&#x27;ambiance derrière ce que j&#x27;ai généré. Mais si vous aviez mis</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec l&#x27;interface de Wan 2.5 sur l&#x27;image #1, et logiciel de montage vidéo Adobe Premiere Pro sur l&#x27;image #2.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur l&#x27;image #1 : Interface web avec un aperçu vidéo généré d&#x27;un personnage cyborg/moine méditant, le panneau de prompt à gauche et les réglages de génération. Sur l&#x27;image #2 : Timeline d&#x27;Adobe Premiere Pro avec des clips vidéo et des pistes audio d&#x27;ondes sonores d&#x27;ambiance.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre d&#x27;abord l&#x27;interface de génération vidéo Wan 2.5 dans son navigateur, puis bascule sur son logiciel de montage Adobe Premiere Pro pour montrer l&#x27;assemblage de ses clips et l&#x27;ajout d&#x27;une piste audio d&#x27;ambiance.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_034_00-06-35.jpg" alt="Interface d&#x27;un générateur de vidéo par IA en ligne (Wan 2.5) affichant un personnage méditant avec des lueurs violettes au bord de l&#x27;eau, avec la webcam du créateur en incrustation (PiP) en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_034_00-06-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:35</span>
+                        <span class="caption-text">Interface d&#x27;un générateur de vidéo par IA en ligne (Wan 2.5) affichant un personnage méditant avec des lueurs violettes au bord de l&#x27;eau, avec la webcam du créateur en incrustation (PiP) en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_035_00-06-57.jpg" alt="Interface du logiciel de montage Adobe Premiere Pro montrant la timeline avec plusieurs pistes vidéo et audio, ainsi que la webcam du créateur en incrustation (PiP) en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_035_00-06-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:57</span>
+                        <span class="caption-text">Interface du logiciel de montage Adobe Premiere Pro montrant la timeline avec plusieurs pistes vidéo et audio, ainsi que la webcam du créateur en incrustation (PiP) en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:09 - 00:07:46</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">que dans les invites textuelles, vous l&#x27;auriez récupéré. Et ce que j&#x27;ai également fait, et je fais ça à toutes mes générations de vidéos par IA maintenant, c&#x27;est d&#x27;ajouter une couche de grain de pellicule par-dessus. C&#x27;est donc simplement ajouté avec cette couche de réglage ici. Et je peux comprendre que ce genre de choix esthétique ne convienne pas à tout le monde. Mais je pense qu&#x27;en raison de mon parcours en effets visuels, c&#x27;est quelque chose que nous finissons souvent par faire pour ajouter ce genre de détail textuel supplémentaire. Donc si nous allons de l&#x27;avant et zoomons, par exemple, et que j&#x27;active et désactive la couche de réglage, je ne sais pas, le simple fait d&#x27;ajouter ce grain de pellicule me donne instantanément l&#x27;impression que c&#x27;est plus réel et aussi un peu plus haut de gamme. Cela étant dit, nous allons continuer et regarder.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro</p>
+                        <p><strong>Contenu textuel & Code :</strong> Timeline de montage vidéo avec des pistes audio/vidéo et un calque violet nommé &quot;Adjustment Layer&quot;, un panneau de prévisualisation montrant un personnage cyborg/moine méditant au bord de l&#x27;eau, et une vue PiP du présentateur (Jack).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface d&#x27;Adobe Premiere Pro où il superpose une couche de réglage (adjustment layer) pour ajouter du grain de pellicule sur sa vidéo générée par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_036_00-07-11.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant la timeline avec une couche de réglage, le moniteur de programme affichant un personnage généré par IA, et un encadré PiP du créateur dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_036_00-07-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:11</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant la timeline avec une couche de réglage, le moniteur de programme affichant un personnage généré par IA, et un encadré PiP du créateur dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:46 - 00:08:21</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ceci dans son état actuel donc quand le 2.5 vient juste de sortir et c&#x27;est non censuré donc vous pouvez dire autant que vous voulez et j&#x27;ai aussi fusionné les pistes audio pour chaque génération pour qu&#x27;elles se fondent bien en douceur et en ressortent pour qu&#x27;il n&#x27;y ait pas de débuts et de fins brusques maintenant si nous voulions aller de l&#x27;avant et pousser cela un peu plus loin pour avoir un peu plus de contrôle créatif nous pouvons aller de l&#x27;avant et couper le son de notre piste audio</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro avec un affichage de l&#x27;espace de travail de montage (fenêtre de prévisualisation, timeline avec pistes audio/vidéo et un encadré PiP du présentateur).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Timeline de montage montrant des clips vidéo et audio superposés avec des fondus audio (keyframes de volume), ainsi qu&#x27;une image de synthèse représentant un moine cyborg en méditation face à une mer agitée visible dans le moniteur de prévisualisation.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son écran de montage dans Adobe Premiere Pro, expliquant le mixage audio et les fondus entre les générations de séquences tout en affichant son flux vidéo en incrustation (PiP).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_037_00-07-48.jpg" alt="Interface du logiciel Adobe Premiere Pro affichant le montage vidéo et audio avec un encadré PiP du créateur dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_037_00-07-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:48</span>
+                        <span class="caption-text">Interface du logiciel Adobe Premiere Pro affichant le montage vidéo et audio avec un encadré PiP du créateur dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:21 - 00:08:43</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des ondes ambiantes. Si nous allons dans l&#x27;exportation, nous pouvons simplement sélectionner mp3 dans ce menu déroulant et nous allons juste exporter l&#x27;audio. Nous voici donc sur ElevenLabs et si nous allons dans le coin supérieur gauche maintenant, nous pouvons sélectionner les voix et ici nous pouvons sélectionner créer ou cloner une voix et ici cela nous donne l&#x27;option de concevoir une voix entièrement nouvelle à partir d&#x27;un prompt textuel, nous allons donc sélectionner cette option.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (fenêtre d&#x27;exportation) et interface web ElevenLabs (Voice Library).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres d&#x27;exportation audio (Format: MP3, Nom: VRAI 2.5 IND4) et interface ElevenLabs avec les options Explore, My Voices, Default Voices, Collections, et le bouton &quot;Create or clone a voice&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre la manipulation d&#x27;exportation au format MP3 dans Adobe Premiere Pro, puis bascule sur le site d&#x27;ElevenLabs pour naviguer dans la bibliothèque de voix et préparer la création d&#x27;une nouvelle voix par prompt.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_038_00-08-23.jpg" alt="Interface d&#x27;Adobe Premiere Pro montrant les paramètres d&#x27;exportation audio au format MP3 avec une prévisualisation vidéo d&#x27;un moine bouddhiste généré par IA." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_038_00-08-23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:23</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro montrant les paramètres d&#x27;exportation audio au format MP3 avec une prévisualisation vidéo d&#x27;un moine bouddhiste généré par IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_039_00-08-29.jpg" alt="Interface d&#x27;Adobe Premiere Pro pendant l&#x27;exportation audio, affichant un écran noir de prévisualisation en cours de chargement." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_039_00-08-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:29</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro pendant l&#x27;exportation audio, affichant un écran noir de prévisualisation en cours de chargement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_040_00-08-36.jpg" alt="Interface de la plateforme ElevenLabs dans l&#x27;onglet des voix (Voices/Explore), montrant le bouton &quot;Create or clone a voice&quot; en haut à droite." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_040_00-08-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:36</span>
+                        <span class="caption-text">Interface de la plateforme ElevenLabs dans l&#x27;onglet des voix (Voices/Explore), montrant le bouton &quot;Create or clone a voice&quot; en haut à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:43 - 00:09:19</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais simplement insérer dans le prompt une voix d&#x27;homme grave et profonde d&#x27;un ancien moine mystique. La voix est rauque comme s&#x27;il avait la cinquantaine et nous allons cliquer sur générer la voix et nous pourrons aller écouter ce qu&#x27;on a obtenu : « salutations quêteur, c&#x27;est bon de vous voir ». Ça a l&#x27;air plutôt pas mal pour moi, écoutons la voix 2 : « salutations quêteur, c&#x27;est bon de vous voir », j&#x27;aime bien ça, un peu plus de réverbération là-dessus, ton chemin est long. Alors écoutons la voix 3. « Salutations quêteur, c&#x27;est bon de vous voir. » Un tout petit peu trop agressif.
+[VALID_VALID_IMAGES] 1
+[DESC_IMAGE_1] Interface d&#x27;ElevenLabs affichant la fenêtre de conception vocale (« Voice Design ») avec le champ de prompt textuel au premier plan et le créateur visible en incrustation vidéo (PiP) dans le coin inférieur gauche.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> ElevenLabs (plateforme de synthèse vocale par IA) avec une incrustation vidéo du créateur dans le coin inférieur gauche (PiP).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans la fenêtre « Voice Design », le prompt textuel visible indique : « A deep, booming male voice of an ancient mystical monk - voice is gruff as if he&#x27;s in his 50s ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Voice Design sur ElevenLabs, saisit un prompt textuel pour générer une voix de moine mystique et se prépare à tester différentes options vocales.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:19 - 00:09:55</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">celle-là. Je vais opter pour la voix deux et nous allons l&#x27;appeler notre moine géode puis dans la langue, nous voulons aller de l&#x27;avant et sélectionner l&#x27;anglais et nous pouvons sauvegarder notre voix. Maintenant, si nous allons dans le coin supérieur gauche et sélectionnons le changeur de voix, nous pouvons glisser-déposer notre mp3 exporté de Premiere Pro. Donc WAN 2.5 vient de sortir et il n&#x27;est pas censuré. Et sur le côté droit, nous pouvons sélectionner notre moine géode parmi les options de voix. Ensuite, nous allons de l&#x27;avant et cliquons sur générer la discourt et cela est revenu très rapidement. Écoutons nos résultats. Donc WAN 2.5 vient de sortir et il n&#x27;est pas censuré. C&#x27;est</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> ElevenLabs (outil de clonage et synthèse vocale par IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fenêtre « Voice Design » avec champ de nom, réglage de la langue (English), description vocale et bouton « Save voice ». Sur la seconde image, onglet « Voice Changer » avec le fichier audio « WAN 2.5.mp3 », la liste des voix disponibles (« Geode Monk », « Alius », « Bill », etc.) et le bouton « Generate speech ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre la configuration d&#x27;une voix personnalisée nommée « Geode Monk » dans ElevenLabs, puis navigue vers le changeur de voix pour y glisser un fichier MP3 exporté de Premiere Pro et lancer la génération vocale.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_041_00-09-21.jpg" alt="Interface d&#x27;ElevenLabs affichant la fenêtre de création vocale « Voice Design » pour nommer et paramétrer la voix avec le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_041_00-09-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:21</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs affichant la fenêtre de création vocale « Voice Design » pour nommer et paramétrer la voix avec le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_042_00-09-44.jpg" alt="Interface d&#x27;ElevenLabs affichant l&#x27;outil « Voice Changer » avec le fichier MP3 importé, la sélection de la voix « Geode Monk » et le bouton de génération." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_042_00-09-44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:44</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs affichant l&#x27;outil « Voice Changer » avec le fichier MP3 importé, la sélection de la voix « Geode Monk » et le bouton de génération.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:55 - 00:10:31</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">a fait un très bon travail. Allons-y pour télécharger cela. En retournant dans Premiere Pro, nous pouvons importer cet audio et le déposer sur notre timeline. Nous pouvons donc mettre en sourdine notre ancienne piste audio où nous avions le ton de voix un peu plus aigu quand la version 2.5 vient de sortir, ce qui ne convient pas vraiment à ce personnage je pense, donc en la mettant en sourdine, nous pouvons échanger notre nouvelle piste audio et cela donne ceci : donc quand la version 2.5 vient de sortir et qu&#x27;elle n&#x27;est pas censurée, et vous pouvez voir qu&#x27;en combinant ces multiples outils, cela nous donne juste un tout petit peu plus de contrôle sur notre rendu final. J&#x27;espère vraiment que vous avez apprécié la vidéo d&#x27;aujourd&#x27;hui et que vous y avez appris quelques petites choses, laissez-moi</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;ElevenLabs (Voice Changer) sur l&#x27;image 1 et logiciel Adobe Premiere Pro sur l&#x27;image 2, avec incrustation vidéo (PiP) du créateur dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur l&#x27;image 1 : interface ElevenLabs avec les fichiers &quot;WIX 2.5.mp3&quot; et &quot;ElevenLabs_...mp3&quot; et les réglages de voix. Sur l&#x27;image 2 : interface Premiere Pro avec le moniteur affichant une vidéo d&#x27;un moine cyberpunk méditant sur un rocher, et la timeline de montage audio/vidéo en bas.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre d&#x27;abord le téléchargement de l&#x27;audio modifié sur ElevenLabs, puis bascule sur Adobe Premiere Pro pour importer et remplacer la piste audio sur sa timeline de montage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_043_00-09-57.jpg" alt="Interface d&#x27;ElevenLabs (Voice Changer) montrant le téléchargement d&#x27;un fichier audio généré" loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_043_00-09-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:57</span>
+                        <span class="caption-text">Interface d&#x27;ElevenLabs (Voice Changer) montrant le téléchargement d&#x27;un fichier audio généré</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_044_00-10-08.jpg" alt="Interface d&#x27;Adobe Premiere Pro avec la timeline de montage vidéo et un retour caméra (PiP) du créateur" loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_044_00-10-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:08</span>
+                        <span class="caption-text">Interface d&#x27;Adobe Premiere Pro avec la timeline de montage vidéo et un retour caméra (PiP) du créateur</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:31 - 00:10:48</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">faites-le-moi savoir dans les commentaires ci-dessous si vous avez la moindre question et bien sûr comment vous vous en sortez avec WAN 2.5. Si vous avez apprécié la vidéo d&#x27;aujourd&#x27;hui, assurez-vous de lâcher un pouce bleu pour moi, pensez à vous abonner si vous êtes nouveau et bien sûr activez la cloche de notification pour ne jamais manquer aucune future mise en ligne. Je vous retrouve les gars dans la prochaine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Adobe Premiere Pro (logiciel de montage vidéo) avec incrustation webcam (Picture-in-Picture) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface classique de montage vidéo Premiere Pro comprenant la timeline, le panneau projet avec les fichiers médias et l&#x27;aperçu vidéo montrant un personnage de moine bouddhiste au design cyberpunk/fantastique assis en tailleur sur un rocher au milieu de la mer sous un ciel orageux.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur conclut sa vidéo tout en montrant son écran de montage avec Adobe Premiere Pro, incluant sa caméra faciale en incrustation dans le coin inférieur gauche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-yvD8TxNsR4Q/frame_045_00-10-33.jpg" alt="Interface du logiciel de montage Adobe Premiere Pro affichant le projet vidéo en cours, avec le panneau de montage en bas et le retour vidéo à droite montrant un moine généré par IA dans un paysage aquatique, ainsi que la webcam du créateur incrustée en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-yvD8TxNsR4Q/frame_045_00-10-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:33</span>
+                        <span class="caption-text">Interface du logiciel de montage Adobe Premiere Pro affichant le projet vidéo en cours, avec le panneau de montage en bas et le retour vidéo à droite montrant un moine généré par IA dans un paysage aquatique, ainsi que la webcam du créateur incrustée en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

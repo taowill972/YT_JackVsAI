@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `51 / 59` (`86.4%`)
+- **Vidéos traitées** : `52 / 59` (`88.1%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -67,6 +67,7 @@
 | 2025-10-28 | [Nano Banana vient-il de PERDRE !? (Higgsfield Popcorn est ARRIVÉ)](2025-10-28_YT-pE-f_SusfsU_Nano Banana vient-il de PERDRE ! (Higgsfield Popcorn est ARRIVÉ)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-10-28_YT-pE-f_SusfsU_Nano Banana vient-il de PERDRE ! (Higgsfield Popcorn est ARRIVÉ)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 10s | `94 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=pE-f_SusfsU) | `pE-f_SusfsU` |
 | 2025-10-19 | [VEO 3.1 vs SORA 2 : Quel modèle vidéo IA l'emporte ?](2025-10-19_YT-Bcyx6Gq8WjI_VEO 3.1 vs SORA 2 Quel modèle vidéo IA l'emporte_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-10-19_YT-Bcyx6Gq8WjI_VEO 3.1 vs SORA 2 Quel modèle vidéo IA l'emporte_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 18m 52s | `110 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=Bcyx6Gq8WjI) | `Bcyx6Gq8WjI` |
 | 2025-10-10 | [Comment créer des films IA (Hailuo AI x MiniMax Audio)](2025-10-10_YT-AxMnVX9dQZ8_Comment créer des films IA (Hailuo AI x MiniMax Audio)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-10-10_YT-AxMnVX9dQZ8_Comment créer des films IA (Hailuo AI x MiniMax Audio)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 20m 13s | `70 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=AxMnVX9dQZ8) | `AxMnVX9dQZ8` |
+| 2025-09-26 | [WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)](2025-09-26_YT-yvD8TxNsR4Q_WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-09-26_YT-yvD8TxNsR4Q_WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 10m 49s | `45 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=yvD8TxNsR4Q) | `yvD8TxNsR4Q` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
