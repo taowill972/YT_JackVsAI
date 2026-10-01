@@ -41,7 +41,8 @@
     "esAfAQV7p9I",
     "J_u-XYM1Mng",
     "EL9FzwEirxc",
-    "Uf31kIa5HSM"
+    "Uf31kIa5HSM",
+    "C_iQeGmS9z8"
   ],
   "processed_videos": [
     {
@@ -631,9 +632,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-11-27_YT-Uf31kIa5HSM_Comment créer des VFX époustouflants avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T12:07:19Z",
       "status": "completed"
+    },
+    {
+      "video_id": "C_iQeGmS9z8",
+      "title": "Comment utiliser Nano Banana PRO — c’est DINGUE",
+      "raw_title": "How to use Nano Banana PRO — it’s INSANE",
+      "filename_md": "2025-11-21_YT-C_iQeGmS9z8_Comment utiliser Nano Banana PRO — c’est DINGUE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-11-21_YT-C_iQeGmS9z8_Comment utiliser Nano Banana PRO — c’est DINGUE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-11-21",
+      "duration": 1042,
+      "screenshots_count": 86,
+      "filepath_md": "/root/YT_JackVsAI/2025-11-21_YT-C_iQeGmS9z8_Comment utiliser Nano Banana PRO — c’est DINGUE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-11-21_YT-C_iQeGmS9z8_Comment utiliser Nano Banana PRO — c’est DINGUE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T12:47:40Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 42,
+  "completed_count": 43,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T10:00:04Z"

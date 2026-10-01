@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `42 / 59` (`71.2%`)
+- **Vidéos traitées** : `43 / 59` (`72.9%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -58,6 +58,7 @@
 | 2025-12-09 | [Comment créer des publicités de mode avec l'IA (C'EST ÉPOUSTOUFLANT)](2025-12-09_YT-J_u-XYM1Mng_Comment créer des publicités de mode avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-12-09_YT-J_u-XYM1Mng_Comment créer des publicités de mode avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 19s | `112 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=J_u-XYM1Mng) | `J_u-XYM1Mng` |
 | 2025-12-03 | [Comment créer des pubs de Noël avec l'IA (RÉSULTATS DE FOLIE)](2025-12-03_YT-EL9FzwEirxc_Comment créer des pubs de Noël avec l'IA (RÉSULTATS DE FOLIE)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-12-03_YT-EL9FzwEirxc_Comment créer des pubs de Noël avec l'IA (RÉSULTATS DE FOLIE)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 33m 36s | `166 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=EL9FzwEirxc) | `EL9FzwEirxc` |
 | 2025-11-27 | [Comment créer des VFX époustouflants avec l'IA](2025-11-27_YT-Uf31kIa5HSM_Comment créer des VFX époustouflants avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-11-27_YT-Uf31kIa5HSM_Comment créer des VFX époustouflants avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 21m 11s | `116 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=Uf31kIa5HSM) | `Uf31kIa5HSM` |
+| 2025-11-21 | [Comment utiliser Nano Banana PRO — c’est DINGUE](2025-11-21_YT-C_iQeGmS9z8_Comment utiliser Nano Banana PRO — c’est DINGUE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-11-21_YT-C_iQeGmS9z8_Comment utiliser Nano Banana PRO — c’est DINGUE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 22s | `86 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=C_iQeGmS9z8) | `C_iQeGmS9z8` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
