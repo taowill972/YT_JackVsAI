@@ -42,7 +42,8 @@
     "J_u-XYM1Mng",
     "EL9FzwEirxc",
     "Uf31kIa5HSM",
-    "C_iQeGmS9z8"
+    "C_iQeGmS9z8",
+    "tlNeoxDZwFY"
   ],
   "processed_videos": [
     {
@@ -646,10 +647,24 @@
       "filepath_html": "/root/YT_JackVsAI/2025-11-21_YT-C_iQeGmS9z8_Comment utiliser Nano Banana PRO — c’est DINGUE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T12:47:40Z",
       "status": "completed"
+    },
+    {
+      "video_id": "tlNeoxDZwFY",
+      "title": "Comment créer des pubs TV PREMIUM avec l'IA (CHANGEMENT DE RÈGLE DU JEU)",
+      "raw_title": "How to make PREMIUM TV ads with AI (GAME CHANGER)",
+      "filename_md": "2025-11-17_YT-tlNeoxDZwFY_Comment créer des pubs TV PREMIUM avec l'IA (CHANGEMENT DE RÈGLE DU JEU)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-11-17_YT-tlNeoxDZwFY_Comment créer des pubs TV PREMIUM avec l'IA (CHANGEMENT DE RÈGLE DU JEU)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-11-17",
+      "duration": 1957,
+      "screenshots_count": 140,
+      "filepath_md": "/root/YT_JackVsAI/2025-11-17_YT-tlNeoxDZwFY_Comment créer des pubs TV PREMIUM avec l'IA (CHANGEMENT DE RÈGLE DU JEU)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-11-17_YT-tlNeoxDZwFY_Comment créer des pubs TV PREMIUM avec l'IA (CHANGEMENT DE RÈGLE DU JEU)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T16:54:03Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 43,
+  "completed_count": 44,
   "total_catalog_count": 59,
   "status": "running",
-  "last_run_timestamp": "2026-10-01T10:00:04Z"
+  "last_run_timestamp": "2026-10-01T16:00:06Z"
 }
