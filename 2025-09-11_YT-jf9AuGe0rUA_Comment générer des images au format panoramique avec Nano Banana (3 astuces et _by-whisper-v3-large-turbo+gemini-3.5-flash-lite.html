@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment générer des images au format panoramique avec Nano Banana (3 astuces et conseils indispensables) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment générer des images au format panoramique avec Nano Banana (3 astuces et conseils indispensables)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-09-11</span>
+                <span class="badge">⏱️ 12m 00s</span>
+                <span class="badge">🆔 <code>jf9AuGe0rUA</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=jf9AuGe0rUA" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>Dans cette vidéo, Jack, artiste VFX publicitaire cumulant plus d'une décennie d'expérience, s'attaque à l'un des problèmes les plus frustrants rencontrés par les créateurs utilisant l'outil d'intelligence artificielle « Nano Banana » (nom de code de la préversion d'image de Gemini 2.5 Flash) : la gestion erratique des formats d'image et le non-respect des prompts textuels. Alors que de nombreux utilisateurs se heurtent à des générations bloquées au format carré (1:1) ruinant leurs velléités de cinéma ou de publicité par IA au format plein cadre (16:9), Jack démontre qu'il ne s'agit pas d'un bug insurmontable, mais d'une question de logique dans l'ordre d'injection des assets visuels.</p><p>La méthode étape par étape de Jack repose sur une astuce de contournement fondamentale : le ratio final de l'image est dicté par le **dernier fichier visuel téléchargé** dans le prompt multifichiers. En inversant l'ordre de chargement (par exemple, en soumettant d'abord le logo carré, puis l'image de référence 16:9 en dernier), l'IA se cale automatiquement sur le bon ratio, court-circuitant ainsi sa tendance naturelle à imiter le format de la première image. Cette découverte technique s'accompagne d'une stratégie d'utilisation d'une plateforme tierce gratuite permettant de s'affranchir des contraintes des versions payantes et des filigranes, fluidifiant considérablement le pipeline de production vidéo.</p><p>Pour les créateurs de contenu, les réalisateurs et les monteurs publicitaires, ces enseignements transforment un outil perçu comme capricieux en un véritable moteur de production fiable. En éliminant les frictions liées au formatage et en évitant les étapes superflues de nettoyage de filigranes sous Photoshop, le workflow présenté permet de gagner un temps précieux, garantissant des assets visuels directement exploitables pour l'animation et le montage de films générés par IA.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Higgsfield</span><span class="tool-tag">Midjourney</span><span class="tool-tag">Nano Banana</span><span class="tool-tag">Photoshop</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Le piège du ratio 1:1 par défaut** : Nano Banana a tendance à ignorer les instructions textuelles de format (comme « 16 par 9 ») si le prompt contient des images aux ratios disparates, se basant par défaut sur le format de l&#x27;élément visuel fourni.</span></li><li><span class="point-bullet">✦</span><span>La règle d&#x27;or de l&#x27;ordre de téléchargement** : Pour imposer un format 16:9 à l&#x27;IA lors d&#x27;une fusion d&#x27;images, le fichier de référence au format 16:9 **doit impérativement être téléchargé en dernier** dans le prompt multi-images.</span></li><li><span class="point-bullet">✦</span><span>Neutralisation des hallucinations de format** : En appliquant rigoureusement l&#x27;inversion de l&#x27;ordre des uploads, l&#x27;IA respecte le ratio souhaité sans qu&#x27;il soit nécessaire de surcharger le prompt textuel d&#x27;instructions de dimensions.</span></li><li><span class="point-bullet">✦</span><span>Exploitation gratuite via LM Arena** : Il est possible d&#x27;accéder à l&#x27;intégralité des fonctionnalités de Nano Banana sans débourser un centime en passant par la plateforme de test de modèles `lmarena.ai`.</span></li><li><span class="point-bullet">✦</span><span>Suppression native du filigrane** : L&#x27;utilisation de LM Arena évite l&#x27;apparition du filigrane Gemini dans le coin inférieur droit, contournant ainsi le besoin d&#x27;un nettoyage post-production.</span></li><li><span class="point-bullet">✦</span><span>Navigation sur LM Arena** : Pour accéder à l&#x27;outil, il faut impérativement se rendre sur le site, sélectionner l&#x27;option « Direct Chat » dans le menu déroulant supérieur gauche, puis cocher « Generate Images ».</span></li><li><span class="point-bullet">✦</span><span>Sélection du bon modèle** : S&#x27;assurer que le modèle par défaut sélectionné est bien « Gemini 2.5 flash image preview », qui correspond techniquement à l&#x27;outil Nano Banana.</span></li><li><span class="point-bullet">✦</span><span>Optimisation du pipeline de production publicitaire** : Éviter l&#x27;étape de nettoyage des filigranes sous Photoshop fait gagner un temps considérable dans un pipeline de création de films par IA itératif et rapide.</span></li><li><span class="point-bullet">✦</span><span>Cohérence de la composition de marque** : L&#x27;outil excelle dans l&#x27;incrustation d&#x27;éléments graphiques précis (comme des logos textuels « puff ») sur des objets du quotidien (gobelets, sacs, t-shirts) tout en préservant le réalisme.</span></li><li><span class="point-bullet">✦</span><span>Gestion d&#x27;une version bêta** : Google admet que Nano Banana est en phase bêta ; l&#x27;utilisation de méthodes de contournement (workarounds) structurelles est donc indispensable pour fiabiliser les résultats professionnels.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:29</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tout le monde est obsédé par Nano Banana en ce moment, mais pourquoi n&#x27;arrivez-vous jamais à faire ce que vous demandez à cet outil d&#x27;intelligence artificielle ? Mauvais ratios d&#x27;image, générations bizarres, et parfois un Nano Banana qui ignore totalement vos prompts. Je comprends, c&#x27;est super frustrant, mais je suis là pour vous aider. Et restez avec moi car dans ce guide ultime, je vais vous transmettre trois conseils essentiels pour le nouvel éditeur d&#x27;images de Google. Et le dernier est un petit secret dont je n&#x27;entends jamais personne parler.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation par le créateur dans des décors générés par IA (sans interface logicielle ni partage d&#x27;écran).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché à l&#x27;écran au fil de la narration : &quot;with nano banana&quot;, &quot;and sometimes&quot;, &quot;ultimate guide&quot;, &quot;never hear&quot;. Visuels de style cinématographique illustrant le propos (temple mystérieux, tournage sur fond vert avec des techniciens, banane dorée).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur illustre le propos à travers des scènes narratives générées par IA (exploration d&#x27;un temple, tournage en studio avec fond vert) tout en s&#x27;exprimant face caméra.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:29 - 00:00:49</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je suis Jack, je suis artiste VFX dans l&#x27;industrie publicitaire depuis plus d&#x27;une décennie maintenant, et j&#x27;ai travaillé pour nombre des plus grandes marques de la planète. Et honnêtement, c&#x27;est l&#x27;un des outils les plus passionnants que j&#x27;aie vus depuis des années. Mais voilà le problème, Nano Banana ne brille que si vous l&#x27;utilisez de la bonne manière. Alors plongeons-nous dedans et je vais vous montrer comment libérer tout son potentiel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu logiciel ou interface affiché à l&#x27;écran, uniquement le créateur parlant face caméra dans son studio.</p>
+                        <p><strong>Action / Démonstration :</strong> Jack s&#x27;adresse directement au public depuis son studio, gesticulant légèrement pour appuyer ses propos.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:49 - 00:01:12</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parce que si vous vous intéressez à la réalisation de films ou à la publicité par IA, Nano Banana est votre meilleur ami, vous ne le savez tout simplement pas encore. Bien sûr les gars, si vous appréciez le contenu d&#x27;aujourd&#x27;hui, assurez-vous de lâcher un gros pouce bleu pour moi, pensez à vous abonner et bien sûr à activer cette icône de cloche de notification. Nous venons également de lancer les abonnements sur la chaîne, donc si vous souhaitez une autre façon de me soutenir et d&#x27;accéder également au Discord privé, impliquez-vous là-dedans.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation face caméra sans partage d&#x27;écran</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu logiciel ou technique affiché à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur parle face caméra dans son studio, s&#x27;adressant aux spectateurs pour les inciter à s&#x27;abonner et à rejoindre les abonnements de la chaîne.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:13 - 00:01:47</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien les gars, entrons directement dans le vif du sujet. Donc la première chose dont je veux parler, ce sont les formats d&#x27;image, parce que j&#x27;ai beaucoup de gens dans ma section commentaires qui disent qu&#x27;ils galèrent vraiment avec ça. Que Nano Banana continue de leur donner du un par un, c&#x27;est-à-dire des générations au format carré, et ce n&#x27;est tout simplement pas ce que vous cherchez. Si vous essayez d&#x27;utiliser Nano Banana pour le cinéma par IA, vous allez vouloir un rendu plein cadre 16 par 9. Alors comment faire en sorte que Nano Banana nous rende la taille de cadre que nous voulons réellement et qui correspond à notre cas d&#x27;utilisation ? C&#x27;est en fait assez simple,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Gemini (interface web avec panneau latéral gauche et historique de conversation au centre) et incrustation vidéo (PiP) du créateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On distingue des prompts textuels décrivant des plans cinématographiques (&quot;Mid shot of the bearded man leaning up against the outside of the shot...&quot;, &quot;Shot of the bearded man, he is wearing a pastel pink apron...&quot;) accompagnés d&#x27;images générées montrant un homme barbu dans un décor de café/boutique.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre son écran avec une session Google Gemini ouverte, présentant des exemples de générations d&#x27;images contextuelles tout en parlant.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_001_00-01-15.jpg" alt="Interface de Google Gemini affichant l&#x27;historique des prompts et les images générées avec un encadré vidéo du créateur en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_001_00-01-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:15</span>
+                        <span class="caption-text">Interface de Google Gemini affichant l&#x27;historique des prompts et les images générées avec un encadré vidéo du créateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:47 - 00:02:22</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et je vais simplement faire défiler vers le haut ici. Vous remarquerez peut-être que certaines de ces images proviennent de la dernière vidéo que j&#x27;ai faite concernant la publicité par IA. Et la raison pour laquelle je veux vous montrer ceci, c&#x27;est que c&#x27;est en fait un très bon exemple en termes de problème de format d&#x27;image. L&#x27;une des très grandes fonctionnalités de Nano Banana est la possibilité de combiner plusieurs images. Et vous pouvez voir ici, c&#x27;est exactement ce que nous avons fait. Nous avons une génération 16/9 d&#x27;un homme tenant une tasse de café à emporter devant ma boutique. Je dis ma boutique, c&#x27;est en fait une fausse boutique que j&#x27;ai générée.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de Google Gemini affichée dans un navigateur web, avec la webcam du créateur visible en incrustation (PiP) dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts visibles dans l&#x27;interface : &quot;Put the logo reading &#x27;puff&#x27; on the top peer shop from outside the store, make it large and legible&quot; et &quot;Put the man in the green coat leaning on the outside of the shop instead of the man in the denim jacket.&quot; Un fichier image intitulé &quot;gemini-1.5-flash-image-context-nano-banana_brow-for-a_take-up_2-0ft.jpg&quot; est ouvert.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur fait défiler une conversation sur l&#x27;interface de Google Gemini pour montrer des exemples d&#x27;images générées combinant plusieurs éléments, puis zoome sur une image spécifique montrant une main tenant un gobelet de café.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_002_00-01-49.jpg" alt="Interface de Google Gemini montrant un historique de conversation avec des prompts de génération d&#x27;images d&#x27;une boutique rose et d&#x27;un homme en veste verte, avec la webcam du créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_002_00-01-49.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:49</span>
+                        <span class="caption-text">Interface de Google Gemini montrant un historique de conversation avec des prompts de génération d&#x27;images d&#x27;une boutique rose et d&#x27;un homme en veste verte, avec la webcam du créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_003_00-02-11.jpg" alt="Affichage d&#x27;une image générée au format 16/9 montrant une main tenant une tasse de café rose devant une boutique, avec la webcam du créateur en incrustation (PiP) dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_003_00-02-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:11</span>
+                        <span class="caption-text">Affichage d&#x27;une image générée au format 16/9 montrant une main tenant une tasse de café rose devant une boutique, avec la webcam du créateur en incrustation (PiP) dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:22 - 00:02:58</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">avec Midjourney, mais pour continuer. J&#x27;ai demandé à Nano Banana de prendre ce logo et de l&#x27;incruster sur le gobelet de café. Et vous pouvez voir que ça fait un travail vraiment formidable. Cependant, le résultat qu&#x27;il me donne est au format carré un par un, exactement ce que je ne voulais pas parce que je savais que j&#x27;allais ensuite animer ceci et en faire une publicité. Alors pourquoi est-ce que cela m&#x27;est arrivé et pourquoi est-ce que cela continue de vous arriver ? Nano Banana prend le rapport hauteur/largeur de l&#x27;image que vous lui fournissez et il</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Google Gemini (anciennement Bard) avec affichage d&#x27;un panneau latéral à gauche, d&#x27;une zone de chat centrale et de vignettes d&#x27;images. Un encadré PiP en bas à droite montre le créateur face caméra.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible dans l&#x27;interface : &quot;Put the logo that reads &#x27;puff.&#x27; on the coffee cup&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre et commente les résultats d&#x27;image générés par l&#x27;IA dans l&#x27;interface de Google Gemini, en soulignant le problème du format carré (1x1).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_004_00-02-24.jpg" alt="Affichage agrandi d&#x27;une image générée représentant une main tenant un gobelet rose dans l&#x27;interface de Google Gemini." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_004_00-02-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:24</span>
+                        <span class="caption-text">Affichage agrandi d&#x27;une image générée représentant une main tenant un gobelet rose dans l&#x27;interface de Google Gemini.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_005_00-02-35.jpg" alt="Affichage en format carré (1x1) du résultat final généré avec le logo &quot;puff.&quot; incrusté sur le gobelet." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_005_00-02-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:35</span>
+                        <span class="caption-text">Affichage en format carré (1x1) du résultat final généré avec le logo &quot;puff.&quot; incrusté sur le gobelet.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_006_00-02-56.jpg" alt="Vue globale de l&#x27;interface de Google Gemini montrant l&#x27;historique de discussion, les prompts et les images générées." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_006_00-02-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:56</span>
+                        <span class="caption-text">Vue globale de l&#x27;interface de Google Gemini montrant l&#x27;historique de discussion, les prompts et les images générées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:58 - 00:03:32</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pour correspondre à ce ratio d&#x27;aspect. Donc si vous mettez une image de un sur un, vous allez récupérer une image de un sur un en retour, même si vous dites à Nano Banana de me sortir un 16 par 9 dans votre prompt textuel. Il va simplement ignorer cela. Maintenant, évidemment, notre exemple ici est un peu plus compliqué parce que nous avons une image 16 par 9 et nous avons aussi une image de un sur un que nous combinons l&#x27;une avec l&#x27;autre. Donc dans ce cas, comment faire pour que Nano Banana nous donne notre sortie en 16 par 9 ? Tout est lié à</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Google Gemini avec affichage en médaillon (PiP) du créateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &#x27;Put the logo that reads &#x27;puff.&#x27; on the coffee cup&#x27; et nom de fichier &#x27;puff.png&#x27;.
+[SCENE] Le créateur montre l&#x27;interface de Gemini et illustre le problème des formats d&#x27;image combinés (1x1 et 16x9).</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration pédagogique et présentation du workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_007_00-03-00.jpg" alt="Interface Google Gemini affichant une conversation avec des images combinées (16x9 et 1x1) et le prompt texte demandant d&#x27;ajouter le logo sur le gobelet de café." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_007_00-03-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:00</span>
+                        <span class="caption-text">Interface Google Gemini affichant une conversation avec des images combinées (16x9 et 1x1) et le prompt texte demandant d&#x27;ajouter le logo sur le gobelet de café.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_008_00-03-21.jpg" alt="Gros plan sur le fichier image &#x27;puff.png&#x27; montrant le logo carré rose avec le texte &#x27;puff.&#x27; en blanc." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_008_00-03-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:21</span>
+                        <span class="caption-text">Gros plan sur le fichier image &#x27;puff.png&#x27; montrant le logo carré rose avec le texte &#x27;puff.&#x27; en blanc.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_009_00-03-30.jpg" alt="Affichage d&#x27;une image générée au format 16x9 montrant une main tenant un gobelet rose devant une devanture de magasin." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_009_00-03-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:30</span>
+                        <span class="caption-text">Affichage d&#x27;une image générée au format 16x9 montrant une main tenant un gobelet rose devant une devanture de magasin.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:32 - 00:04:09</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;ordre dans lequel vous téléchargez vos multiples images. Vous voulez vous assurer que l&#x27;image qui va servir de guide pour le ratio d&#x27;aspect est la dernière que vous entrez dans Gemini. Donc par exemple, vous téléchargeriez votre logo 1x1 d&#x27;abord, vous téléchargeriez ensuite votre image 16x9 et cela garantira qu&#x27;après votre prompt textuel, Gemini va également produire un 16x9. Donc dans ce cas, évidemment, cela n&#x27;a pas fonctionné à cause de l&#x27;ordre des images que j&#x27;ai téléchargées. Mais ensuite, vous pouvez voir juste en dessous que j&#x27;ai utilisé exactement le même</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Gemini (navigateur web), avec le créateur en incrustation vidéo (PiP) en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt textuel visible dans l&#x27;interface indique : &quot;Put the logo that reads &#x27;puff&#x27; on the coffee cup&quot;, ainsi que deux petites images miniatures représentant le logo et la tasse de café. L&#x27;image générée au centre montre une main tenant un gobelet de café rose devant une vitrine de magasin.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de Gemini avec ses prompts et les résultats d&#x27;images générées, tout en expliquant l&#x27;importance de l&#x27;ordre de chargement des images pour définir le format de sortie.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_010_00-03-34.jpg" alt="Interface de Gemini affichant l&#x27;historique des prompts, des images téléchargées et une image générée montrant une main tenant un gobelet rose, avec le créateur visible en incrustation (PiP) en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_010_00-03-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:34</span>
+                        <span class="caption-text">Interface de Gemini affichant l&#x27;historique des prompts, des images téléchargées et une image générée montrant une main tenant un gobelet rose, avec le créateur visible en incrustation (PiP) en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:09 - 00:04:43</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">invite textuelle. Je ne mentionne pas du tout les ratios d&#x27;image. La seule chose que j&#x27;ai faite différemment, c&#x27;est que j&#x27;ai téléchargé mon logo 1x1 en premier, puis j&#x27;ai téléchargé mon image 16x9 et, comme par magie, j&#x27;ai récupéré ma génération au bon ratio d&#x27;image. Maintenant, Google a ouvertement admis que Nano Banana est toujours en version bêta, donc parfois il ne respecte pas les ratios d&#x27;image comme il le devrait. Personnellement, quand j&#x27;ai commencé à utiliser cette petite astuce de contournement, ou peu importe comment vous voulez l&#x27;appeler, je n&#x27;ai jamais eu le moindre problème de suivi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Gemini (Google) avec un panneau latéral de navigation à gauche, un flux de discussion central et une incrustation vidéo du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt visible « Put the logo that reads &#x27;puff&#x27; on the coffee cup » avec deux fichiers d&#x27;images joints (le logo et l&#x27;image principale).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;outil de génération d&#x27;images et défile à l&#x27;écran pour illustrer le résultat de l&#x27;importation de ses fichiers au bon ratio.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_011_00-04-11.jpg" alt="Interface Google affichant une conversation avec une image générée d&#x27;une main tenant un gobelet de café rose, avec le présentateur visible en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_011_00-04-11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:11</span>
+                        <span class="caption-text">Interface Google affichant une conversation avec une image générée d&#x27;une main tenant un gobelet de café rose, avec le présentateur visible en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_012_00-04-21.jpg" alt="Interface Google montrant un zoom ou un aperçu centré d&#x27;une image générée au format paysage dans l&#x27;interface de chat." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_012_00-04-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:21</span>
+                        <span class="caption-text">Interface Google montrant un zoom ou un aperçu centré d&#x27;une image générée au format paysage dans l&#x27;interface de chat.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_013_00-04-32.jpg" alt="Interface Google affichant l&#x27;historique des images générées et des requêtes précédentes avec les vignettes correspondantes." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_013_00-04-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:32</span>
+                        <span class="caption-text">Interface Google affichant l&#x27;historique des images générées et des requêtes précédentes avec les vignettes correspondantes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:43 - 00:05:20</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ça et si je fais défiler un peu plus vers le bas, vous pouvez voir un autre super exemple, on a exactement le même ordre en termes de logo téléchargé sur Gemini en premier, puis une image 16 par 9, une autre légèrement différente ici. Un prompt textuel très similaire. Mets le logo avec l&#x27;inscription puff sur le dos du t-shirt de la femme. Rends-le grand et lisible. Et comme je l&#x27;ai mis dans le bon ordre, on récupère notre sortie en 16 par 9. Si je les avais mis dans l&#x27;autre sens, j&#x27;aurais récupéré ceci en un par un. Et encore une fois, vous pouvez voir où j&#x27;ai réellement mis le logo sur la boutique elle-même. Notre astuce a fonctionné une fois</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Google Gemini affichée en plein écran avec la webcam du créateur incrustée en bas à droite (PiP).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts textuels visibles : &quot;Put the logo that reads &#x27;puff&#x27; on the coffee cup.&quot; et &quot;Put the logo that reads &#x27;puff&#x27; on the back of the women&#x27;s t-shirt, make it large and readable.&quot; avec des images de prévisualisation téléchargées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente et montre à l&#x27;écran les exemples de prompts et de résultats générés par Gemini, en expliquant l&#x27;importance de l&#x27;ordre des éléments importés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_014_00-04-45.jpg" alt="Interface du navigateur affichant l&#x27;historique des conversations avec Gemini, montrant plusieurs prompts textuels et des images générées avec un encadré vidéo du créateur en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_014_00-04-45.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:45</span>
+                        <span class="caption-text">Interface du navigateur affichant l&#x27;historique des conversations avec Gemini, montrant plusieurs prompts textuels et des images générées avec un encadré vidéo du créateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_015_00-05-08.jpg" alt="Gros plan sur une image 16 par 9 générée montrant une femme dans une boulangerie, avec l&#x27;encadré vidéo du créateur en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_015_00-05-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:08</span>
+                        <span class="caption-text">Gros plan sur une image 16 par 9 générée montrant une femme dans une boulangerie, avec l&#x27;encadré vidéo du créateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:20 - 00:05:52</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Encore une fois, vous pouvez voir plusieurs fois que cette astuce fonctionne, donc si vous rencontrez des problèmes, les gars, commencez à l&#x27;utiliser. La prochaine chose dont je veux parler est la façon dont vous pouvez réellement accéder à Nano Banana gratuitement et, à mon avis, c&#x27;est la meilleure façon d&#x27;utiliser l&#x27;outil. Maintenant, bien sûr, de nombreuses plateformes payantes comme FreePick et Higgsfield ont intégré Nano Banana dans leur ensemble d&#x27;outils, mais vous allez devoir payer un abonnement pour leur service complet afin d&#x27;accéder à Nano Banana. Grâce à LM Arena</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de Google Gemini et LMSYS LM Arena avec les chats de génération d&#x27;images, le tout avec le créateur en incrustation vidéo (PiP) dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts textuels visibles dans le chat comme &quot;Put the logo that reads &#x27;puff&#x27; on the back of the woman&#x27;s t-shirt...&quot; et le modèle &quot;imagen-3.0-flash-image-preview (nano-banana)&quot; sur LM Arena.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue et démontre l&#x27;utilisation de l&#x27;outil Nano Banana à travers différentes interfaces de génération d&#x27;images, tout en s&#x27;exprimant face caméra dans le coin de l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_016_00-05-22.jpg" alt="Interface Google Gemini affichant l&#x27;historique des chats avec des images générées et le créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_016_00-05-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:22</span>
+                        <span class="caption-text">Interface Google Gemini affichant l&#x27;historique des chats avec des images générées et le créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_017_00-05-32.jpg" alt="Interface de LM Arena (LMSYS Chatbot Arena) montrant un chat de génération d&#x27;images avec le modèle &quot;imagen-3.0-flash-image-preview (nano-banana)&quot; et le créateur en PiP." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_017_00-05-32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:32</span>
+                        <span class="caption-text">Interface de LM Arena (LMSYS Chatbot Arena) montrant un chat de génération d&#x27;images avec le modèle &quot;imagen-3.0-flash-image-preview (nano-banana)&quot; et le créateur en PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:52 - 00:06:27</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cependant, vous pouvez utiliser l&#x27;outil et toutes ses fonctionnalités, et le point positif est que vous n&#x27;allez pas vous retrouver avec ce filigrane Gemini dans le coin inférieur droit. Vous pouvez même télécharger, comme vous pouvez le voir ici, plusieurs images pour les combiner. J&#x27;ai téléchargé un format 16x9 de ce sac en papier, puis un logo un par un, et j&#x27;ai dit : &quot;mets le logo avec l&#x27;inscription puff sur le sac pour qu&#x27;il soit grand et lisible&quot;, et voilà, exactement ce que nous avons demandé sans dépenser un seul centime et sans avoir ce fichu</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Llama.ai avec barre latérale à gauche, zone de chat central affichant l&#x27;image générée et les miniatures des images sources uploadées en haut à droite. Le créateur apparaît en incrustation (PiP) dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;Put the logo that reads &#x27;puff&#x27; onto the bag so it&#x27;s large and legible&quot;. Modèle mentionné dans l&#x27;interface : `gemini-2.5-flash-image-preview`. Miniatures de deux images sources uploadées (le sac 16x9 et le logo).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre le résultat de la combinaison de plusieurs images et l&#x27;application d&#x27;un prompt pour incruster un logo sur un sac en papier sans filigrane.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_018_00-05-54.jpg" alt="Interface de Llama.ai avec le résultat de la génération montrant le sac en papier rose avec le logo &quot;puff&quot;." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_018_00-05-54.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:54</span>
+                        <span class="caption-text">Interface de Llama.ai avec le résultat de la génération montrant le sac en papier rose avec le logo &quot;puff&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_019_00-06-05.jpg" alt="Gros plan sur l&#x27;image générée montrant la personne tenant le sac en papier rose dans la rue." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_019_00-06-05.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:05</span>
+                        <span class="caption-text">Gros plan sur l&#x27;image générée montrant la personne tenant le sac en papier rose dans la rue.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_020_00-06-16.jpg" alt="Interface de Llama.ai affichant le prompt textuel et les images sources combinées en haut à droite." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_020_00-06-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:16</span>
+                        <span class="caption-text">Interface de Llama.ai affichant le prompt textuel et les images sources combinées en haut à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_021_00-06-25.jpg" alt="Gros plan centré sur le visuel généré avec le sac et son logo, affiché en plein écran dans l&#x27;interface." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_021_00-06-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:25</span>
+                        <span class="caption-text">Gros plan centré sur le visuel généré avec le sac et son logo, affiché en plein écran dans l&#x27;interface.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:27 - 00:07:01</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Filigrane Gemini dans le coin inférieur droit. Alors, comment accédons-nous à LMArena ? C&#x27;est en fait vraiment très simple, vous voulez juste taper dans votre navigateur web lmarena.ai. Lorsque vous vous connectez pour la première fois à l&#x27;outil, il va ressembler exactement à ceci, donc vous voulez aller dans le coin supérieur gauche et sélectionner &quot;Direct Chat&quot; dans ce petit menu déroulant. Vous voulez ensuite descendre ici là où vous entreriez votre invite textuelle et vous assurer de sélectionner &quot;Generate Images&quot;. Et vous remarquerez maintenant que par défaut Gemini 2.5 flash image preview a été sélectionné, autrement connu sous le nom de Nano Banana. Je vois un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de LMArena (lmarena.ai) sur navigateur avec affichage des chats et options de génération d&#x27;images, incluant une vue en incrustation (PiP) du présentateur Jack.</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL &quot;lmarena.ai&quot;, texte &quot;Find the best AI for you&quot;, barre de saisie de prompt &quot;Ask anything...&quot;, divers onglets et menus latéraux (&quot;New Chat&quot;, &quot;Leaderboard&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur le site LMArena pour expliquer comment accéder aux fonctionnalités de chat direct et de génération d&#x27;images.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_022_00-06-29.jpg" alt="Interface de LMArena affichant une image générée au centre avec le créateur en bas à droite en médaillon." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_022_00-06-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:29</span>
+                        <span class="caption-text">Interface de LMArena affichant une image générée au centre avec le créateur en bas à droite en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_023_00-06-39.jpg" alt="Page d&#x27;accueil de LMArena avec la barre de recherche centrale &quot;Find the best AI for you&quot; et le panneau latéral de navigation." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_023_00-06-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:39</span>
+                        <span class="caption-text">Page d&#x27;accueil de LMArena avec la barre de recherche centrale &quot;Find the best AI for you&quot; et le panneau latéral de navigation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:01 - 00:07:37</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">beaucoup de gens dans mes commentaires disent qu&#x27;ils ne peuvent pas accéder à Nano Banana via Ella Marina. Je n&#x27;ai jamais eu de problèmes et j&#x27;utilise cet outil chaque jour. Maintenant, juste pour vous montrer les gars, bien sûr vous pouvez aussi accéder à Nano Banana via Gemini lui-même. C&#x27;est à la fois sur votre application mobile ainsi que via un navigateur web. Vous pouvez voir ici que nous avons quelques exemples de combinaison de différentes images au sein de Gemini lui-même, mais nous obtenons toujours le filigrane dans le coin inférieur droit. Je sais que ce n&#x27;est pas un gros problème de l&#x27;enlever. Vous pourriez facilement utiliser quelque chose comme</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de LMSYS Arena (LMArena) avec le modèle Gemini 2.5-flash-image-preview, ainsi que Google Gemini dans la seconde image. Le créateur apparaît en incrustation (PiP) dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte « Find the best AI for you », barre de prompt avec le bouton « Image », sélection du modèle « gemini-2.5-flash-image-preview (non-demo) », et une image générée montrant une boutique rose avec l&#x27;enseigne « puff. ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue sur le web pour montrer l&#x27;interface de LMArena et l&#x27;utilisation de Gemini pour combiner des images, tout en commentant le filigrane visible en bas à droite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_024_00-07-03.jpg" alt="Interface d&#x27;un site web montrant l&#x27;outil de génération d&#x27;images avec le modèle Gemini 2.5-flash-image-preview." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_024_00-07-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:03</span>
+                        <span class="caption-text">Interface d&#x27;un site web montrant l&#x27;outil de génération d&#x27;images avec le modèle Gemini 2.5-flash-image-preview.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_025_00-07-35.jpg" alt="Interface Google Gemini affichant le résultat d&#x27;une génération d&#x27;image représentant une vitrine de magasin rose avec l&#x27;inscription « puff »." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_025_00-07-35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:35</span>
+                        <span class="caption-text">Interface Google Gemini affichant le résultat d&#x27;une génération d&#x27;image représentant une vitrine de magasin rose avec l&#x27;inscription « puff ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:37 - 00:08:11</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Remplissage génératif Photoshop et il y a probablement tout un tas d&#x27;autres outils de nettoyage par IA que vous pourriez utiliser. Mais vous savez, si vous vous intéressez à la création de films par IA, c&#x27;est un processus assez long. Ça peut prendre beaucoup de temps pour obtenir les résultats que vous voulez. Donc ajouter une étape supplémentaire consistant à devoir enlever un logo tout le temps, c&#x27;est juste un peu pénible dont on pourrait bien se passer. Avant de passer à ce troisième et dernier conseil, les gars, celui dont personne ne parle vraiment, je tiens à remercier Submagic d&#x27;avoir sponsorisé la vidéo d&#x27;aujourd&#x27;hui. C&#x27;est un outil conçu pour vous aider à faire des shorts dynamiques</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Gemini et le site web de Submagic (submagic.co) affichés en partage d&#x27;écran, avec le créateur visible en incrustation (PiP) dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur Gemini : &quot;Put the logo reading &#x27;puff&#x27; on the top pink shopfront outside the store, make it large and legible.&quot;, &quot;Put the man in the green coat leaning on the outside of the shop instead of the man in the denim jacket.&quot; Sur Submagic : &quot;Create viral shorts in seconds with AI&quot;, notes Google 4.9, Trustpilot 4.8.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue à l&#x27;écran entre Google Gemini et le site de Submagic tout en commentant le processus de création vidéo par IA et en présentant le sponsor.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_026_00-07-39.jpg" alt="Interface de Google Gemini affichant une image générée d&#x27;une boutique rose avec le logo &quot;puff.&quot; et le créateur en bas à droite en PiP." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_026_00-07-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:39</span>
+                        <span class="caption-text">Interface de Google Gemini affichant une image générée d&#x27;une boutique rose avec le logo &quot;puff.&quot; et le créateur en bas à droite en PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_027_00-07-49.jpg" alt="Interface de Google Gemini montrant l&#x27;historique de discussion, les prompts de génération d&#x27;images et les résultats." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_027_00-07-49.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:49</span>
+                        <span class="caption-text">Interface de Google Gemini montrant l&#x27;historique de discussion, les prompts de génération d&#x27;images et les résultats.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_028_00-08-00.jpg" alt="Page d&#x27;accueil du site Submagic présentant l&#x27;outil de création de shorts viraux avec des exemples de vidéos avant/après." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_028_00-08-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:00</span>
+                        <span class="caption-text">Page d&#x27;accueil du site Submagic présentant l&#x27;outil de création de shorts viraux avec des exemples de vidéos avant/après.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:11 - 00:08:34</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">formez du contenu en quelques clics seulement. Vous pouvez donc aller de l&#x27;avant et importer votre vidéo. Et si nous cliquons sur générer les sous-titres, Submagic va automatiquement faire exactement ce qui est écrit sur la boîte. Vous pouvez donc voir ici que nous avons un large éventail de sous-titres parmi lesquels choisir, qui sont basés sur certains des créateurs les plus populaires de la planète. Et si nous remontons tout en haut ici, vous pouvez également voir une option pour le b-roll.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;outil Submagic (submagic.co) avec vue PiP (Picture-in-Picture) de Jack en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes visibles : « Create viral shorts in seconds with AI », « Create Free Shorts », « Language: US English », « Choose Style » avec de nombreux préréglages de styles de sous-titres (Hormozi, Alex, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre la plateforme Submagic, l&#x27;importation de vidéo et la sélection de styles de sous-titres dynamiques.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_029_00-08-13.jpg" alt="Page d&#x27;accueil du site Submagic présentant la création de shorts viraux avec l&#x27;IA." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_029_00-08-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:13</span>
+                        <span class="caption-text">Page d&#x27;accueil du site Submagic présentant la création de shorts viraux avec l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_030_00-08-19.jpg" alt="Fenêtre modale de Submagic permettant d&#x27;importer une vidéo et de configurer la langue et les options de sous-titrage." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_030_00-08-19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:19</span>
+                        <span class="caption-text">Fenêtre modale de Submagic permettant d&#x27;importer une vidéo et de configurer la langue et les options de sous-titrage.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_031_00-08-27.jpg" alt="Interface de personnalisation de Submagic montrant une grande variété de styles de sous-titres inspirés de créateurs populaires." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_031_00-08-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:27</span>
+                        <span class="caption-text">Interface de personnalisation de Submagic montrant une grande variété de styles de sous-titres inspirés de créateurs populaires.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:34 - 00:09:01</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et nous pouvons emprunter la voie des b-rolls magiques où Submagic sélectionnera des clips qui correspondent au contenu de ce que nous disons. Ou si vous voulez être vraiment précis, nous pouvons cliquer ici, ajouter un B-roll, et nous pouvons sauter dans la bibliothèque de stocks de Submagic. Nous pouvons même aller de l&#x27;avant et définir la transition. Ainsi, lorsque nous passons de ce que nous avons filmé au B-roll fourni par Submagic, nous pouvons vraiment définir ce mouvement. Donc l&#x27;idée de Submagic, c&#x27;est que ce n&#x27;est pas seulement une question de gain de temps.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Submagic (application web d&#x27;édition vidéo par IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface d&#x27;édition avec le texte du script segmenté à gauche (incluant les options &quot;Magic B-roll&quot; et &quot;Magic Zoom&quot;), un aperçu de la vidéo verticale avec sous-titres animés au centre, et une vue incrustée (PiP) du créateur en bas à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface de Submagic en montrant les différentes options de b-rolls magiques et de gestion des segments vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_032_00-08-36.jpg" alt="Interface du logiciel Submagic montrant la chronologie du script à gauche et l&#x27;aperçu vidéo avec le créateur en incrustation (PiP) à droite." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_032_00-08-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:36</span>
+                        <span class="caption-text">Interface du logiciel Submagic montrant la chronologie du script à gauche et l&#x27;aperçu vidéo avec le créateur en incrustation (PiP) à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:01 - 00:09:35</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il est également conçu pour rendre votre contenu beaucoup plus captivant. Si vous souhaitez découvrir cet outil, assurez-vous de cliquer sur le lien ci-dessous dans la description et d&#x27;entrer également le code jack10 lors du passage à la caisse pour obtenir 10 % de réduction sur votre achat. Merci beaucoup d&#x27;être arrivés jusqu&#x27;ici dans la vidéo les gars. Maintenant, je veux plonger dans cette petite astuce secrète pour vous tous. Vous pouvez voir que j&#x27;ai eu des échecs de génération récurrents ici en essayant d&#x27;utiliser Nano Banana dans LM Arena. Je suis sûr que vous l&#x27;avez constaté vous-même aussi, parfois vous ne pouvez tout simplement pas amener cet outil d&#x27;IA à faire ce que vous cherchez.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une interface d&#x27;édition vidéo (Image 1) puis l&#x27;interface de LM Arena (Image 2) avec un retour vidéo du créateur en incrustation (PiP) dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes de l&#x27;interface de montage et chronologie sur l&#x27;image 1. Sur l&#x27;image 2, les invites de génération et les messages d&#x27;erreur en rouge associés au modèle gemini-2.0-flash-image-preview (nano-banana) dans LM Arena.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface de montage de son contenu vidéo, puis bascule sur l&#x27;interface de LM Arena pour montrer des exemples de générations échouées avec l&#x27;outil Nano Banana.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_033_00-09-03.jpg" alt="Interface de montage vidéo affichant une chronologie avec des extraits et un aperçu vidéo en cours de lecture." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_033_00-09-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:03</span>
+                        <span class="caption-text">Interface de montage vidéo affichant une chronologie avec des extraits et un aperçu vidéo en cours de lecture.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_034_00-09-24.jpg" alt="Interface de LM Arena montrant des erreurs de génération textuelles avec le modèle gemini-2.0-flash-image-preview (nano-banana)." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_034_00-09-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:24</span>
+                        <span class="caption-text">Interface de LM Arena montrant des erreurs de génération textuelles avec le modèle gemini-2.0-flash-image-preview (nano-banana).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:35 - 00:10:01</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et vous allez probablement penser que je dis juste ça pour plaisanter, mais ne sous-estimez pas le pouvoir de démarrer une nouvelle conversation. Que vous utilisiez Nano Banana via LM Arena ou Gemini lui-même, parfois je pense qu&#x27;il faut lui donner une ardoise blanche. Si vous n&#x27;arrivez tout simplement pas à obtenir de Nano Banana les résultats que vous recherchez, j&#x27;ai l&#x27;impression qu&#x27;il utilise la mémoire de la conversation en cours.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> LM Arena (navigateur web) avec le panneau latéral de l&#x27;historique des chats et la zone de discussion centrale montrant des images générées et des prompts textuels. Le créateur apparaît dans un encadré vidéo PiP en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Modèle affiché : &quot;gemini-2.0-flash-image-preview (nano-banana)&quot;. Prompts textuels visibles dans le fil de discussion décrivant un homme barbu terrifié avec des serpents et une banane dorée. Historique des chats dans la barre latérale gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de LM Arena et commente l&#x27;utilisation des chats de discussion pour générer des images avec Nano Banana.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_035_00-09-37.jpg" alt="Interface de LM Arena affichant une conversation avec le modèle Gemini 2.0 Flash (nano-banana) avec les résultats générés et le créateur visible en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_035_00-09-37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:37</span>
+                        <span class="caption-text">Interface de LM Arena affichant une conversation avec le modèle Gemini 2.0 Flash (nano-banana) avec les résultats générés et le créateur visible en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:01 - 00:10:19</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, je ne peux pas confirmer cela et il y a un débat entre les créateurs de contenu IA pour savoir si c&#x27;est réellement le cas. Tout ce que je sais, c&#x27;est que d&#x27;après ma propre expérience, j&#x27;ai vraiment eu du mal à obtenir les bons résultats avec cet outil, mais parfois, en appliquant le même prompt textuel dans un tout nouveau chat, boum.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de l&#x27;application LMSYS (lmarena.ai) avec un panneau de navigation latéral et une zone centrale de saisie de prompt, incluant un retour vidéo du créateur en incrustation (PiP).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;Find the best AI for you&quot;, champ de saisie avec le bouton &quot;Image&quot;, et des résultats générés montrant un homme barbu avec une casquette et un tablier rose écrivant dans un cahier.</p>
+                        <p><strong>Action / Démonstration :</strong> Le navigateur présente l&#x27;outil de génération d&#x27;IA avec ses options de prompt et les images générées précédemment affichées dans l&#x27;historique du chat, tandis que le créateur commente l&#x27;expérience en bas à droite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_036_00-10-03.jpg" alt="Interface de l&#x27;outil LMSYS avec un champ de prompt textuel central et le créateur visible en incrustation (PiP) dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_036_00-10-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:03</span>
+                        <span class="caption-text">Interface de l&#x27;outil LMSYS avec un champ de prompt textuel central et le créateur visible en incrustation (PiP) dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_037_00-10-10.jpg" alt="Affichage des résultats de génération d&#x27;images avec un personnage masculin écrivant dans un carnet, et le créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_037_00-10-10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:10</span>
+                        <span class="caption-text">Affichage des résultats de génération d&#x27;images avec un personnage masculin écrivant dans un carnet, et le créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:20 - 00:10:45</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça fonctionne comme par magie. Maintenant, accordé, ça pourrait être juste de la chance, mais pour moi personnellement, ça a fonctionné tout simplement trop de fois pour qu&#x27;il n&#x27;y ait pas quelque chose là-dessous. Je pense que lorsque vous créez plusieurs images dans le même chat en parlant à Nale Banana, cela a une sorte de mémoire et fait référence à ses générations précédentes qui sont réinjectées dans tout ce que vous demandez de nouveau à l&#x27;outil.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de LMArena (ou outil similaire de chat avec IA) avec un panneau latéral à gauche, une zone de discussion centrale affichant des images générées et le flux vidéo du créateur en incrustation (Picture-in-Picture) en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion affichant plusieurs générations d&#x27;images successives représentant un homme barbu dans différents contextes (en train d&#x27;écrire dans un carnet avec un tablier rose, gros plans, etc.) et des prompts textuels associés.</p>
+                        <p><strong>Action / Démonstration :</strong> Le navigateur web présente l&#x27;interface de discussion par chat où l&#x27;utilisateur fait défiler ou visualise les différentes images générées précédemment qui conservent la même cohérence visuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_038_00-10-22.jpg" alt="Interface d&#x27;un outil de génération d&#x27;images par IA montrant un historique de chat avec des images générées et le créateur visible en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_038_00-10-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:22</span>
+                        <span class="caption-text">Interface d&#x27;un outil de génération d&#x27;images par IA montrant un historique de chat avec des images générées et le créateur visible en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:46 - 00:11:18</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc si vous galérez vraiment vraiment, que vous vous arrachez les cheveux, vous savez, cet outil est vraiment bien mais vous n&#x27;arrivez pas à obtenir ce que vous voulez, essayez un nouveau chat. Et si cette petite astuce secrète vous aide, assurez-vous de laisser un commentaire en bas et de me le faire savoir pour que je sois rassuré de ne pas juste imaginer tout ça les gars. Merci beaucoup d&#x27;avoir regardé la vidéo d&#x27;aujourd&#x27;hui, si vous l&#x27;avez appréciée, n&#x27;oubliez pas de mettre un gros pouce bleu, pensez à vous abonner et bien sûr à activer la cloche de notification pour ne manquer aucun contenu à venir comme je l&#x27;ai mentionné au début de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de LMArena (LMarena.ai) affichant un fil de discussion (Chat) avec des interactions textuelles et des générations d&#x27;images. En bas à droite, la caméra de Jack est intégrée en mode Picture-in-Picture.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On aperçoit des prompts textuels décrivant des scènes (comme un homme tatoué écrivant des recettes avec un tablier rose) et des images générées associées, ainsi que l&#x27;historique des chats dans le panneau de gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le navigateur web montre l&#x27;interface de l&#x27;outil d&#x27;IA en arrière-plan, tandis que Jack apparaît en bas à droite en train de parler et d&#x27;animer sa conclusion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_039_00-10-48.jpg" alt="Interface d&#x27;un outil de chat IA avec des aperçus d&#x27;images générées et la webcam du créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_039_00-10-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:48</span>
+                        <span class="caption-text">Interface d&#x27;un outil de chat IA avec des aperçus d&#x27;images générées et la webcam du créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:18 - 00:11:52</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vidéo nous avons également lancé les abonnements pour la chaîne c&#x27;est un excellent moyen de me soutenir si vous appréciez vraiment ce que nous faisons ici sur la chaîne le niveau le plus bas est à seulement deux livres par mois donc ce n&#x27;est pas grand-chose mais cela vous donne accès à notre discord privé une communauté incroyable en pleine croissance où nous parlons de tout ce qui touche à l&#x27;IA créative où nous partageons des idées et nous passons tout un tas de trucs et astuces différents cela va être une source de connaissances vraiment formidable pour vous les gars. Toutes sortes d&#x27;autres avantages également en matière d&#x27;abonnements, en particulier</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de LMarena (LMSYS Chatbot Arena) montrant un fil de discussion avec génération d&#x27;images (gemini-2.5-flash-image-preview) et une vignette vidéo incrustée (PiP) du créateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Modèle de génération affiché : gemini-2.5-flash-image-preview, avec des images générées représentant un homme barbu cuisinant et écrivant dans un carnet.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur l&#x27;interface web de test de modèles d&#x27;IA, montrant des résultats de génération d&#x27;images et de prompts.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_040_00-11-30.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de génération d&#x27;images avec le créateur en incrustation PiP dans le coin inférieur droit." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_040_00-11-30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:30</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de génération d&#x27;images avec le créateur en incrustation PiP dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:52 - 00:11:59</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">le niveau légèrement plus cher. N&#x27;hésitez pas à poser vos questions sur Nano Banana dans les commentaires ci-dessous et je vous retrouve dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web sombre avec un panneau latéral de chat à gauche, une zone de discussion centrale montrant des images générées et des prompts, et un encadré PiP vidéo du créateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On aperçoit des prompts textuels dans l&#x27;interface (ex: &quot;Show me an attract...&quot;, &quot;Do the hairtrim...&quot;), des images générées montrant Jack en train d&#x27;écrire ou de cuisiner, et le modèle sélectionné indiqué comme &quot;gemini-2.5-flash-image-preview (nano-banana)&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de l&#x27;outil d&#x27;IA avec des exemples de générations basées sur le modèle Nano Banana tout en s&#x27;exprimant face caméra dans l&#x27;encadré PiP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-jf9AuGe0rUA/frame_041_00-11-56.jpg" alt="Interface web de Llama (ou outil similaire) affichant une conversation avec génération d&#x27;images/texte, et une incrustation vidéo (PiP) de Jack en bas à droite." loading="lazy" onclick="openLightbox('screenshots/YT-jf9AuGe0rUA/frame_041_00-11-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:56</span>
+                        <span class="caption-text">Interface web de Llama (ou outil similaire) affichant une conversation avec génération d&#x27;images/texte, et une incrustation vidéo (PiP) de Jack en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

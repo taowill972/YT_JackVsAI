@@ -51,7 +51,8 @@
     "pE-f_SusfsU",
     "Bcyx6Gq8WjI",
     "AxMnVX9dQZ8",
-    "yvD8TxNsR4Q"
+    "yvD8TxNsR4Q",
+    "jf9AuGe0rUA"
   ],
   "processed_videos": [
     {
@@ -781,9 +782,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-09-26_YT-yvD8TxNsR4Q_WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T23:08:15Z",
       "status": "completed"
+    },
+    {
+      "video_id": "jf9AuGe0rUA",
+      "title": "Comment générer des images au format panoramique avec Nano Banana (3 astuces et conseils indispensables)",
+      "raw_title": "How to Generate Widescreen Images with Nano Banana (3 Essential Tips & Tricks)",
+      "filename_md": "2025-09-11_YT-jf9AuGe0rUA_Comment générer des images au format panoramique avec Nano Banana (3 astuces et _by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-09-11_YT-jf9AuGe0rUA_Comment générer des images au format panoramique avec Nano Banana (3 astuces et _by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-09-11",
+      "duration": 720,
+      "screenshots_count": 41,
+      "filepath_md": "/root/YT_JackVsAI/2025-09-11_YT-jf9AuGe0rUA_Comment générer des images au format panoramique avec Nano Banana (3 astuces et _by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-09-11_YT-jf9AuGe0rUA_Comment générer des images au format panoramique avec Nano Banana (3 astuces et _by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T23:24:18Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 52,
+  "completed_count": 53,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T22:00:04Z"
