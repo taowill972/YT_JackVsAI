@@ -36,7 +36,8 @@
     "tqZ0JuUevwA",
     "FLQxZ0zrNII",
     "xaQNxC1BTHw",
-    "MwftLxzEXk0"
+    "MwftLxzEXk0",
+    "INphz5q2Zrs"
   ],
   "processed_videos": [
     {
@@ -556,9 +557,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-01-18_YT-MwftLxzEXk0_La NOUVELLE méthode pour créer des films cinématographiques avec l'IA (La méthod_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T05:27:45Z",
       "status": "completed"
+    },
+    {
+      "video_id": "INphz5q2Zrs",
+      "title": "Créer des bandes-annonces de films par IA (WORKFLOW GRATUIT)",
+      "raw_title": "How to Create Movie Concept Trailers with AI (FREE WORKFLOW)",
+      "filename_md": "2026-01-08_YT-INphz5q2Zrs_Créer des bandes-annonces de films par IA (WORKFLOW GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-01-08_YT-INphz5q2Zrs_Créer des bandes-annonces de films par IA (WORKFLOW GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-01-08",
+      "duration": 1048,
+      "screenshots_count": 85,
+      "filepath_md": "/root/YT_JackVsAI/2026-01-08_YT-INphz5q2Zrs_Créer des bandes-annonces de films par IA (WORKFLOW GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-01-08_YT-INphz5q2Zrs_Créer des bandes-annonces de films par IA (WORKFLOW GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T05:40:33Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 37,
+  "completed_count": 38,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T04:00:03Z"
