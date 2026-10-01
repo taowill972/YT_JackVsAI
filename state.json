@@ -48,7 +48,8 @@
     "keT_ywKa_lM",
     "924pAFyrYIE",
     "4ZISxAzXKj0",
-    "pE-f_SusfsU"
+    "pE-f_SusfsU",
+    "Bcyx6Gq8WjI"
   ],
   "processed_videos": [
     {
@@ -736,9 +737,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-10-28_YT-pE-f_SusfsU_Nano Banana vient-il de PERDRE ! (Higgsfield Popcorn est ARRIVÉ)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T22:25:21Z",
       "status": "completed"
+    },
+    {
+      "video_id": "Bcyx6Gq8WjI",
+      "title": "VEO 3.1 vs SORA 2 : Quel modèle vidéo IA l'emporte ?",
+      "raw_title": "VEO 3.1 vs. SORA 2 (Which AI Video Model Wins?)",
+      "filename_md": "2025-10-19_YT-Bcyx6Gq8WjI_VEO 3.1 vs SORA 2 Quel modèle vidéo IA l'emporte_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-10-19_YT-Bcyx6Gq8WjI_VEO 3.1 vs SORA 2 Quel modèle vidéo IA l'emporte_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-10-19",
+      "duration": 1132,
+      "screenshots_count": 110,
+      "filepath_md": "/root/YT_JackVsAI/2025-10-19_YT-Bcyx6Gq8WjI_VEO 3.1 vs SORA 2 Quel modèle vidéo IA l'emporte_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-10-19_YT-Bcyx6Gq8WjI_VEO 3.1 vs SORA 2 Quel modèle vidéo IA l'emporte_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T22:43:04Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 49,
+  "completed_count": 50,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T22:00:04Z"
