@@ -35,7 +35,8 @@
     "TKkg-8P7jTM",
     "tqZ0JuUevwA",
     "FLQxZ0zrNII",
-    "xaQNxC1BTHw"
+    "xaQNxC1BTHw",
+    "MwftLxzEXk0"
   ],
   "processed_videos": [
     {
@@ -541,9 +542,23 @@
       "filepath_html": "/root/YT_JackVsAI/2026-01-25_YT-xaQNxC1BTHw_Créer des publicités animées prêtes pour la télé avec l'IA — Le guide ultime_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T05:11:00Z",
       "status": "completed"
+    },
+    {
+      "video_id": "MwftLxzEXk0",
+      "title": "La NOUVELLE méthode pour créer des films cinématographiques avec l'IA (La méthode grille 2x2)",
+      "raw_title": "The NEW Way to Create Cinematic Films with AI (2x2 Grid Method)",
+      "filename_md": "2026-01-18_YT-MwftLxzEXk0_La NOUVELLE méthode pour créer des films cinématographiques avec l'IA (La méthod_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2026-01-18_YT-MwftLxzEXk0_La NOUVELLE méthode pour créer des films cinématographiques avec l'IA (La méthod_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2026-01-18",
+      "duration": 1381,
+      "screenshots_count": 96,
+      "filepath_md": "/root/YT_JackVsAI/2026-01-18_YT-MwftLxzEXk0_La NOUVELLE méthode pour créer des films cinématographiques avec l'IA (La méthod_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2026-01-18_YT-MwftLxzEXk0_La NOUVELLE méthode pour créer des films cinématographiques avec l'IA (La méthod_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T05:27:45Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 36,
+  "completed_count": 37,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T04:00:03Z"
