@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `44 / 59` (`74.6%`)
+- **Vidéos traitées** : `45 / 59` (`76.3%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -60,6 +60,7 @@
 | 2025-11-27 | [Comment créer des VFX époustouflants avec l'IA](2025-11-27_YT-Uf31kIa5HSM_Comment créer des VFX époustouflants avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-11-27_YT-Uf31kIa5HSM_Comment créer des VFX époustouflants avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 21m 11s | `116 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=Uf31kIa5HSM) | `Uf31kIa5HSM` |
 | 2025-11-21 | [Comment utiliser Nano Banana PRO — c’est DINGUE](2025-11-21_YT-C_iQeGmS9z8_Comment utiliser Nano Banana PRO — c’est DINGUE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-11-21_YT-C_iQeGmS9z8_Comment utiliser Nano Banana PRO — c’est DINGUE_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 22s | `86 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=C_iQeGmS9z8) | `C_iQeGmS9z8` |
 | 2025-11-17 | [Comment créer des pubs TV PREMIUM avec l'IA (CHANGEMENT DE RÈGLE DU JEU)](2025-11-17_YT-tlNeoxDZwFY_Comment créer des pubs TV PREMIUM avec l'IA (CHANGEMENT DE RÈGLE DU JEU)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-11-17_YT-tlNeoxDZwFY_Comment créer des pubs TV PREMIUM avec l'IA (CHANGEMENT DE RÈGLE DU JEU)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 32m 37s | `140 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=tlNeoxDZwFY) | `tlNeoxDZwFY` |
+| 2025-11-11 | [Comment utiliser Midjourney GRATUITEMENT (non, c'est vraiment vrai)](2025-11-11_YT-n_la3L1d0Cc_Comment utiliser Midjourney GRATUITEMENT (non, c'est vraiment vrai)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-11-11_YT-n_la3L1d0Cc_Comment utiliser Midjourney GRATUITEMENT (non, c'est vraiment vrai)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 11m 42s | `73 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=n_la3L1d0Cc) | `n_la3L1d0Cc` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*

@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment utiliser Midjourney GRATUITEMENT (non, c&#x27;est vraiment vrai) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment utiliser Midjourney GRATUITEMENT (non, c&#x27;est vraiment vrai)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-11-11</span>
+                <span class="badge">⏱️ 11m 42s</span>
+                <span class="badge">🆔 <code>n_la3L1d0Cc</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@JackVsAI" target="_blank" class="badge">📺 Jack Vs. AI</a>
+                <a href="https://www.youtube.com/watch?v=n_la3L1d0Cc" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                <p>Dans cette vidéo, Jack, ancien artiste VFX chevronné, lève le voile sur une faille stratégique majeure de l'écosystème de l'intelligence artificielle générative : l'accès totalement gratuit et potentiellement illimité aux moteurs de pointe de Midjourney directement via la plateforme **Meta AI**. Alors que Midjourney est traditionnellement réputé pour sa tarification payante et son style visuel distinctif ultra-perfectionné, Meta intègre ses capacités technologiques de pointe au sein de sa propre interface grand public. Jack démontre à travers une méthodologie rigoureuse — comparant prompt par prompt les résultats obtenus sur les deux interfaces — qu'il s'agit bel et bien du même outil, tant la signature esthétique et les paramètres de personnalisation sont rigoureusement identiques.</p><p>La démarche de Jack s'articule autour d'une expérimentation comparative et d'une mise à l'épreuve intensive des limites de la plateforme. En testant des univers visuels variés (du chat de nuages fantastique au chevalier en armure holographique), il valide non seulement la parité de qualité des images fixes, mais explore également des fonctionnalités exclusives à Meta AI, telles que le « Restyle » (restructuration) et les options d'animation vidéo intégrées. En spammant volontairement les requêtes pour tenter de déclencher un "paywall" ou un verrouillage de quota, il prouve que l'outil reste accessible sans contrepartie financière immédiate, ouvrant des perspectives inédites pour la publicité par IA et la réalisation de films à budget zéro.</p><p>Pour les créateurs de contenu, les réalisateurs et les professionnels de la publicité, cette découverte constitue une opportunité en or massif. Ce workflow gratuit démocratise l'accès à la direction artistique haut de gamme de Midjourney tout en éliminant les frictions techniques grâce à des fonctionnalités d'animation textuelle et par défaut ultra-rapides. La possibilité d'itérer à l'infini sur des formats d'image variés (notamment le 9x16 idéal pour les réseaux sociaux) et de transformer instantanément des images fixes en séquences animées fluides redéfinit les standards de la production visuelle agile et économique.</p>
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Midjourney</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>Accès gratuit aux moteurs payants** : Exploiter Meta AI permet de contourner l&#x27;abonnement payant de Midjourney tout en bénéficiant de la même qualité de rendu visuel et de la même signature esthétique caractéristique.</span></li><li><span class="point-bullet">✦</span><span>Parité visuelle confirmée** : Les tests comparatifs en direct prouvent que les prompts textuels lancés simultanément sur Midjourney et Meta AI produisent des résultats quasi-identiques, confirmant l&#x27;intégration des mêmes modèles sous-jacents.</span></li><li><span class="point-bullet">✦</span><span>Paramètres esthétiques avancés** : L&#x27;interface Meta AI conserve les réglages de personnalisation emblématiques de Midjourney, permettant d&#x27;ajuster précisément la stylisation, l&#x27;étrangeté et la variété.</span></li><li><span class="point-bullet">✦</span><span>Gestion des formats d&#x27;image** : La plateforme permet de sélectionner directement le ratio d&#x27;affichage (comme le 9x16), facilitant la création de contenus natifs pour les formats verticaux (Reels, TikTok, Shorts).</span></li><li><span class="point-bullet">✦</span><span>Fonctionnalité « Restyle » (Restructuration)** : Cet outil exclusif à Meta AI permet de transformer radicalement une image existante en modifiant son style artistique (ex. : effet papier ou rendu lumineux) tout en conservant la composition de référence.</span></li><li><span class="point-bullet">✦</span><span>Absence apparente de limites (Paywall)** : Les tests de stress intensifs réalisés par Jack (spam de prompts en rafale) démontrent qu&#x27;il est possible de générer un volume massif d&#x27;images et de vidéos sans se heurter à une barrière de paiement.</span></li><li><span class="point-bullet">✦</span><span>Génération de vidéo intégrée** : En un seul clic, l&#x27;interface permet de basculer de l&#x27;image fixe à la vidéo grâce à une option d&#x27;animation par défaut rapide et intuitive.</span></li><li><span class="point-bullet">✦</span><span>Animation personnalisée par prompt** : Il est possible de sur-guider le mouvement vidéo en entrant des directives textuelles spécifiques, comme un « mouvement de caméra avant lent », pour un contrôle cinématographique accru.</span></li><li><span class="point-bullet">✦</span><span>Expérience utilisateur et fluidité** : Contrairement à Midjourney où les générations s&#x27;affichent en direct sous les yeux, Meta AI grise temporairement les vignettes pendant le calcul, nécessitant un court instant de patience avant l&#x27;apparition du résultat final.</span></li><li><span class="point-bullet">✦</span><span>Workflow d&#x27;animation en masse** : L&#x27;approche stratégique recommandée pour maximiser la productivité consiste à enchaîner l&#x27;animation automatique de tous les visuels forts générés (comme les concepts de type super-héros ou cyberpunk) afin d&#x27;identifier rapidement les pépites exploitables pour un montage final.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:34</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si je vous disais que dès maintenant vous pouvez générer des images et des vidéos sur Midjourney sans dépenser un seul centime ? Nous parlons de l&#x27;un des outils les plus puissants de l&#x27;espace de l&#x27;IA générative, avec un style incroyablement distinctif, parfait à la fois pour la publicité par IA et la réalisation de films. Midjourney n&#x27;est pas bon marché et pour de bonnes raisons, mais en ce moment, vous pouvez utiliser l&#x27;outil de façon totalement gratuite. Et dans cette vidéo, je vais vous montrer comment. Je suis Jack, j&#x27;ai été artiste VFX dans l&#x27;industrie publicitaire pendant plus d&#x27;une décennie et j&#x27;ai travaillé pour bon nombre des plus grandes marques de la planète. En toute franchise, j&#x27;ai été</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation avec animations textuelles et extraits visuels cinématiques générés par IA (illustrations de type Midjourney), sans affichage d&#x27;interface logicielle ni de démonstration technique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Affichage de sous-titres animés au centre de l&#x27;écran accompagnant la voix off (&quot;you can generate images&quot;, &quot;with an incredibly&quot;, &quot;And in this video,&quot;, &quot;biggest brands&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Défilement de visuels artistiques générés par IA (personnage dans un paysage de science-fiction rouge, silhouette devant une porte lumineuse, créature mécatronique dans les nuages) illustrant le style cinématique de Midjourney.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:34 - 00:01:01</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">obsédé par mid journey pendant un temps fou alors quand j&#x27;ai entendu cette nouvelle j&#x27;ai dû me connecter en ligne dès que possible et aller voir ça et les gars si vous appréciez la vidéo d&#x27;aujourd&#x27;hui assurez-vous de lâcher un pouce bleu pour moi pensez à vous abonner et bien sûr à activer cette cloche de notification d&#x27;accord passons directement aux choses sérieuses nous voici donc sur meta.ai littéralement tout ce que j&#x27;ai fait c&#x27;est m&#x27;inscrire gratuitement et j&#x27;ai généré juste une série d&#x27;images juste pour m&#x27;assurer que tout fonctionnait correctement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Meta AI (meta.ai), avec un panneau latéral d&#x27;historique à gauche et la zone de génération d&#x27;images au centre. Le créateur est visible en incrustation vidéo (PiP) dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte visible dans l&#x27;interface Meta AI : &quot;Describe your image&quot;, boutons &quot;Create&quot;, &quot;Image&quot;, &quot;16:9&quot;, &quot;Aesthetic&quot;, et un prompt de conception de personnage incluant les termes &quot;full body concept cartoon character design of a space mechanic with long dark hair...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue sur l&#x27;interface web de Meta AI et montre les images générées de concepts de personnages.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_001_00-00-52.jpg" alt="Interface du site Meta AI affichant des grilles d&#x27;images de personnages de style cartoon dans le navigateur, avec la webcam du créateur incrustée en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_001_00-00-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:52</span>
+                        <span class="caption-text">Interface du site Meta AI affichant des grilles d&#x27;images de personnages de style cartoon dans le navigateur, avec la webcam du créateur incrustée en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_002_00-00-59.jpg" alt="Gros plan sur la partie inférieure de l&#x27;interface de Meta AI et la webcam du créateur en incrustation." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_002_00-00-59.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:59</span>
+                        <span class="caption-text">Gros plan sur la partie inférieure de l&#x27;interface de Meta AI et la webcam du créateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:01 - 00:01:34</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc vous allez vraiment découvrir cette plateforme avec moi pour la première fois. Je n&#x27;ai aucune idée de ce à quoi m&#x27;attendre. Maintenant, évidemment, j&#x27;ai entendu dire qu&#x27;il y avait une sorte de partenariat entre Meta et Midjourney, et qu&#x27;essentiellement, en ce moment, si vous allez sur la plateforme Meta, vous pouvez accéder à l&#x27;outil Midjourney en termes d&#x27;images et de vidéos par IA sans dépenser le moindre centime. Donc, essentiellement, le plan pour la vidéo d&#x27;aujourd&#x27;hui, c&#x27;est qu&#x27;on va simplement tester toute une charge de prompts textuels différents. On commencera par la génération d&#x27;images, puis on passera à l&#x27;animation de ces images également. On va aussi comparer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de Meta AI (meta.ai/imagine) affichée en plein écran avec les résultats de génération d&#x27;images et le créateur en incrustation vidéo (PiP) dans le coin inférieur gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;A full body concept cartoon drawing of a man handsome with long dark shadow hair and...&quot; et la barre de saisie &quot;Describe your image...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface de Meta AI sur son écran tout en parlant à la caméra dans l&#x27;encadré PiP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_003_00-01-03.jpg" alt="Interface de Meta AI montrant des feuilles de style de personnage générées par IA avec le créateur en incrustation vidéo (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_003_00-01-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:03</span>
+                        <span class="caption-text">Interface de Meta AI montrant des feuilles de style de personnage générées par IA avec le créateur en incrustation vidéo (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_004_00-01-23.jpg" alt="Gros plan sur l&#x27;interface de Meta AI avec le panneau de prompt textuel et le créateur parlant en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_004_00-01-23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:23</span>
+                        <span class="caption-text">Gros plan sur l&#x27;interface de Meta AI avec le panneau de prompt textuel et le créateur parlant en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:34 - 00:01:54</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">nos générations aux résultats de Midjourney pour essayer de déterminer s&#x27;il s&#x27;agit définitivement du même outil exact. Je pense que c&#x27;est probablement le cas d&#x27;après ce que j&#x27;ai vu et, très important, nous verrons s&#x27;il y a un quelconque limite à la quantité de générations que nous pouvons récupérer en termes d&#x27;image et de vidéo. D&#x27;accord, nous avons donc déposé notre premier prompt textuel dans ce champ au bas de la page.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération d&#x27;images par IA avec panneau latéral de navigation, zone de prévisualisation des grilles d&#x27;images et champ de saisie de prompt en bas de page.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &quot;A lone woman in a tattered tech-jacket tends to glowing fruit growing from metallic vines in a ruined orchard. Rusted drones buzz softly above as neon mist drifts between twisted trees that pulse faintly with bioelectric light. The sky burns a deep magenta as old satellites blink overhead. Photoreal: ultra detailed skin texture, visible pores, cinematic composition, harsh shadows, shallow depth of field.&quot; Paramètres visibles : icône &quot;+&quot; pour l&#x27;ajout, mode &quot;Create&quot;, option &quot;Image&quot;, ratio &quot;16:9&quot;, et menu &quot;Aesthetics&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente l&#x27;interface de l&#x27;outil de génération d&#x27;images, montre des exemples de concepts générés, puis zoome sur la zone de saisie du prompt textuel en bas de page pour rédiger et insérer sa première requête.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_005_00-01-36.jpg" alt="Interface de l&#x27;outil de génération affichant des grilles de personnages de type dessin animé (concept art) avec différentes vues et gros plans, tandis que le présentateur apparaît en incrustation vidéo (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_005_00-01-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:36</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération affichant des grilles de personnages de type dessin animé (concept art) avec différentes vues et gros plans, tandis que le présentateur apparaît en incrustation vidéo (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_006_00-01-52.jpg" alt="Gros plan sur la zone de saisie du prompt textuel montrant un texte détaillé de génération décrivant une femme solitaire et des drones dans un verger en ruine, avec des paramètres de style et de format (16:9, Photoreal)." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_006_00-01-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:52</span>
+                        <span class="caption-text">Gros plan sur la zone de saisie du prompt textuel montrant un texte détaillé de génération décrivant une femme solitaire et des drones dans un verger en ruine, avec des paramètres de style et de format (16:9, Photoreal).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:54 - 00:02:14</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez voir qu&#x27;il y a une option pour ajouter des médias. Je suppose que c&#x27;est pour servir de sorte d&#x27;image de référence. Nous pouvons choisir entre générer des images et des vidéos. Nous pouvons sélectionner notre format d&#x27;image. C&#x27;est évidemment incroyablement pratique aussi. Et puis, quand on arrive aux paramètres d&#x27;esthétique, c&#x27;est là qu&#x27;il devient assez clair qu&#x27;il s&#x27;agit de Midjourney.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération par IA montrant une zone de texte pour le prompt, des options de format et des paramètres esthétiques.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt en anglais : &quot;A lone woman in a tattered tech-jacket tends to glowing fruit growing from metallic vines in a ruined orchard...&quot;. Boutons visibles : &quot;Add media&quot;, &quot;Create&quot;, option &quot;Image&quot;, format &quot;16:9&quot;, et &quot;Aesthetics&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole le bouton &quot;+&quot; pour &quot;Add media&quot; sous la boîte de texte.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_007_00-01-56.jpg" alt="Interface de génération textuelle avec le bouton d&#x27;ajout de média, les options de sélection d&#x27;image/vidéo et de format 16:9." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_007_00-01-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:56</span>
+                        <span class="caption-text">Interface de génération textuelle avec le bouton d&#x27;ajout de média, les options de sélection d&#x27;image/vidéo et de format 16:9.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:14 - 00:02:47</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">parce que si je vais sur Midjourney et que j&#x27;accède aux paramètres dans cet onglet d&#x27;esthétique, nous avons la stylisation, l&#x27;étrangeté et la variété, et de retour sur Meta, ouvrons le même onglet variété, étrangeté, stylisation. Très bien, allons-y pour générer ceci et déposons également le même prompt dans Midjourney lui-même et cliquons sur générer et voyons ce que nous obtenons en retour afin d&#x27;avoir un très bon point de comparaison. Donc ici nous avons de retour nos générations de Meta. Ouais, elles sont plutôt moyennes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant les interfaces utilisateur de Midjourney et de Meta AI, avec un flux vidéo incrusté (PiP) montrant le présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts textuels de génération d&#x27;images, curseurs de réglages esthétiques (variability, weirdness, stylization) et aperçus d&#x27;images générées par IA (personnages, décors, guépard barman).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue entre les plateformes Midjourney et Meta AI pour comparer les fonctionnalités de réglage esthétique et lancer de nouvelles générations d&#x27;images.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_008_00-02-16.jpg" alt="Interface de Midjourney affichant une grille d&#x27;images générées et le panneau de réglages esthétiques avec incrustation vidéo du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_008_00-02-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:16</span>
+                        <span class="caption-text">Interface de Midjourney affichant une grille d&#x27;images générées et le panneau de réglages esthétiques avec incrustation vidéo du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_009_00-02-26.jpg" alt="Interface de Meta AI affichant des images conceptuelles d&#x27;un personnage en veste rouge et le panneau des paramètres esthétiques ouvert." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_009_00-02-26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:26</span>
+                        <span class="caption-text">Interface de Meta AI affichant des images conceptuelles d&#x27;un personnage en veste rouge et le panneau des paramètres esthétiques ouvert.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_010_00-02-36.jpg" alt="Interface de Midjourney montrant la génération en cours de nouvelles images avec des vignettes floutées (chargement) au-dessus des images d&#x27;un guépard au bar." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_010_00-02-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:36</span>
+                        <span class="caption-text">Interface de Midjourney montrant la génération en cours de nouvelles images avec des vignettes floutées (chargement) au-dessus des images d&#x27;un guépard au bar.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_011_00-02-45.jpg" alt="Interface de Meta AI montrant des grilles d&#x27;images aux tons violets et roses, et le panneau inférieur de génération et d&#x27;esthétique." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_011_00-02-45.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:45</span>
+                        <span class="caption-text">Interface de Meta AI montrant des grilles d&#x27;images aux tons violets et roses, et le panneau inférieur de génération et d&#x27;esthétique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:47 - 00:03:06</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voyage pour moi. J&#x27;adore absolument celui-ci. Midjourney a vraiment ce style très spécifique qui est tout simplement inconfundible, vraiment. Retournons sur Midjourney. Et encore une fois, ouais, je veux dire, ça a l&#x27;air plutôt similaire pour moi. Donc vraiment de superbes et solides générations ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface officielle de Midjourney (ou Meta AI selon l&#x27;URL visible) avec un panneau latéral de prompts et d&#x27;options, ainsi qu&#x27;un encadré PiP (Picture-in-Picture) montrant Jack en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif visible dans le panneau latéral droit : &quot;A lone woman in a tattered tech-jacket stands in glowing fruit growing from metallic vines in a surreal orchard...&quot; et divers paramètres de génération d&#x27;images par IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface de Midjourney et commente la qualité visuelle et le style caractéristique des images générées par l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_012_00-02-49.jpg" alt="Interface de l&#x27;application Midjourney affichant une grille de générations d&#x27;images avec des paysages fantastiques en tons magenta et des planches de personnages, avec la caméra PiP du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_012_00-02-49.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:49</span>
+                        <span class="caption-text">Interface de l&#x27;application Midjourney affichant une grille de générations d&#x27;images avec des paysages fantastiques en tons magenta et des planches de personnages, avec la caméra PiP du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_013_00-02-56.jpg" alt="Navigation sur l&#x27;interface web de Midjourney montrant différentes grilles de générations d&#x27;images générées par IA avec les prompts textuels associés dans le panneau latéral droit." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_013_00-02-56.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:56</span>
+                        <span class="caption-text">Navigation sur l&#x27;interface web de Midjourney montrant différentes grilles de générations d&#x27;images générées par IA avec les prompts textuels associés dans le panneau latéral droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_014_00-03-04.jpg" alt="Vue détaillée d&#x27;une image générée sur l&#x27;interface de Midjourney représentant un personnage solitaire sous des arbres fantastiques luminescents, avec le panneau d&#x27;options et de prompts à droite." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_014_00-03-04.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:04</span>
+                        <span class="caption-text">Vue détaillée d&#x27;une image générée sur l&#x27;interface de Midjourney représentant un personnage solitaire sous des arbres fantastiques luminescents, avec le panneau d&#x27;options et de prompts à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:06 - 00:03:39</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très visuellement marquant. En restant dans l&#x27;ambiance des générations un peu bizarre, je veux essayer un chat fait de nuages se prélassant sur le sommet d&#x27;une montagne, son corps se fondant dans le ciel, de minuscules villages en contrebas, à la fois fantaisiste et grandiose. Faisons générer ça et retournons encore une fois sur Midjourney et cliquons sur générer pour celui-là. Donc nous avons presque terminé notre génération Midjourney. Oh, nous avons Meta de retour également et encore une fois ouais c&#x27;est le même outil les gars, je pense qu&#x27;on peut confirmer sans risque que c&#x27;est le même.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant les interfaces de Meta AI (meta.ai/media) et de Midjourney (midjourney.com), avec une incrustation vidéo (PiP) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sur l&#x27;image 1, l&#x27;interface Meta AI présente des concepts de personnages et des paysages mystiques roses. Sur l&#x27;image 2, la grille supérieure affiche le prompt du chat en nuages : &quot;A cat made of clouds lounging on a mountaintop, its body blending into the sky, tiny villages below, whimsical yet grand.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue entre les différentes plateformes de génération d&#x27;images par IA (Meta AI et Midjourney) pour comparer les résultats et démontrer l&#x27;utilisation des outils.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_015_00-03-08.jpg" alt="Interface de Meta AI montrant des grilles d&#x27;images générées avec le créateur visible en incrustation PiP dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_015_00-03-08.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:08</span>
+                        <span class="caption-text">Interface de Meta AI montrant des grilles d&#x27;images générées avec le créateur visible en incrustation PiP dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_016_00-03-28.jpg" alt="Interface de Midjourney affichant les résultats de la génération du chat fait de nuages sur une montagne, avec le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_016_00-03-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:28</span>
+                        <span class="caption-text">Interface de Midjourney affichant les résultats de la génération du chat fait de nuages sur une montagne, avec le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:39 - 00:04:15</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">outil essayons un renard robotique sprintant à travers des toits la skyline de la ville derrière lui flou de mouvement et reflet d&#x27;objectif composition photo réaliste cinématique lançons celui-ci et encore une fois comme si nous avions besoin d&#x27;une autre comparaison mettons-le simplement sur mid-journey de toute façon la seule différence que je peux dire jusqu&#x27;à présent c&#x27;est qu&#x27;avec mid-journey vous pouvez réellement voir vos générations prendre vie en quelque sorte sous vos yeux mais sur meta cela semble en quelque sorte être grisé pendant un petit moment pendant que ça génère et vous êtes assis là à vous demander si ça fonctionne mais finalement voilà ça apparaît après un certain temps et ouais</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Meta AI (et de Midjourney) avec un affichage Picture-in-Picture (PiP) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : « A robotic fox sprinting across rooftops, city skyline behind it, motion blur and lens flare. Photo-real, cinematic composition. » Paramètres 16:9 visibles.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue et compare les interfaces de génération vidéo/image entre Meta AI et Midjourney, montrant le processus de génération des différentes requêtes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_017_00-03-41.jpg" alt="Interface de Meta AI montrant la grille de générations d&#x27;images avec le prompt du renard robotique et la vidéo du chat nuageux." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_017_00-03-41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:41</span>
+                        <span class="caption-text">Interface de Meta AI montrant la grille de générations d&#x27;images avec le prompt du renard robotique et la vidéo du chat nuageux.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_018_00-03-51.jpg" alt="Interface de Midjourney affichant les grilles de résultats pour le chat nuageux et les paysages fantastiques roses." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_018_00-03-51.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:51</span>
+                        <span class="caption-text">Interface de Midjourney affichant les grilles de résultats pour le chat nuageux et les paysages fantastiques roses.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_019_00-04-03.jpg" alt="Interface de Midjourney montrant la génération en cours du renard robotique courant sur les toits avec flou de mouvement." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_019_00-04-03.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:03</span>
+                        <span class="caption-text">Interface de Midjourney montrant la génération en cours du renard robotique courant sur les toits avec flou de mouvement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_020_00-04-13.jpg" alt="Interface de Meta AI affichant l&#x27;apparition finale de la vidéo du renard robotique générée sur les toits de la ville." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_020_00-04-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:13</span>
+                        <span class="caption-text">Interface de Meta AI affichant l&#x27;apparition finale de la vidéo du renard robotique générée sur les toits de la ville.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:15 - 00:04:48</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">une fois de plus des générations très très similaires donc en fait quand on clique sur une génération on a quelques options différentes ici aussi. Évidemment on peut aller modifier le prompt textuel mais ce qui est vraiment intéressant c&#x27;est qu&#x27;on a aussi cette fonctionnalité de restructuration ou restyle. Maintenant vous pouvez me corriger si je me trompe mais je ne crois pas qu&#x27;on ait ça dans mid-journey. Donc je suis vraiment intéressé par cette fonctionnalité. Essayons de changer ceci en papier. Donc ça va nous générer quatre images maintenant évidemment basé sur</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface Web de Midjourney avec barre de recherche, menus de navigation (Explore, Create, Edit, Personas, Moodboards, Organize, Chat, Tasks) et panneau latéral de personnalisation et de style.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt visible : &#x27;A cat made of clouds lounging on a mountaintop, its body blending into the sky, tiny villages below, whimsical yet grand.&#x27; Options &#x27;Image prompt&#x27; et section &#x27;Restyle&#x27; avec vignettes de styles visuels variés.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface, explore les options de génération, zoome sur une image spécifique de chat nuageux et examine le panneau de restylage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_021_00-04-17.jpg" alt="Interface du site Web de Midjourney affichant une grille d&#x27;images générées par IA et une vue PiP du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_021_00-04-17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:17</span>
+                        <span class="caption-text">Interface du site Web de Midjourney affichant une grille d&#x27;images générées par IA et une vue PiP du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_022_00-04-27.jpg" alt="Gros plan sur le panneau latéral de l&#x27;interface montrant les options de prompt d&#x27;image et la fonctionnalité Restyle avec différentes vignettes de style." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_022_00-04-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:27</span>
+                        <span class="caption-text">Gros plan sur le panneau latéral de l&#x27;interface montrant les options de prompt d&#x27;image et la fonctionnalité Restyle avec différentes vignettes de style.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_023_00-04-38.jpg" alt="Vue détaillée de l&#x27;image sélectionnée représentant un chat géant endormi sur des nuages au-dessus d&#x27;un village de montagne, avec le panneau de configuration à droite." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_023_00-04-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:38</span>
+                        <span class="caption-text">Vue détaillée de l&#x27;image sélectionnée représentant un chat géant endormi sur des nuages au-dessus d&#x27;un village de montagne, avec le panneau de configuration à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_024_00-04-46.jpg" alt="Retour à la vue d&#x27;ensemble de la grille d&#x27;images sur l&#x27;interface de Midjourney montrant de nouvelles variantes de génération en cours." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_024_00-04-46.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:46</span>
+                        <span class="caption-text">Retour à la vue d&#x27;ensemble de la grille d&#x27;images sur l&#x27;interface de Midjourney montrant de nouvelles variantes de génération en cours.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:48 - 00:05:25</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">cette image de référence ici dans un style de type papier. Alors ouais, voyons ce qu&#x27;on obtient en retour. Ouais, regardez ça. Il a fait un travail vraiment, vraiment formidable. Essayons ce prochain prompt textuel maintenant. Un ancien chevalier avec une armure holographique, mélangeant design médiéval et futuriste, éclairage à fort contraste, style art conceptuel. Et pour vous dire quoi, allons-y et faisons de ceci une génération 9x16 pour obtenir un peu plus de variation là-dedans. D&#x27;accord, un tas de superbes générations encore une fois. Je veux juste essayer Restyle. Je vais opter pour Glowy cette fois. Voyons si on peut obtenir</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Meta AI (ou outil de génération d&#x27;images similaire basé sur le web).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts visibles : « An ancient knight with holographic armor, blending medieval and futuristic design, high contrast lighting, concept art style. » Paramètres de format : 9x16. Option Restyle sélectionnée : Glowy.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface, entre un nouveau prompt textuel pour générer un chevalier en armure holographique, change le format d&#x27;image en 9x16 et explore la fonction Restyle avec l&#x27;option Glowy.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_025_00-04-50.jpg" alt="Interface de l&#x27;outil de génération d&#x27;images affichant le résultat au style papier avec un chat sur un village." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_025_00-04-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:50</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération d&#x27;images affichant le résultat au style papier avec un chat sur un village.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_026_00-05-01.jpg" alt="Affichage du panneau de saisie du prompt pour le chevalier ancien avec armure holographique." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_026_00-05-01.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:01</span>
+                        <span class="caption-text">Affichage du panneau de saisie du prompt pour le chevalier ancien avec armure holographique.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_027_00-05-13.jpg" alt="Interface montrant le changement de format en 9x16 pour la génération d&#x27;images." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_027_00-05-13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:13</span>
+                        <span class="caption-text">Interface montrant le changement de format en 9x16 pour la génération d&#x27;images.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_028_00-05-23.jpg" alt="Affichage du rendu final d&#x27;un chevalier en armure futuriste avec le panneau Restyle sur le côté droit." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_028_00-05-23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:23</span>
+                        <span class="caption-text">Affichage du rendu final d&#x27;un chevalier en armure futuriste avec le panneau Restyle sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:25 - 00:06:02</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">nous-mêmes un chevalier futuriste lumineux. C&#x27;est une génération de dingue, au fait. Regardez ça. Exactement ce qu&#x27;on voulait. Vraiment, vraiment cool. J&#x27;adore ça. Donc je vous dis quoi, allons complètement fous. Je vais spammer toute une charge de prompts textuels, lancer autant de générations que possible et je verrai si on atteint une quelconque limite de paiement. Bon, je viens de lancer tellement de générations que j&#x27;en ai déjà récupéré une tonne en fait, et je n&#x27;ai atteint aucune limite de paiement d&#x27;aucune sorte. La qualité de ces images est insensée.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Meta AI (meta.ai) avec un panneau latéral d&#x27;historique (« History », « New chat », « Vibes », « Create ») et une vue principale en grille ou de détail d&#x27;images générées. Le créateur est visible en incrustation (PiP) en bas à gauche de l&#x27;écran.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts textuels visibles dans l&#x27;historique et les panneaux latéraux : « Ancient knight concept art... », « Robotic fox in cityscape... », « Two street performers with cybernetic dress ring to a crowd of decaying androids... », « A person standing inside a futuristic futuristic library... ». Paramètres de format et d&#x27;esthétique visibles dans les barres de menu (« 16:9 », « Aesthetics », « Generate »).
+[DESC_IMAGE_1]</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue et commente l&#x27;image générée d&#x27;un chevalier au casque brillant tout en consultant l&#x27;interface sur son écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_029_00-05-27.jpg" alt="Interface du générateur d&#x27;images affichant le rendu détaillé d&#x27;un chevalier futuriste lumineux avec le créateur en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_029_00-05-27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:27</span>
+                        <span class="caption-text">Interface du générateur d&#x27;images affichant le rendu détaillé d&#x27;un chevalier futuriste lumineux avec le créateur en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_030_00-05-38.jpg" alt="Historique et galerie de générations d&#x27;images sur Meta AI montrant plusieurs variations de chevaliers futuristes." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_030_00-05-38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:38</span>
+                        <span class="caption-text">Historique et galerie de générations d&#x27;images sur Meta AI montrant plusieurs variations de chevaliers futuristes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_031_00-05-50.jpg" alt="Interface montrant la zone de saisie d&#x27;un nouveau prompt textuel complexe en bas de l&#x27;écran avec divers paramètres." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_031_00-05-50.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:50</span>
+                        <span class="caption-text">Interface montrant la zone de saisie d&#x27;un nouveau prompt textuel complexe en bas de l&#x27;écran avec divers paramètres.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_032_00-06-00.jpg" alt="Grille de résultats affichant de nouvelles générations artistiques et fantastiques générées en série." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_032_00-06-00.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:00</span>
+                        <span class="caption-text">Grille de résultats affichant de nouvelles générations artistiques et fantastiques générées en série.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:02 - 00:06:41</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il semble bien que nous ayons Midjourney à l&#x27;intérieur de la plateforme Meta AI en ce moment avec un usage illimité autant que je puisse dire, n&#x27;est-ce pas ? Bien sûr, la prochaine chose que nous voulons tester, c&#x27;est la génération de vidéo, et est-ce qu&#x27;on va se heurter à un quelconque mur payant avec ça ? Alors choisissons celle-ci ici et je viens juste de cliquer sur l&#x27;onglet d&#x27;animation et je suppose, oui, ça vient juste de remonter tout en haut de la page, donc c&#x27;est juste comme une option d&#x27;animation par défaut et vous pouvez voir que ça commence déjà à générer cette vidéo pour nous ici. Je crois que si on clique dedans par contre, on a un petit peu plus</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Meta AI (navigateur web) avec panneau latéral d&#x27;historique et de configuration d&#x27;image (Image prompt, Style, Edit image, onglets Animate et Custom animate).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Grilles d&#x27;images générées incluant des loups cybernétiques, des silhouettes devant une porte lumineuse, des astronautes et des personnages de type cyberpunk. Panneau latéral affichant des prompts textuels et des options de style.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface de Meta AI, sélectionne une image et clique sur l&#x27;onglet d&#x27;animation pour lancer la génération vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_033_00-06-04.jpg" alt="Interface de la plateforme Meta AI affichant des grilles d&#x27;images générées, avec un encadré vidéo du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_033_00-06-04.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:04</span>
+                        <span class="caption-text">Interface de la plateforme Meta AI affichant des grilles d&#x27;images générées, avec un encadré vidéo du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_034_00-06-16.jpg" alt="Navigation dans Meta AI montrant différentes grilles d&#x27;images de science-fiction et de paysages." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_034_00-06-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:16</span>
+                        <span class="caption-text">Navigation dans Meta AI montrant différentes grilles d&#x27;images de science-fiction et de paysages.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_035_00-06-29.jpg" alt="Grille d&#x27;images Meta AI montrant un astronaute sur une planète déserte et des scènes urbaines futuristes." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_035_00-06-29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:29</span>
+                        <span class="caption-text">Grille d&#x27;images Meta AI montrant un astronaute sur une planète déserte et des scènes urbaines futuristes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_036_00-06-39.jpg" alt="Interface de visualisation détaillée d&#x27;une image Meta AI avec un panneau latéral montrant les options de style et d&#x27;animation." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_036_00-06-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:39</span>
+                        <span class="caption-text">Interface de visualisation détaillée d&#x27;une image Meta AI avec un panneau latéral montrant les options de style et d&#x27;animation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:41 - 00:07:00</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">option. Ouais. Animation personnalisée. Donc on peut entrer un prompt textuel. Allons-y donc pour un style d&#x27;animation, un mouvement de caméra avant lent et cliquons simplement sur animer là. Et regardez, on a déjà récupéré cette génération de vidéo. C&#x27;était tellement rapide. Ouais, ça a l&#x27;air plutôt super pour moi aussi. Encore une autre ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Meta AI (meta.ai), avec un encadré vidéo PiP du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champ de texte pour le prompt d&#x27;animation, panneaux de contrôle latéraux avec options de style et de génération vidéo.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur démontre l&#x27;utilisation de l&#x27;option d&#x27;animation personnalisée en entrant un prompt textuel pour générer une vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_037_00-06-43.jpg" alt="Interface de Meta AI montrant l&#x27;option d&#x27;animation personnalisée avec un champ de saisie de texte pour décrire le mouvement." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_037_00-06-43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:43</span>
+                        <span class="caption-text">Interface de Meta AI montrant l&#x27;option d&#x27;animation personnalisée avec un champ de saisie de texte pour décrire le mouvement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_038_00-06-58.jpg" alt="Résultat de la génération vidéo sur Meta AI montrant des personnages s&#x27;affairant dans un décor rouge et ténébreux." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_038_00-06-58.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:58</span>
+                        <span class="caption-text">Résultat de la génération vidéo sur Meta AI montrant des personnages s&#x27;affairant dans un décor rouge et ténébreux.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:00 - 00:07:24</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et vous pouvez voir qu&#x27;une fois de plus, nous avons toutes ces options de redémarrage disponibles pour nous également. Alors, est-ce qu&#x27;on peut transformer ça en anime ? Et est-ce que ça va ensuite, ouais, générer de la vidéo ? On va récupérer une vidéo d&#x27;anime apparemment. Je suppose qu&#x27;on va simplement faire défiler et animer autant de ceux-ci que possible et voir si on se heurte à une sorte de péage payant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de génération vidéo par intelligence artificielle (style Luma Dream Machine ou similaire) avec panneau latéral de configuration et retour vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau latéral affichant &quot;Image prompt&quot;, &quot;Animation prompt&quot;, et une sélection de styles d&#x27;animation miniatures en bas à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface et examine les différentes options de styles pour animer les images générées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_039_00-07-02.jpg" alt="Interface d&#x27;un générateur vidéo montrant un astronaute agenouillé avec des éclairs et un panneau latéral de styles d&#x27;animation." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_039_00-07-02.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:02</span>
+                        <span class="caption-text">Interface d&#x27;un générateur vidéo montrant un astronaute agenouillé avec des éclairs et un panneau latéral de styles d&#x27;animation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_040_00-07-16.jpg" alt="Grille de miniatures de projets vidéo générés par IA dans l&#x27;interface de l&#x27;outil." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_040_00-07-16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:16</span>
+                        <span class="caption-text">Grille de miniatures de projets vidéo générés par IA dans l&#x27;interface de l&#x27;outil.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_041_00-07-22.jpg" alt="Vue d&#x27;ensemble de la bibliothèque de projets avec différentes scènes de science-fiction générées." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_041_00-07-22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:22</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de la bibliothèque de projets avec différentes scènes de science-fiction générées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:24 - 00:07:43</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais littéralement opter pour l&#x27;animation par défaut sans mettre de prompt textuel. Continuons à en envoyer le plus possible. Ce sont des images géniales qu&#x27;on a reçues, d&#x27;ailleurs. Elles sont incroyables, celles-ci. Est-ce qu&#x27;on devrait simplement animer chacune d&#x27;entre elles ? Je pense que ce serait impoli de ne pas le faire, non ? Ouais, on va t&#x27;animer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de génération et de galerie d&#x27;images par IA (style interface de type Midjourney / Meta AI), avec une vue en grille des créations et une barre de navigation latérale gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Galerie d&#x27;images générées par IA réparties en grilles, miniatures avec des options d&#x27;animation, barre de prompt en bas (« Describe your image... »), onglets de création, et un encadré vidéo du présentateur (Jack) en bas à gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue à travers différentes grilles d&#x27;images générées par intelligence artificielle et commente les visuels en vue de les animer.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_042_00-07-26.jpg" alt="Interface affichant une galerie d&#x27;images générées par IA sur le thème de paysages oniriques et désertiques avec des éoliennes, accompagnée d&#x27;une incrustation vidéo du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_042_00-07-26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:26</span>
+                        <span class="caption-text">Interface affichant une galerie d&#x27;images générées par IA sur le thème de paysages oniriques et désertiques avec des éoliennes, accompagnée d&#x27;une incrustation vidéo du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_043_00-07-33.jpg" alt="Interface présentant une grille d&#x27;images d&#x27;art génératif sur le thème aquatique et marin avec des créatures mystiques, aux tons bleus et luminescents." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_043_00-07-33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:33</span>
+                        <span class="caption-text">Interface présentant une grille d&#x27;images d&#x27;art génératif sur le thème aquatique et marin avec des créatures mystiques, aux tons bleus et luminescents.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_044_00-07-41.jpg" alt="Interface montrant des visuels de personnages et créatures fantastiques parmi les nuages, avec des structures architecturales futuristes." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_044_00-07-41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:41</span>
+                        <span class="caption-text">Interface montrant des visuels de personnages et créatures fantastiques parmi les nuages, avec des structures architecturales futuristes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:43 - 00:08:17</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ouais, on va opter pour ça. Oh, mec, je n&#x27;have même pas encore regardé tout ça. Animons simplement toutes ces images parce que c&#x27;est intéressant de faire des animations par défaut et de voir ce que l&#x27;outil en fait sans aucune direction. Un truc un peu plus réaliste ici, envoyons ceux-là aussi. Oh, c&#x27;est carrément Daredevil, non ? On dirait littéralement Daredevil, il faut qu&#x27;on anime Daredevil et celui-là aussi. J&#x27;adore cette génération, ouais, ça doit absolument être animé. Alors voilà notre mouvement de caméra travelling lent dans le style d&#x27;animation, un peu de ralentissement sur la lecture.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Meta AI (interface web de génération d&#x27;images et de vidéos avec affichage PiP du créateur).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Grilles d&#x27;images artistiques (méditation, danse lumineuse, personnages style Daredevil, armures de science-fiction), panneaux de prompts textuels, paramètres de style et options d&#x27;animation (slow dolly camera move).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans sa galerie d&#x27;images générées par IA, sélectionne des visuels à animer et lance la prévisualisation vidéo avec des mouvements de caméra cinématiques.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_045_00-07-45.jpg" alt="Interface du générateur Meta AI montrant une grille d&#x27;images générées par IA avec un encadré PiP du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_045_00-07-45.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:45</span>
+                        <span class="caption-text">Interface du générateur Meta AI montrant une grille d&#x27;images générées par IA avec un encadré PiP du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_046_00-07-55.jpg" alt="Grille d&#x27;images de danseurs fluorescents et personnages de type Daredevil dans une ruelle sombre sur l&#x27;interface Meta AI." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_046_00-07-55.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:55</span>
+                        <span class="caption-text">Grille d&#x27;images de danseurs fluorescents et personnages de type Daredevil dans une ruelle sombre sur l&#x27;interface Meta AI.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_047_00-08-06.jpg" alt="Grille d&#x27;images affichant des personnages en armure futuriste et des scènes de rue de type Daredevil." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_047_00-08-06.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:06</span>
+                        <span class="caption-text">Grille d&#x27;images affichant des personnages en armure futuriste et des scènes de rue de type Daredevil.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_048_00-08-15.jpg" alt="Fenêtre de prévisualisation vidéo de Meta AI montrant deux personnages casqués dans une rue cyberpunk avec les paramètres de prompt et de style à droite." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_048_00-08-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:15</span>
+                        <span class="caption-text">Fenêtre de prévisualisation vidéo de Meta AI montrant deux personnages casqués dans une rue cyberpunk avec les paramètres de prompt et de style à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:17 - 00:08:50</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">là-dedans, regardons ça à nouveau, ça a l&#x27;air plutôt bien. Oh, c&#x27;est le moment où on a restylisé ce plan en anime aussi, n&#x27;est-ce pas ? Encore une fois, un petit peu d&#x27;effet de distorsion qui se produit ici. Regardez celui-là, ça a l&#x27;air plutôt cool, on peut voir une sorte d&#x27;artefacts bizarres. Jetez un œil à ça, ouais, encore une fois, donc quand ces braises s&#x27;élèvent, elles ont en quelque sorte un effet bizarre sur notre personnage au premier plan là-bas, ce qui n&#x27;est pas vraiment ce que l&#x27;on veut. Cependant, très beau changement de focus là sur la parabole radar.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de génération de vidéo par IA avec panneau de configuration à droite (Image prompt, Animation prompt, Music, Extend animation, Restyle) et aperçu vidéo au centre.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneaux textuels avec des descriptions de prompts (&quot;A close up on sci-fi robot explorer...&quot;, &quot;A glamorous cyborg woman delivers a powerful emotion...&quot;), section de sélection de styles de type anime/illustrations.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue à travers différentes générations de vidéos IA, analysant les artefacts visuels, les distorsions et les transitions de mise au point (focus shift).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_049_00-08-19.jpg" alt="Interface du générateur vidéo montrant des personnages de type cyborg dans une rue urbaine de style cyberpunk avec les options de style anime sur le panneau latéral droit." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_049_00-08-19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:19</span>
+                        <span class="caption-text">Interface du générateur vidéo montrant des personnages de type cyborg dans une rue urbaine de style cyberpunk avec les options de style anime sur le panneau latéral droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_050_00-08-28.jpg" alt="Interface de génération montrant un plan sous-marin avec un scaphandrier explorant des structures aquatiques et des poissons." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_050_00-08-28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:28</span>
+                        <span class="caption-text">Interface de génération montrant un plan sous-marin avec un scaphandrier explorant des structures aquatiques et des poissons.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_051_00-08-39.jpg" alt="Gros plan sur un robot au premier plan avec une parabole radar en arrière-plan, illustrant les effets d&#x27;animation et de braises." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_051_00-08-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:39</span>
+                        <span class="caption-text">Gros plan sur un robot au premier plan avec une parabole radar en arrière-plan, illustrant les effets d&#x27;animation et de braises.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_052_00-08-48.jpg" alt="Zoom de la caméra effectuant un changement de focus sur la grande parabole radar recouverte de végétation." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_052_00-08-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:48</span>
+                        <span class="caption-text">Zoom de la caméra effectuant un changement de focus sur la grande parabole radar recouverte de végétation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:50 - 00:09:23</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est plutôt cool ouais regardez ce plan ici très très cool et bien sûr testons simplement en cliquant sur ce petit logo ici on vient juste de le télécharger donc ça sort en mp4 donc si on ouvre les propriétés de notre téléchargement et qu&#x27;on va dans les détails ça ressort en 832 par 464 c&#x27;est une résolution assez bizarre euh retournons sur Midjourney pour tester ça et je veux aller animer cette image particulière ici. Encore une fois, vous pouvez voir que sur Midjourney,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec interface de génération vidéo, lecteur multimédia Windows Media Player, fenêtre de propriétés Windows et interface de la galerie web de Midjourney.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts visibles sur l&#x27;interface vidéo : « A cybernetic monk kneels before a massive, ruined coated satellite dish... », propriétés vidéo Windows : Longueur 00:00:05, Largeur d&#x27;image 832, Hauteur d&#x27;image 464, Débit de données 14316 kbps, Fréquence d&#x27;images 24.00 images/seconde.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur démontre le téléchargement d&#x27;une vidéo générée, vérifie ses propriétés et sa résolution sur Windows, puis navigue sur l&#x27;interface de Midjourney pour choisir une image à animer.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_053_00-08-52.jpg" alt="Interface d&#x27;un générateur de vidéo par IA affichant un plan cinématique avec un moine et une structure de type antenne parabolique, avec le retour caméra du créateur en incrustation (PiP)." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_053_00-08-52.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:52</span>
+                        <span class="caption-text">Interface d&#x27;un générateur de vidéo par IA affichant un plan cinématique avec un moine et une structure de type antenne parabolique, avec le retour caméra du créateur en incrustation (PiP).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_054_00-09-01.jpg" alt="Lecteur multimédia affichant la vidéo générée de la structure industrielle futuriste dans la nature." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_054_00-09-01.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:01</span>
+                        <span class="caption-text">Lecteur multimédia affichant la vidéo générée de la structure industrielle futuriste dans la nature.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_055_00-09-12.jpg" alt="Fenêtre des propriétés Windows d&#x27;un fichier vidéo montrant les détails techniques (résolution 832x464, durée 00:05)." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_055_00-09-12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:12</span>
+                        <span class="caption-text">Fenêtre des propriétés Windows d&#x27;un fichier vidéo montrant les détails techniques (résolution 832x464, durée 00:05).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_056_00-09-21.jpg" alt="Interface de la galerie Midjourney affichant plusieurs grilles d&#x27;images générées par IA avec leurs prompts textuels associés." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_056_00-09-21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:21</span>
+                        <span class="caption-text">Interface de la galerie Midjourney affichant plusieurs grilles d&#x27;images générées par IA avec leurs prompts textuels associés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:23 - 00:09:59</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">si je clique simplement sur animer, ça va juste lancer une génération de vidéo par défaut en utilisant ceci comme image de départ. Et ce que je veux faire, c&#x27;est télécharger ceci et comparer la taille de la résolution. Ok, donc on a récupéré notre génération Midjourney. C&#x27;est vraiment petit dans la plateforme elle-même. Alors allons-y pour le télécharger. Jetons un œil à ça en plein écran. Oh, vous savez quoi, il y a du morphing bizarre et des trucs intégrés là-dedans, mais quelle taille de résolution obtient-on en retour, ça va être intéressant. Ok, donc générer des vidéos à l&#x27;intérieur de Midjourney, vous allez obtenir</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec l&#x27;interface de Midjourney, lecteur multimédia Windows et fenêtre des propriétés de fichier.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Galerie d&#x27;images et de vidéos Midjourney, invite textuelle descriptive (&quot;A lone woman in a tattered tech-jacket...&quot;), paramètres de génération vidéo (Low Motion, High Motion), et détails du fichier vidéo (Frame width: 1936, Frame height: 1080, Frame rate: 24.00 frames/second).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface de Midjourney, lance la lecture de la vidéo générée en plein écran, puis vérifie les propriétés de résolution du fichier téléchargé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_057_00-09-25.jpg" alt="Interface de Midjourney affichant une grille d&#x27;images générées avec une vue PiP du créateur en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_057_00-09-25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:25</span>
+                        <span class="caption-text">Interface de Midjourney affichant une grille d&#x27;images générées avec une vue PiP du créateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_058_00-09-36.jpg" alt="Interface de Midjourney montrant la lecture d&#x27;une vidéo générée au centre de l&#x27;écran avec les options de téléchargement et paramètres à droite." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_058_00-09-36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:36</span>
+                        <span class="caption-text">Interface de Midjourney montrant la lecture d&#x27;une vidéo générée au centre de l&#x27;écran avec les options de téléchargement et paramètres à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_059_00-09-48.jpg" alt="Vidéo générée lue en mode plein écran montrant une femme dans un paysage rose extraterrestre avec des drones volant au loin." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_059_00-09-48.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:48</span>
+                        <span class="caption-text">Vidéo générée lue en mode plein écran montrant une femme dans un paysage rose extraterrestre avec des drones volant au loin.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_060_00-09-57.jpg" alt="Fenêtre des propriétés Windows affichant les détails techniques de la vidéo (résolution, longueur, débit binaire)." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_060_00-09-57.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:57</span>
+                        <span class="caption-text">Fenêtre des propriétés Windows affichant les détails techniques de la vidéo (résolution, longueur, débit binaire).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:59 - 00:10:22</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">une résolution de sortie plus élevée, celle-ci est de 1936 par 1080, juste au-dessus de la HD, donc en générant des vidéos à l&#x27;intérieur de Meta, vous obtenez une résolution beaucoup plus basse, gardez donc cela à l&#x27;esprit. C&#x27;est peut-être juste temporaire pendant qu&#x27;ils permettent aux gens d&#x27;avoir ce qui semble être des générations illimitées avec l&#x27;outil.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Explorateur Windows, fenêtre de propriétés des fichiers vidéo, et interface web de Meta (meta.ai/imagine ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Résolution 1936 x 1080, débit de données 25662 kbps, fréquence d&#x27;images 24,00 images/seconde, et diverses vignettes de vidéos générées par IA montrant des scènes fantastiques.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre les métadonnées et résolutions de fichiers pour comparer la qualité de sortie entre différents outils de génération vidéo par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_061_00-10-01.jpg" alt="Fenêtre de propriétés Windows affichant les détails techniques d&#x27;un fichier vidéo (1936 x 1080, 24 fps)." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_061_00-10-01.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:01</span>
+                        <span class="caption-text">Fenêtre de propriétés Windows affichant les détails techniques d&#x27;un fichier vidéo (1936 x 1080, 24 fps).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_062_00-10-07.jpg" alt="Explorateur de fichiers Windows par-dessus le navigateur web Midjourney, avec incrustation vidéo (PiP) du créateur." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_062_00-10-07.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:07</span>
+                        <span class="caption-text">Explorateur de fichiers Windows par-dessus le navigateur web Midjourney, avec incrustation vidéo (PiP) du créateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_063_00-10-15.jpg" alt="Interface de l&#x27;outil de génération vidéo de Meta montrant des résultats de vidéos générées avec une silhouette devant une porte lumineuse." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_063_00-10-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:15</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo de Meta montrant des résultats de vidéos générées avec une silhouette devant une porte lumineuse.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_064_00-10-20.jpg" alt="Interface de Meta montrant des générations de vidéos avec un personnage en train de méditer parmi des rochers en lévitation." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_064_00-10-20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:20</span>
+                        <span class="caption-text">Interface de Meta montrant des générations de vidéos avec un personnage en train de méditer parmi des rochers en lévitation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:22 - 00:10:57</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cette nuit d&#x27;ailleurs c&#x27;est tellement dingue. J&#x27;adore ça. Oh, on a récupéré notre renard robot aussi. Regardez ça, plutôt sympa. Je pense vraiment que ce qui est utilisé via Meta est littéralement Midjourney en ce qui concerne la génération d&#x27;images et de vidéos, parce qu&#x27;en revisionnant la génération qu&#x27;on a obtenue de Midjourney, on peut remarquer ce même type de morphing ou de déformation qu&#x27;on a vu lorsqu&#x27;on générait via Meta, donc ouais, c&#x27;est bien Midjourney via Meta gratuitement en ce moment, donc</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Midjourney (accessible via un navigateur) avec panneau latéral gauche pour l&#x27;historique (&quot;11 Nov 2025&quot;), barre de prompt et grille de visualisation des vidéos générées.</p>
+                        <p><strong>Contenu textuel & Code :</strong> On distingue divers prompts textuels comme &quot;A lone woman in a battered tech-jacket needs to glowing fresh growing lush exotic vines in a ruined orchard...&quot; et des menus de personnalisation (Image prompt, Style, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur navigue dans l&#x27;interface de Midjourney pour illustrer ses propos sur les similarités visuelles avec la plateforme Meta.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (4) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-4">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_065_00-10-24.jpg" alt="Interface de Midjourney affichant un rendu de casque de soldat futuriste avec des panneaux de réglages vidéo à droite et le présentateur en incrustation." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_065_00-10-24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:24</span>
+                        <span class="caption-text">Interface de Midjourney affichant un rendu de casque de soldat futuriste avec des panneaux de réglages vidéo à droite et le présentateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_066_00-10-34.jpg" alt="Grille de générations vidéo sur l&#x27;interface de Midjourney avec un menu latéral d&#x27;historique et des vignettes de paysages fantastiques." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_066_00-10-34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:34</span>
+                        <span class="caption-text">Grille de générations vidéo sur l&#x27;interface de Midjourney avec un menu latéral d&#x27;historique et des vignettes de paysages fantastiques.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_067_00-10-46.jpg" alt="Interface de Midjourney montrant une grille de vidéos avec des canidés robotiques en mouvement au crépuscule et le panneau des prompts textuels associés." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_067_00-10-46.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:46</span>
+                        <span class="caption-text">Interface de Midjourney montrant une grille de vidéos avec des canidés robotiques en mouvement au crépuscule et le panneau des prompts textuels associés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_068_00-10-55.jpg" alt="Retour sur l&#x27;historique et la bibliothèque de créations Midjourney du 11 novembre 2025 avec des exemples de scènes animées." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_068_00-10-55.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:55</span>
+                        <span class="caption-text">Retour sur l&#x27;historique et la bibliothèque de créations Midjourney du 11 novembre 2025 avec des exemples de scènes animées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:57 - 00:11:24</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En gros mon conseil pour vous les gars c&#x27;est d&#x27;exploiter ça autant que possible obtenez autant de générations d&#x27;images et de vidéos par IA à votre actif que possible parce que c&#x27;est un scénario de fou en ce moment. Genre mid-journey n&#x27;est pas bon marché. Donc pour pouvoir accéder à cet outil, même si vous apprenez juste ou expérimentez, que vous êtes complètement débutant en IA générative. C&#x27;est une opportunité en or.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Midjourney (midjourney.com) avec un panneau latéral d&#x27;historique des prompts et une zone de visualisation des images générées, accompagné d&#x27;une incrustation vidéo (PiP) du créateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte des prompts visibles dans l&#x27;historique : &quot;A massive wiggling snake standing u...&quot;, &quot;A dancer mid-spin with flikka...&quot;, &quot;A floating monk swallowing a...&quot;, &quot;A biomechanical creature em...&quot;, &quot;Mythic rock city world&quot;, &quot;Ominous Glowing Doorway s...&quot;, &quot;A woman emerges from a vor...&quot;, &quot;Inside a vast biotechnological...&quot;, &quot;A scavenger kneels beside a...&quot;, &quot;Two figures float among colo...&quot;, &quot;A cybernetic monk kneels bef...&quot;, &quot;Underwater city exploration&quot;, &quot;A figure in a weathered space...&quot;, &quot;Two street performers with cy...&quot;, ainsi que les prompts textuels associés aux images générées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur parle face caméra tout en naviguant sur l&#x27;interface web de Midjourney, montrant les différentes images générées et l&#x27;historique des prompts.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_069_00-10-59.jpg" alt="Interface du site web Midjourney affichant un historique de générations d&#x27;images avec le créateur en incrustation vidéo (PiP) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_069_00-10-59.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:59</span>
+                        <span class="caption-text">Interface du site web Midjourney affichant un historique de générations d&#x27;images avec le créateur en incrustation vidéo (PiP) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_070_00-11-06.jpg" alt="Gros plan sur l&#x27;interface Midjourney avec la liste des prompts dans le panneau de gauche et la zone de saisie en bas à droite, le créateur apparaissant en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_070_00-11-06.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:06</span>
+                        <span class="caption-text">Gros plan sur l&#x27;interface Midjourney avec la liste des prompts dans le panneau de gauche et la zone de saisie en bas à droite, le créateur apparaissant en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_071_00-11-15.jpg" alt="Interface de Midjourney présentant des miniatures d&#x27;images générées aux tons roses et violets, avec le créateur gesticulant en incrustation PiP." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_071_00-11-15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:15</span>
+                        <span class="caption-text">Interface de Midjourney présentant des miniatures d&#x27;images générées aux tons roses et violets, avec le créateur gesticulant en incrustation PiP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:24 - 00:11:41</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc vous allez voir ça. Comme toujours, si vous avez apprécié la vidéo d&#x27;aujourd&#x27;hui, n&#x27;hésitez pas à lâcher un gros pouce bleu pour moi, pensez à vous abonner si vous êtes nouveau sur la chaîne et activez la cloche de notification pour ne jamais rater de futures publications. Merci d&#x27;avoir regardé les gars et je vous retrouve dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de génération d&#x27;images par IA (interface sombre avec panneau latéral listant des prompts comme &quot;A masked vigilante standing...&quot;, &quot;Underwater city exploration&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de l&#x27;historique des prompts dans le panneau de gauche (&quot;Cloud cat on mountaintop&quot;, &quot;Robotic fox in cityscape&quot;, &quot;Ancient knight concept art&quot;, &quot;Underwater city exploration&quot;) et des descriptions textuelles en anglais à côté des images générées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente son écran de navigateur tout en parlant à la caméra, visible dans un encadré incrusté (PiP) en bas à gauche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_072_00-11-26.jpg" alt="Interface du site web d&#x27;intelligence artificielle affichant un historique de prompts textuels et des galeries d&#x27;images générées aux tons roses, avec la webcam de Jack incrustée en bas à gauche." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_072_00-11-26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:26</span>
+                        <span class="caption-text">Interface du site web d&#x27;intelligence artificielle affichant un historique de prompts textuels et des galeries d&#x27;images générées aux tons roses, avec la webcam de Jack incrustée en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="screenshots/YT-n_la3L1d0Cc/frame_073_00-11-39.jpg" alt="Interface similaire à l&#x27;image 1 montrant le navigateur web avec l&#x27;outil de génération d&#x27;images et Jack dans son encadré vidéo." loading="lazy" onclick="openLightbox('screenshots/YT-n_la3L1d0Cc/frame_073_00-11-39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:39</span>
+                        <span class="caption-text">Interface similaire à l&#x27;image 1 montrant le navigateur web avec l&#x27;outil de génération d&#x27;images et Jack dans son encadré vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

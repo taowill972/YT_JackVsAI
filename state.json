@@ -43,7 +43,8 @@
     "EL9FzwEirxc",
     "Uf31kIa5HSM",
     "C_iQeGmS9z8",
-    "tlNeoxDZwFY"
+    "tlNeoxDZwFY",
+    "n_la3L1d0Cc"
   ],
   "processed_videos": [
     {
@@ -661,9 +662,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-11-17_YT-tlNeoxDZwFY_Comment créer des pubs TV PREMIUM avec l'IA (CHANGEMENT DE RÈGLE DU JEU)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T16:54:03Z",
       "status": "completed"
+    },
+    {
+      "video_id": "n_la3L1d0Cc",
+      "title": "Comment utiliser Midjourney GRATUITEMENT (non, c'est vraiment vrai)",
+      "raw_title": "How to use Midjourney FOR FREE (no, it’s really true)",
+      "filename_md": "2025-11-11_YT-n_la3L1d0Cc_Comment utiliser Midjourney GRATUITEMENT (non, c'est vraiment vrai)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-11-11_YT-n_la3L1d0Cc_Comment utiliser Midjourney GRATUITEMENT (non, c'est vraiment vrai)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-11-11",
+      "duration": 702,
+      "screenshots_count": 73,
+      "filepath_md": "/root/YT_JackVsAI/2025-11-11_YT-n_la3L1d0Cc_Comment utiliser Midjourney GRATUITEMENT (non, c'est vraiment vrai)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-11-11_YT-n_la3L1d0Cc_Comment utiliser Midjourney GRATUITEMENT (non, c'est vraiment vrai)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T17:08:31Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 44,
+  "completed_count": 45,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-01T16:00:06Z"
