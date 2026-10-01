@@ -47,7 +47,8 @@
     "n_la3L1d0Cc",
     "keT_ywKa_lM",
     "924pAFyrYIE",
-    "4ZISxAzXKj0"
+    "4ZISxAzXKj0",
+    "pE-f_SusfsU"
   ],
   "processed_videos": [
     {
@@ -721,10 +722,24 @@
       "filepath_html": "/root/YT_JackVsAI/2025-10-29_YT-4ZISxAzXKj0_Comment créer des publicités 100% CGI avec l'IA (C'EST ÉPOUSTOUFLANT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T18:41:45Z",
       "status": "completed"
+    },
+    {
+      "video_id": "pE-f_SusfsU",
+      "title": "Nano Banana vient-il de PERDRE !? (Higgsfield Popcorn est ARRIVÉ)",
+      "raw_title": "Did Nano Banana just LOSE!? (Higgsfield Popcorn is HERE)",
+      "filename_md": "2025-10-28_YT-pE-f_SusfsU_Nano Banana vient-il de PERDRE ! (Higgsfield Popcorn est ARRIVÉ)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-10-28_YT-pE-f_SusfsU_Nano Banana vient-il de PERDRE ! (Higgsfield Popcorn est ARRIVÉ)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-10-28",
+      "duration": 1030,
+      "screenshots_count": 94,
+      "filepath_md": "/root/YT_JackVsAI/2025-10-28_YT-pE-f_SusfsU_Nano Banana vient-il de PERDRE ! (Higgsfield Popcorn est ARRIVÉ)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-10-28_YT-pE-f_SusfsU_Nano Banana vient-il de PERDRE ! (Higgsfield Popcorn est ARRIVÉ)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-01T22:25:21Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 48,
+  "completed_count": 49,
   "total_catalog_count": 59,
   "status": "running",
-  "last_run_timestamp": "2026-10-01T16:00:06Z"
+  "last_run_timestamp": "2026-10-01T22:00:04Z"
 }
