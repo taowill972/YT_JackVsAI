@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `38 / 59` (`64.4%`)
+- **Vidéos traitées** : `39 / 59` (`66.1%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -54,6 +54,7 @@
 | 2026-01-25 | [Créer des publicités animées prêtes pour la télé avec l'IA — Le guide ultime](2026-01-25_YT-xaQNxC1BTHw_Créer des publicités animées prêtes pour la télé avec l'IA — Le guide ultime_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-01-25_YT-xaQNxC1BTHw_Créer des publicités animées prêtes pour la télé avec l'IA — Le guide ultime_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 32m 47s | `148 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=xaQNxC1BTHw) | `xaQNxC1BTHw` |
 | 2026-01-18 | [La NOUVELLE méthode pour créer des films cinématographiques avec l'IA (La méthode grille 2x2)](2026-01-18_YT-MwftLxzEXk0_La NOUVELLE méthode pour créer des films cinématographiques avec l'IA (La méthod_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-01-18_YT-MwftLxzEXk0_La NOUVELLE méthode pour créer des films cinématographiques avec l'IA (La méthod_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 23m 01s | `96 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=MwftLxzEXk0) | `MwftLxzEXk0` |
 | 2026-01-08 | [Créer des bandes-annonces de films par IA (WORKFLOW GRATUIT)](2026-01-08_YT-INphz5q2Zrs_Créer des bandes-annonces de films par IA (WORKFLOW GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-01-08_YT-INphz5q2Zrs_Créer des bandes-annonces de films par IA (WORKFLOW GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 28s | `85 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=INphz5q2Zrs) | `INphz5q2Zrs` |
+| 2025-12-15 | [Créer des pubs produits haut de gamme avec l'IA (Guide étape par étape)](2025-12-15_YT-esAfAQV7p9I_Créer des pubs produits haut de gamme avec l'IA (Guide étape par étape)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-12-15_YT-esAfAQV7p9I_Créer des pubs produits haut de gamme avec l'IA (Guide étape par étape)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 20m 01s | `104 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=esAfAQV7p9I) | `esAfAQV7p9I` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
