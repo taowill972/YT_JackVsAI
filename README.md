@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `58 / 59` (`98.3%`)
+- **Vidéos traitées** : `59 / 59` (`100.0%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -74,6 +74,7 @@
 | 2025-08-26 | [Comment utiliser Nano Banana GRATUITEMENT (Guide ultime du cinéma IA)](2025-08-26_YT-ogU3Di7rvnc_Comment utiliser Nano Banana GRATUITEMENT (Guide ultime du cinéma IA)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-08-26_YT-ogU3Di7rvnc_Comment utiliser Nano Banana GRATUITEMENT (Guide ultime du cinéma IA)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 56s | `78 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=ogU3Di7rvnc) | `ogU3Di7rvnc` |
 | 2025-08-20 | [Comment créer des vidéos IA de paysages oniriques impossibles (Le guide ultime)](2025-08-20_YT-xXrQV1UDUdM_Comment créer des vidéos IA de paysages oniriques impossibles (Le guide ultime)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-08-20_YT-xXrQV1UDUdM_Comment créer des vidéos IA de paysages oniriques impossibles (Le guide ultime)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 44s | `93 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=xXrQV1UDUdM) | `xXrQV1UDUdM` |
 | 2025-08-14 | [Comment créer des vidéos IA qui te ressemblent VRAIMENT (Le guide ultime)](2025-08-14_YT-LAFDQ9zCu9U_Comment créer des vidéos IA qui te ressemblent VRAIMENT (Le guide ultime)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-08-14_YT-LAFDQ9zCu9U_Comment créer des vidéos IA qui te ressemblent VRAIMENT (Le guide ultime)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 23m 04s | `112 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=LAFDQ9zCu9U) | `LAFDQ9zCu9U` |
+| 2025-07-31 | [Higgsfield AI est-il meilleur que Midjourney ? (Meilleur Workflow & Test)](2025-07-31_YT-RAF3qmWgySw_Higgsfield AI est-il meilleur que Midjourney (Meilleur Workflow & Test)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-07-31_YT-RAF3qmWgySw_Higgsfield AI est-il meilleur que Midjourney (Meilleur Workflow & Test)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 25m 31s | `136 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=RAF3qmWgySw) | `RAF3qmWgySw` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*

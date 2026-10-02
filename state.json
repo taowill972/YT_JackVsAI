@@ -57,7 +57,8 @@
     "NlLBXqaN8AY",
     "ogU3Di7rvnc",
     "xXrQV1UDUdM",
-    "LAFDQ9zCu9U"
+    "LAFDQ9zCu9U",
+    "RAF3qmWgySw"
   ],
   "processed_videos": [
     {
@@ -871,10 +872,24 @@
       "filepath_html": "/root/YT_JackVsAI/2025-08-14_YT-LAFDQ9zCu9U_Comment créer des vidéos IA qui te ressemblent VRAIMENT (Le guide ultime)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-02T06:25:59Z",
       "status": "completed"
+    },
+    {
+      "video_id": "RAF3qmWgySw",
+      "title": "Higgsfield AI est-il meilleur que Midjourney ? (Meilleur Workflow & Test)",
+      "raw_title": "Is Higgsfield AI better than Midjourney? (Best Workflow & Review)",
+      "filename_md": "2025-07-31_YT-RAF3qmWgySw_Higgsfield AI est-il meilleur que Midjourney (Meilleur Workflow & Test)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-07-31_YT-RAF3qmWgySw_Higgsfield AI est-il meilleur que Midjourney (Meilleur Workflow & Test)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-07-31",
+      "duration": 1531,
+      "screenshots_count": 136,
+      "filepath_md": "/root/YT_JackVsAI/2025-07-31_YT-RAF3qmWgySw_Higgsfield AI est-il meilleur que Midjourney (Meilleur Workflow & Test)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-07-31_YT-RAF3qmWgySw_Higgsfield AI est-il meilleur que Midjourney (Meilleur Workflow & Test)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-02T10:47:02Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 58,
+  "completed_count": 59,
   "total_catalog_count": 59,
   "status": "running",
-  "last_run_timestamp": "2026-10-02T04:00:03Z"
+  "last_run_timestamp": "2026-10-02T10:00:04Z"
 }
