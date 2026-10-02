@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `54 / 59` (`91.5%`)
+- **Vidéos traitées** : `55 / 59` (`93.2%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -70,6 +70,7 @@
 | 2025-09-26 | [WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)](2025-09-26_YT-yvD8TxNsR4Q_WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-09-26_YT-yvD8TxNsR4Q_WAN 2.5 ÉCRASE VEO 3 (Workflow Higgsfield AI)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 10m 49s | `45 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=yvD8TxNsR4Q) | `yvD8TxNsR4Q` |
 | 2025-09-11 | [Comment générer des images au format panoramique avec Nano Banana (3 astuces et conseils indispensables)](2025-09-11_YT-jf9AuGe0rUA_Comment générer des images au format panoramique avec Nano Banana (3 astuces et _by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-09-11_YT-jf9AuGe0rUA_Comment générer des images au format panoramique avec Nano Banana (3 astuces et _by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 12m 00s | `41 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=jf9AuGe0rUA) | `jf9AuGe0rUA` |
 | 2025-09-06 | [Comment utiliser Nano Banana pour la publicité par IA (Workflow GRATUIT)](2025-09-06_YT-ZpLSWXAPoLo_Comment utiliser Nano Banana pour la publicité par IA (Workflow GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-09-06_YT-ZpLSWXAPoLo_Comment utiliser Nano Banana pour la publicité par IA (Workflow GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 28m 44s | `134 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=ZpLSWXAPoLo) | `ZpLSWXAPoLo` |
+| 2025-08-28 | [Comment utiliser Nano Banana pour le cinéma IA (Workflow GRATUIT)](2025-08-28_YT-NlLBXqaN8AY_Comment utiliser Nano Banana pour le cinéma IA (Workflow GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2025-08-28_YT-NlLBXqaN8AY_Comment utiliser Nano Banana pour le cinéma IA (Workflow GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 22m 40s | `86 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=NlLBXqaN8AY) | `NlLBXqaN8AY` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
