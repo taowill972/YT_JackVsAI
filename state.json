@@ -52,7 +52,8 @@
     "Bcyx6Gq8WjI",
     "AxMnVX9dQZ8",
     "yvD8TxNsR4Q",
-    "jf9AuGe0rUA"
+    "jf9AuGe0rUA",
+    "ZpLSWXAPoLo"
   ],
   "processed_videos": [
     {
@@ -796,10 +797,24 @@
       "filepath_html": "/root/YT_JackVsAI/2025-09-11_YT-jf9AuGe0rUA_Comment générer des images au format panoramique avec Nano Banana (3 astuces et _by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-01T23:24:18Z",
       "status": "completed"
+    },
+    {
+      "video_id": "ZpLSWXAPoLo",
+      "title": "Comment utiliser Nano Banana pour la publicité par IA (Workflow GRATUIT)",
+      "raw_title": "How to use Nano Banana for AI Advertising (FREE Workflow)",
+      "filename_md": "2025-09-06_YT-ZpLSWXAPoLo_Comment utiliser Nano Banana pour la publicité par IA (Workflow GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-09-06_YT-ZpLSWXAPoLo_Comment utiliser Nano Banana pour la publicité par IA (Workflow GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-09-06",
+      "duration": 1724,
+      "screenshots_count": 134,
+      "filepath_md": "/root/YT_JackVsAI/2025-09-06_YT-ZpLSWXAPoLo_Comment utiliser Nano Banana pour la publicité par IA (Workflow GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-09-06_YT-ZpLSWXAPoLo_Comment utiliser Nano Banana pour la publicité par IA (Workflow GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-02T04:33:26Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 53,
+  "completed_count": 54,
   "total_catalog_count": 59,
   "status": "running",
-  "last_run_timestamp": "2026-10-01T22:00:04Z"
+  "last_run_timestamp": "2026-10-02T04:00:03Z"
 }
