@@ -55,7 +55,8 @@
     "jf9AuGe0rUA",
     "ZpLSWXAPoLo",
     "NlLBXqaN8AY",
-    "ogU3Di7rvnc"
+    "ogU3Di7rvnc",
+    "xXrQV1UDUdM"
   ],
   "processed_videos": [
     {
@@ -841,9 +842,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-08-26_YT-ogU3Di7rvnc_Comment utiliser Nano Banana GRATUITEMENT (Guide ultime du cinéma IA)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-02T05:28:31Z",
       "status": "completed"
+    },
+    {
+      "video_id": "xXrQV1UDUdM",
+      "title": "Comment créer des vidéos IA de paysages oniriques impossibles (Le guide ultime)",
+      "raw_title": "How to create AI videos of IMPOSSIBLE dreamscapes (Ultimate guide)",
+      "filename_md": "2025-08-20_YT-xXrQV1UDUdM_Comment créer des vidéos IA de paysages oniriques impossibles (Le guide ultime)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-08-20_YT-xXrQV1UDUdM_Comment créer des vidéos IA de paysages oniriques impossibles (Le guide ultime)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-08-20",
+      "duration": 1064,
+      "screenshots_count": 93,
+      "filepath_md": "/root/YT_JackVsAI/2025-08-20_YT-xXrQV1UDUdM_Comment créer des vidéos IA de paysages oniriques impossibles (Le guide ultime)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-08-20_YT-xXrQV1UDUdM_Comment créer des vidéos IA de paysages oniriques impossibles (Le guide ultime)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-02T05:54:44Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 56,
+  "completed_count": 57,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-02T04:00:03Z"
