@@ -54,7 +54,8 @@
     "yvD8TxNsR4Q",
     "jf9AuGe0rUA",
     "ZpLSWXAPoLo",
-    "NlLBXqaN8AY"
+    "NlLBXqaN8AY",
+    "ogU3Di7rvnc"
   ],
   "processed_videos": [
     {
@@ -826,9 +827,23 @@
       "filepath_html": "/root/YT_JackVsAI/2025-08-28_YT-NlLBXqaN8AY_Comment utiliser Nano Banana pour le cinéma IA (Workflow GRATUIT)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
       "processed_at": "2026-10-02T05:01:48Z",
       "status": "completed"
+    },
+    {
+      "video_id": "ogU3Di7rvnc",
+      "title": "Comment utiliser Nano Banana GRATUITEMENT (Guide ultime du cinéma IA)",
+      "raw_title": "How to use Nano Banana for FREE (AI filmmaking guide)",
+      "filename_md": "2025-08-26_YT-ogU3Di7rvnc_Comment utiliser Nano Banana GRATUITEMENT (Guide ultime du cinéma IA)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filename_html": "2025-08-26_YT-ogU3Di7rvnc_Comment utiliser Nano Banana GRATUITEMENT (Guide ultime du cinéma IA)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "pub_date": "2025-08-26",
+      "duration": 1076,
+      "screenshots_count": 78,
+      "filepath_md": "/root/YT_JackVsAI/2025-08-26_YT-ogU3Di7rvnc_Comment utiliser Nano Banana GRATUITEMENT (Guide ultime du cinéma IA)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md",
+      "filepath_html": "/root/YT_JackVsAI/2025-08-26_YT-ogU3Di7rvnc_Comment utiliser Nano Banana GRATUITEMENT (Guide ultime du cinéma IA)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html",
+      "processed_at": "2026-10-02T05:28:31Z",
+      "status": "completed"
     }
   ],
-  "completed_count": 55,
+  "completed_count": 56,
   "total_catalog_count": 59,
   "status": "running",
   "last_run_timestamp": "2026-10-02T04:00:03Z"
