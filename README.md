@@ -3,7 +3,7 @@
 > Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches HTML interactives de la chaîne **[Jack Vs. AI](https://www.youtube.com/@JackVsAI)** (@JackVsAI).
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `61 / 61` (`100.0%`)
+- **Vidéos traitées** : `62 / 62` (`100.0%`)
 - **Modèle Audio ASR** : `OpenAI / Faster-Whisper large-v3-turbo` (CPU int8 VPS Contabo, 100% Verbatim Français)
 - **Modèle Vision d'écran** : `Google Gemini 3.5 Flash-Lite` (Analyse d'écrans, prompts, outils et workflows vidéo IA)
 - **Signature des fichiers** : `by-whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -16,6 +16,7 @@
 
 | Date | Titre & Fiche Markdown | Fiche Web Interactive | Durée | Captures | Lien YouTube | ID Vidéo |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: |
+| 2026-10-22 | [Kling 4 is FINALLY Here… Can It Beat Seedance 2.5?](2026-10-22_YT-xIgdqAhc-nQ_Kling 4 is FINALLY Here… Can It Beat Seedance 2.5_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-10-22_YT-xIgdqAhc-nQ_Kling 4 is FINALLY Here… Can It Beat Seedance 2.5_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 02s | `0 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=xIgdqAhc-nQ) | `xIgdqAhc-nQ` |
 | 2026-10-15 | [How to Get PERFECT Voice Consistency in Your AI Videos (NEW Method)](2026-10-15_YT-IX21wLPF5JM_How to Get PERFECT Voice Consistency in Your AI Videos (NEW Method)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-10-15_YT-IX21wLPF5JM_How to Get PERFECT Voice Consistency in Your AI Videos (NEW Method)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 17m 35s | `0 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=IX21wLPF5JM) | `IX21wLPF5JM` |
 | 2026-10-04 | [STOP Wasting Your Seedance 2.5 Credits (Use this NEW Method)](2026-10-04_YT-9axNVcUGVk4_STOP Wasting Your Seedance 2.5 Credits (Use this NEW Method)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-10-04_YT-9axNVcUGVk4_STOP Wasting Your Seedance 2.5 Credits (Use this NEW Method)_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 16m 13s | `0 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=9axNVcUGVk4) | `9axNVcUGVk4` |
 | 2026-08-25 | [Créer un studio de motion design solo avec l'IA](2026-08-25_YT-CBDaJb04FgU_Créer un studio de motion design solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.md) | [🌐 Consulter en ligne](2026-08-25_YT-CBDaJb04FgU_Créer un studio de motion design solo avec l'IA_by-whisper-v3-large-turbo+gemini-3.5-flash-lite.html) | 9m 41s | `16 images` | [Voir sur YouTube](https://www.youtube.com/watch?v=CBDaJb04FgU) | `CBDaJb04FgU` |
